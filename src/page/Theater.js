@@ -7,7 +7,7 @@ class Theater extends React.Component {
   }
 
   render() {
-    return <>Theater</>
+    return <>ya</>
   }
 }
 
