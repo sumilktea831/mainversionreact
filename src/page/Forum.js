@@ -7,7 +7,6 @@ class Forum extends React.Component {
   }
 
   render() {
-
     return (
       <>
         <>Forum999999</>
