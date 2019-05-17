@@ -1,0 +1,21 @@
+html,
+body {
+  background: #242b34;
+  font-family: 'Noto Sans TC', sans-serif;
+}
+nav.navbar {
+  height: 120px;
+  background-color: #00000020 !important;
+  padding: 0 120px;
+  font-size: 32px !important;
+}
+nav.navbar a {
+  color: #737c88 !important;
+  transition: 0.5s;
+}
+nav.navbar a:hover {
+  color: #d4d1cc !important;
+}
+nav.navbar a.active {
+  color: #ffa510 !important;
+}
