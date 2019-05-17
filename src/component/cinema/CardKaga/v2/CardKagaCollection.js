@@ -8,6 +8,7 @@ const CardKagaCollection = props => {
           <a
             onClick={props.collectionClick}
             className="position-absolute"
+            //下方style轉放scss
             style={{
               top: '35px',
               right: '20px',
@@ -22,6 +23,7 @@ const CardKagaCollection = props => {
           <a
             onClick={props.collectionClick}
             className="position-absolute"
+            //下方style轉放scss
             style={{
               top: '35px',
               right: '20px',
