@@ -7,7 +7,12 @@ class Forum extends React.Component {
   }
 
   render() {
-    return <>Forum123456</>
+
+    return (
+      <>
+        <>Forum123456</>
+      </>
+    )
   }
 }
 
