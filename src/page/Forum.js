@@ -1,13 +1,13 @@
 import React from 'react'
-import ForumArticleListRoy from '../Component/Forum/ForumArticleList/ForumArticleListRoy'
-import ForumSearchbarRoy from '../Component/Forum/ForumSearchbarRoy'
-import ForumArticleContentRoy from '../Component/Forum/ForumArticleContent/ForumArticleContentRoy'
-import ForumArticleCommentRoy from '../Component/Forum/ForumArticleComment/ForumArticleCommentRoy'
-import ActionButtonCategoryRoy from '../Component/Forum/ForumActionButton/ActionButtonCategoryRoy'
-import ActionButtonFilterRoy from '../Component/Forum/ForumActionButton/ActionButtonFilterRoy'
-import ActionBtnScrollTopRoy from '../Component/Forum/ForumActionButton/ActionBtnScrollTopRoy'
-import ActionBtnScrollBottomRoy from '../Component/Forum/ForumActionButton/ActionBtnScrollBottomRoy'
-import ActionBtnCreateRoy from '../Component/Forum/ForumActionButton/ActionBtnCreateRoy'
+import ForumArticleListRoy from '../component/Forum/ForumArticleList/ForumArticleListRoy'
+import ForumSearchbarRoy from '../component/Forum/ForumSearchbarRoy'
+import ForumArticleContentRoy from '../component/Forum/ForumArticleContent/ForumArticleContentRoy'
+import ForumArticleCommentRoy from '../component/Forum/ForumArticleComment/ForumArticleCommentRoy'
+import ActionButtonCategoryRoy from '../component/Forum/ForumActionButton/ActionButtonCategoryRoy'
+import ActionButtonFilterRoy from '../component/Forum/ForumActionButton/ActionButtonFilterRoy'
+import ActionBtnScrollTopRoy from '../component/Forum/ForumActionButton/ActionBtnScrollTopRoy'
+import ActionBtnScrollBottomRoy from '../component/Forum/ForumActionButton/ActionBtnScrollBottomRoy'
+import ActionBtnCreateRoy from '../component/Forum/ForumActionButton/ActionBtnCreateRoy'
 
 class Forum extends React.Component {
   constructor() {
