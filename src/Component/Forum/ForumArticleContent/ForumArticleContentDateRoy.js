@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ForumArticleContentDateRoy = () => {
+const ForumArticleContentDateRoy = props => {
   return (
     <>
-      <p className="text-light">發文日期:2019/01/01</p>
+      <p className="text-light">發文時間:{props.contentIssueDate}</p>
     </>
   )
 }
