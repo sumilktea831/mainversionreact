@@ -15,8 +15,10 @@ class Forum extends React.Component {
     super()
     this.state = {
       loading: false,
+      // 用來接JSONSERVER所FETCH到的資料
       listdata: [],
-      currentdata: [],
+      // 用來接列表點擊後當文章對應到的所有內容，用來渲染到文章內容用
+      currentdata: {},
     }
   }
 
@@ -36,17 +38,22 @@ class Forum extends React.Component {
 
       const jsonObject = await response.json()
 
-      console.log(jsonObject)
-      await this.setState({ listdata: jsonObject })
+      await this.setState({
+        // 用來下面ForumArticleListRoy渲染列表內容
+        // 在這裡反轉物件順序，不要在ForumArticleListRoy MAP前用，否則每當重新渲染就會順序反過來
+        listdata: jsonObject.reverse(),
+        // 預設載入最新文章內容，在下面ForumArticleContentRoy元件渲染
+        currentdata: jsonObject[jsonObject.length - 1],
+      })
     } catch (e) {
       console.log(e)
     }
   }
+  // element:點擊到列表的對應物件，index當個文章的索引值
   handleClick = (index, element) => {
-    let a = [element]
-    console.log(index)
-    console.log(a)
-    this.setState({ currentdata: a })
+    // 用來接列表點擊後當文章對應到的所有內容，用來渲染到文章內容ForumArticleContentRoy
+    this.setState({ currentdata: element })
+    console.log(this.state.currentdata.forumArticlePic)
   }
 
   render() {
@@ -90,7 +97,13 @@ class Forum extends React.Component {
               <div className="row m-0 p-0">
                 <div className="col-12  p-5 border border-dark">
                   <ForumArticleContentRoy
+                    // 將點擊文章列表後所產生的物件中的值傳下去，同時更新文章內容
                     contentheadline={this.state.currentdata.headline}
+                    contentUserAvatar={this.state.currentdata.forumAvatar}
+                    contentUserName={this.state.currentdata.forumName}
+                    contentIssueDate={this.state.currentdata.forumCreateDate}
+                    contentReview={this.state.currentdata.forumReview}
+                    contentArticlePic={this.state.currentdata.forumArticlePic}
                   />
                 </div>
               </div>
