@@ -1,4 +1,4 @@
-import React from './node_modules/react'
+import React from 'react'
 import ForumArticleAvatarRoy from '../ForumArticleAvatarRoy'
 import ForumArticleContentTiltleRoy from './ForumArticleContentTiltleRoy'
 import ForumArticleContentDateRoy from './ForumArticleContentDateRoy'
@@ -13,7 +13,6 @@ const ForumArticleContentRoy = props => {
         <ForumArticleAvatarRoy
           contentUserAvatar={props.contentUserAvatar}
           contentUserName={props.contentUserName}
-          contentUserAvatar={props.contentUserAvatar}
         />
         <ForumArticleContentDateRoy contentIssueDate={props.contentIssueDate} />
       </div>
