@@ -52,13 +52,15 @@ class Forum extends React.Component {
   render() {
     return (
       <>
+
         <div className="container-fuild justify-content-center">
           <div className="row justify-content-center ">
             <div className="col-3 mr-4 p-0 ">
               <div className="">
-                <ActionBtnCreateRoy />
+                <ActionBtnCreateRoy className="btn-fill" />
                 <div className="my-4">
                   <ForumSearchbarRoy />
+
                 </div>
                 <div className="d-flex mb-3">
                   <ActionButtonCategoryRoy />

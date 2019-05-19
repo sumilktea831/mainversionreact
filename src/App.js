@@ -1,7 +1,10 @@
 import React from 'react'
+//Import Bootstrap,Router
 import { Navbar, Nav } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
-import { BrowserRouter as Router, Route, Link, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+
+//Import Pages
 import Mainpage from './page/Mainpage'
 import Theater from './page/Theater'
 import Movie from './page/Movie'
