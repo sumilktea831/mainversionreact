@@ -13,7 +13,6 @@ const ForumArticleContentRoy = props => {
         <ForumArticleAvatarRoy
           contentUserAvatar={props.contentUserAvatar}
           contentUserName={props.contentUserName}
-          contentUserAvatar={props.contentUserAvatar}
         />
         <ForumArticleContentDateRoy contentIssueDate={props.contentIssueDate} />
       </div>
