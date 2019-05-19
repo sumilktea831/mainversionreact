@@ -85,7 +85,6 @@ class Forum extends React.Component {
                 <ActionBtnCreateRoy className="btn-fill" />
                 <div className="my-4">
                   <ForumSearchbarRoy />
-
                 </div>
                 <div className="d-flex mb-3">
                   <ActionButtonCategoryRoy />
