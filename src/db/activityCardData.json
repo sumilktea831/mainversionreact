@@ -2,16 +2,44 @@
   "activityCardData": [
     {
       "id": 1,
-      "title": "卡片標題",
-      "subtitle": "卡片副標題",
-      "imgSrc": "https://images.unsplash.com/photo-1506512420485-a28339abb3b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "title": "非凡戲院",
+      "subtitle": "慶祝周年慶，非凡爆米花免費吃",
+      "imgSrc": "https://images.unsplash.com/photo-1521967906867-14ec9d64bee8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
       "isCollect": false
     },
     {
       "id": 2,
-      "title": "卡片標題",
-      "subtitle": "卡片副標題",
-      "imgSrc": "https://images.unsplash.com/photo-1506512420485-a28339abb3b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "title": "星光戲院",
+      "subtitle": "來星光，看星際。",
+      "imgSrc": "https://images.unsplash.com/photo-1472457897821-70d3819a0e24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1349&q=80",
+      "isCollect": false
+    },
+    {
+      "id": 3,
+      "title": "airVR",
+      "subtitle": "VR+3DMAX的全新觀賞體驗就在airVR",
+      "imgSrc": "https://images.unsplash.com/photo-1478358161113-b0e11994a36b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+      "isCollect": false
+    },
+    {
+      "id": 4,
+      "title": "世新大學",
+      "subtitle": "影片演員招募中！",
+      "imgSrc": "https://images.unsplash.com/photo-1551448215-3a9aa113815c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "isCollect": false
+    },
+    {
+      "id": 5,
+      "title": "大觀園戲院",
+      "subtitle": "五六零年代電影串燒",
+      "imgSrc": "https://images.unsplash.com/photo-1543059047-278b7120468c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=617&q=80",
+      "isCollect": false
+    },
+    {
+      "id": 6,
+      "title": "文藝劇場",
+      "subtitle": "65歲長者，免費入場",
+      "imgSrc": "https://images.unsplash.com/photo-1508963493744-76fce69379c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
       "isCollect": false
     }
   ]

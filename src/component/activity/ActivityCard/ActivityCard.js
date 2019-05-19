@@ -56,7 +56,12 @@ const ActivityCard = props => (
 
       <div
         className="card-body"
-        style={{ height: '100px', backgroundColor: '#1f242a80', zIndex: 8 }}
+        style={{
+          height: '100px',
+          backgroundColor: '#1f242a80',
+          zIndex: 8,
+          borderColor: 'none',
+        }}
       >
         <h5 className="card-title text-center">{props.title}</h5>
         <p className="card-text text-center">{props.subtitle}</p>

@@ -67,7 +67,7 @@ class Activity extends React.Component {
               <ActivitySearchbar />
             </div>
             {this.state.activityCardData.map(data => (
-              <div className="col-md-4">
+              <div className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5">
                 <ActivityCard
                   key={data.id}
                   title={data.title}
