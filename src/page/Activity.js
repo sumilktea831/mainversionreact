@@ -1,5 +1,6 @@
 import React from 'react'
 import ActivitySection from '../component/activity/ActivitySection/ActivitySection'
+import ActivityTitle from '../component/activity/ActivityTitle/ActivityTitle'
 
 class Activity extends React.Component {
   constructor() {
@@ -10,6 +11,7 @@ class Activity extends React.Component {
       smallSlogan: '開始找尋',
       heroSectionPic:
         'https://images.unsplash.com/photo-1506512420485-a28339abb3b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
+      title1: '搜尋活動',
     }
   }
 
@@ -25,6 +27,19 @@ class Activity extends React.Component {
                 smallSlogan={this.state.smallSlogan}
                 pictureSrc={this.state.heroSectionPic}
               />
+            </div>
+          </div>
+        </div>
+        <div className="container-fuild fix-content">
+          <div className="row">
+            <div className="col-md-12 p-0">
+              <ActivityTitle
+                title={this.state.title1}
+                className="content-title"
+              />
+            </div>
+            <div className="col-md-12 p-0 fix-inline-content">
+              <ActivityTitle title={this.state.title1} />
             </div>
           </div>
         </div>

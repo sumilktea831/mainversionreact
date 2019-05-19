@@ -18,11 +18,11 @@ class Forum extends React.Component {
   render() {
     return (
       <>
-        <div className="fix-container-fluid" />
+        <div className="container-fuild fix-height" />
         <div className="container-fuild">
           <div className="row justify-content-center">
             <div className="col-3 mx-2 p-0">
-              <ActionBtnCreateRoy />
+              <ActionBtnCreateRoy className="btn-fill" />
               <div className="my-4">
                 <ForumSearchbarRoy />
               </div>
