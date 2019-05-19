@@ -1,4 +1,4 @@
-import React from './node_modules/reacte_modules/react'
+import React from 'react'
 import ForumArticleCommentAreaRoy from './ForumArticleCommentAreaRoy'
 import ForumArticleCommentInputRoy from './ForumArticleCommentInputRoy'
 import ForumCommentCancelRoy from './ForumCommentCancelRoy'

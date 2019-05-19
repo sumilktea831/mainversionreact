@@ -1,4 +1,4 @@
-import React from './node_modules/reacte_modules/react'
+import React from 'react'
 import ListSpoilersIconRoy from './ListSpoilersIconRoy'
 import ListIssueDateRoy from './ListIssueDateRoy'
 import ListTitleRoy from './ListTitleRoy'

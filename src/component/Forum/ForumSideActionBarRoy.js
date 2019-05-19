@@ -1,4 +1,4 @@
-import React from './node_modules/reacte_modules/react'
+import React from 'react'
 import ActionButtonPushRoy from './ForumActionButton/ActionButtonPushRoy'
 import ActionButtonFollowRoy from './ForumActionButton/ActionButtonFollowRoy'
 import ActionButtonCommentRoy from './ForumActionButton/ActionButtonPushRoy'

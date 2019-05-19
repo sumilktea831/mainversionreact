@@ -1,4 +1,4 @@
-import React from './node_modules/reacte_modules/react'
+import React from 'react'
 
 const ActionBtnScrollBottomRoy = () => (
   <button type="button" className="btn btn-warning w-100">

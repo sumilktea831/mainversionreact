@@ -1,4 +1,6 @@
-import React from 'reactmArticleAvatarRoy = props => {
+import React from 'react'
+
+const ForumArticleAvatarRoy = props => {
   return (
     <>
       <div className="media d-flex align-items-center">
