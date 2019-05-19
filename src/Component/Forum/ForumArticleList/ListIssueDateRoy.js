@@ -1,9 +1,10 @@
 import React from 'react'
 
-const ListIssueDateRoy = () => {
+const ListIssueDateRoy = props => {
   return (
     <>
-      <h5 className="text-light my-0 ">2019/01/01 12:00</h5>
+      {/* 發文時間 */}
+      <h5 className="text-light my-0 ">{props.listforumCreateDate}</h5>
     </>
   )
 }

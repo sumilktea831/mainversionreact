@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ListAvatarRoy = () => {
+const ListAvatarRoy = props => {
   return (
     <>
       <div className="d-flex align-items-center">
@@ -8,13 +8,19 @@ const ListAvatarRoy = () => {
           className="rounded-circle overflow-hidden"
           style={{ width: '34px', height: '34px' }}
         >
+          {/* 發文者頭像 */}
           <img
-            src="http://localhost:3000/images/9743_2.jpg"
-            className="h-100 w-100 "
+            id="gg"
+            src={
+              'http://localhost:3000/images/' + props.listforumAvatar + '.jpg'
+            }
+            className="h-100 w-100 gg "
+            alt=""
           />
         </div>
         <div>
-          <h5 className="text-light my-0 mx-2">Amy</h5>
+          {/* 發文者名稱 */}
+          <h5 className="text-light my-0 mx-2">{props.listforumName}</h5>
         </div>
       </div>
     </>
