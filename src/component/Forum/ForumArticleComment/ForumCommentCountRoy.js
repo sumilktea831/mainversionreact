@@ -1,9 +1,9 @@
 import React from 'react'
 
-const ForumCommentCountRoy = () => {
+const ForumCommentCountRoy = props => {
   return (
     <>
-      <h4 className="text-light m-0">5則留言</h4>
+      <h4 className="text-light m-0">{props.commentCount} 則留言</h4>
     </>
   )
 }
