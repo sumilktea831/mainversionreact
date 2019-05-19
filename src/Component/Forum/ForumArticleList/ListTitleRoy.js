@@ -1,8 +1,9 @@
 import React from 'react'
-const ListTitleRoy = () => {
+const ListTitleRoy = props => {
   return (
     <>
-      <h5 className="text-light my-0 ">《一切安好》天縱英才..</h5>
+      {/* 發文標題 */}
+      <h5 className="text-light my-0 ">{props.listheadline}</h5>
     </>
   )
 }
