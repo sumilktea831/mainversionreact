@@ -9,6 +9,11 @@ import ActionBtnScrollTopRoy from '../component/Forum/ForumActionButton/ActionBt
 import ActionBtnScrollBottomRoy from '../component/Forum/ForumActionButton/ActionBtnScrollBottomRoy'
 import ActionBtnCreateRoy from '../component/Forum/ForumActionButton/ActionBtnCreateRoy'
 import ForumSideActionBarRoy from '../component/Forum/ForumSideActionBarRoy'
+import ForumCategoryTextRoy from '../component/Forum/ForumArticleComment/ForumCategoryTextRoy'
+import ForumCommentCountRoy from '../component/Forum/ForumArticleComment/ForumCommentCountRoy'
+import ForumArticleCommentInputRoy from '../component/Forum/ForumArticleComment/ForumArticleCommentInputRoy'
+import ForumCommentCancelRoy from '../component/Forum/ForumArticleComment/ForumCommentCancelRoy'
+import ForumCommentCreateRoy from '../component/Forum/ForumArticleComment/ForumCommentCreateRoy'
 
 class Forum extends React.Component {
   constructor() {
@@ -19,6 +24,8 @@ class Forum extends React.Component {
       listdata: [],
       // 用來接列表點擊後當文章對應到的所有內容，用來渲染到文章內容用
       currentdata: {},
+      // 用來裝留言，因為要MAP所以要用陣列方式
+      currentcommentdata: [],
     }
   }
 
@@ -43,8 +50,13 @@ class Forum extends React.Component {
         // 在這裡反轉物件順序，不要在ForumArticleListRoy MAP前用，否則每當重新渲染就會順序反過來
         listdata: jsonObject.reverse(),
         // 預設載入最新文章內容，在下面ForumArticleContentRoy元件渲染
+        //帶入參數 jsonObject.length - 1為預設顯示最後一筆資料
         currentdata: jsonObject[jsonObject.length - 1],
+        // 這邊重建一個留言區的陣列用來裝，直接用currentdata會有問題，
+        //因為currentdata預設為物件，在MAP的時候會有問題
+        currentcommentdata: jsonObject[jsonObject.length - 1].forumCommentArea,
       })
+      console.log(this.state.currentcommentdata.length)
     } catch (e) {
       console.log(e)
     }
@@ -52,15 +64,21 @@ class Forum extends React.Component {
   // element:點擊到列表的對應物件，index當個文章的索引值
   handleClick = (index, element) => {
     // 用來接列表點擊後當文章對應到的所有內容，用來渲染到文章內容ForumArticleContentRoy
-    this.setState({ currentdata: element })
-    console.log(this.state.currentdata.forumArticlePic)
+    this.setState({
+      currentdata: element,
+      // 將當下點到的物件中的forumCommentArea留言區陣列設回去STATE
+      currentcommentdata: element.forumCommentArea,
+    })
+    console.log(this.state.currentdata.forumCommentArea)
   }
 
   render() {
     return (
       <>
-
-        <div className="container-fuild justify-content-center">
+        <div
+          className="container-fuild justify-content-center"
+          style={{ marginTop: '120px' }}
+        >
           <div className="row justify-content-center ">
             <div className="col-3 mr-4 p-0 ">
               <div className="">
@@ -111,7 +129,35 @@ class Forum extends React.Component {
               </div>
               <div className="row my-4">
                 <div className="col-12 p-5 border border-dark">
-                  <ForumArticleCommentRoy />
+                  <div className="d-flex ">
+                    <div className="">
+                      <ForumCategoryTextRoy />
+                    </div>
+                    <div className="mx-5">
+                      <ForumCommentCountRoy
+                        // 計算該篇文章下面留言數量
+                        commentCount={this.state.currentcommentdata.length}
+                      />
+                    </div>
+                  </div>
+                  {this.state.currentcommentdata.map((e, index) => (
+                    <ForumArticleCommentRoy
+                      // map要用陣列，先建立一個陣列裝對應當篇文章下面的留言
+                      key={e.forumCommentId}
+                      commentComment={e.forumComment}
+                      commentLike={e.forumCommentLike}
+                      commentDislike={e.forumCommentDislike}
+                      commentUserName={e.forumCommentName}
+                      commentAvatar={e.forumCommentAvatar}
+                    />
+                  ))}
+                  <ForumArticleCommentInputRoy />
+                  <div className="my-4 d-flex justify-content-end">
+                    <div className="mx-4">
+                      <ForumCommentCancelRoy />
+                    </div>
+                    <ForumCommentCreateRoy />
+                  </div>
                 </div>
               </div>
             </div>

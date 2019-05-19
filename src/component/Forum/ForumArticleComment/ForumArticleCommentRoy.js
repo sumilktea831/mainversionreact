@@ -1,31 +1,25 @@
 import React from 'react'
-import ForumArticleCommentAreaRoy from './ForumArticleCommentAreaRoy'
-import ForumArticleCommentInputRoy from './ForumArticleCommentInputRoy'
-import ForumCommentCancelRoy from './ForumCommentCancelRoy'
-import ForumCommentCreateRoy from './ForumCommentCreateRoy'
-import ForumCategoryTextRoy from './ForumCategoryTextRoy'
-import ForumCommentCountRoy from './ForumCommentCountRoy'
+import ForumCommentAvatarRoy from './ForumCommentAvatarRoy'
+import ForumArticleCommentThumbRoy from './ForumArticleCommentThumbRoy'
 
-const ForumArticleCommentRoy = () => {
+const ForumArticleCommentRoy = props => {
+  console.log(props)
   return (
     <>
-      <div className="d-flex ">
-        <div className="">
-          <ForumCategoryTextRoy />
-        </div>
-        <div className="mx-5">
-          <ForumCommentCountRoy />
-        </div>
-      </div>
       <div className="my-5">
-        <ForumArticleCommentAreaRoy />
-      </div>
-      <ForumArticleCommentInputRoy />
-      <div className="my-4 d-flex justify-content-end">
-        <div className="mx-4">
-          <ForumCommentCancelRoy />
+        <div className="d-flex my-4 justify-content-between align-items-end">
+          <ForumCommentAvatarRoy
+            commentUserName={props.commentUserName}
+            commentAvatar={props.commentAvatar}
+          />
+          <ForumArticleCommentThumbRoy
+            commentLike={props.commentLike}
+            commentDislike={props.commentDislike}
+          />
         </div>
-        <ForumCommentCreateRoy />
+        <div className="text-light ">
+          <p className="m-0">{props.commentComment}</p>
+        </div>
       </div>
     </>
   )
