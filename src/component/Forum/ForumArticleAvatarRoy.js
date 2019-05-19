@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ForumArticleAvatarRoy = () => {
+const ForumArticleAvatarRoy = props => {
   return (
     <>
       <div className="media d-flex align-items-center">
@@ -9,13 +9,16 @@ const ForumArticleAvatarRoy = () => {
           style={{ width: '75px', height: '75px' }}
         >
           <img
-            src="http://localhost:3000/images/9743_2.jpg"
+            src={
+              'http://localhost:3000/images/' + props.contentUserAvatar + '.jpg'
+            }
             className="h-100 w-100 align-self-center mr-3"
+            alt=""
           />
         </div>
         <div className="media-body">
-          <p className="text-light m-3">路人甲</p>
-          <p className="text-light m-2">一分鐘前</p>
+          <p className="text-light m-3">{props.contentUserName}</p>
+          <p className="text-light m-3">一分鐘前</p>
         </div>
       </div>
     </>
