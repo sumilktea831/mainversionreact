@@ -1,4 +1,4 @@
-import React from 'react'
+import React from './node_modules/react'
 
 const ForumSearchbarRoy = () => (
   <div className="input-group md-form form-sm form-2 pl-0 ">

@@ -1,4 +1,4 @@
-import React from 'react'
+import React from './node_modules/react'
 import ActionButtonRoy from './ActionButtonRoy'
 
 class ActionButtonFollowRoy extends React.Component {
