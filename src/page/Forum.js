@@ -18,6 +18,7 @@ class Forum extends React.Component {
   render() {
     return (
       <>
+        <div className="fix-container-fluid" />
         <div className="container-fuild">
           <div className="row justify-content-center">
             <div className="col-3 mx-2 p-0">
