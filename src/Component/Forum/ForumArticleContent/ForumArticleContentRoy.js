@@ -3,11 +3,11 @@ import ForumArticleAvatarRoy from '../ForumArticleAvatarRoy'
 import ForumArticleContentTiltleRoy from './ForumArticleContentTiltleRoy'
 import ForumArticleContentDateRoy from './ForumArticleContentDateRoy'
 
-const ForumArticleContentRoy = () => {
+const ForumArticleContentRoy = props => {
   return (
     <>
       <div className="d-flex">
-        <ForumArticleContentTiltleRoy />
+        <ForumArticleContentTiltleRoy contentheadline={props.contentheadline} />
       </div>
       <div className="d-flex justify-content-between align-items-end">
         <ForumArticleAvatarRoy />
@@ -17,6 +17,7 @@ const ForumArticleContentRoy = () => {
         <img
           src="http://localhost:3000/images/141965.jpg"
           className="h-100 w-100"
+          alt=""
         />
       </div>
       <p className="text-light my-4 ">
