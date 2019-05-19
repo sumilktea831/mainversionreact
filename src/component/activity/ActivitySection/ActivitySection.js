@@ -1,6 +1,4 @@
 import React from 'react'
-
-import { BrowserRouter as Link } from 'react-router-dom'
 import ActivitySectionImg from './ActivitySectionImg'
 import ActivitySectionContent from './ActivitySectionContent'
 
