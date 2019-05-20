@@ -36,12 +36,17 @@ class Activity extends React.Component {
     } catch (err) {
       console.log(err)
     }
+
+   
   }
 
+	
+  
   render() {
     return (
       <>
-        <div className="container-fuild">
+      
+        <div className="container-fuild position-relative">
           <div className="row">
             <div className="col-md-12 p-0">
               <ActivitySection
@@ -53,10 +58,12 @@ class Activity extends React.Component {
               />
             </div>
           </div>
+          <div className="position-absolute" id="search" style={{bottom:'72px'}}></div>
         </div>
-        <div className="container-fuild fix-content">
+        <div className="container-fuild fix-content" >
           <div className="row">
-            <div className="col-md-12 p-0" id="test">
+          
+            <div className="col-md-12 p-0" >
               <ActivityTitle
                 title={this.state.title1}
                 className="content-title"

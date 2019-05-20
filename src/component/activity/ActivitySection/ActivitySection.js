@@ -20,7 +20,6 @@ const ActivitySection = props => (
           bigSlogan={props.bigSlogan}
           midSlogan={props.midSlogan}
           smallSlogan={props.smallSlogan}
-          section={props.section}
         />
       </div>
     </div>

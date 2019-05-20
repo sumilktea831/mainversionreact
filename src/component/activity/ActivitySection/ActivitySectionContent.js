@@ -1,5 +1,7 @@
 import React from 'react'
-import { LinkContainer } from 'react-router-bootstrap'
+// import { Link } from 'react-router-dom'
+// import { LinkContainer } from 'react-router-bootstrap'
+import { HashLink as Link } from 'react-router-hash-link'
 
 const ActivitySectionContent = props => (
   <>
@@ -7,10 +9,12 @@ const ActivitySectionContent = props => (
     <h3>{props.midSlogan}</h3>
     <h4>
       <div>
-        <LinkContainer
-          to={props.section}
+        <Link
+          to={'/activity#search'}
           className="mt-5"
           style={{
+            color: 'inherit',
+            textDecoration: 'none',
             cursor: 'pointer',
           }}
         >
@@ -18,7 +22,7 @@ const ActivitySectionContent = props => (
             <span className="pr-1">{props.smallSlogan}</span>
             <i className="far fa-play-circle " />
           </div>
-        </LinkContainer>
+        </Link>
       </div>
     </h4>
   </>
