@@ -20,14 +20,43 @@ import ScroolToTop from './component/activity/ActivityScrollToTop/ActivityScroll
 class App extends React.Component {
   constructor() {
     super()
-    this.state = {}
+    this.state = {
+      navbar: '',
+      currentHeight: 0,
+      prevHeight: 0,
+    }
   }
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll)
+  }
+  componentWillUnmount() {
+    window.removeEventListener('scroll', this.handleScroll)
+  }
+  handleScroll = event => {
+    let currentHeight = document.documentElement.scrollTop
+    this.setState({ currentHeight: currentHeight })
+    let prevHeight = this.state.prevHeight
 
+    if (document.documentElement.scrollTop > 630) {
+      this.setState({ navbar: 'active' })
+      if (document.documentElement.scrollTop > 750) {
+        if (currentHeight > prevHeight) {
+          this.setState({ navbar: 'active hiddenNav' })
+        } else {
+          this.setState({ navbar: 'active showNav' })
+        }
+      }
+    } else {
+      this.setState({ navbar: '' })
+    }
+    prevHeight = JSON.parse(JSON.stringify(currentHeight))
+    this.setState({ prevHeight: prevHeight })
+  }
   render() {
     return (
       <Router>
         <ScroolToTop>
-          <Navbar bg="light" expand="lg">
+          <Navbar bg="light" expand="lg" className={this.state.navbar}>
             <LinkContainer to="/">
               <Navbar.Brand>.Movieee</Navbar.Brand>
             </LinkContainer>
@@ -61,7 +90,6 @@ class App extends React.Component {
               </Nav>
             </Navbar.Collapse>
           </Navbar>
-
           <Switch>
             <Route exact path="/" component={Mainpage} />
             <Route path="/theater" component={Theater} />
