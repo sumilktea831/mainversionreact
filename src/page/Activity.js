@@ -4,6 +4,8 @@ import ActivityTitle from '../component/activity/ActivityTitle/ActivityTitle'
 import ActivitySearchbar from '../component/activity/ActivitySearchbar/ActivitySearchbar'
 import ActivityCard from '../component/activity/ActivityCard/ActivityCard'
 
+import { LinkContainer } from 'react-router-bootstrap'
+
 class Activity extends React.Component {
   constructor() {
     super()
@@ -13,11 +15,7 @@ class Activity extends React.Component {
       smallSlogan: '開始找尋',
       heroSectionPic:
         'https://images.unsplash.com/photo-1506512420485-a28339abb3b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
-      title: '卡片標題',
-      subtitle: '卡片副標題',
-      imgSrc:
-        'https://images.unsplash.com/photo-1506512420485-a28339abb3b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
-      isCollect: false,
+      title1: '搜尋活動',
       activityCardData: [],
     }
   }
@@ -38,12 +36,17 @@ class Activity extends React.Component {
     } catch (err) {
       console.log(err)
     }
+
+   
   }
 
+	
+  
   render() {
     return (
       <>
-        <div className="container-fuild">
+      
+        <div className="container-fuild position-relative">
           <div className="row">
             <div className="col-md-12 p-0">
               <ActivitySection
@@ -51,13 +54,16 @@ class Activity extends React.Component {
                 midSlogan={this.state.midSlogan}
                 smallSlogan={this.state.smallSlogan}
                 pictureSrc={this.state.heroSectionPic}
+                section={'#test'}
               />
             </div>
           </div>
+          <div className="position-absolute" id="search" style={{bottom:'72px'}}></div>
         </div>
-        <div className="container-fuild fix-content">
+        <div className="container-fuild fix-content" >
           <div className="row">
-            <div className="col-md-12 p-0">
+          
+            <div className="col-md-12 p-0" >
               <ActivityTitle
                 title={this.state.title1}
                 className="content-title"
@@ -67,16 +73,18 @@ class Activity extends React.Component {
               <ActivitySearchbar />
             </div>
             {this.state.activityCardData.map(data => (
-              <div className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5">
-                <ActivityCard
-                  key={data.id}
-                  title={data.title}
-                  subtitle={data.subtitle}
-                  imgSrc={data.imgSrc}
-                  collectOpen
-                  isCollect={data.isCollect}
-                />
-              </div>
+              <LinkContainer to={'/activity/' + data.id}>
+                <div className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5">
+                  <ActivityCard
+                    key={data.id}
+                    title={data.theater}
+                    subtitle={data.title}
+                    imgSrc={data.imgSrc}
+                    collectOpen
+                    isCollect={data.isCollect}
+                  />
+                </div>
+              </LinkContainer>
             ))}
           </div>
         </div>
