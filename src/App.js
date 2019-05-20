@@ -4,14 +4,18 @@ import { Navbar, Nav } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
-//Import Pages
+//Import Page
 import Mainpage from './page/Mainpage'
 import Theater from './page/Theater'
 import Movie from './page/Movie'
 import Article from './page/Article'
 import Activity from './page/Activity'
+import ActivityInfo from './page/ActivityInfo'
 import Forum from './page/Forum'
 import LoginSign from './page/LoginSign'
+
+//Import Component
+import ScroolToTop from './component/activity/ActivityScrollToTop/ActivityScrollToTop'
 
 class App extends React.Component {
   constructor() {
@@ -22,7 +26,7 @@ class App extends React.Component {
   render() {
     return (
       <Router>
-        <>
+        <ScroolToTop>
           <Navbar bg="light" expand="lg">
             <LinkContainer to="/">
               <Navbar.Brand>.Movieee</Navbar.Brand>
@@ -63,11 +67,12 @@ class App extends React.Component {
             <Route path="/theater" component={Theater} />
             <Route path="/movie" component={Movie} />
             <Route path="/article" component={Article} />
+            <Route path="/activity/:id" component={ActivityInfo} />
             <Route path="/activity" component={Activity} />
             <Route path="/forum" component={Forum} />
             <Route path="/LoginSign" component={LoginSign} />
           </Switch>
-        </>
+        </ScroolToTop>
       </Router>
     )
   }

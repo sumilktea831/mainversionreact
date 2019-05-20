@@ -6,18 +6,20 @@ const ActivitySectionContent = props => (
     <h2>{props.bigSlogan}</h2>
     <h3>{props.midSlogan}</h3>
     <h4>
-      <LinkContainer
-        to="#"
-        className="mt-5"
-        style={{
-          cursor: 'pointer',
-        }}
-      >
-        <div>
-          <span className="pr-1">{props.smallSlogan}</span>
-          <i className="far fa-play-circle " />
-        </div>
-      </LinkContainer>
+      <div>
+        <LinkContainer
+          to={props.section}
+          className="mt-5"
+          style={{
+            cursor: 'pointer',
+          }}
+        >
+          <div>
+            <span className="pr-1">{props.smallSlogan}</span>
+            <i className="far fa-play-circle " />
+          </div>
+        </LinkContainer>
+      </div>
     </h4>
   </>
 )
