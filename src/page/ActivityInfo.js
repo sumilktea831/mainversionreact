@@ -3,12 +3,11 @@ import ActivityPageSection from '../component/activity/ActivityPageSection/Activ
 import ActivityTitle from '../component/activity/ActivityTitle/ActivityTitle'
 import ActivityPageCard from '../component/activity/ActivityPageCard/ActivityPageCard'
 
-class Activity extends React.Component {
+class ActivityInfo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      title: ['戲院資訊', '戲院照片', '活動資訊', '相關活動', '相關影片'],
-      activityPageData: [],
+      title: ['戲院資訊', '現場照片', '活動資訊', '相關活動', '相關影片'],
       //   "id": 1,
       //   "theater": "非凡戲院",
       //   "title": "慶祝周年慶，非凡爆米花免費吃",
@@ -19,6 +18,8 @@ class Activity extends React.Component {
       //   "GUINumber": "16086448",
       //   "website": "https://www.google.com/",
       //   "email": "theater@gmail.com"
+      activityPageData: [],
+      streetView: false,
     }
   }
 
@@ -68,57 +69,21 @@ class Activity extends React.Component {
             </div>
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
               <ActivityPageCard
-                key={this.state.activityPageData.id}
-                title={this.state.activityPageData.title}
-                subtitle={this.state.activityPageData.subtitle}
-                imgSrc={this.state.activityPageData.imgSrc}
-                isCollect={this.state.activityPageData.isCollect}
+                theater={this.state.activityPageData.theater}
+                theaterMap={this.state.activityPageData.theaterMap}
+                phone={this.state.activityPageData.phone}
+                GUINumber={this.state.activityPageData.GUINumber}
+                website={this.state.activityPageData.website}
+                email={this.state.activityPageData.email}
+                lat={this.state.activityPageData.lat}
+                lng={this.state.activityPageData.lng}
+                streetView={this.state.streetView}
+                handleOnClickMap={() => this.setState({ streetView: true })}
+                handleOnClickMaplocal={() =>
+                  this.setState({ streetView: false })
+                }
               />
             </div>
-          </div>
-        </div>
-        <div className="container-fuild fix-content">
-          <div className="row">
-            <div className="col-md-12 p-0">
-              <ActivityTitle
-                title={this.state.title[1]}
-                className="content-title"
-              />
-            </div>
-            <div className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5">TEST</div>
-          </div>
-        </div>
-        <div className="container-fuild fix-content">
-          <div className="row">
-            <div className="col-md-12 p-0">
-              <ActivityTitle
-                title={this.state.title[2]}
-                className="content-title"
-              />
-            </div>
-            <div className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5">TEST</div>
-          </div>
-        </div>
-        <div className="container-fuild fix-content">
-          <div className="row">
-            <div className="col-md-12 p-0">
-              <ActivityTitle
-                title={this.state.title[3]}
-                className="content-title"
-              />
-            </div>
-            <div className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5">TEST</div>
-          </div>
-        </div>
-        <div className="container-fuild fix-content">
-          <div className="row">
-            <div className="col-md-12 p-0">
-              <ActivityTitle
-                title={this.state.title[4]}
-                className="content-title"
-              />
-            </div>
-            <div className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5">TEST</div>
           </div>
         </div>
       </>
@@ -126,4 +91,4 @@ class Activity extends React.Component {
   }
 }
 
-export default Activity
+export default ActivityInfo
