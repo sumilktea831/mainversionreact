@@ -9,7 +9,7 @@ import {
 const ActivityMap = props => (
   <LoadScript
     id="script-loader"
-    googleMapsApiKey="AIzaSyClAQn2Ms7Vll3uNwceXbZhlTKeNsnA5kY"
+    googleMapsApiKey=""
   >
     <GoogleMap
       id="example-map"
