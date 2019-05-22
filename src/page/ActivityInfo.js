@@ -7,7 +7,7 @@ class ActivityInfo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      title: ['戲院資訊', '現場照片', '活動資訊', '相關活動', '相關影片'],
+      title: ['戲院資訊', '活動資訊', '相關活動', '相關影片'],
       //   "id": 1,
       //   "theater": "非凡戲院",
       //   "title": "慶祝周年慶，非凡爆米花免費吃",
@@ -83,6 +83,19 @@ class ActivityInfo extends React.Component {
                   this.setState({ streetView: false })
                 }
               />
+            </div>
+          </div>
+        </div>
+        <div className="container-fuild fix-content" id="text">
+          <div className="row">
+            <div className="col-md-12 p-0">
+              <ActivityTitle
+                title={this.state.title[1]}
+                className="content-title"
+              />
+            </div>
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
+              test
             </div>
           </div>
         </div>
