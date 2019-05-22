@@ -4,7 +4,7 @@
       "id": 1,
       "theater": "總督數位影城",
       "title": "慶祝周年慶，總督數位爆米花免費吃",
-      "content": "HELLO KITTY應援男友、佛心活動～帶著「世足限量造型爆米花桶」來總督數位影城，就不用吃土囉！ 爆米花免費吃到飽！ 爆米花免費吃到飽！ 爆米花免費吃到飽！",
+      "content": "HELLO KITTY應援男友、佛心活動～帶著「世足限量造型爆米花桶」來總督數位影城，就不用吃土囉！ 爆米花免費吃到飽！ ",
       "imgSrc": "https://images.unsplash.com/photo-1521967906867-14ec9d64bee8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
       "isCollect": false,
       "theaterMap": "106台北市大安區通化街24巷1號",
@@ -13,7 +13,9 @@
       "email": "theater@gmail.com",
       "phone": "0912345678",
       "lat": "25.048434",
-      "lng": "121.544851"
+      "lng": "121.544851",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。"
     },
     {
       "id": 2,
@@ -28,7 +30,9 @@
       "email": "theater@gmail.com",
       "phone": "0912345678",
       "lat": "25.0452986",
-      "lng": "121.5042042"
+      "lng": "121.5042042",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。"
     },
     {
       "id": 3,
@@ -43,7 +47,9 @@
       "email": "theater@gmail.com",
       "phone": "0912345678",
       "lat": "25.043372",
-      "lng": "121.561157"
+      "lng": "121.561157",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。"
     },
     {
       "id": 4,
@@ -58,7 +64,9 @@
       "email": "theater@gmail.com",
       "phone": "0912345678",
       "lat": "24.988694",
-      "lng": "121.544043"
+      "lng": "121.544043",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。"
     },
     {
       "id": 5,
@@ -73,7 +81,9 @@
       "email": "theater@gmail.com",
       "phone": "0912345678",
       "lat": "25.044136",
-      "lng": "121.529397"
+      "lng": "121.529397",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。"
     },
     {
       "id": 6,
@@ -88,7 +98,9 @@
       "email": "theater@gmail.com",
       "phone": "0912345678",
       "lat": "24.992111",
-      "lng": "121.541125"
+      "lng": "121.541125",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。"
     }
   ]
 }

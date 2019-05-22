@@ -7,10 +7,7 @@ import {
 } from '@react-google-maps/api'
 
 const ActivityMap = props => (
-  <LoadScript
-    id="script-loader"
-    googleMapsApiKey=""
-  >
+  <LoadScript id="script-loader" googleMapsApiKey="">
     <GoogleMap
       id="example-map"
       mapContainerStyle={{
