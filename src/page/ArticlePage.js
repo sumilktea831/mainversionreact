@@ -28,7 +28,7 @@ class ArticlePage1 extends React.Component {
 
   async componentDidMount() {
     try {
-      const res = await fetch('http://localhost:8888/article_list', {
+      const res = await fetch('http://localhost:5555/article_list', {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -71,12 +71,6 @@ class ArticlePage1 extends React.Component {
     console.log(this.state.pageData);
     let a = this.state.pageData;
 
-    // const aa = this.state.pageData
-    // console.log(typeof (page))
-    // console.log(page)
-    // console.log(this.state.pageData.sid)
-    // console.log(this.state.thisId)
-
     return (
       <>
         <ViewPage
@@ -97,4 +91,4 @@ class ArticlePage1 extends React.Component {
   }
 }
 
-export default ArticlePage1;
+export default ArticlePage;

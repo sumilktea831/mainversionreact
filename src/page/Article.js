@@ -66,7 +66,7 @@ class Article extends React.Component {
   handleMark = sid => async () => {
     const newMember = [...this.state.articleData, memberId];
 
-    const res = await fetch('http://localhost:8888/article_list', {
+    const res = await fetch('http://localhost:5555/article_list', {
       method: 'PUT',
       body: JSON.stringify(newMember),
       headers: new Headers({
