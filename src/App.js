@@ -18,7 +18,8 @@ import ArticlePage from './page/ArticlePage'
 import Activity from './page/Activity'
 import ActivityInfo from './page/ActivityInfo'
 import Forum from './page/Forum'
-import LoginSign from './page/LoginSign'
+import LoginSign from './page/SignUp'
+import BackMainpage from './page/BackMainpage'
 
 //Import Component
 import ScroolToTop from './component/activity/ActivityScrollToTop/ActivityScrollToTop'
@@ -105,8 +106,10 @@ class App extends React.Component {
             <Redirect from="/activity/:id/return" to="/activity/:id" />
             <Route exact path="/activity/:id" component={ActivityInfo} />
             <Route exact path="/activity" component={Activity} />
+            <Route path="/forum/:id" component={Forum} />
             <Route path="/forum" component={Forum} />
             <Route path="/LoginSign" component={LoginSign} />
+            <Route path="/BackMainpage" component={BackMainpage} />
           </Switch>
         </ScroolToTop>
       </Router>

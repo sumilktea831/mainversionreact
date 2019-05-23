@@ -31,6 +31,8 @@ const ForumArticleListRoy = props => {
             <ListAvatarRoy
               listforumName={props.listforumName}
               listforumAvatar={props.listforumAvatar}
+              // 圖片路徑前墜
+              avatarPath={props.avatarPath}
             />
           </div>
           {/* 發文時間 */}

@@ -11,9 +11,7 @@ const ListAvatarRoy = props => {
           {/* 發文者頭像 */}
           <img
             id="gg"
-            src={
-              'http://localhost:3000/images/' + props.listforumAvatar + '.jpg'
-            }
+            src={props.avatarPath + props.listforumAvatar}
             className="h-100 w-100 gg "
             alt=""
           />
