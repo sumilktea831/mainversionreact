@@ -9,7 +9,7 @@ const ForumArticleAvatarRoy = props => {
           style={{ width: '75px', height: '75px' }}
         >
           <img
-            src={'http://localhost:3000/images/' + props.commentAvatar + '.jpg'}
+            src={props.avatarPath + props.commentAvatar}
             className="h-100 w-100 align-self-center mr-3"
             alt=""
           />

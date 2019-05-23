@@ -3,7 +3,7 @@ import ForumCommentAvatarRoy from './ForumCommentAvatarRoy'
 import ForumArticleCommentThumbRoy from './ForumArticleCommentThumbRoy'
 
 const ForumArticleCommentRoy = props => {
-  console.log(props)
+  // console.log(props)
   return (
     <>
       <div className="my-5">
@@ -11,6 +11,8 @@ const ForumArticleCommentRoy = props => {
           <ForumCommentAvatarRoy
             commentUserName={props.commentUserName}
             commentAvatar={props.commentAvatar}
+            // 照片路徑前墜
+            avatarPath={props.avatarPath}
           />
           <ForumArticleCommentThumbRoy
             commentLike={props.commentLike}
@@ -18,7 +20,11 @@ const ForumArticleCommentRoy = props => {
           />
         </div>
         <div className="text-light ">
-          <p className="m-0">{props.commentComment}</p>
+          <p
+            className="m-0"
+            // 將文字內容tag用html方式render到頁面
+            dangerouslySetInnerHTML={{ __html: props.commentComment }}
+          />
         </div>
       </div>
     </>
