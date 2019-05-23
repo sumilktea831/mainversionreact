@@ -13,15 +13,15 @@ class InputCardContent_CinemaSignUp extends React.Component {
       usertext: [
         {
           cinemaName: '',
-          cinemaId: '',
+          cinemaTaxid: '',
           cinemaCity: '台北市',
           cinemaArea: '',
           cinemaAddress: '',
           cinemaPhone: '',
           cinemaEmail: '',
           cinemaType: '',
-          cinemaAccount:'',
-          cinemaPwd:'',
+          cinemaAccount: '',
+          cinemaPwd: '',
           cinemaWeb: '',
           cinemaLogo: '',
           cinemaHeroImg: '',
@@ -104,16 +104,16 @@ class InputCardContent_CinemaSignUp extends React.Component {
     //產生驗證碼
     let captcha4 = new Captcha({
       //設定驗證碼樣式，如果不設定則帶入預設值)
-      lineWidth: 1, //线条宽度
-      lineNum: 3, //线条数量
-      dotR: 2, //点的半径
-      dotNum: 20, //点的数量
-      preGroundColor: [255, 255], //前景色区间
-      backGroundColor: [0, 120], //背景色区间
-      fontSize: 24, //字体大小
-      fontFamily: ['Noto Sans TC', 'Arial'], //字体类型
-      fontStyle: 'stroke', //字体绘制方法，有fill和stroke
-      length: 4, //验证码长度
+      lineWidth: 1, //線條寬度
+      lineNum: 3, //線條數量
+      dotR: 2, //點的半徑
+      dotNum: 20, //點的數量
+      preGroundColor: [255, 255], //前景色區間
+      backGroundColor: [0, 120], //背景色區間
+      fontSize: 24, //字體大小
+      fontFamily: ['Noto Sans TC', 'Arial'], //字體類型
+      fontStyle: 'stroke', //字體繪製方法，有fill和stroke
+      length: 4, //驗證碼長度
     })
     //把生成的驗證碼丟到canvas容器中，然後callback把它(參數自訂為r)設定給state
     captcha4.draw(document.querySelector('#captcha4'), r => {
@@ -177,8 +177,12 @@ class InputCardContent_CinemaSignUp extends React.Component {
             {/* 這裡是驗證碼的Row -- input + canvas */}
             <Row className="my-4 d-flex justify-content-between">
               <input
-                className="border border-warning rounded font-c-primary"
-                style={{ background: '#1f242a' }}
+                className="border border-warning rounded"
+                style={{
+                  background: '#1f242a',
+                  color: '#FFA510',
+                  textAlign: 'center',
+                }}
                 name="captchatext"
                 type="text"
                 placeholder="請輸入右方的驗證碼"
