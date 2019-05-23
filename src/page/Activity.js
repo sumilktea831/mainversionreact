@@ -50,6 +50,8 @@ class Activity extends React.Component {
                 smallSlogan={this.state.smallSlogan}
                 pictureSrc={this.state.heroSectionPic}
                 section={'#test'}
+                pagename={'/activity'}
+                pageid={'#search'}
               />
             </div>
           </div>

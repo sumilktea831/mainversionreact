@@ -426,11 +426,15 @@
       "title": "我的活動",
       "options": [
         {
-          "id": "collect-activity",
-          "name": "收藏活動"
+          "id": "activityMemberBoard",
+          "name": "活動面板"
         },
         {
-          "id": "my-activity",
+          "id": "activityMemberCollect",
+          "name": "已收藏活動"
+        },
+        {
+          "id": "activityMemberSignUp",
           "name": "已報名活動"
         }
       ],
@@ -601,10 +605,7 @@
       "join_date": "2019-01-03",
       "permission": "generalMember",
       "collectFilm": "",
-      "collectCinema": [
-        "c1",
-        "c2"
-      ],
+      "collectCinema": ["c1", "c2"],
       "collectArticle": "",
       "collectActivity": "",
       "collectForum": "",
@@ -632,10 +633,7 @@
       "join_date": "",
       "permission": "generalMember",
       "collectFilm": "",
-      "collectCinema": [
-        "c1",
-        "c2"
-      ],
+      "collectCinema": ["c1", "c2"],
       "collectArticle": "",
       "collectActivity": "",
       "collectForum": "",
@@ -663,10 +661,7 @@
       "join_date": "2019-05-23",
       "permission": "generalMember",
       "collectFilm": "",
-      "collectCinema": [
-        "c1",
-        "c2"
-      ],
+      "collectCinema": ["c1", "c2"],
       "collectArticle": "",
       "collectActivity": "",
       "collectForum": "",
@@ -694,10 +689,7 @@
       "join_date": "2019-5-23",
       "permission": "generalMember",
       "collectFilm": "",
-      "collectCinema": [
-        "c1",
-        "c2"
-      ],
+      "collectCinema": ["c1", "c2"],
       "collectArticle": "",
       "collectActivity": "",
       "collectForum": "",
@@ -725,10 +717,7 @@
       "join_date": "2019-05-23",
       "permission": "generalMember",
       "collectFilm": "",
-      "collectCinema": [
-        "c1",
-        "c2"
-      ],
+      "collectCinema": ["c1", "c2"],
       "collectArticle": "",
       "collectActivity": "",
       "collectForum": "",
@@ -756,10 +745,7 @@
       "join_date": "2019-05-23",
       "permission": "generalMember",
       "collectFilm": "",
-      "collectCinema": [
-        "c1",
-        "c2"
-      ],
+      "collectCinema": ["c1", "c2"],
       "collectArticle": "",
       "collectActivity": "",
       "collectForum": "",
@@ -847,6 +833,29 @@
       "mobile": "",
       "birth": "",
       "email": "test@gmail.com",
+      "pwd": "13879428",
+      "avatar": "",
+      "city": "",
+      "address": "",
+      "fav_type": "",
+      "career": "",
+      "join_date": "2019-05-23",
+      "permission": "generalMember",
+      "collectFilm": [],
+      "collectCinema": [],
+      "collectArticle": [],
+      "collectActivity": [],
+      "collectForum": [],
+      "markList": []
+    },
+    {
+      "id": "m1558610436688",
+      "name": "",
+      "nickname": "test@email.com",
+      "gender": "",
+      "mobile": "",
+      "birth": "",
+      "email": "test@email.com",
       "pwd": "13879428",
       "avatar": "",
       "city": "",

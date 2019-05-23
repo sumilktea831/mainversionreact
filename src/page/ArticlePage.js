@@ -1,19 +1,19 @@
-import React from 'react';
+import React from 'react'
 // import ActivitySection from '../component/activity/ActivitySection/ActivitySection';
-import ArricleList from '../component/article/ArticleList';
-import ActivitySection from '../component/activity/ActivitySection/ActivitySection';
-import { Row, Col } from 'react-bootstrap';
-import Pagination from '../component/article/ArticleList/ArticleButton/Pagination';
-import ArticleList from '../component/article/ArticleList';
+import ArricleList from '../component/article/ArticleList'
+import ActivitySection from '../component/activity/ActivitySection/ActivitySection'
+import { Row, Col } from 'react-bootstrap'
+import Pagination from '../component/article/ArticleList/ArticleButton/Pagination'
+import ArticleList from '../component/article/ArticleList'
 // import ArticlePage from '../component/article/ArticlePage/ArticlePage';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import ViewPage from '../component/article/ArticlePage/ViewPage';
-const memberId = '4';
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import ViewPage from '../component/article/ArticlePage/ViewPage'
+const memberId = '4'
 
-class ArticlePage1 extends React.Component {
+class ArticlePage extends React.Component {
   constructor(props) {
-    super(props);
-    console.log(props.match.params.id);
+    super(props)
+    console.log(props.match.params.id)
     this.state = {
       thisId: props.match.params.id,
       pageData: [],
@@ -23,7 +23,7 @@ class ArticlePage1 extends React.Component {
       isLiked: false,
       likeCounter: 0,
       viewCounter: 0,
-    };
+    }
   }
 
   async componentDidMount() {
@@ -34,42 +34,42 @@ class ArticlePage1 extends React.Component {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         }),
-      });
-      const data = await res.json();
-      console.log(data);
-      console.log(data[0].data);
-      const pageData = data[0].data;
-      const page = pageData.find(item => item.sid === this.state.thisId);
-      this.setState({ pageData: page });
+      })
+      const data = await res.json()
+      console.log(data)
+      console.log(data[0].data)
+      const pageData = data[0].data
+      const page = pageData.find(item => item.sid === this.state.thisId)
+      this.setState({ pageData: page })
 
-      const memberMarkSid = data[0].data[0].memberMarkSid.split(',');
-      const memberLikeSid = data[0].data[0].memberLikeSid.split(',');
-      console.log(memberMarkSid);
+      const memberMarkSid = data[0].data[0].memberMarkSid.split(',')
+      const memberLikeSid = data[0].data[0].memberLikeSid.split(',')
+      console.log(memberMarkSid)
 
       const isMarked = memberMarkSid.find(item => item === memberId)
         ? true
-        : false;
+        : false
       const isLiked = memberLikeSid.find(item => item === memberId)
         ? true
-        : false;
-      this.setState({ isMarked: isMarked });
-      this.setState({ isLiked: isLiked });
-      this.setState({ markCounter: memberMarkSid.length });
-      this.setState({ likeCounter: memberLikeSid.length });
+        : false
+      this.setState({ isMarked: isMarked })
+      this.setState({ isLiked: isLiked })
+      this.setState({ markCounter: memberMarkSid.length })
+      this.setState({ likeCounter: memberLikeSid.length })
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
   }
 
   handleMark = sid => () => {
-    const markSid = [...this.state.markSid];
-    const newItems = markSid.push(memberId);
-    this.setState({ markSid: newItems });
-  };
+    const markSid = [...this.state.markSid]
+    const newItems = markSid.push(memberId)
+    this.setState({ markSid: newItems })
+  }
 
   render() {
-    console.log(this.state.pageData);
-    let a = this.state.pageData;
+    console.log(this.state.pageData)
+    let a = this.state.pageData
 
     return (
       <>
@@ -87,8 +87,8 @@ class ArticlePage1 extends React.Component {
           pushMarkSid={this.handlepushMarkSid}
         />
       </>
-    );
+    )
   }
 }
 
-export default ArticlePage;
+export default ArticlePage

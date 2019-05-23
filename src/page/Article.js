@@ -1,15 +1,15 @@
-import React from 'react';
+import React from 'react'
 // import ActivitySection from '../component/activity/ActivitySection/ActivitySection';
-import ArricleList from '../component/article/ArticleList';
-import ActivitySection from '../component/activity/ActivitySection/ActivitySection';
-import { Row, Col } from 'react-bootstrap';
-import Pagination from '../component/article/ArticleList/ArticleButton/Pagination';
-import ArticleCard from '../component/article/ArticleList';
+import ArricleList from '../component/article/ArticleList'
+import ActivitySection from '../component/activity/ActivitySection/ActivitySection'
+import { Row, Col } from 'react-bootstrap'
+import Pagination from '../component/article/ArticleList/ArticleButton/Pagination'
+import ArticleCard from '../component/article/ArticleList'
 // import ArticlePage from '../component/article/ArticlePage/ArticlePage';
-const memberId = '4';
+const memberId = '4'
 class Article extends React.Component {
   constructor() {
-    super();
+    super()
     this.state = {
       bigSlogan: '專業的影評人分析與影視消息',
       midSlogan: '汲取新知與品味。',
@@ -23,7 +23,7 @@ class Article extends React.Component {
       // isLiked: false,
       // likeCounter: 0,
       // viewCounter: 0,
-    };
+    }
   }
 
   async componentDidMount() {
@@ -34,19 +34,19 @@ class Article extends React.Component {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         }),
-      });
-      const data = await res.json();
-      console.log(data);
-      console.log(data[0].data);
-      const articleData = data[0].data;
-      const paginationData = data[0].totalPages;
-      console.log(data[0].data[0]);
-      console.log(data[0].totalPages);
+      })
+      const data = await res.json()
+      console.log(data)
+      console.log(data[0].data)
+      const articleData = data[0].data
+      const paginationData = data[0].totalPages
+      console.log(data[0].data[0])
+      console.log(data[0].totalPages)
       // const memberMarkSid = data[0].data[0].memberMarkSid.split(',');
       // const memberLikeSid = data[0].data[0].memberLikeSid.split(',');
       // console.log(memberMarkSid);
-      this.setState({ articleData: articleData });
-      this.setState({ paginationDatisMarkeda: paginationData });
+      this.setState({ articleData: articleData })
+      this.setState({ paginationDatisMarkeda: paginationData })
       // const member = '4';
       // const isMarked = memberMarkSid.find(item => item === member)
       //   ? true
@@ -60,11 +60,11 @@ class Article extends React.Component {
       // this.setState({ likeCounter: memberLikeSid.length });
       // console.log(memberMarkSid.length);
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
   }
   handleMark = sid => async () => {
-    const newMember = [...this.state.articleData, memberId];
+    const newMember = [...this.state.articleData, memberId]
 
     const res = await fetch('http://localhost:5555/article_list', {
       method: 'PUT',
@@ -73,11 +73,11 @@ class Article extends React.Component {
         Accept: 'application/json',
         'Content-Type': 'application/json',
       }),
-    });
-    const jsonObj = await res.json();
-    console.log(jsonObj);
-    await this.setState(newMember);
-  };
+    })
+    const jsonObj = await res.json()
+    console.log(jsonObj)
+    await this.setState(newMember)
+  }
   render() {
     return (
       <>
@@ -146,8 +146,8 @@ class Article extends React.Component {
           </div>
         </div>
       </>
-    );
+    )
   }
 }
 
-export default Article;
+export default Article

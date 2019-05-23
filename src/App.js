@@ -110,10 +110,6 @@ class App extends React.Component {
             <Route path="/forum/:id" component={Forum} />
             <Route path="/forum" component={Forum} />
             <Route path="/LoginSign" component={LoginSign} />
-            <Route
-              path="/BackMainpage/collect-activity"
-              component={BackMainpageCollectActivity}
-            />
             <Route path="/BackMainpage" component={BackMainpage} />
           </Switch>
         </ScroolToTop>
