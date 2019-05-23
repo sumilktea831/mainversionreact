@@ -28,51 +28,53 @@ class InputCardContent_CinemaLogin extends React.Component {
           placeholder: '請輸入您的密碼',
           iconR: '',
           iconRS: '',
-          type:"password"
+          type: 'password',
         },
       ],
-      usertext: [//儲存使用者輸入的文字
+      usertext: [
+        //儲存使用者輸入的文字
         {
           account: '',
           pwd: '',
-          captcha:'',
-          captchatext:''
+          captcha: '',
+          captchatext: '',
         },
       ],
     }
   }
   //頁面生成完，產生驗證碼
   componentDidMount() {
-    let captcha3 = new Captcha({//設定驗證碼樣式，如果不設定則帶入預設值)
-      lineWidth: 1,   //线条宽度
-      lineNum: 3,       //线条数量
-      dotR: 2,          //点的半径
-      dotNum: 20,       //点的数量
-      preGroundColor: [255, 255],    //前景色区间
-      backGroundColor: [0, 120], //背景色区间
-      fontSize: 24,           //字体大小
-      fontFamily: ['Noto Sans TC', 'Arial'],  //字体类型
-      fontStyle: 'stroke',      //字体绘制方法，有fill和stroke
-      length: 4    //验证码长度
-    });
+    let captcha3 = new Captcha({
+      //設定驗證碼樣式，如果不設定則帶入預設值)
+      lineWidth: 1, //線條寬度
+      lineNum: 3, //線條數量
+      dotR: 2, //點的半徑
+      dotNum: 20, //點的數量
+      preGroundColor: [255, 255], //前景色區間
+      backGroundColor: [0, 120], //背景色區間
+      fontSize: 24, //字體大小
+      fontFamily: ['Noto Sans TC', 'Arial'], //字體類型
+      fontStyle: 'stroke', //字體繪製方法，有fill和stroke
+      length: 4, //驗證碼長度
+    })
     //把生成的驗證碼丟到canvas容器中，然後callback把它(參數自訂為r)設定給state
     captcha3.draw(document.querySelector('#captcha3'), r => {
       let newstate = [...this.state.usertext]
-      newstate[0].captcha=r
-      console.log(r, '驗證碼');
-    });
+      newstate[0].captcha = r
+      console.log(r, '驗證碼')
+    })
   }
 
   //輸入框onchange事件
   handleInputTextChange = event => {
-    let value = event.target.value//拿到value
-    let name = event.target.name//拿到input的name
+    let value = event.target.value //拿到value
+    let name = event.target.name //拿到input的name
     console.log(event.target.name)
     let newtext = [...this.state.usertext] //先複製出要改變的state
     console.log(newtext)
 
     //判斷如果拿到的name屬於state裡面的屬性，就把剛才複製的state的該項目更新，然後再setState回去
-    if (name === 'account' || name === 'pwd'|| name === 'captchatext') {
+    if (name === 'account' || name === 'pwd' || name === 'captchatext') {
       newtext[0][name] = value
 
       this.setState({ usertext: newtext }, () =>
@@ -85,7 +87,10 @@ class InputCardContent_CinemaLogin extends React.Component {
       <>
         <Card
           className="card-box text-center signcard"
-          style={{ width: '600px' }}
+          style={{
+            width: '600px',
+            // background: 'rgba(0,0,0,0)',
+          }}
         >
           <Card.Body className="p-5 signcard">
             {this.state.inputmsg.map(item => (
@@ -113,22 +118,26 @@ class InputCardContent_CinemaLogin extends React.Component {
             ))}
             {/* 這裡是驗證碼的Row */}
             <Row className="my-4 d-flex justify-content-between">
-              <input 
-               className="border border-warning rounded font-c-primary"
-               style={{background:"#1f242a"}}
-               name="captchatext" 
-               type="text" 
-               placeholder="請輸入右方的驗證碼" 
-               onChange={this.handleInputTextChange}
-               />
-              <canvas 
-              width="200" 
-              height="48" 
-              id="captcha3"
-              ></canvas>
+              <input
+                className="border border-warning roundedy"
+                style={{
+                  background: '#1f242a',
+                  color: '#FFA510',
+                  textAlign: 'center',
+                }}
+                name="captchatext"
+                type="text"
+                placeholder="請輸入右方的驗證碼"
+                onChange={this.handleInputTextChange}
+              />
+              <canvas width="200" height="48" id="captcha3" />
             </Row>
-            <Button className="bg-warning border-0 px-5"
-              onClick={this.props.handleCinemaLoginClick(this.state.usertext)}>登入</Button>
+            <Button
+              className="bg-warning border-0 px-5"
+              onClick={this.props.handleCinemaLoginClick(this.state.usertext)}
+            >
+              登入
+            </Button>
           </Card.Body>
         </Card>
       </>

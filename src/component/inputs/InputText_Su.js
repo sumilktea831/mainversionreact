@@ -60,6 +60,7 @@ const InputText_Su = props => {
         onChange={props.onChange}
         class="form-control border border-warning rounded"
         placeholder={props.placeholder}
+        autoComplete="off"
         style={{
           background: 'rgba(0,0,0,0)',
           color: '#FFA510',

@@ -123,6 +123,12 @@ nav.navbar a.active.navbar-brand {
   text-align: center;
 }
 /* --------signup_InputCard-------- */
+.card-box.signcard {
+  background-color: rgba(0, 0, 0, 0) !important;
+}
+.card-body.signcard {
+  background: rgba(0, 0, 0, 0.7) !important;
+}
 input[type='text']::placeholder,
 input[type='password']::placeholder {
   text-align: center;
