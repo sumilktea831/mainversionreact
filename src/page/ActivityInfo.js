@@ -97,7 +97,7 @@ class ActivityInfo extends React.Component {
                 className="content-title"
               />
             </div>
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
+            {/* <div className="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
               <ActivityPageCard
                 theater={this.state.activityPageData.theater}
                 theaterMap={this.state.activityPageData.theaterMap}
@@ -113,7 +113,7 @@ class ActivityInfo extends React.Component {
                   this.setState({ streetView: false })
                 }
               />
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="container-fuild fix-content" id="text">
