@@ -2,7 +2,12 @@ import React from 'react'
 //Import Bootstrap,Router
 import { Navbar, Nav } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom'
 
 //Import Page
 import Mainpage from './page/Mainpage'
@@ -95,8 +100,9 @@ class App extends React.Component {
             <Route path="/theater" component={Theater} />
             <Route path="/movie" component={Movie} />
             <Route path="/article" component={Article} />
-            <Route path="/activity/:id" component={ActivityInfo} />
-            <Route path="/activity" component={Activity} />
+            <Redirect from="/activity/:id/return" to="/activity/:id" />
+            <Route exact path="/activity/:id" component={ActivityInfo} />
+            <Route exact path="/activity" component={Activity} />
             <Route path="/forum" component={Forum} />
             <Route path="/LoginSign" component={LoginSign} />
           </Switch>
