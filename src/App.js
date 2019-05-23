@@ -14,6 +14,7 @@ import Mainpage from './page/Mainpage'
 import Theater from './page/Theater'
 import Movie from './page/Movie'
 import Article from './page/Article'
+import ArticlePage from './page/ArticlePage'
 import Activity from './page/Activity'
 import ActivityInfo from './page/ActivityInfo'
 import Forum from './page/Forum'
@@ -101,6 +102,7 @@ class App extends React.Component {
             <Route path="/theater" component={Theater} />
             <Route path="/movie" component={Movie} />
             <Route path="/article" component={Article} />
+            <Route path="/article/:id" component={ArticlePage} />
             <Redirect from="/activity/:id/return" to="/activity/:id" />
             <Route exact path="/activity/:id" component={ActivityInfo} />
             <Route exact path="/activity" component={Activity} />
