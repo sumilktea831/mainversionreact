@@ -5,10 +5,10 @@ const ListViewsRoy = props => {
     <>
       <div className="d-flex">
         <div>
-          <i className="fas fa-eye mx-2 text-light" />
+          <h5 className="text-light my-0 ml-2">{props.listforumViews}</h5>
         </div>
         <div>
-          <h5 className="text-light my-0 ml-2">{props.listforumViews}</h5>
+          <i className="fas fa-eye mx-2 text-light" />
         </div>
       </div>
     </>
