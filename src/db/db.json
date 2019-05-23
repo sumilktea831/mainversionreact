@@ -815,6 +815,29 @@
       "collectActivity": [],
       "collectForum": [],
       "markList": []
+    },
+    {
+      "id": "m1558606970757",
+      "name": "",
+      "nickname": "test6",
+      "gender": "",
+      "mobile": "",
+      "birth": "",
+      "email": "test6@gg.com",
+      "pwd": "111111",
+      "avatar": "",
+      "city": "",
+      "address": "",
+      "fav_type": "",
+      "career": "",
+      "join_date": "2019-05-23",
+      "permission": "generalMember",
+      "collectFilm": [],
+      "collectCinema": [],
+      "collectArticle": [],
+      "collectActivity": [],
+      "collectForum": [],
+      "markList": []
     }
   ],
   "cinema": [
