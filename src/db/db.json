@@ -22,7 +22,8 @@
       "lat": "25.048434",
       "lng": "121.544851",
       "joinContent": "線上報名即可參加。",
-      "joinContentCurrentPeople": "無限制名額。"
+      "joinContentCurrentPeople": "無限制名額。",
+      "place":"咖啡廳"
     },
     {
       "id": 2,
@@ -39,7 +40,8 @@
       "lat": "25.0452986",
       "lng": "121.5042042",
       "joinContent": "線上報名即可參加。",
-      "joinContentCurrentPeople": "無限制名額。"
+      "joinContentCurrentPeople": "無限制名額。",
+      "place":"咖啡廳"
     },
     {
       "id": 3,
@@ -56,7 +58,8 @@
       "lat": "25.043372",
       "lng": "121.561157",
       "joinContent": "線上報名即可參加。",
-      "joinContentCurrentPeople": "無限制名額。"
+      "joinContentCurrentPeople": "無限制名額。",
+      "place":"咖啡廳"
     },
     {
       "id": 4,
@@ -73,7 +76,8 @@
       "lat": "24.988694",
       "lng": "121.544043",
       "joinContent": "線上報名即可參加。",
-      "joinContentCurrentPeople": "無限制名額。"
+      "joinContentCurrentPeople": "無限制名額。",
+      "place":"學校"
     },
     {
       "id": 5,
@@ -90,7 +94,8 @@
       "lat": "25.044136",
       "lng": "121.529397",
       "joinContent": "線上報名即可參加。",
-      "joinContentCurrentPeople": "無限制名額。"
+      "joinContentCurrentPeople": "無限制名額。",
+      "place":"咖啡廳"
     },
     {
       "id": 6,
@@ -107,7 +112,8 @@
       "lat": "24.992111",
       "lng": "121.541125",
       "joinContent": "線上報名即可參加。",
-      "joinContentCurrentPeople": "無限制名額。"
+      "joinContentCurrentPeople": "無限制名額。",
+      "place":"咖啡廳"
     }
   ],
   "cinema-sign-inputmsg": [

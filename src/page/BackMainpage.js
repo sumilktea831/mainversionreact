@@ -97,7 +97,7 @@ class BackSidenav extends React.Component {
                     {this.state.activityPageOtherData.map(data => (
                       <LinkContainer to={'/activity/' + data.id + '/return'}>
                         <div
-                          className="col-12 col-sm-12 col-md-6 col-lg-3 mt-5"
+                          className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5"
                           style={{ width: '250px', height: '360px' }}
                         >
                           <ActivityCard
@@ -122,7 +122,7 @@ class BackSidenav extends React.Component {
                     {this.state.activityPageOtherData.map(data => (
                       <LinkContainer to={'/activity/' + data.id + '/return'}>
                         <div
-                          className="col-12 col-sm-12 col-md-6 col-lg-3 mt-5"
+                          className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5"
                           style={{ width: '250px', height: '360px' }}
                         >
                           <ActivityCard
@@ -154,7 +154,7 @@ class BackSidenav extends React.Component {
                     {this.state.activityPageOtherData.map(data => (
                       <LinkContainer to={'/activity/' + data.id + '/return'}>
                         <div
-                          className="col-12 col-sm-12 col-md-6 col-lg-3 mt-5"
+                          className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5"
                           style={{ width: '250px', height: '360px' }}
                         >
                           <ActivityCard
@@ -185,7 +185,7 @@ class BackSidenav extends React.Component {
                     {this.state.activityPageOtherData.map(data => (
                       <LinkContainer to={'/activity/' + data.id + '/return'}>
                         <div
-                          className="col-12 col-sm-12 col-md-6 col-lg-3 mt-5"
+                          className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5"
                           style={{ width: '250px', height: '360px' }}
                         >
                           <ActivityCard
