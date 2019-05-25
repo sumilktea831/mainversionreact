@@ -15,7 +15,7 @@ const Pagination = props => {
   return (
     <>
       <div className="btn">上一頁</div>
-      {totalPages}
+      {totalPages} <div className="btn">/ {props.totalPages}</div>
       <div className="btn">下一頁</div>
     </>
   );
