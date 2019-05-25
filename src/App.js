@@ -36,8 +36,12 @@ class App extends React.Component {
   }
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll)
-    const isBackmainpage = window.location.href.toString().indexOf('BackMainpage')
-    if(isBackmainpage>0){this.setState({ navbar: 'active' })}
+    const isBackmainpage = window.location.href
+      .toString()
+      .indexOf('BackMainpage')
+    if (isBackmainpage > 0) {
+      this.setState({ navbar: 'active' })
+    }
   }
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll)
@@ -60,8 +64,12 @@ class App extends React.Component {
     }
     prevHeight = JSON.parse(JSON.stringify(currentHeight))
     this.setState({ prevHeight: prevHeight })
-    const isBackmainpage = window.location.href.toString().indexOf('BackMainpage')
-    if(isBackmainpage>0){this.setState({ navbar: 'active' })}
+    const isBackmainpage = window.location.href
+      .toString()
+      .indexOf('BackMainpage')
+    if (isBackmainpage > 0) {
+      this.setState({ navbar: 'active' })
+    }
   }
   render() {
     return (
@@ -105,8 +113,8 @@ class App extends React.Component {
             <Route exact path="/" component={Mainpage} />
             <Route path="/theater" component={Theater} />
             <Route path="/movie" component={Movie} />
-            <Route path="/article" component={Article} />
             <Route path="/article/:id" component={ArticlePage} />
+            <Route path="/article" component={Article} />
             <Route exact path="/activity/join/:id" component={ActivityJoin} />
             <Redirect from="/activity/:id/return" to="/activity/:id" />
             <Route exact path="/activity/:id" component={ActivityInfo} />
