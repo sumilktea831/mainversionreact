@@ -32,7 +32,6 @@ class Theater extends React.Component {
   }
 
   // 在元件完成載入時fetch cinema的資料撈進來丟到state
-  // cinema.json的資料為
   async componentDidMount() {
     try {
       const res = await fetch('http://localhost:5555/cinema', {
