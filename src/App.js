@@ -11,7 +11,8 @@ import {
 
 //Import Page
 import Mainpage from './page/Mainpage'
-import Theater from './page/Theater'
+import Cinema from './page/Cinema'
+import CinemaInfo from './page/CinemaInfo'
 import Movie from './page/Movie'
 import Article from './page/Article'
 import ArticlePage from './page/ArticlePage'
@@ -85,7 +86,7 @@ class App extends React.Component {
               id="basic-navbar-nav"
             >
               <Nav>
-                <LinkContainer to="/theater">
+                <LinkContainer to="/cinema">
                   <Nav.Link className="mr-5">戲院</Nav.Link>
                 </LinkContainer>
                 <LinkContainer to="/movie">
@@ -106,12 +107,16 @@ class App extends React.Component {
                 <LinkContainer to="/LoginSign">
                   <Nav.Link>註冊</Nav.Link>
                 </LinkContainer>
+                <LinkContainer to="/BackMainpage">
+                  <Nav.Link className="ml-5">後台（開發用）</Nav.Link>
+                </LinkContainer>
               </Nav>
             </Navbar.Collapse>
           </Navbar>
           <Switch>
             <Route exact path="/" component={Mainpage} />
-            <Route path="/theater" component={Theater} />
+            <Route exact path="/cinema" component={Cinema} />
+            <Route path="/cinema/:id" component={CinemaInfo} />
             <Route path="/movie" component={Movie} />
             <Route path="/article/:id" component={ArticlePage} />
             <Route path="/article" component={Article} />
