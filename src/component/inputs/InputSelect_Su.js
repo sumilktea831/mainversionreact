@@ -35,7 +35,7 @@ const InputSelect_Su = props => {
           height: `${props.inputHeight}`,
           zIndex: '10',
         }}
-        onChange={props.handleInputTextChange}
+        onChange={props.onChange}
       >
         {props.selectOptions.map(item => (
           <option
