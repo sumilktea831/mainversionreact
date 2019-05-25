@@ -17,10 +17,10 @@ import Article from './page/Article'
 import ArticlePage from './page/ArticlePage'
 import Activity from './page/Activity'
 import ActivityInfo from './page/ActivityInfo'
+import ActivityJoin from './page/ActivityJoin'
 import Forum from './page/Forum'
 import LoginSign from './page/SignUp'
 import BackMainpage from './page/BackMainpage'
-import BackMainpageCollectActivity from './page/BackMainpageCollectActivity'
 
 //Import Component
 import ScroolToTop from './component/activity/ActivityScrollToTop/ActivityScrollToTop'
@@ -36,6 +36,8 @@ class App extends React.Component {
   }
   componentDidMount() {
     window.addEventListener('scroll', this.handleScroll)
+    const isBackmainpage = window.location.href.toString().indexOf('BackMainpage')
+    if(isBackmainpage>0){this.setState({ navbar: 'active' })}
   }
   componentWillUnmount() {
     window.removeEventListener('scroll', this.handleScroll)
@@ -44,7 +46,6 @@ class App extends React.Component {
     let currentHeight = document.documentElement.scrollTop
     this.setState({ currentHeight: currentHeight })
     let prevHeight = this.state.prevHeight
-
     if (document.documentElement.scrollTop > 630) {
       this.setState({ navbar: 'active' })
       if (document.documentElement.scrollTop > 750) {
@@ -59,6 +60,8 @@ class App extends React.Component {
     }
     prevHeight = JSON.parse(JSON.stringify(currentHeight))
     this.setState({ prevHeight: prevHeight })
+    const isBackmainpage = window.location.href.toString().indexOf('BackMainpage')
+    if(isBackmainpage>0){this.setState({ navbar: 'active' })}
   }
   render() {
     return (
@@ -104,6 +107,7 @@ class App extends React.Component {
             <Route path="/movie" component={Movie} />
             <Route path="/article" component={Article} />
             <Route path="/article/:id" component={ArticlePage} />
+            <Route exact path="/activity/join/:id" component={ActivityJoin} />
             <Redirect from="/activity/:id/return" to="/activity/:id" />
             <Route exact path="/activity/:id" component={ActivityInfo} />
             <Route exact path="/activity" component={Activity} />
