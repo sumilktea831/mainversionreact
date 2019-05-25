@@ -52,25 +52,27 @@ const InputWithLabel_Su = props => {
           {props.inputType === 'text' ? (
             <InputText_Su
               id={props.id}
-              // name={props.id}
+              name={props.id}
               placeholder={props.placeholder}
               inputHeight={props.inputHeight}
               iconLeft={props.iconLeft}
               iconLeftSize={props.iconLeftSize}
               iconRight={props.iconRight}
               iconRightSize={props.iconRightSize}
+              onChange={props.onChange}
             />
           ) : props.inputType === 'password' ? (
             <InputText_Su
               id={props.id}
               type="password"
-              // name={props.id}
+              name={props.id}
               placeholder={props.placeholder}
               inputHeight={props.inputHeight}
               iconLeft={props.iconLeft}
               iconLeftSize={props.iconLeftSize}
               iconRight={props.iconRight}
               iconRightSize={props.iconRightSize}
+              onChange={props.onChange}
             />
           ) : props.inputType === 'selector' ? (
             <>
@@ -78,22 +80,27 @@ const InputWithLabel_Su = props => {
                 iconRight={props.iconRight}
                 iconRightSize={props.iconRightSize}
                 id={props.id}
-                // name={props.id}
+                name={props.id}
                 inputHeight={props.inputHeight}
                 selectOptions={props.selectOptions}
+                onChange={props.onChange}
               />
             </>
           ) : props.inputType === 'file' ? (
             <InputFile_Su
               inputHeight={props.inputHeight}
               id={props.id}
+              name={props.id}
               placeholder={props.placeholder}
+              onChange={props.onChange}
             />
           ) : props.inputType === 'radio' ? (
             <InputRadio_Su
               inputHeight={props.inputHeight}
               id={props.id}
+              name={props.id}
               selectOptions={props.selectOptions}
+              onChange={props.onChange}
             />
           ) : (
             '找不到符合的input類型'

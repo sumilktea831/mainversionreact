@@ -10,10 +10,10 @@ const handleClick = id => event => {
   RadiosBtn.map(
     btn =>
       (btn.className =
-        'px-2 position-absolute rounded border border-warning bg-darkblue font-c-primary')
+        'px-2 position-absolute rounded border border-warning bg-darkblue text-mywhite')
   )
   event.target.className =
-    'px-2 position-absolute rounded border border-warning bg-orange font-c-darkblue'
+    'px-2 position-absolute rounded border border-warning bg-orange text-darkblue'
 }
 const InputRadio_Su = props => {
   return (
@@ -37,7 +37,7 @@ const InputRadio_Su = props => {
             <label class="custom-control-label" for={item.id} />
             <button
               name="radio-btn"
-              className="px-2 position-absolute rounded border border-warning bg-darkblue font-c-primary"
+              className="px-2 position-absolute rounded border border-warning bg-darkblue text-mywhite"
               style={{
                 height: `${props.inputHeight}`,
                 left: '-1px',

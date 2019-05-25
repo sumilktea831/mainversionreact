@@ -7,12 +7,13 @@ import ActivityContent from '../component/activity/ActivityContent/ActivityConte
 import ActivityQRcode from '../component/activity/ActivityQRcode/ActivityQRcode'
 import ActivityJoinBtn from '../component/activity/ActivityJoinBtn/ActivityJoinBtn'
 import ActivityCard from '../component/activity/ActivityCard/ActivityCard'
+import ActivityJoinForm from '../component/activity/ActivityJoinForm/ActivityJoinForm'
 
 class ActivityInfo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      title: ['戲院資訊', '活動資訊', '相關活動', '相關影片'],
+      title: ['戲院資訊', '活動資訊', '報名表單'],
       //   "id": 1,
       //   "theater": "非凡戲院",
       //   "title": "慶祝周年慶，非凡爆米花免費吃",
@@ -77,17 +78,8 @@ class ActivityInfo extends React.Component {
   render() {
     return (
       <>
-        <div className="container-fuild">
-          <div className="row">
-            <div className="col-md-12 p-0">
-              <ActivityPageSection
-                theater={this.state.activityPageData.theater}
-                title={this.state.activityPageData.title}
-                content={this.state.activityPageData.content}
-                HeroImage={this.state.activityPageData.imgSrc}
-              />
-            </div>
-          </div>
+        <div className="fix-height">
+          
         </div>
         <div className="container-fuild fix-content" id="text">
           <div className="row">
@@ -139,9 +131,7 @@ class ActivityInfo extends React.Component {
             <div className="col-12 col-sm-12 col-md-12 col-lg-3 mt-5">
               <ActivityQRcode imgSrc={window.location.href} />
             </div>
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 mt-5 d-flex justify-content-center">
-              <ActivityJoinBtn id={this.props.match.params.id}/>
-            </div>
+            
           </div>
         </div>
         <div className="container-fuild fix-content" id="text">
@@ -152,23 +142,13 @@ class ActivityInfo extends React.Component {
                 className="content-title"
               />
             </div>
-            {this.state.activityPageOtherData.map(data => (
-              <LinkContainer to={'/activity/' + data.id + '/return'}>
-                <div className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5">
-                  <ActivityCard
-                    onClick={this.handleOnClick}
-                    key={data.id}
-                    title={data.theater}
-                    subtitle={data.title}
-                    imgSrc={data.imgSrc}
-                    collectOpen
-                    isCollect={data.isCollect}
-                  />
-                </div>
-              </LinkContainer>
-            ))}
+            
+              <ActivityJoinForm
+              />
+
           </div>
         </div>
+        
       </>
     )
   }

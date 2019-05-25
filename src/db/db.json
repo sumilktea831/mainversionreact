@@ -22,7 +22,8 @@
       "lat": "25.048434",
       "lng": "121.544851",
       "joinContent": "線上報名即可參加。",
-      "joinContentCurrentPeople": "無限制名額。"
+      "joinContentCurrentPeople": "無限制名額。",
+      "place":"咖啡廳"
     },
     {
       "id": 2,
@@ -39,7 +40,8 @@
       "lat": "25.0452986",
       "lng": "121.5042042",
       "joinContent": "線上報名即可參加。",
-      "joinContentCurrentPeople": "無限制名額。"
+      "joinContentCurrentPeople": "無限制名額。",
+      "place":"咖啡廳"
     },
     {
       "id": 3,
@@ -56,7 +58,8 @@
       "lat": "25.043372",
       "lng": "121.561157",
       "joinContent": "線上報名即可參加。",
-      "joinContentCurrentPeople": "無限制名額。"
+      "joinContentCurrentPeople": "無限制名額。",
+      "place":"咖啡廳"
     },
     {
       "id": 4,
@@ -73,7 +76,8 @@
       "lat": "24.988694",
       "lng": "121.544043",
       "joinContent": "線上報名即可參加。",
-      "joinContentCurrentPeople": "無限制名額。"
+      "joinContentCurrentPeople": "無限制名額。",
+      "place":"學校"
     },
     {
       "id": 5,
@@ -90,7 +94,8 @@
       "lat": "25.044136",
       "lng": "121.529397",
       "joinContent": "線上報名即可參加。",
-      "joinContentCurrentPeople": "無限制名額。"
+      "joinContentCurrentPeople": "無限制名額。",
+      "place":"咖啡廳"
     },
     {
       "id": 6,
@@ -107,7 +112,8 @@
       "lat": "24.992111",
       "lng": "121.541125",
       "joinContent": "線上報名即可參加。",
-      "joinContentCurrentPeople": "無限制名額。"
+      "joinContentCurrentPeople": "無限制名額。",
+      "place":"咖啡廳"
     }
   ],
   "cinema-sign-inputmsg": [
@@ -124,8 +130,8 @@
       "iconRS": ""
     },
     {
-      "id": "cinemaId",
-      "w": "",
+      "id": "cinemaTaxid",
+      "w": "60px",
       "h": "48px",
       "inputType": "text",
       "inputLabel": "統一編號",
@@ -245,7 +251,7 @@
       "inputLabel": "詳細地址",
       "iconL": "",
       "iconLS": "",
-      "placeholder": "範例格式",
+      "placeholder": "範例格式: 台北市XX區XX路X段X號X樓",
       "iconR": "",
       "iconRS": ""
     },
@@ -257,7 +263,7 @@
       "inputLabel": "連絡電話",
       "iconL": "",
       "iconLS": "",
-      "placeholder": "請輸入電話號碼",
+      "placeholder": "請輸入市內電話號碼 (例: 02-2222-2222)",
       "iconR": "",
       "iconRS": ""
     },
@@ -286,23 +292,23 @@
       "iconRS": "",
       "selectOptions": [
         {
-          "id": "type1",
+          "id": "gallery",
           "name": "藝廊"
         },
         {
-          "id": "type2",
+          "id": "bar",
           "name": "酒吧"
         },
         {
-          "id": "type3",
+          "id": "restaurant",
           "name": "餐廳"
         },
         {
-          "id": "type4",
+          "id": "theater",
           "name": "影院"
         },
         {
-          "id": "type5",
+          "id": "cafe",
           "name": "咖啡廳"
         }
       ]
@@ -320,7 +326,7 @@
       "iconRS": ""
     },
     {
-      "id": "cinemaPwd",
+      "id": "cinemaPassword",
       "w": "",
       "h": "48px",
       "inputType": "password",
@@ -332,7 +338,7 @@
       "iconRS": ""
     },
     {
-      "id": "repwd",
+      "id": "cinemaRepwd",
       "w": "",
       "h": "48px",
       "inputType": "password",
@@ -358,7 +364,7 @@
       "iconRS": ""
     },
     {
-      "id": "cinemaLogo",
+      "id": "cinemaLogoImg",
       "w": "",
       "h": "48px",
       "inputType": "file",
@@ -838,6 +844,52 @@
       "collectActivity": [],
       "collectForum": [],
       "markList": []
+    },
+    {
+      "id": "m1558608707536",
+      "name": "",
+      "nickname": "test",
+      "gender": "",
+      "mobile": "",
+      "birth": "",
+      "email": "test@gmail.com",
+      "pwd": "13879428",
+      "avatar": "",
+      "city": "",
+      "address": "",
+      "fav_type": "",
+      "career": "",
+      "join_date": "2019-05-23",
+      "permission": "generalMember",
+      "collectFilm": [],
+      "collectCinema": [],
+      "collectArticle": [],
+      "collectActivity": [],
+      "collectForum": [],
+      "markList": []
+    },
+    {
+      "id": "m1558610436688",
+      "name": "",
+      "nickname": "test@email.com",
+      "gender": "",
+      "mobile": "",
+      "birth": "",
+      "email": "test@email.com",
+      "pwd": "13879428",
+      "avatar": "",
+      "city": "",
+      "address": "",
+      "fav_type": "",
+      "career": "",
+      "join_date": "2019-05-23",
+      "permission": "generalMember",
+      "collectFilm": [],
+      "collectCinema": [],
+      "collectArticle": [],
+      "collectActivity": [],
+      "collectForum": [],
+      "markList": []
     }
   ],
   "cinema": [
@@ -1079,6 +1131,30 @@
           "boo": []
         }
       ]
+    },
+    {
+      "id": "c1558763277067",
+      "cinemaName": "222222",
+      "cinemaCity": "台北市",
+      "cinemaArea": "2222",
+      "cinemaLogoImg": "2ca0315c-2e42-4f24-b3e8-c3edc7ff22a4.jpg",
+      "cinemaImg": "",
+      "cinemaHeroImg": "16311abb-b9cc-4730-80c4-ad00b9c8484e.jpg",
+      "cinemaAccount": "aaaaaa",
+      "cinemaPassword": "aaaaaa",
+      "cinemaStar": [],
+      "cinemaAddress": "台北市111111111",
+      "cinemaPhone": "02-2222-2222",
+      "cinemaTaxid": "22222222",
+      "cinemaWeb": "",
+      "cinemaEmail": "22@22.com",
+      "cinemaBackupEmail": "",
+      "cinemaAwesome": "",
+      "cinemaPageViews": "",
+      "cinemaSignUpDate": "",
+      "purview": "cinemaMember",
+      "cinemaMessage": [],
+      "cinemaType": "gallery"
     }
   ]
 }

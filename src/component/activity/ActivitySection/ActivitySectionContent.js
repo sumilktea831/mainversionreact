@@ -10,7 +10,7 @@ const ActivitySectionContent = props => (
     <h4>
       <div>
         <Link
-          to={'/activity#search'}
+          to={props.pagename + props.pageid}
           className="mt-5"
           style={{
             color: 'inherit',
