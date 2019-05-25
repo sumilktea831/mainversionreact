@@ -44,7 +44,7 @@ class ViewPage extends React.Component {
                     {/* 加入點閱的func */}
                     <FaBookmark
                       className="mb-3 h5"
-                      onClick={() => this.handleClick()}
+                      // onClick={() => this.handleClick()}
                     />
                   </div>
                 )}

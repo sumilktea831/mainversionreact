@@ -1,15 +1,15 @@
-import React from 'react';
+import React from 'react'
 // import ActivitySection from '../component/activity/ActivitySection/ActivitySection';
-import ArricleList from '../component/article/ArticleList';
-import ActivitySection from '../component/activity/ActivitySection/ActivitySection';
-import { Row, Col } from 'react-bootstrap';
-import Pagination from '../component/article/ArticleList/ArticleButton/Pagination';
-import ArticleCard from '../component/article/ArticleList';
+import ArricleList from '../component/article/ArticleList'
+import ActivitySection from '../component/activity/ActivitySection/ActivitySection'
+import { Row, Col } from 'react-bootstrap'
+import Pagination from '../component/article/ArticleList/ArticleButton/Pagination'
+import ArticleCard from '../component/article/ArticleList'
 // import ArticlePage from '../component/article/ArticlePage/ArticlePage';
-const memberId = '4';
+const memberId = '4'
 class Article extends React.Component {
   constructor() {
-    super();
+    super()
     this.state = {
       bigSlogan: '專業的影評人分析與影視消息',
       midSlogan: '汲取新知與品味。',
@@ -18,7 +18,7 @@ class Article extends React.Component {
       articleData: [], //content  ismarked isliked
       pagination: 0, //int
       viewCounter: 0,
-    };
+    }
   }
 
   async componentDidMount() {
@@ -29,16 +29,16 @@ class Article extends React.Component {
           Accept: 'application/json',
           'Content-Type': 'application/json',
         }),
-      });
-      const data = await res.json();
-      console.log(data);
-      const articleData = data;
-      const paginationData = +articleData.length / 2;
-      console.log('pages:' + paginationData);
-      this.setState({ articleData: articleData });
-      this.setState({ pagination: paginationData });
+      })
+      const data = await res.json()
+      console.log(data)
+      const articleData = data
+      const paginationData = +articleData.length / 2
+      console.log('pages:' + paginationData)
+      this.setState({ articleData: articleData })
+      this.setState({ pagination: paginationData })
     } catch (err) {
-      console.log(err);
+      console.log(err)
     }
   }
   //按讚 還沒好
@@ -92,7 +92,7 @@ class Article extends React.Component {
                   <ArticleCard
                     key={element.id}
                     // 需再設定一個值給Link
-                    sid={element.sid}
+                    sid={element.id}
                     cardImg={'/images/article/' + element.image}
                     cardTitle={element.title}
                     cardText={element.content}
@@ -125,8 +125,8 @@ class Article extends React.Component {
           </div>
         </div>
       </>
-    );
+    )
   }
 }
 
-export default Article;
+export default Article
