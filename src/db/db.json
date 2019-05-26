@@ -1389,5 +1389,58 @@
       "likeId": "3,4",
       "viewCounter": "15"
     }
+  ],
+  "articleComment": [
+    {
+      "id": 1,
+      "aid": 1,
+      "date": "2019-05-30",
+      "author": "皮卡丘",
+      "content": "哈囉你好嗎"
+    },
+    {
+      "id": 2,
+      "aid": 1,
+      "date": "2019-05-30",
+      "author": "桐谷和人",
+      "content": "哈囉你好嗎"
+    },
+    {
+      "id": 3,
+      "aid": 2,
+      "date": "2019-05-30",
+      "author": "林克",
+      "content": "哈囉你好嗎"
+    }
+  ],
+  "articleResComment": [
+    {
+      "id": 1,
+      "rid": 1,
+      "date": "2019-05-30",
+      "author": "魯路修",
+      "content": "拿乳頭!!!"
+    },
+    {
+      "id": 2,
+      "rid": 1,
+      "date": "2019-05-30",
+      "author": "朱雀",
+      "content": "殺死給!!!"
+    },
+    {
+      "id": 3,
+      "rid": 2,
+      "date": "2019-05-30",
+      "author": "史努比",
+      "content": "hello, how are you?"
+    },
+    {
+      "id": 4,
+      "rid": 2,
+      "date": "2019-05-30",
+      "author": "查理布朗",
+      "content": "thank you! see you again."
+    }
   ]
 }
