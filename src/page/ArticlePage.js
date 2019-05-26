@@ -76,8 +76,10 @@ class ArticlePage extends React.Component {
         }),
       })
       const dataC = await res.json()
-      const commentData = dataC.filter(item => item.aid === +this.state.thisId)
+      var commentData = dataC.filter(item => item.aid === +this.state.thisId)
+      var commentDataId = commentData.id
       console.log(commentData)
+      console.log(commentDataId)
       this.setState({ articleComment: commentData })
     } catch (err) {
       console.log(err)
@@ -127,7 +129,9 @@ class ArticlePage extends React.Component {
               // handleClick={this.handleClick(1)}
             />
           </Row>
-
+          <div className="col-md-5 text-center my-4">
+            <h4 className="text-light">網友評論</h4>
+          </div>
           <div>
             {this.state.articleComment.map((item, index) => (
               <ArticleComment
