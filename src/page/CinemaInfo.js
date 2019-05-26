@@ -12,6 +12,7 @@ class TheateInfo extends React.Component {
     this.state = {
       cinemaData: '',
       memberData: '',
+      memberThisData: '',
       activityData: '',
       HeroSection: '',
       BigCarData: '',
@@ -37,17 +38,17 @@ class TheateInfo extends React.Component {
       const dataCinema = await resCinema.json()
 
       //會員
-      const resMember = await fetch(
-        'http://localhost:5555/member/' + memberId,
-        {
-          method: 'GET',
-          headers: new Headers({
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          }),
-        }
-      )
+      const resMember = await fetch('http://localhost:5555/member', {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+      // 完整的會員資料
       const dataMember = await resMember.json()
+      // 登錄會員的資料
+      const dataThisMember = dataMember.filter(item => item.id === memberId)
 
       //活動
       const resActivity = await fetch(
@@ -81,7 +82,22 @@ class TheateInfo extends React.Component {
           (dataCinema.cinemaArea ? dataCinema.cinemaArea : ''),
         smallSlogan: dataCinema.cinemaInfoText,
       }
+
       // 大卡片參數整理 戲院+會員
+      // 找出所有會員資料收藏戲院蘭裡面有這間戲院id的
+      const BigCardCollectionLength = []
+      dataMember.map(item => {
+        return item.collectCinema.filter(items => {
+          if (items === dataCinema.id) {
+            BigCardCollectionLength.push(items)
+          }
+          return items
+        })
+      })
+      const BigCardCollection = []
+      dataThisMember.map(item =>
+        item.collectCinema.map(items => BigCardCollection.push(items))
+      )
       const BigCarData = {
         id: dataCinema.id,
         img: dataCinema.cinemaHeroImg,
@@ -93,8 +109,8 @@ class TheateInfo extends React.Component {
         awesome: dataCinema.cinemaAwesome,
         awesomeLength: dataCinema.cinemaAwesome.length,
         pageviews: dataCinema.cinemaPageViews,
-        collection: dataMember.collectCinema,
-        collectionLength: dataMember.collectCinema.length,
+        collection: BigCardCollection,
+        collectionLength: BigCardCollectionLength.length,
         awesomeClick: this.awesomeClick,
         collectionClick: this.collectionClick,
       }
@@ -111,7 +127,7 @@ class TheateInfo extends React.Component {
         img: item.imgSrc,
         // 因為是原頁面跳轉 所以直接帶這樣才能實現跳轉
         link: '/activity/' + item.id,
-        collection: dataMember.collectActivity,
+        collection: dataThisMember.collectActivity,
       }))
       // 影片小卡片需要參數
       // 待捕
@@ -119,6 +135,7 @@ class TheateInfo extends React.Component {
       this.setState({
         cinemaData: dataCinema,
         memberData: dataMember,
+        memberThisData: dataThisMember,
         activityData: dataAct,
         HeroSection: HeroSection,
         BigCarData: BigCarData,
@@ -203,30 +220,34 @@ class TheateInfo extends React.Component {
   // 收藏功能跟資料庫對接----完成
   collectionClick = async (newCollectionm, collectionLength) => {
     //改變後的資料
+    console.log('this.state.memberThisData')
+    console.log(this.state.memberThisData[0].id)
     try {
       const NewMemberData = {
-        id: this.state.memberData.id,
-        name: this.state.memberData.name,
-        nickname: this.state.memberData.nickname,
-        gender: this.state.memberData.gender,
-        mobile: this.state.memberData.mobile,
-        birth: this.state.memberData.birth,
-        email: this.state.memberData.email,
-        pwd: this.state.memberData.pwd,
-        avatar: this.state.memberData.avatar,
-        city: this.state.memberData.city,
-        address: this.state.memberData.address,
-        fav_type: this.state.memberData.fav_type,
-        career: this.state.memberData.career,
-        join_date: this.state.memberData.permission,
-        permission: this.state.memberData.permission,
-        collectFilm: this.state.memberData.collectFilm,
+        id: this.state.memberThisData[0].id,
+        name: this.state.memberThisData[0].name,
+        nickname: this.state.memberThisData[0].nickname,
+        gender: this.state.memberThisData[0].gender,
+        mobile: this.state.memberThisData[0].mobile,
+        birth: this.state.memberThisData[0].birth,
+        email: this.state.memberThisData[0].email,
+        pwd: this.state.memberThisData[0].pwd,
+        avatar: this.state.memberThisData[0].avatar,
+        city: this.state.memberThisData[0].city,
+        address: this.state.memberThisData[0].address,
+        fav_type: this.state.memberThisData[0].fav_type,
+        career: this.state.memberThisData[0].career,
+        join_date: this.state.memberThisData[0].permission,
+        permission: this.state.memberThisData[0].permission,
+        collectFilm: this.state.memberThisData[0].collectFilm,
         collectCinema: newCollectionm,
-        collectArticle: this.state.memberData.collectArticle,
-        collectActivity: this.state.memberData.collectActivity,
-        collectForum: this.state.memberData.collectForum,
-        markList: this.state.memberData.markList,
+        collectArticle: this.state.memberThisData[0].collectArticle,
+        collectActivity: this.state.memberThisData[0].collectActivity,
+        collectForum: this.state.memberThisData[0].collectForum,
+        markList: this.state.memberThisData[0].markList,
       }
+      console.log('NewMemberData')
+      console.log(NewMemberData)
       //蓋回去資料庫
       const response = await fetch('http://localhost:5555/member/' + memberId, {
         method: 'PUT',
@@ -266,16 +287,23 @@ class TheateInfo extends React.Component {
   }
 
   // Activity小卡收藏按鈕回傳
-  collectionClickActivity = () => {
+  collectionClickActivity = (id, val) => {
+    console.log(id)
+    console.log(val)
     alert('collectioClick')
   }
+  collectionClickFilm = (id, val) => {
+    console.log(id)
+    console.log(val)
+    alert('collectioClick')
+  }
+
   newStarAndMark = val => {
     console.log(val)
     alert('Use Fetch Update New Star And Mark To Database!!')
   }
 
   render() {
-    console.log(this.state)
     return (
       <>
         {/* 英雄頁面----串接完成 */}
@@ -293,6 +321,7 @@ class TheateInfo extends React.Component {
           <div className="h-100 d-flex justify-content-center">
             <CardLargeKaga
               key={this.state.BigCarData.id}
+              id={this.state.BigCarData.id}
               img={'http://localhost:3000/images/' + this.state.BigCarData.img}
               address={this.state.BigCarData.address}
               phone={this.state.BigCarData.phone}
@@ -347,6 +376,9 @@ class TheateInfo extends React.Component {
                     subtitle={item.subtitle}
                     img={'http://localhost:3000/images/' + item.img}
                     link={item.link}
+                    collectionIcon
+                    collectionClick={this.collectionClickFilm}
+                    collection
                   />
                 ))
               ) : (
@@ -382,6 +414,9 @@ class TheateInfo extends React.Component {
                     subtitle={item.subtitle}
                     img={'http://localhost3000/images/' + item.img}
                     link={item.link}
+                    collectionIcon
+                    collectionClick={this.collectionClickActivity}
+                    collection
                   />
                 ))
               ) : (

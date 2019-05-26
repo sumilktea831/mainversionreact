@@ -78,15 +78,16 @@ class CardLargeKaga extends React.Component {
 
   // 收藏功能回傳並改變渲染----完成
   collectionCardClick = () => {
+    console.log(this.props.collection)
     // 如果有登錄的話
     if (memberId) {
       let newCollection = []
       let collectionLength = +this.state.collectionLength
       // 如果awesome裡面有會員id的話
-      if (this.props.collection.find(item => item === memberId)) {
+      if (this.props.collection.find(item => item === this.props.id)) {
         // 就把不是這個id的資料丟進newAwesome裡面
         this.props.collection.map(item => {
-          if (item !== memberId) {
+          if (item !== this.props.id) {
             newCollection.push(item)
           }
           return item
@@ -109,7 +110,7 @@ class CardLargeKaga extends React.Component {
       } else {
         // 如果沒有的話
         // 把會員id新增到陣列裡面
-        newCollection = [...this.props.collection, memberId]
+        newCollection = [...this.props.collection, this.props.id]
         // 然後把長度+1
         collectionLength++
         // 把兩個更新後的值丟回去父層
