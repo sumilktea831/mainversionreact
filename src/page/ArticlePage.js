@@ -1,13 +1,13 @@
 import React from 'react'
-// import ActivitySection from '../component/activity/ActivitySection/ActivitySection';
 import ArricleList from '../component/article/ArticleList'
 import ActivitySection from '../component/activity/ActivitySection/ActivitySection'
 import { Row, Col } from 'react-bootstrap'
 import Pagination from '../component/article/ArticleList/ArticleButton/Pagination'
-import ArticleList from '../component/article/ArticleList'
-// import ArticlePage from '../component/article/ArticlePage/ArticlePage';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import ViewPage from '../component/article/ArticlePage/ViewPage'
+
+import ArticleComment from '../component/article/ArticlePage/ArticleComment'
+
 const memberId = '4'
 
 class ArticlePage extends React.Component {
@@ -22,6 +22,7 @@ class ArticlePage extends React.Component {
       isLiked: false,
       likeCounter: 0,
       viewCounter: 0,
+      articleComment: [],
     }
   }
 
@@ -65,6 +66,22 @@ class ArticlePage extends React.Component {
     } catch (err) {
       console.log(err)
     }
+
+    try {
+      const res = await fetch('http://localhost:5555/articleComment', {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+      const dataC = await res.json()
+      const commentData = dataC.filter(item => item.aid === +this.state.thisId)
+      console.log(commentData)
+      this.setState({ articleComment: commentData })
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   // async handleClick(value) {
@@ -91,21 +108,40 @@ class ArticlePage extends React.Component {
 
   render() {
     return (
-      <ViewPage
-        sid={this.state.articleInfo.id}
-        title={this.state.articleInfo.title}
-        author={this.state.articleInfo.author}
-        content={this.state.articleInfo.content}
-        date={this.state.articleInfo.date}
-        pageImg={'/images//article/' + this.state.articleInfo.image}
-        isMarked={this.state.isMarked}
-        markCounter={this.state.markCounter}
-        isLiked={this.state.isLiked}
-        likeCounter={this.state.likeCounter}
-        viewCounter={this.state.viewCounter}
-        pushMarkSid={this.handlepushMarkSid}
-        // handleClick={this.handleClick(1)}
-      />
+      <>
+        <div className="container-fuild ">
+          <Row className="">
+            <ViewPage
+              sid={this.state.articleInfo.id}
+              title={this.state.articleInfo.title}
+              author={this.state.articleInfo.author}
+              content={this.state.articleInfo.content}
+              date={this.state.articleInfo.date}
+              pageImg={'/images//article/' + this.state.articleInfo.image}
+              isMarked={this.state.isMarked}
+              markCounter={this.state.markCounter}
+              isLiked={this.state.isLiked}
+              likeCounter={this.state.likeCounter}
+              viewCounter={this.state.viewCounter}
+              pushMarkSid={this.handlepushMarkSid}
+              // handleClick={this.handleClick(1)}
+            />
+          </Row>
+
+          <div>
+            {this.state.articleComment.map((item, index) => (
+              <ArticleComment
+                className="d-flex"
+                sid={item.id}
+                author={item.author}
+                date={item.date}
+                content={item.content}
+                res={item.resComment}
+              />
+            ))}
+          </div>
+        </div>
+      </>
     )
   }
 }

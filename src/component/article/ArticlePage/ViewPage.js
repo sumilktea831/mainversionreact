@@ -1,9 +1,8 @@
-/* eslint-disable jsx-a11y/alt-text */
-import React from 'react';
-import { Row, Col } from 'react-bootstrap';
+import React from 'react'
+import { Row, Col } from 'react-bootstrap'
 // import './article.css';
-import { BrowserRouter as Link } from 'react-router-dom';
-import Goback from '../ArticleList/ArticleButton/Goback';
+import { BrowserRouter as Link } from 'react-router-dom'
+import Goback from '../ArticleList/ArticleButton/Goback'
 import {
   FaShareSquare,
   FaCommentAlt,
@@ -11,27 +10,41 @@ import {
   FaEye,
   FaHeart,
   FaBookmark,
-} from 'react-icons/fa';
+} from 'react-icons/fa'
 
-import { MdFavorite } from 'react-icons/md';
+import { MdFavorite } from 'react-icons/md'
+
+// 留言部分
 
 class ViewPage extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
   }
+
   render() {
+    var articlePageImg = {
+      // width: '100%',
+      height: '30vw',
+      backgroundImage: 'url(' + this.props.pageImg + ')',
+      backgroundSize: 'cover',
+      backgroundPosition: 'center',
+      position: 'relative',
+    }
     return (
       <>
-        <Row className="my-5 justify-content-md-center">
-          <Col md={8} sm={10}>
+        <Row className="my-2 justify-content-md-center">
+          <Col md={8} sm={12} className="box-shadow">
             <div class="mb-3 p-5">
-              <div className="my-4 d-flex justify-content-center">
-                <img
+              <div
+                className="my-4 d-flex justify-content-center"
+                style={articlePageImg}
+              >
+                {/* <img
                   src={this.props.pageImg}
                   className=""
                   style={{ width: 800 }}
                   alt="..."
-                />
+                /> */}
               </div>
               <div className="row d-flex justify-content-between align-items-center">
                 <h5 className="card-title">{this.props.title}</h5>
@@ -89,8 +102,8 @@ class ViewPage extends React.Component {
           </Col>
         </Row>
       </>
-    );
+    )
   }
 }
 
-export default ViewPage;
+export default ViewPage

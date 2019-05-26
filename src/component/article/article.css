@@ -4,21 +4,83 @@
   box-shadow: 1px 1px 5px #0000005e;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+.darkBG {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.65);
+  width: 100%;
+  height: 35%;
+  bottom: 0;
+}
+
+/* 連結顏色 */
+.link-a {
+  color: #d4d1cc;
+}
+.link-a:hover {
+  color: #ffa510;
+  text-decoration: none;
+}
+
+.articlePageImg {
+  background-image: ;
+}
+
+/* 圖片背景遮罩 */
+.bigDarkBG {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.301);
+  width: 100%;
+  height: 100%;
+  transition: 0.5s;
+}
+.slider:hover .bigDarkBG {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.137);
+}
+.articleCard:hover .bigDarkBG {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.137);
+}
+
+.contentText {
+  line-height: 2;
+  /* height: 100%; */
+  overflow: hidden;
+}
+
+.darkText {
+  z-index: 99;
+}
+
+.box-shadow {
+  box-shadow: 1px 1px 5px #00000048;
+}
 
 .card-body {
-  padding-bottom: 0px;
+  /* padding-bottom: 0px; */
 }
 
 .mycontainer {
   margin: 50px 0px;
 }
 
+/* 卡片右上書籤 */
 .righ-mark {
   position: absolute;
-  right: 16px;
+  right: 8px;
   top: 5px;
   font-size: 1.5rem;
-  z-index: 99;
+  z-index: 2;
+}
+
+/* 卡片下方固定按鈕位置 */
+.bottomBtn {
+  margin-top: 16px;
+  position: absolute;
+  right: 12px;
+  bottom: 12px;
+  font-size: 1.5rem;
+  z-index: 2;
 }
 
 .article_pic {
@@ -27,13 +89,5 @@
 }
 
 .img56 {
-  /* float: left; */
-  /* margin: 10px 5%; */
-  /* padding-bottom: 33.98%; */
-  /* width: auto; */
-  /* height: auto; */
-  /* height: auto;*/
-  /* max-width: 100%; */
-  /* max-height: 100%   ; */
   object-fit: cover;
 }
