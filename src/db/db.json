@@ -23,25 +23,25 @@
       "lng": "121.544851",
       "joinContent": "線上報名即可參加。",
       "joinContentCurrentPeople": "無限制名額。",
-      "place":"咖啡廳"
+      "place":"北部影院"
     },
     {
       "id": 2,
-      "theater": "星光戲院",
-      "title": "來星光，看星際。",
-      "content": "來星光，看星際。",
+      "theater": "勤美術館",
+      "title": "六年走過 勤美術館感謝有你",
+      "content": "六年走過，勤美術館與你一起，建構了屬於草悟道獨有的街區生活美學。完成階段性任務之後，勤美術館即將於2019年一月開始進行整修施工工程。為了推廣更多台灣青年藝術家與創作者，為了提升草悟道生活與藝文能量，為了深耕社區和鄰里的互動脈絡，邀請國際建築大師–隈研吾先生進行未來美術館設計，期待拉起下一個藝術與人、城市、環境之間的美好藝文平台。勤美術館空間即將開始進行整修，即日起暫時停止對外開放。後續消息請注意勤美術館FB粉絲團。",
       "imgSrc": "https://images.unsplash.com/photo-1472457897821-70d3819a0e24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1349&q=80",
       "isCollect": false,
-      "theaterMap": "10845台北市萬華區成都路88號",
+      "theaterMap": "404台中市西區館前路71號",
       "GUINumber": "16086448",
       "website": "https://www.google.com/",
       "email": "theater@gmail.com",
       "phone": "0912345678",
-      "lat": "25.0452986",
-      "lng": "121.5042042",
+      "lat": "24.152395",
+      "lng": "120.663567",
       "joinContent": "線上報名即可參加。",
       "joinContentCurrentPeople": "無限制名額。",
-      "place":"咖啡廳"
+      "place":"中部文創園區"
     },
     {
       "id": 3,
@@ -59,7 +59,7 @@
       "lng": "121.561157",
       "joinContent": "線上報名即可參加。",
       "joinContentCurrentPeople": "無限制名額。",
-      "place":"咖啡廳"
+      "place":"北部文創園區"
     },
     {
       "id": 4,
@@ -77,7 +77,7 @@
       "lng": "121.544043",
       "joinContent": "線上報名即可參加。",
       "joinContentCurrentPeople": "無限制名額。",
-      "place":"學校"
+      "place":"北部學校"
     },
     {
       "id": 5,
@@ -95,7 +95,7 @@
       "lng": "121.529397",
       "joinContent": "線上報名即可參加。",
       "joinContentCurrentPeople": "無限制名額。",
-      "place":"咖啡廳"
+      "place":"北部文創園區"
     },
     {
       "id": 6,
@@ -113,7 +113,7 @@
       "lng": "121.541125",
       "joinContent": "線上報名即可參加。",
       "joinContentCurrentPeople": "無限制名額。",
-      "place":"咖啡廳"
+      "place":"北部文創園區"
     }
   ],
   "cinema-sign-inputmsg": [
