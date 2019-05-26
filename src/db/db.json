@@ -23,11 +23,8 @@
       "lng": "121.544851",
       "joinContent": "線上報名即可參加。",
       "joinContentCurrentPeople": "無限制名額。",
-<<<<<<< HEAD
+
       "place":"北部影院"
-=======
-      "place": "咖啡廳"
->>>>>>> bfc024090233feb1af793f5c2eb21d3761d9da8b
     },
     {
       "id": 2,
@@ -45,11 +42,7 @@
       "lng": "120.663567",
       "joinContent": "線上報名即可參加。",
       "joinContentCurrentPeople": "無限制名額。",
-<<<<<<< HEAD
       "place":"中部文創園區"
-=======
-      "place": "咖啡廳"
->>>>>>> bfc024090233feb1af793f5c2eb21d3761d9da8b
     },
     {
       "id": 3,
@@ -67,11 +60,7 @@
       "lng": "121.561157",
       "joinContent": "線上報名即可參加。",
       "joinContentCurrentPeople": "無限制名額。",
-<<<<<<< HEAD
       "place":"北部文創園區"
-=======
-      "place": "咖啡廳"
->>>>>>> bfc024090233feb1af793f5c2eb21d3761d9da8b
     },
     {
       "id": 4,
@@ -89,11 +78,7 @@
       "lng": "121.544043",
       "joinContent": "線上報名即可參加。",
       "joinContentCurrentPeople": "無限制名額。",
-<<<<<<< HEAD
       "place":"北部學校"
-=======
-      "place": "學校"
->>>>>>> bfc024090233feb1af793f5c2eb21d3761d9da8b
     },
     {
       "id": 5,
@@ -111,11 +96,7 @@
       "lng": "121.529397",
       "joinContent": "線上報名即可參加。",
       "joinContentCurrentPeople": "無限制名額。",
-<<<<<<< HEAD
       "place":"北部文創園區"
-=======
-      "place": "咖啡廳"
->>>>>>> bfc024090233feb1af793f5c2eb21d3761d9da8b
     },
     {
       "id": 6,
@@ -133,11 +114,7 @@
       "lng": "121.541125",
       "joinContent": "線上報名即可參加。",
       "joinContentCurrentPeople": "無限制名額。",
-<<<<<<< HEAD
       "place":"北部文創園區"
-=======
-      "place": "咖啡廳"
->>>>>>> bfc024090233feb1af793f5c2eb21d3761d9da8b
     }
   ],
   "cinema-sign-inputmsg": [
