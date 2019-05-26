@@ -1,0 +1,1196 @@
+{
+  "thisIsSample": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "activityCardData": [
+    {
+      "id": 1,
+      "theater": "總督數位影城",
+      "title": "慶祝周年慶，總督數位爆米花免費吃",
+      "content": "HELLO KITTY應援男友、佛心活動～帶著「世足限量造型爆米花桶」來總督數位影城，就不用吃土囉！ 爆米花免費吃到飽！ ",
+      "imgSrc": "https://images.unsplash.com/photo-1521967906867-14ec9d64bee8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "isCollect": false,
+      "theaterMap": "106台北市大安區通化街24巷1號",
+      "GUINumber": "16086448",
+      "website": "https://www.google.com/",
+      "email": "theater@gmail.com",
+      "phone": "0912345678",
+      "lat": "25.048434",
+      "lng": "121.544851",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。",
+      "place": "咖啡廳"
+    },
+    {
+      "id": 2,
+      "theater": "星光戲院",
+      "title": "來星光，看星際。",
+      "content": "來星光，看星際。",
+      "imgSrc": "https://images.unsplash.com/photo-1472457897821-70d3819a0e24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1349&q=80",
+      "isCollect": false,
+      "theaterMap": "10845台北市萬華區成都路88號",
+      "GUINumber": "16086448",
+      "website": "https://www.google.com/",
+      "email": "theater@gmail.com",
+      "phone": "0912345678",
+      "lat": "25.0452986",
+      "lng": "121.5042042",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。",
+      "place": "咖啡廳"
+    },
+    {
+      "id": 3,
+      "theater": "松山文創園區 藝思空間",
+      "title": "VR+3DMAX的全新觀賞體驗就在松山文創",
+      "content": "3DMAX的全新觀賞體驗就在松山文創",
+      "imgSrc": "https://images.unsplash.com/photo-1478358161113-b0e11994a36b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+      "isCollect": false,
+      "theaterMap": "100台北市中正區八德路一段1號",
+      "GUINumber": "16086448",
+      "website": "https://www.google.com/",
+      "email": "theater@gmail.com",
+      "phone": "0912345678",
+      "lat": "25.043372",
+      "lng": "121.561157",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。",
+      "place": "咖啡廳"
+    },
+    {
+      "id": 4,
+      "theater": "世新大學",
+      "title": "影片演員招募中！",
+      "content": "影片演員招募中！",
+      "imgSrc": "https://images.unsplash.com/photo-1551448215-3a9aa113815c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "isCollect": false,
+      "theaterMap": "10491台北市中山區南京東路三段133號",
+      "GUINumber": "16086448",
+      "website": "https://www.google.com/",
+      "email": "theater@gmail.com",
+      "phone": "0912345678",
+      "lat": "24.988694",
+      "lng": "121.544043",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。",
+      "place": "學校"
+    },
+    {
+      "id": 5,
+      "theater": "華山1914文化創意產業園區",
+      "title": "五六零年代電影串燒",
+      "content": "五六零年代電影串燒",
+      "imgSrc": "https://images.unsplash.com/photo-1543059047-278b7120468c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=617&q=80",
+      "isCollect": false,
+      "theaterMap": "110台北市信義區菸廠路88號",
+      "GUINumber": "16086448",
+      "website": "https://www.google.com/",
+      "email": "theater@gmail.com",
+      "phone": "0912345678",
+      "lat": "25.044136",
+      "lng": "121.529397",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。",
+      "place": "咖啡廳"
+    },
+    {
+      "id": 6,
+      "theater": "文山劇場",
+      "title": "65歲長者，免費入場",
+      "content": "65歲長者，免費入場",
+      "imgSrc": "https://images.unsplash.com/photo-1508963493744-76fce69379c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "isCollect": false,
+      "theaterMap": "105台北市松山區八德路四段138號B1 No. 138號八德路四段",
+      "GUINumber": "16086448",
+      "website": "https://www.google.com/",
+      "email": "theater@gmail.com",
+      "phone": "0912345678",
+      "lat": "24.992111",
+      "lng": "121.541125",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。",
+      "place": "咖啡廳"
+    }
+  ],
+  "cinema-sign-inputmsg": [
+    {
+      "id": "cinemaName",
+      "w": "",
+      "h": "48px",
+      "inputType": "text",
+      "inputLabel": "戲院名稱",
+      "iconL": "fas fa-air-freshener",
+      "iconLS": "24px",
+      "placeholder": "請輸入完整名稱",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "cinemaTaxid",
+      "w": "60px",
+      "h": "48px",
+      "inputType": "text",
+      "inputLabel": "統一編號",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "請輸入您的統編",
+      "iconR": "fas fa-birthday-cake",
+      "iconRS": "24px"
+    },
+    {
+      "id": "cinemaCity",
+      "w": "",
+      "h": "48px",
+      "inputType": "selector",
+      "inputLabel": "所在縣市",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "這裡是下拉選單...",
+      "iconR": "fas fa-caret-square-down",
+      "iconRS": "24px",
+      "selectOptions": [
+        {
+          "id": "TPE",
+          "name": "台北市"
+        },
+        {
+          "id": "NTPC",
+          "name": "新北市"
+        },
+        {
+          "id": "KEL",
+          "name": "基隆市"
+        },
+        {
+          "id": "TYN",
+          "name": "桃園市"
+        },
+        {
+          "id": "HSZ",
+          "name": "新竹市"
+        },
+        {
+          "id": "ZMI",
+          "name": "苗栗縣"
+        },
+        {
+          "id": "TXG",
+          "name": "台中市"
+        },
+        {
+          "id": "CHW",
+          "name": "彰化縣"
+        },
+        {
+          "id": "NTC",
+          "name": "南投縣"
+        },
+        {
+          "id": "YUN",
+          "name": "雲林縣"
+        },
+        {
+          "id": "CYI",
+          "name": "嘉義市"
+        },
+        {
+          "id": "CHY",
+          "name": "嘉義縣"
+        },
+        {
+          "id": "TNN",
+          "name": "台南市"
+        },
+        {
+          "id": "PIF",
+          "name": "屏東縣"
+        },
+        {
+          "id": "ILA",
+          "name": "宜蘭縣"
+        },
+        {
+          "id": "HUN",
+          "name": "花蓮縣"
+        },
+        {
+          "id": "TTT",
+          "name": "台東縣"
+        },
+        {
+          "id": "PEH",
+          "name": "澎湖縣"
+        },
+        {
+          "id": "KNH",
+          "name": "金門縣"
+        }
+      ]
+    },
+    {
+      "id": "cinemaArea",
+      "w": "",
+      "h": "48px",
+      "inputType": "text",
+      "inputLabel": "所在地區",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "行政區",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "cinemaAddress",
+      "w": "",
+      "h": "48px",
+      "inputType": "text",
+      "inputLabel": "詳細地址",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "範例格式: 台北市XX區XX路X段X號X樓",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "cinemaPhone",
+      "w": "",
+      "h": "48px",
+      "inputType": "text",
+      "inputLabel": "連絡電話",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "請輸入市內電話號碼 (例: 02-2222-2222)",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "cinemaEmail",
+      "w": "",
+      "h": "48px",
+      "inputType": "text",
+      "inputLabel": "電子郵件",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "請輸入您的E-mail信箱",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "cinemaType",
+      "w": "",
+      "h": "48px",
+      "inputType": "radio",
+      "inputLabel": "場所類別",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "5種按鈕選單",
+      "iconR": "",
+      "iconRS": "",
+      "selectOptions": [
+        {
+          "id": "gallery",
+          "name": "藝廊"
+        },
+        {
+          "id": "bar",
+          "name": "酒吧"
+        },
+        {
+          "id": "restaurant",
+          "name": "餐廳"
+        },
+        {
+          "id": "theater",
+          "name": "影院"
+        },
+        {
+          "id": "cafe",
+          "name": "咖啡廳"
+        }
+      ]
+    },
+    {
+      "id": "cinemaAccount",
+      "w": "",
+      "h": "48px",
+      "inputType": "text",
+      "inputLabel": "帳號",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "請輸入您的帳號",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "cinemaPassword",
+      "w": "",
+      "h": "48px",
+      "inputType": "password",
+      "inputLabel": "密碼",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "請輸入您的密碼",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "cinemaRepwd",
+      "w": "",
+      "h": "48px",
+      "inputType": "password",
+      "inputLabel": "密碼確認",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "請再次輸入您的密碼",
+      "iconR": "",
+      "iconRS": ""
+    }
+  ],
+  "cinema-sign-choose-inputmsg": [
+    {
+      "id": "cinemaWeb",
+      "w": "",
+      "h": "48px",
+      "inputType": "text",
+      "inputLabel": "官方網站",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "請輸入您的官方網址",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "cinemaLogoImg",
+      "w": "",
+      "h": "48px",
+      "inputType": "file",
+      "inputLabel": "戲院LOGO",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "請選擇一個檔案",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "cinemaHeroImg",
+      "w": "",
+      "h": "48px",
+      "inputType": "file",
+      "inputLabel": "視覺圖片",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "請選擇一個檔案",
+      "iconR": "",
+      "iconRS": ""
+    }
+  ],
+  "memberBackSidenav": [
+    {
+      "id": "member-info",
+      "title": "個人資訊",
+      "options": [
+        {
+          "id": "my-preview",
+          "name": "公開資訊卡預覽"
+        },
+        {
+          "id": "edit-myinfo",
+          "name": "編輯個人資訊"
+        },
+        {
+          "id": "edit-mypassword",
+          "name": "更改密碼"
+        }
+      ],
+      "isclicked": true
+    },
+    {
+      "id": "member-collections",
+      "title": "收藏清單",
+      "options": [
+        {
+          "id": "collect-film",
+          "name": "收藏影片"
+        },
+        {
+          "id": "collect-article",
+          "name": "收藏文章"
+        },
+        {
+          "id": "collect-cinema",
+          "name": "收藏戲院"
+        }
+      ],
+      "isclicked": false
+    },
+    {
+      "id": "member-activity",
+      "title": "我的活動",
+      "options": [
+        {
+          "id": "collect-activity",
+          "name": "收藏活動"
+        },
+        {
+          "id": "my-activity",
+          "name": "已報名活動"
+        }
+      ],
+      "isclicked": false
+    },
+    {
+      "id": "member-forum",
+      "title": "論壇紀錄",
+      "options": [
+        {
+          "id": "my-post",
+          "name": "論壇發文紀錄"
+        },
+        {
+          "id": "my-comment",
+          "name": "論壇留言紀錄"
+        }
+      ],
+      "isclicked": false
+    },
+    {
+      "id": "member-recommend",
+      "title": "推薦影片",
+      "options": [
+        {
+          "id": "my-recommend-film",
+          "name": "推薦片單"
+        }
+      ],
+      "isclicked": false
+    }
+  ],
+  "cinemaBackSidenav": [
+    {
+      "id": "cinema-info",
+      "title": "戲院資訊",
+      "options": [
+        {
+          "id": "cinema-ingfo-preview",
+          "name": "戲院資訊一覽"
+        },
+        {
+          "id": "cinema-edit-info",
+          "name": "編輯戲院資訊"
+        },
+        {
+          "id": "cinema-edit-password",
+          "name": "更改密碼"
+        }
+      ],
+      "isclicked": true
+    },
+    {
+      "id": "cinema-film",
+      "title": "影片管理",
+      "options": [
+        {
+          "id": "cinema-film-info",
+          "name": "影片資訊一覽"
+        },
+        {
+          "id": "cinema-edit-film-info",
+          "name": "編輯影片資訊"
+        },
+        {
+          "id": "cinema-change-film-setting",
+          "name": "更改影片設定"
+        },
+        {
+          "id": "cinema-film-post-delete",
+          "name": "影片上/下架管理"
+        },
+        {
+          "id": "cinema-film-analysis",
+          "name": "影片分析"
+        }
+      ],
+      "isclicked": false
+    },
+    {
+      "id": "custom-analysis",
+      "title": "來客分析",
+      "options": [
+        {
+          "id": "custom-statistic-photo",
+          "name": "來客走勢圖"
+        },
+        {
+          "id": "custom-report",
+          "name": "來客結構洞察報告"
+        },
+        {
+          "id": "movieee-custom-analysis",
+          "name": "全站分析"
+        },
+        {
+          "id": "cinema-manage-comment",
+          "name": "留言管理"
+        }
+      ],
+      "isclicked": false
+    },
+    {
+      "id": "cinema-activity",
+      "title": "活動管理",
+      "options": [
+        {
+          "id": "cinema-manage-activity",
+          "name": "活動管理"
+        },
+        {
+          "id": "cinema-activity-in-progress",
+          "name": "進行中活動"
+        },
+        {
+          "id": "activity-costum-analysis",
+          "name": "活動來客分析"
+        }
+      ],
+      "isclicked": false
+    },
+    {
+      "id": "cinema-fomur",
+      "title": "論壇紀錄",
+      "options": [
+        {
+          "id": "cinema-cinema-post",
+          "name": "發文管理"
+        },
+        {
+          "id": "cinema-comment",
+          "name": "評論一覽"
+        }
+      ],
+      "isclicked": false
+    },
+    {
+      "id": "cinema-advertisement",
+      "title": "廣告管理",
+      "options": [
+        {
+          "id": "cinema-all-ad",
+          "name": "廣告一覽"
+        },
+        {
+          "id": "cinema-manage-ad",
+          "name": "廣告管理"
+        }
+      ],
+      "isclicked": false
+    }
+  ],
+  "member": [
+    {
+      "id": "m111111",
+      "name": "陳靖仇",
+      "nickname": "阿仇",
+      "gender": "male",
+      "mobile": "0900-000-000",
+      "birth": "1900-01-01",
+      "email": "ch1@gmail.com",
+      "pwd": "1111",
+      "avatar": "",
+      "city": "台北市",
+      "address": "",
+      "fav_type": "",
+      "career": "",
+      "join_date": "2019-01-03",
+      "permission": "generalMember",
+      "collectFilm": "",
+      "collectCinema": ["c1", "c2"],
+      "collectArticle": "",
+      "collectActivity": "",
+      "collectForum": "",
+      "markList": [
+        {
+          "markId": "c1",
+          "markcontent": "yaaaaa"
+        }
+      ]
+    },
+    {
+      "id": "m22222",
+      "name": "于小雪",
+      "nickname": "小雪",
+      "gender": "female",
+      "mobile": "0900-000-001",
+      "birth": "1900-02-02",
+      "email": "ch2@gmail.com",
+      "pwd": "2222",
+      "avatar": "",
+      "city": "台北市",
+      "address": "",
+      "fav_type": "",
+      "career": "",
+      "join_date": "",
+      "permission": "generalMember",
+      "collectFilm": "",
+      "collectCinema": ["c1", "c2"],
+      "collectArticle": "",
+      "collectActivity": "",
+      "collectForum": "",
+      "markList": [
+        {
+          "markId": "c1",
+          "markcontent": "yaaaaa"
+        }
+      ]
+    },
+    {
+      "id": "m1558576972594",
+      "name": "",
+      "nickname": "test1",
+      "gender": "",
+      "mobile": "",
+      "birth": "",
+      "email": "test1@gg.com",
+      "pwd": "123456",
+      "avatar": "",
+      "city": "",
+      "address": "",
+      "fav_type": "",
+      "career": "",
+      "join_date": "2019-05-23",
+      "permission": "generalMember",
+      "collectFilm": "",
+      "collectCinema": ["c1", "c2"],
+      "collectArticle": "",
+      "collectActivity": "",
+      "collectForum": "",
+      "markList": [
+        {
+          "markId": "c1",
+          "markcontent": "yaaaaa"
+        }
+      ]
+    },
+    {
+      "id": "m1558577493585",
+      "name": "",
+      "nickname": "test2",
+      "gender": "",
+      "mobile": "",
+      "birth": "",
+      "email": "test2@gg.com",
+      "pwd": "123456",
+      "avatar": "",
+      "city": "",
+      "address": "",
+      "fav_type": "",
+      "career": "",
+      "join_date": "2019-5-23",
+      "permission": "generalMember",
+      "collectFilm": "",
+      "collectCinema": ["c1", "c2"],
+      "collectArticle": "",
+      "collectActivity": "",
+      "collectForum": "",
+      "markList": [
+        {
+          "markId": "c1",
+          "markcontent": "yaaaaa"
+        }
+      ]
+    },
+    {
+      "id": "m1558577630407",
+      "name": "",
+      "nickname": "test3",
+      "gender": "",
+      "mobile": "",
+      "birth": "",
+      "email": "test3@gg.com",
+      "pwd": "123456",
+      "avatar": "",
+      "city": "",
+      "address": "",
+      "fav_type": "",
+      "career": "",
+      "join_date": "2019-05-23",
+      "permission": "generalMember",
+      "collectFilm": "",
+      "collectCinema": ["c1", "c2"],
+      "collectArticle": "",
+      "collectActivity": "",
+      "collectForum": "",
+      "markList": [
+        {
+          "markId": "c1",
+          "markcontent": "yaaaaa"
+        }
+      ]
+    },
+    {
+      "id": "m1558577731620",
+      "name": "",
+      "nickname": "test4",
+      "gender": "",
+      "mobile": "",
+      "birth": "",
+      "email": "test4@gg.com",
+      "pwd": "123456",
+      "avatar": "",
+      "city": "",
+      "address": "",
+      "fav_type": "",
+      "career": "",
+      "join_date": "2019-05-23",
+      "permission": "generalMember",
+      "collectFilm": "",
+      "collectCinema": ["c1", "c2"],
+      "collectArticle": "",
+      "collectActivity": "",
+      "collectForum": "",
+      "markList": [
+        {
+          "markId": "c1",
+          "markcontent": "yaaaaa"
+        }
+      ]
+    },
+    {
+      "id": "m1558596316025",
+      "name": "",
+      "nickname": "test5",
+      "gender": "",
+      "mobile": "",
+      "birth": "",
+      "email": "test5@gg.com",
+      "pwd": "123456",
+      "avatar": "",
+      "city": "",
+      "address": "",
+      "fav_type": "",
+      "career": "",
+      "join_date": "2019-05-23",
+      "permission": "generalMember",
+      "collectFilm": [],
+      "collectCinema": [],
+      "collectArticle": [],
+      "collectActivity": [],
+      "collectForum": [],
+      "markList": []
+    },
+    {
+      "id": "m1558601508263",
+      "name": "",
+      "nickname": "try",
+      "gender": "",
+      "mobile": "",
+      "birth": "",
+      "email": "try@gg.com",
+      "pwd": "111111",
+      "avatar": "",
+      "city": "",
+      "address": "",
+      "fav_type": "",
+      "career": "",
+      "join_date": "2019-05-23",
+      "permission": "generalMember",
+      "collectFilm": [],
+      "collectCinema": [],
+      "collectArticle": [],
+      "collectActivity": [],
+      "collectForum": [],
+      "markList": []
+    },
+    {
+      "id": "m1558606970757",
+      "name": "",
+      "nickname": "test6",
+      "gender": "",
+      "mobile": "",
+      "birth": "",
+      "email": "test6@gg.com",
+      "pwd": "111111",
+      "avatar": "",
+      "city": "",
+      "address": "",
+      "fav_type": "",
+      "career": "",
+      "join_date": "2019-05-23",
+      "permission": "generalMember",
+      "collectFilm": [],
+      "collectCinema": [],
+      "collectArticle": [],
+      "collectActivity": [],
+      "collectForum": [],
+      "markList": []
+    },
+    {
+      "id": "m1558608707536",
+      "name": "",
+      "nickname": "test",
+      "gender": "",
+      "mobile": "",
+      "birth": "",
+      "email": "test@gmail.com",
+      "pwd": "13879428",
+      "avatar": "",
+      "city": "",
+      "address": "",
+      "fav_type": "",
+      "career": "",
+      "join_date": "2019-05-23",
+      "permission": "generalMember",
+      "collectFilm": [],
+      "collectCinema": [],
+      "collectArticle": [],
+      "collectActivity": [],
+      "collectForum": [],
+      "markList": []
+    },
+    {
+      "id": "m1558610436688",
+      "name": "",
+      "nickname": "test@email.com",
+      "gender": "",
+      "mobile": "",
+      "birth": "",
+      "email": "test@email.com",
+      "pwd": "13879428",
+      "avatar": "",
+      "city": "",
+      "address": "",
+      "fav_type": "",
+      "career": "",
+      "join_date": "2019-05-23",
+      "permission": "generalMember",
+      "collectFilm": [],
+      "collectCinema": [],
+      "collectArticle": [],
+      "collectActivity": [],
+      "collectForum": [],
+      "markList": []
+    }
+  ],
+  "cinema": [
+    {
+      "id": "c1",
+      "cinemaName": "",
+      "cinemaCity": "",
+      "cinemaArea": "",
+      "cinemaLogoImg": "spott.jpg",
+      "cinemaImg": "spott.jpg",
+      "cinemaHeroImg": "spott.jpg",
+      "cinemaAccount": "tpespotlight",
+      "cinemaPassword": "1111",
+      "cinemaStar": [
+        {
+          "starId": "m22222",
+          "star": 5
+        }
+      ],
+      "cinemaAddress": "台北市中山區中山北路二段18號",
+      "cinemaPhone": "02-2511-7786",
+      "cinemaTaxid": "28468385",
+      "cinemaWeb": "http://www.spot.org.tw/",
+      "cinemaEmail": "taipei.spotdesign@gmail.com",
+      "cinemaBackupEmail": "",
+      "cinemaAwesome": "234",
+      "cinemaPageViews": "572",
+      "cinemaSignUpDate": "1955-03-12",
+      "purview": "cinemaMember",
+      "cinemaMessage": [
+        {
+          "id": "002",
+          "name": "東尼大木",
+          "img": "asianman.jpg",
+          "message": "嘎嘎嘎我要留爆這邊",
+          "time": "1558494913221",
+          "awesome": [],
+          "boo": []
+        },
+        {
+          "id": "001",
+          "name": "佐佐木小次郎",
+          "img": "asian.jpg",
+          "message": "啊啊啊  不給你留爆",
+          "time": "1558494913758",
+          "awesome": [],
+          "boo": []
+        }
+      ]
+    },
+    {
+      "id": "c2",
+      "cinemaName": "光點華山",
+      "cinemaCity": "台北市",
+      "cinemaArea": "松山區",
+      "cinemaLogoImg": "spoth.jpg",
+      "cinemaImg": "spoth.jpg",
+      "cinemaHeroImg": "spoth.jpg",
+      "cinemaAccount": "hshspotlight",
+      "cinemaPassword": "2222",
+      "cinemaStar": [
+        {
+          "starId": "m22222",
+          "star": 5
+        }
+      ],
+      "cinemaMark": "testword",
+      "cinemaAddress": "台北市中正區八德路一段1號",
+      "cinemaPhone": "02-2394-0622",
+      "cinemaTaxid": "28468385",
+      "cinemaWeb": "http://www.spot-hs.org.tw/",
+      "cinemaEmail": "taipei.spotdesign@gmail.com",
+      "cinemaBackupEmail": "",
+      "cinemaAwesome": "234",
+      "cinemaPageViews": "572",
+      "cinemaSignUpDate": "1955-03-12",
+      "purview": "cinemaMember",
+      "cinemaMessage": [
+        {
+          "id": "002",
+          "name": "東尼大木",
+          "img": "asianman.jpg",
+          "message": "嘎嘎嘎我要留爆這邊",
+          "time": "1558494913221",
+          "awesome": [],
+          "boo": []
+        },
+        {
+          "id": "001",
+          "name": "佐佐木小次郎",
+          "img": "asian.jpg",
+          "message": "啊啊啊  不給你留爆",
+          "time": "1558494913758",
+          "awesome": [],
+          "boo": []
+        }
+      ]
+    },
+    {
+      "id": "c3",
+      "cinemaName": "文青不挑片",
+      "cinemaCity": "台北市",
+      "cinemaArea": "信義區",
+      "cinemaLogoImg": "nocho.jpg",
+      "cinemaImg": "nocho.jpg",
+      "cinemaHeroImg": "nocho.jpg",
+      "cinemaAccount": "hipster",
+      "cinemaPassword": "3333",
+      "cinemaStar": [
+        {
+          "starId": "m22222",
+          "star": 5
+        }
+      ],
+      "cinemaMark": "testword",
+      "cinemaAddress": "臺北市信義區和平東路三段291號",
+      "cinemaPhone": "",
+      "cinemaTaxid": "54346058",
+      "cinemaWeb": "https://www.spacebarfilm.com/blank-14",
+      "cinemaEmail": "spacebarroom@gmail.com",
+      "cinemaBackupEmail": "",
+      "cinemaAwesome": "234",
+      "cinemaPageViews": "572",
+      "cinemaSignUpDate": "1955-03-12",
+      "purview": "cinemaMember",
+      "cinemaMessage": [
+        {
+          "id": "002",
+          "name": "東尼大木",
+          "img": "asianman.jpg",
+          "message": "嘎嘎嘎我要留爆這邊",
+          "time": "1558494913221",
+          "awesome": [],
+          "boo": []
+        },
+        {
+          "id": "001",
+          "name": "佐佐木小次郎",
+          "img": "asian.jpg",
+          "message": "啊啊啊  不給你留爆",
+          "time": "1558494913758",
+          "awesome": [],
+          "boo": []
+        }
+      ]
+    },
+    {
+      "id": "c4",
+      "cinemaName": "XIAOMIJO小米酒咖啡館",
+      "cinemaCity": "台北市",
+      "cinemaArea": "大安區",
+      "cinemaLogoImg": "xiaomijo.jpg",
+      "cinemaImg": "xiaomijo.jpg",
+      "cinemaHeroImg": "xiaomijo.jpg",
+      "cinemaAccount": "xiaomijo",
+      "cinemaPassword": "4444",
+      "cinemaStar": [
+        {
+          "starId": "m22222",
+          "star": 5
+        }
+      ],
+      "cinemaMark": "testword",
+      "cinemaAddress": "台北市大安區永康街41巷5號",
+      "cinemaPhone": "02-2395-7617",
+      "cinemaTaxid": "28847204",
+      "cinemaWeb": "",
+      "cinemaEmail": "",
+      "cinemaBackupEmail": "",
+      "cinemaAwesome": "234",
+      "cinemaPageViews": "572",
+      "cinemaSignUpDate": "1955-03-12",
+      "purview": "cinemaMember",
+      "cinemaMessage": [
+        {
+          "id": "002",
+          "name": "東尼大木",
+          "img": "asianman.jpg",
+          "message": "嘎嘎嘎我要留爆這邊",
+          "time": "1558494913221",
+          "awesome": [],
+          "boo": []
+        },
+        {
+          "id": "001",
+          "name": "佐佐木小次郎",
+          "img": "asian.jpg",
+          "message": "啊啊啊  不給你留爆",
+          "time": "1558494913758",
+          "awesome": [],
+          "boo": []
+        }
+      ]
+    },
+    {
+      "id": "c5",
+      "cinemaName": "誠品電影院",
+      "cinemaCity": "台北市",
+      "cinemaArea": "松山區",
+      "cinemaLogoImg": "eslite.jpg",
+      "cinemaImg": "eslite.jpg",
+      "cinemaHeroImg": "eslite.jpg",
+      "cinemaAccount": "chptheater",
+      "cinemaPassword": "5555",
+      "cinemaStar": [
+        {
+          "starId": "m22222",
+          "star": 5
+        }
+      ],
+      "cinemaMark": "testword",
+      "cinemaAddress": "臺北市信義區菸廠路80號B2",
+      "cinemaPhone": "02-6636-5888",
+      "cinemaTaxid": "‎23155531",
+      "cinemaWeb": "https://meet.eslite.com/tw/tc/gallery/movieschedule/201803020001",
+      "cinemaEmail": "",
+      "cinemaBackupEmail": "",
+      "cinemaAwesome": "234",
+      "cinemaPageViews": "572",
+      "cinemaSignUpDate": "1955-03-12",
+      "purview": "cinemaMember",
+      "cinemaMessage": [
+        {
+          "id": "002",
+          "name": "東尼大木",
+          "img": "asianman.jpg",
+          "message": "嘎嘎嘎我要留爆這邊",
+          "time": "1558494913221",
+          "awesome": [],
+          "boo": []
+        },
+        {
+          "id": "001",
+          "name": "佐佐木小次郎",
+          "img": "asian.jpg",
+          "message": "啊啊啊  不給你留爆",
+          "time": "1558494913758",
+          "awesome": [],
+          "boo": []
+        }
+      ]
+    },
+    {
+      "id": "c1558763277067",
+      "cinemaName": "222222",
+      "cinemaCity": "台北市",
+      "cinemaArea": "2222",
+      "cinemaLogoImg": "2ca0315c-2e42-4f24-b3e8-c3edc7ff22a4.jpg",
+      "cinemaImg": "",
+      "cinemaHeroImg": "16311abb-b9cc-4730-80c4-ad00b9c8484e.jpg",
+      "cinemaAccount": "aaaaaa",
+      "cinemaPassword": "aaaaaa",
+      "cinemaStar": [],
+      "cinemaAddress": "台北市111111111",
+      "cinemaPhone": "02-2222-2222",
+      "cinemaTaxid": "22222222",
+      "cinemaWeb": "",
+      "cinemaEmail": "22@22.com",
+      "cinemaBackupEmail": "",
+      "cinemaAwesome": "",
+      "cinemaPageViews": "",
+      "cinemaSignUpDate": "",
+      "purview": "cinemaMember",
+      "cinemaMessage": [],
+      "cinemaType": "gallery"
+    }
+  ],
+  "articleCardData": [
+    {
+      "id": "1",
+      "title": "Carol（因為愛你）：影史上最強倒數十分鐘",
+      "author": "死特",
+      "avatar": "",
+      "date": "2019-03-20",
+      "content": "今年夏天上映了非常多部強檔同志/跨性別題材的電影，如話題波濤洶湧的《丹麥女孩》、艾倫佩姬帥彎少女的《扣押幸福》、莎拉華特經典同志小說荊棘之城的東方版《下女的誘惑》，以及這篇文要講的《Carol》。(「因為愛你」這名字翻得史上無敵爛，與電影原標題或內容關聯性極為薄弱，零記憶點 )以我這種無肉不歡(咦)的個性來說，當然是最愛下女的誘惑和CAROL。兩部我都看了兩次，而硬要比出哪一部更得我心，我想我會給CAROL。",
+      "image": "test4.jpg",
+      "link": "",
+      "markId": "1,2,3,4",
+      "likeId": "3,4",
+      "viewCounter": "10"
+    },
+    {
+      "id": "2",
+      "title": "迪士尼、福斯正式合併　《X戰警》確定回歸《復仇者》",
+      "author": "死特",
+      "avatar": "",
+      "date": "2019-03-20",
+      "content": "<p>歷史性的一刻！迪士尼、福斯於紐約時間20日凌晨12點02分（台灣時間20日中午12點02分）正式合併，好萊塢6大巨頭重新洗牌，未來福斯將成為迪士尼的子公司之一，而迪士尼握有福斯版權包括《X戰警》、《異形》、《阿凡達》、《辛普森家庭》等，全球票房佔有率將從30％提升至40％，一年賺進超過75億美金，「死侍」萊恩雷諾斯戴上「米老鼠帽」曬照紀念「換東家」的這一天。</p>\r\n<p>迪士尼以71億美金（約2188億台幣）收購福斯，於20日凌晨12點02分合併生效。迪士尼CEO羅伯特艾格（Robert Bob Iger）紐約時間19日下午發表聲明：「這對我們來說是一個非凡的歷史性時刻，將為我們公司和股東創造巨大的長期價值，結合迪士尼、福斯多元且創意內容、經驗豐富的人才，創造卓越的全球娛樂公司，有利於領導一個充滿活力和改變的時代。」同時，迪士尼強調，合併主要是幫助公司「增加其國際足跡」、「擴大直接面對消費者的產品」。</p>\r\n<p>迪士尼旗下包括迪士尼電影公司、迪士尼動畫工作室等，2006年起併購皮克斯工作室，2009年買下漫威娛樂，並在隔年成立漫威工作室，2012年買下《星際大戰》版權擁有者盧卡斯影業，如今福斯影片也成為迪士尼的子公司之一，未來迪士尼將握有福斯版權包括《死侍》、《X戰警》、《驚奇四超人》、《異形》、《阿凡達》、《猩球崛起》、《金牌特務》、《艾莉塔》等以及電視作品《辛普森家庭》、《X檔案》等。</p>",
+      "image": "test4.jpg",
+      "link": "",
+      "markId": "1,2",
+      "likeId": "3,4",
+      "viewCounter": "10"
+    },
+    {
+      "id": "3",
+      "title": "迪士尼、福斯正式合併　《X戰警》確定回歸《復仇者》",
+      "author": "死特",
+      "avatar": "",
+      "date": "2019-03-20",
+      "content": "<p>歷史性的一刻！迪士尼、福斯於紐約時間20日凌晨12點02分（台灣時間20日中午12點02分）正式合併，好萊塢6大巨頭重新洗牌，未來福斯將成為迪士尼的子公司之一，而迪士尼握有福斯版權包括《X戰警》、《異形》、《阿凡達》、《辛普森家庭》等，全球票房佔有率將從30％提升至40％，一年賺進超過75億美金，「死侍」萊恩雷諾斯戴上「米老鼠帽」曬照紀念「換東家」的這一天。</p>\r\n<p>迪士尼以71億美金（約2188億台幣）收購福斯，於20日凌晨12點02分合併生效。迪士尼CEO羅伯特艾格（Robert Bob Iger）紐約時間19日下午發表聲明：「這對我們來說是一個非凡的歷史性時刻，將為我們公司和股東創造巨大的長期價值，結合迪士尼、福斯多元且創意內容、經驗豐富的人才，創造卓越的全球娛樂公司，有利於領導一個充滿活力和改變的時代。」同時，迪士尼強調，合併主要是幫助公司「增加其國際足跡」、「擴大直接面對消費者的產品」。</p>\r\n<p>迪士尼旗下包括迪士尼電影公司、迪士尼動畫工作室等，2006年起併購皮克斯工作室，2009年買下漫威娛樂，並在隔年成立漫威工作室，2012年買下《星際大戰》版權擁有者盧卡斯影業，如今福斯影片也成為迪士尼的子公司之一，未來迪士尼將握有福斯版權包括《死侍》、《X戰警》、《驚奇四超人》、《異形》、《阿凡達》、《猩球崛起》、《金牌特務》、《艾莉塔》等以及電視作品《辛普森家庭》、《X檔案》等。</p>",
+      "image": "test4.jpg",
+      "link": "",
+      "markId": "1,2",
+      "likeId": "3,4",
+      "viewCounter": "10"
+    },
+    {
+      "id": "4",
+      "title": "迪士尼、福斯正式合併　《X戰警》確定回歸《復仇者》",
+      "author": "死特",
+      "avatar": "",
+      "date": "2019-03-20",
+      "content": "<p>歷史性的一刻！迪士尼、福斯於紐約時間20日凌晨12點02分（台灣時間20日中午12點02分）正式合併，好萊塢6大巨頭重新洗牌，未來福斯將成為迪士尼的子公司之一，而迪士尼握有福斯版權包括《X戰警》、《異形》、《阿凡達》、《辛普森家庭》等，全球票房佔有率將從30％提升至40％，一年賺進超過75億美金，「死侍」萊恩雷諾斯戴上「米老鼠帽」曬照紀念「換東家」的這一天。</p>\r\n<p>迪士尼以71億美金（約2188億台幣）收購福斯，於20日凌晨12點02分合併生效。迪士尼CEO羅伯特艾格（Robert Bob Iger）紐約時間19日下午發表聲明：「這對我們來說是一個非凡的歷史性時刻，將為我們公司和股東創造巨大的長期價值，結合迪士尼、福斯多元且創意內容、經驗豐富的人才，創造卓越的全球娛樂公司，有利於領導一個充滿活力和改變的時代。」同時，迪士尼強調，合併主要是幫助公司「增加其國際足跡」、「擴大直接面對消費者的產品」。</p>\r\n<p>迪士尼旗下包括迪士尼電影公司、迪士尼動畫工作室等，2006年起併購皮克斯工作室，2009年買下漫威娛樂，並在隔年成立漫威工作室，2012年買下《星際大戰》版權擁有者盧卡斯影業，如今福斯影片也成為迪士尼的子公司之一，未來迪士尼將握有福斯版權包括《死侍》、《X戰警》、《驚奇四超人》、《異形》、《阿凡達》、《猩球崛起》、《金牌特務》、《艾莉塔》等以及電視作品《辛普森家庭》、《X檔案》等。</p>",
+      "image": "test4.jpg",
+      "link": "",
+      "markId": "1,2",
+      "likeId": "3,4",
+      "viewCounter": "15"
+    }
+  ]
+}
