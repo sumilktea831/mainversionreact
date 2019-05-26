@@ -18,8 +18,9 @@ class Activity extends React.Component {
         'https://images.unsplash.com/photo-1506512420485-a28339abb3b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
       title: ['活動列表'],
       activityCardData: [],
+      activityCardDataResult:0,
       searchbarRegion:['全部','北部','中部','南部','東部'],
-      searchbarPlace:['全部','咖啡廳','影院','學校','文創園區'],
+      searchbarPlace:['全部','影院','學校','文創園區','咖啡廳'],
       searchbarRegionState:['active','','','',''],
       searchbarPlaceState:['active','','','',''],
     }
@@ -27,7 +28,7 @@ class Activity extends React.Component {
 
   async componentDidMount() {
     try {
-      
+      this.setState({activityCardDataResult:1})
       const res = await fetch('http://localhost:5555/activityCardData', {
         method: 'GET',
         headers: new Headers({
@@ -43,6 +44,7 @@ class Activity extends React.Component {
   }
 
   searchbarOnClick = async(id,searchName,searchKeyWord) => {
+    this.setState({activityCardDataResult:1})
     let data=[];
     switch (searchName){
       case "searchbarRegion":
@@ -101,10 +103,14 @@ class Activity extends React.Component {
         break;
       }
       if(data.length === 0){
-        alert('沒有符合相關條件的活動')
-        this.searchbarOnClick(0,searchName,"全部")
+        
+        this.setState({activityCardDataResult:0})
+        this.setState({searchbarRegionState:['active','','','','']})
+        this.setState({searchbarPlaceState:['active','','','','']})
+        // this.searchbarOnClick(0,searchName,"全部")
       }
       console.log(data)
+      console.log(typeof data)
       this.setState({ activityCardData: data })
     } catch (err) {
       console.log(err)
@@ -174,6 +180,15 @@ class Activity extends React.Component {
                 </div>
               </div>
             </div>
+            {this.state.activityCardDataResult == 0
+            ?(
+            <div className="col-md-12 p-0">
+              <div className="text-center">
+                  <button onClick={()=>this.searchbarOnClick(0)} className="btn btn-warning">沒有符合此條件的活動，請重新搜尋</button>
+              </div>
+            </div>)
+            :('')
+            }
             {this.state.activityCardData.map(data => (
               <LinkContainer to={'/activity/' + data.id}>
                 <div className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5">

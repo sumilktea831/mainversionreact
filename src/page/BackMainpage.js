@@ -1,9 +1,17 @@
 import React from 'react'
 import { Row } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
-import ActivityCard from '../component/activity/ActivityCard/ActivityCard'
 import MemberBackSidenav from '../component/backSidenav/MemberBackSidenav'
+// import CinemaBackSidenav from '../component/backSidenav/CinemaBackSidenav'
+import TitleKaga from '../component/cinema/TitleKaga'
+import AvatarOne from '../component/cinema/AvatarTypeOne/AvatarOne'
+import DataBox from '../component/cinema/DataBoxSM/DataBox'
+import CardKaga from '../component/cinema/CardKaga/v3/CardKaga'
+import ActivityCard from '../component/activity/ActivityCard/ActivityCard'
 import ActivityTitle from '../component/activity/ActivityTitle/ActivityTitle'
+
+//memberId
+const memberId = sessionStorage.getItem('memberId')
 
 class BackSidenav extends React.Component {
   constructor(props) {
@@ -11,6 +19,11 @@ class BackSidenav extends React.Component {
     const path = window.location.pathname.slice(1)
     console.log(path)
     this.state = {
+      // 會員用state
+      avatarOne: '',
+      boxData: '',
+      filmCard: [],
+      //活動用state
       sidenavItems: [],
       activityPageData: [],
       activityPageOtherData: [],
@@ -19,6 +32,7 @@ class BackSidenav extends React.Component {
 
   async componentDidMount() {
     try {
+      //初始資料載入
       //fetch:json-server連線的位址/json中的項目/該項目中id
       const response = await fetch('http://localhost:5555/memberBackSidenav', {
         method: 'GET', //使用GET方法獲取資訊，因為是取得資訊，故不須加body
@@ -37,27 +51,139 @@ class BackSidenav extends React.Component {
       console.log(e)
     }
 
+    // 導入會員資料
     try {
-      const res = await fetch('http://localhost:5555/activityCardData', {
+      const resMember = await fetch('http://localhost:5555/member', {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
           'Content-Type': 'application/json',
         }),
       })
-      const data = await res.json()
-      const activityPageData = data.find(
+      const dataMember = await resMember.json()
+
+      // 導入戲院資料
+      // const resCinema = await fetch('http://localhost:5555/Cinema', {
+      //   method: 'GET',
+      //   headers: new Headers({
+      //     Accept: 'application/json',
+      //     'Content-Type': 'application/json',
+      //   }),
+      // })
+      // const dataCinema = await resCinema.json()
+
+      // 導入論壇資料
+      const resForum = await fetch('http://localhost:5555/forum', {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+      const dataForum = await resForum.json()
+
+      // 導入活動資料
+      const resActivity = await fetch(
+        'http://localhost:5555/activityCardData',
+        {
+          method: 'GET',
+          headers: new Headers({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          }),
+        }
+      )
+      const dataActivity = await resActivity.json()
+
+      // 導入影片資料   --到時候串接用
+      // const resFilm = await fetch('http://localhost:5555/film', {
+      //   method: 'GET',
+      //   headers: new Headers({
+      //     Accept: 'application/json',
+      //     'Content-Type': 'application/json',
+      //   }),
+      // })
+      // const dataFilm = await resFilm.json()
+
+      //篩選出活動的資料
+      const activityPageData = dataActivity.find(
         item => item.id === +this.props.match.params.id
       )
-      const activityPageOtherData = data.filter(
+      const activityPageOtherData = dataActivity.filter(
         item => item.id !== +this.props.match.params.id
       )
       this.setState({ activityPageData: activityPageData })
       this.setState({ activityPageOtherData: activityPageOtherData })
+
+      // 會員my-preview頁面需要的資料
+      const memberPageData = dataMember.find(item => item.id === memberId)
+      // 元件AvatarOne -- 完成
+      // 如果沒有頭像就給他預設頭像
+      const memberAvatar =
+        memberPageData.avatar !== '' ? memberPageData.avatar : 'movieStar.jpg'
+      const avatarOneData = {
+        img: 'http://localhost:3000/images/' + memberAvatar,
+        name: memberPageData.name,
+        purview: memberPageData.permission,
+        SignUpDate: memberPageData.join_date,
+      }
+
+      // 元件DataBox -- 完成
+      const forumPublishData = dataForum.filter(
+        item => item.forumNameId === memberId
+      )
+      const dataBoxData = {
+        collection: memberPageData.collectFilm.length,
+        Awesome: memberPageData.collectArticle.length,
+        PageViews: forumPublishData.length,
+      }
+      // 元件filmCard
+      // 先找出影片id跟會員收藏id一致的資料 (會員收藏是array) --到時候串接用
+      // const filmCard = dataFilm.filter(item =>
+      //   memberPageData.collectFilm.map(items => item.id === items)
+      // )
+      // 如果資料筆數超過設定筆數  就只剩下這幾筆 (這邊設定4筆)  --到時候串接用
+      // const newfilmCardata = []
+      // this.state.filmCard.map((item, index) => {
+      //   if (index < 4) {
+      //     return newfilmCardata.push(item)
+      //   }
+      //   return item
+      // })
+      // const filmCardData = newfilmCardata.map(item => ({      ----到時候串接用
+      const filmCardData = {
+        key: '',
+        id: '',
+        title: '',
+        subtitle: '',
+        img: '',
+        link: '',
+        star: '',
+        mark: '',
+        newStarAndMark: '',
+        del: '',
+      }
+      this.setState({
+        avatarOne: avatarOneData,
+        boxData: dataBoxData,
+        filmCard: filmCardData,
+      })
     } catch (err) {
       console.log(err)
     }
   }
+
+  // 等拿到影片json再串吧
+  filmCardNewStarAndMark = (newStar, newMark) => {
+    console.log(newStar)
+    console.log(newMark)
+    alert('newStarAndMark is Back to father')
+  }
+  filmCardDel = () => {
+    alert('delFunction is start')
+  }
+
+  // 登出function
   handleLogout = () => {
     //點擊登出，清除session並導回主頁
     // sessionStorage.removeItem('memberID') //不知道為什麼這個方法無效
@@ -74,8 +200,11 @@ class BackSidenav extends React.Component {
       window.location.href = '/LoginSign'
     } else {
       const pagename = this.props.location.pathname.slice(14)
+
       return (
         <>
+          {/* 暫時上方navbar區塊 */}
+          <div className="bg-info pt-5 pb-4" />
           <Row>
             <MemberBackSidenav sidenavItems={this.state.sidenavItems} />
             <div //右邊內容框，之後要引入內容component
@@ -85,6 +214,117 @@ class BackSidenav extends React.Component {
                 padding: '240px 120px 120px 120px',
               }}
             >
+              {/* 會員公開個人資訊 */}
+              {pagename === 'my-preview' ? (
+                <>
+                  <TitleKaga title="基本資料" />
+                  <div
+                    className="row d-flex align-items-center my-5"
+                    style={{ height: '200px' }}
+                  >
+                    {/* 上面資訊列 */}
+                    <AvatarOne
+                      img={this.state.avatarOne.img}
+                      name={this.state.avatarOne.name}
+                      purview={this.state.avatarOne.purview}
+                      SignUpDate={this.state.avatarOne.SignUpDate}
+                    />
+                    <DataBox
+                      collection={this.state.boxData.collection}
+                      Awesome={this.state.boxData.Awesome}
+                      PageViews={this.state.boxData.PageViews}
+                      member
+                    />
+                  </div>
+                  {/* 隔開兩類專用 */}
+                  <div className="py-5">
+                    <TitleKaga title="喜好類型" />
+                  </div>
+                  {/* 喜好列塞入處 */}
+                  <div
+                    className="row d-flex align-items-center bg-danger"
+                    style={{ height: '200px' }}
+                  >
+                    喜好列 多選欄(尚無原件套用)
+                  </div>
+                  <div className="py-5" />
+                  <TitleKaga title="收藏影片" />
+                  <div className="d-flex flex-wrap col-lg-12 mt-4">
+                    <CardKaga
+                      key=""
+                      id=""
+                      title=""
+                      subtitle=""
+                      img=""
+                      link=""
+                      // collectionIcon
+                      // collectionClick={this.collectionClick}
+                      // collection={}
+                      popup
+                      member
+                      star={[]}
+                      starAmimation
+                      mark={[]}
+                      newStarAndMark={this.filmCardNewStarAndMark}
+                      del={this.filmCardDel}
+                    />
+                    {/* {this.state.filmCard.map(item => (   --串接時使用
+                      <CardKaga
+                        key={item.key}
+                        id={item.id}
+                        title={item.title}
+                        subtitle={item.subtitle}
+                        img={'http://localhost:3000/images/' + item.img}
+                        link={'/film/' + item.link}
+                        // collectionIcon
+                        // collectionClick={this.collectionClick}
+                        // collection={}
+                        popup
+                        member
+                        star={item.star}
+                        starAmimation
+                        mark={item.cinemaMark}
+                        newStarAndMark={this.filmCardNewStarAndMark}
+                        del={this.filmCardDel}
+                      />
+                    ))} */}
+                  </div>
+                  <div className="py-5" />
+                  <TitleKaga title="收藏文章" />
+                  <div
+                    className=" d-flex flex-wrap col-lg-12 bg-danger my-5"
+                    style={{
+                      height: '300px',
+                    }}
+                  >
+                    table(請找情哥)
+                  </div>
+                  <div className="py-5" />
+                  <TitleKaga title="發文紀錄" />
+                  <div
+                    className=" d-flex flex-wrap col-lg-12 bg-danger my-5"
+                    style={{
+                      height: '300px',
+                    }}
+                  >
+                    table(請找情哥)
+                  </div>
+                </>
+              ) : (
+                ''
+              )}
+              {/* 會員個人資訊編輯 */}
+              {pagename === 'edit-myinfo' ? (
+                <>
+                  <div>
+                    <div>上左</div>
+                    <div>上右</div>
+                  </div>
+                  <div>下</div>
+                </>
+              ) : (
+                ''
+              )}
               {pagename == 'activityMemberBoard' ? (
                 <>
                   <div className="row">
