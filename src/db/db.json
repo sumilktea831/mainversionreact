@@ -115,6 +115,115 @@
       "joinContent": "線上報名即可參加。",
       "joinContentCurrentPeople": "無限制名額。",
       "place":"北部文創園區"
+    },
+    {
+      "id": 7,
+      "theater": "總督數位影城",
+      "title": "慶祝周年慶，總督數位爆米花免費吃",
+      "content": "HELLO KITTY應援男友、佛心活動～帶著「世足限量造型爆米花桶」來總督數位影城，就不用吃土囉！ 爆米花免費吃到飽！ ",
+      "imgSrc": "https://images.unsplash.com/photo-1521967906867-14ec9d64bee8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "isCollect": false,
+      "theaterMap": "106台北市大安區通化街24巷1號",
+      "GUINumber": "16086448",
+      "website": "https://www.google.com/",
+      "email": "theater@gmail.com",
+      "phone": "0912345678",
+      "lat": "25.048434",
+      "lng": "121.544851",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。",
+
+      "place":"北部影院"
+    },
+    {
+      "id": 8,
+      "theater": "勤美術館",
+      "title": "六年走過 勤美術館感謝有你",
+      "content": "六年走過，勤美術館與你一起，建構了屬於草悟道獨有的街區生活美學。完成階段性任務之後，勤美術館即將於2019年一月開始進行整修施工工程。為了推廣更多台灣青年藝術家與創作者，為了提升草悟道生活與藝文能量，為了深耕社區和鄰里的互動脈絡，邀請國際建築大師–隈研吾先生進行未來美術館設計，期待拉起下一個藝術與人、城市、環境之間的美好藝文平台。勤美術館空間即將開始進行整修，即日起暫時停止對外開放。後續消息請注意勤美術館FB粉絲團。",
+      "imgSrc": "https://images.unsplash.com/photo-1472457897821-70d3819a0e24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1349&q=80",
+      "isCollect": false,
+      "theaterMap": "404台中市西區館前路71號",
+      "GUINumber": "16086448",
+      "website": "https://www.google.com/",
+      "email": "theater@gmail.com",
+      "phone": "0912345678",
+      "lat": "24.152395",
+      "lng": "120.663567",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。",
+      "place":"中部文創園區"
+    },
+    {
+      "id": 9,
+      "theater": "松山文創園區 藝思空間",
+      "title": "VR+3DMAX的全新觀賞體驗就在松山文創",
+      "content": "3DMAX的全新觀賞體驗就在松山文創",
+      "imgSrc": "https://images.unsplash.com/photo-1478358161113-b0e11994a36b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+      "isCollect": false,
+      "theaterMap": "100台北市中正區八德路一段1號",
+      "GUINumber": "16086448",
+      "website": "https://www.google.com/",
+      "email": "theater@gmail.com",
+      "phone": "0912345678",
+      "lat": "25.043372",
+      "lng": "121.561157",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。",
+      "place":"北部文創園區"
+    },
+    {
+      "id": 10,
+      "theater": "世新大學",
+      "title": "影片演員招募中！",
+      "content": "影片演員招募中！",
+      "imgSrc": "https://images.unsplash.com/photo-1551448215-3a9aa113815c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "isCollect": false,
+      "theaterMap": "10491台北市中山區南京東路三段133號",
+      "GUINumber": "16086448",
+      "website": "https://www.google.com/",
+      "email": "theater@gmail.com",
+      "phone": "0912345678",
+      "lat": "24.988694",
+      "lng": "121.544043",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。",
+      "place":"北部學校"
+    },
+    {
+      "id": 11,
+      "theater": "華山1914文化創意產業園區",
+      "title": "五六零年代電影串燒",
+      "content": "五六零年代電影串燒",
+      "imgSrc": "https://images.unsplash.com/photo-1543059047-278b7120468c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=617&q=80",
+      "isCollect": false,
+      "theaterMap": "110台北市信義區菸廠路88號",
+      "GUINumber": "16086448",
+      "website": "https://www.google.com/",
+      "email": "theater@gmail.com",
+      "phone": "0912345678",
+      "lat": "25.044136",
+      "lng": "121.529397",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。",
+      "place":"北部文創園區"
+    },
+    {
+      "id": 12,
+      "theater": "文山劇場",
+      "title": "65歲長者，免費入場",
+      "content": "65歲長者，免費入場",
+      "imgSrc": "https://images.unsplash.com/photo-1508963493744-76fce69379c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "isCollect": false,
+      "theaterMap": "105台北市松山區八德路四段138號B1 No. 138號八德路四段",
+      "GUINumber": "16086448",
+      "website": "https://www.google.com/",
+      "email": "theater@gmail.com",
+      "phone": "0912345678",
+      "lat": "24.992111",
+      "lng": "121.541125",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。",
+      "place":"北部文創園區"
     }
   ],
   "cinema-sign-inputmsg": [
@@ -1279,59 +1388,6 @@
       "markId": "1,2",
       "likeId": "3,4",
       "viewCounter": "15"
-    }
-  ],
-  "articleComment": [
-    {
-      "id": 1,
-      "aid": 1,
-      "date": "2019-05-30",
-      "author": "皮卡丘",
-      "content": "哈囉你好嗎"
-    },
-    {
-      "id": 2,
-      "aid": 1,
-      "date": "2019-05-30",
-      "author": "桐谷和人",
-      "content": "哈囉你好嗎"
-    },
-    {
-      "id": 3,
-      "aid": 2,
-      "date": "2019-05-30",
-      "author": "林克",
-      "content": "哈囉你好嗎",
-    }
-  ],
-  "articleResComment": [
-    {
-      "id": 1,
-      "rid": 1,
-      "date": "2019-05-30",
-      "author": "魯路修",
-      "content": "拿乳頭!!!"
-    },
-    {
-      "id": 2,
-      "rid": 1,
-      "date": "2019-05-30",
-      "author": "朱雀",
-      "content": "殺死給!!!"
-    },
-    {
-      "id": 3,
-      "rid": 2,
-      "date": "2019-05-30",
-      "author": "史努比",
-      "content": "hello, how are you?"
-    },
-    {
-      "id": 4,
-      "rid": 2,
-      "date": "2019-05-30",
-      "author": "查理布朗",
-      "content": "thank you! see you again."
     }
   ]
 }

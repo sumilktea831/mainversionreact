@@ -4,12 +4,16 @@
 html,
 body {
   background: #242b34;
+  margin:0 !important;
+  padding:0 !important;
   font-family: 'Noto Sans TC', sans-serif;
   box-sizing: border-box;
   color: #d4d1cc !important;
   scroll-behavior: smooth;
 }
 .container-fuild {
+  padding:0;
+  margin:0;
   max-width: 100%;
 }
 
