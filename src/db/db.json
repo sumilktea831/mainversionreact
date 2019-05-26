@@ -433,11 +433,15 @@
       "title": "我的活動",
       "options": [
         {
-          "id": "collect-activity",
+          "id": "activityMemberBoard",
+          "name": "活動總覽"
+        },
+        {
+          "id": "activityMemberCollect",
           "name": "收藏活動"
         },
         {
-          "id": "my-activity",
+          "id": "activityMemberSignUp",
           "name": "已報名活動"
         }
       ],
