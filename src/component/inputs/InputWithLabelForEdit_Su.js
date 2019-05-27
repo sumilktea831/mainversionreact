@@ -4,7 +4,8 @@ import InputText_Su from './InputText_Su'
 import InputSelectForEdit_Su from './InputSelectForEdit_Su'
 import InputFile_Su from './InputFile_Su'
 import InputRadio_Su from './InputRadio_Su'
-import InputRadioForGender_Su from './InputRadioForGender_Su'
+import InputRadioForGenderSu from './InputRadioForGenderSu'
+import InputRadioForCinemaTypeSu from './InputRadioForCinemaTypeSu'
 
 //=====InputText_Su、InputSelect_Su、InputFile_Su=====
 //----------------使用說明----------------
@@ -47,7 +48,7 @@ const InputWithLabel_Su = props => {
         <Col // 這裡是input的col
           lg={8}
           className="p-0 border-0  rounded d-flex flex-nowrap align-items-center"
-          // style={{ width: `${props.inputWidth}` }}
+        // style={{ width: `${props.inputWidth}` }}
         >
           {/* 根據傳入的type來判斷要使用哪一種input */}
           {props.inputType === 'text' ? (
@@ -119,7 +120,21 @@ const InputWithLabel_Su = props => {
               thisData={props.thisData}
             />
           ) : props.inputType === 'radioGender' ? (
-            <InputRadioForGender_Su
+            <InputRadioForGenderSu
+              inputWidth={props.inputWidth}
+              inputHeight={props.inputHeight}
+              id={props.id}
+              iconLeft={props.iconLeft}
+              iconLeftSize={props.iconLeftSize}
+              name={props.id}
+              selectOptions={props.selectOptions}
+              onChange={props.onChange}
+              col={props.col}
+              value={props.thisData[props.id]}
+              thisData={props.thisData}
+            />
+          ) : props.inputType === 'radioCinemaType' ? (
+            <InputRadioForCinemaTypeSu
               inputWidth={props.inputWidth}
               inputHeight={props.inputHeight}
               id={props.id}
@@ -133,8 +148,8 @@ const InputWithLabel_Su = props => {
               thisData={props.thisData}
             />
           ) : (
-            '找不到符合的input類型'
-          )}
+                          '找不到符合的input類型'
+                        )}
         </Col>
       </Row>
     </>

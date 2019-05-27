@@ -99,6 +99,7 @@ class CinemaEditInfo extends React.Component {
     // console.log(this.state.thisData)
     console.log(event.target.value)
     console.log(event.target.name)
+    console.log('text: ' + event.target.text)
     let id = event.target.id
     let value = event.target.value
     let eventName = event.target.name
@@ -106,7 +107,7 @@ class CinemaEditInfo extends React.Component {
     let AllCinemaExpectThis = this.props.allCinemaData.filter(
       item => item !== this.state.originData
     )
-    console.log(AllCinemaExpectThis)
+    // console.log(AllCinemaExpectThis)
     let newcheckstate = { ...this.state.checkok }
     // console.log(copyData)
     let taxid_pattern = /^\d{8}$/
@@ -355,7 +356,7 @@ class CinemaEditInfo extends React.Component {
       console.log(newcheckstate)
     }
 
-    //判斷如果拿到的name屬於state裡面的屬性，就把剛才複製的state的該項目更新，然後再setState回去
+    //判斷如果拿到的name屬於state裡面的屬性，就把剛才複製的state的該項目更新，然後再setState回
     if (
       eventName === 'cinemaName' ||
       eventName === 'cinemaTaxid' ||
@@ -420,14 +421,14 @@ class CinemaEditInfo extends React.Component {
     return (
       <>
         <Row>
-          <div className="col-lg-6">
+          <div className="col-lg-7 mt-3 h5">
             {this.props.cinemaEditInputmsg.map(item => (
               <>
                 <InputWithLabelForEdit_Su
                   key={item.id}
                   id={item.id}
                   inputWidth={item.w}
-                  inputHeight={item.h}
+                  inputHeight='48px'
                   inputType={item.inputType}
                   inputLabel={item.inputLabel}
                   iconLeft={item.iconL}
@@ -448,7 +449,7 @@ class CinemaEditInfo extends React.Component {
               </>
             ))}
           </div>
-          <div className="col-lg-6 bg-primary">
+          <div className="col-lg-5 mt-3 bg-primary">
             這裡放頭像(含編輯按鈕)、email、權限
           </div>
         </Row>

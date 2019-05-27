@@ -4,7 +4,7 @@ import InputText_Su from './InputText_Su'
 import InputSelect_Su from './InputSelect_Su'
 import InputFile_Su from './InputFile_Su'
 import InputRadio_Su from './InputRadio_Su'
-import InputRadioForGender_Su from './InputRadioForGender_Su'
+import InputRadioForGenderSu from './InputRadioForGenderSu'
 
 //=====InputText_Su、InputSelect_Su、InputFile_Su=====
 //----------------使用說明----------------
@@ -109,7 +109,7 @@ const InputWithLabel_Su = props => {
               col={props.col}
             />
           ) : props.inputType === 'radioGender' ? (
-            <InputRadioForGender_Su
+            <InputRadioForGenderSu
               inputWidth={props.inputWidth}
               inputHeight={props.inputHeight}
               id={props.id}
