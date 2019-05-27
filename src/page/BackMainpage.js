@@ -136,6 +136,16 @@ class BackSidenav extends React.Component {
       })
       const dataForum = await resForum.json()
 
+      // 導入影片資料   --到時候串接用
+      // const resFilm = await fetch('http://localhost:5555/film', {
+      //   method: 'GET',
+      //   headers: new Headers({
+      //     Accept: 'application/json',
+      //     'Content-Type': 'application/json',
+      //   }),
+      // })
+      // const dataFilm = await resFilm.json()
+
       // 導入活動資料
       const resActivity = await fetch(
         'http://localhost:5555/activityCardData',
@@ -149,17 +159,6 @@ class BackSidenav extends React.Component {
       )
       const dataActivity = await resActivity.json()
 
-      // 導入影片資料   --到時候串接用
-      // const resFilm = await fetch('http://localhost:5555/film', {
-      //   method: 'GET',
-      //   headers: new Headers({
-      //     Accept: 'application/json',
-      //     'Content-Type': 'application/json',
-      //   }),
-      // })
-      // const dataFilm = await resFilm.json()
-
-      //篩選出活動的資料
       const activityPageData = dataActivity.find(
         item => item.id === +this.props.match.params.id
       )
@@ -397,6 +396,8 @@ class BackSidenav extends React.Component {
 
               {pagename == 'activityMemberBoard' ? (
                 <>
+                {console.log(this.state.thisMemberData)}
+                {console.log(this.state.thisMemberData.collectActivity)}
                   <div className="row">
                     <div className="col-md-12 p-0">
                       <ActivityTitle
