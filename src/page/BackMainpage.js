@@ -33,6 +33,8 @@ class BackSidenav extends React.Component {
       //活動用state
       activityPageData: [],
       activityPageOtherData: [],
+      activityMemberFavorite: [],
+      activityMemberJoin: [],
     }
   }
 
@@ -160,22 +162,24 @@ class BackSidenav extends React.Component {
       const dataActivity = await resActivity.json()
 
       const activityPageData = dataActivity.find(
-        item => item.id === +this.props.match.params.id
+        item => item.id === this.props.match.params.id
       )
       const activityPageOtherData = dataActivity.filter(
-        item => item.id !== +this.props.match.params.id
+        item => item.id !== this.props.match.params.id
       )
-      
 
-      let activityMemberCollect;
-      let testdata = JSON.parse(JSON.stringify(this.state.thisMemberData.collectActivity))
-      
-      activityMemberCollect = dataActivity.filter(
-        item => item.id === 1)
-      console.log(activityMemberCollect)
+      const activityMemberFavorite = dataActivity.filter(
+        item => this.state.thisMemberData.collectActivity.indexOf(item.id) > -1
+      )
+
+      const activityMemberJoin = dataActivity.filter(
+        item =>
+          this.state.thisMemberData.collectActivityJoin.indexOf(item.id) > -1
+      )
       this.setState({ activityPageData: activityPageData })
       this.setState({ activityPageOtherData: activityPageOtherData })
-      // this.setState({ activityMemberCollect : activityMemberCollect })
+      this.setState({ activityMemberFavorite: activityMemberFavorite })
+      this.setState({ activityMemberJoin: activityMemberJoin })
 
       // 會員my-preview頁面需要的資料
       const memberPageData = dataMember.find(item => item.id === memberId)
@@ -405,8 +409,6 @@ class BackSidenav extends React.Component {
 
               {pagename == 'activityMemberBoard' ? (
                 <>
-                {/* {console.log(this.state.thisMemberData)}
-                {console.log(this.state.thisMemberData.collectActivity)} */}
                   <div className="row">
                     <div className="col-md-12 p-0">
                       <ActivityTitle
@@ -414,7 +416,7 @@ class BackSidenav extends React.Component {
                         className="content-title"
                       />
                     </div>
-                    {this.state.activityPageOtherData.map(data => (
+                    {this.state.activityMemberFavorite.map(data => (
                       <LinkContainer to={'/activity/' + data.id + '/return'}>
                         <div
                           className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5"
@@ -431,15 +433,13 @@ class BackSidenav extends React.Component {
                         </div>
                       </LinkContainer>
                     ))}
-                  </div>
-                  <div className="row mt-5">
-                    <div className="col-md-12 p-0">
+                    <div className="col-md-12 p-0 mt-5">
                       <ActivityTitle
-                        title={'收藏活動'}
+                        title={'已報名活動'}
                         className="content-title"
                       />
                     </div>
-                    {this.state.activityPageOtherData.map(data => (
+                    {this.state.activityMemberJoin.map(data => (
                       <LinkContainer to={'/activity/' + data.id + '/return'}>
                         <div
                           className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5"
@@ -451,7 +451,6 @@ class BackSidenav extends React.Component {
                             title={data.theater}
                             subtitle={data.title}
                             imgSrc={data.imgSrc}
-                            collectOpen
                             isCollect={data.isCollect}
                           />
                         </div>
@@ -471,7 +470,7 @@ class BackSidenav extends React.Component {
                         className="content-title"
                       />
                     </div>
-                    {this.state.activityPageOtherData.map(data => (
+                    {this.state.activityMemberFavorite.map(data => (
                       <LinkContainer to={'/activity/' + data.id + '/return'}>
                         <div
                           className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5"
@@ -502,7 +501,7 @@ class BackSidenav extends React.Component {
                         className="content-title"
                       />
                     </div>
-                    {this.state.activityPageOtherData.map(data => (
+                    {this.state.activityMemberJoin.map(data => (
                       <LinkContainer to={'/activity/' + data.id + '/return'}>
                         <div
                           className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5"
