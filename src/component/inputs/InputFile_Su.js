@@ -33,21 +33,23 @@ const InputFile_Su = props => {
           />
           <div
             id={props.id + 'filename'}
-            className="col px-0 pt-2 border border-warning rounded-left text-center"
+            className="col px-0 border border-warning rounded-left text-center h6"
             style={{
-              // height: `${props.inputHeight}`,
+              height: `${props.inputHeight}`,
               background: '#1F242A',
+              padding: '14px 0',
               // color: '#FFA510',
             }}
           >
             {props.placeholder}
           </div>
           <div
-            className="col-3 px-1 pt-2  border border-left-0 border-warning rounded-right text-center"
+            className="col-3 px-1 border border-left-0 border-warning rounded-right text-center h6"
             style={{
               height: `${props.inputHeight}`,
               background: '#1F242A',
               color: '#FFA510',
+              padding: '14px 0',
             }}
           >
             選擇檔案

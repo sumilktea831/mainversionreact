@@ -61,36 +61,36 @@ class MemberEditInfo extends React.Component {
   }
 
   //儲存按鈕onclick
-  handleSaveInfo = () => {
-    let memberid = this.state.thisData.id
-    let isAllChecked = true
-    let checkArray = Object.values(this.state.checkok)
-    isAllChecked = checkArray.reduce((a, b) => a && b)
-    console.log('isAllChecked: ' + isAllChecked)
-    if (isAllChecked) {
-      try {
-        fetch('http://localhost:5555/member/' + memberid, {
-          method: 'PUT',
-          body: JSON.stringify(this.state.thisData),
-          headers: new Headers({
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          }),
-        })
-          .then(res => res.json())
-          .then(jsonObject => {
-            this.setState({ thisData: jsonObject }, () => {
-              alert('資料儲存成功')
-              window.location.reload()
-            })
-          })
-      } catch (e) {
-        console.log(e)
-      }
-    } else {
-      alert('資料填寫有誤，請再次確認您的資料！')
-    }
-  }
+  // handleSaveInfo = () => {
+  //   let memberid = this.state.thisData.id
+  //   let isAllChecked = true
+  //   let checkArray = Object.values(this.state.checkok)
+  //   isAllChecked = checkArray.reduce((a, b) => a && b)
+  //   console.log('isAllChecked: ' + isAllChecked)
+  //   if (isAllChecked) {
+  //     try {
+  //       fetch('http://localhost:5555/member/' + memberid, {
+  //         method: 'PUT',
+  //         body: JSON.stringify(this.state.thisData),
+  //         headers: new Headers({
+  //           Accept: 'application/json',
+  //           'Content-Type': 'application/json',
+  //         }),
+  //       })
+  //         .then(res => res.json())
+  //         .then(jsonObject => {
+  //           this.setState({ thisData: jsonObject }, () => {
+  //             alert('資料儲存成功')
+  //             window.location.reload()
+  //           })
+  //         })
+  //     } catch (e) {
+  //       console.log(e)
+  //     }
+  //   } else {
+  //     alert('資料填寫有誤，請再次確認您的資料！')
+  //   }
+  // }
 
   //輸入框change事件
   handleInputTextChange = event => {
@@ -291,14 +291,14 @@ class MemberEditInfo extends React.Component {
     return (
       <>
         <Row>
-          <div className="col-lg-6">
+          <div className="col-lg-7 mt-3 h5">
             {this.props.memberEditInputmsg.map(item => (
               <>
                 <InputWithLabelForEdit_Su
                   key={item.id}
                   id={item.id}
                   inputWidth={item.w}
-                  inputHeight={item.h}
+                  inputHeight='48px'
                   inputType={item.inputType}
                   inputLabel={item.inputLabel}
                   iconLeft={item.iconL}
@@ -318,7 +318,7 @@ class MemberEditInfo extends React.Component {
               </>
             ))}
           </div>
-          <div className="col-lg-6 bg-primary">
+          <div className="col-lg-5 mt-3 bg-primary">
             這裡放頭像(含編輯按鈕)、email、權限
           </div>
         </Row>
@@ -342,11 +342,11 @@ class MemberEditInfo extends React.Component {
         <Row className="my-5 d-flex justify-content-center">
           <button
             className="btn btn-warning h5 my-3 px-5 py-2 border-0 rounded bg-orange text-darkblue"
-            onClick={this.handleSaveInfo}
-            // onClick={this.props.handleMemberEditSave(
-            //   this.state.thisData,
-            //   this.state.checkok
-            // )}
+            // onClick={this.handleSaveInfo}
+            onClick={this.props.handleMemberEditSave(
+              this.state.thisData,
+              this.state.checkok
+            )}
           >
             儲存變更
           </button>

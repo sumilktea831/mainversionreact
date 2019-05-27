@@ -5,15 +5,15 @@ const handleClick = id => event => {
   let RadiosBtn = [...document.getElementsByName('radio-btn')]
   //   console.log(thisRadio)
   //   console.log(RadiosBtn)
-  //   console.log(event.target)
+
   thisRadio.click()
   RadiosBtn.map(
     btn =>
       (btn.className =
-        'px-2 position-absolute rounded border border-warning bg-darkblue text-mywhite mytransition5')
+        'px-2 position-absolute rounded border border-warning bg-darkblue text-mywhite')
   )
   event.target.className =
-    'px-2 position-absolute rounded border border-warning bg-orange text-darkblue mytransition5'
+    'px-2 position-absolute rounded border border-warning bg-orange text-darkblue'
 }
 const InputRadio_Su = props => {
   return (
@@ -42,10 +42,36 @@ const InputRadio_Su = props => {
               />
 
               <label className="custom-control-label" htmlFor={item.id} />
-
-              <button
+              {props.value === item.id ?
+                <button
+                  name="radio-btn"
+                  className="px-2 position-absolute rounded border border-warning bg-orange text-darkblue"
+                  style={{
+                    width: `${props.inputWidth ? props.inputWidth : '100%'}`,
+                    height: `${props.inputHeight}`,
+                    left: '-1px',
+                  }}
+                  onClick={handleClick(`${item.id}`)}
+                >
+                  {item.name}
+                </button>
+                :
+                <button
+                  name="radio-btn"
+                  className="px-2 position-absolute rounded border border-warning bg-darkblue text-mywhite"
+                  style={{
+                    width: `${props.inputWidth ? props.inputWidth : '100%'}`,
+                    height: `${props.inputHeight}`,
+                    left: '-1px',
+                  }}
+                  onClick={handleClick(`${item.id}`)}
+                >
+                  {item.name}
+                </button>
+              }
+              {/* <button
                 name="radio-btn"
-                className="px-2 position-absolute rounded border border-warning bg-darkblue text-mywhite mytransition5"
+                className="px-2 position-absolute rounded border border-warning bg-darkblue text-mywhite"
                 style={{
                   width: `${props.inputWidth ? props.inputWidth : '100%'}`,
                   height: `${props.inputHeight}`,
@@ -54,7 +80,7 @@ const InputRadio_Su = props => {
                 onClick={handleClick(`${item.id}`)}
               >
                 {item.name}
-              </button>
+              </button> */}
             </div>
           </>
         ))}
