@@ -5,7 +5,7 @@ const ForumCommentCancelRoy = props => {
     <>
       <button
         type="button"
-        className="btn btn-warning px-3"
+        className="btn btn-outline-warning px-3"
         onClick={props.handleCommentInputCancel}
       >
         取消
