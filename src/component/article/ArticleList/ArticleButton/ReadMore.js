@@ -10,14 +10,13 @@ class ReadMore extends React.Component {
   render() {
     return (
       <>
-        <div className="text-right my-2 text-sm">
-          <Link
-            to={'/article/' + this.props.sid}
-            // onClick={() => this.props.handleClick(1)}
-          >
-            閱讀更多......
-          </Link>
-        </div>
+        <Link
+          className="link-a"
+          to={'/article/' + this.props.sid}
+          // onClick={() => this.props.handleClick(1)}
+        >
+          (繼續閱讀)
+        </Link>
       </>
     )
   }

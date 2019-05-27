@@ -8,28 +8,40 @@ import ActionButtonCategoryRoy from '../component/Forum/ForumActionButton/Action
 import ActionButtonFilterRoy from '../component/Forum/ForumActionButton/ActionButtonFilterRoy'
 import ActionBtnScrollTopRoy from '../component/Forum/ForumActionButton/ActionBtnScrollTopRoy'
 import ActionBtnScrollBottomRoy from '../component/Forum/ForumActionButton/ActionBtnScrollBottomRoy'
-import ActionBtnCreateRoy from '../component/Forum/ForumActionButton/ActionBtnCreateRoy'
+// import ActionBtnCreateRoy from '../component/Forum/ForumActionButton/ActionBtnCreateRoy'
+// import ActionBtnUpdateArticleRoy from '../component/Forum/ForumActionButton/ActionBtnUpdateArticleRoy'
 import ForumSideActionBarRoy from '../component/Forum/ForumSideActionBarRoy'
 import ForumCategoryTextRoy from '../component/Forum/ForumArticleComment/ForumCategoryTextRoy'
 import ForumCommentCountRoy from '../component/Forum/ForumArticleComment/ForumCommentCountRoy'
 import ForumArticleCommentInputRoy from '../component/Forum/ForumArticleComment/ForumArticleCommentInputRoy'
 import ForumCommentCancelRoy from '../component/Forum/ForumArticleComment/ForumCommentCancelRoy'
 import ForumCommentCreateRoy from '../component/Forum/ForumArticleComment/ForumCommentCreateRoy'
+// InputCardContent_MemberSignUp發文用
+import InputCardContent_MemberSignUp from '../component/Forum/ForumActionButton/InputCardContent_MemberSignUp'
+import ForumPage from '../component/Forum/ForumArticleList/ForumPage'
 
 class Forum extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
+      // 根據搜尋結果設定頁面顯示
+      searchStatus: 'd-none',
+      searchNoDataContentStatus: '',
+      searchNoDataContentHiddenArea: 'd-none',
       loading: false,
-      // 用來接JSONSERVER所FETCH到的資料
+      // listdata用來接JSONSERVER所FETCH到的資料
       // 再didmount裡有reverse過要注意陣列索引值
       listdata: [],
-      // 用來接列表點擊後當文章對應到的所有內容，用來渲染到文章內容用
+      //listdataReverse 將原始撈出的listdata陣列反轉方便控制最後一筆顯示最上面
+      listdataReverse: [],
+      //nowIDdata 用來接比對params文章對應到的所有內容，用來渲染到文章內容用
+      nowIDdata: {},
+      // currentdata用來接列表點擊後當文章對應到的所有內容，用來渲染到文章內容用
       currentdata: {},
       // 用來裝留言，因為要MAP所以要用陣列方式
       currentcommentdata: [],
-      // 裝params id比對成功撈出的資料
-      currentdataforApi: {},
+      // API型式裝留言
+      currentcommentApi: [],
       // 發表文章光香彈出判斷
       show: false,
       imagePath: '/images/',
@@ -40,18 +52,68 @@ class Forum extends React.Component {
       forumViews: 0,
       forumCreateDate: '',
       forumCreateDateInSecond: 0,
+      forumCreateTimeCount: 0,
       forumName: '',
+      // 要撈會員
+      forumNameId: '',
+      // 發文會員的ID
       forumAvatar: '9743_2.jpg',
       forumArticlePic: '',
       forumReview: '',
-      forumCommentCount: '',
+      forumCommentCount: 0,
       forumCommentArea: [],
       // 判斷列表是否有被點擊
       listClickChek: false,
+      // 判斷留言發送是否有被點擊
+      CommentClickChek: false,
       // 裝留言input欄位變更後站存空間，到最後在發送留言時再引入值
       commentTempStorage: '',
       // 確認留言欄是否有輸入內容當作狀態判斷讓送出按鈕控制是否要不要作用
       CommentInputStatus: false,
+      // 確認是否有點選邊輯標題按鈕
+      // 一定要把true false設為字串傳，contenteditable如果只給boolean不會顯示
+      handleHeadlineEditStatus: 'false',
+      handleArticleEditStatus: 'false',
+      HeadlineCancelBtnStatus: 'd-none',
+      HeadlineSaveBtnStatus: 'd-none',
+      HeadlineEditBtnStatus: '',
+      ArticleCancelBtnStatus: 'd-none',
+      ArticleSaveBtnStatus: 'd-none',
+      ArticleEditBtnStatus: '',
+      // 發文時間計算用
+      hour: 0,
+      minute: 0,
+      second: 0,
+      ForumTotalPages: 0,
+      // CSS內容
+      inputH: '48px',
+      inputmsg: [
+        //設定Input內容
+        {
+          id: 'Forumtitle',
+          w: '',
+          h: '',
+          iconL: 'fas fa-envelope',
+          iconLS: '28px',
+          placeholder: '',
+          iconR: '',
+          iconRS: '',
+          inputType: 'text',
+          inputLabel: '標題',
+        },
+        {
+          id: 'Forumfile',
+          w: '',
+          h: '',
+          iconL: 'fas fa-envelope',
+          iconLS: '28px',
+          placeholder: '',
+          iconR: '',
+          iconRS: '',
+          inputType: 'file',
+          inputLabel: '圖片',
+        },
+      ],
     }
   }
 
@@ -79,65 +141,173 @@ class Forum extends React.Component {
 
       await this.setState({
         // 用來下面ForumArticleListRoy渲染列表內容
-        // 在這裡反轉物件順序，不要在ForumArticleListRoy MAP前用，否則每當重新渲染就會順序反過來
-        listdata: jsonObject.reverse(),
-        // 預設載入最新文章內容，在下面ForumArticleContentRoy元件渲染
-        //帶入參數 jsonObject.length - 1為預設顯示最後一筆資料
-        currentdata: jsonObject[jsonObject.length - 1],
-        // 這邊重建一個留言區的陣列用來裝，直接用currentdata會有問題，
-        //因為currentdata預設為物件，在MAP的時候會有問題
-        currentcommentdata: jsonObject[0].forumCommentArea,
+        listdata: jsonObject,
       })
-      console.log(jsonObject)
-      console.log(this.state.currentcommentdata)
-      // 用params抓app的router id比對 listdata id相同的那筆資料，並撈出來倒進currentdataAPI
-      // 提供API連接頁面用
-      const currentdataAPI = this.state.listdata.find(
-        item => item.id === +this.props.match.params.id
+
+      // 將讀出的陣列反轉，用來讓資料最後一筆顯示在最上面
+      // 方便陣列控制只要選索引0就可選到最後一筆
+      const listdatareverse = this.state.listdata.reverse()
+      await this.setState({
+        listdataReverse: listdatareverse,
+      })
+
+      // -----------內文didmount 找到目前LINK頁面後面接的ID所對應到DATA中的資料物件Start---------------
+      const nowIddata = this.state.listdata.find(
+        item =>
+          item.id ===
+          (this.props.match.params.id
+            ? +this.props.match.params.id
+            : +this.state.listdataReverse[0].id)
+        // 比對有沒有抓到路徑ID，如果沒有就帶入反轉後最新一筆的id
+        // TODO:確認如果沒有半筆資料該怎樣抓ID,ID不存在的話?
       )
-      console.log(currentdataAPI)
-      this.setState({
-        // 若還沒有資料先撈預設最後一筆最新資料
-        currentdataforApi: currentdataAPI ? currentdataAPI : jsonObject[0],
-      })
-      // console.log(this.state.currentdataforApi.forumCommentArea)
-      // console.log(this.state.currentcommentdata)
-      // console.log(this.state.currentdataforApi)
-      // console.log(this.props.match)
-      // console.log(this.state.listClickChek)
-      // console.log(this.state.listdata[0])
+      // console.log(nowIddata)
+      // 如果nowIddata比對到資料就set state如果比對不到就自動重導頁面到最新一筆後再setstate
+      if (nowIddata) {
+        await this.setState({
+          nowIDdata: nowIddata,
+        })
+      } else {
+        window.location.href = '/forum/' + this.state.listdataReverse[0].id
+        await this.setState({
+          nowIDdata: nowIddata,
+        })
+      }
+      // console.log(this.state.nowIDdata)
+      // console.log(this.state.listdataReverse[0].id)
+      // -----------內文didmount 找到目前LINK頁面後面接的ID所對應到DATA中的資料物件End---------------
+
+      // -----------留言didmount Start---------------
+      const nowIdcomment = this.state.listdata.find(
+        item =>
+          item.id ===
+          (this.props.match.params.id
+            ? +this.props.match.params.id
+            : +this.state.listdataReverse[0].id)
+        // 比對有沒有抓到路徑ID，如果沒有就帶入反轉後最新一筆的id
+        // TODO:確認如果沒有半筆資料該怎樣抓ID,ID不存在的話?
+      )
+      // console.log(nowIdcomment)
+      // 如果nowIdcomment比對到資料就set state如果比對不到就自動重導頁面到最新一筆後再setstate
+      if (nowIdcomment) {
+        await this.setState({
+          currentcommentApi: nowIdcomment.forumCommentArea,
+        })
+      } else {
+        window.location.href = '/forum/' + this.state.listdataReverse[0].id
+        await this.setState({
+          currentcommentApi: nowIdcomment.forumCommentArea,
+        })
+      }
+      // console.log(this.state.nowIDdata)
+      // console.log(this.state.listdataReverse[0].id)
+      // -----------留言didmount End---------------
+
+      // 如果導向頁面沒有接ID則導向最後一頁
+      // console.log(this.props.match.params.id)
+      if (this.props.match.params.id === undefined) {
+        window.location.href = '/forum/' + this.state.listdataReverse[0].id
+      }
+      // TODO:帶修理
+      // -------------發文時間偵測計算start-----------------------------------
+      const articleCurrent = this.state.listdata.find(
+        item =>
+          item.id ===
+          (this.props.match.params.id
+            ? +this.props.match.params.id
+            : +this.state.listdataReverse[0].id)
+      )
+      // console.log(articleCurrent.forumCreateDateInSecond)
+      const timeDifferent = parseInt(
+        (new Date() - articleCurrent.forumCreateDateInSecond) / 1000
+      )
+      // console.log(timeDifferent)
+
+      await setInterval(
+        function() {
+          this.setState({ forumCreateTimeCount: timeDifferent + '分鐘前' })
+        }.bind(this),
+        60000
+      )
+      // -------------發文時間偵測計算End-----------------------------------
+
+      const totalPagesNow = Math.ceil(this.state.listdata.length / 10)
+      console.log(totalPagesNow)
+      await this.setState({ ForumTotalPages: totalPagesNow })
     } catch (e) {
       console.log(e)
     }
   }
+
+  //
+  //
+  //
   // --------------------------------列表點選控制state供後續渲染文章start-------------
   // 點列表顯示頁面功能
   // element:點擊到列表的對應物件，index當個文章的索引值
-  handleClick = (index, element) => {
+  handleClick = async (index, element) => {
     // 用來接列表點擊後當文章對應到的所有內容，用來渲染到文章內容ForumArticleContentRoy
-    this.setState({
-      currentdata: element,
+
+    const filterelement = this.state.listdata.filter(
+      item => item.id === element.id
+    )
+    // console.log(filterelement[0])
+    await this.setState({
+      // nowIDdata: filterelement,
+      currentdata: filterelement[0],
       // 將當下點到的物件中的forumCommentArea留言區陣列設回去STATE
-      currentcommentdata: element.forumCommentArea,
-      // 將click轉為true後判斷用currentdata顯示資料造成不用刷新頁面
+      currentcommentdata: filterelement[0].forumCommentArea,
+      // 點擊列表後將click轉為true後判斷內文顯示currentdata對應內容
       listClickChek: true,
+      // 點擊列表後將click轉為true後判斷留言顯示currentcommentdata對應內容
+      CommentClickChek: true,
     })
-    console.log(this.state.listClickChek)
+    // console.log(this.state.currentcommentdata)
   }
   // --------------------------------列表點選控制state供後續渲染文章end-------------
-
+  //
+  //
   // --------------------------------爆雷顯示偵測功能start------------------------
-  // 爆雷偵測套餐
+  // 爆雷偵測套餐，兩個都要有引入才有效
   handleSpoilerChange = evt => {
     // this.setState({ forumSpoilers: evt.target.checked })
-    console.log(this.state.forumSpoilers)
+    //   console.log(this.state.forumSpoilers)
   }
   handleSpoilerToggle = () => {
     this.setState({ forumSpoilers: !this.state.forumSpoilers })
     console.log(this.state.forumSpoilers)
   }
   // --------------------------------列表爆雷顯示偵測功能end--------------------------
-
+  //
+  //
+  // --------------------------------捲動套餐Start--------------------------
+  // 下以下STYLE
+  // overflow: 'scroll',
+  // overflowX: 'hidden',
+  // scrollBehavior: 'smooth',
+  // 在區塊上CSS如下可以把滾動卷軸隱藏
+  // #forumListScollTop::-webkit-scrollbar {
+  //   width: 0 !important;
+  // }
+  handleScrollTop = e => {
+    // 選到要捲動的區塊
+    const ScollTop = document.querySelector('#forumListScollTop')
+    e.preventDefault()
+    // 往上捲動
+    ScollTop.scrollBy(0, -300)
+  }
+  handleScrollBottom = e => {
+    // 選到要捲動的區塊
+    const ScollTop = document.querySelector('#forumListScollTop')
+    e.preventDefault()
+    // 往下捲動
+    ScollTop.scrollBy(0, 300)
+  }
+  // --------------------------------捲動套餐End--------------------------
+  //
+  //
+  //
+  //
   // --------------------------------留言功能start-----------------------------------
   //確認發文後沒重新導向頁面馬上按留言會有問題
   // 留言區塊onchange撈值回傳到state後再提供給handleCommentInput要送出的參數
@@ -158,6 +328,7 @@ class Forum extends React.Component {
   // 留言空白警告
   handleCommentInputAreaCheck = () => {
     alert('請輸入內容')
+    return
   }
   // 留言功能，由上方控制是否啟動
   handleCommentInput = async () => {
@@ -185,26 +356,29 @@ class Forum extends React.Component {
       forumCommentDislike: 0,
       forumCommentName: 'bbc',
       forumCommentAvatar: '9743_2.jpg',
-      forumCommentUserId: 0,
+      forumCommentUserId: 1,
     }
 
     // 將整包要更新的內容重新打包，不能漏掉任何屬性即使沒變
     const UpdateArticle = {
+      id: onClickArticle.id,
       headline: onClickArticle.headline,
       forumSpoilers: onClickArticle.forumSpoilers,
       forumViews: onClickArticle.forumViews,
       forumCreateDate: onClickArticle.forumCreateDate,
       forumCreateDateInSecond: onClickArticle.forumCreateDateInSecond,
       forumName: onClickArticle.forumName,
+      forumNameId: onClickArticle.forumNameId,
       forumAvatar: onClickArticle.forumAvatar,
       forumArticlePic: onClickArticle.forumArticlePic,
       forumReview: onClickArticle.forumReview,
-      forumCommentCount: onClickArticle.forumCommentCount,
+      // 因為留言還沒新增所以要在length+1送進資料庫
+      forumCommentCount: onClickArticle.forumCommentArea.length + 1,
       // 將原本的留言陣列onClickArticleComment內容展開後再把新的留言newComment加入
       forumCommentArea: [...onClickArticleComment, newComment],
     }
     // console.log(UpdateArticle.forumCommentArea)
-    console.log(this.state.listdata)
+    // console.log(this.state.listdata)
 
     try {
       // const data = newData
@@ -225,9 +399,9 @@ class Forum extends React.Component {
 
       const jsonObject = await response.json()
       // console.log(jsonObject)
-
+      //TODO:檢查留言功能
       // 在State中設定特定陣列中的物件，這邊一邊設定回原始listdata中比對到的forumCommentArea陣列
-      await this.setState(prevState => ({
+      this.setState(prevState => ({
         listdata: prevState.listdata.map(obj =>
           // 比對當下指定到的文章
           obj.id === +this.props.match.params.id
@@ -238,23 +412,127 @@ class Forum extends React.Component {
         ),
       }))
       // 同時設定新留言到用來渲染留言的currentcommentdata state
-      await this.setState(
-        { currentcommentdata: UpdateArticle.forumCommentArea },
+      this.setState(
+        {
+          currentcommentdata: UpdateArticle.forumCommentArea,
+          CommentClickChek: true,
+        },
         () => {
           // 發文後後把留言內容清掉
           document.querySelector('#CommentArea').value = ''
           alert('留言成功!')
           // this.handleClose()
-          // console.log(this.state.listdata)
           // window.location.href = '/forum/'
         }
       )
+      console.log(this.state.CommentClickChek)
     } catch (e) {
       console.log(e)
     }
   }
   // --------------------------------留言功能end-----------------------------------
+  //
+  //
+  // --------------------------------刪除留言功能Start-----------------------------------
+  handleCommentDelete = async e => {
+    // 搜尋到所點擊的文章回傳的內容物件倒入onClickArticle
+    const onClickArticle = this.state.listdata.find(
+      item => item.id === +this.props.match.params.id
+    )
 
+    // 選取該筆文章裡面的留言區塊陣列forumCommentArea
+    const onClickArticleComment = onClickArticle.forumCommentArea
+
+    // console.log(onClickArticle)
+    // 抓到點選的當個留言的ID，這裡要把ID命名為數字起頭這樣就可以篩成純數字ID
+    const nowCommentId = parseInt(
+      e.target.parentNode.parentNode.parentNode.parentNode.id
+    )
+
+    // console.log(nowCommentId)
+    // console.log(onClickArticleComment)
+    // 濾掉想要刪掉的留言，回傳的陣列拿回去PUT取代
+    const ondeleteComment = onClickArticleComment.filter(
+      item => item.forumCommentId !== +nowCommentId
+    )
+    // console.log(ondeleteComment)
+    // console.log(onClickArticleComment)
+
+    // 將整包要更新的內容重新打包，不能漏掉任何屬性即使沒變
+    const UpdateComment = {
+      id: onClickArticle.id,
+      headline: onClickArticle.headline,
+      forumSpoilers: onClickArticle.forumSpoilers,
+      forumViews: onClickArticle.forumViews,
+      forumCreateDate: onClickArticle.forumCreateDate,
+      forumCreateDateInSecond: onClickArticle.forumCreateDateInSecond,
+      forumName: onClickArticle.forumName,
+      forumNameId: onClickArticle.forumNameId,
+      forumAvatar: onClickArticle.forumAvatar,
+      forumArticlePic: onClickArticle.forumArticlePic,
+      forumReview: onClickArticle.forumReview,
+      // 因為留言還沒新增所以要在length+1送進資料庫
+      forumCommentCount: onClickArticle.forumCommentArea.length + 1,
+      //  將過濾過剩下的留言用三個點拆開成物件放回陣列
+      forumCommentArea: [...ondeleteComment],
+    }
+    // console.log(UpdateComment)
+    // console.log(this.state.listdata)
+
+    try {
+      // 將更新後的文章內容包進data最後用PUT方式丟回SERVER
+      const data = UpdateComment
+      // console.log(data)
+      const response = await fetch(
+        'http://localhost:5555/forum/' + this.props.match.params.id,
+        {
+          method: 'PUT',
+          body: JSON.stringify(data),
+          headers: new Headers({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          }),
+        }
+      )
+
+      const jsonObject = await response.json()
+      // console.log(jsonObject)
+      //TODO:檢查留言功能
+      // 在State中設定特定陣列中的物件，這邊一邊設定回原始listdata中比對到的forumCommentArea陣列
+      this.setState(prevState => ({
+        listdata: prevState.listdata.map(obj =>
+          // 比對當下指定到的文章
+          obj.id === +this.props.match.params.id
+            ? Object.assign(obj, {
+                forumCommentArea: UpdateComment.forumCommentArea,
+              })
+            : obj
+        ),
+      }))
+      // 同時設定新留言到用來渲染留言的currentcommentdata state
+      this.setState(
+        {
+          currentcommentdata: UpdateComment.forumCommentArea,
+          // 判斷渲染方式用，參考綁定props
+          CommentClickChek: true,
+        },
+        () => {
+          // 發文後後把留言內容清掉
+          alert('刪除留言成功!')
+          // this.handleClose()
+          // window.location.href = '/forum/'
+        }
+      )
+      console.log(this.state.currentcommentdata)
+    } catch (e) {
+      console.log(e)
+    }
+  }
+  // --------------------------------刪除留言功能End-----------------------------------
+
+  //
+  //
+  //TODO:檢查初次導向頁面發文後留言問題
   // --------------------------------發文功能start-----------------------------------
   // 對應跳出視窗的表單的欄位變動，這是一種常見的使用方式
   // ，讓下層元件保持為函式型元件，仍然是有表單可控元件
@@ -282,16 +560,24 @@ class Forum extends React.Component {
   // 發送文章
   handleModalFormInputSave = async () => {
     // 簡單的檢查部份
-
-    if (this.state.headline.trim() === '') {
-      alert('請輸入標題!')
-      return
-    }
     if (this.state.forumReview.trim() === '') {
       alert('請輸入評論!')
       return
     }
+    if (this.state.forumReview.trim().length > 30) {
+      alert('內文請勿超過3000字!')
+      return
+    }
 
+    console.log('123')
+    if (this.state.headline.trim() === '') {
+      alert('請輸入標題!')
+      return
+    }
+    if (this.state.headline.trim().length > 30) {
+      alert('標題請勿超過30字!')
+      return
+    }
     // 處理新增資料的儲存
     // 先檢查學號是否重覆
     // const index = this.state.listdata.findIndex(
@@ -306,7 +592,12 @@ class Forum extends React.Component {
     // 處理新增的儲存
     const item = {
       id: this.state.listdata[0].id + 1,
-      headline: this.state.headline,
+      headline: this.state.headline
+        .replace(/<script\b[^>]*>/gm, '<script>')
+        // 後TAG
+        .replace(/<\/script>/gm, '</script>')
+        // TAG包內容
+        .replace(/<script\b[^>]*>([\s\S]*?)<\/script>/gm, '<script></script>'),
       forumSpoilers: this.state.forumSpoilers,
       forumViews: this.state.forumViews,
       // 發文當下時間2019/5/20 23:59:40 先設時區格式chinese，再給第二參數設定24時制
@@ -322,16 +613,26 @@ class Forum extends React.Component {
       // 發文當下距離1970總秒數，用一元正字或可用new Date().getTime()
       forumCreateDateInSecond: +new Date(),
       forumName: this.state.forumName ? this.state.forumName : 'Jack',
+      forumNameId: this.state.forumNameId,
       forumAvatar: this.state.forumAvatar,
+      // TODO://要改成實際樣子
       forumArticlePic: this.state.forumArticlePic,
       // 將textarea輸入的\n轉化成<br>，再到ForumArticleContentRoy用dangerouslySetInnerHTML轉化tag
-      forumReview: this.state.forumReview.replace(/\r\n|\r|\n/g, '<br />'),
+      forumReview: this.state.forumReview
+        .replace(/\r\n|\r|\n/g, '<br />')
+        // 將意圖輸入SCRIPT TAG轉成NOPE
+        // 前TAG
+        .replace(/<script\b[^>]*>/gm, '&lt;script&gt;')
+        // 後TAG
+        .replace(/<\/script>/gm, '&lt;/script&gt;')
+        // TAG包內容
+        .replace(/<script\b[^>]*>([\s\S]*?)<\/script>/gm, '<script></script>'),
       forumCommentCount: this.state.forumCommentCount,
       forumCommentArea: this.state.forumCommentArea,
     }
-    console.log(this.state.listdata[0].id)
-    const newData = [item, ...this.state.listdata]
-
+    // console.log(this.state.listdata[0].id)
+    const newData = [...this.state.listdata, item]
+    console.log(this.state.forumCommentArea.length)
     try {
       const data = item
 
@@ -346,28 +647,500 @@ class Forum extends React.Component {
 
       const jsonObject = await response.json()
 
-      console.log(jsonObject)
+      // console.log(jsonObject)
 
+      // 確認資料有進資料庫後再setState
       await this.setState({ listdata: newData }, () => {
         alert('資料已成功新增!')
         this.handleClose()
-        console.log(this.state.listdata)
+        // console.log(this.state.listdata)
         // 送出表單後重新導向最新一筆頁面
-        window.location.href = '/forum/' + this.state.listdata[0].id
+        window.location.href = '/forum/' + this.state.listdata[0].id + 1
       })
     } catch (e) {
       console.log(e)
     }
   }
   // --------------------------------發文功能end-----------------------------------
-  // handleArticleDelete = id => {
-  //   const newData = this.state.listdata
-  //   console.log(newData)
-  //   // this.setState({ listdata: newData }, () => {
-  //   //   alert('資料已成功刪除!')
-  //   // })
-  // }
 
+  // --------------------------------刪文功能Start-----------------------------------
+  handleArticleDelete = async () => {
+    // 將點擊的文章filter掉後的剩下的陣列倒回
+    const filteredRestArticle = this.state.listdata.filter(
+      item => item.id !== +this.props.match.params.id
+    )
+    // const data = onClickArticle.reverse()
+    // console.log(data)
+    try {
+      // 用DELETE去刪除特定ID的文章
+      // console.log(data)
+      const response = await fetch(
+        'http://localhost:5555/forum/' + this.props.match.params.id,
+        {
+          method: 'DELETE',
+          // DELETE不用給BODY
+          // body: JSON.stringify(data),
+          headers: new Headers({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          }),
+        }
+      )
+      // 摻刪出來接出來的是空的
+      const jsonObject = await response.json()
+
+      // 將filter後的剩下的陣列倒回listdata後重新導向最新一筆頁面
+      await this.setState({ listdata: filteredRestArticle }, () => {
+        alert('刪除成功!')
+        window.location.href = '/forum/' + this.state.listdataReverse[0].id
+      })
+    } catch (e) {
+      console.log(e)
+    }
+  }
+  // --------------------------------刪文功能End-----------------------------------
+
+  // -----------------------編輯文章標題功能Start-----------------------------------
+  // 編輯標題因為轉出都會是純文字，所以撈值用innerText就好
+  // 必須先在要改變的標題元件中加入 contenteditable="true"使之可變更
+  // 要先在開始傳id下去用來getlement用
+  // TODO:典編輯背景的BORDER SHADOW會消失
+  handleHeadlineEditTrigger = e => {
+    // 一定要把true false設為字串傳，contenteditable如果只給boolean不會顯示
+    // 在按SAVE時再把他涉回FALSE
+    this.setState({ handleHeadlineEditStatus: 'true' })
+    // 將編輯BTN DISPLAY取消 取消SA按鈕顯示
+    this.setState({ HeadlineEditBtnStatus: 'd-none' })
+    this.setState({ HeadlineSaveBtnStatus: '' })
+    this.setState({ HeadlineCancelBtnStatus: '' })
+    console.log(this.state.handleHeadlineEditStatus)
+    // 比對抓到點擊到的標題物件
+    const onEditHeadline = this.state.listdata.find(
+      item =>
+        item.id ===
+        (this.props.match.params.id
+          ? +this.props.match.params.id
+          : +this.state.listdataReverse[0].id)
+    )
+    // 控制按下編輯後介面變更
+    const currentNodeSelect = document.querySelector(
+      '#contentheadlineId' + onEditHeadline.id
+    )
+    // 編輯啟動時先將內文砍掉
+    // currentNodeSelect.innerHTML = ''
+    currentNodeSelect.setAttribute(
+      'class',
+      ' bg-dark border border-warning rounded '
+    )
+    currentNodeSelect.setAttribute('style', 'height:35px ')
+    currentNodeSelect.parentNode.setAttribute('style', 'width:75% ')
+    // 抓到上兩層元素
+    currentNodeSelect.parentNode.parentNode.setAttribute('style', 'width:100% ')
+    // console.log(
+    //   document.querySelector('#contentheadlineId' + onEditHeadline.id)
+    //     .parentNode.parentNode
+    // )
+  }
+
+  // 按下取消BTN回復原狀
+  handleHeadlineEditCancel = () => {
+    // 將按鈕顯示狀態歸位
+    this.setState({ HeadlineEditBtnStatus: '' })
+    this.setState({ HeadlineSaveBtnStatus: 'd-none' })
+    this.setState({ HeadlineCancelBtnStatus: 'd-none' })
+
+    this.setState({ handleHeadlineEditStatus: 'false' })
+    const onEditHeadline = this.state.listdata.find(
+      item =>
+        item.id ===
+        (this.props.match.params.id
+          ? +this.props.match.params.id
+          : +this.state.listdataReverse[0].id)
+    )
+    const currentNodeSelect = document.querySelector(
+      '#contentheadlineId' + onEditHeadline.id
+    )
+    // 點擊後將CLASS改變
+    currentNodeSelect.removeAttribute(
+      'class',
+      'bg-dark border border-warning rounded'
+    )
+    currentNodeSelect.removeAttribute('style', 'height:35px ')
+    currentNodeSelect.parentNode.removeAttribute('style', 'width:75%')
+    // 抓到上兩層元素
+    currentNodeSelect.parentNode.parentNode.removeAttribute(
+      'style',
+      'width:100% '
+    )
+    console.log(onEditHeadline.headline)
+    // 取消不做變更因此將原來的值倒回text顯示
+    // 因為這裡只會顯示TEXT所以不能用HinnerTML
+    currentNodeSelect.innerText = onEditHeadline.headline
+  }
+
+  // TODO:沒有儲存變更後切換文章
+  handleHeadlineEditSave = async e => {
+    // 比對抓到點擊到的標題物件
+    const onEditHeadline = this.state.listdata.find(
+      item =>
+        item.id ===
+        (this.props.match.params.id
+          ? +this.props.match.params.id
+          : +this.state.listdataReverse[0].id)
+    )
+    // 比對抓到點擊到的標題物件的索引值
+    const onEditHeadlineIndex = this.state.listdata.findIndex(
+      item =>
+        item.id ===
+        (this.props.match.params.id
+          ? +this.props.match.params.id
+          : +this.state.listdataReverse[0].id)
+    )
+
+    // 抓ID值傳下去設定在各文張物件中
+    // contentheadlineId已經在元件中建立等待接值
+    // 這邊藥用innerText否則在後續在撈值會轉成HTML轉換字符造成抓長度時過長
+    const getThisIdInnerText = document.querySelector(
+      '#contentheadlineId' + onEditHeadline.id
+    ).innerText
+
+    // 控制按下儲存後介面還原
+    const currentNodeSelect = document.querySelector(
+      '#contentheadlineId' + onEditHeadline.id
+    )
+    // console.log(getThisIdInnerText.length)
+
+    if (getThisIdInnerText.length === 0) {
+      alert('請輸入內容')
+    } else if (getThisIdInnerText.length > 30) {
+      // console.log(getThisIdInnerText.length)
+      alert('請勿超過30字')
+    } else {
+      // 儲存後先將狀態關閉成不能編輯
+      this.setState({ handleHeadlineEditStatus: 'false' })
+
+      // 將編輯BTN DISPLAY取消 取消SA按鈕顯示
+      this.setState({ HeadlineEditBtnStatus: '' })
+      this.setState({ HeadlineSaveBtnStatus: 'd-none' })
+      this.setState({ HeadlineCancelBtnStatus: 'd-none' })
+
+      // 點擊後將CLASS改變
+      currentNodeSelect.removeAttribute(
+        'class',
+        'bg-dark border border-warning rounded'
+      )
+      currentNodeSelect.removeAttribute('style', 'height:35px ')
+      currentNodeSelect.parentNode.removeAttribute('style', 'width:75%')
+      // 抓到上兩層元素
+      currentNodeSelect.parentNode.parentNode.removeAttribute(
+        'style',
+        'width:100% '
+      )
+      // 將目前要取代的文章物件先裝到一個容器，記得把headline取代換掉成目前取值的內容
+      // 其他內容保持不變
+      const UpdateHeadline = {
+        id: onEditHeadline.id,
+        // 將目前INNERText字樣替換回去headline state，會根據目前控制標題輸入內容變動
+        headline: getThisIdInnerText
+          .replace(/<script\b[^>]*>/gm, '<script>')
+          // 後TAG
+          .replace(/<\/script>/gm, '</script>')
+          // TAG包內容
+          .replace(
+            /<script\b[^>]*>([\s\S]*?)<\/script>/gm,
+            '<script></script>'
+          ),
+        forumSpoilers: onEditHeadline.forumSpoilers,
+        forumViews: onEditHeadline.forumViews,
+        forumCreateDate: onEditHeadline.forumCreateDate,
+        forumCreateDateInSecond: onEditHeadline.forumCreateDateInSecond,
+        forumName: onEditHeadline.forumName,
+        forumNameId: onEditHeadline.forumNameId,
+        forumAvatar: onEditHeadline.forumAvatar,
+        forumArticlePic: onEditHeadline.forumArticlePic,
+        forumReview: onEditHeadline.forumReview,
+        forumCommentCount: onEditHeadline.forumCommentArea.length,
+        // 將原本的留言陣列onClickArticleComment內容展開後再把新的留言newComment加入
+        forumCommentArea: onEditHeadline.forumCommentArea,
+      }
+
+      console.log(getThisIdInnerText)
+      const data = UpdateHeadline
+      // console.log(data)
+      // 將資料寫進資料庫
+      const response = await fetch(
+        'http://localhost:5555/forum/' + this.props.match.params.id,
+        {
+          method: 'PUT',
+          body: JSON.stringify(data),
+          headers: new Headers({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          }),
+        }
+      )
+
+      const jsonObject = await response.json()
+
+      // 將原始listdata從先前偵測到點擊到文章的索引值帶入後選擇刪除量為1，最後帶入要取代的文章物件
+      await this.state.listdata.splice(onEditHeadlineIndex, 1, UpdateHeadline)
+      // console.log(jsonObject)
+      // console.log(UpdateHeadline)
+      // // console.log(updateHeadlineReturn)
+      // console.log(this.state.listdata)
+      // console.log(this.state.listdataReverse)
+      // 因為splice後只會回傳被刪除的東西所以不能用updateHeadline倒回listdata
+      // splice作用後會暫時將this.state.listdata轉變成新的陣列，再倒回去listdataReverse用來渲染左側列表的
+      await this.setState({ listdataReverse: this.state.listdata })
+      // console.log('123')
+      // 如果不setState也可以作用，只是要先切換文章再點回來
+    }
+  }
+
+  // 輸入文字過程中只控制不可按ENTER，因為按ENTER會自動產生一個DIV換行
+  handleHeadlineEditKeyboardControl = e => {
+    // console.log(e.key)
+    // return e.which != 13
+    if (e.key === 'Enter') {
+      e.preventDefault()
+    }
+    // var keycode = e.charCode || e.keyCode
+    // if (keycode === 13) {
+    //   //Enter key's keycode
+    //   return false
+    // }
+  }
+  // -----------------------編輯文章標題功能End-----------------------------------
+  //
+  //
+  //
+  // -----------------------編輯內文功能Start-----------------------------------
+  // 內文因為要轉HTML格式所以要用INNERHTML
+
+  // 必須先在要改變的標題元件中加入 contenteditable="true"使之可變更
+  // 要先在開始傳id下去用來getlement用
+  handleArticleEditTrigger = e => {
+    // 一定要把true false設為字串傳，contenteditable如果只給boolean不會顯示
+    // 在按SAVE時再把他涉回FALSE
+    this.setState({ handleArticleEditStatus: 'true' })
+    // 將編輯BTN DISPLAY取消 取消SA按鈕顯示
+    this.setState({ ArticleEditBtnStatus: 'd-none' })
+    this.setState({ ArticleSaveBtnStatus: '' })
+    this.setState({ ArticleCancelBtnStatus: '' })
+    console.log(this.state.handleArticleEditStatus)
+    // 比對抓到點擊到的標題物件
+    const onEditArticle = this.state.listdata.find(
+      item =>
+        item.id ===
+        (this.props.match.params.id
+          ? +this.props.match.params.id
+          : +this.state.listdataReverse[0].id)
+    )
+    // 控制按下編輯後介面變更
+    const currentNodeSelect = document.querySelector(
+      '#contentArticleId' + onEditArticle.id
+    )
+    currentNodeSelect.setAttribute(
+      'class',
+      ' bg-dark border border-warning rounded p-3'
+    )
+    currentNodeSelect.setAttribute('style', ' ')
+    currentNodeSelect.parentNode.setAttribute('style', 'width:75% ')
+    // 抓到上兩層元素
+    currentNodeSelect.parentNode.parentNode.setAttribute('style', 'width:100% ')
+    // console.log(
+    //   document.querySelector('#contentArticleId' + onEditArticle.id)
+    //     .parentNode.parentNode
+    // )
+  }
+
+  // 按下取消BTN回復原狀
+  handleArticleEditCancel = () => {
+    // 將按鈕顯示狀態歸位
+    this.setState({ ArticleEditBtnStatus: '' })
+    this.setState({ ArticleSaveBtnStatus: 'd-none' })
+    this.setState({ ArticleCancelBtnStatus: 'd-none' })
+
+    this.setState({ handleArticleEditStatus: 'false' })
+    const onEditArticle = this.state.listdata.find(
+      item =>
+        item.id ===
+        (this.props.match.params.id
+          ? +this.props.match.params.id
+          : +this.state.listdataReverse[0].id)
+    )
+    const currentNodeSelect = document.querySelector(
+      '#contentArticleId' + onEditArticle.id
+    )
+    // 點擊後將CLASS改變
+    currentNodeSelect.removeAttribute(
+      'class',
+      'bg-dark border border-warning rounded p-3'
+    )
+    currentNodeSelect.removeAttribute('style', ' ')
+    currentNodeSelect.parentNode.removeAttribute('style', 'width:75%')
+    // 抓到上兩層元素
+    currentNodeSelect.parentNode.parentNode.removeAttribute(
+      'style',
+      'width:100% '
+    )
+    console.log(onEditArticle.forumReview)
+    // 取消不做變更因此將原來的值倒回html裡顯示
+    currentNodeSelect.innerHTML = onEditArticle.forumReview
+  }
+
+  // TODO:沒有儲存變更後切換文章
+  handleArticleEditSave = async e => {
+    // 比對抓到點擊到的標題物件
+    const onEditArticle = this.state.listdata.find(
+      item =>
+        item.id ===
+        (this.props.match.params.id
+          ? +this.props.match.params.id
+          : +this.state.listdataReverse[0].id)
+    )
+    // 比對抓到點擊到的標題物件的索引值
+    const onEditArticleIndex = this.state.listdata.findIndex(
+      item =>
+        item.id ===
+        (this.props.match.params.id
+          ? +this.props.match.params.id
+          : +this.state.listdataReverse[0].id)
+    )
+
+    // 抓ID值傳下去設定在各文張物件中
+    // contentArticleId已經在元件中建立等待接值
+    // 這邊藥用INNERHTML因為內文會有換行
+    const getThisIdInnerHTML = document.querySelector(
+      '#contentArticleId' + onEditArticle.id
+    ).innerHTML
+
+    // 控制按下儲存後介面還原
+    const currentNodeSelect = document.querySelector(
+      '#contentArticleId' + onEditArticle.id
+    )
+    // console.log(getThisIdInnerHTML.length)
+
+    if (getThisIdInnerHTML.length === 0) {
+      alert('請輸入內容')
+    } else if (getThisIdInnerHTML.length > 3000) {
+      alert('請勿超過3000字')
+    } else {
+      // 儲存後先將狀態關閉成不能編輯
+      this.setState({ handleArticleEditStatus: 'false' })
+
+      // 將編輯BTN DISPLAY取消 取消SA按鈕顯示
+      this.setState({ ArticleEditBtnStatus: '' })
+      this.setState({ ArticleSaveBtnStatus: 'd-none' })
+      this.setState({ ArticleCancelBtnStatus: 'd-none' })
+
+      // 點擊後將CLASS改變
+      currentNodeSelect.setAttribute('class', ' bg-dark')
+      currentNodeSelect.removeAttribute(
+        'class',
+        ' border border-warning rounded p-3'
+      )
+      currentNodeSelect.removeAttribute('style', ' ')
+      currentNodeSelect.parentNode.removeAttribute('style', 'width:75%')
+      // 抓到上兩層元素
+      currentNodeSelect.parentNode.parentNode.removeAttribute(
+        'style',
+        'width:100% '
+      )
+      // 將目前要取代的文章物件先裝到一個容器，記得把headline取代換掉成目前取值的內容
+      // 其他內容保持不變
+      const UpdateArticle = {
+        id: onEditArticle.id,
+        // 將目前INNERText字樣替換回去headline state，會根據目前控制標題輸入內容變動
+        headline: onEditArticle.headline,
+        forumSpoilers: onEditArticle.forumSpoilers,
+        forumViews: onEditArticle.forumViews,
+        forumCreateDate: onEditArticle.forumCreateDate,
+        forumCreateDateInSecond: onEditArticle.forumCreateDateInSecond,
+        forumName: onEditArticle.forumName,
+        forumNameId: onEditArticle.forumNameId,
+        forumAvatar: onEditArticle.forumAvatar,
+        forumArticlePic: onEditArticle.forumArticlePic,
+        forumReview: getThisIdInnerHTML,
+        forumCommentCount: onEditArticle.forumCommentArea.length,
+        // 將原本的留言陣列onClickArticleComment內容展開後再把新的留言newComment加入
+        forumCommentArea: onEditArticle.forumCommentArea,
+      }
+
+      const data = UpdateArticle
+      console.log(data)
+      // 將資料寫進資料庫
+      const response = await fetch(
+        'http://localhost:5555/forum/' + this.props.match.params.id,
+        {
+          method: 'PUT',
+          body: JSON.stringify(data),
+          headers: new Headers({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          }),
+        }
+      )
+
+      const jsonObject = await response.json()
+
+      // 將原始listdata從先前偵測到點擊到文章的索引值帶入後選擇刪除量為1，最後帶入要取代的文章物件
+      await this.state.listdata.splice(onEditArticleIndex, 1, UpdateArticle)
+      // console.log(jsonObject)
+      // console.log(UpdateHeadline)
+      // // console.log(updateHeadlineReturn)
+      // console.log(this.state.listdata)
+      // console.log(this.state.listdataReverse)
+      // 因為splice後只會回傳被刪除的東西所以不能用updateHeadline倒回listdata
+      // splice作用後會暫時將this.state.listdata轉變成新的陣列，再倒回去listdataReverse用來渲染左側列表的
+      await this.setState({ listdataReverse: this.state.listdata })
+      // console.log('123')
+      // 如果不setState也可以作用，只是要先切換文章再點回來
+    }
+  }
+
+  // --------------------編輯內文功能EeEnd---------------------------
+  //
+  //--------------------搜尋功能EStart-------------------------------
+  // TODO:搜尋右邊藍渲染測試
+  handleSearch = async () => {
+    // 抓取搜尋欄輸入的文字內容
+    const searchcontent = document.querySelector('#forumSearchBar').value
+    // console.log(searchcontent)
+
+    //  搜尋符合headline結果回傳之陣列
+    const serchResultArray = this.state.listdata.filter(item =>
+      item.headline.includes(searchcontent)
+    )
+    // console.log(serchResultArray)
+    // 如果搜尋結果沒有就將預設的隱藏內容打開
+    if (serchResultArray.length !== 0) {
+      // addElement()
+      this.setState({
+        // 將右半邊顯示
+        searchStatus: 'd-none',
+        searchNoDataContentStatus: '',
+        searchNoDataContentHiddenArea: 'd-none',
+      })
+      // 重新渲染畫面
+      this.setState({ listdataReverse: serchResultArray })
+      await this.setState({
+        nowIDdata: this.state.listdataReverse[0],
+        currentcommentApi: this.state.listdataReverse[0].forumCommentArea,
+      })
+    } else {
+      this.setState({
+        searchStatus: '',
+        searchNoDataContentStatus: 'd-none',
+        searchNoDataContentHiddenArea: '',
+      })
+      // return
+    }
+  }
+  //--------------------搜尋功能Eend------------------------------
+  //
+  //
+  //
   render() {
     return (
       <>
@@ -376,163 +1149,289 @@ class Forum extends React.Component {
           style={{ marginTop: '120px' }}
         >
           <div className="row justify-content-center ">
-            <div className="col-3 mr-4 p-0 ">
+            <div className="col-3 mr-4 px-1 " style={{ height: '1000px' }}>
               <div className="">
-                <ActionBtnCreateRoy
-                  onClick={this.handleShow}
-                  onhide={this.handleClose}
-                  show={this.state.show}
-                  handleModalFormInputChange={this.handleModalFormInputChange}
-                  handleModalFormInputSave={this.handleModalFormInputSave}
-                  forumName={this.state.forumName}
-                  headline={this.state.headline}
-                  forumReview={this.state.forumReview}
-                  forumSpoilers={this.state.forumSpoilers}
-                  // 爆雷公能，兩個handle都必須同時要有
-                  handleSpoilerToggle={this.handleSpoilerToggle}
-                  handleSpoilerChange={this.handleSpoilerChange}
-                  // 上傳圖片
-                  forumArticlePic={this.state.forumArticlePic}
-                  handleArticlePicChange={this.handleArticlePicChange}
-                />
-                <div className="my-4">
-                  <ForumSearchbarRoy />
+                <div className="px-1">
+                  <InputCardContent_MemberSignUp
+                    inputmsg={this.state.inputmsg}
+                    inputH={this.state.inputH}
+                    inputLabel={this.inputLabel}
+                    onClick={this.handleShow}
+                    onhide={this.handleClose}
+                    show={this.state.show}
+                    handleModalFormInputChange={this.handleModalFormInputChange}
+                    handleModalFormInputSave={this.handleModalFormInputSave}
+                    forumName={this.state.forumName}
+                    headline={this.state.headline}
+                    forumReview={this.state.forumReview}
+                    forumSpoilers={this.state.forumSpoilers}
+                    // 爆雷公能，兩個handle都必須同時要有
+                    handleSpoilerToggle={this.handleSpoilerToggle}
+                    handleSpoilerChange={this.handleSpoilerChange}
+                    // 上傳圖片
+                    forumArticlePic={this.state.forumArticlePic}
+                    handleArticlePicChange={this.handleArticlePicChange}
+                  />
                 </div>
-                <div className="d-flex mb-3">
+
+                <div className="my-4 px-1">
+                  <ForumSearchbarRoy handleSearch={this.handleSearch} />
+                </div>
+                <div className="d-flex mb-3 px-1">
                   <ActionButtonCategoryRoy />
                   <div className=" ml-3">
                     <ActionButtonFilterRoy />
                   </div>
                 </div>
-                <ActionBtnScrollTopRoy />
-                {/* 將陣列倒入COMPINET，用MAP的方式，記得設定KEY */}
-                {/* 同時撈將各index */}
-                {this.state.listdata.map((element, index) => (
-                  <Link
-                    to={'/forum/' + element.id}
-                    // hover無底線
-                    className="text-decoration-none"
-                  >
-                    {/* {console.log(element)} */}
-                    <ForumArticleListRoy
-                      //MAP之所在，KEY之所在
-                      key={element.id}
-                      listheadline={element.headline}
-                      listforumSpoilers={element.forumSpoilers}
-                      listforumViews={element.forumViews}
-                      listforumCreateDate={element.forumCreateDate}
-                      listforumName={element.forumName}
-                      listforumAvatar={element.forumAvatar}
-                      // 用bind綁定偵測點擊當下的element之index，並傳入handleClick得到index值
-                      // click後將listClickChek state轉為true
-                      onClick={this.handleClick.bind(this, index, element)}
-                      // 圖像路徑開頭
-                      avatarPath={this.state.imagePath}
-                    />
-                  </Link>
-                ))}
-                <ActionBtnScrollBottomRoy />
-              </div>
-            </div>
-            <div className="col-7 ml-4">
-              <div className="row m-0 p-0">
-                <div className="col-12  p-5 border border-dark">
-                  {/* <button
-                    onClick={this.handleArticleDelete(
-                      this.props.match.params.id
-                    )}
-                  >
-                    刪除
-                  </button> */}
-                  <ForumArticleContentRoy
-                    // 將點擊文章列表後所產生的物件中的值傳下去，同時更新文章內容
-                    // 檢查是否有點擊上方ForumArticleListRoy列表
-                    // 並在handleClick裡將listClickChek轉成true，用link方式重新render則會再回到false
-                    // 有就用FETCH到的資料RENDER，如果是用LINK方式判斷FALSE就用params判斷id後所倒入的另一個state撈資料
-                    // currentdataforApi為params倒入的state
-                    // currentdata為click倒入的state
-                    contentheadline={
-                      this.state.listClickChek
-                        ? this.state.currentdata.headline
-                        : this.state.currentdataforApi.headline
-                    }
-                    contentUserAvatar={
-                      this.state.listClickChek
-                        ? this.state.currentdata.forumAvatar
-                        : this.state.currentdataforApi.forumAvatar
-                    }
-                    contentUserName={
-                      this.state.listClickChek
-                        ? this.state.currentdata.forumName
-                        : this.state.currentdataforApi.forumName
-                    }
-                    contentIssueDate={
-                      this.state.listClickChek
-                        ? this.state.currentdata.forumCreateDate
-                        : this.state.currentdataforApi.forumCreateDate
-                    }
-                    contentReview={
-                      this.state.listClickChek
-                        ? this.state.currentdata.forumReview
-                        : this.state.currentdataforApi.forumReview
-                    }
-                    contentArticlePic={
-                      this.state.listClickChek
-                        ? this.state.currentdata.forumArticlePic
-                        : this.state.currentdataforApi.forumArticlePic
-                    }
-                    // 圖片路徑前墜
-                    avatarPath={this.state.imagePath}
+                <div
+                  className="px-1 d-flex justify-content-center align-content-center w-100 mb-2"
+                  style={{ height: '40px' }}
+                >
+                  <ForumPage ForumTotalPages={this.state.ForumTotalPages} />
+                </div>
+                <div className="px-1 my-1">
+                  <ActionBtnScrollTopRoy
+                    handleScrollTop={this.handleScrollTop}
+                  />
+                </div>
+                <div
+                  className={
+                    'px-4 text-center my-2 text-light  rounded ' +
+                    this.state.searchStatus
+                  }
+                  style={{
+                    border: 'none',
+                    background: 'none',
+                    boxShadow: '0 2px 6px #191C20',
+                    height: '500px',
+                  }}
+                >
+                  <h4 className="align-middle" style={{ height: '500px' }}>
+                    沒有符合搜尋的結果
+                  </h4>
+                </div>
+                <div
+                  id="forumListScollTop"
+                  className={'px-1 ' + this.state.searchNoDataContentStatus}
+                  style={{
+                    height: '500px',
+                    overflowY: 'schroll',
+                    overflowX: 'hidden',
+                    scrollBehavior: 'smooth',
+                  }}
+                >
+                  {/* 將陣列倒入COMPINET，用MAP的方式，記得設定KEY */}
+                  {/* 同時撈將各index */}
+                  {this.state.listdataReverse.map((element, index) => (
+                    <Link
+                      to={'/forum/' + element.id}
+                      // hover無底線
+                      className="text-decoration-none"
+                    >
+                      {/* {console.log(element)} */}
+                      <ForumArticleListRoy
+                        id="searchDiv"
+                        //MAP之所在，KEY之所在
+                        key={element.id}
+                        listheadline={element.headline}
+                        listforumSpoilers={element.forumSpoilers}
+                        listforumViews={element.forumViews}
+                        listforumCreateDate={element.forumCreateDate}
+                        listforumName={element.forumName}
+                        listforumAvatar={element.forumAvatar}
+                        // 用bind綁定偵測點擊當下的element之index，並傳入handleClick得到index值
+                        // click後將listClickChek state轉為true
+                        onClick={this.handleClick.bind(this, index, element)}
+                        // 圖像路徑開頭
+                        avatarPath={this.state.imagePath}
+                      />
+                    </Link>
+                  ))}
+                </div>
+                <div className="px-1 mt-2">
+                  <ActionBtnScrollBottomRoy
+                    handleScrollBottom={this.handleScrollBottom}
                   />
                 </div>
               </div>
-              <div className="row my-4">
-                <div className="col-12 p-5 border border-dark">
-                  <div className="d-flex ">
-                    <div className="">
-                      <ForumCategoryTextRoy />
+            </div>
+            <div className={'col-7 ml-4 '}>
+              <div className={' ' + this.state.searchNoDataContentHiddenArea}>
+                賣鬧拉
+              </div>
+              <div className={' ' + this.state.searchNoDataContentStatus}>
+                <div
+                  className="row m-0 p-0"
+                  style={{
+                    border: 'none',
+                    background: 'none',
+                    boxShadow: '0 2px 6px #191C20',
+                  }}
+                >
+                  <div className="col-12  p-5">
+                    <>
+                      {/* <ActionBtnUpdateArticleRoy
+                      onClick={this.handleArticleEdit}
+                    /> */}
+                      {/* {
+                      (console.log(this.state.currentdata),
+                      console.log(this.state.listClickChek))
+                    } */}
+                      <ForumArticleContentRoy
+                        // 將點擊文章列表後所產生的物件中的值傳下去，同時更新文章內容
+                        // 檢查是否有點擊上方ForumArticleListRoy列表
+                        // 並在handleClick裡將listClickChek轉成true，用link方式重新render則會再回到false
+                        // 有就用FETCH到的資料RENDER，如果是用LINK方式判斷FALSE就用params判斷id後所倒入的另一個state撈資料
+                        // nowIDdata為params比對倒入的state
+                        // currentdata為click倒入的state
+                        contentheadline={
+                          this.state.listClickChek
+                            ? this.state.currentdata.headline
+                            : this.state.nowIDdata.headline
+                        }
+                        contentUserAvatar={
+                          this.state.listClickChek
+                            ? this.state.currentdata.forumAvatar
+                            : this.state.nowIDdata.forumAvatar
+                        }
+                        contentUserName={
+                          this.state.listClickChek
+                            ? this.state.currentdata.forumName
+                            : this.state.nowIDdata.forumName
+                        }
+                        contentIssueDate={
+                          this.state.listClickChek
+                            ? this.state.currentdata.forumCreateDate
+                            : this.state.nowIDdata.forumCreateDate
+                        }
+                        contentReview={
+                          this.state.listClickChek
+                            ? this.state.currentdata.forumReview
+                            : this.state.nowIDdata.forumReview
+                        }
+                        contentArticlePic={
+                          this.state.listClickChek
+                            ? this.state.currentdata.forumArticlePic
+                            : this.state.nowIDdata.forumArticlePic
+                        }
+                        // 用來傳遞當筆資料id值下去然後在元件街上字串產生唯一id
+                        // 用來編輯時getelement控制用
+                        contentheadlineId={
+                          this.state.listClickChek
+                            ? this.state.currentdata.id
+                            : this.state.nowIDdata.id
+                        }
+                        // 圖片路徑前墜
+                        avatarPath={this.state.imagePath}
+                        // 刪除文章button
+                        handleArticleDelete={this.handleArticleDelete}
+                        // 文章標題編輯後state變更用
+                        handleHeadlineEditSave={this.handleHeadlineEditSave}
+                        handleHeadlineEditCancel={this.handleHeadlineEditCancel}
+                        handleHeadlineEditKeyboardControl={
+                          this.handleHeadlineEditKeyboardControl
+                        }
+                        // 確認是否有按標題邊輯按鈕
+                        handleHeadlineEditTrigger={
+                          this.handleHeadlineEditTrigger
+                        }
+                        // 傳送是否可編輯部林值確認是否啟動編輯
+                        handleHeadlineEditStatus={
+                          this.state.handleHeadlineEditStatus
+                        }
+                        HeadlineEditBtnStatus={this.state.HeadlineEditBtnStatus}
+                        HeadlineSaveBtnStatus={this.state.HeadlineSaveBtnStatus}
+                        HeadlineCancelBtnStatus={
+                          this.state.HeadlineCancelBtnStatus
+                        }
+                        handleArticleEditSave={this.handleArticleEditSave}
+                        handleArticleEditTrigger={this.handleArticleEditTrigger}
+                        handleArticleEditCancel={this.handleArticleEditCancel}
+                        handleArticleEditStatus={
+                          this.state.handleArticleEditStatus
+                        }
+                        ArticleEditBtnStatus={this.state.ArticleEditBtnStatus}
+                        ArticleSaveBtnStatus={this.state.ArticleSaveBtnStatus}
+                        ArticleCancelBtnStatus={
+                          this.state.ArticleCancelBtnStatus
+                        }
+                        articleCreateTimeCount={this.articleCreateTimeCount}
+                        forumCreateTimeCount={this.state.forumCreateTimeCount}
+                      />
+                    </>
+                  </div>
+                </div>
+                <div
+                  className="row my-4 "
+                  style={{
+                    border: 'none',
+                    background: 'none',
+                    boxShadow: '0 2px 6px #191C20',
+                  }}
+                >
+                  <div className="col-12 p-5 ">
+                    <div className="d-flex ">
+                      <div className="">
+                        <ForumCategoryTextRoy />
+                      </div>
+                      <div className="mx-5">
+                        <ForumCommentCountRoy
+                          // 計算該篇文章下面留言數量
+                          /* 確認是否有用點列表的方式render，否則用didmount比對params的currentcommentApi state帶出陣列去MAP後渲染 */
+                          commentCount={
+                            this.state.CommentClickChek
+                              ? this.state.currentcommentdata.length
+                              : this.state.currentcommentApi.length
+                          }
+                        />
+                      </div>
                     </div>
-                    <div className="mx-5">
-                      <ForumCommentCountRoy
-                        // 計算該篇文章下面留言數量
-                        commentCount={this.state.currentcommentdata.length}
+                    {/* 確認是否有用點列表的方式render，否則用didmount比對params的currentcommentApi state帶出陣列去MAP後渲染 */}
+                    {(this.state.CommentClickChek
+                      ? this.state.currentcommentdata
+                      : this.state.currentcommentApi
+                    ).map((e, index) => (
+                      <>
+                        {/* {console.log(this.state.currentcommentdata)}
+                      {console.log(this.state.currentcommentApi)} */}
+                        <ForumArticleCommentRoy
+                          // map要用陣列，先建立一個陣列裝對應當篇文章下面的留言
+                          key={e.forumCommentId}
+                          forumCommentId={e.forumCommentId}
+                          commentComment={e.forumComment}
+                          commentLike={e.forumCommentLike}
+                          commentDislike={e.forumCommentDislike}
+                          commentUserName={e.forumCommentName}
+                          commentAvatar={e.forumCommentAvatar}
+                          // 圖片路徑前墜
+                          avatarPath={this.state.imagePath}
+                          handleCommentDelete={this.handleCommentDelete}
+                        />
+                      </>
+                    ))}
+                    <div className="mt-5">
+                      <ForumArticleCommentInputRoy
+                        handleCommentInputArea={this.handleCommentInputArea}
                       />
                     </div>
-                  </div>
-                  {/* 待確認 */}
-                  {this.state.currentcommentdata.map((e, index) => (
-                    <ForumArticleCommentRoy
-                      // map要用陣列，先建立一個陣列裝對應當篇文章下面的留言
-                      key={e.forumCommentId}
-                      commentComment={e.forumComment}
-                      commentLike={e.forumCommentLike}
-                      commentDislike={e.forumCommentDislike}
-                      commentUserName={e.forumCommentName}
-                      commentAvatar={e.forumCommentAvatar}
-                      // 圖片路徑前墜
-                      avatarPath={this.state.imagePath}
-                    />
-                  ))}
-                  <div className="mt-5">
-                    <ForumArticleCommentInputRoy
-                      handleCommentInputArea={this.handleCommentInputArea}
-                    />
-                  </div>
-                  <div className="my-4 d-flex justify-content-end">
-                    <div className="mx-4">
-                      <ForumCommentCancelRoy
-                        // 留言清除輸入內容
-                        handleCommentInputCancel={this.handleCommentInputCancel}
+                    <div className="my-4 d-flex justify-content-end">
+                      <div className="mx-4">
+                        <ForumCommentCancelRoy
+                          // 留言清除輸入內容
+                          handleCommentInputCancel={
+                            this.handleCommentInputCancel
+                          }
+                        />
+                      </div>
+                      <ForumCommentCreateRoy
+                        handleCommentInput={
+                          // 確認handleCommentInputArea有沒有輸入內容有再觸發送出否則警告
+                          this.state.CommentInputStatus
+                            ? this.handleCommentInput
+                            : this.handleCommentInputAreaCheck
+                        }
                       />
                     </div>
-                    <ForumCommentCreateRoy
-                      handleCommentInput={
-                        // 確認handleCommentInputArea有沒有輸入內容有再觸發送出否則警告
-                        this.state.CommentInputStatus
-                          ? this.handleCommentInput
-                          : this.handleCommentInputAreaCheck
-                      }
-                    />
                   </div>
                 </div>
               </div>
@@ -540,7 +1439,7 @@ class Forum extends React.Component {
           </div>
         </div>
         <div
-          className="px-3 py-4 rounded border border-warning position-fixed"
+          className="d-none px-3 py-4 rounded border border-warning position-fixed"
           style={{ right: 0, top: '25vh' }}
         >
           <ForumSideActionBarRoy />

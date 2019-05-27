@@ -4,14 +4,14 @@ const InputFile_Su = props => {
   return (
     <>
       <div
-        class="custom-file border-0 rounded"
+        className="custom-file border-0 rounded"
         style={{
           height: `${props.inputHeight}`,
         }}
       >
         <input
           type="file"
-          class="custom-file-input border-0"
+          className="custom-file-input border-0"
           name={props.id}
           id={props.id}
           style={{
@@ -19,13 +19,13 @@ const InputFile_Su = props => {
           }}
         />
         <label
-          class="custom-file-label border border-warning"
+          className="custom-file-label border border-warning"
           style={{
             background: '#1F242A',
             color: '#FFA510',
             height: `${props.inputHeight}`,
           }}
-          for={props.id}
+          htmlFor={props.id}
           data-browse=""
         >
           {props.placeholder}

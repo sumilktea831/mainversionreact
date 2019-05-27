@@ -13,16 +13,6 @@ class ActivityInfo extends React.Component {
     super(props)
     this.state = {
       title: ['戲院資訊', '活動資訊', '相關活動', '相關影片'],
-      //   "id": 1,
-      //   "theater": "非凡戲院",
-      //   "title": "慶祝周年慶，非凡爆米花免費吃",
-      //   "content": "慶祝周年慶，非凡爆米花免費吃",
-      //   "imgSrc": "https://images.unsplash.com/photo-1521967906867-14ec9d64bee8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
-      //   "isCollect": false,
-      //   "theaterMap": "106台北市大安區通化街24巷1號",
-      //   "GUINumber": "16086448",
-      //   "website": "https://www.google.com/",
-      //   "email": "theater@gmail.com"
       activityPageData: [],
       activityPageOtherData: [],
       streetView: false,
@@ -40,10 +30,10 @@ class ActivityInfo extends React.Component {
       })
       const data = await res.json()
       const activityPageData = data.find(
-        item => item.id === +this.props.match.params.id
+        item => item.id === this.props.match.params.id
       )
       const activityPageOtherData = data.filter(
-        item => item.id !== +this.props.match.params.id
+        item => item.id !== this.props.match.params.id
       )
       console.log(activityPageData)
       this.setState({ activityPageData: activityPageData })
@@ -64,11 +54,12 @@ class ActivityInfo extends React.Component {
     })
     const data = res.json()
     const activityPageData = data.find(
-      item => item.id === +this.props.match.params.id
+      item => item.id === this.props.match.params.id
     )
     const activityPageOtherData = data.filter(
-      item => item.id !== +this.props.match.params.id
+      item => item.id !== this.props.match.params.id
     )
+
     console.log(activityPageData)
     this.setState({ activityPageData: activityPageData })
     this.setState({ activityPageOtherData: activityPageOtherData })
@@ -140,7 +131,7 @@ class ActivityInfo extends React.Component {
               <ActivityQRcode imgSrc={window.location.href} />
             </div>
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 mt-5 d-flex justify-content-center">
-              <ActivityJoinBtn id={this.props.match.params.id}/>
+              <ActivityJoinBtn id={this.props.match.params.id} />
             </div>
           </div>
         </div>

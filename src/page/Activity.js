@@ -3,6 +3,7 @@ import ActivitySection from '../component/activity/ActivitySection/ActivitySecti
 import ActivityTitle from '../component/activity/ActivityTitle/ActivityTitle'
 import ActivitySearchbarTitle from '../component/activity/ActivitySearchbar/ActivitySearchbarTitle'
 import ActivitySearchbarContent from '../component/activity/ActivitySearchbar/ActivitySearchbarContent'
+import ActivitySearchbarInput from '../component/activity/ActivitySearchbar/ActivitySearchbarInput'
 import ActivityCard from '../component/activity/ActivityCard/ActivityCard'
 
 import { LinkContainer } from 'react-router-bootstrap'
@@ -18,16 +19,18 @@ class Activity extends React.Component {
         'https://images.unsplash.com/photo-1506512420485-a28339abb3b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
       title: ['活動列表'],
       activityCardData: [],
-      searchbarRegion:['北部','中部','南部','東部'],
-      searchbarPlace:['全部','咖啡廳','影院','學校'],
-      searchbarRegionState:['','','',''],
-      searchbarPlaceState:['active','','',''],
+      activityCardDataResult: 0,
+      searchbarRegion: ['全部', '北部', '中部', '南部', '東部'],
+      searchbarPlace: ['全部', '影院', '學校', '文創園區', '咖啡廳'],
+      searchbarRegionState: ['active', '', '', '', ''],
+      searchbarPlaceState: ['active', '', '', '', ''],
+      searchText: '',
     }
   }
 
   async componentDidMount() {
     try {
-      
+      this.setState({ activityCardDataResult: 1 })
       const res = await fetch('http://localhost:5555/activityCardData', {
         method: 'GET',
         headers: new Headers({
@@ -42,26 +45,24 @@ class Activity extends React.Component {
     }
   }
 
-  searchbarOnClick = async(id,searchName,searchKeyWord) => {
-    let data=[];
-    switch (searchName){
-      case "searchbarRegion":
-        data = JSON.parse(JSON.stringify(this.state.searchbarRegionState))
-        data[id]===""
-        ?(data[id]="active")
-        :(data[id]="")
-        this.setState({searchbarRegionState:data})
-      break;
-      case "searchbarPlace":
-        data = ['','','','']
-        data[id]===""
-        ?(data[id]="active")
-        :(data[id]="")
-        this.setState({searchbarPlaceState:data})
-      break;
+  searchbarOnClick = async (id, searchName, searchKeyWord) => {
+    this.setState({ activityCardDataResult: 1 })
+    let data = []
+    switch (searchName) {
+      case 'searchbarRegion':
+        data = ['', '', '', '', '']
+        data[id] === '' ? (data[id] = 'active') : (data[id] = '')
+        this.setState({ searchbarRegionState: data })
+        break
+      case 'searchbarPlace':
+        data = ['', '', '', '', '', '']
+        data[id] === '' ? (data[id] = 'active') : (data[id] = '')
+        this.setState({ searchbarPlaceState: data })
+        break
+      default:
+        break
     }
     try {
-      
       const res = await fetch('http://localhost:5555/activityCardData', {
         method: 'GET',
         headers: new Headers({
@@ -70,34 +71,77 @@ class Activity extends React.Component {
         }),
       })
       let data = await res.json()
-      const regionKeyword = this.state.searchbarRegionState
-      const placeKeyword = this.state.searchbarPlaceState
-      // console.log(placeKeyword.map(el=>el))
-      // console.log(data.map((el,id)=>el))
 
-      // console.log(data.filter((el,id)=>el['place'].indexOf("咖啡廳")>=0))
-      console.log(searchKeyWord)
-      switch (searchKeyWord){
-        case "咖啡廳":
-          data = data.filter((el,id)=>el['place'].indexOf("咖啡廳")>=0)
-        break;
-        case "影院":
-          data = data.filter((el,id)=>el['place'].indexOf("影院")>=0)
-        break;
-        case "學校":
-          data = data.filter((el,id)=>el['place'].indexOf("學校")>=0)
-        break;
+      // console.log(searchKeyWord)
+      switch (searchKeyWord) {
+        case '北部':
+          data = data.filter((el, id) => el['place'].indexOf('北部') >= 0)
+          break
+        case '中部':
+          data = data.filter((el, id) => el['place'].indexOf('中部') >= 0)
+          break
+        case '南部':
+          data = data.filter((el, id) => el['place'].indexOf('南部') >= 0)
+          break
+        case '東部':
+          data = data.filter((el, id) => el['place'].indexOf('東部') >= 0)
+          break
+        case '咖啡廳':
+          data = data.filter((el, id) => el['place'].indexOf('咖啡廳') >= 0)
+          break
+        case '影院':
+          data = data.filter((el, id) => el['place'].indexOf('影院') >= 0)
+          break
+        case '學校':
+          data = data.filter((el, id) => el['place'].indexOf('學校') >= 0)
+          break
+        case '文創園區':
+          data = data.filter((el, id) => el['place'].indexOf('文創園區') >= 0)
+          break
+        default:
+          break
       }
-
+      if (data.length === 0) {
+        this.setState({ activityCardDataResult: 0 })
+        this.setState({ searchbarRegionState: ['active', '', '', '', ''] })
+        this.setState({ searchbarPlaceState: ['active', '', '', '', ''] })
+        // this.searchbarOnClick(0,searchName,"全部")
+      }
+      console.log(data)
+      console.log(typeof data)
       this.setState({ activityCardData: data })
     } catch (err) {
       console.log(err)
     }
-    
   }
-    
-    
-
+  SearchBarOnChange = async event => {
+    this.setState({ activityCardDataResult: 1 })
+    const searchText = event.target.value
+    this.setState({ searchText: searchText })
+    try {
+      const res = await fetch('http://localhost:5555/activityCardData', {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+      let data = await res.json()
+      data = data.filter(
+        item =>
+          item.theater.indexOf(searchText) > -1 ||
+          item.title.indexOf(searchText) > -1
+      )
+      if (data.length === 0) {
+        this.setState({ activityCardDataResult: 0 })
+        this.setState({ searchbarRegionState: ['active', '', '', '', ''] })
+        this.setState({ searchbarPlaceState: ['active', '', '', '', ''] })
+      }
+      this.setState({ activityCardData: data })
+    } catch (err) {
+      console.log(err)
+    }
+  }
   render() {
     return (
       <>
@@ -112,7 +156,6 @@ class Activity extends React.Component {
                 section={'#test'}
                 pagename={'/activity'}
                 pageid={'#search'}
-                
               />
             </div>
           </div>
@@ -133,31 +176,63 @@ class Activity extends React.Component {
             <div className="col-md-12 p-0 fix-inline-content">
               <div className="searchbar-wrapper d-flex mb-5">
                 <div>
-                  <ActivitySearchbarTitle title={'地區'}/>
+                  <ActivitySearchbarTitle spanClass="mr-5" title={'地區'} />
                 </div>
                 <div>
-              {this.state.searchbarRegion.map((data,id)=>
-                <ActivitySearchbarContent
-                className={this.state.searchbarRegionState[id]}
-                handleOnClick={()=>(this.searchbarOnClick(id,'searchbarRegion',data)) }
-                content={data}/>
-                )
-              }
+                  {this.state.searchbarRegion.map((data, id) => (
+                    <ActivitySearchbarContent
+                      className={this.state.searchbarRegionState[id]}
+                      handleOnClick={() =>
+                        this.searchbarOnClick(id, 'searchbarRegion', data)
+                      }
+                      content={data}
+                    />
+                  ))}
                 </div>
               </div>
               <div className="searchbar-wrapper d-flex mb-5">
                 <div>
-                  <ActivitySearchbarTitle title={'場所'}/>
+                  <ActivitySearchbarTitle spanClass="mr-5" title={'場所'} />
                 </div>
                 <div>
-              {this.state.searchbarPlace.map((data,id)=>            
-                <ActivitySearchbarContent 
-                className={this.state.searchbarPlaceState[id]}
-                handleOnClick={()=>(this.searchbarOnClick(id,'searchbarPlace',data)) } content={data}/>)
-              }
+                  {this.state.searchbarPlace.map((data, id) => (
+                    <ActivitySearchbarContent
+                      className={this.state.searchbarPlaceState[id]}
+                      handleOnClick={() =>
+                        this.searchbarOnClick(id, 'searchbarPlace', data)
+                      }
+                      content={data}
+                    />
+                  ))}
+                </div>
+              </div>
+              <div className="searchbar-wrapper d-flex mb-5">
+                <div>
+                  <ActivitySearchbarTitle spanClass="mr-4" title={'關鍵字'} />
+                </div>
+                <div>
+                  <ActivitySearchbarInput
+                    value={this.state.searchText}
+                    placeholder="請輸入關鍵字"
+                    handleOnChange={this.SearchBarOnChange}
+                  />
                 </div>
               </div>
             </div>
+            {this.state.activityCardDataResult == 0 ? (
+              <div className="col-md-12 p-0">
+                <div className="text-center">
+                  <button
+                    onClick={() => this.searchbarOnClick(0)}
+                    className="btn btn-warning"
+                  >
+                    沒有符合此條件的活動，請重新搜尋
+                  </button>
+                </div>
+              </div>
+            ) : (
+              ''
+            )}
             {this.state.activityCardData.map(data => (
               <LinkContainer to={'/activity/' + data.id}>
                 <div className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5">

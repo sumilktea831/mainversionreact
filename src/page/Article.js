@@ -1,11 +1,10 @@
 import React from 'react'
-// import ActivitySection from '../component/activity/ActivitySection/ActivitySection';
-import ArricleList from '../component/article/ArticleList'
 import ActivitySection from '../component/activity/ActivitySection/ActivitySection'
 import { Row, Col } from 'react-bootstrap'
 import Pagination from '../component/article/ArticleList/ArticleButton/Pagination'
 import ArticleCard from '../component/article/ArticleList'
-// import ArticlePage from '../component/article/ArticlePage/ArticlePage';
+import ArticleSlider from '../component/article/ArticleList/ArticleSlider/ArticleSlider'
+
 const memberId = '4'
 class Article extends React.Component {
   constructor() {
@@ -18,6 +17,7 @@ class Article extends React.Component {
       articleData: [], //content  ismarked isliked
       pagination: 0, //int
       viewCounter: 0,
+      SliderData: [],
     }
   }
 
@@ -33,9 +33,12 @@ class Article extends React.Component {
       const data = await res.json()
       console.log(data)
       const articleData = data
-      const paginationData = +articleData.length / 2
+      const SliderData = data.slice(0, 6)
+      console.log(SliderData)
+      const paginationData = Math.ceil(articleData.length / 2)
       console.log('pages:' + paginationData)
       this.setState({ articleData: articleData })
+      this.setState({ SliderData: SliderData })
       this.setState({ pagination: paginationData })
     } catch (err) {
       console.log(err)
@@ -71,6 +74,16 @@ class Article extends React.Component {
               {/* <ArricleList image={this.state.imgSrc}/> */}
             </div>
           </div>
+          <Row className="pt-3 my-4">
+            <div className="mx-3 text-center border-bottom border-light">
+              <h4 className="text-light">.Movieee精選</h4>
+            </div>
+          </Row>
+          <Row className="justify-content-md-center">
+            <Col md={11}>
+              <ArticleSlider SliderData={this.state.SliderData} />
+            </Col>
+          </Row>
           <div className="mycontainer">
             <Row className="mb-4">
               <div className="mx-3 text-center border-bottom border-light">

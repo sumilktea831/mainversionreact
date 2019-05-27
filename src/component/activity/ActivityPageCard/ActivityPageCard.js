@@ -22,13 +22,13 @@ const ActivityPageCard = props => (
           height: '100%',
         }}
       >
-        {/* <div class="col-md-7">
-          <ActivityMap
+        <div class="col-md-7">
+          {/* <ActivityMap
             lat={props.lat}
             lng={props.lng}
             streetView={props.streetView}
-          />
-        </div> */}
+          /> */}
+        </div>
         <div class="col-md-5">
           <div
             className="card-body d-flex flex-column justify-content-center"
