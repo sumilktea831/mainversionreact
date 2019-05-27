@@ -1,10 +1,12 @@
 import React from 'react'
 //多選專用
-const checkedClass = "ml-n3 px-3 py-2 border border-warning rounded bg-orange text-darkblue"
-const uncheckedClass = "ml-n3 px-3 py-2 border border-warning rounded bg-darkblue text-mywhite"
-const handleCilck = (id) => (event) => {
+const checkedClass =
+  'ml-n3 px-3 py-2 border border-warning rounded bg-orange text-darkblue'
+const uncheckedClass =
+  'ml-n3 px-3 py-2 border border-warning rounded bg-darkblue text-mywhite'
+const handleCilck = id => event => {
   event.target.parentNode.click()
-  if (document.querySelector("#" + id).checked) {
+  if (document.querySelector('#' + id).checked) {
     event.target.className = checkedClass
   } else {
     event.target.className = uncheckedClass
@@ -24,40 +26,45 @@ const CheckboxMultiSu = props => {
           id={props.optionId}
           style={{
             height: '100%',
-            zIndex: -1
+            zIndex: -1,
           }}
           checked={
             props.thisfavType == undefined
               ? false
               : props.thisfavType.find(item => item === props.optionName)
-                ? 'true'
-                : false
+              ? 'true'
+              : false
           }
           onChange={props.onChange}
         />
-        {(props.thisfavType == undefined
-          ? <label className="form-check-label h5" htmlFor={props.optionId}>
+        {props.thisfavType == undefined ? (
+          <label className="form-check-label h5" htmlFor={props.optionId}>
             <button
               className={uncheckedClass}
-              onClick={handleCilck(props.optionId)}>
+              onClick={handleCilck(props.optionId)}
+            >
               {props.optionName}
             </button>
           </label>
-          : props.thisfavType.find(item => item === props.optionName)
-            ? <label className="form-check-label h5" htmlFor={props.optionId}>
-              <button
-                className={checkedClass}
-                onClick={handleCilck(props.optionId)}>
-                {props.optionName}
-              </button>
-            </label>
-            : <label className="form-check-label h5" htmlFor={props.optionId}>
-              <button
-                className={uncheckedClass}
-                onClick={handleCilck(props.optionId)}>
-                {props.optionName}
-              </button>
-            </label>)}
+        ) : props.thisfavType.find(item => item === props.optionName) ? (
+          <label className="form-check-label h5" htmlFor={props.optionId}>
+            <button
+              className={checkedClass}
+              onClick={handleCilck(props.optionId)}
+            >
+              {props.optionName}
+            </button>
+          </label>
+        ) : (
+          <label className="form-check-label h5" htmlFor={props.optionId}>
+            <button
+              className={uncheckedClass}
+              onClick={handleCilck(props.optionId)}
+            >
+              {props.optionName}
+            </button>
+          </label>
+        )}
       </div>
     </>
   )

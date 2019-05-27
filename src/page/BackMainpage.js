@@ -2,13 +2,14 @@ import React from 'react'
 import { Row } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import MemberBackSidenav from '../component/backSidenav/MemberBackSidenav'
-// import CinemaBackSidenav from '../component/backSidenav/CinemaBackSidenav'
+import CinemaBackSidenav from '../component/backSidenav/CinemaBackSidenav'
 import TitleKaga from '../component/cinema/TitleKaga'
 import AvatarOne from '../component/cinema/AvatarTypeOne/AvatarOne'
 import DataBox from '../component/cinema/DataBoxSM/DataBox'
 import CardKaga from '../component/cinema/CardKaga/v3/CardKaga'
 import ActivityCard from '../component/activity/ActivityCard/ActivityCard'
 import ActivityTitle from '../component/activity/ActivityTitle/ActivityTitle'
+import MemberEditInfo from '../component/meberBack/MemberEditInfo'
 
 //memberId
 const memberId = sessionStorage.getItem('memberId')
@@ -19,35 +20,88 @@ class BackSidenav extends React.Component {
     const path = window.location.pathname.slice(1)
     console.log(path)
     this.state = {
+      // sidenave
+      memberSidenavItems: [],
+      cinemaSidenavItems: [],
       // 會員用state
+      memberEditInputmsg: [],
+      allMemberData: [],
+      thisMemberData: [],
       avatarOne: '',
       boxData: '',
       filmCard: [],
       //活動用state
-      sidenavItems: [],
       activityPageData: [],
       activityPageOtherData: [],
     }
   }
 
   async componentDidMount() {
+    //取得會員sidenav項目
     try {
-      //初始資料載入
-      //fetch:json-server連線的位址/json中的項目/該項目中id
       const response = await fetch('http://localhost:5555/memberBackSidenav', {
-        method: 'GET', //使用GET方法獲取資訊，因為是取得資訊，故不須加body
+        method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
           'Content-Type': 'application/json',
         }),
       })
-      if (!response.ok) throw new Error(response.statusText) //如果發生錯誤，丟出錯誤訊息
+      if (!response.ok) throw new Error(response.statusText)
       const jsonObject = await response.json()
       const data = await jsonObject
-      await this.setState({ sidenavItems: data })
-      //   await console.log(data)
+      await this.setState({ memberSidenavItems: data })
     } catch (e) {
-      //抓到錯誤訊息，以及接下來要做的錯誤處理
+      console.log(e)
+    }
+    //取得戲院sidenav項目
+    try {
+      const response = await fetch('http://localhost:5555/cinemaBackSidenav', {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+      if (!response.ok) throw new Error(response.statusText)
+      const jsonObject = await response.json()
+      const data = await jsonObject
+      await this.setState({ cinemaSidenavItems: data })
+    } catch (e) {
+      console.log(e)
+    }
+    //取得會員資料
+    try {
+      const response = await fetch('http://localhost:5555/member', {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+      if (!response.ok) throw new Error(response.statusText)
+      const jsonObject = await response.json()
+      const data = await jsonObject.find(
+        item => item.id === sessionStorage.getItem('memberId')
+      )
+      console.log('session' + sessionStorage.getItem('memberId'))
+      await this.setState({ thisMemberData: data, allMemberData: jsonObject })
+    } catch (e) {
+      console.log(e)
+    }
+    //取得會員editInfo項目
+    try {
+      const response = await fetch('http://localhost:5555/memberEditInputmsg', {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+      if (!response.ok) throw new Error(response.statusText)
+      const jsonObject = await response.json()
+      const data = await jsonObject
+      await this.setState({ memberEditInputmsg: data })
+    } catch (e) {
       console.log(e)
     }
 
@@ -199,6 +253,12 @@ class BackSidenav extends React.Component {
       // alert('回到登入頁')
       window.location.href = '/LoginSign'
     } else {
+      //判斷登入者是會員or戲院，帶入相應的sidenav
+      const sidenav = sessionStorage.getItem('memberId') ? (
+        <MemberBackSidenav sidenavItems={this.state.memberSidenavItems} />
+      ) : (
+        <CinemaBackSidenav sidenavItems={this.state.cinemaSidenavItems} />
+      )
       const pagename = this.props.location.pathname.slice(14)
 
       return (
@@ -206,7 +266,7 @@ class BackSidenav extends React.Component {
           {/* 暫時上方navbar區塊 */}
           <div className="bg-info pt-5 pb-4" />
           <Row>
-            <MemberBackSidenav sidenavItems={this.state.sidenavItems} />
+            {sidenav}
             <div //右邊內容框，之後要引入內容component
               className="col container-fluid"
               style={{
@@ -217,7 +277,7 @@ class BackSidenav extends React.Component {
               {/* 會員公開個人資訊 */}
               {pagename === 'my-preview' ? (
                 <>
-                  <TitleKaga title="基本資料" />
+                  <TitleKaga title="公開資訊卡預覽" />
                   <div
                     className="row d-flex align-items-center my-5"
                     style={{ height: '200px' }}
@@ -238,7 +298,7 @@ class BackSidenav extends React.Component {
                   </div>
                   {/* 隔開兩類專用 */}
                   <div className="py-5">
-                    <TitleKaga title="喜好類型" />
+                    <TitleKaga title="喜愛電影類型" />
                   </div>
                   {/* 喜好列塞入處 */}
                   <div
@@ -314,17 +374,28 @@ class BackSidenav extends React.Component {
                 ''
               )}
               {/* 會員個人資訊編輯 */}
-              {pagename === 'edit-myinfo' ? (
+              {pagename == 'edit-myinfo' ? (
                 <>
-                  <div>
-                    <div>上左</div>
-                    <div>上右</div>
+                  <div className="row">
+                    <div className="col-md-12 p-0">
+                      <ActivityTitle
+                        title={'編輯個人資訊'}
+                        className="content-title"
+                      />
+                    </div>
+                    <div style={{ width: '100%' }}>
+                      <MemberEditInfo
+                        memberEditInputmsg={this.state.memberEditInputmsg}
+                        thisData={this.state.thisMemberData}
+                        allMemberData={this.state.allMemberData}
+                      />
+                    </div>
                   </div>
-                  <div>下</div>
                 </>
               ) : (
                 ''
               )}
+
               {pagename == 'activityMemberBoard' ? (
                 <>
                   <div className="row">
