@@ -5,18 +5,23 @@ import ResComment from './ResComment'
 class ArticleComment extends React.Component {
   constructor(props) {
     super(props)
+    this.state = {
+      resComment: [],
+    }
   }
-
   async componentDidMount() {
     try {
-      const res = await fetch('http://localhost:5555/articleComment', {
+      const res = await fetch('http://localhost:5555/articleResComment', {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
           'Content-Type': 'application/json',
         }),
       })
-      const data = await res.json()
+      const dataR = await res.json()
+      const resCommemtData = dataR.filter(item => item.rid === +this.props.sid)
+      this.setState({ resComment: resCommemtData })
+      console.log(resCommemtData)
     } catch (err) {
       console.log(err)
     }
@@ -27,21 +32,26 @@ class ArticleComment extends React.Component {
       <>
         <Row className="my-3 justify-content-md-center">
           <Col md={8} sm={12} className="box-shadow">
-            <div className="col-md-8 text-left my-3">
-              <h4 className="text-light">網友評論</h4>
-            </div>
             <div class="media">
-              <img src="..." class="mr-3" alt="..." />
-              <div class="media-body">
-                <div class="mt-0 col">
-                  <div>{this.props.author}</div>
-                  <div>{this.props.date}</div>
+              <div class="media-body d-flex py-4">
+                <div className="col-md-3 d-flex">
+                  <div className="avatar mx-4">
+                    <img
+                      src="/images/article/test4.jpg"
+                      class="mr-3"
+                      alt="..."
+                    />
+                  </div>
+                  <div>
+                    <div>{this.props.author}</div>
+                    <div>{this.props.date}</div>
+                  </div>
                 </div>
-                {this.props.content}
-                <div class="media mt-3" />
+                <div className="col-md-9">{this.props.content}</div>
               </div>
+              <div className="commentGroup">讚 留言 分享</div>
             </div>
-            {this.props.res.map((item, index) => (
+            {this.state.resComment.map((item, index) => (
               <>
                 <ResComment
                   key={index}
