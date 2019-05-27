@@ -397,6 +397,33 @@ class BackSidenav extends React.Component {
     })
   }
 
+  handleMemberEditSave = (data, checkok) => () => {
+    let memberid = sessionStorage.getItem('memberId')
+    let isAllChecked = true
+    let checkArray = Object.values(checkok)
+    isAllChecked = checkArray.reduce((a, b) => a && b)
+    console.log('isAllChecked: ' + isAllChecked)
+    if (isAllChecked) {
+      try {
+        fetch('http://localhost:5555/member/' + memberid, {
+          method: 'PUT',
+          body: JSON.stringify(data),
+          headers: new Headers({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          }),
+        })
+          .then(res => res.json())
+          .then(jsonObject => {
+            this.setState({ thisMemberData: jsonObject }, () => {
+              alert('資料儲存成功')
+            })
+          })
+      } catch (e) {
+        console.log(e)
+      }
+    }
+  }
   //影片卡片按下刪除鈕後刪除此收藏
   filmCardDel = async id => {
     // 去把這個會員的collectFilm裡面的這個影片id刪掉
@@ -458,6 +485,7 @@ class BackSidenav extends React.Component {
     sessionStorage.clear()
     window.location.href = '/mainpage'
   }
+
   render() {
     if (
       !(
@@ -585,6 +613,7 @@ class BackSidenav extends React.Component {
                         memberEditInputmsg={this.state.memberEditInputmsg}
                         thisData={this.state.thisMemberData}
                         allMemberData={this.state.allMemberData}
+                        handleMemberEditSave={this.handleMemberEditSave}
                       />
                     </div>
                   </div>
