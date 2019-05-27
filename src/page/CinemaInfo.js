@@ -5,15 +5,19 @@ import CinemaSection from '../component/cinema/CinemaSection/CinemaSection'
 import CardKaga from '../component/cinema/CardKaga/v3/CardKaga'
 import TitleKaga from '../component/cinema/TitleKaga'
 import CinemaSlider from '../component/cinema/CinemaSlider/CinemaSlider'
+import MessageBoard from '../component/cinema/MessageBoard/MessageBoard'
+import MessageBoardInput from '../component/cinema/MessageBoard/MessageBoardInput'
 //撈目前已登陸的會員資料
 const memberId = sessionStorage.getItem('memberId')
+const cinemaId = sessionStorage.getItem('cinemaId')
 class TheateInfo extends React.Component {
   constructor() {
     super()
     this.state = {
-      cinemaData: '',
-      memberData: '',
-      memberThisData: '',
+      cinemaData: '', // 此頁顯示的戲院資料
+      cinemaThisData: '', // 登陸的戲院資料
+      memberData: '', // 所有會員資料
+      memberThisData: '', // 登陸的會員資料
       activityData: '',
       dataFile: '',
       HeroSection: '',
@@ -21,6 +25,7 @@ class TheateInfo extends React.Component {
       SliderData: '',
       ActivityCardData: [],
       FilmCardData: [],
+      MessageBoard: [],
     }
   }
 
@@ -28,17 +33,23 @@ class TheateInfo extends React.Component {
   async componentDidMount() {
     try {
       //劇院
-      const resCinema = await fetch(
-        'http://localhost:5555/cinema/' + this.props.match.params.id,
-        {
-          method: 'GET',
-          headers: new Headers({
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          }),
-        }
+      const resCinema = await fetch('http://localhost:5555/cinema', {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+      // 全部的戲院資料
+      const dataAllCinema = await resCinema.json()
+      // 此頁顯示的劇院資料
+      const dataCine = dataAllCinema.filter(
+        item => item.id === this.props.match.params.id
       )
-      const dataCinema = await resCinema.json()
+      const dataCinema = dataCine[0]
+      // 現在登陸的戲院資料
+      const dataLoginCine = dataAllCinema.filter(item => item.id === cinemaId)
+      const dataLoginCinema = dataLoginCine[0]
 
       //會員
       const resMember = await fetch('http://localhost:5555/member', {
@@ -187,6 +198,7 @@ class TheateInfo extends React.Component {
       }))
       this.setState({
         cinemaData: dataCinema,
+        cinemaThisData: dataLoginCinema,
         memberData: dataMember,
         memberThisData: dataThisMember,
         activityData: dataAct,
@@ -196,6 +208,7 @@ class TheateInfo extends React.Component {
         SliderData: SliderData,
         ActivityCardData: ActivityCardData,
         FilmCardData: FilmCardData,
+        MessageBoard: dataCinema.cinemaMessage,
       })
     } catch (err) {
       console.log(err)
@@ -491,11 +504,66 @@ class TheateInfo extends React.Component {
     })
   }
 
-  // newStarAndMark = val => {
-  //   console.log(val)
-  //   alert('Use Fetch Update New Star And Mark To Database!!')
-  // }
+  MessageBoardSave = async newText => {
+    let thisMember = this.state.memberThisData[0] //現在登陸的這名會員
+    let thisCinema = this.state.cinemaThisData //現在登陸的戲院
+    let thisLogin = {}
+    if (memberId) {
+      console.log('thisMember')
+      console.log(thisMember)
+      thisLogin.name = thisMember.nickname
+      thisLogin.img = thisMember.avatar
+    } else if (cinemaId) {
+      thisLogin.name = thisCinema.cinemaName
+      thisLogin.img = thisCinema.cinemaLogoImg
+    } else {
+      thisLogin = ''
+    }
 
+    let newVisitor = {
+      id: +new Date(),
+      name: '訪客',
+      img: 'asianman.jpg',
+      message: newText,
+      time: +new Date(),
+      awesome: [],
+      boo: [],
+    }
+
+    let newMemberMessage = {
+      id: +new Date(),
+      name: thisLogin.name,
+      img: thisLogin.img !== '' ? thisLogin.img : 'asianman.jpg',
+      message: newText,
+      time: +new Date(),
+      awesome: [],
+      boo: [],
+    }
+    let newMemberMessageData = [...this.state.MessageBoard, newMemberMessage]
+    let newVisitorData = [...this.state.MessageBoard, newVisitor]
+    let NewData = thisLogin !== '' ? newMemberMessageData : newVisitorData
+    console.log(NewData)
+    this.setState({ MessageBoard: NewData })
+    // 然後更新回資料庫 留言資料放在戲院自己裡面 cinemaMessage
+    const NewCinemaMessage = this.state.cinemaData
+    NewCinemaMessage.cinemaMessage = NewData
+
+    console.log('NewCinemaMessage')
+    console.log(NewCinemaMessage)
+    const resCinema = await fetch(
+      'http://localhost:5555/cinema/' + this.props.match.params.id,
+      {
+        method: 'PUT',
+        body: JSON.stringify(NewCinemaMessage),
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      }
+    )
+    const jsonObject = await resCinema.json()
+    console.log(jsonObject)
+  }
   render() {
     return (
       <>
@@ -620,10 +688,10 @@ class TheateInfo extends React.Component {
 
           {/* 留言板區塊 */}
           <div className="py-5">
-            <TitleKaga title="留言板" />
+            <TitleKaga title="評論區" />
           </div>
           <div
-            className="bg-warning "
+            // className="bg-warning "
             style={{
               height: '400px',
               weight: '100%',
@@ -631,7 +699,14 @@ class TheateInfo extends React.Component {
               fontSize: '50px',
             }}
           >
-            留言板
+            {this.state.MessageBoard.map(item => (
+              <MessageBoard
+                listData={item}
+                awesomeClick={this.awesomeClick}
+                booeClick={this.booeClick}
+              />
+            ))}
+            <MessageBoardInput MessageBoardSave={this.MessageBoardSave} />
           </div>
         </div>
       </>
