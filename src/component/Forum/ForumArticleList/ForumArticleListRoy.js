@@ -6,12 +6,18 @@ import ListAvatarRoy from './ListAvatarRoy'
 import ListViewsRoy from './ListViewsRoy'
 
 const ForumArticleListRoy = props => {
+  // console.log(props)
   return (
     <>
       <div
-        type="button"
-        className="border border-dark px-4 p-2 bg-dark my-2"
+        // type="button"
+        className=" px-4 p-2  my-2"
         onClick={props.onClick}
+        style={{
+          border: 'none',
+          background: 'none',
+          boxShadow: '0 2px 6px #191C20',
+        }}
       >
         {/* 列表上排 */}
         <div

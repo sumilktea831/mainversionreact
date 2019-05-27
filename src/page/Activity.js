@@ -18,16 +18,17 @@ class Activity extends React.Component {
         'https://images.unsplash.com/photo-1506512420485-a28339abb3b9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80',
       title: ['活動列表'],
       activityCardData: [],
-      searchbarRegion:['北部','中部','南部','東部'],
-      searchbarPlace:['全部','咖啡廳','影院','學校'],
-      searchbarRegionState:['','','',''],
-      searchbarPlaceState:['active','','',''],
+      activityCardDataResult:0,
+      searchbarRegion:['全部','北部','中部','南部','東部'],
+      searchbarPlace:['全部','影院','學校','文創園區','咖啡廳'],
+      searchbarRegionState:['active','','','',''],
+      searchbarPlaceState:['active','','','',''],
     }
   }
 
   async componentDidMount() {
     try {
-      
+      this.setState({activityCardDataResult:1})
       const res = await fetch('http://localhost:5555/activityCardData', {
         method: 'GET',
         headers: new Headers({
@@ -43,17 +44,18 @@ class Activity extends React.Component {
   }
 
   searchbarOnClick = async(id,searchName,searchKeyWord) => {
+    this.setState({activityCardDataResult:1})
     let data=[];
     switch (searchName){
       case "searchbarRegion":
-        data = JSON.parse(JSON.stringify(this.state.searchbarRegionState))
+        data = ['','','','','']
         data[id]===""
         ?(data[id]="active")
         :(data[id]="")
         this.setState({searchbarRegionState:data})
       break;
       case "searchbarPlace":
-        data = ['','','','']
+        data = ['','','','','','']
         data[id]===""
         ?(data[id]="active")
         :(data[id]="")
@@ -70,14 +72,23 @@ class Activity extends React.Component {
         }),
       })
       let data = await res.json()
+      
       const regionKeyword = this.state.searchbarRegionState
       const placeKeyword = this.state.searchbarPlaceState
-      // console.log(placeKeyword.map(el=>el))
-      // console.log(data.map((el,id)=>el))
-
-      // console.log(data.filter((el,id)=>el['place'].indexOf("咖啡廳")>=0))
-      console.log(searchKeyWord)
+      // console.log(searchKeyWord)
       switch (searchKeyWord){
+        case "北部":
+          data = data.filter((el,id)=>el['place'].indexOf("北部")>=0)
+        break;
+        case "中部":
+          data = data.filter((el,id)=>el['place'].indexOf("中部")>=0)
+        break;
+        case "南部":
+          data = data.filter((el,id)=>el['place'].indexOf("南部")>=0)
+        break;
+        case "東部":
+          data = data.filter((el,id)=>el['place'].indexOf("東部")>=0)
+        break;
         case "咖啡廳":
           data = data.filter((el,id)=>el['place'].indexOf("咖啡廳")>=0)
         break;
@@ -87,8 +98,19 @@ class Activity extends React.Component {
         case "學校":
           data = data.filter((el,id)=>el['place'].indexOf("學校")>=0)
         break;
+        case "文創園區":
+          data = data.filter((el,id)=>el['place'].indexOf("文創園區")>=0)
+        break;
       }
-
+      if(data.length === 0){
+        
+        this.setState({activityCardDataResult:0})
+        this.setState({searchbarRegionState:['active','','','','']})
+        this.setState({searchbarPlaceState:['active','','','','']})
+        // this.searchbarOnClick(0,searchName,"全部")
+      }
+      console.log(data)
+      console.log(typeof data)
       this.setState({ activityCardData: data })
     } catch (err) {
       console.log(err)
@@ -158,6 +180,15 @@ class Activity extends React.Component {
                 </div>
               </div>
             </div>
+            {this.state.activityCardDataResult == 0
+            ?(
+            <div className="col-md-12 p-0">
+              <div className="text-center">
+                  <button onClick={()=>this.searchbarOnClick(0)} className="btn btn-warning">沒有符合此條件的活動，請重新搜尋</button>
+              </div>
+            </div>)
+            :('')
+            }
             {this.state.activityCardData.map(data => (
               <LinkContainer to={'/activity/' + data.id}>
                 <div className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5">
