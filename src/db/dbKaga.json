@@ -71,8 +71,8 @@
       "collectForum": [],
       "markList": [
         {
-          "markId": "001",
-          "markcontent": "sbnfg nfgn"
+          "markId": "004",
+          "markcontent": "sdsdvg"
         }
       ]
     },
@@ -1304,14 +1304,6 @@
         {
           "starId": "m22222",
           "star": 4
-        },
-        {
-          "starId": "m111111",
-          "star": 3
-        },
-        {
-          "starId": "m33333",
-          "star": 4
         }
       ]
     },
@@ -1397,7 +1389,7 @@
       "filmStar": [
         {
           "starId": "m22222",
-          "star": 4
+          "star": 2
         }
       ]
     },
@@ -1442,7 +1434,7 @@
       "filmStar": [
         {
           "starId": "m22222",
-          "star": 4
+          "star": 2
         }
       ]
     }

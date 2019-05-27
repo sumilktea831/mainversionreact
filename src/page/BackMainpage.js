@@ -278,13 +278,15 @@ class BackSidenav extends React.Component {
     )
     let thisFilmData = thisFilm[0] //thisFilmData 就是要更改的影片完整資料
     // 製作要蓋回去mark的資料
-    let trueFalse = this.state.thisMemberData.markList.some(
+    // 先看看mark裡面是不是有這個id的備註
+    // 如果有some完就是true然後轉成修改
+    // 如果沒有some完就是false然後轉成新增
+    // some是要有一筆是true就會回傳true 完全沒有相符的就回傳false
+    let markTrueFalse = this.state.thisMemberData.markList.some(
       item => item.markId === thisFilmData.id
     )
     let newMarkUpdateData = []
-    console.log('trueFalse')
-    console.log(trueFalse)
-    if (trueFalse === false) {
+    if (markTrueFalse === false) {
       newMarkUpdateData.push({
         markId: thisFilmData.id,
         markcontent: newVal.mark.markcontent,
@@ -300,8 +302,6 @@ class BackSidenav extends React.Component {
         return item
       })
     }
-    console.log('newMarkUpdateData')
-    console.log(newMarkUpdateData)
     // 把剛做好的新mark 套進即將蓋回去會員json的資料
     const NewMemberData = {
       id: this.state.thisMemberData.id,
@@ -341,8 +341,12 @@ class BackSidenav extends React.Component {
     // 再來做要蓋回去影片的資料
     let newStarData = { starId: newVal.star.starId, star: newVal.star.star }
     // 先做好要蓋的那之影片的資料 thisNewFilmData
+    // 用length判斷是否星星裡面有資料
     let thisNewFilmData = thisFilmData
-    if (thisFilmData.filmStar.length === 0) {
+    let starTrueFalse = thisFilmData.filmStar.some(
+      item => item.starId == newVal.star.starId
+    )
+    if (starTrueFalse === false) {
       thisNewFilmData.filmStar.push(newStarData)
     } else {
       thisNewFilmData.filmStar = thisFilmData.filmStar.map(item => {
