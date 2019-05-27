@@ -13,7 +13,7 @@ import {
 import Mainpage from './page/Mainpage'
 import Cinema from './page/Cinema'
 import CinemaInfo from './page/CinemaInfo'
-import Movie from './page/Movie'
+import Movie from './page/Movie1'
 import Article from './page/Article'
 import ArticlePage from './page/ArticlePage'
 import Activity from './page/Activity'
