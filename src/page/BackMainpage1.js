@@ -10,8 +10,6 @@ import CardKaga from '../component/cinema/CardKaga/v3/CardKaga'
 import ActivityCard from '../component/activity/ActivityCard/ActivityCard'
 import ActivityTitle from '../component/activity/ActivityTitle/ActivityTitle'
 import MemberEditInfo from '../component/meberBack/MemberEditInfo'
-import MemberEditPwd from '../component/meberBack/MemberEditPwd'
-import CinemaEditInfo from '../component/cinemaBack/CinemaEditInfo'
 
 //memberId
 const memberId = sessionStorage.getItem('memberId')
@@ -109,22 +107,7 @@ class BackSidenav extends React.Component {
     } catch (e) {
       console.log(e)
     }
-    //取得戲院editInfo項目
-    try {
-      const response = await fetch('http://localhost:5555/cinemaEditInputmsg', {
-        method: 'GET',
-        headers: new Headers({
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        }),
-      })
-      if (!response.ok) throw new Error(response.statusText)
-      const jsonObject = await response.json()
-      const data = await jsonObject
-      await this.setState({ cinemaEditInputmsg: data })
-    } catch (e) {
-      console.log(e)
-    }
+
     // 活動頁面 （因為跳錯會卡到資料傳遞, 故獨立出來Try~Catch
     try {
       const resActivity = await fetch(
@@ -138,18 +121,15 @@ class BackSidenav extends React.Component {
         }
       )
       const dataActivity = await resActivity.json()
-
       const activityPageData = dataActivity.find(
         item => item.id === this.props.match.params.id
       )
       const activityPageOtherData = dataActivity.filter(
         item => item.id !== this.props.match.params.id
       )
-
       const activityMemberFavorite = dataActivity.filter(
         item => this.state.thisMemberData.collectActivity.indexOf(item.id) > -1
       )
-
       const activityMemberJoin = dataActivity.filter(
         item =>
           this.state.thisMemberData.collectActivityJoin.indexOf(item.id) > -1
@@ -172,6 +152,18 @@ class BackSidenav extends React.Component {
         }),
       })
       const dataMember = await resMember.json()
+      console.log('dataMember')
+      console.log(dataMember)
+
+      // 導入戲院資料 ----尚未用到
+      // const resCinema = await fetch('http://localhost:5555/Cinema', {
+      //   method: 'GET',
+      //   headers: new Headers({
+      //     Accept: 'application/json',
+      //     'Content-Type': 'application/json',
+      //   }),
+      // })
+      // const dataCinema = await resCinema.json()
 
       // 導入論壇資料
       const resForum = await fetch('http://localhost:5555/forum', {
@@ -183,18 +175,18 @@ class BackSidenav extends React.Component {
       })
       const dataForum = await resForum.json()
 
-      // 導入活動資料
-      const resActivity = await fetch(
-        'http://localhost:5555/activityCardData',
-        {
-          method: 'GET',
-          headers: new Headers({
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          }),
-        }
-      )
-      const dataActivity = await resActivity.json()
+      // 導入活動資料 ----尚未用到
+      // const resActivity = await fetch(
+      //   'http://localhost:5555/activityCardData',
+      //   {
+      //     method: 'GET',
+      //     headers: new Headers({
+      //       Accept: 'application/json',
+      //       'Content-Type': 'application/json',
+      //     }),
+      //   }
+      // )
+      // const dataActivity = await resActivity.json()
 
       // 導入影片資料
       const resFilm = await fetch('http://localhost:5555/filmData', {
@@ -206,9 +198,11 @@ class BackSidenav extends React.Component {
       })
       // 完整的影片json資料
       const dataFilm = await resFilm.json()
-
       // 會員my-preview頁面需要的資料
+      // 目前已登入的會員資料 memberPageData //no array // pure object
       const memberPageData = dataMember.find(item => item.id === memberId)
+      console.log('memberPageData')
+      console.log(memberPageData)
       // 元件AvatarOne -- 完成
       // 如果沒有頭像就給他預設頭像
       const memberAvatar =
@@ -568,47 +562,7 @@ class BackSidenav extends React.Component {
               ) : (
                 ''
               )}
-              {pagename === 'edit-mypassword' ? (
-                <>
-                  <div className="row">
-                    <div className="col-md-12 p-0">
-                      <ActivityTitle
-                        title={'更改密碼'}
-                        className="content-title"
-                      />
-                    </div>
-                    <div style={{ width: '100%' }}>
-                      <MemberEditPwd
-                        memberEditInputmsg={this.state.memberEditInputmsg}
-                        thisData={this.state.thisMemberData}
-                      />
-                    </div>
-                  </div>
-                </>
-              ) : (
-                ''
-              )}
-              {pagename === 'cinema-edit-info' ? (
-                <>
-                  <div className="row">
-                    <div className="col-md-12 p-0">
-                      <ActivityTitle
-                        title={'編輯戲院資訊'}
-                        className="content-title"
-                      />
-                    </div>
-                    <div style={{ width: '100%' }}>
-                      <CinemaEditInfo
-                        cinemaEditInputmsg={this.state.cinemaEditInputmsg}
-                        thisData={this.state.thisCinemaData}
-                        allCinemaData={this.state.allCinemaData}
-                      />
-                    </div>
-                  </div>
-                </>
-              ) : (
-                ''
-              )}
+
               {pagename == 'activityMemberBoard' ? (
                 <>
                   <div className="row">

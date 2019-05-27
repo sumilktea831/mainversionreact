@@ -12,13 +12,14 @@ import CardKagaStaAnimation from './CardKagaStaAnimation'
 // star={props.star} // "starId":"m123","star":5}
 // mark={props.mark}
 // member={props.member}
-const memberId = 'm123'
+const memberId = sessionStorage.getItem('memberId')
 class CardKagaEditToAreaButton extends React.Component {
   constructor(props, context) {
     super(props, context)
     this.state = {
       id: props.id,
       show: false,
+      firstStar: '',
       nowStar: '',
       viewStar: '',
       updateStar: '',
@@ -38,20 +39,22 @@ class CardKagaEditToAreaButton extends React.Component {
     })
 
     // 初始mark設定
-    console.log(this.props)
     const markProps = this.props.mark
-    let markData = { markId: '', markContent: '' }
+    let markData = { markId: '', markcontent: '' }
+    //找出如果會員mark資料裡面的id == 這部影片的id的資料 , 那就把文字提出來讓這張卡使用
     markProps.map(item => {
       if (item.markId === this.props.id) {
         markData.markId = item.markId
-        markData.markContent = item.markContent
+        markData.markcontent = item.markcontent
       }
       return item
     })
-    this.setState({ markText: markData.markContent })
+    //state的markText 就是這張卡的註記文字
+    this.setState({ markText: markData.markcontent })
 
     // 初始state 設定
     this.setState({
+      firstStar: dataStar.star,
       nowStar: dataStar.star,
       viewStar: dataStar.star,
       updateStar: dataStar.star,
@@ -73,7 +76,8 @@ class CardKagaEditToAreaButton extends React.Component {
   mouseOver5 = () => {
     this.setState({ viewStar: 5 })
   }
-  //Click
+  // Click
+  // 按下星星就設定nowStar固定星星 以及上傳星星讓到時候按下儲存可以吃到最新的星星數
   Click1 = () => {
     this.setState({ nowStar: 1, viewStar: 1, updateStar: 1 })
   }
@@ -97,17 +101,25 @@ class CardKagaEditToAreaButton extends React.Component {
 
   //modal
   handleClose = () => {
-    this.setState({ show: false })
+    // 如果按下離開 就把全部星星數還原到初始星星數
+    this.setState({
+      show: false,
+      nowStar: this.state.firstStar,
+      viewStar: this.state.firstStar,
+      updateStar: this.state.firstStar,
+    })
   }
 
   //要在多偷渡一個會員ＩＤ回去
   handleSave = () => {
     let toUserData = {
       star: { starId: memberId, star: this.state.updateStar },
-      mark: { markId: this.props.id, markContent: this.state.markText },
+      mark: { markId: this.props.id, markcontent: this.state.markText },
     }
+    this.props.saveMiddleStar(toUserData)
     this.props.newStarAndMark(toUserData)
-    this.setState({ show: false })
+    //如果按儲存就關掉視窗 並把初始星星設定成要上傳的星星數
+    this.setState({ show: false, firstStar: this.state.updateStar })
   }
 
   handleShow = () => {
