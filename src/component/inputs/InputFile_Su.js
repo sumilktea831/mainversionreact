@@ -29,20 +29,21 @@ const InputFile_Su = props => {
               display: 'none',
             }}
             onChange={props.onChange}
+            multiple={props.multiple ? true : false}
           />
           <div
             id={props.id + 'filename'}
-            className="col px-0 pt-2 border border-warning rounded-left"
+            className="col px-0 pt-2 border border-warning rounded-left text-center"
             style={{
               // height: `${props.inputHeight}`,
               background: '#1F242A',
               // color: '#FFA510',
             }}
           >
-            這裡是檔案名稱
+            {props.placeholder}
           </div>
           <div
-            className="col-3 px-1 pt-2  border border-left-0 border-warning rounded-right"
+            className="col-3 px-1 pt-2  border border-left-0 border-warning rounded-right text-center"
             style={{
               height: `${props.inputHeight}`,
               background: '#1F242A',

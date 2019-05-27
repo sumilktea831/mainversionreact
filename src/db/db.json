@@ -1015,6 +1015,246 @@
       "name": "愛情片"
     }
   ],
+  "cinemaEditInputmsg": [
+    {
+      "id": "cinemaName",
+      "w": "",
+      "h": "40px",
+      "inputType": "text",
+      "inputLabel": "戲院名稱",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "cinemaTaxid",
+      "w": "",
+      "h": "40px",
+      "inputType": "text",
+      "inputLabel": "統一編號",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "cinemaPhone",
+      "w": "",
+      "h": "40px",
+      "inputType": "text",
+      "inputLabel": "連絡電話",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "請輸入市內電話號碼(例: 02-2222-2222)",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "cinemaCity",
+      "w": "",
+      "h": "40px",
+      "inputType": "selector",
+      "inputLabel": "所在縣市",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "fas fa-caret-square-down",
+      "iconRS": "24px",
+      "selectOptions": [
+        {
+          "id": "NOCITY",
+          "name": "尚未選擇縣市"
+        },
+        {
+          "id": "TPE",
+          "name": "台北市"
+        },
+        {
+          "id": "NTPC",
+          "name": "新北市"
+        },
+        {
+          "id": "KEL",
+          "name": "基隆市"
+        },
+        {
+          "id": "TYN",
+          "name": "桃園市"
+        },
+        {
+          "id": "HSZ",
+          "name": "新竹市"
+        },
+        {
+          "id": "ZMI",
+          "name": "苗栗縣"
+        },
+        {
+          "id": "TXG",
+          "name": "台中市"
+        },
+        {
+          "id": "CHW",
+          "name": "彰化縣"
+        },
+        {
+          "id": "NTC",
+          "name": "南投縣"
+        },
+        {
+          "id": "YUN",
+          "name": "雲林縣"
+        },
+        {
+          "id": "CYI",
+          "name": "嘉義市"
+        },
+        {
+          "id": "CHY",
+          "name": "嘉義縣"
+        },
+        {
+          "id": "TNN",
+          "name": "台南市"
+        },
+        {
+          "id": "PIF",
+          "name": "屏東縣"
+        },
+        {
+          "id": "ILA",
+          "name": "宜蘭縣"
+        },
+        {
+          "id": "HUN",
+          "name": "花蓮縣"
+        },
+        {
+          "id": "TTT",
+          "name": "台東縣"
+        },
+        {
+          "id": "PEH",
+          "name": "澎湖縣"
+        },
+        {
+          "id": "KNH",
+          "name": "金門縣"
+        }
+      ]
+    },
+    {
+      "id": "cinemaArea",
+      "w": "",
+      "h": "40px",
+      "inputType": "text",
+      "inputLabel": "所在地區",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "cinemaAddress",
+      "w": "",
+      "h": "40px",
+      "inputType": "text",
+      "inputLabel": "聯絡地址",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "cinemaBackupEmail",
+      "w": "",
+      "h": "40px",
+      "inputType": "text",
+      "inputLabel": "備用信箱",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "cinemaType",
+      "w": "",
+      "h": "48px",
+      "inputType": "radio",
+      "inputLabel": "場所類別",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "5種按鈕選單",
+      "iconR": "",
+      "iconRS": "",
+      "selectOptions": [
+        {
+          "id": "gallery",
+          "name": "藝廊"
+        },
+        {
+          "id": "bar",
+          "name": "酒吧"
+        },
+        {
+          "id": "restaurant",
+          "name": "餐廳"
+        },
+        {
+          "id": "theater",
+          "name": "影院"
+        },
+        {
+          "id": "cafe",
+          "name": "咖啡廳"
+        }
+      ]
+    },
+    {
+      "id": "cinemaWeb",
+      "w": "",
+      "h": "48px",
+      "inputType": "text",
+      "inputLabel": "官方網站",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "請輸入您的官方網址",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "cinemaHeroImg",
+      "w": "",
+      "h": "48px",
+      "inputType": "file",
+      "inputLabel": "視覺圖片",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "請選擇一個檔案",
+      "iconR": "",
+      "iconRS": "",
+      "multiple": false
+    },
+    {
+      "id": "cinemaImg",
+      "w": "",
+      "h": "48px",
+      "inputType": "file",
+      "inputLabel": "官方相片",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "請選擇檔案",
+      "iconR": "",
+      "iconRS": "",
+      "multiple": true
+    }
+  ],
   "member": [
     {
       "id": "m111111",
@@ -1121,8 +1361,12 @@
       "avatar": "",
       "city": "台北市",
       "address": "",
-      "fav_type": [],
-      "career": "",
+      "fav_type": [
+        "英雄片",
+        "恐怖片",
+        "驚悚片"
+      ],
+      "career": "資訊 / 科技",
       "join_date": "2019-05-23",
       "permission": "generalMember",
       "collectFilm": "",
@@ -1145,7 +1389,7 @@
   "cinema": [
     {
       "id": "c001",
-      "cinemaName": "碼農戲院",
+      "cinemaName": "碼農Cafe",
       "cinemaCity": "台北市",
       "cinemaArea": "大安區",
       "cinemaLogoImg": "spott.jpg",
@@ -1153,6 +1397,7 @@
       "cinemaHeroImg": "spott.jpg",
       "cinemaAccount": "1111",
       "cinemaPassword": "1111",
+      "cinemaType": "cafe",
       "cinemaStar": [
         {
           "starId": "m111111",
@@ -1200,6 +1445,7 @@
       "cinemaHeroImg": "spott.jpg",
       "cinemaAccount": "tpespotlight",
       "cinemaPassword": "1111",
+      "cinemaType": "gallery",
       "cinemaStar": [
         {
           "starId": "m22222",
@@ -1247,6 +1493,7 @@
       "cinemaHeroImg": "spoth.jpg",
       "cinemaAccount": "hshspotlight",
       "cinemaPassword": "2222",
+      "cinemaType": "gallery",
       "cinemaStar": [
         {
           "starId": "m22222",
@@ -1295,6 +1542,7 @@
       "cinemaHeroImg": "nocho.jpg",
       "cinemaAccount": "hipster",
       "cinemaPassword": "3333",
+      "cinemaType": "cafe",
       "cinemaStar": [
         {
           "starId": "m22222",
@@ -1343,6 +1591,7 @@
       "cinemaHeroImg": "xiaomijo.jpg",
       "cinemaAccount": "xiaomijo",
       "cinemaPassword": "4444",
+      "cinemaType": "cafe",
       "cinemaStar": [
         {
           "starId": "m22222",
@@ -1391,6 +1640,7 @@
       "cinemaHeroImg": "eslite.jpg",
       "cinemaAccount": "chptheater",
       "cinemaPassword": "5555",
+      "cinemaType": "theater",
       "cinemaStar": [
         {
           "starId": "m22222",
