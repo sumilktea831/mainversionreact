@@ -701,6 +701,320 @@
       "isclicked": false
     }
   ],
+  "memberEditInputmsg": [
+    {
+      "id": "name",
+      "w": "",
+      "h": "40px",
+      "inputType": "text",
+      "inputLabel": "姓名",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "nickname",
+      "w": "",
+      "h": "40px",
+      "inputType": "text",
+      "inputLabel": "暱稱",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "gender",
+      "w": "",
+      "h": "40px",
+      "inputType": "radioGender",
+      "inputLabel": "性別",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "",
+      "iconRS": "",
+      "selectOptions": [
+        {
+          "id": "male",
+          "name": "男性",
+          "iconL": "fas fa-mars",
+          "iconLS": "24px"
+        },
+        {
+          "id": "female",
+          "name": "女性",
+          "iconL": "fas fa-venus",
+          "iconLS": "24px"
+        }
+      ]
+    },
+    {
+      "id": "birth",
+      "w": "",
+      "h": "40px",
+      "inputType": "text",
+      "inputLabel": "生日",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "格式：yyyy-mm-dd",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "career",
+      "w": "",
+      "h": "40px",
+      "inputType": "selector",
+      "inputLabel": "職業",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "fas fa-caret-square-down",
+      "iconRS": "24px",
+      "selectOptions": [
+        {
+          "id": "career0",
+          "name": "尚未選擇職業"
+        },
+        {
+          "id": "career1",
+          "name": "學生"
+        },
+        {
+          "id": "career2",
+          "name": "軍公教"
+        },
+        {
+          "id": "career3",
+          "name": "服務業"
+        },
+        {
+          "id": "career4",
+          "name": "金融業"
+        },
+        {
+          "id": "career5",
+          "name": "資訊 / 科技"
+        },
+        {
+          "id": "career6",
+          "name": "傳播 / 廣告 / 設計"
+        },
+        {
+          "id": "career7",
+          "name": "藝文"
+        },
+        {
+          "id": "career8",
+          "name": "醫療"
+        },
+        {
+          "id": "career9",
+          "name": "製造業"
+        },
+        {
+          "id": "career10",
+          "name": "農林漁牧"
+        },
+        {
+          "id": "career11",
+          "name": "家管 / 退休"
+        },
+        {
+          "id": "career12",
+          "name": "自由業"
+        },
+        {
+          "id": "career13",
+          "name": "其他"
+        }
+      ]
+    },
+    {
+      "id": "city",
+      "w": "",
+      "h": "40px",
+      "inputType": "selector",
+      "inputLabel": "所在縣市",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "fas fa-caret-square-down",
+      "iconRS": "24px",
+      "selectOptions": [
+        {
+          "id": "NOCITY",
+          "name": "尚未選擇縣市"
+        },
+        {
+          "id": "TPE",
+          "name": "台北市"
+        },
+        {
+          "id": "NTPC",
+          "name": "新北市"
+        },
+        {
+          "id": "KEL",
+          "name": "基隆市"
+        },
+        {
+          "id": "TYN",
+          "name": "桃園市"
+        },
+        {
+          "id": "HSZ",
+          "name": "新竹市"
+        },
+        {
+          "id": "ZMI",
+          "name": "苗栗縣"
+        },
+        {
+          "id": "TXG",
+          "name": "台中市"
+        },
+        {
+          "id": "CHW",
+          "name": "彰化縣"
+        },
+        {
+          "id": "NTC",
+          "name": "南投縣"
+        },
+        {
+          "id": "YUN",
+          "name": "雲林縣"
+        },
+        {
+          "id": "CYI",
+          "name": "嘉義市"
+        },
+        {
+          "id": "CHY",
+          "name": "嘉義縣"
+        },
+        {
+          "id": "TNN",
+          "name": "台南市"
+        },
+        {
+          "id": "PIF",
+          "name": "屏東縣"
+        },
+        {
+          "id": "ILA",
+          "name": "宜蘭縣"
+        },
+        {
+          "id": "HUN",
+          "name": "花蓮縣"
+        },
+        {
+          "id": "TTT",
+          "name": "台東縣"
+        },
+        {
+          "id": "PEH",
+          "name": "澎湖縣"
+        },
+        {
+          "id": "KNH",
+          "name": "金門縣"
+        }
+      ]
+    },
+    {
+      "id": "address",
+      "w": "",
+      "h": "40px",
+      "inputType": "text",
+      "inputLabel": "聯絡地址",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "範例格式: 台北市XX區XX路X段X號X樓",
+      "iconR": "",
+      "iconRS": ""
+    }
+  ],
+  "memberFavTypeOptions": [
+    {
+      "id": "filmTypeAll",
+      "name": "全選"
+    },
+    {
+      "id": "filmType1",
+      "name": "動作片"
+    },
+    {
+      "id": "filmType2",
+      "name": "動畫片"
+    },
+    {
+      "id": "filmType3",
+      "name": "喜劇片"
+    },
+    {
+      "id": "filmType4",
+      "name": "偵探片"
+    },
+    {
+      "id": "filmType5",
+      "name": "紀錄片"
+    },
+    {
+      "id": "filmType6",
+      "name": "戲劇片"
+    },
+    {
+      "id": "filmType7",
+      "name": "英雄片"
+    },
+    {
+      "id": "filmType8",
+      "name": "恐怖片"
+    },
+    {
+      "id": "filmType9",
+      "name": "武俠片"
+    },
+    {
+      "id": "filmType10",
+      "name": "靈異片"
+    },
+    {
+      "id": "filmType11",
+      "name": "文藝片"
+    },
+    {
+      "id": "filmType12",
+      "name": "警匪片"
+    },
+    {
+      "id": "filmType13",
+      "name": "科幻片"
+    },
+    {
+      "id": "filmType14",
+      "name": "懸疑片"
+    },
+    {
+      "id": "filmType15",
+      "name": "驚悚片"
+    },
+    {
+      "id": "filmType16",
+      "name": "戰爭片"
+    },
+    {
+      "id": "filmType17",
+      "name": "愛情片"
+    }
+  ],
   "member": [
     {
       "id": "m111111",
@@ -714,7 +1028,7 @@
       "avatar": "",
       "city": "台北市",
       "address": "",
-      "fav_type": "",
+      "fav_type": [],
       "career": "",
       "join_date": "2019-01-03",
       "permission": "generalMember",
@@ -745,7 +1059,7 @@
       "avatar": "",
       "city": "台北市",
       "address": "",
-      "fav_type": "",
+      "fav_type": [],
       "career": "",
       "join_date": "",
       "permission": "generalMember",
@@ -776,7 +1090,7 @@
       "avatar": "",
       "city": "",
       "address": "",
-      "fav_type": "",
+      "fav_type": [],
       "career": "",
       "join_date": "2019-05-23",
       "permission": "generalMember",
@@ -807,7 +1121,7 @@
       "avatar": "",
       "city": "",
       "address": "",
-      "fav_type": "",
+      "fav_type": [],
       "career": "",
       "join_date": "2019-5-23",
       "permission": "generalMember",
@@ -838,7 +1152,7 @@
       "avatar": "",
       "city": "",
       "address": "",
-      "fav_type": "",
+      "fav_type": [],
       "career": "",
       "join_date": "2019-05-23",
       "permission": "generalMember",
@@ -869,7 +1183,7 @@
       "avatar": "",
       "city": "",
       "address": "",
-      "fav_type": "",
+      "fav_type": [],
       "career": "",
       "join_date": "2019-05-23",
       "permission": "generalMember",
@@ -899,8 +1213,8 @@
       "pwd": "123456",
       "avatar": "",
       "city": "",
-      "address": "",
-      "fav_type": "",
+      "address": [],
+      "fav_type": [],
       "career": "",
       "join_date": "2019-05-23",
       "permission": "generalMember",
@@ -923,7 +1237,7 @@
       "avatar": "",
       "city": "",
       "address": "",
-      "fav_type": "",
+      "fav_type": [],
       "career": "",
       "join_date": "2019-05-23",
       "permission": "generalMember",
@@ -946,7 +1260,7 @@
       "avatar": "",
       "city": "",
       "address": "",
-      "fav_type": "",
+      "fav_type": [],
       "career": "",
       "join_date": "2019-05-23",
       "permission": "generalMember",
@@ -969,30 +1283,7 @@
       "avatar": "",
       "city": "",
       "address": "",
-      "fav_type": "",
-      "career": "",
-      "join_date": "2019-05-23",
-      "permission": "generalMember",
-      "collectFilm": [],
-      "collectCinema": [],
-      "collectArticle": [],
-      "collectActivity": [],
-      "collectForum": [],
-      "markList": []
-    },
-    {
-      "id": "m1558610436688",
-      "name": "",
-      "nickname": "test@email.com",
-      "gender": "",
-      "mobile": "",
-      "birth": "",
-      "email": "test@email.com",
-      "pwd": "13879428",
-      "avatar": "",
-      "city": "",
-      "address": "",
-      "fav_type": "",
+      "fav_type": [],
       "career": "",
       "join_date": "2019-05-23",
       "permission": "generalMember",

@@ -93,25 +93,7 @@ class InputCardContent_CinemaSignUp extends React.Component {
       //抓到錯誤訊息，以及接下來要做的錯誤處理
       console.log(e)
     }
-    // try {
-    //   //取得所有戲院資料
-    //   //fetch:json-server連線的位址/json中的項目/該項目中id
-    //   const response = await fetch('http://localhost:5555/cinema', {
-    //     method: 'GET', //使用GET方法獲取資訊，因為是取得資訊，故不須加body
-    //     headers: new Headers({
-    //       Accept: 'application/json',
-    //       'Content-Type': 'application/json',
-    //     }),
-    //   })
-    //   if (!response.ok) throw new Error(response.statusText) //如果發生錯誤，丟出錯誤訊息
-    //   const jsonObject = await response.json()
-    //   const cinemadatas = await jsonObject
-    //   await this.setState({ cinemadatas: cinemadatas })
-    //   // await console.log(cinemadatas)
-    // } catch (e) {
-    //   //抓到錯誤訊息，以及接下來要做的錯誤處理
-    //   console.log(e)
-    // }
+
     //產生驗證碼
     let captcha4 = new Captcha({
       //設定驗證碼樣式，如果不設定則帶入預設值)
@@ -159,7 +141,7 @@ class InputCardContent_CinemaSignUp extends React.Component {
         if (!check) {
           //驗證格式是否正確
           document.querySelector('#' + name + 'help').innerHTML =
-            '請輸入正確的Email!'
+            '請輸入正確的Email'
         } else {
           //格式正確，再比對是否已存在
           let emailexisted = this.props.cinemadata.find(
@@ -264,7 +246,7 @@ class InputCardContent_CinemaSignUp extends React.Component {
         if (!check) {
           //驗證格式是否正確
           document.querySelector('#' + name + 'help').innerHTML =
-            '請輸入正確的統一編號!'
+            '請輸入正確的統一編號'
         } else {
           //格式正確，再比對是否已存在
           let taxidexisted = this.props.cinemadata.find(
@@ -299,7 +281,7 @@ class InputCardContent_CinemaSignUp extends React.Component {
         if (!check) {
           //驗證格式是否正確
           document.querySelector('#' + name + 'help').innerHTML =
-            '請輸入正確的電話號碼!'
+            '請輸入正確的電話號碼'
         } else {
           //格式正確，再比對是否已存在
           let phoneexisted = this.props.cinemadata.find(
@@ -405,7 +387,7 @@ class InputCardContent_CinemaSignUp extends React.Component {
             } else {
               //不同則跳出提示
               document.querySelector('#' + name + 'help').innerHTML =
-                '地址與您的所在地區不相符，請再次確認!'
+                '地址與您的所在縣市不相符，請再次確認'
             }
           }
         }
@@ -560,32 +542,26 @@ class InputCardContent_CinemaSignUp extends React.Component {
       fetch('http://localhost:3001/api/cinema-upload-single', {
         method: 'POST',
         body: formdata,
-        // body: JSON.stringify(formdata),
-        // headers: new Headers({
-        //   Accept: 'application/json',
-        //   'Content-Type': 'application/json',
-        // }),
       })
         .then(res => res.json())
         .then(obj => {
-          console.log(obj);
+          console.log(obj)
           if (obj.success == true) {
             newtext[0][name] = obj.filename
             this.setState({ usertext: newtext }, () =>
               console.log(this.state.usertext)
             )
-            document.querySelector('#' + name + 'filename').innerHTML =
-              uploadFileName
+            document.querySelector(
+              '#' + name + 'filename'
+            ).innerHTML = uploadFileName
           } else {
-            newtext[0][name] = ""
+            newtext[0][name] = ''
             this.setState({ usertext: newtext }, () =>
               console.log(this.state.usertext)
             )
-            document.querySelector('#' + name + 'filename').innerHTML =
-              obj.info
+            document.querySelector('#' + name + 'filename').innerHTML = obj.info
           }
-        });
-
+        })
     }
   }
   render() {

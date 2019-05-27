@@ -42,6 +42,7 @@ const InputSelect_Su = props => {
             key={item.id}
             value={item.id}
             style={{ textAlign: 'center', background: '#1F242A' }}
+            selected={props.value === item.name ? true : false}
           >
             {item.name}
           </option>
