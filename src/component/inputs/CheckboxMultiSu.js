@@ -15,6 +15,9 @@ const handleCilck = id => event => {
 const CheckboxMultiSu = props => {
   // console.log('fav!!!')
   // console.log(props.thisfavType)
+  if (props.thisfavType === undefined) {
+    return <></>
+  }
   return (
     <>
       <div className="form-check my-3 col-sm-5 col-md-2 d-flex justify-content-center">
@@ -37,7 +40,26 @@ const CheckboxMultiSu = props => {
           }
           onChange={props.onChange}
         />
-        {props.thisfavType == undefined ? (
+        {props.thisfavType.find(item => item === props.optionName) ? (
+          <label className="form-check-label h5" htmlFor={props.optionId}>
+            <button
+              className={'mytransition5 ' + checkedClass}
+              onClick={handleCilck(props.optionId)}
+            >
+              {props.optionName}
+            </button>
+          </label>
+        ) : (
+          <label className="form-check-label h5" htmlFor={props.optionId}>
+            <button
+              className={'mytransition5 ' + uncheckedClass}
+              onClick={handleCilck(props.optionId)}
+            >
+              {props.optionName}
+            </button>
+          </label>
+        )}
+        {/* {props.thisfavType == undefined ? (
           <label className="form-check-label h5" htmlFor={props.optionId}>
             <button
               className={uncheckedClass}
@@ -64,7 +86,7 @@ const CheckboxMultiSu = props => {
               {props.optionName}
             </button>
           </label>
-        )}
+        )} */}
       </div>
     </>
   )

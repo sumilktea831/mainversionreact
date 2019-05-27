@@ -184,8 +184,11 @@ input.activitySearch::placeholder{
 .bg-second-darkblue {
   background: #2b333d !important;
 }
-.bg-orange.mybg {
+.bg-orange {
   background: #ffa510 !important;
+}
+.mytransition5{
+  transition: .5s;
 }
 
 /* -----------------------------------------------------Kaga */

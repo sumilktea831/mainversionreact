@@ -26,6 +26,7 @@ class MemberEditInfo extends React.Component {
     const data = await this.props.thisData
     await this.setState({ thisData: data })
   }
+
   componentWillReceiveProps() {
     //若不設定，當頁刷新會無資料
     // console.log(this.state.thisData == 0)
@@ -42,23 +43,31 @@ class MemberEditInfo extends React.Component {
     let checkArray = Object.values(this.state.checkok)
     isAllChecked = checkArray.reduce((a, b) => a && b)
     console.log('isAllChecked: ' + isAllChecked)
-    try {
-      fetch('http://localhost:5555/member/' + memberid, {
-        method: 'PUT',
-        body: JSON.stringify(this.state.thisData),
-        headers: new Headers({
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        }),
-      })
-        .then(res => res.json())
-        .then(jsonObject => {
-          this.setState({ thisData: jsonObject }, () => {
-            alert('資料儲存成功')
-          })
+    if (isAllChecked) {
+      let copyData = { ...this.state.thisData }
+      let savePwd = this.state.usertext.newPwd
+      copyData.pwd = savePwd
+      try {
+        fetch('http://localhost:5555/member/' + memberid, {
+          method: 'PUT',
+          body: JSON.stringify(copyData),
+          headers: new Headers({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          }),
         })
-    } catch (e) {
-      console.log(e)
+          .then(res => res.json())
+          .then(jsonObject => {
+            this.setState({ thisData: jsonObject }, () => {
+              alert('資料儲存成功')
+              window.location.reload()
+            })
+          })
+      } catch (e) {
+        console.log(e)
+      }
+    } else {
+      alert('資料填寫有誤，請再次確認您的資料！')
     }
   }
 
@@ -75,7 +84,21 @@ class MemberEditInfo extends React.Component {
     let copyData = { ...this.state.thisData }
     let newcheckstate = { ...this.state.checkok }
 
-    //密碼驗證:長度、及比對再次確認的密碼是否相符，並變更再次確認密碼的提示狀態
+    //原始密碼驗證
+    if (name === 'originPwd') {
+      if (value) {
+        if (value === this.state.thisData.pwd) {
+          newcheckstate.originPwd = true
+        } else {
+          newcheckstate.originPwd = false
+        }
+      }
+      this.setState({ checkok: newcheckstate }, () => {
+        console.log(this.state.checkok)
+      })
+    }
+
+    //新密碼驗證:長度、及比對再次確認的密碼是否相符，並變更再次確認密碼的提示狀態
     if (name === 'newPwd') {
       newcheckstate.newPwd = false
       newcheckstate.reNewPwd = false
@@ -85,7 +108,7 @@ class MemberEditInfo extends React.Component {
           document.querySelector('#' + name + 'help').innerHTML =
             '請輸入至少6個字元'
           if (this.state.usertext.reNewPwd) {
-            if (this.state.usertex.reNewPwd === value) {
+            if (this.state.usertext.reNewPwd === value) {
               newcheckstate.reNewPwd = true
               this.setState({ checkok: newcheckstate })
               document.querySelector('#reNewPwdhelp').innerHTML = ''
@@ -128,7 +151,6 @@ class MemberEditInfo extends React.Component {
 
     //再次確認密碼驗證:判斷是否與密碼相符
     if (name === 'reNewPwd') {
-      console.log(1237657545)
       newcheckstate.reNewPwd = false
       this.setState({ checkok: newcheckstate })
       if (value) {
@@ -157,31 +179,27 @@ class MemberEditInfo extends React.Component {
       console.log(newcheckstate)
     }
 
-    if (name === 'gender') {
-      //if是性別
-      copyData[name] = id
-    } else {
-      //else一般text的處理
-      copyData[name] = value
-    }
-    this.setState({ thisData: copyData }, () => {
-      console.log(this.state.thisData)
-      console.log(this.state.thisfavType)
+    newtext[name] = value
+    this.setState({ usertext: newtext }, () => {
+      console.log(this.state.usertext)
     })
   }
 
   render() {
+    if (this.state.thisData === 0) {
+      return <></>
+    }
     return (
       <>
-        <Row>
-          <div className="col-lg-12">
+        <Row className="d-flex justify-content-center">
+          <div className="col-lg-6">
             <>
               <InputWithLabel_Su
                 id="originPwd"
                 name="originPwd"
                 inputWidth=""
                 inputHeight=""
-                inputType="text"
+                inputType="password"
                 inputLabel="原始密碼"
                 placeholder="請輸入您的原始密碼"
                 onChange={this.handleInputTextChange}
@@ -193,14 +211,16 @@ class MemberEditInfo extends React.Component {
               />
             </>
           </div>
-          <div className="col-lg-12">
+        </Row>
+        <Row className="d-flex justify-content-center">
+          <div className="col-lg-6">
             <>
               <InputWithLabel_Su
                 id="newPwd"
                 name="newPwd"
                 inputWidth=""
                 inputHeight=""
-                inputType="text"
+                inputType="password"
                 inputLabel="新密碼"
                 placeholder="請設定您的新密碼"
                 onChange={this.handleInputTextChange}
@@ -212,14 +232,16 @@ class MemberEditInfo extends React.Component {
               />
             </>
           </div>
-          <div className="col-lg-12">
+        </Row>
+        <Row className="d-flex justify-content-center">
+          <div className="col-lg-6">
             <>
               <InputWithLabel_Su
                 id="reNewPwd"
                 name="reNewPwd"
                 inputWidth=""
                 inputHeight=""
-                inputType="text"
+                inputType="password"
                 inputLabel="確認密碼"
                 placeholder="請重新輸入您設定的新密碼"
                 onChange={this.handleInputTextChange}
