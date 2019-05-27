@@ -7,7 +7,7 @@ const handleLogout = () => {
   sessionStorage.clear()
   window.location.href = '/mainpage'
 }
-const MemberBackSidenav = props => (
+const CinemaBackSidenav = props => (
   <>
     <div //左邊sidenave框
       className="col-lg-2 p-0"
@@ -21,7 +21,7 @@ const MemberBackSidenav = props => (
           height: '194px',
         }}
       />
-      <h3 className="text-center mb-4">會員中心</h3>
+      <h3 className="text-center mb-4">戲院中心</h3>
       <Accordion defaultActiveKey="0">
         {props.sidenavItems.map(item => (
           <SidenavMenu_Su
@@ -44,4 +44,4 @@ const MemberBackSidenav = props => (
   </>
 )
 
-export default MemberBackSidenav
+export default CinemaBackSidenav

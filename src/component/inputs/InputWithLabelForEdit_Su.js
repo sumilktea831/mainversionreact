@@ -1,7 +1,7 @@
 import React from 'react'
 import { Row, Col } from 'react-bootstrap'
 import InputText_Su from './InputText_Su'
-import InputSelect_Su from './InputSelect_Su'
+import InputSelectForEdit_Su from './InputSelectForEdit_Su'
 import InputFile_Su from './InputFile_Su'
 import InputRadio_Su from './InputRadio_Su'
 import InputRadioForGender_Su from './InputRadioForGender_Su'
@@ -40,7 +40,7 @@ const InputWithLabel_Su = props => {
           lg={3}
           className="d-flex align-items-center justify-content-center"
         >
-          <label className="m-0" for={props.id}>
+          <label className="m-0" htmlFor={props.id}>
             {props.inputLabel}
           </label>
         </Col>
@@ -62,6 +62,8 @@ const InputWithLabel_Su = props => {
               iconRight={props.iconRight}
               iconRightSize={props.iconRightSize}
               onChange={props.onChange}
+              value={props.thisData[props.id]}
+              thisData={props.thisData}
             />
           ) : props.inputType === 'password' ? (
             <InputText_Su
@@ -75,10 +77,12 @@ const InputWithLabel_Su = props => {
               iconRight={props.iconRight}
               iconRightSize={props.iconRightSize}
               onChange={props.onChange}
+              value={props.thisData[props.id]}
+              thisData={props.thisData}
             />
           ) : props.inputType === 'selector' ? (
             <>
-              <InputSelect_Su
+              <InputSelectForEdit_Su
                 iconRight={props.iconRight}
                 iconRightSize={props.iconRightSize}
                 id={props.id}
@@ -86,6 +90,8 @@ const InputWithLabel_Su = props => {
                 inputHeight={props.inputHeight}
                 selectOptions={props.selectOptions}
                 onChange={props.onChange}
+                value={props.thisData[props.id]}
+                thisData={props.thisData}
               />
             </>
           ) : props.inputType === 'file' ? (
@@ -95,6 +101,7 @@ const InputWithLabel_Su = props => {
               name={props.id}
               placeholder={props.placeholder}
               onChange={props.onChange}
+              thisData={props.thisData}
             />
           ) : props.inputType === 'radio' ? (
             <InputRadio_Su
@@ -107,6 +114,8 @@ const InputWithLabel_Su = props => {
               selectOptions={props.selectOptions}
               onChange={props.onChange}
               col={props.col}
+              value={props.thisData[props.id]}
+              thisData={props.thisData}
             />
           ) : props.inputType === 'radioGender' ? (
             <InputRadioForGender_Su
@@ -119,6 +128,8 @@ const InputWithLabel_Su = props => {
               selectOptions={props.selectOptions}
               onChange={props.onChange}
               col={props.col}
+              value={props.thisData[props.id]}
+              thisData={props.thisData}
             />
           ) : (
             '找不到符合的input類型'
