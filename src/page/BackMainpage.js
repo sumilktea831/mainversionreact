@@ -204,7 +204,6 @@ class BackSidenav extends React.Component {
       return (
         <>
           {/* 暫時上方navbar區塊 */}
-          <div className="bg-info pt-5 pb-4" />
           <Row>
             <MemberBackSidenav sidenavItems={this.state.sidenavItems} />
             <div //右邊內容框，之後要引入內容component
