@@ -102,6 +102,7 @@ const InputWithLabel_Su = props => {
               placeholder={props.placeholder}
               onChange={props.onChange}
               thisData={props.thisData}
+              multiple={props.multiple}
             />
           ) : props.inputType === 'radio' ? (
             <InputRadio_Su

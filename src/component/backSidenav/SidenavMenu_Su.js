@@ -17,10 +17,11 @@ const SidenavMenu_Su = props => {
     AllOptionRows.map(
       item => (item.style.background = '') //將所有option容器背景設為預設值
     )
-    AllOptions.map(item => (item.style.display = 'none')) //將所有option的橘線設為不顯示
+    AllOptions.map(item => (item.style.opacity = 0)) //將所有option的橘線設為不顯示
     AllOptions.map(item => (item.style.margin = '0')) //將所有option的橘線設為不顯示
-    thisOptionLine.style.display = 'block' //將目前點擊的option橘線顯示
-    thisOptionLine.style.marginRight = '-52px' //將目前點擊的option橘線顯示
+    thisOptionLine.style.opacity = 1 //將目前點擊的option橘線顯示
+    thisOptionLine.style.marginLeft = '48px' //將目前點擊的option橘線顯示
+    thisOptionLine.style.marginRight = '-16px' //將目前點擊的option橘線顯示
     // console.log(thisOptionLine.parentNode)
     thisOptionLine.parentNode.parentNode.style.background =
       'rgba(255,255,255,.3)' //取得目前點擊的option的父層(該option的容器Row)，設定背景為50%白
@@ -41,20 +42,21 @@ const SidenavMenu_Su = props => {
           <Card.Body className="py-0 px-0">
             {props.options.map(item => (
               <Row
-                className=""
+                className="mytransition5"
                 name="option-row"
-                // style={{ background: 'rgba(255,255,255,.3)' }}
+                style={{ background: 'rgba(0,0,0,0)' }}
               >
                 {/* <div className="col-3" /> */}
                 <div className="py-3">
                   <div
                     name="option-items"
                     id={item.id}
-                    className=" ml-5"
+                    className="mytransition5"
                     style={{
                       width: '4px',
                       height: '24px',
-                      display: 'none',
+                      opacity: 0,
+                      marginLeft: '0px',
                       background: '#ffa510',
                     }}
                   />

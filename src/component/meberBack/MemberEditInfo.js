@@ -56,8 +56,8 @@ class MemberEditInfo extends React.Component {
       this.setState({ thisData: this.props.thisData })
       this.setState({ thisfavType: this.props.thisData['fav_type'] })
     }
-    // 另外儲存一份原始資料...還不知道要幹嘛??
-    // this.setState({ originData: this.props.thisData })
+    // 另外儲存一份原始資料...比對暱稱時要用來過濾掉自己原本的名稱
+    this.setState({ originData: this.props.thisData })
   }
 
   //儲存按鈕onclick
@@ -67,23 +67,28 @@ class MemberEditInfo extends React.Component {
     let checkArray = Object.values(this.state.checkok)
     isAllChecked = checkArray.reduce((a, b) => a && b)
     console.log('isAllChecked: ' + isAllChecked)
-    try {
-      fetch('http://localhost:5555/member/' + memberid, {
-        method: 'PUT',
-        body: JSON.stringify(this.state.thisData),
-        headers: new Headers({
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        }),
-      })
-        .then(res => res.json())
-        .then(jsonObject => {
-          this.setState({ thisData: jsonObject }, () => {
-            alert('資料儲存成功')
-          })
+    if (isAllChecked) {
+      try {
+        fetch('http://localhost:5555/member/' + memberid, {
+          method: 'PUT',
+          body: JSON.stringify(this.state.thisData),
+          headers: new Headers({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          }),
         })
-    } catch (e) {
-      console.log(e)
+          .then(res => res.json())
+          .then(jsonObject => {
+            this.setState({ thisData: jsonObject }, () => {
+              alert('資料儲存成功')
+              window.location.reload()
+            })
+          })
+      } catch (e) {
+        console.log(e)
+      }
+    } else {
+      alert('資料填寫有誤，請再次確認您的資料！')
     }
   }
 
@@ -280,6 +285,9 @@ class MemberEditInfo extends React.Component {
 
   render() {
     // console.log(this.state.thisfavType)
+    if (this.state.thisfavType === undefined) {
+      return <></>
+    }
     return (
       <>
         <Row>
@@ -334,8 +342,11 @@ class MemberEditInfo extends React.Component {
         <Row className="my-5 d-flex justify-content-center">
           <button
             className="btn btn-warning h5 my-3 px-5 py-2 border-0 rounded bg-orange text-darkblue"
-            // style=
             onClick={this.handleSaveInfo}
+            // onClick={this.props.handleMemberEditSave(
+            //   this.state.thisData,
+            //   this.state.checkok
+            // )}
           >
             儲存變更
           </button>

@@ -10,6 +10,8 @@ import CardKaga from '../component/cinema/CardKaga/v3/CardKaga'
 import ActivityCard from '../component/activity/ActivityCard/ActivityCard'
 import ActivityTitle from '../component/activity/ActivityTitle/ActivityTitle'
 import MemberEditInfo from '../component/meberBack/MemberEditInfo'
+import MemberEditPwd from '../component/meberBack/MemberEditPwd'
+import CinemaEditInfo from '../component/cinemaBack/CinemaEditInfo'
 
 //memberId
 const memberId = sessionStorage.getItem('memberId')
@@ -106,7 +108,22 @@ class BackSidenav extends React.Component {
     } catch (e) {
       console.log(e)
     }
-
+    //取得戲院editInfo項目
+    try {
+      const response = await fetch('http://localhost:5555/cinemaEditInputmsg', {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+      if (!response.ok) throw new Error(response.statusText)
+      const jsonObject = await response.json()
+      const data = await jsonObject
+      await this.setState({ cinemaEditInputmsg: data })
+    } catch (e) {
+      console.log(e)
+    }
     // 導入會員資料
     try {
       const resMember = await fetch('http://localhost:5555/member', {
@@ -406,7 +423,47 @@ class BackSidenav extends React.Component {
               ) : (
                 ''
               )}
-
+              {pagename === 'edit-mypassword' ? (
+                <>
+                  <div className="row">
+                    <div className="col-md-12 p-0">
+                      <ActivityTitle
+                        title={'更改密碼'}
+                        className="content-title"
+                      />
+                    </div>
+                    <div style={{ width: '100%' }}>
+                      <MemberEditPwd
+                        memberEditInputmsg={this.state.memberEditInputmsg}
+                        thisData={this.state.thisMemberData}
+                      />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                ''
+              )}
+              {pagename === 'cinema-edit-info' ? (
+                <>
+                  <div className="row">
+                    <div className="col-md-12 p-0">
+                      <ActivityTitle
+                        title={'編輯戲院資訊'}
+                        className="content-title"
+                      />
+                    </div>
+                    <div style={{ width: '100%' }}>
+                      <CinemaEditInfo
+                        cinemaEditInputmsg={this.state.cinemaEditInputmsg}
+                        thisData={this.state.thisCinemaData}
+                        allCinemaData={this.state.allCinemaData}
+                      />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                ''
+              )}
               {pagename == 'activityMemberBoard' ? (
                 <>
                   <div className="row">
