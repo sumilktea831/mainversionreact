@@ -165,8 +165,17 @@ class BackSidenav extends React.Component {
       const activityPageOtherData = dataActivity.filter(
         item => item.id !== +this.props.match.params.id
       )
+      
+
+      let activityMemberCollect;
+      let testdata = JSON.parse(JSON.stringify(this.state.thisMemberData.collectActivity))
+      
+      activityMemberCollect = dataActivity.filter(
+        item => item.id === 1)
+      console.log(activityMemberCollect)
       this.setState({ activityPageData: activityPageData })
       this.setState({ activityPageOtherData: activityPageOtherData })
+      // this.setState({ activityMemberCollect : activityMemberCollect })
 
       // 會員my-preview頁面需要的資料
       const memberPageData = dataMember.find(item => item.id === memberId)
@@ -396,8 +405,8 @@ class BackSidenav extends React.Component {
 
               {pagename == 'activityMemberBoard' ? (
                 <>
-                {console.log(this.state.thisMemberData)}
-                {console.log(this.state.thisMemberData.collectActivity)}
+                {/* {console.log(this.state.thisMemberData)}
+                {console.log(this.state.thisMemberData.collectActivity)} */}
                   <div className="row">
                     <div className="col-md-12 p-0">
                       <ActivityTitle
