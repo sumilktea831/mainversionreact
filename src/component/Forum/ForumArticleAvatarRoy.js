@@ -16,7 +16,9 @@ const ForumArticleAvatarRoy = props => {
         </div>
         <div className="media-body">
           <p className="text-light m-3">{props.contentUserName}</p>
-          <p className="text-light m-3">一分鐘前</p>
+          <p className="text-light m-3" onLoad={props.articleCreateTimeCount}>
+            {props.forumCreateTimeCount}
+          </p>
         </div>
       </div>
     </>

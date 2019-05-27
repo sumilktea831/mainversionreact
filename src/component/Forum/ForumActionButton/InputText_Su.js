@@ -3,11 +3,10 @@ import React from 'react'
 const InputText_Su = props => {
   return (
     <>
-      <div
-        className="position-absolute d-flex align-items-center border-0 rounded"
+      {/* <div
+        class="position-absolute d-flex align-items-center border-0 rounded"
         style={{
-          // width: '100%',
-          width: `${props.inputWidth ? props.inputWidth : '100%'}`,
+          width: '100%',
           height: '100%',
           background: `${
             props.iconLeft
@@ -19,7 +18,7 @@ const InputText_Su = props => {
         }}
       >
         <i
-          className={props.iconLeft + ' position-absolute'}
+          class={props.iconLeft + ' position-absolute'}
           style={{
             background: '#1F242A',
             color: '#FFA510',
@@ -28,12 +27,11 @@ const InputText_Su = props => {
             zIndex: `${props.iconLeft ? '0' : '-10'}`,
           }}
         />
-      </div>
+      </div> */}
       <div
-        className="position-absolute d-flex align-items-center border-0 rounded"
+        class="position-absolute d-flex align-items-center border-0 rounded"
         style={{
-          width: `${props.inputWidth ? props.inputWidth : '100%'}`,
-          // width: '100%',
+          width: '100%',
           height: '100%',
           background: `${
             props.iconRight
@@ -45,10 +43,10 @@ const InputText_Su = props => {
         }}
       >
         <i
-          className={props.iconRight + ' position-absolute'}
+          class={props.iconRight + ' position-absolute'}
           style={{
             background: '#1F242A',
-            color: '#FFA510',
+            color: '#d4d1cc',
             fontSize: `${props.iconRightSize}`,
             right: `${props.iconRightSize}`,
             zIndex: `${props.iconRight ? '0' : '-10'}`,
@@ -57,21 +55,19 @@ const InputText_Su = props => {
       </div>
       <input
         id={props.id}
-        name={props.id}
+        name="headline"
         type={props.type ? props.type : 'text'}
-        onChange={props.onChange}
-        className="form-control border border-warning rounded"
+        value={props.headline}
+        onChange={props.handleModalFormInputChange}
+        class="form-control border border-warning rounded"
         placeholder={props.placeholder}
-        autoComplete="off"
         style={{
           background: 'rgba(0,0,0,0)',
-          color: '#FFA510',
-          textAlign: 'center',
+          color: '#d4d1cc',
+          // textAlign: 'left',
           height: `${props.inputHeight}`,
-          width: `${props.inputWidth ? props.inputWidth : '100%'}`,
           zIndex: '10',
         }}
-        value={props.value}
       />
     </>
   )
