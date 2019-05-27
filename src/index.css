@@ -169,19 +169,19 @@ input {
 
 /* -------------------SU------------------------ */
 .text-mywhite {
-  color: #d4d1cc;
+  color: #d4d1cc !important;
 }
 .text-darkblue {
-  color: #2b333d;
+  color: #2b333d !important;
 }
 .bg-darkblue {
-  background: #242b34;
+  background: #242b34 !important;
 }
 .bg-second-darkblue {
-  background: #2b333d;
+  background: #2b333d !important;
 }
-.bg-orange {
-  background: #ffa510;
+.bg-orange.mybg {
+  background: #ffa510 !important;
 }
 
 /* -----------------------------------------------------Kaga */
