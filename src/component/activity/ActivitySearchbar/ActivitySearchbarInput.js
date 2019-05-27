@@ -5,6 +5,7 @@ const ActivitySearchbarInput = props => (
     <input
       className="activitySearch"
       type="text"
+      value={props.value}
       onChange={props.handleOnChange}
       placeholder={props.placeholder}
       style={{

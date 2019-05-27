@@ -24,6 +24,7 @@ class Activity extends React.Component {
       searchbarPlace: ['全部', '影院', '學校', '文創園區', '咖啡廳'],
       searchbarRegionState: ['active', '', '', '', ''],
       searchbarPlaceState: ['active', '', '', '', ''],
+      searchText: '',
     }
   }
 
@@ -58,6 +59,8 @@ class Activity extends React.Component {
         data[id] === '' ? (data[id] = 'active') : (data[id] = '')
         this.setState({ searchbarPlaceState: data })
         break
+      default:
+        break
     }
     try {
       const res = await fetch('http://localhost:5555/activityCardData', {
@@ -69,8 +72,6 @@ class Activity extends React.Component {
       })
       let data = await res.json()
 
-      const regionKeyword = this.state.searchbarRegionState
-      const placeKeyword = this.state.searchbarPlaceState
       // console.log(searchKeyWord)
       switch (searchKeyWord) {
         case '北部':
@@ -113,7 +114,34 @@ class Activity extends React.Component {
       console.log(err)
     }
   }
-
+  SearchBarOnChange = async event => {
+    this.setState({ activityCardDataResult: 1 })
+    const searchText = event.target.value
+    this.setState({ searchText: searchText })
+    try {
+      const res = await fetch('http://localhost:5555/activityCardData', {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+      let data = await res.json()
+      data = data.filter(
+        item =>
+          item.theater.indexOf(searchText) > -1 ||
+          item.title.indexOf(searchText) > -1
+      )
+      if (data.length === 0) {
+        this.setState({ activityCardDataResult: 0 })
+        this.setState({ searchbarRegionState: ['active', '', '', '', ''] })
+        this.setState({ searchbarPlaceState: ['active', '', '', '', ''] })
+      }
+      this.setState({ activityCardData: data })
+    } catch (err) {
+      console.log(err)
+    }
+  }
   render() {
     return (
       <>
@@ -184,8 +212,9 @@ class Activity extends React.Component {
                 </div>
                 <div>
                   <ActivitySearchbarInput
+                    value={this.state.searchText}
                     placeholder="請輸入關鍵字"
-                    onChange={'預留'}
+                    handleOnChange={this.SearchBarOnChange}
                   />
                 </div>
               </div>
