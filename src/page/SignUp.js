@@ -47,7 +47,7 @@ class SignUp extends React.Component {
         avatar: '',
         city: '',
         address: '',
-        fav_type: '',
+        fav_type: [],
         career: '',
         join_date: '',
         permission: 'generalMember',
