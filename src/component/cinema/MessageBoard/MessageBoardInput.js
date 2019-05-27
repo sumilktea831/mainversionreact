@@ -27,7 +27,8 @@ class MessageBoardInput extends React.Component {
           <textarea
             onChange={this.handleChange}
             value={this.state.textAreaValue}
-            class="form-control"
+            class="form-control  col-10 mx-auto mt-2"
+            style={{ height: '200px' }}
             id="exampleFormControlTextarea1"
             rows="3"
           />

@@ -16,8 +16,15 @@
       "career": "",
       "join_date": "2019-01-03",
       "permission": "generalMember",
-      "collectFilm": ["001", "002", "003"],
-      "collectCinema": ["c1", "c2"],
+      "collectFilm": [
+        "001",
+        "002",
+        "003"
+      ],
+      "collectCinema": [
+        "c1",
+        "c2"
+      ],
       "collectArticle": [],
       "collectActivity": [],
       "collectForum": [],
@@ -52,22 +59,20 @@
       "career": "",
       "join_date": "generalMember",
       "permission": "generalMember",
-      "collectFilm": ["001", "002", "003", "004"],
-      "collectCinema": ["c2"],
+      "collectFilm": [
+        "001",
+        "003",
+        "004"
+      ],
+      "collectCinema": [
+        "c2"
+      ],
       "collectArticle": [],
       "collectForum": [],
       "markList": [
         {
           "markId": "001",
-          "markcontent": "rtdfghjklghjklfghj"
-        },
-        {
-          "markId": "002",
-          "markcontent": "nononon"
-        },
-        {
-          "markId": "003",
-          "markcontent": "ohhhhhhh"
+          "markcontent": "sbnfg nfgn"
         }
       ]
     },
@@ -88,9 +93,15 @@
       "join_date": "2019-01-03",
       "permission": "generalMember",
       "collectFilm": [],
-      "collectCinema": ["c1", "c2", "c3"],
+      "collectCinema": [
+        "c1",
+        "c2",
+        "c3"
+      ],
       "collectArticle": [],
-      "collectActivity": ["7"],
+      "collectActivity": [
+        "7"
+      ],
       "collectForum": [],
       "markList": [
         {
@@ -116,7 +127,10 @@
       "join_date": "2019-5-23",
       "permission": "generalMember",
       "collectFilm": [],
-      "collectCinema": ["c1", "c2"],
+      "collectCinema": [
+        "c1",
+        "c2"
+      ],
       "collectArticle": [],
       "collectActivity": [],
       "collectForum": [],
@@ -144,7 +158,10 @@
       "join_date": "2019-05-23",
       "permission": "generalMember",
       "collectFilm": [],
-      "collectCinema": ["c1", "c2"],
+      "collectCinema": [
+        "c1",
+        "c2"
+      ],
       "collectArticle": [],
       "collectActivity": [],
       "collectForum": [],
@@ -172,7 +189,10 @@
       "join_date": "2019-05-23",
       "permission": "generalMember",
       "collectFilm": [],
-      "collectCinema": ["c1", "c2"],
+      "collectCinema": [
+        "c1",
+        "c2"
+      ],
       "collectArticle": [],
       "collectActivity": [],
       "collectForum": [],
@@ -260,7 +280,12 @@
       "cinemaCity": "台北市",
       "cinemaArea": "中山區",
       "cinemaLogoImg": "spott.jpg",
-      "cinemaImg": ["spott.jpg", "spoth.jpg", "nocho.jpg", "eslite.jpg"],
+      "cinemaImg": [
+        "spott.jpg",
+        "spoth.jpg",
+        "nocho.jpg",
+        "eslite.jpg"
+      ],
       "cinemaHeroImg": "spott.jpg",
       "cinemaInfoText": "一處原本荒蕪的美麗庭園，在古蹟活化、新生的理念下，舊物加新意，夢想在此完成。【台灣電影文化協會】將台北之家的經營主題定位為「結合古蹟魅力與電影藝術，成為創意交流的場域」。希望為國內藝文創意產業工作者提供一個聚會場所，一個創意的發生點。透過影展、講座、工作坊等各種活動，讓跨領域的意見得以交流，進而激發更多創意。期待古蹟空間與電影結合，產生新的樣貌，讓古蹟的歷史意義結合影像藝術，增廣文化視野，並涵養文化深度。",
       "cinemaAccount": "spottaipei",
@@ -278,7 +303,10 @@
       "cinemaWeb": "http://www.spot.org.tw/",
       "cinemaEmail": "taipei.spotdesign@gmail.com",
       "cinemaBackupEmail": "",
-      "cinemaAwesome": ["m111111", "m22222"],
+      "cinemaAwesome": [
+        "m111111",
+        "m22222"
+      ],
       "cinemaPageViews": "572",
       "cinemaSignUpDate": "1955-03-12",
       "permission": "cinemaMember",
@@ -304,7 +332,9 @@
         {
           "id": 1558975629869,
           "name": "光點華山",
-          "img": ["spoth.jpg"],
+          "img": [
+            "spoth.jpg"
+          ],
           "message": "戲院留言測試... 接資料庫惹賣鬧喔！＠！",
           "time": 1558975629869,
           "awesome": [],
@@ -335,8 +365,12 @@
       "cinemaName": "光點華山",
       "cinemaCity": "台北市",
       "cinemaArea": "松山區",
-      "cinemaLogoImg": ["spoth.jpg"],
-      "cinemaImg": ["spoth.jpg"],
+      "cinemaLogoImg": [
+        "spoth.jpg"
+      ],
+      "cinemaImg": [
+        "spoth.jpg"
+      ],
       "cinemaHeroImg": "spoth.jpg",
       "cinemaInfoText": "光點華山電影館,位於華山文創園區中六館，原為酒廠再製酒包裝室，1996年由文化部規劃指導，改建為電影館，並由侯孝賢導演領軍之團隊「台灣電影文化協會」經營管理，於2012年11月正式開幕，為全國首座國家級藝術電影館。整館空間保留舊建築結構並結合新的創意元素，為老屋新力之創新展現。",
       "cinemaAccount": "spothwa",
@@ -353,7 +387,10 @@
       "cinemaWeb": "http://www.spot-hs.org.tw/",
       "cinemaEmail": "taipei.spotdesign@gmail.com",
       "cinemaBackupEmail": "",
-      "cinemaAwesome": ["m111111", "m22222"],
+      "cinemaAwesome": [
+        "m111111",
+        "m22222"
+      ],
       "cinemaPageViews": "572",
       "cinemaSignUpDate": "1955-03-12",
       "permission": "cinemaMember",
@@ -384,10 +421,14 @@
       "cinemaCity": "台北市",
       "cinemaArea": "信義區",
       "cinemaLogoImg": "nocho.jpg",
-      "cinemaImg": ["nocho.jpg"],
+      "cinemaImg": [
+        "nocho.jpg"
+      ],
       "cinemaHeroImg": "nocho.jpg",
       "cinemaInfoText": "每個周末夜晚，Spacebar小鍵人們喜歡一起窩在沙發上，隨機挑選一部經典好電影，喝著好喝的啤酒，配上唰嘴的肉乾，細細品味這部隨選影片帶給我們的驚喜。這個驚喜可能是美麗可能是哀愁、可能是勵志可能是驚悚、可能是刺激可能是哈哈大笑，不管這個驚喜是什麼，這個預料之外的故事總能給我們一個最放鬆的夜晚。這就是文青不挑片。喜歡未知、喜歡接受驚喜、不挑片的你一定會喜歡；喜歡經典、喜歡超凡、很挑片的你也一定不會失望。",
-      "cinemaAccount": ["qqqq"],
+      "cinemaAccount": [
+        "qqqq"
+      ],
       "cinemaPassword": "qqqqqqqq",
       "cinemaStar": [
         {
@@ -401,7 +442,10 @@
       "cinemaWeb": "https://www.spacebarfilm.com/blank-14",
       "cinemaEmail": "spacebarroom@gmail.com",
       "cinemaBackupEmail": "",
-      "cinemaAwesome": ["m111111", "m22222"],
+      "cinemaAwesome": [
+        "m111111",
+        "m22222"
+      ],
       "cinemaPageViews": "572",
       "cinemaSignUpDate": "1955-03-12",
       "permission": "cinemaMember",
@@ -432,7 +476,9 @@
       "cinemaCity": "台北市",
       "cinemaArea": "大安區",
       "cinemaLogoImg": "xiaomijo.jpg",
-      "cinemaImg": ["xiaomijo.jpg"],
+      "cinemaImg": [
+        "xiaomijo.jpg"
+      ],
       "cinemaHeroImg": "xiaomijo.jpg",
       "cinemaInfoText": "來XIAOMIJO冒險一下吧!週二~週五13:00~22:00，周六週日12:00開門；週一固定公休，臨時公休會在FB公告，謝謝!",
       "cinemaAccount": "xiaomijo",
@@ -449,7 +495,10 @@
       "cinemaWeb": "",
       "cinemaEmail": "",
       "cinemaBackupEmail": "",
-      "cinemaAwesome": ["m111111", "m22222"],
+      "cinemaAwesome": [
+        "m111111",
+        "m22222"
+      ],
       "cinemaPageViews": "572",
       "cinemaSignUpDate": "1955-03-12",
       "permission": "cinemaMember",
@@ -480,7 +529,9 @@
       "cinemaCity": "台北市",
       "cinemaArea": "松山區",
       "cinemaLogoImg": "eslite.jpg",
-      "cinemaImg": ["eslite.jpg"],
+      "cinemaImg": [
+        "eslite.jpg"
+      ],
       "cinemaHeroImg": "eslite.jpg",
       "cinemaInfoText": "",
       "cinemaAccount": "chptheater",
@@ -497,7 +548,10 @@
       "cinemaWeb": "https://meet.eslite.com/tw/tc/gallery/movieschedule/201803020001",
       "cinemaEmail": "",
       "cinemaBackupEmail": "",
-      "cinemaAwesome": ["m111111", "m22222"],
+      "cinemaAwesome": [
+        "m111111",
+        "m22222"
+      ],
       "cinemaPageViews": "572",
       "cinemaSignUpDate": "1955-03-12",
       "permission": "cinemaMember",
@@ -1216,11 +1270,17 @@
       "intro_tw": "★坎城影展 最佳劇本獎★美國國家電影協會五大外語片 ★西班牙錫切斯奇幻影展評審團特別獎、影評人特別獎、最佳劇情長片獎★《視與聽》雜誌年度十大電影、《電影評論》雜誌年度十大電影蜂蜜之夏》導演最新力作，以傳統十六釐米膠捲拍攝出獨有魔幻寫實風格。           拉札洛是一位內心單純的年輕農民，個性驕縱的莊園少爺坦雷迪則是他的雇主。他們生活在一個與世隔絕的義大利小城，兩個人從雇傭關係漸漸成為好友。某天，坦雷迪自導自演了一場無聊的綁架鬧劇，沒料到卻在意外中衍生出另一場意外，讓拉札洛從過去穿越時空到多年以後，展開一段出乎意料卻又美麗的奇幻旅程。",
       "intro_en": "An unceasingly kind Italian peasant and his family are blatantly exploited by a tobacco baroness.",
       "movie_pic": "film_HappyasLazzaro.jpg",
-      "movie_genre": ["劇情"],
+      "movie_genre": [
+        "劇情"
+      ],
       "movie_ver": "數位",
       "movie_rating": "普遍級",
       "trailer": "https://www.youtube.com/watch?v=LlFUC-RpMkg",
-      "pirce": ["270", "250", "200"],
+      "pirce": [
+        "270",
+        "250",
+        "200"
+      ],
       "schedule": "-",
       "in_theaters": "20190426",
       "out_theaters": "-",
@@ -1230,7 +1290,9 @@
       "country": "Italy",
       "subtitle": "是",
       "subtitle_lang": "中文",
-      "moviecinema": ["c1"],
+      "moviecinema": [
+        "c1"
+      ],
       "stills": [
         "film_HappyasLazzaro_01.jpg",
         "film_HappyasLazzaro_02.jpg",
@@ -1241,7 +1303,7 @@
       "filmStar": [
         {
           "starId": "m22222",
-          "star": 3
+          "star": 4
         },
         {
           "starId": "m111111",
@@ -1260,11 +1322,17 @@
       "intro_tw": "★金馬獎 最佳紀錄片★台北電影獎 最佳紀錄片   本片主角們的青春夢想，是藉由反抗體制，追求一個更好的國家，卻在動盪的兩岸關係裡，變成歷史的一部份。一個反抗中國的台灣學運明星、一個喜愛台灣的中國學生、一個政治狂熱的台灣紀錄片工作者，他們之間理應充滿矛盾，卻在社會運動裡找到合作的可能性。在一場台灣24年來最大型的社會運動之後，他們從接近成功的巔峰，逐漸墜入失望的谷底，曾經堅持的理想，還有可能延續嗎？本片從台灣觀點、政治角度切入，近距離觀看大時代下的年輕人，在實踐民主時真實的處境，進而思考，自身與民主之間的關係。",
       "intro_en": "A star of the Taiwanese student movement, a celebrity Chinese student who loves Taiwan, and a Taiwanese documentary filmmaker passionate about politics. Each of them shared dreams of rebellion and building a better country. In the wake of the biggest social movement in Taiwan in recent years, they reflect on how close they came to realising their goals, how they were let down, and whether it is still possible to continue fighting for ideals.",
       "movie_pic": "film_OurYouthinTaiwan.jpg",
-      "movie_genre": ["紀錄"],
+      "movie_genre": [
+        "紀錄"
+      ],
       "movie_ver": "數位",
       "movie_rating": "普遍級",
       "trailer": "https://www.youtube.com/watch?v=_62AfanuI5Q",
-      "pirce": ["270", "250", "200"],
+      "pirce": [
+        "270",
+        "250",
+        "200"
+      ],
       "schedule": "-",
       "in_theaters": "20190412",
       "out_theaters": "-",
@@ -1274,7 +1342,9 @@
       "country": "Taiwan",
       "subtitle": "是",
       "subtitle_lang": "中文",
-      "moviecinema": ["c1"],
+      "moviecinema": [
+        "c1"
+      ],
       "stills": [
         "film_OurYouthinTaiwan.jpg_01.jpg",
         "film_OurYouthinTaiwan.jpg_02.jpg"
@@ -1293,11 +1363,18 @@
       "intro_tw": "感動法國百萬觀眾，票房熱賣三億台幣          庇護所再三個月就即將關門大吉，當中收容的數十位無家婦女們該何去何從？！為了讓她們有自給自足的能力，庇護所的社工們決定試著開發他們的「職業力」，在面試現場無論是說謊、關說，花招百出，只為了要幫助他們找到工作，開啟人生第二春。導演路易斯朱利安派特真實走訪巴黎女性庇護所一年時間，以平行視角以及喜劇元素描述看似嚴肅的社會議題，而電影中多名演員皆由過往真實街友參與演出！",
       "intro_en": "Following a municipal decision, Envol, SDF Women's Shelter, will close. There are only three months left for social workers to reintegrate at any cost the women they care for: falsification, pistons, lies... From now on, everything is allowed!",
       "movie_pic": "film_Lesinvisibles.jpg",
-      "movie_genre": ["劇情", "喜劇"],
+      "movie_genre": [
+        "劇情",
+        "喜劇"
+      ],
       "movie_ver": "數位",
       "movie_rating": "普遍級",
       "trailer": "https://www.youtube.com/watch?v=_62AfanuI5Q",
-      "pirce": ["270", "250", "200"],
+      "pirce": [
+        "270",
+        "250",
+        "200"
+      ],
       "schedule": "-",
       "in_theaters": "20190503",
       "out_theaters": "-",
@@ -1307,7 +1384,11 @@
       "country": "France",
       "subtitle": "是",
       "subtitle_lang": "中文",
-      "moviecinema": ["002", "003", "001"],
+      "moviecinema": [
+        "002",
+        "003",
+        "001"
+      ],
       "stills": [
         "film_Lesinvisibles_01.jpg",
         "film_Lesinvisibles_02.jpg",
@@ -1316,7 +1397,7 @@
       "filmStar": [
         {
           "starId": "m22222",
-          "star": 2
+          "star": 4
         }
       ]
     },
@@ -1327,11 +1408,17 @@
       "intro_tw": "★第91屆奧斯卡最佳紀錄片★ 2018 多倫多影展觀眾票選獎             故事描述攀岩好手艾力克斯霍諾德（Alex Honnold）經過兩年多準備，挑戰徒手攀爬3200英呎高的「酋長岩（El Capitan）」創舉。這項成就不僅成功締造世界紀錄，更讓紐約客雜誌（The New Yorker）擊掌盛讚「人類最偉大的體能極限挑戰！」。電影不僅記錄霍諾德為完成夢想，所經歷的種種考驗與挫折，劇組更出動直升機高空拍攝，完整呈現他徒手攀爬酋長岩的驚險過程，讓觀眾看得頭皮發麻，直呼「緊張到暫停呼吸」。",
       "intro_en": "Alex Honnold attempts to become the first person to ever free solo climb El Capitan.",
       "movie_pic": "film_FreeSolo.jpg",
-      "movie_genre": ["紀錄"],
+      "movie_genre": [
+        "紀錄"
+      ],
       "movie_ver": "數位",
       "movie_rating": "保護級",
       "trailer": "https://www.youtube.com/watch?v=_b0qn6S1D_I",
-      "pirce": ["270", "250", "200"],
+      "pirce": [
+        "270",
+        "250",
+        "200"
+      ],
       "schedule": "-",
       "in_theaters": "20190517",
       "out_theaters": "-",
@@ -1341,14 +1428,23 @@
       "country": "America",
       "subtitle": "是",
       "subtitle_lang": "中文",
-      "moviecinema": ["002", "003", "001"],
+      "moviecinema": [
+        "002",
+        "003",
+        "001"
+      ],
       "stills": [
         "film_FreeSolo_01.jpg",
         "film_FreeSolo_02.jpg",
         "film_FreeSolo_03.jpg",
         "film_FreeSolo_04.jpg"
       ],
-      "filmStar": []
+      "filmStar": [
+        {
+          "starId": "m22222",
+          "star": 4
+        }
+      ]
     }
   ],
   "article_list": [
@@ -2502,7 +2598,9 @@
   ],
   "movieitemData": [
     {
-      "itemTtlTxt": ["電影種類"],
+      "itemTtlTxt": [
+        "電影種類"
+      ],
       "itemTxt": [
         "文藝",
         "紀錄",
