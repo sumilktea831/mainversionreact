@@ -74,7 +74,11 @@ class InputCardContent_CinemaLogin extends React.Component {
     console.log(newtext)
 
     //判斷如果拿到的name屬於state裡面的屬性，就把剛才複製的state的該項目更新，然後再setState回去
-    if (name === 'cinemaAccount' || name === 'cinemaPassword' || name === 'captchatext') {
+    if (
+      name === 'cinemaAccount' ||
+      name === 'cinemaPassword' ||
+      name === 'captchatext'
+    ) {
       newtext[0][name] = value
       this.setState({ usertext: newtext }, () =>
         console.log(this.state.usertext)
@@ -118,11 +122,12 @@ class InputCardContent_CinemaLogin extends React.Component {
             {/* 這裡是驗證碼的Row */}
             <Row className="my-4 d-flex justify-content-between">
               <input
-                className="border border-warning roundedy"
+                className="border border-warning rounded"
                 style={{
                   background: '#1f242a',
                   color: '#FFA510',
                   textAlign: 'center',
+                  // borderWidth: '2px',
                 }}
                 name="captchatext"
                 type="text"

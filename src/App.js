@@ -14,6 +14,7 @@ import Mainpage from './page/Mainpage'
 import Cinema from './page/Cinema'
 import CinemaInfo from './page/CinemaInfo'
 import Movie from './page/Movie1'
+import MovieInfo from './page/MovieInfo'
 import Article from './page/Article'
 import ArticlePage from './page/ArticlePage'
 import Activity from './page/Activity'
@@ -22,6 +23,7 @@ import ActivityJoin from './page/ActivityJoin'
 import Forum from './page/Forum'
 import LoginSign from './page/SignUp'
 import BackMainpage from './page/BackMainpage'
+import CinemaBackMainpage from './page/CinemaBackMainpage'
 
 //Import Component
 import ScroolToTop from './component/activity/ActivityScrollToTop/ActivityScrollToTop'
@@ -118,6 +120,7 @@ class App extends React.Component {
             <Route exact path="/cinema" component={Cinema} />
             <Route path="/cinema/:id" component={CinemaInfo} />
             <Route path="/movie" component={Movie} />
+            <Route path="/movie/:id" component={MovieInfo} />
             <Route path="/article/:id" component={ArticlePage} />
             <Route path="/article" component={Article} />
             <Route exact path="/activity/join/:id" component={ActivityJoin} />
@@ -128,7 +131,14 @@ class App extends React.Component {
             <Route path="/forum" component={Forum} />
             <Route path="/LoginSign" component={LoginSign} />
             <Route path="/BackMainpage" component={BackMainpage} />
+            <Route path="/CinemaBackMainpage" component={CinemaBackMainpage} />
           </Switch>
+          <div
+            className="container-fluid"
+            style={{ textAlign: 'center', height: '300px' }}
+          >
+            ＦＯＯＴＥＲ區
+          </div>
         </ScroolToTop>
       </Router>
     )

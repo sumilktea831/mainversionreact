@@ -42,6 +42,53 @@
   background: rgba(0, 0, 0, 0.137);
 }
 
+/* 通用頭像 */
+.avatar {
+  width: 48px;
+  height: 48px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+.avatar img {
+  height: 48px;
+  object-fit: cover;
+}
+
+/* 留言區 */
+.commentGroup {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+}
+
+.media-body {
+  border-bottom: solid 1px #a7a7a717;
+}
+
+/* 按鈕 */
+.viewPage {
+  position: relative;
+}
+.nomarginBtn {
+  margin: 0;
+  padding: 0;
+  width: 100px;
+}
+.typeBtn {
+  background-color: transparent;
+  color: #d4d1cc;
+}
+.btnGroupV {
+  z-index: 10;
+  position: fixed;
+  right: 0;
+  top: 42%;
+}
+
+.textColor1 {
+  color: #d4d1cc;
+}
+
 .contentText {
   line-height: 2;
   /* height: 100%; */

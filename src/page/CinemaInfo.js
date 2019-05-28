@@ -1,41 +1,55 @@
 import React from 'react'
+import { Row, Col } from 'react-bootstrap'
 import CardLargeKaga from '../component/cinema/CardLargeKaga/v1/CardLargeKaga'
-import ActivitySection from '../component/activity/ActivitySection/ActivitySection'
+import CinemaSection from '../component/cinema/CinemaSection/CinemaSection'
 import CardKaga from '../component/cinema/CardKaga/v3/CardKaga'
 import TitleKaga from '../component/cinema/TitleKaga'
-
+import CinemaSlider from '../component/cinema/CinemaSlider/CinemaSlider'
+import MessageBoard from '../component/cinema/MessageBoard/MessageBoard'
+import MessageBoardInput from '../component/cinema/MessageBoard/MessageBoardInput'
 //撈目前已登陸的會員資料
 const memberId = sessionStorage.getItem('memberId')
+const cinemaId = sessionStorage.getItem('cinemaId')
 class TheateInfo extends React.Component {
   constructor() {
     super()
     this.state = {
-      cinemaData: '',
-      memberData: '',
-      memberThisData: '',
+      cinemaData: '', // 此頁顯示的戲院資料
+      cinemaThisData: '', // 登陸的戲院資料
+      memberData: '', // 所有會員資料
+      memberThisData: '', // 登陸的會員資料
       activityData: '',
+      dataFile: '',
       HeroSection: '',
       BigCarData: '',
+      SliderData: '',
       ActivityCardData: [],
+      FilmCardData: [],
+      MessageBoard: [],
     }
   }
 
   // 在元件完成載入時fetch 這張表格的資料進來整理成個元件需要的資料
   async componentDidMount() {
-    console.log(this.props.match.params.id)
     try {
       //劇院
-      const resCinema = await fetch(
-        'http://localhost:5555/cinema/' + this.props.match.params.id,
-        {
-          method: 'GET',
-          headers: new Headers({
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          }),
-        }
+      const resCinema = await fetch('http://localhost:5555/cinema', {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+      // 全部的戲院資料
+      const dataAllCinema = await resCinema.json()
+      // 此頁顯示的劇院資料
+      const dataCine = dataAllCinema.filter(
+        item => item.id === this.props.match.params.id
       )
-      const dataCinema = await resCinema.json()
+      const dataCinema = dataCine[0]
+      // 現在登陸的戲院資料
+      const dataLoginCine = dataAllCinema.filter(item => item.id === cinemaId)
+      const dataLoginCinema = dataLoginCine[0]
 
       //會員
       const resMember = await fetch('http://localhost:5555/member', {
@@ -61,6 +75,7 @@ class TheateInfo extends React.Component {
           }),
         }
       )
+      // 完整的活動資料
       const dataAct = await resActivity.json()
       // 比對活動中, 戲院名稱根本頁戲院id一致的資料
       const dataActivity = []
@@ -71,6 +86,28 @@ class TheateInfo extends React.Component {
         return item
       })
       // 所以該劇院的活動資料就是 dataActivity
+
+      // 影片
+      const resFilm = await fetch('http://localhost:5555/filmData', {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+      //完整得影片資料
+      const dataFil = await resFilm.json()
+      // 篩選出影片json中上映影院根本影院一樣的
+      const dataFilm = []
+      dataFil.map(item => {
+        item.moviecinema.map(item1 => {
+          if (item1 == dataCinema.id) {
+            dataFilm.push(item)
+          }
+        })
+        return item
+      })
+      // 所以該劇院的影片資料就是 dataFile
 
       // HeroSection參數整理
       const HeroSection = {
@@ -114,6 +151,13 @@ class TheateInfo extends React.Component {
         awesomeClick: this.awesomeClick,
         collectionClick: this.collectionClick,
       }
+
+      // 照片框參數整理
+      const SliderData = {
+        id: dataCinema.id,
+        img: dataCinema.cinemaImg,
+      }
+
       // 活動小卡片參數整理
       const ActivityCardData = dataActivity.map(item => ({
         key: item.id,
@@ -130,27 +174,50 @@ class TheateInfo extends React.Component {
         collection: dataThisMember.collectActivity,
       }))
       // 影片小卡片需要參數
-      // 待捕
-      // 最後把上面這些準備好的素材都丟回去state給下面dom抓
+      const FilmCardData = dataFilm.map(item => ({
+        key: item.id,
+        id: item.id,
+        title:
+          item.name_tw.length > 6
+            ? item.name_tw.slice(0, 6) + '...'
+            : item.name_tw, //
+        subtitle:
+          item.name_en.length > 12
+            ? item.name_en.slice(0, 12) + '...'
+            : item.name_en,
+        img: item.movie_pic,
+        // 因為是原頁面跳轉 所以直接帶這樣才能實現跳轉
+        link: '/movie/' + item.id,
+        collection: memberId
+          ? dataThisMember.map(item =>
+              item.collectFilm.find(item1 => item1 === item.id)
+            )
+            ? 'true'
+            : 'false'
+          : [],
+      }))
       this.setState({
         cinemaData: dataCinema,
+        cinemaThisData: dataLoginCinema,
         memberData: dataMember,
         memberThisData: dataThisMember,
         activityData: dataAct,
+        filmData: dataFil,
         HeroSection: HeroSection,
         BigCarData: BigCarData,
+        SliderData: SliderData,
         ActivityCardData: ActivityCardData,
+        FilmCardData: FilmCardData,
+        MessageBoard: dataCinema.cinemaMessage,
       })
     } catch (err) {
       console.log(err)
     }
   }
 
-  // 按讚功能跟資料庫對接----完成
+  // 大卡按讚功能跟資料庫對接----完成
   awesomeClick = async (newAwesome, newAwesomeLength) => {
     // console.log('father get')
-    // console.log(newAwesome)
-    // console.log(newAwesomeLength)
     //按讚資料改變只影響到戲院本身資料 所以先做好要蓋回戲院的資料
     try {
       //改變後的資料
@@ -217,37 +284,39 @@ class TheateInfo extends React.Component {
     }
   }
 
-  // 收藏功能跟資料庫對接----完成
+  // 大卡收藏功能跟資料庫對接----完成
   collectionClick = async (newCollectionm, collectionLength) => {
     //改變後的資料
-    console.log('this.state.memberThisData')
-    console.log(this.state.memberThisData[0].id)
+    let memberThisDataOutArray = ''
+    if (this.state.memberThisData[0]) {
+      memberThisDataOutArray = this.state.memberThisData[0]
+    } else {
+      memberThisDataOutArray = this.state.memberThisData
+    }
     try {
       const NewMemberData = {
-        id: this.state.memberThisData[0].id,
-        name: this.state.memberThisData[0].name,
-        nickname: this.state.memberThisData[0].nickname,
-        gender: this.state.memberThisData[0].gender,
-        mobile: this.state.memberThisData[0].mobile,
-        birth: this.state.memberThisData[0].birth,
-        email: this.state.memberThisData[0].email,
-        pwd: this.state.memberThisData[0].pwd,
-        avatar: this.state.memberThisData[0].avatar,
-        city: this.state.memberThisData[0].city,
-        address: this.state.memberThisData[0].address,
-        fav_type: this.state.memberThisData[0].fav_type,
-        career: this.state.memberThisData[0].career,
-        join_date: this.state.memberThisData[0].permission,
-        permission: this.state.memberThisData[0].permission,
-        collectFilm: this.state.memberThisData[0].collectFilm,
+        id: memberThisDataOutArray.id,
+        name: memberThisDataOutArray.name,
+        nickname: memberThisDataOutArray.nickname,
+        gender: memberThisDataOutArray.gender,
+        mobile: memberThisDataOutArray.mobile,
+        birth: memberThisDataOutArray.birth,
+        email: memberThisDataOutArray.email,
+        pwd: memberThisDataOutArray.pwd,
+        avatar: memberThisDataOutArray.avatar,
+        city: memberThisDataOutArray.city,
+        address: memberThisDataOutArray.address,
+        fav_type: memberThisDataOutArray.fav_type,
+        career: memberThisDataOutArray.career,
+        join_date: memberThisDataOutArray.permission,
+        permission: memberThisDataOutArray.permission,
+        collectFilm: memberThisDataOutArray.collectFilm,
         collectCinema: newCollectionm,
-        collectArticle: this.state.memberThisData[0].collectArticle,
-        collectActivity: this.state.memberThisData[0].collectActivity,
-        collectForum: this.state.memberThisData[0].collectForum,
-        markList: this.state.memberThisData[0].markList,
+        collectArticle: memberThisDataOutArray.collectArticle,
+        collectActivity: memberThisDataOutArray.collectActivity,
+        collectForum: memberThisDataOutArray.collectForum,
+        markList: memberThisDataOutArray.markList,
       }
-      console.log('NewMemberData')
-      console.log(NewMemberData)
       //蓋回去資料庫
       const response = await fetch('http://localhost:5555/member/' + memberId, {
         method: 'PUT',
@@ -286,28 +355,220 @@ class TheateInfo extends React.Component {
     }
   }
 
-  // Activity小卡收藏按鈕回傳
-  collectionClickActivity = (id, val) => {
-    console.log(id)
-    console.log(val)
-    alert('collectioClick')
-  }
-  collectionClickFilm = (id, val) => {
-    console.log(id)
-    console.log(val)
-    alert('collectioClick')
+  // 影片小卡收藏跟資料庫對接----完成
+  collectionClickFilm = async (id, val) => {
+    // 找到符合id的這比電影資料
+    // 先判斷會員資料近來是否為陣列 不是就直接用
+    // 如果是拿掉會員資料的陣列 因為登陸只會有一個人 直接[0]比較方便
+    let memberThisDataOutArray = ''
+    if (this.state.memberThisData[0]) {
+      memberThisDataOutArray = this.state.memberThisData[0]
+    } else {
+      memberThisDataOutArray = this.state.memberThisData
+    }
+    let newCollectionData = []
+    if (val === 'false') {
+      // 如果回傳是false 等等要裝進去的資料就是拿掉此影片以外的所有收藏id
+      newCollectionData = memberThisDataOutArray.collectFilm.filter(
+        items => items != id
+      )
+    } else {
+      // 如果回傳是true 就加上去
+      newCollectionData = [...memberThisDataOutArray.collectFilm, id]
+    }
+    const NewMemberData = {
+      id: memberThisDataOutArray.id,
+      name: memberThisDataOutArray.name,
+      nickname: memberThisDataOutArray.nickname,
+      gender: memberThisDataOutArray.gender,
+      mobile: memberThisDataOutArray.mobile,
+      birth: memberThisDataOutArray.birth,
+      email: memberThisDataOutArray.email,
+      pwd: memberThisDataOutArray.pwd,
+      avatar: memberThisDataOutArray.avatar,
+      city: memberThisDataOutArray.city,
+      address: memberThisDataOutArray.address,
+      fav_type: memberThisDataOutArray.fav_type,
+      career: memberThisDataOutArray.career,
+      join_date: memberThisDataOutArray.permission,
+      permission: memberThisDataOutArray.permission,
+      collectFilm: newCollectionData,
+      collectCinema: memberThisDataOutArray.collectCinema,
+      collectArticle: memberThisDataOutArray.collectArticle,
+      collectActivity: memberThisDataOutArray.collectActivity,
+      collectForum: memberThisDataOutArray.collectForum,
+      markList: memberThisDataOutArray.markList,
+    }
+    // //蓋回去資料庫
+    const response = await fetch('http://localhost:5555/member/' + memberId, {
+      method: 'PUT',
+      body: JSON.stringify(NewMemberData),
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }),
+    })
+    const jsonObject = await response.json()
+    console.log(jsonObject)
+
+    // // 資料庫改變完再回來拿原本的data改變state進而渲染整個頁面
+    // CardData可能有多筆資料  所以要乖乖map
+    const FilmCardData = this.state.FilmCardData.map(item => ({
+      key: item.id,
+      id: item.id,
+      title: item.title,
+      subtitle: item.subtitle,
+      img: item.img,
+      link: item.link,
+      // 如果id是回傳的id 代表要改的就是這筆！！  讓他吃val的值  其他筆就照舊吧
+      collection: item.id == id ? val : item.collection,
+    }))
+    await this.setState({
+      FilmCardData: FilmCardData,
+      memberThisData: NewMemberData,
+    })
   }
 
-  newStarAndMark = val => {
-    console.log(val)
-    alert('Use Fetch Update New Star And Mark To Database!!')
+  // 活動小卡收藏跟資料庫對接----完成
+  collectionClickActivity = async (id, val) => {
+    // 找到符合id的這比電影資料
+    // 先判斷會員資料近來是否為陣列 不是就直接用
+    // 如果是拿掉會員資料的陣列 因為登陸只會有一個人 直接[0]比較方便
+    let memberThisDataOutArray = ''
+    if (this.state.memberThisData[0]) {
+      memberThisDataOutArray = this.state.memberThisData[0]
+    } else {
+      memberThisDataOutArray = this.state.memberThisData
+    }
+
+    let newCollectionData = []
+    if (val === 'false') {
+      // 如果回傳是false 等等要裝進去的資料就是拿掉此影片以外的所有收藏id
+      newCollectionData = memberThisDataOutArray.collectFilm.filter(
+        items => items != id
+      )
+    } else {
+      // 如果回傳是true 就加上去
+      newCollectionData = [...memberThisDataOutArray.collectFilm, id]
+    }
+    const NewMemberData = {
+      id: memberThisDataOutArray.id,
+      name: memberThisDataOutArray.name,
+      nickname: memberThisDataOutArray.nickname,
+      gender: memberThisDataOutArray.gender,
+      mobile: memberThisDataOutArray.mobile,
+      birth: memberThisDataOutArray.birth,
+      email: memberThisDataOutArray.email,
+      pwd: memberThisDataOutArray.pwd,
+      avatar: memberThisDataOutArray.avatar,
+      city: memberThisDataOutArray.city,
+      address: memberThisDataOutArray.address,
+      fav_type: memberThisDataOutArray.fav_type,
+      career: memberThisDataOutArray.career,
+      join_date: memberThisDataOutArray.permission,
+      permission: memberThisDataOutArray.permission,
+      collectFilm: memberThisDataOutArray.collectFilm,
+      collectCinema: memberThisDataOutArray.collectCinema,
+      collectArticle: memberThisDataOutArray.collectArticle,
+      collectActivity: newCollectionData,
+      collectForum: memberThisDataOutArray.collectForum,
+      markList: memberThisDataOutArray.markList,
+    }
+    // //蓋回去資料庫
+    const response = await fetch('http://localhost:5555/member/' + memberId, {
+      method: 'PUT',
+      body: JSON.stringify(NewMemberData),
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }),
+    })
+    const jsonObject = await response.json()
+    console.log(jsonObject)
+
+    // // 資料庫改變完再回來拿原本的data改變state進而渲染整個頁面
+    // CardData可能有多筆資料  所以要乖乖map
+    const ActivityCardData = this.state.ActivityCardData.map(item => ({
+      key: item.id,
+      id: item.id,
+      title: item.title,
+      subtitle: item.subtitle,
+      img: item.img,
+      link: item.link,
+      // 如果id是回傳的id 代表要改的就是這筆！！  讓他吃val的值  其他筆就照舊吧
+      collection: item.id == id ? val : item.collection,
+    }))
+    await this.setState({
+      ActivityCardData: ActivityCardData,
+      memberThisData: NewMemberData,
+    })
   }
 
+  MessageBoardSave = async newText => {
+    let thisMember = this.state.memberThisData[0] //現在登陸的這名會員
+    let thisCinema = this.state.cinemaThisData //現在登陸的戲院
+    let thisLogin = {}
+    if (memberId) {
+      console.log('thisMember')
+      console.log(thisMember)
+      thisLogin.name = thisMember.nickname
+      thisLogin.img = thisMember.avatar
+    } else if (cinemaId) {
+      thisLogin.name = thisCinema.cinemaName
+      thisLogin.img = thisCinema.cinemaLogoImg
+    } else {
+      thisLogin = ''
+    }
+
+    let newVisitor = {
+      id: +new Date(),
+      name: '訪客',
+      img: 'asianman.jpg',
+      message: newText,
+      time: +new Date(),
+      awesome: [],
+      boo: [],
+    }
+
+    let newMemberMessage = {
+      id: +new Date(),
+      name: thisLogin.name,
+      img: thisLogin.img !== '' ? thisLogin.img : 'asianman.jpg',
+      message: newText,
+      time: +new Date(),
+      awesome: [],
+      boo: [],
+    }
+    let newMemberMessageData = [...this.state.MessageBoard, newMemberMessage]
+    let newVisitorData = [...this.state.MessageBoard, newVisitor]
+    let NewData = thisLogin !== '' ? newMemberMessageData : newVisitorData
+    console.log(NewData)
+    this.setState({ MessageBoard: NewData })
+    // 然後更新回資料庫 留言資料放在戲院自己裡面 cinemaMessage
+    const NewCinemaMessage = this.state.cinemaData
+    NewCinemaMessage.cinemaMessage = NewData
+
+    console.log('NewCinemaMessage')
+    console.log(NewCinemaMessage)
+    const resCinema = await fetch(
+      'http://localhost:5555/cinema/' + this.props.match.params.id,
+      {
+        method: 'PUT',
+        body: JSON.stringify(NewCinemaMessage),
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      }
+    )
+    const jsonObject = await resCinema.json()
+    console.log(jsonObject)
+  }
   render() {
     return (
       <>
         {/* 英雄頁面----串接完成 */}
-        <ActivitySection
+        <CinemaSection
           pictureSrc={
             'http://localhost:3000/images/' + this.state.HeroSection.pictureSrc
           }
@@ -340,19 +601,14 @@ class TheateInfo extends React.Component {
 
           {/* 圖片列 */}
           <div className="py-5">
-            <TitleKaga title="圖像（還沒人的可以偷)" />
+            <TitleKaga title="環境照片" />
           </div>
-          <div
-            className="bg-info"
-            style={{
-              height: '400px',
-              weight: '100%',
-              textAlign: 'center',
-              fontSize: '50px',
-            }}
-          >
-            圖片列
-          </div>
+
+          <Row className="justify-content-md-center w-100">
+            <Col md={11}>
+              <CinemaSlider sData={this.state.SliderData} />
+            </Col>
+          </Row>
 
           {/* 上映影片卡片 */}
           <div className="py-5">
@@ -367,8 +623,8 @@ class TheateInfo extends React.Component {
                 overflow: 'hidden',
               }}
             >
-              {this.state.ActivityCardData.length !== 0 ? (
-                this.state.ActivityCardData.map(item => (
+              {this.state.FilmCardData.length !== 0 ? (
+                this.state.FilmCardData.map(item => (
                   <CardKaga
                     key={item.id}
                     id={item.id}
@@ -412,7 +668,7 @@ class TheateInfo extends React.Component {
                     id={item.id}
                     title={item.title}
                     subtitle={item.subtitle}
-                    img={'http://localhost3000/images/' + item.img}
+                    img={item.img}
                     link={item.link}
                     collectionIcon
                     collectionClick={this.collectionClickActivity}
@@ -432,10 +688,10 @@ class TheateInfo extends React.Component {
 
           {/* 留言板區塊 */}
           <div className="py-5">
-            <TitleKaga title="留言板" />
+            <TitleKaga title="評論區" />
           </div>
           <div
-            className="bg-warning "
+            // className="bg-warning "
             style={{
               height: '400px',
               weight: '100%',
@@ -443,7 +699,14 @@ class TheateInfo extends React.Component {
               fontSize: '50px',
             }}
           >
-            留言板
+            {this.state.MessageBoard.map(item => (
+              <MessageBoard
+                listData={item}
+                awesomeClick={this.awesomeClick}
+                booeClick={this.booeClick}
+              />
+            ))}
+            <MessageBoardInput MessageBoardSave={this.MessageBoardSave} />
           </div>
         </div>
       </>

@@ -120,7 +120,7 @@ class InputCardContent_MemberSignUp extends React.Component {
         if (!check) {
           //驗證格式是否正確
           document.querySelector('#' + name + 'help').innerHTML =
-            '請輸入正確的Email!'
+            '請輸入正確的Email'
         } else {
           //格式正確，再比對是否已存在
           let emailexisted = this.props.memberdata.find(
@@ -315,7 +315,7 @@ class InputCardContent_MemberSignUp extends React.Component {
             {/* 這裡是驗證碼的Row -- input + canvas */}
             <Row className="my-4 d-flex justify-content-between">
               <input
-                className="border border-warning roundedy"
+                className="border border-warning rounded"
                 style={{
                   background: '#1f242a',
                   color: '#FFA510',

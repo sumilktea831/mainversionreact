@@ -4,7 +4,7 @@ const InputFile_Su = props => {
   return (
     <>
       <div
-        class="custom-file border-0 rounded"
+        className="custom-file border-0 rounded"
         style={{
           height: `${props.inputHeight}`,
         }}
@@ -13,7 +13,7 @@ const InputFile_Su = props => {
           className=" d-flex flex-nowrap"
           type="button"
           style={{
-            width: '100%',
+            width: `${props.inputWidth ? props.inputWidth : '100%'}`,
             height: `${props.inputHeight}`,
             background: '#1F242A',
             color: '#FFA510',
@@ -21,7 +21,7 @@ const InputFile_Su = props => {
         >
           <input
             type="file"
-            class="custom-file-input border-0"
+            className="custom-file-input border-0"
             name={props.id}
             id={props.id}
             style={{
@@ -29,37 +29,39 @@ const InputFile_Su = props => {
               display: 'none',
             }}
             onChange={props.onChange}
+            multiple={props.multiple ? true : false}
           />
           <div
             id={props.id + 'filename'}
-            className="col px-0 pt-2 border border-warning rounded-left"
+            className="col px-0 border border-warning rounded-left text-center h6"
             style={{
-              // height: `${props.inputHeight}`,
+              height: `${props.inputHeight}`,
               background: '#1F242A',
+              padding: '14px 0',
               // color: '#FFA510',
             }}
           >
-            這裡是檔案名稱
+            {props.placeholder}
           </div>
           <div
-            className="col-3 px-1 pt-2  border border-left-0 border-warning rounded-right"
+            className="col-3 px-1 border border-left-0 border-warning rounded-right text-center h6"
             style={{
-              // width: '100%',
               height: `${props.inputHeight}`,
               background: '#1F242A',
               color: '#FFA510',
+              padding: '14px 0',
             }}
           >
             選擇檔案
           </div>
           {/* <label
-            class="custom-file-label border border-warning"
+            className="custom-file-label border border-warning"
             style={{
               background: '#1F242A',
               color: '#FFA510',
               height: `${props.inputHeight}`,
             }}
-            for={props.id}
+            htmlFor={props.id}
             data-browse=""
           >
             {props.placeholder}

@@ -4,12 +4,16 @@
 html,
 body {
   background: #242b34;
+  margin: 0 !important;
+  padding: 0 !important;
   font-family: 'Noto Sans TC', sans-serif;
   box-sizing: border-box;
   color: #d4d1cc !important;
   scroll-behavior: smooth;
 }
 .container-fuild {
+  padding: 0;
+  margin: 0;
   max-width: 100%;
 }
 
@@ -31,6 +35,9 @@ img.img-fluid {
   max-height: 750px;
   height: 100%;
   object-fit: cover;
+}
+.card {
+  border:none !important;
 }
 /*button*/
 
@@ -163,6 +170,30 @@ input {
   background: rgba(0, 0, 0, 0.7);
 } */
 
+input.activitySearch::placeholder{
+  color:#ffa510
+}
+
+/* -------------------SU------------------------ */
+.text-mywhite {
+  color: #d4d1cc !important;
+}
+.text-darkblue {
+  color: #2b333d !important;
+}
+.bg-darkblue {
+  background: #242b34 !important;
+}
+.bg-second-darkblue {
+  background: #2b333d !important;
+}
+.bg-orange {
+  background: #ffa510 !important;
+}
+.mytransition5{
+  transition: .5s;
+}
+
 /* -----------------------------------------------------Kaga */
 .cardAreaBgKaga {
   background-position: center;
@@ -192,4 +223,13 @@ input {
 }
 .cardStar {
   color: #ffa510;
+}
+/* -------------------------------------------------------forum */
+.articleInput,
+.card-body.articleInput {
+  background: '#1f242a';
+}
+
+#forumListScollTop::-webkit-scrollbar {
+  width: 0 !important;
 }

@@ -5,7 +5,7 @@ import Pagination from '../component/article/ArticleList/ArticleButton/Paginatio
 import ArticleCard from '../component/article/ArticleList'
 import ArticleSlider from '../component/article/ArticleList/ArticleSlider/ArticleSlider'
 
-const memberId = '4'
+const memberId = 'm1'
 class Article extends React.Component {
   constructor() {
     super()
@@ -19,10 +19,13 @@ class Article extends React.Component {
       viewCounter: 0,
       SliderData: [],
     }
+    this.byNew = this.byNew.bind(this)
+    this.byHot = this.byHot.bind(this)
   }
 
   async componentDidMount() {
     try {
+      // 倒入文章資訊
       const res = await fetch('http://localhost:5555/articleCardData', {
         method: 'GET',
         headers: new Headers({
@@ -32,10 +35,12 @@ class Article extends React.Component {
       })
       const data = await res.json()
       console.log(data)
-      const articleData = data
+      // 該頁的文章為  第1~5
+      const articleData = data.slice(0, 5)
       const SliderData = data.slice(0, 6)
-      console.log(SliderData)
-      const paginationData = Math.ceil(articleData.length / 2)
+
+      // 全部資料的長度除以 per page 並且無條件進位
+      const paginationData = Math.ceil(data.length / 5)
       console.log('pages:' + paginationData)
       this.setState({ articleData: articleData })
       this.setState({ SliderData: SliderData })
@@ -44,22 +49,23 @@ class Article extends React.Component {
       console.log(err)
     }
   }
-  //按讚 還沒好
-  // handleMark = sid => async () => {
-  //   const newMember = [...this.state.articleData, memberId];
+  byNew() {
+    const byNewArray = this.state.articleData.reverse()
+    console.log(byNewArray)
+    this.setState({ articleData: byNewArray })
+  }
 
-  //   await fetch('http://localhost:5555/articleCardData/' + sid, {
-  //     method: 'PUT',
-  //     body: JSON.stringify(newMember),
-  //     headers: new Headers({
-  //       Accept: 'application/json',
-  //       'Content-Type': 'application/json',
-  //     data=>{}
-  //     }),
-  //   });
-  //   const jsonObj = await res.json();
-  // };
+  byHot() {
+    let byHotArray = this.state.articleData.sort(function(a, b) {
+      return b.viewCounter - a.viewCounter
+    })
+    this.setState({ articleData: byHotArray })
+  }
+
   render() {
+    // if (this.state.articleData.markId === undefined) {
+    //   return <></>
+    // }
     return (
       <>
         <div className="container-fuild">
@@ -86,22 +92,31 @@ class Article extends React.Component {
           </Row>
           <div className="mycontainer">
             <Row className="mb-4">
-              <div className="mx-3 text-center border-bottom border-light">
+              <div
+                className="mx-3 text-center border-bottom border-light"
+                onClick={this.byNew}
+              >
                 <h4 className="text-light">最新消息</h4>
               </div>
-              <div className="mx-3 text-center border-bottom border-light">
+              <div
+                className="mx-3 text-center border-bottom border-light"
+                onClick={this.byHot}
+              >
                 <h4 className="text-light">熱門文章</h4>
               </div>
-              <div className="mx-3 text-center border-bottom border-light">
+              {/* <div className="mx-3 text-center border-bottom border-light">
                 <h4 className="text-light">影評專欄</h4>
-              </div>
+              </div> */}
             </Row>
 
             <Row>
               {/* articleData = 最初設定的state名稱 */}
-              {this.state.articleData.map((element, index) => (
+              {this.state.articleData.map(element => (
                 <>
-                  {console.log(element.markId.split(','))}
+                  {/* {console.log(element.memberInfo.collectArticle)} */}
+                  {console.log('info')}
+                  {/* {console.log(this.state.memberInfo[1])} */}
+                  {/* {console.log(element.markId.find(item => item === memberId))} */}
                   <ArticleCard
                     key={element.id}
                     // 需再設定一個值給Link
@@ -109,27 +124,10 @@ class Article extends React.Component {
                     cardImg={'/images/article/' + element.image}
                     cardTitle={element.title}
                     cardText={element.content}
-                    isMarked={element.markId
-                      .split(',')
-                      .find(item => memberId === item)}
                     handleMark={this.handleMark}
                   />
                 </>
               ))}
-              {/* {this.state.articleData.map(function(element){
-                console.log('111')
-                return(
-                <ArticleList
-
-                  key={element.sid}
-                  // 需再設定一個值給Link
-                  sid={element.sid}
-                  cardImg={'/images/article/' + element.image}
-                  cardTitle={element.title}
-                  cardText={element.content}
-                  markSid={element.memberMarkSid}
-                />)
-              }} */}
             </Row>
 
             <Row className="justify-content-center">

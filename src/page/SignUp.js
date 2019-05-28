@@ -54,7 +54,8 @@ class SignUp extends React.Component {
         collectFilm: [],
         collectCinema: [],
         collectArticle: [],
-        collectActivity: [],
+        collectActivity: "",
+        collectActivityJoin: "",
         collectForum: [],
         markList: [],
       },
@@ -227,7 +228,7 @@ class SignUp extends React.Component {
         if (captcha === captchatext) {
           sessionStorage.setItem('cinemaId', isexisted.id)
           // console.log(!sessionStorage.getItem('memberId'))
-          window.location.href = '/BackMainpage'
+          window.location.href = '/CinemaBackMainpage'
         } else {
           alert('驗證碼有誤')
         }
