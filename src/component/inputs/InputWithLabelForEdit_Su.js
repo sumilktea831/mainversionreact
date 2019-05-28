@@ -48,7 +48,7 @@ const InputWithLabel_Su = props => {
         <Col // 這裡是input的col
           lg={8}
           className="p-0 border-0  rounded d-flex flex-nowrap align-items-center"
-        // style={{ width: `${props.inputWidth}` }}
+          // style={{ width: `${props.inputWidth}` }}
         >
           {/* 根據傳入的type來判斷要使用哪一種input */}
           {props.inputType === 'text' ? (
@@ -148,8 +148,8 @@ const InputWithLabel_Su = props => {
               thisData={props.thisData}
             />
           ) : (
-                          '找不到符合的input類型'
-                        )}
+            '找不到符合的input類型'
+          )}
         </Col>
       </Row>
     </>

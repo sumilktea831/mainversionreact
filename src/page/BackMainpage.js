@@ -24,7 +24,6 @@ class BackSidenav extends React.Component {
     this.state = {
       // sidenave
       memberSidenavItems: [],
-      cinemaSidenavItems: [],
       // 會員用state
       memberEditInputmsg: [],
       allMemberData: [], // 全部會員pure json
@@ -55,22 +54,6 @@ class BackSidenav extends React.Component {
       const jsonObject = await response.json()
       const data = await jsonObject
       await this.setState({ memberSidenavItems: data })
-    } catch (e) {
-      console.log(e)
-    }
-    //取得戲院sidenav項目
-    try {
-      const response = await fetch('http://localhost:5555/cinemaBackSidenav', {
-        method: 'GET',
-        headers: new Headers({
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        }),
-      })
-      if (!response.ok) throw new Error(response.statusText)
-      const jsonObject = await response.json()
-      const data = await jsonObject
-      await this.setState({ cinemaSidenavItems: data })
     } catch (e) {
       console.log(e)
     }
@@ -109,22 +92,7 @@ class BackSidenav extends React.Component {
     } catch (e) {
       console.log(e)
     }
-    //取得戲院editInfo項目
-    try {
-      const response = await fetch('http://localhost:5555/cinemaEditInputmsg', {
-        method: 'GET',
-        headers: new Headers({
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        }),
-      })
-      if (!response.ok) throw new Error(response.statusText)
-      const jsonObject = await response.json()
-      const data = await jsonObject
-      await this.setState({ cinemaEditInputmsg: data })
-    } catch (e) {
-      console.log(e)
-    }
+
     // 活動頁面 （因為跳錯會卡到資料傳遞, 故獨立出來Try~Catch
     try {
       const resActivity = await fetch(
@@ -397,33 +365,6 @@ class BackSidenav extends React.Component {
     })
   }
 
-  handleMemberEditSave = (data, checkok) => () => {
-    let memberid = sessionStorage.getItem('memberId')
-    let isAllChecked = true
-    let checkArray = Object.values(checkok)
-    isAllChecked = checkArray.reduce((a, b) => a && b)
-    console.log('isAllChecked: ' + isAllChecked)
-    if (isAllChecked) {
-      try {
-        fetch('http://localhost:5555/member/' + memberid, {
-          method: 'PUT',
-          body: JSON.stringify(data),
-          headers: new Headers({
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          }),
-        })
-          .then(res => res.json())
-          .then(jsonObject => {
-            this.setState({ thisMemberData: jsonObject }, () => {
-              alert('資料儲存成功')
-            })
-          })
-      } catch (e) {
-        console.log(e)
-      }
-    }
-  }
   //影片卡片按下刪除鈕後刪除此收藏
   filmCardDel = async id => {
     // 去把這個會員的collectFilm裡面的這個影片id刪掉
@@ -477,7 +418,34 @@ class BackSidenav extends React.Component {
       console.log(e)
     }
   }
-
+  //會員編輯儲存按鈕
+  handleMemberEditSave = (data, checkok) => () => {
+    let memberid = sessionStorage.getItem('memberId')
+    let isAllChecked = true
+    let checkArray = Object.values(checkok)
+    isAllChecked = checkArray.reduce((a, b) => a && b)
+    console.log('isAllChecked: ' + isAllChecked)
+    if (isAllChecked) {
+      try {
+        fetch('http://localhost:5555/member/' + memberid, {
+          method: 'PUT',
+          body: JSON.stringify(data),
+          headers: new Headers({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          }),
+        })
+          .then(res => res.json())
+          .then(jsonObject => {
+            this.setState({ thisMemberData: jsonObject }, () => {
+              alert('資料儲存成功')
+            })
+          })
+      } catch (e) {
+        console.log(e)
+      }
+    }
+  }
   // 登出function
   handleLogout = () => {
     //點擊登出，清除session並導回主頁
@@ -634,27 +602,6 @@ class BackSidenav extends React.Component {
                       <MemberEditPwd
                         memberEditInputmsg={this.state.memberEditInputmsg}
                         thisData={this.state.thisMemberData}
-                      />
-                    </div>
-                  </div>
-                </>
-              ) : (
-                ''
-              )}
-              {pagename === 'cinema-edit-info' ? (
-                <>
-                  <div className="row">
-                    <div className="col-md-12 p-0">
-                      <ActivityTitle
-                        title={'編輯戲院資訊'}
-                        className="content-title"
-                      />
-                    </div>
-                    <div style={{ width: '100%' }}>
-                      <CinemaEditInfo
-                        cinemaEditInputmsg={this.state.cinemaEditInputmsg}
-                        thisData={this.state.thisCinemaData}
-                        allCinemaData={this.state.allCinemaData}
                       />
                     </div>
                   </div>

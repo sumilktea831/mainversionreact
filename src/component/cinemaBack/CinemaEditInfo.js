@@ -31,25 +31,6 @@ class CinemaEditInfo extends React.Component {
     //若不設定，切換頁面再回來會無資料
     const data = await this.props.thisData
     await this.setState({ thisData: data })
-    // try {
-    //   //取得喜愛電影類型項目
-    //   const response = await fetch(
-    //     'http://localhost:5555/memberFavTypeOptions',
-    //     {
-    //       method: 'GET',
-    //       headers: new Headers({
-    //         Accept: 'application/json',
-    //         'Content-Type': 'application/json',
-    //       }),
-    //     }
-    //   )
-    //   if (!response.ok) throw new Error(response.statusText)
-    //   const jsonObject = await response.json()
-    //   const data = await jsonObject
-    //   await this.setState({ favTypeOptions: data })
-    // } catch (e) {
-    //   console.log(e)
-    // }
   }
   componentWillReceiveProps() {
     //若不設定，當頁刷新會無資料
@@ -428,7 +409,7 @@ class CinemaEditInfo extends React.Component {
                   key={item.id}
                   id={item.id}
                   inputWidth={item.w}
-                  inputHeight='48px'
+                  inputHeight="48px"
                   inputType={item.inputType}
                   inputLabel={item.inputLabel}
                   iconLeft={item.iconL}
@@ -458,6 +439,7 @@ class CinemaEditInfo extends React.Component {
             className="btn btn-warning h5 my-3 px-5 py-2 border-0 rounded bg-orange text-darkblue"
             // style=
             onClick={this.handleSaveInfo}
+            // onClick={this.props.handleCinemaEditSave}
           >
             儲存變更
           </button>
