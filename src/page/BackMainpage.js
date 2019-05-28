@@ -464,18 +464,13 @@ class BackSidenav extends React.Component {
       window.location.href = '/LoginSign'
     } else {
       //判斷登入者是會員or戲院，帶入相應的sidenav
-      const sidenav = sessionStorage.getItem('memberId') ? (
-        <MemberBackSidenav sidenavItems={this.state.memberSidenavItems} />
-      ) : (
-        <CinemaBackSidenav sidenavItems={this.state.cinemaSidenavItems} />
-      )
       const pagename = this.props.location.pathname.slice(14)
 
       return (
         <>
           {/* 暫時上方navbar區塊 */}
           <Row>
-            {sidenav}
+            <MemberBackSidenav sidenavItems={this.state.memberSidenavItems} />
             <div //右邊內容框，之後要引入內容component
               className="col container-fluid"
               style={{

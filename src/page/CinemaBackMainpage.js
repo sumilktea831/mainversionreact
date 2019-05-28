@@ -68,7 +68,6 @@ class CinemaBackMainpage extends React.Component {
       if (!response.ok) throw new Error(response.statusText)
       const jsonObject = await response.json()
       const data = await jsonObject.find(item => item.id === cinemaId)
-      console.log('session' + sessionStorage.getItem('cinemaId'))
       await this.setState({ thisCinemaData: data, allCinemaData: jsonObject })
     } catch (e) {
       console.log(e)
@@ -93,7 +92,7 @@ class CinemaBackMainpage extends React.Component {
         })
           .then(res => res.json())
           .then(jsonObject => {
-            sessionStorage.setItem('thisCinemaData', JSON.stringify(jsonObject))
+            // sessionStorage.setItem('thisCinemaData', JSON.stringify(jsonObject))
             this.setState({ thisCinemaData: jsonObject }, () => {
               alert('資料儲存成功')
             })

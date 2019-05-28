@@ -15,6 +15,8 @@ class MemberEditInfo extends React.Component {
       originData: {},
       thisData: 0,
       thisfavType: [],
+      hasNewAvatar: false,
+      avatarUploadFailed: false,
       checkok: {
         name: true,
         nickname: true,
@@ -275,37 +277,39 @@ class MemberEditInfo extends React.Component {
         copyData[eventName] = newFavType
       }
     } else if (eventName == 'avatar') {
-      console.log(event.target.files[0])
-      console.log(event.target.files[0].name)
+      if (event.target.files[0]) {
+        //如果有選擇檔案才執行
+        console.log(event.target.files[0])
+        // console.log(event.target.files[0].name)
 
-      var file = event.target.files[0]
-      var uploadFileName = event.target.files[0].name
-      let formdata = new FormData()
-      formdata.append('myfile', file)
-      fetch('http://localhost:3001/api/member-upload-single', {
-        method: 'POST',
-        body: formdata,
-      })
-        .then(res => res.json())
-        .then(obj => {
-          console.log(obj)
-          if (obj.success == true) {
-            copyData[eventName] = obj.filename
-            this.setState({ thisData: copyData }, () =>
-              console.log(this.state.thisData)
-            )
-            // document.querySelector(
-            //   '#' + eventName + 'filename'
-            // ).innerHTML = uploadFileName
-          } else {
-            copyData[eventName] = ''
-            this.setState({ thisData: copyData }, () =>
-              console.log(this.state.thisData)
-            )
-            document.querySelector('#' + eventName + 'filename').innerHTML =
-              obj.info
-          }
+        var file = event.target.files[0]
+        var uploadFileName = event.target.files[0].name
+        let formdata = new FormData()
+        formdata.append('myfile', file)
+        fetch('http://localhost:3001/api/member-upload-single', {
+          method: 'POST',
+          body: formdata,
         })
+          .then(res => res.json())
+          .then(obj => {
+            console.log(obj)
+            if (obj.success == true) {
+              copyData[eventName] = obj.filename
+              this.setState(
+                {
+                  // thisData: copyData,
+                  hasNewAvatar: true,
+                  avatarUploadFailed: false,
+                },
+                () => console.log(this.state)
+              )
+            } else {
+              this.setState({ avatarUploadFailed: true }, () =>
+                console.log(this.state.hasNewAvatar)
+              )
+            }
+          })
+      }
     } else {
       //else一般text的處理
       copyData[eventName] = value
@@ -315,7 +319,11 @@ class MemberEditInfo extends React.Component {
       console.log(this.state.thisfavType)
     })
   }
-
+  handleUploadCancel = async () => {
+    let copyData = await { ...this.state.thisData }
+    copyData['avatar'] = await this.state.originData.avatar
+    await this.setState({ thisData: copyData, hasNewAvatar: false })
+  }
   render() {
     // console.log(this.state.thisfavType)
     if (this.state.thisfavType === undefined) {
@@ -351,15 +359,18 @@ class MemberEditInfo extends React.Component {
               </>
             ))}
           </div>
-          <div className="col-lg-5 mt-3 bg-primary">
-            這裡放頭像(含編輯按鈕)、email、權限
+          <div className="col-lg-5 mt-3">
+            {/* 這裡放頭像(含編輯按鈕)、email、權限 */}
             <AvatarTwo
-              img={this.props.avatarOne.img}
+              img={'/images/member/' + this.state.thisData.avatar}
               name={this.props.avatarOne.name}
               purview={this.props.avatarOne.purview}
               SignUpDate={this.props.avatarOne.SignUpDate}
               onChange={this.handleInputTextChange}
+              handleUploadCancel={this.handleUploadCancel}
               id={'avatar'}
+              classShow={this.state.hasNewAvatar}
+              uploadtip={this.state.avatarUploadFailed}
             />
           </div>
         </Row>

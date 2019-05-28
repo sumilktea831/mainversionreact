@@ -3,6 +3,7 @@ import InputWithLabelForEdit_Su from '../inputs/InputWithLabelForEdit_Su'
 import CheckboxMultiSu from '../inputs/CheckboxMultiSu'
 import ActivityTitle from '../activity/ActivityTitle/ActivityTitle'
 import { Row } from 'react-bootstrap'
+import AvatarTwo from '../cinema/AvatarTypeTwo/AvatarTwo'
 
 class CinemaEditInfo extends React.Component {
   constructor(props) {
@@ -11,6 +12,8 @@ class CinemaEditInfo extends React.Component {
     this.state = {
       originData: {},
       thisData: 0,
+      hasNewAvatar: false,
+      avatarUploadFailed: false,
       checkok: {
         cinemaTaxid: true,
         cinemaName: true,
@@ -26,11 +29,8 @@ class CinemaEditInfo extends React.Component {
   //   console.log(this.props.thisData)
   // }
 
-
-
-
   static getDerivedStateFromProps(nextProps, prevState) {
-    // console.log('childDerived')
+    console.log('childDerived')
     // this.setState({ thisData: nextProps.thisData }) 這不能這樣setStae，要用下面的寫法
 
     let stateToBeReturned = null
@@ -38,14 +38,15 @@ class CinemaEditInfo extends React.Component {
       stateToBeReturned = {
         ...prevState,
         thisData: nextProps.thisData,
+        originData: nextProps.thisData,
       }
     }
 
     console.log(nextProps)
     console.log(prevState)
+    console.log(stateToBeReturned)
     return stateToBeReturned
   }
-
 
   //輸入框change事件
   handleInputTextChange = event => {
@@ -371,6 +372,7 @@ class CinemaEditInfo extends React.Component {
           }
         })
     } else if (eventName == 'cinemaImg') {
+      //未完成....api收不到資料<0528>
       console.log(event.target.files)
       console.log(event.target.files[0].name)
 
@@ -406,9 +408,47 @@ class CinemaEditInfo extends React.Component {
               obj.info
           }
         })
+    } else if (eventName == 'cinemaLogoImg') {
+      if (event.target.files[0]) {
+        //如果有選擇檔案才執行
+        console.log(event.target.files[0])
+        // console.log(event.target.files[0].name)
+
+        var file = event.target.files[0]
+        var uploadFileName = event.target.files[0].name
+        let formdata = new FormData()
+        formdata.append('myfile', file)
+        fetch('http://localhost:3001/api/cinema-upload-single', {
+          method: 'POST',
+          body: formdata,
+        })
+          .then(res => res.json())
+          .then(obj => {
+            console.log(obj)
+            if (obj.success == true) {
+              copyData[eventName] = obj.filename
+              this.setState(
+                {
+                  thisData: copyData,
+                  hasNewAvatar: true,
+                  avatarUploadFailed: false,
+                },
+                () => console.log(this.state)
+              )
+            } else {
+              this.setState({ avatarUploadFailed: true }, () =>
+                console.log(this.state.hasNewAvatar)
+              )
+            }
+          })
+      }
     }
   }
-
+  handleUploadCancel = async () => {
+    let copyData = await { ...this.state.thisData }
+    copyData['cinemaLogoImg'] = await this.state.originData.cinemaLogoImg
+    await this.setState({ thisData: copyData, hasNewAvatar: false })
+  }
   render() {
     // console.log('childrender')
     // console.log(this.props.thisData)
@@ -443,8 +483,19 @@ class CinemaEditInfo extends React.Component {
               </>
             ))}
           </div>
-          <div className="col-lg-5 mt-3 bg-primary">
-            這裡放頭像(含編輯按鈕)、email、權限
+          <div className="col-lg-5 mt-3 border">
+            {/* 這裡放頭像(含編輯按鈕)、email、權限 */}
+            <AvatarTwo
+              img={'/images/cinemaImg/' + this.state.thisData.cinemaLogoImg}
+              name={this.state.thisData.name}
+              purview={this.state.thisData.purview}
+              SignUpDate={this.state.thisData.cinemaSignUpDate}
+              onChange={this.handleInputTextChange}
+              handleUploadCancel={this.handleUploadCancel}
+              id={'cinemaLogoImg'}
+              classShow={this.state.hasNewAvatar}
+              uploadtip={this.state.avatarUploadFailed}
+            />
           </div>
         </Row>
         <Row className="my-5 d-flex justify-content-center">

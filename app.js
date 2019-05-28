@@ -14,13 +14,13 @@ app.all('*', function(req, res, next) {
 app.use('/api', apiRouter) //須放在('/',)設定的前面!否則POST方法會出錯
 
 app.get('/123', function(req, res) {
-  res.send('node启动成功')
+  res.send('node啟動成功')
 })
 // app.use(function(req, res, next) {
 //   res.header('Access-Control-Allow-Origin', 'http://localhost:3000')
 // })
 app.listen(3001, (req, res) => {
-  console.log('node服务器监听3001端口成功')
+  console.log('node server: 3001 port successed!')
 })
 
 module.exports = app
