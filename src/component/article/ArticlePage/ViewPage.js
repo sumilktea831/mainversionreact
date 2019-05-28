@@ -13,6 +13,10 @@ import {
 } from 'react-icons/fa'
 
 import { MdFavorite } from 'react-icons/md'
+import ArticleBtnGroup from '../ArticleList/ArticleButton/ArticleBtnGroup'
+import ArticleCommentInput from './ArticleCommentInput'
+
+const memberId = 'm1'
 
 // 留言部分
 
@@ -32,9 +36,9 @@ class ViewPage extends React.Component {
     }
     return (
       <>
-        <Row className="my-2 justify-content-md-center">
+        <Row className="my-2 justify-content-center">
           <Col md={8} sm={12} className="box-shadow">
-            <div class="mb-3 p-5">
+            <div class="mb-3 p-3">
               <div
                 className="my-4 d-flex justify-content-center"
                 style={articlePageImg}
@@ -50,14 +54,17 @@ class ViewPage extends React.Component {
                 <h5 className="card-title">{this.props.title}</h5>
                 {this.props.isMarked ? (
                   <div type="" className="">
-                    <FaBookmark className="mb-3 h5 text-warning" />
+                    <FaBookmark
+                      className="mb-3 h5 text-warning"
+                      onClick={this.props.handleMarkClick}
+                    />
                   </div>
                 ) : (
                   <div type="" className="">
                     {/* 加入點閱的func */}
                     <FaBookmark
                       className="mb-3 h5"
-                      // onClick={() => this.handleClick()}
+                      onClick={this.props.handleMarkClick}
                     />
                   </div>
                 )}
@@ -84,9 +91,16 @@ class ViewPage extends React.Component {
                     <FaEye
                       className="mb-1 mr-1"
                       onClick={() => this.props.handleClick(1)}
-                      type="button"
                     />
                     {this.props.viewCounter}
+                  </div>
+                  {/* 我是分享 */}
+                  <div className="ml-3">
+                    <FaShareSquare
+                      className="mb-1 mr-1"
+                      onClick={() => this.props.handleClick(1)}
+                    />
+                    分享
                   </div>
                 </div>
               </div>
@@ -98,7 +112,16 @@ class ViewPage extends React.Component {
                 />
               </div>
             </div>
-            <Goback />
+            <div className="justify-content-center">
+              {/* --------------------我是留言輸入區+----------------- */}
+              <ArticleCommentInput
+                sid={this.props.sid}
+                handleRender={this.props.handleRender}
+                goComment={this.props.goComment}
+                handleChange={this.props.handleChange}
+                inputText={this.props.inputText}
+              />
+            </div>
           </Col>
         </Row>
       </>

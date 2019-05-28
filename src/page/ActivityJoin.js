@@ -17,6 +17,7 @@ class ActivityInfo extends React.Component {
       activityPageData: [],
       activityPageOtherData: [],
       streetView: false,
+      memberData: {},
     }
   }
 
@@ -40,6 +41,21 @@ class ActivityInfo extends React.Component {
       this.setState({ activityPageData: activityPageData })
       this.setState({ activityPageOtherData: activityPageOtherData })
       this.setState({ activityHeroImage: activityPageData.imgSrc })
+    } catch (err) {
+      console.log(err)
+    }
+
+    const memberId = sessionStorage.getItem('memberId')
+    try {
+      const res = await fetch('http://localhost:5555/member/' + memberId, {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+      const data = await res.json()
+      this.setState({ memberData: data })
     } catch (err) {
       console.log(err)
     }
@@ -69,33 +85,7 @@ class ActivityInfo extends React.Component {
     return (
       <>
         <div className="fix-height" />
-        <div className="container-fuild fix-content" id="text">
-          <div className="row">
-            <div className="col-md-12 p-0">
-              <ActivityTitle
-                title={this.state.title[0]}
-                className="content-title"
-              />
-            </div>
-            <div className="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
-              <ActivityPageCard
-                theater={this.state.activityPageData.theater}
-                theaterMap={this.state.activityPageData.theaterMap}
-                phone={this.state.activityPageData.phone}
-                GUINumber={this.state.activityPageData.GUINumber}
-                website={this.state.activityPageData.website}
-                email={this.state.activityPageData.email}
-                lat={this.state.activityPageData.lat}
-                lng={this.state.activityPageData.lng}
-                streetView={this.state.streetView}
-                handleOnClickMap={() => this.setState({ streetView: true })}
-                handleOnClickMaplocal={() =>
-                  this.setState({ streetView: false })
-                }
-              />
-            </div>
-          </div>
-        </div>
+
         <div className="container-fuild fix-content" id="text">
           <div className="row">
             <div className="col-md-12 p-0">
@@ -104,7 +94,7 @@ class ActivityInfo extends React.Component {
                 className="content-title"
               />
             </div>
-            <div className="col-12 col-sm-12 col-md-12 col-lg-9 mt-5">
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
               <ActivityContent
                 theater={this.state.activityPageData.theater}
                 title={this.state.activityPageData.title}
@@ -115,9 +105,6 @@ class ActivityInfo extends React.Component {
                   this.state.activityPageData.joinContentCurrentPeople
                 }
               />
-            </div>
-            <div className="col-12 col-sm-12 col-md-12 col-lg-3 mt-5">
-              <ActivityQRcode imgSrc={window.location.href} />
             </div>
           </div>
         </div>
@@ -130,7 +117,10 @@ class ActivityInfo extends React.Component {
               />
             </div>
 
-            <ActivityJoinForm />
+            <ActivityJoinForm
+              memberAccount={this.state.memberData['name']}
+              memberEmail={this.state.memberData['email']}
+            />
           </div>
         </div>
       </>
