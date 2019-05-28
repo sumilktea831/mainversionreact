@@ -168,7 +168,7 @@ class BackSidenav extends React.Component {
       const memberAvatar =
         memberPageData.avatar !== '' ? memberPageData.avatar : 'movieStar.jpg'
       const avatarOneData = {
-        img: 'http://localhost:3000/images/' + memberAvatar,
+        img: '/images/member/' + memberAvatar,
         name: memberPageData.name,
         purview: memberPageData.permission,
         SignUpDate: memberPageData.join_date,
@@ -450,18 +450,13 @@ class BackSidenav extends React.Component {
       window.location.href = '/LoginSign'
     } else {
       //判斷登入者是會員or戲院，帶入相應的sidenav
-      const sidenav = sessionStorage.getItem('memberId') ? (
-        <MemberBackSidenav sidenavItems={this.state.memberSidenavItems} />
-      ) : (
-        <CinemaBackSidenav sidenavItems={this.state.cinemaSidenavItems} />
-      )
       const pagename = this.props.location.pathname.slice(14)
 
       return (
         <>
           {/* 暫時上方navbar區塊 */}
           <Row>
-            {sidenav}
+            <MemberBackSidenav sidenavItems={this.state.memberSidenavItems} />
             <div //右邊內容框，之後要引入內容component
               className="col container-fluid"
               style={{
@@ -568,6 +563,7 @@ class BackSidenav extends React.Component {
                         thisData={this.state.thisMemberData}
                         allMemberData={this.state.allMemberData}
                         handleMemberEditSave={this.handleMemberEditSave}
+                        avatarOne={this.state.avatarOne}
                       />
                     </div>
                   </div>

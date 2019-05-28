@@ -1366,23 +1366,23 @@
     },
     {
       "id": "m1558576972555",
-      "name": "快樂碼農",
+      "name": "Mr. Manon",
       "nickname": "快樂碼農",
-      "gender": "male",
+      "gender": "female",
       "mobile": "",
       "birth": "",
       "email": "1111",
       "pwd": "1111",
-      "avatar": "",
+      "avatar": "60f5020c-7f95-413d-bace-60243e08f073.png",
       "city": "台北市",
       "address": "",
       "fav_type": [
         "英雄片",
-        "恐怖片",
-        "驚悚片",
         "動作片",
         "武俠片",
-        "動畫片"
+        "動畫片",
+        "驚悚片",
+        "偵探片"
       ],
       "career": "資訊 / 科技",
       "join_date": "2019-05-23",
@@ -1417,7 +1417,7 @@
         "nocho.jpg",
         "eslite.jpg"
       ],
-      "cinemaHeroImg": "spott.jpg",
+      "cinemaHeroImg": "6663c1f1-d94b-4fe8-af97-6912efdb3391.png",
       "cinemaAccount": "1111",
       "cinemaPassword": "1111",
       "cinemaType": "cafe",
@@ -1436,7 +1436,7 @@
       "cinemaTaxid": "11111111",
       "cinemaWeb": "http://manon.com.tw",
       "cinemaEmail": "manon@gg.com",
-      "cinemaBackupEmail": "",
+      "cinemaBackupEmail": "manonCafe@gmail.com",
       "cinemaAwesome": [
         "m111111",
         "m22222"
