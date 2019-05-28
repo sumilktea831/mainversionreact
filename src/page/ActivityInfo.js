@@ -16,6 +16,7 @@ class ActivityInfo extends React.Component {
       activityPageData: [],
       activityPageOtherData: [],
       streetView: false,
+      collectActivity: '',
     }
   }
 
@@ -39,6 +40,21 @@ class ActivityInfo extends React.Component {
       this.setState({ activityPageData: activityPageData })
       this.setState({ activityPageOtherData: activityPageOtherData })
       this.setState({ activityHeroImage: activityPageData.imgSrc })
+    } catch (err) {
+      console.log(err)
+    }
+
+    const memberId = sessionStorage.getItem('memberId')
+    try {
+      const res = await fetch('http://localhost:5555/member/' + memberId, {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+      const data = await res.json()
+      this.setState({ collectActivity: data.collectActivity })
     } catch (err) {
       console.log(err)
     }
@@ -147,12 +163,17 @@ class ActivityInfo extends React.Component {
               <div className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5">
                 <ActivityCard
                   routerId={data.id}
-                  onClick={this.handleOnClick}
+                  handleCollect={() => this.handleCollect(data.id)}
                   key={data.id}
                   title={data.theater}
                   subtitle={data.title}
                   imgSrc={data.imgSrc}
                   collectOpen
+                  isCollect={
+                    this.state.collectActivity.indexOf(data.id) > -1
+                      ? true
+                      : false
+                  }
                 />
               </div>
             ))}
