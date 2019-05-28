@@ -23,7 +23,7 @@ const ActivityCard = props => (
               right: '10%',
               top: '10%',
               zIndex: '8',
-              fontSize: '28px',
+              fontSize: '40px',
               color: '#ffa510',
             }}
           />
@@ -35,7 +35,7 @@ const ActivityCard = props => (
               right: '10%',
               top: '10%',
               zIndex: '8',
-              fontSize: '28px',
+              fontSize: '40px',
               color: '#ffa510',
             }}
           />
