@@ -158,20 +158,30 @@ class Activity extends React.Component {
         }),
       })
       let data = await res.json()
-      let collectPosition = data.collectActivity.indexOf(id)
       let isCollect = data.collectActivity.indexOf(id) > -1
-      console.log('activity id: ' + id)
-      console.log('start: ' + data.collectActivity)
+
       if (isCollect) {
-        data.collectActivity = data.collectActivity.slice(
-          collectPosition,
-          collectPosition + 14
-        )
-        console.log('collected')
+        data.collectActivity = data.collectActivity
+          .split(id)
+          .toString()
+          .replace(/,/g, '')
       } else {
-        console.log('not collect')
+        data.collectActivity += id
       }
-      console.log('end data: ' + data.collectActivity)
+
+      try {
+        const res = await fetch('http://localhost:5555/member/' + memberId, {
+          method: 'PUT',
+          body: JSON.stringify(data),
+          headers: new Headers({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          }),
+        })
+        console.log('修改完成')
+      } catch (err) {
+        console.log(err)
+      }
     } catch (err) {
       console.log(err)
     }
