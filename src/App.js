@@ -8,6 +8,7 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom'
+import Footer from './component/footer/footer'
 
 //Import Page
 import Mainpage from './page/Mainpage'
@@ -152,11 +153,8 @@ class App extends React.Component {
             <Route path="/BackMainpage" component={BackMainpage} />
             <Route path="/CinemaBackMainpage" component={CinemaBackMainpage} />
           </Switch>
-          <div
-            className="container-fluid"
-            style={{ textAlign: 'center', height: '300px' }}
-          >
-            ＦＯＯＴＥＲ區
+          <div className="container-fluid" style={{}}>
+            <Footer />
           </div>
         </ScroolToTop>
       </Router>
