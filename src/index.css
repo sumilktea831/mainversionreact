@@ -36,6 +36,9 @@ img.img-fluid {
   height: 100%;
   object-fit: cover;
 }
+.card {
+  border:none !important;
+}
 /*button*/
 
 /* button.btn.btn-warning {

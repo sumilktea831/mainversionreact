@@ -6,8 +6,6 @@ import ActivitySearchbarContent from '../component/activity/ActivitySearchbar/Ac
 import ActivitySearchbarInput from '../component/activity/ActivitySearchbar/ActivitySearchbarInput'
 import ActivityCard from '../component/activity/ActivityCard/ActivityCard'
 
-import { LinkContainer } from 'react-router-bootstrap'
-
 class Activity extends React.Component {
   constructor() {
     super()
@@ -149,6 +147,48 @@ class Activity extends React.Component {
       }
     }
   }
+  handleCollect = async id => {
+    const memberId = sessionStorage.getItem('memberId')
+    try {
+      const res = await fetch('http://localhost:5555/member/' + memberId, {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+      let data = await res.json()
+      let collectPosition = data.collectActivity.indexOf(id)
+      let isCollect = data.collectActivity.indexOf(id) > -1
+      console.log('activity id: ' + id)
+      console.log('start: ' + data.collectActivity)
+      if (isCollect) {
+        data.collectActivity = data.collectActivity.slice(
+          collectPosition,
+          collectPosition + 14
+        )
+        console.log('collected')
+      } else {
+        console.log('not collect')
+      }
+      console.log('end data: ' + data.collectActivity)
+    } catch (err) {
+      console.log(err)
+    }
+    // try {
+    //   const res = await fetch('http://localhost:5555/member/' + memberId, {
+    //     method: 'PUT',
+    //     body: JSON.stringify(),
+    //     headers: new Headers({
+    //       Accept: 'application/json',
+    //       'Content-Type': 'application/json',
+    //     }),
+    //   })
+    //   let data = await res.json()
+    // } catch (err) {
+    //   console.log(err)
+    // }
+  }
   render() {
     return (
       <>
@@ -227,7 +267,7 @@ class Activity extends React.Component {
                 </div>
               </div>
             </div>
-            {this.state.activityCardDataResult == 0 ? (
+            {this.state.activityCardDataResult === 0 ? (
               <div className="col-md-12 p-0">
                 <div className="text-center">
                   <button
@@ -242,18 +282,18 @@ class Activity extends React.Component {
               ''
             )}
             {this.state.activityCardData.map(data => (
-              <LinkContainer to={'/activity/' + data.id}>
-                <div className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5">
-                  <ActivityCard
-                    key={data.id}
-                    title={data.theater}
-                    subtitle={data.title}
-                    imgSrc={data.imgSrc}
-                    collectOpen
-                    isCollect={data.isCollect}
-                  />
-                </div>
-              </LinkContainer>
+              <div className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5">
+                <ActivityCard
+                  routerId={data.id}
+                  handleCollect={() => this.handleCollect(data.id)}
+                  key={data.id}
+                  title={data.theater}
+                  subtitle={data.title}
+                  imgSrc={data.imgSrc}
+                  collectOpen
+                  isCollect={this.state.isCollect}
+                />
+              </div>
             ))}
           </div>
         </div>
