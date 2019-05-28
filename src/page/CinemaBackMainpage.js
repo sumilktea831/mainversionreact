@@ -74,36 +74,37 @@ class CinemaBackMainpage extends React.Component {
       console.log(e)
     }
   }
-  //   戲院編輯儲存按鈕-----(未完待續)
-  //   handleCinemaEditSave = (data, checkok) => () => {
-  //     // let cinemaId = sessionStorage.getItem('cinemaId')
-  //     let isAllChecked = true
-  //     let checkArray = Object.values(checkok)
-  //     isAllChecked = checkArray.reduce((a, b) => a && b)
-  //     console.log('isAllChecked: ' + isAllChecked)
-  //     if (isAllChecked) {
-  //       try {
-  //         fetch('http://localhost:5555/cinema/' + cinemaId, {
-  //           method: 'PUT',
-  //           body: JSON.stringify(data),
-  //           headers: new Headers({
-  //             Accept: 'application/json',
-  //             'Content-Type': 'application/json',
-  //           }),
-  //         })
-  //           .then(res => res.json())
-  //           .then(jsonObject => {
-  //             this.setState({ thisCinemaData: jsonObject }, () => {
-  //               alert('資料儲存成功')
-  //             })
-  //           })
-  //       } catch (e) {
-  //         console.log(e)
-  //       }
-  //     } else {
-  //       alert('資料填寫有誤，請再次確認您的資料！')
-  //     }
-  //   }
+    //戲院編輯儲存按鈕
+  handleCinemaEditSave = (data, checkok) => () => {
+    let cinemaId = sessionStorage.getItem('cinemaId')
+    let isAllChecked = true
+    let checkArray = Object.values(checkok)
+    isAllChecked = checkArray.reduce((a, b) => a && b)
+    console.log('isAllChecked: ' + isAllChecked)
+    if (isAllChecked) {
+      try {
+        fetch('http://localhost:5555/cinema/' + cinemaId, {
+          method: 'PUT',
+          body: JSON.stringify(data),
+          headers: new Headers({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          }),
+        })
+          .then(res => res.json())
+          .then(jsonObject => {
+            sessionStorage.setItem('thisCinemaData', JSON.stringify(jsonObject))
+            this.setState({ thisCinemaData: jsonObject }, () => {
+              alert('資料儲存成功')
+            })
+          })
+      } catch (e) {
+        console.log(e)
+      }
+    } else {
+      alert('資料填寫有誤，請再次確認您的資料！')
+    }
+  }
 
   handleLogout = () => {
     //點擊登出，清除session並導回主頁
