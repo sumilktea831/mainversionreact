@@ -133,6 +133,12 @@ class App extends React.Component {
             <Route path="/BackMainpage" component={BackMainpage} />
             <Route path="/CinemaBackMainpage" component={CinemaBackMainpage} />
           </Switch>
+          <div
+            className="container-fluid"
+            style={{ textAlign: 'center', height: '300px' }}
+          >
+            ＦＯＯＴＥＲ區
+          </div>
         </ScroolToTop>
       </Router>
     )
