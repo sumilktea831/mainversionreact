@@ -1,12 +1,12 @@
-import React from 'react';
-import { Row, Col } from 'react-bootstrap';
-import '../../article.css';
+import React from 'react'
+import { Row, Col } from 'react-bootstrap'
+import '../../article.css'
 import {
   FaBookmark,
   FaShareSquare,
   FaCommentAlt,
   FaThumbsUp,
-} from 'react-icons/fa';
+} from 'react-icons/fa'
 
 const ArticleComment = props => {
   return (
@@ -14,7 +14,7 @@ const ArticleComment = props => {
       <FaCommentAlt className="mr-1" />
       留言
     </button>
-  );
-};
+  )
+}
 
-export default ArticleComment;
+export default ArticleComment
