@@ -23,6 +23,7 @@ import ActivityJoin from './page/ActivityJoin'
 import Forum from './page/Forum'
 import LoginSign from './page/SignUp'
 import BackMainpage from './page/BackMainpage'
+import CinemaBackMainpage from './page/CinemaBackMainpage'
 
 //Import Component
 import ScroolToTop from './component/activity/ActivityScrollToTop/ActivityScrollToTop'
@@ -130,6 +131,7 @@ class App extends React.Component {
             <Route path="/forum" component={Forum} />
             <Route path="/LoginSign" component={LoginSign} />
             <Route path="/BackMainpage" component={BackMainpage} />
+            <Route path="/CinemaBackMainpage" component={CinemaBackMainpage} />
           </Switch>
           <div
             className="container-fluid"

@@ -222,6 +222,42 @@
       "joinContent": "線上報名即可參加。",
       "joinContentCurrentPeople": "無限制名額。",
       "place": "北部文創園區"
+    },
+    {
+      "id": 7,
+      "theater": "光點台北",
+      "title": "嘎嘎嘎測試文字啊",
+      "content": "啊嘎嘎嘎測試的小文字啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊",
+      "imgSrc": "https://images.unsplash.com/photo-1508963493744-76fce69379c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "isCollect": false,
+      "theaterMap": "105台北市松山區八德路四段138號B1 No. 138號八德路四段",
+      "GUINumber": "16086448",
+      "website": "https://www.google.com/",
+      "email": "theater@gmail.com",
+      "phone": "0912345678",
+      "lat": "24.992111",
+      "lng": "121.541125",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。",
+      "place": "咖啡廳"
+    },
+    {
+      "id": 7,
+      "theater": "光點台北",
+      "title": "嘎嘎嘎測試文字啊",
+      "content": "啊嘎嘎嘎測試的小文字啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊",
+      "imgSrc": "https://images.unsplash.com/photo-1508963493744-76fce69379c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "isCollect": false,
+      "theaterMap": "105台北市松山區八德路四段138號B1 No. 138號八德路四段",
+      "GUINumber": "16086448",
+      "website": "https://www.google.com/",
+      "email": "theater@gmail.com",
+      "phone": "0912345678",
+      "lat": "24.992111",
+      "lng": "121.541125",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。",
+      "place": "咖啡廳"
     }
   ],
   "cinema-sign-inputmsg": [
@@ -239,7 +275,7 @@
     },
     {
       "id": "cinemaTaxid",
-      "w": "60px",
+      "w": "",
       "h": "48px",
       "inputType": "text",
       "inputLabel": "統一編號",
@@ -1186,7 +1222,7 @@
       "id": "cinemaType",
       "w": "",
       "h": "48px",
-      "inputType": "radio",
+      "inputType": "radioCinemaType",
       "inputLabel": "場所類別",
       "iconL": "",
       "iconLS": "",
@@ -1272,18 +1308,31 @@
       "career": "",
       "join_date": "2019-01-03",
       "permission": "generalMember",
-      "collectFilm": "",
+      "collectFilm": [
+        "001",
+        "002",
+        "003"
+      ],
       "collectCinema": [
         "c1",
         "c2"
       ],
-      "collectArticle": "",
+      "collectArticle": [],
       "collectActivity": "",
-      "collectForum": "",
+      "collectArticleJoin": "",
+      "collectForum": [],
       "markList": [
         {
-          "markId": "c1",
+          "markId": "001",
           "markcontent": "yaaaaa"
+        },
+        {
+          "markId": "002",
+          "markcontent": "nononon"
+        },
+        {
+          "markId": "003",
+          "markcontent": "ohhhhhhh"
         }
       ]
     },
@@ -1299,22 +1348,35 @@
       "avatar": "",
       "city": "台北市",
       "address": "",
-      "fav_type": [],
+      "fav_type": "",
       "career": "",
-      "join_date": "",
+      "join_date": "generalMember",
       "permission": "generalMember",
-      "collectFilm": "",
+      "collectFilm": [
+        "001",
+        "002",
+        "003",
+        "004"
+      ],
       "collectCinema": [
-        "c1",
         "c2"
       ],
-      "collectArticle": "",
+      "collectArticle": [],
       "collectActivity": "",
-      "collectForum": "",
+      "collectArticleJoin": "",
+      "collectForum": [],
       "markList": [
         {
-          "markId": "c1",
-          "markcontent": "yaaaaa"
+          "markId": "001",
+          "markcontent": "rtdfghjklghjklfghj"
+        },
+        {
+          "markId": "002",
+          "markcontent": "nononon"
+        },
+        {
+          "markId": "003",
+          "markcontent": "ohhhhhhh"
         }
       ]
     },
@@ -1334,14 +1396,15 @@
       "career": "",
       "join_date": "2019-05-23",
       "permission": "generalMember",
-      "collectFilm": "",
+      "collectFilm": [],
       "collectCinema": [
         "c1",
         "c2"
       ],
-      "collectArticle": "",
+      "collectArticle": [],
       "collectActivity": "",
-      "collectForum": "",
+      "collectArticleJoin": "",
+      "collectForum": [],
       "markList": [
         {
           "markId": "c1",
@@ -1353,7 +1416,7 @@
       "id": "m1558576972555",
       "name": "",
       "nickname": "快樂碼農",
-      "gender": "female",
+      "gender": "male",
       "mobile": "",
       "birth": "",
       "email": "1111",
@@ -1364,20 +1427,23 @@
       "fav_type": [
         "英雄片",
         "恐怖片",
-        "驚悚片"
+        "驚悚片",
+        "動作片",
+        "武俠片",
+        "動畫片"
       ],
       "career": "資訊 / 科技",
       "join_date": "2019-05-23",
       "permission": "generalMember",
-      "collectFilm": "",
+      "collectFilm": [],
       "collectCinema": [
         "c1",
         "c2"
       ],
-      "collectArticle": "",
+      "collectArticle": [],
       "collectActivity": "a1558948500794a1558948576759",
       "collectActivityJoin": "a1558948500794",
-      "collectForum": "",
+      "collectForum": [],
       "markList": [
         {
           "markId": "c1",
@@ -1393,7 +1459,12 @@
       "cinemaCity": "台北市",
       "cinemaArea": "大安區",
       "cinemaLogoImg": "spott.jpg",
-      "cinemaImg": "spott.jpg",
+      "cinemaImg": [
+        "spott.jpg",
+        "spoth.jpg",
+        "nocho.jpg",
+        "eslite.jpg"
+      ],
       "cinemaHeroImg": "spott.jpg",
       "cinemaAccount": "1111",
       "cinemaPassword": "1111",
@@ -1402,15 +1473,22 @@
         {
           "starId": "m111111",
           "star": 5
+        },
+        {
+          "starId": "m22222",
+          "star": 5
         }
       ],
       "cinemaAddress": "台北市大安區復興南路一段",
       "cinemaPhone": "02-2511-1111",
       "cinemaTaxid": "11111111",
-      "cinemaWeb": "",
-      "cinemaEmail": "1111cc@cc.com",
+      "cinemaWeb": "http://manon.com.tw",
+      "cinemaEmail": "manon@gg.com",
       "cinemaBackupEmail": "",
-      "cinemaAwesome": "234",
+      "cinemaAwesome": [
+        "m111111",
+        "m22222"
+      ],
       "cinemaPageViews": "572",
       "cinemaSignUpDate": "1955-03-12",
       "purview": "cinemaMember",
@@ -1432,6 +1510,35 @@
           "time": "1558494913758",
           "awesome": [],
           "boo": []
+        },
+        {
+          "id": 1558975629869,
+          "name": "光點華山",
+          "img": [
+            "spoth.jpg"
+          ],
+          "message": "戲院留言測試... 接資料庫惹賣鬧喔！＠！",
+          "time": 1558975629869,
+          "awesome": [],
+          "boo": []
+        },
+        {
+          "id": 1558975673440,
+          "name": "小雪",
+          "img": "asianman.jpg",
+          "message": "會員留言測試... 三小～～不要爆在這喔",
+          "time": 1558975673440,
+          "awesome": [],
+          "boo": []
+        },
+        {
+          "id": 1558975709879,
+          "name": "訪客",
+          "img": "asianman.jpg",
+          "message": "沒登陸的訪客留言測試...   這過關就可以去抽煙惹...",
+          "time": 1558975709879,
+          "awesome": [],
+          "boo": []
         }
       ]
     },
@@ -1441,7 +1548,9 @@
       "cinemaCity": "台北市",
       "cinemaArea": "中山區",
       "cinemaLogoImg": "spott.jpg",
-      "cinemaImg": "spott.jpg",
+      "cinemaImg": [
+        "spott.jpg"
+      ],
       "cinemaHeroImg": "spott.jpg",
       "cinemaAccount": "tpespotlight",
       "cinemaPassword": "1111",
@@ -1489,7 +1598,9 @@
       "cinemaCity": "台北市",
       "cinemaArea": "松山區",
       "cinemaLogoImg": "spoth.jpg",
-      "cinemaImg": "spoth.jpg",
+      "cinemaImg": [
+        "spoth.jpg"
+      ],
       "cinemaHeroImg": "spoth.jpg",
       "cinemaAccount": "hshspotlight",
       "cinemaPassword": "2222",
@@ -1507,7 +1618,9 @@
       "cinemaWeb": "http://www.spot-hs.org.tw/",
       "cinemaEmail": "taipei.spotdesign@gmail.com",
       "cinemaBackupEmail": "",
-      "cinemaAwesome": "234",
+      "cinemaAwesome": [
+        "234"
+      ],
       "cinemaPageViews": "572",
       "cinemaSignUpDate": "1955-03-12",
       "purview": "cinemaMember",
@@ -1538,7 +1651,9 @@
       "cinemaCity": "台北市",
       "cinemaArea": "信義區",
       "cinemaLogoImg": "nocho.jpg",
-      "cinemaImg": "nocho.jpg",
+      "cinemaImg": [
+        "nocho.jpg"
+      ],
       "cinemaHeroImg": "nocho.jpg",
       "cinemaAccount": "hipster",
       "cinemaPassword": "3333",
@@ -1556,7 +1671,9 @@
       "cinemaWeb": "https://www.spacebarfilm.com/blank-14",
       "cinemaEmail": "spacebarroom@gmail.com",
       "cinemaBackupEmail": "",
-      "cinemaAwesome": "234",
+      "cinemaAwesome": [
+        "234"
+      ],
       "cinemaPageViews": "572",
       "cinemaSignUpDate": "1955-03-12",
       "purview": "cinemaMember",
@@ -1587,7 +1704,9 @@
       "cinemaCity": "台北市",
       "cinemaArea": "大安區",
       "cinemaLogoImg": "xiaomijo.jpg",
-      "cinemaImg": "xiaomijo.jpg",
+      "cinemaImg": [
+        "xiaomijo.jpg"
+      ],
       "cinemaHeroImg": "xiaomijo.jpg",
       "cinemaAccount": "xiaomijo",
       "cinemaPassword": "4444",
@@ -1605,7 +1724,9 @@
       "cinemaWeb": "",
       "cinemaEmail": "",
       "cinemaBackupEmail": "",
-      "cinemaAwesome": "234",
+      "cinemaAwesome": [
+        "234"
+      ],
       "cinemaPageViews": "572",
       "cinemaSignUpDate": "1955-03-12",
       "purview": "cinemaMember",
@@ -1636,7 +1757,9 @@
       "cinemaCity": "台北市",
       "cinemaArea": "松山區",
       "cinemaLogoImg": "eslite.jpg",
-      "cinemaImg": "eslite.jpg",
+      "cinemaImg": [
+        "eslite.jpg"
+      ],
       "cinemaHeroImg": "eslite.jpg",
       "cinemaAccount": "chptheater",
       "cinemaPassword": "5555",
@@ -1654,7 +1777,9 @@
       "cinemaWeb": "https://meet.eslite.com/tw/tc/gallery/movieschedule/201803020001",
       "cinemaEmail": "",
       "cinemaBackupEmail": "",
-      "cinemaAwesome": "234",
+      "cinemaAwesome": [
+        "234"
+      ],
       "cinemaPageViews": "572",
       "cinemaSignUpDate": "1955-03-12",
       "purview": "cinemaMember",
@@ -1685,7 +1810,9 @@
       "cinemaCity": "台北市",
       "cinemaArea": "2222",
       "cinemaLogoImg": "2ca0315c-2e42-4f24-b3e8-c3edc7ff22a4.jpg",
-      "cinemaImg": "",
+      "cinemaImg": [
+        ""
+      ],
       "cinemaHeroImg": "16311abb-b9cc-4730-80c4-ad00b9c8484e.jpg",
       "cinemaAccount": "aaaaaa",
       "cinemaPassword": "aaaaaa",
@@ -1696,7 +1823,9 @@
       "cinemaWeb": "",
       "cinemaEmail": "22@22.com",
       "cinemaBackupEmail": "",
-      "cinemaAwesome": "",
+      "cinemaAwesome": [
+        ""
+      ],
       "cinemaPageViews": "",
       "cinemaSignUpDate": "",
       "purview": "cinemaMember",
@@ -2336,9 +2465,7 @@
       "subtitle": "是",
       "subtitle_lang": "中文",
       "moviecinema": [
-        "002",
-        "003",
-        "004"
+        "c1"
       ],
       "stills": [
         "film_HappyasLazzaro_01.jpg",
@@ -2346,6 +2473,20 @@
         "film_HappyasLazzaro_03.jpg",
         "film_HappyasLazzaro_04.jpg",
         "film_HappyasLazzaro_05.jpg"
+      ],
+      "filmStar": [
+        {
+          "starId": "m22222",
+          "star": 3
+        },
+        {
+          "starId": "m111111",
+          "star": 3
+        },
+        {
+          "starId": "m33333",
+          "star": 4
+        }
       ]
     },
     {
@@ -2376,13 +2517,25 @@
       "subtitle": "是",
       "subtitle_lang": "中文",
       "moviecinema": [
-        "002",
-        "003",
-        "004"
+        "c1"
       ],
       "stills": [
         "film_OurYouthinTaiwan.jpg_01.jpg",
         "film_OurYouthinTaiwan.jpg_02.jpg"
+      ],
+      "filmStar": [
+        {
+          "starId": "m22222",
+          "star": 3
+        },
+        {
+          "starId": "m111111",
+          "star": 3
+        },
+        {
+          "starId": "m33333",
+          "star": 4
+        }
       ]
     },
     {
@@ -2414,14 +2567,26 @@
       "subtitle": "是",
       "subtitle_lang": "中文",
       "moviecinema": [
-        "002",
-        "003",
-        "004"
+        "c3"
       ],
       "stills": [
         "film_Lesinvisibles_01.jpg",
         "film_Lesinvisibles_02.jpg",
         "film_Lesinvisibles_03.jpg"
+      ],
+      "filmStar": [
+        {
+          "starId": "m22222",
+          "star": 3
+        },
+        {
+          "starId": "m111111",
+          "star": 3
+        },
+        {
+          "starId": "m33333",
+          "star": 4
+        }
       ]
     },
     {
@@ -2452,15 +2617,27 @@
       "subtitle": "是",
       "subtitle_lang": "中文",
       "moviecinema": [
-        "002",
-        "003",
-        "004"
+        "c2"
       ],
       "stills": [
         "film_FreeSolo_01.jpg",
         "film_FreeSolo_02.jpg",
         "film_FreeSolo_03.jpg",
         "film_FreeSolo_04.jpg"
+      ],
+      "filmStar": [
+        {
+          "starId": "m22222",
+          "star": 3
+        },
+        {
+          "starId": "m111111",
+          "star": 3
+        },
+        {
+          "starId": "m33333",
+          "star": 4
+        }
       ]
     }
   ],

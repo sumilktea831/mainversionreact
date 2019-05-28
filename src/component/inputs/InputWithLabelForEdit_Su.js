@@ -4,7 +4,8 @@ import InputText_Su from './InputText_Su'
 import InputSelectForEdit_Su from './InputSelectForEdit_Su'
 import InputFile_Su from './InputFile_Su'
 import InputRadio_Su from './InputRadio_Su'
-import InputRadioForGender_Su from './InputRadioForGender_Su'
+import InputRadioForGenderSu from './InputRadioForGenderSu'
+import InputRadioForCinemaTypeSu from './InputRadioForCinemaTypeSu'
 
 //=====InputText_Su、InputSelect_Su、InputFile_Su=====
 //----------------使用說明----------------
@@ -119,7 +120,21 @@ const InputWithLabel_Su = props => {
               thisData={props.thisData}
             />
           ) : props.inputType === 'radioGender' ? (
-            <InputRadioForGender_Su
+            <InputRadioForGenderSu
+              inputWidth={props.inputWidth}
+              inputHeight={props.inputHeight}
+              id={props.id}
+              iconLeft={props.iconLeft}
+              iconLeftSize={props.iconLeftSize}
+              name={props.id}
+              selectOptions={props.selectOptions}
+              onChange={props.onChange}
+              col={props.col}
+              value={props.thisData[props.id]}
+              thisData={props.thisData}
+            />
+          ) : props.inputType === 'radioCinemaType' ? (
+            <InputRadioForCinemaTypeSu
               inputWidth={props.inputWidth}
               inputHeight={props.inputHeight}
               id={props.id}

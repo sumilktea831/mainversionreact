@@ -16,15 +16,30 @@
       "career": "",
       "join_date": "2019-01-03",
       "permission": "generalMember",
-      "collectFilm": [],
-      "collectCinema": ["c1", "c2"],
+      "collectFilm": [
+        "001",
+        "002",
+        "003"
+      ],
+      "collectCinema": [
+        "c1",
+        "c2"
+      ],
       "collectArticle": [],
       "collectActivity": [],
       "collectForum": [],
       "markList": [
         {
-          "markId": "c1",
+          "markId": "001",
           "markcontent": "yaaaaa"
+        },
+        {
+          "markId": "002",
+          "markcontent": "nononon"
+        },
+        {
+          "markId": "003",
+          "markcontent": "ohhhhhhh"
         }
       ]
     },
@@ -44,15 +59,20 @@
       "career": "",
       "join_date": "generalMember",
       "permission": "generalMember",
-      "collectFilm": ["001"],
-      "collectCinema": ["c2"],
+      "collectFilm": [
+        "001",
+        "003",
+        "004"
+      ],
+      "collectCinema": [
+        "c2"
+      ],
       "collectArticle": [],
-      "collectActivity": ["7"],
       "collectForum": [],
       "markList": [
         {
-          "markId": "c1",
-          "markcontent": "yaaaaa"
+          "markId": "004",
+          "markcontent": "sdsdvg"
         }
       ]
     },
@@ -73,9 +93,15 @@
       "join_date": "2019-01-03",
       "permission": "generalMember",
       "collectFilm": [],
-      "collectCinema": ["c1", "c2", "c3"],
+      "collectCinema": [
+        "c1",
+        "c2",
+        "c3"
+      ],
       "collectArticle": [],
-      "collectActivity": ["7"],
+      "collectActivity": [
+        "7"
+      ],
       "collectForum": [],
       "markList": [
         {
@@ -101,7 +127,10 @@
       "join_date": "2019-5-23",
       "permission": "generalMember",
       "collectFilm": [],
-      "collectCinema": ["c1", "c2"],
+      "collectCinema": [
+        "c1",
+        "c2"
+      ],
       "collectArticle": [],
       "collectActivity": [],
       "collectForum": [],
@@ -129,7 +158,10 @@
       "join_date": "2019-05-23",
       "permission": "generalMember",
       "collectFilm": [],
-      "collectCinema": ["c1", "c2"],
+      "collectCinema": [
+        "c1",
+        "c2"
+      ],
       "collectArticle": [],
       "collectActivity": [],
       "collectForum": [],
@@ -157,7 +189,10 @@
       "join_date": "2019-05-23",
       "permission": "generalMember",
       "collectFilm": [],
-      "collectCinema": ["c1", "c2"],
+      "collectCinema": [
+        "c1",
+        "c2"
+      ],
       "collectArticle": [],
       "collectActivity": [],
       "collectForum": [],
@@ -245,11 +280,17 @@
       "cinemaCity": "台北市",
       "cinemaArea": "中山區",
       "cinemaLogoImg": "spott.jpg",
-      "cinemaImg": ["spott.jpg", "spoth.jpg", "nocho.jpg", "eslite.jpg"],
+      "cinemaImg": [
+        "spott.jpg",
+        "spoth.jpg",
+        "nocho.jpg",
+        "eslite.jpg"
+      ],
       "cinemaHeroImg": "spott.jpg",
       "cinemaInfoText": "一處原本荒蕪的美麗庭園，在古蹟活化、新生的理念下，舊物加新意，夢想在此完成。【台灣電影文化協會】將台北之家的經營主題定位為「結合古蹟魅力與電影藝術，成為創意交流的場域」。希望為國內藝文創意產業工作者提供一個聚會場所，一個創意的發生點。透過影展、講座、工作坊等各種活動，讓跨領域的意見得以交流，進而激發更多創意。期待古蹟空間與電影結合，產生新的樣貌，讓古蹟的歷史意義結合影像藝術，增廣文化視野，並涵養文化深度。",
       "cinemaAccount": "spottaipei",
       "cinemaPassword": "1111",
+      "cinemaType": "cafe",
       "cinemaStar": [
         {
           "starId": "m22222",
@@ -262,7 +303,10 @@
       "cinemaWeb": "http://www.spot.org.tw/",
       "cinemaEmail": "taipei.spotdesign@gmail.com",
       "cinemaBackupEmail": "",
-      "cinemaAwesome": ["m111111", "m22222"],
+      "cinemaAwesome": [
+        "m111111",
+        "m22222"
+      ],
       "cinemaPageViews": "572",
       "cinemaSignUpDate": "1955-03-12",
       "permission": "cinemaMember",
@@ -284,6 +328,35 @@
           "time": "1558494913758",
           "awesome": [],
           "boo": []
+        },
+        {
+          "id": 1558975629869,
+          "name": "光點華山",
+          "img": [
+            "spoth.jpg"
+          ],
+          "message": "戲院留言測試... 接資料庫惹賣鬧喔！＠！",
+          "time": 1558975629869,
+          "awesome": [],
+          "boo": []
+        },
+        {
+          "id": 1558975673440,
+          "name": "小雪",
+          "img": "asianman.jpg",
+          "message": "會員留言測試... 三小～～不要爆在這喔",
+          "time": 1558975673440,
+          "awesome": [],
+          "boo": []
+        },
+        {
+          "id": 1558975709879,
+          "name": "訪客",
+          "img": "asianman.jpg",
+          "message": "沒登陸的訪客留言測試...   這過關就可以去抽煙惹...",
+          "time": 1558975709879,
+          "awesome": [],
+          "boo": []
         }
       ]
     },
@@ -292,8 +365,12 @@
       "cinemaName": "光點華山",
       "cinemaCity": "台北市",
       "cinemaArea": "松山區",
-      "cinemaLogoImg": ["spoth.jpg"],
-      "cinemaImg": "spoth.jpg",
+      "cinemaLogoImg": [
+        "spoth.jpg"
+      ],
+      "cinemaImg": [
+        "spoth.jpg"
+      ],
       "cinemaHeroImg": "spoth.jpg",
       "cinemaInfoText": "光點華山電影館,位於華山文創園區中六館，原為酒廠再製酒包裝室，1996年由文化部規劃指導，改建為電影館，並由侯孝賢導演領軍之團隊「台灣電影文化協會」經營管理，於2012年11月正式開幕，為全國首座國家級藝術電影館。整館空間保留舊建築結構並結合新的創意元素，為老屋新力之創新展現。",
       "cinemaAccount": "spothwa",
@@ -304,14 +381,16 @@
           "star": 5
         }
       ],
-      "cinemaMark": "testword",
       "cinemaAddress": "台北市中正區八德路一段1號",
       "cinemaPhone": "02-2394-0622",
       "cinemaTaxid": "28468385",
       "cinemaWeb": "http://www.spot-hs.org.tw/",
       "cinemaEmail": "taipei.spotdesign@gmail.com",
       "cinemaBackupEmail": "",
-      "cinemaAwesome": ["m111111", "m22222"],
+      "cinemaAwesome": [
+        "m111111",
+        "m22222"
+      ],
       "cinemaPageViews": "572",
       "cinemaSignUpDate": "1955-03-12",
       "permission": "cinemaMember",
@@ -342,10 +421,14 @@
       "cinemaCity": "台北市",
       "cinemaArea": "信義區",
       "cinemaLogoImg": "nocho.jpg",
-      "cinemaImg": ["nocho.jpg"],
+      "cinemaImg": [
+        "nocho.jpg"
+      ],
       "cinemaHeroImg": "nocho.jpg",
       "cinemaInfoText": "每個周末夜晚，Spacebar小鍵人們喜歡一起窩在沙發上，隨機挑選一部經典好電影，喝著好喝的啤酒，配上唰嘴的肉乾，細細品味這部隨選影片帶給我們的驚喜。這個驚喜可能是美麗可能是哀愁、可能是勵志可能是驚悚、可能是刺激可能是哈哈大笑，不管這個驚喜是什麼，這個預料之外的故事總能給我們一個最放鬆的夜晚。這就是文青不挑片。喜歡未知、喜歡接受驚喜、不挑片的你一定會喜歡；喜歡經典、喜歡超凡、很挑片的你也一定不會失望。",
-      "cinemaAccount": [],
+      "cinemaAccount": [
+        "qqqq"
+      ],
       "cinemaPassword": "qqqqqqqq",
       "cinemaStar": [
         {
@@ -353,14 +436,16 @@
           "star": 5
         }
       ],
-      "cinemaMark": "testword",
       "cinemaAddress": "臺北市信義區和平東路三段291號",
       "cinemaPhone": "",
       "cinemaTaxid": "54346058",
       "cinemaWeb": "https://www.spacebarfilm.com/blank-14",
       "cinemaEmail": "spacebarroom@gmail.com",
       "cinemaBackupEmail": "",
-      "cinemaAwesome": ["m111111", "m22222"],
+      "cinemaAwesome": [
+        "m111111",
+        "m22222"
+      ],
       "cinemaPageViews": "572",
       "cinemaSignUpDate": "1955-03-12",
       "permission": "cinemaMember",
@@ -391,7 +476,9 @@
       "cinemaCity": "台北市",
       "cinemaArea": "大安區",
       "cinemaLogoImg": "xiaomijo.jpg",
-      "cinemaImg": ["xiaomijo.jpg"],
+      "cinemaImg": [
+        "xiaomijo.jpg"
+      ],
       "cinemaHeroImg": "xiaomijo.jpg",
       "cinemaInfoText": "來XIAOMIJO冒險一下吧!週二~週五13:00~22:00，周六週日12:00開門；週一固定公休，臨時公休會在FB公告，謝謝!",
       "cinemaAccount": "xiaomijo",
@@ -402,14 +489,16 @@
           "star": 5
         }
       ],
-      "cinemaMark": "testword",
       "cinemaAddress": "台北市大安區永康街41巷5號",
       "cinemaPhone": "02-2395-7617",
       "cinemaTaxid": "28847204",
       "cinemaWeb": "",
       "cinemaEmail": "",
       "cinemaBackupEmail": "",
-      "cinemaAwesome": ["m111111", "m22222"],
+      "cinemaAwesome": [
+        "m111111",
+        "m22222"
+      ],
       "cinemaPageViews": "572",
       "cinemaSignUpDate": "1955-03-12",
       "permission": "cinemaMember",
@@ -440,7 +529,9 @@
       "cinemaCity": "台北市",
       "cinemaArea": "松山區",
       "cinemaLogoImg": "eslite.jpg",
-      "cinemaImg": ["eslite.jpg"],
+      "cinemaImg": [
+        "eslite.jpg"
+      ],
       "cinemaHeroImg": "eslite.jpg",
       "cinemaInfoText": "",
       "cinemaAccount": "chptheater",
@@ -451,14 +542,16 @@
           "star": 5
         }
       ],
-      "cinemaMark": "testword",
       "cinemaAddress": "臺北市信義區菸廠路80號B2",
       "cinemaPhone": "02-6636-5888",
       "cinemaTaxid": "‎23155531",
       "cinemaWeb": "https://meet.eslite.com/tw/tc/gallery/movieschedule/201803020001",
       "cinemaEmail": "",
       "cinemaBackupEmail": "",
-      "cinemaAwesome": ["m111111", "m22222"],
+      "cinemaAwesome": [
+        "m111111",
+        "m22222"
+      ],
       "cinemaPageViews": "572",
       "cinemaSignUpDate": "1955-03-12",
       "permission": "cinemaMember",
@@ -486,7 +579,7 @@
   ],
   "activityCardData": [
     {
-      "id": 1,
+      "id": "a1558948500794",
       "theater": "總督數位影城",
       "title": "慶祝周年慶，總督數位爆米花免費吃",
       "content": "HELLO KITTY應援男友、佛心活動～帶著「世足限量造型爆米花桶」來總督數位影城，就不用吃土囉！ 爆米花免費吃到飽！ ",
@@ -501,28 +594,28 @@
       "lng": "121.544851",
       "joinContent": "線上報名即可參加。",
       "joinContentCurrentPeople": "無限制名額。",
-      "place": "咖啡廳"
+      "place": "北部影院"
     },
     {
-      "id": 2,
-      "theater": "星光戲院",
-      "title": "來星光，看星際。",
-      "content": "來星光，看星際。",
+      "id": "a1558948576759",
+      "theater": "勤美術館",
+      "title": "六年走過 勤美術館感謝有你",
+      "content": "六年走過，勤美術館與你一起，建構了屬於草悟道獨有的街區生活美學。完成階段性任務之後，勤美術館即將於2019年一月開始進行整修施工工程。為了推廣更多台灣青年藝術家與創作者，為了提升草悟道生活與藝文能量，為了深耕社區和鄰里的互動脈絡，邀請國際建築大師–隈研吾先生進行未來美術館設計，期待拉起下一個藝術與人、城市、環境之間的美好藝文平台。勤美術館空間即將開始進行整修，即日起暫時停止對外開放。後續消息請注意勤美術館FB粉絲團。",
       "imgSrc": "https://images.unsplash.com/photo-1472457897821-70d3819a0e24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1349&q=80",
       "isCollect": false,
-      "theaterMap": "10845台北市萬華區成都路88號",
+      "theaterMap": "404台中市西區館前路71號",
       "GUINumber": "16086448",
       "website": "https://www.google.com/",
       "email": "theater@gmail.com",
       "phone": "0912345678",
-      "lat": "25.0452986",
-      "lng": "121.5042042",
+      "lat": "24.152395",
+      "lng": "120.663567",
       "joinContent": "線上報名即可參加。",
       "joinContentCurrentPeople": "無限制名額。",
-      "place": "咖啡廳"
+      "place": "中部文創園區"
     },
     {
-      "id": 3,
+      "id": "a1558948598530",
       "theater": "松山文創園區 藝思空間",
       "title": "VR+3DMAX的全新觀賞體驗就在松山文創",
       "content": "3DMAX的全新觀賞體驗就在松山文創",
@@ -537,10 +630,10 @@
       "lng": "121.561157",
       "joinContent": "線上報名即可參加。",
       "joinContentCurrentPeople": "無限制名額。",
-      "place": "咖啡廳"
+      "place": "北部文創園區"
     },
     {
-      "id": 4,
+      "id": "a1558948617225",
       "theater": "世新大學",
       "title": "影片演員招募中！",
       "content": "影片演員招募中！",
@@ -555,10 +648,10 @@
       "lng": "121.544043",
       "joinContent": "線上報名即可參加。",
       "joinContentCurrentPeople": "無限制名額。",
-      "place": "學校"
+      "place": "北部學校"
     },
     {
-      "id": 5,
+      "id": "a1558948627377",
       "theater": "華山1914文化創意產業園區",
       "title": "五六零年代電影串燒",
       "content": "五六零年代電影串燒",
@@ -573,13 +666,139 @@
       "lng": "121.529397",
       "joinContent": "線上報名即可參加。",
       "joinContentCurrentPeople": "無限制名額。",
-      "place": "咖啡廳"
+      "place": "北部文創園區"
     },
     {
-      "id": 6,
+      "id": "a1558948640385",
       "theater": "文山劇場",
       "title": "65歲長者，免費入場",
       "content": "65歲長者，免費入場",
+      "imgSrc": "https://images.unsplash.com/photo-1508963493744-76fce69379c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "isCollect": false,
+      "theaterMap": "105台北市松山區八德路四段138號B1 No. 138號八德路四段",
+      "GUINumber": "16086448",
+      "website": "https://www.google.com/",
+      "email": "theater@gmail.com",
+      "phone": "0912345678",
+      "lat": "24.992111",
+      "lng": "121.541125",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。",
+      "place": "北部文創園區"
+    },
+    {
+      "id": "a1558948651874",
+      "theater": "總督數位影城",
+      "title": "慶祝周年慶，總督數位爆米花免費吃",
+      "content": "HELLO KITTY應援男友、佛心活動～帶著「世足限量造型爆米花桶」來總督數位影城，就不用吃土囉！ 爆米花免費吃到飽！ ",
+      "imgSrc": "https://images.unsplash.com/photo-1521967906867-14ec9d64bee8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "isCollect": false,
+      "theaterMap": "106台北市大安區通化街24巷1號",
+      "GUINumber": "16086448",
+      "website": "https://www.google.com/",
+      "email": "theater@gmail.com",
+      "phone": "0912345678",
+      "lat": "25.048434",
+      "lng": "121.544851",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。",
+      "place": "北部影院"
+    },
+    {
+      "id": "a1558948664395",
+      "theater": "勤美術館",
+      "title": "六年走過 勤美術館感謝有你",
+      "content": "六年走過，勤美術館與你一起，建構了屬於草悟道獨有的街區生活美學。完成階段性任務之後，勤美術館即將於2019年一月開始進行整修施工工程。為了推廣更多台灣青年藝術家與創作者，為了提升草悟道生活與藝文能量，為了深耕社區和鄰里的互動脈絡，邀請國際建築大師–隈研吾先生進行未來美術館設計，期待拉起下一個藝術與人、城市、環境之間的美好藝文平台。勤美術館空間即將開始進行整修，即日起暫時停止對外開放。後續消息請注意勤美術館FB粉絲團。",
+      "imgSrc": "https://images.unsplash.com/photo-1472457897821-70d3819a0e24?ixlib=rb-1.2.1&auto=format&fit=crop&w=1349&q=80",
+      "isCollect": false,
+      "theaterMap": "404台中市西區館前路71號",
+      "GUINumber": "16086448",
+      "website": "https://www.google.com/",
+      "email": "theater@gmail.com",
+      "phone": "0912345678",
+      "lat": "24.152395",
+      "lng": "120.663567",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。",
+      "place": "中部文創園區"
+    },
+    {
+      "id": "a1558948674978",
+      "theater": "松山文創園區 藝思空間",
+      "title": "VR+3DMAX的全新觀賞體驗就在松山文創",
+      "content": "3DMAX的全新觀賞體驗就在松山文創",
+      "imgSrc": "https://images.unsplash.com/photo-1478358161113-b0e11994a36b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=634&q=80",
+      "isCollect": false,
+      "theaterMap": "100台北市中正區八德路一段1號",
+      "GUINumber": "16086448",
+      "website": "https://www.google.com/",
+      "email": "theater@gmail.com",
+      "phone": "0912345678",
+      "lat": "25.043372",
+      "lng": "121.561157",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。",
+      "place": "北部文創園區"
+    },
+    {
+      "id": "a1558948696172",
+      "theater": "世新大學",
+      "title": "影片演員招募中！",
+      "content": "影片演員招募中！",
+      "imgSrc": "https://images.unsplash.com/photo-1551448215-3a9aa113815c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "isCollect": false,
+      "theaterMap": "10491台北市中山區南京東路三段133號",
+      "GUINumber": "16086448",
+      "website": "https://www.google.com/",
+      "email": "theater@gmail.com",
+      "phone": "0912345678",
+      "lat": "24.988694",
+      "lng": "121.544043",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。",
+      "place": "北部學校"
+    },
+    {
+      "id": "a1558948799830",
+      "theater": "華山1914文化創意產業園區",
+      "title": "五六零年代電影串燒",
+      "content": "五六零年代電影串燒",
+      "imgSrc": "https://images.unsplash.com/photo-1543059047-278b7120468c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=617&q=80",
+      "isCollect": false,
+      "theaterMap": "110台北市信義區菸廠路88號",
+      "GUINumber": "16086448",
+      "website": "https://www.google.com/",
+      "email": "theater@gmail.com",
+      "phone": "0912345678",
+      "lat": "25.044136",
+      "lng": "121.529397",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。",
+      "place": "北部文創園區"
+    },
+    {
+      "id": "a1558948812063",
+      "theater": "文山劇場",
+      "title": "65歲長者，免費入場",
+      "content": "65歲長者，免費入場",
+      "imgSrc": "https://images.unsplash.com/photo-1508963493744-76fce69379c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+      "isCollect": false,
+      "theaterMap": "105台北市松山區八德路四段138號B1 No. 138號八德路四段",
+      "GUINumber": "16086448",
+      "website": "https://www.google.com/",
+      "email": "theater@gmail.com",
+      "phone": "0912345678",
+      "lat": "24.992111",
+      "lng": "121.541125",
+      "joinContent": "線上報名即可參加。",
+      "joinContentCurrentPeople": "無限制名額。",
+      "place": "北部文創園區"
+    },
+    {
+      "id": 7,
+      "theater": "光點台北",
+      "title": "嘎嘎嘎測試文字啊",
+      "content": "啊嘎嘎嘎測試的小文字啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊",
       "imgSrc": "https://images.unsplash.com/photo-1508963493744-76fce69379c0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
       "isCollect": false,
       "theaterMap": "105台北市松山區八德路四段138號B1 No. 138號八德路四段",
@@ -615,180 +834,430 @@
   "forum": [
     {
       "id": 1,
-      "headline": "《刺青舞者》天縱英才的美麗與哀愁",
-      "forumSpoilers": 1,
-      "forumViews": 8887,
-      "forumCreateDate": "2019/01/01 12:00",
+      "headline": "45354",
+      "forumSpoilers": true,
+      "forumViews": 0,
+      "forumCreateDate": "2019/05/23 19:22",
+      "forumCreateDateInSecond": 1558610562772,
       "forumName": "Jack",
-      "forumNameId": "m22222",
-      "forumAvatar": "9743_2",
-      "forumArticlePic": "128141",
-      "forumReview": "當才華變成基普魯尼曾是英國皇家芭蕾舞團史上最年輕的首席舞者，他也是當時皇家芭蕾舞團的票房保證，只要掛上瑟基普魯尼的名字，演出門票就一票難求。正當人人都在讚嘆他非凡的成就時，他在鎂光燈下的人生卻開始失控，他刺青、他酗酒、他吸毒、他夜夜笙歌。原本眾人吹捧的天才舞者，那個「優雅的野獸」，一夕之間變成媒體口中譏諷的「芭蕾壞男孩」，22歲那年，他因而宣布退出皇家芭蕾舞團。",
-      "forumCommentCount": 7,
+      "forumNameId": "",
+      "forumAvatar": "9743_2.jpg",
+      "forumArticlePic": "",
+      "forumReview": "453453453",
+      "forumCommentCount": 1,
       "forumCommentArea": [
         {
           "forumCommentId": 1,
-          "forumComment": "下大放異彩，卻人事已非的那種無能為力。從他兼具力與美的舞姿來看，瑟基普魯尼的確是舞台上令人神往的「優雅的野獸」，只不過在他眉宇間的那股漠然和迷惘之中，他或許仍然只是一隻「誤闖叢林的小白兔」。",
-          "forumCommentLike": 777,
-          "forumCommentDislike": 78,
-          "forumCommentName": "GGG",
-          "forumCommentAvatar": "22736_8"
-        },
-        {
-          "forumCommentId": 2,
-          "forumComment": "美的舞姿來看，瑟基普魯尼的確是舞台上令人神往的「優雅的野獸」，只不過在他眉宇間的那股漠然和迷惘之中，他或許仍然只是一隻「誤闖叢林的小白兔」。",
-          "forumCommentLike": 888,
-          "forumCommentDislike": 5556,
-          "forumCommentName": "738",
-          "forumCommentAvatar": "9743_2"
-        },
-        {
-          "forumCommentId": 3,
-          "forumComment": "過在他眉宇間的那股漠然和迷惘之中，他或許仍然只是一隻「誤闖叢林的小白兔」。",
-          "forumCommentLike": 8888,
-          "forumCommentDislike": 5512356,
-          "forumCommentName": "Amy",
-          "forumCommentAvatar": "9743_2"
-        },
-        {
-          "forumCommentId": 4,
-          "forumComment": "闖叢林的小白兔」。",
-          "forumCommentLike": 998,
-          "forumCommentDislike": 577556,
-          "forumCommentName": "3555",
-          "forumCommentAvatar": "9743_2"
-        },
-        {
-          "forumCommentId": 5,
-          "forumComment": "「優雅的野獸」，只不過在他眉宇間的那股漠然和迷惘之中，他或許仍然只是一隻「誤闖叢林的小白兔」。",
-          "forumCommentLike": 846788,
-          "forumCommentDislike": 5578656,
-          "forumCommentName": "544",
-          "forumCommentAvatar": "9743_2"
+          "forumComment": "435453",
+          "forumCommentLike": 0,
+          "forumCommentDislike": 0,
+          "forumCommentName": "bbc",
+          "forumCommentAvatar": "9743_2.jpg",
+          "forumCommentUserId": 1
         }
       ]
     },
     {
       "id": 2,
-      "headline": "天縱英才的美麗與哀愁天縱英才的美麗與哀愁",
-      "forumSpoilers": 0,
-      "forumViews": 547,
-      "forumCreateDate": "2016/01/07 01:00",
+      "headline": "453543453",
+      "forumSpoilers": false,
+      "forumViews": 0,
+      "forumCreateDate": "2019/05/23 20:37",
+      "forumCreateDateInSecond": 1558615056744,
       "forumName": "Jack",
-      "forumNameId": "m22222",
-      "forumAvatar": "14366_18",
-      "forumArticlePic": "138974",
-      "forumReview": "當才華變成一種負擔，無法回何從？瑟基普魯尼曾是英國皇家芭蕾舞團史上最年輕的首席舞者，他也是當時皇家芭蕾舞團的票房保證，只要掛上瑟基普魯尼的名字，演出門票就一票難求。正當人人都在讚嘆他非凡的成就時，他在鎂光燈下的人生卻開始失控，他刺青、他酗酒、他吸毒、他夜夜笙歌。原本眾人吹捧的天才舞者，那個「優雅的野獸」，一夕之間變成媒體口中譏諷的「芭蕾壞男孩」，22歲那年，他因而宣布退出皇家芭蕾舞團。",
-      "forumCommentCount": 7,
+      "forumNameId": "",
+      "forumAvatar": "9743_2.jpg",
+      "forumArticlePic": "",
+      "forumReview": "4534534",
+      "forumCommentCount": 2,
       "forumCommentArea": [
         {
           "forumCommentId": 1,
-          "forumComment": "這部電影其實就是在看人生的現實與無奈，如何一點一滴的蠶食瑟基普魯尼這個年輕的靈魂。以這個角度來看，史蒂芬康托這部紀錄片拍得很成功，因為觀眾可以在這不到90分鐘的電影裡，深刻了解瑟基普魯尼這個人的性格、他的抉擇，還有他的迷惘和傷痛。就訪談內容來看，他的家人未必能夠完全了解為何他在前途一片光明時會自毀前程，也並不了解他目前在經歷的人生關卡，反而是他的兩位皇家芭蕾學院同窗更能體會他從一個鄉下男孩，一路努力走向舞台，且終於在鎂光燈下大放異彩，卻人事已非的那種無能為力。從他兼具力與美的舞姿來看，瑟基普魯尼的確是舞台上令人神往的「優雅的野獸」，只不過在他眉宇間的那股漠然和迷惘之中，他或許仍然只是一隻「誤闖叢林的小白兔」。",
-          "forumCommentLike": 9999,
-          "forumCommentDislike": 66,
-          "forumCommentName": "GGG",
-          "forumCommentAvatar": "9743_2"
+          "forumComment": "1",
+          "forumCommentLike": 0,
+          "forumCommentDislike": 0,
+          "forumCommentName": "bbc",
+          "forumCommentAvatar": "9743_2.jpg",
+          "forumCommentUserId": 1
         },
         {
           "forumCommentId": 2,
-          "forumComment": "反而是他的兩位皇家芭蕾學院同窗更能體會他從一個鄉下男孩，一路努力走向舞台，且終於在鎂光燈下大放異彩，卻人事已非的那種無能為力。從他兼具力與美的舞姿來看，瑟基普魯尼的確是舞台上令人神往的「優雅的野獸」，只不過在他眉宇間的那股漠然和迷惘之中，他或許仍然只是一隻「誤闖叢林的小白兔」。",
-          "forumCommentLike": 88878,
-          "forumCommentDislike": 77,
-          "forumCommentName": "Amy",
-          "forumCommentAvatar": "14366_18"
+          "forumComment": "",
+          "forumCommentLike": 0,
+          "forumCommentDislike": 0,
+          "forumCommentName": "bbc",
+          "forumCommentAvatar": "9743_2.jpg",
+          "forumCommentUserId": 1
         }
       ]
     },
     {
       "id": 3,
-      "headline": "天縱英",
-      "forumSpoilers": 1,
-      "forumViews": 9453,
-      "forumCreateDate": "2018/06/07 11:00",
+      "headline": "453445",
+      "forumSpoilers": true,
+      "forumViews": 0,
+      "forumCreateDate": "2019/05/23 20:38",
+      "forumCreateDateInSecond": 1558615083457,
       "forumName": "Jack",
-      "forumNameId": "m22222",
-      "forumAvatar": "9743_2",
-      "forumArticlePic": "9743_2",
-      "forumReview": "？人都在讚嘆他非凡的成就時，他在鎂光燈下的人生卻開始失控，他刺青、他酗酒、他吸毒、他夜夜笙歌。原本眾人吹捧的天才舞者，那個「優雅的野獸」，一夕之間變成媒體口中譏諷的「芭蕾壞男孩」，22歲那年，他因而宣布退出皇家芭蕾舞團。",
-      "forumCommentCount": 7,
+      "forumNameId": "",
+      "forumAvatar": "9743_2.jpg",
+      "forumArticlePic": "",
+      "forumReview": "453453",
+      "forumCommentCount": 2,
       "forumCommentArea": [
         {
           "forumCommentId": 1,
-          "forumComment": "美的舞姿來看，瑟基普魯尼的確是舞台上令人神往的「優雅的野獸」，只不過在他眉宇間的那股漠然和迷惘之中，他或許仍然只是一隻「誤闖叢林的小白兔」。",
-          "forumCommentLike": "77377",
-          "forumCommentDislike": "68736",
-          "forumCommentName": "GGG",
-          "forumCommentAvatar": "9743_2"
+          "forumComment": "4534534",
+          "forumCommentLike": 0,
+          "forumCommentDislike": 0,
+          "forumCommentName": "bbc",
+          "forumCommentAvatar": "9743_2.jpg",
+          "forumCommentUserId": 1
+        },
+        {
+          "forumCommentId": 2,
+          "forumComment": "1",
+          "forumCommentLike": 0,
+          "forumCommentDislike": 0,
+          "forumCommentName": "bbc",
+          "forumCommentAvatar": "9743_2.jpg",
+          "forumCommentUserId": 1
         }
       ]
     },
     {
       "id": 4,
-      "headline": "美麗",
-      "forumSpoilers": 0,
-      "forumViews": 7867867,
-      "forumCreateDate": "2017/06/07 11:00",
+      "headline": "9999",
+      "forumSpoilers": false,
+      "forumViews": 0,
+      "forumCreateDate": "2019/05/23 20:38",
+      "forumCreateDateInSecond": 1558615089307,
       "forumName": "Jack",
-      "forumNameId": "m22222",
-      "forumAvatar": "22736_8",
-      "forumArticlePic": "11155",
-      "forumReview": "英的成就時，他在鎂光燈下的人生卻開始失控，他刺青、他酗酒、他吸毒、他夜夜笙歌。原本眾人吹捧的天才舞者，那個「優雅的野獸」，一夕之間變成媒體口中譏諷的「芭蕾壞男孩」，22歲那年，他因而宣布退出皇家芭蕾舞團。",
-      "forumCommentCount": 7,
+      "forumNameId": "",
+      "forumAvatar": "9743_2.jpg",
+      "forumArticlePic": "",
+      "forumReview": "453453",
+      "forumCommentCount": 5,
       "forumCommentArea": [
         {
           "forumCommentId": 1,
-          "forumComment": "的「優雅的野獸」，只不過在他眉宇間的那股漠然和迷惘之中，他或許仍然只是一隻「誤闖叢林的小白兔」。",
-          "forumCommentLike": "457",
-          "forumCommentDislike": "656",
-          "forumCommentName": "GGG",
-          "forumCommentAvatar": "9743_2"
+          "forumComment": "453543",
+          "forumCommentLike": 0,
+          "forumCommentDislike": 0,
+          "forumCommentName": "bbc",
+          "forumCommentAvatar": "9743_2.jpg",
+          "forumCommentUserId": 1
         },
         {
           "forumCommentId": 2,
-          "forumComment": "走向舞台，且終於在鎂光燈下大放異彩，卻人事已非的那種無能為力。從他兼具力與美的舞姿來看，瑟基普魯尼的確是舞台上令人神往的「優雅的野獸」，只不過在他眉宇間的那股漠然和迷惘之中，他或許仍然只是一隻「誤闖叢林的小白兔」。",
-          "forumCommentLike": "58",
-          "forumCommentDislike": "747",
-          "forumCommentName": "Amy",
-          "forumCommentAvatar": "9743_2"
+          "forumComment": "345343",
+          "forumCommentLike": 0,
+          "forumCommentDislike": 0,
+          "forumCommentName": "bbc",
+          "forumCommentAvatar": "9743_2.jpg",
+          "forumCommentUserId": 1
+        },
+        {
+          "forumCommentId": 3,
+          "forumComment": "453453",
+          "forumCommentLike": 0,
+          "forumCommentDislike": 0,
+          "forumCommentName": "bbc",
+          "forumCommentAvatar": "9743_2.jpg",
+          "forumCommentUserId": 1
+        },
+        {
+          "forumCommentId": 4,
+          "forumComment": "543453453",
+          "forumCommentLike": 0,
+          "forumCommentDislike": 0,
+          "forumCommentName": "bbc",
+          "forumCommentAvatar": "9743_2.jpg",
+          "forumCommentUserId": 1
+        },
+        {
+          "forumCommentId": 5,
+          "forumComment": "1",
+          "forumCommentLike": 0,
+          "forumCommentDislike": 0,
+          "forumCommentName": "bbc",
+          "forumCommentAvatar": "9743_2.jpg",
+          "forumCommentUserId": 1
         }
       ]
     },
     {
-      "id": 5,
-      "headline": "哀愁",
-      "forumSpoilers": 1,
-      "forumViews": 44,
-      "forumCreateDate": "2019/07/07 11:00",
+      "id": 6,
+      "headline": "453",
+      "forumSpoilers": true,
+      "forumViews": 0,
+      "forumCreateDate": "2019/05/26 02:04",
+      "forumCreateDateInSecond": 1558807488548,
       "forumName": "Jack",
-      "forumNameId": "m22222",
-      "forumAvatar": "11155",
-      "forumArticlePic": "9743_2",
-      "forumReview": "魯尼曾是英國皇家芭蕾舞團史上最年輕的首席舞者，他也是當時皇家芭蕾舞團的票房保證，只要掛上瑟基普魯尼的名字，演出門票就一票難求。正當人人都在讚嘆他非凡的成就時，他在鎂光燈下的人生卻開始失控，他刺青、他酗酒、他吸毒、他夜夜笙歌。原本眾人吹捧的天才舞者，那個「優雅的野獸」，一夕之間變成媒體口中譏諷的「芭蕾壞男孩」，22歲那年，他因而宣布退出皇家芭蕾舞團。",
-      "forumCommentCount": 7,
+      "forumNameId": "",
+      "forumAvatar": "9743_2.jpg",
+      "forumArticlePic": "",
+      "forumReview": "99999999",
+      "forumCommentCount": 3,
       "forumCommentArea": [
         {
           "forumCommentId": 1,
-          "forumComment": "時會自毀前程，也並不了解他目前在經歷的人生關卡，反而是他的兩位皇家芭蕾學院同窗更能體會他從一個鄉下男孩，一路努力走向舞台，且終於在鎂光燈下大放異彩，卻人事已非的那種無能為力。從他兼具力與美的舞姿來看，瑟基普魯尼的確是舞台上令人神往的「優雅的野獸」，只不過在他眉宇間的那股漠然和迷惘之中，他或許仍然只是一隻「誤闖叢林的小白兔」。",
-          "forumCommentLike": "7747",
-          "forumCommentDislike": "676",
-          "forumCommentName": "GGG",
-          "forumCommentAvatar": "9743_2"
+          "forumComment": "453543",
+          "forumCommentLike": 0,
+          "forumCommentDislike": 0,
+          "forumCommentName": "bbc",
+          "forumCommentAvatar": "9743_2.jpg",
+          "forumCommentUserId": 1
         },
         {
           "forumCommentId": 2,
-          "forumComment": "他兼具力與美的舞姿來看，瑟基普魯尼的確是舞台上令人神往的「優雅的野獸」，只不過在他眉宇間的那股漠然和迷惘之中，他或許仍然只是一隻「誤闖叢林的小白兔」。",
-          "forumCommentLike": "83388",
-          "forumCommentDislike": "477",
-          "forumCommentName": "Amy",
-          "forumCommentAvatar": "9743_2"
+          "forumComment": "453453",
+          "forumCommentLike": 0,
+          "forumCommentDislike": 0,
+          "forumCommentName": "bbc",
+          "forumCommentAvatar": "9743_2.jpg",
+          "forumCommentUserId": 1
         },
         {
           "forumCommentId": 3,
-          "forumComment": "獸」，只不過在他眉宇間的那股漠然和迷惘之中，他或許仍然只是一隻「誤闖叢林的小白兔」。",
-          "forumCommentLike": "8332188",
-          "forumCommentDislike": "412227",
-          "forumCommentName": "Amy",
-          "forumCommentAvatar": "9743_2"
+          "forumComment": "453453453453",
+          "forumCommentLike": 0,
+          "forumCommentDislike": 0,
+          "forumCommentName": "bbc",
+          "forumCommentAvatar": "9743_2.jpg",
+          "forumCommentUserId": 1
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "headline": "5434",
+      "forumSpoilers": true,
+      "forumViews": 0,
+      "forumCreateDate": "2019/05/26 19:04",
+      "forumCreateDateInSecond": 1558868690038,
+      "forumName": "Jack",
+      "forumNameId": "",
+      "forumAvatar": "9743_2.jpg",
+      "forumArticlePic": "",
+      "forumReview": "5345354",
+      "forumCommentCount": 2,
+      "forumCommentArea": [
+        {
+          "forumCommentId": 1,
+          "forumComment": "453453",
+          "forumCommentLike": 0,
+          "forumCommentDislike": 0,
+          "forumCommentName": "bbc",
+          "forumCommentAvatar": "9743_2.jpg",
+          "forumCommentUserId": 1
+        },
+        {
+          "forumCommentId": 2,
+          "forumComment": "453453",
+          "forumCommentLike": 0,
+          "forumCommentDislike": 0,
+          "forumCommentName": "bbc",
+          "forumCommentAvatar": "9743_2.jpg",
+          "forumCommentUserId": 1
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "headline": "453453",
+      "forumSpoilers": true,
+      "forumViews": 0,
+      "forumCreateDate": "2019/05/26 19:05",
+      "forumCreateDateInSecond": 1558868734491,
+      "forumName": "Jack",
+      "forumNameId": "",
+      "forumAvatar": "9743_2.jpg",
+      "forumArticlePic": "",
+      "forumReview": "453453",
+      "forumCommentCount": 1,
+      "forumCommentArea": [
+        {
+          "forumCommentId": 1,
+          "forumComment": "43453453",
+          "forumCommentLike": 0,
+          "forumCommentDislike": 0,
+          "forumCommentName": "bbc",
+          "forumCommentAvatar": "9743_2.jpg",
+          "forumCommentUserId": 1
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "headline": "45345",
+      "forumSpoilers": true,
+      "forumViews": 0,
+      "forumCreateDate": "2019/05/26 20:51",
+      "forumCreateDateInSecond": 1558875062376,
+      "forumName": "Jack",
+      "forumNameId": "",
+      "forumAvatar": "9743_2.jpg",
+      "forumArticlePic": "",
+      "forumReview": "345345354345345",
+      "forumCommentCount": 2,
+      "forumCommentArea": [
+        {
+          "forumCommentId": 4,
+          "forumComment": "453543543",
+          "forumCommentLike": 0,
+          "forumCommentDislike": 0,
+          "forumCommentName": "bbc",
+          "forumCommentAvatar": "9743_2.jpg",
+          "forumCommentUserId": 1
+        },
+        {
+          "forumCommentId": 5,
+          "forumComment": "453543",
+          "forumCommentLike": 0,
+          "forumCommentDislike": 0,
+          "forumCommentName": "bbc",
+          "forumCommentAvatar": "9743_2.jpg",
+          "forumCommentUserId": 1
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "headline": "45354354",
+      "forumSpoilers": true,
+      "forumViews": 0,
+      "forumCreateDate": "2019/05/26 20:56",
+      "forumCreateDateInSecond": 1558875382305,
+      "forumName": "Jack",
+      "forumNameId": "",
+      "forumAvatar": "9743_2.jpg",
+      "forumArticlePic": "",
+      "forumReview": "354453",
+      "forumCommentCount": 2,
+      "forumCommentArea": [
+        {
+          "forumCommentId": 1,
+          "forumComment": "4534534",
+          "forumCommentLike": 0,
+          "forumCommentDislike": 0,
+          "forumCommentName": "bbc",
+          "forumCommentAvatar": "9743_2.jpg",
+          "forumCommentUserId": 1
+        },
+        {
+          "forumCommentId": 2,
+          "forumComment": "4534534",
+          "forumCommentLike": 0,
+          "forumCommentDislike": 0,
+          "forumCommentName": "bbc",
+          "forumCommentAvatar": "9743_2.jpg",
+          "forumCommentUserId": 1
+        }
+      ]
+    },
+    {
+      "id": 11,
+      "headline": "453",
+      "forumSpoilers": true,
+      "forumViews": 0,
+      "forumCreateDate": "2019/05/26 20:56",
+      "forumCreateDateInSecond": 1558875417422,
+      "forumName": "Jack",
+      "forumNameId": "",
+      "forumAvatar": "9743_2.jpg",
+      "forumArticlePic": "",
+      "forumReview": "453543543453453",
+      "forumCommentCount": 1,
+      "forumCommentArea": [
+        {
+          "forumCommentId": 1,
+          "forumComment": "你好",
+          "forumCommentLike": 0,
+          "forumCommentDislike": 0,
+          "forumCommentName": "bbc",
+          "forumCommentAvatar": "9743_2.jpg",
+          "forumCommentUserId": 1
+        }
+      ]
+    },
+    {
+      "id": 12,
+      "headline": "354345354",
+      "forumSpoilers": false,
+      "forumViews": 0,
+      "forumCreateDate": "2019/05/26 20:57",
+      "forumCreateDateInSecond": 1558875425923,
+      "forumName": "Jack",
+      "forumNameId": "",
+      "forumAvatar": "9743_2.jpg",
+      "forumArticlePic": "",
+      "forumReview": "45345354453<div><br></div><div>54354</div>",
+      "forumCommentCount": 1,
+      "forumCommentArea": [
+        {
+          "forumCommentId": 2,
+          "forumComment": "54354354",
+          "forumCommentLike": 0,
+          "forumCommentDislike": 0,
+          "forumCommentName": "bbc",
+          "forumCommentAvatar": "9743_2.jpg",
+          "forumCommentUserId": 1
+        }
+      ]
+    },
+    {
+      "id": 13,
+      "headline": "我午我我我我453",
+      "forumSpoilers": true,
+      "forumViews": 0,
+      "forumCreateDate": "2019/05/26 22:26",
+      "forumCreateDateInSecond": 1558880804189,
+      "forumName": "Jack",
+      "forumNameId": "",
+      "forumAvatar": "9743_2.jpg",
+      "forumArticlePic": "",
+      "forumReview": "我午我我我我",
+      "forumCommentCount": 0,
+      "forumCommentArea": []
+    },
+    {
+      "id": 14,
+      "headline": "5343",
+      "forumSpoilers": true,
+      "forumViews": 0,
+      "forumCreateDate": "2019/05/27 03:29",
+      "forumCreateDateInSecond": 1558898992061,
+      "forumName": "Jack",
+      "forumNameId": "",
+      "forumAvatar": "9743_2.jpg",
+      "forumArticlePic": "",
+      "forumReview": "45343",
+      "forumCommentCount": 0,
+      "forumCommentArea": []
+    },
+    {
+      "id": 15,
+      "headline": "453453",
+      "forumSpoilers": true,
+      "forumViews": 0,
+      "forumCreateDate": "2019/05/27 10:13",
+      "forumCreateDateInSecond": 1558923235263,
+      "forumName": "Jack",
+      "forumNameId": "",
+      "forumAvatar": "9743_2.jpg",
+      "forumArticlePic": "",
+      "forumReview": "34554354",
+      "forumCommentCount": 1,
+      "forumCommentArea": [
+        {
+          "forumCommentId": 1,
+          "forumComment": "354",
+          "forumCommentLike": 0,
+          "forumCommentDislike": 0,
+          "forumCommentName": "bbc",
+          "forumCommentAvatar": "9743_2.jpg",
+          "forumCommentUserId": 1
         }
       ]
     }
@@ -801,11 +1270,17 @@
       "intro_tw": "★坎城影展 最佳劇本獎★美國國家電影協會五大外語片 ★西班牙錫切斯奇幻影展評審團特別獎、影評人特別獎、最佳劇情長片獎★《視與聽》雜誌年度十大電影、《電影評論》雜誌年度十大電影蜂蜜之夏》導演最新力作，以傳統十六釐米膠捲拍攝出獨有魔幻寫實風格。           拉札洛是一位內心單純的年輕農民，個性驕縱的莊園少爺坦雷迪則是他的雇主。他們生活在一個與世隔絕的義大利小城，兩個人從雇傭關係漸漸成為好友。某天，坦雷迪自導自演了一場無聊的綁架鬧劇，沒料到卻在意外中衍生出另一場意外，讓拉札洛從過去穿越時空到多年以後，展開一段出乎意料卻又美麗的奇幻旅程。",
       "intro_en": "An unceasingly kind Italian peasant and his family are blatantly exploited by a tobacco baroness.",
       "movie_pic": "film_HappyasLazzaro.jpg",
-      "movie_genre": ["劇情"],
+      "movie_genre": [
+        "劇情"
+      ],
       "movie_ver": "數位",
       "movie_rating": "普遍級",
       "trailer": "https://www.youtube.com/watch?v=LlFUC-RpMkg",
-      "pirce": ["270", "250", "200"],
+      "pirce": [
+        "270",
+        "250",
+        "200"
+      ],
       "schedule": "-",
       "in_theaters": "20190426",
       "out_theaters": "-",
@@ -815,7 +1290,9 @@
       "country": "Italy",
       "subtitle": "是",
       "subtitle_lang": "中文",
-      "moviecinema": ["c1"],
+      "moviecinema": [
+        "c1"
+      ],
       "stills": [
         "film_HappyasLazzaro_01.jpg",
         "film_HappyasLazzaro_02.jpg",
@@ -826,7 +1303,7 @@
       "filmStar": [
         {
           "starId": "m22222",
-          "star": 5
+          "star": 4
         }
       ]
     },
@@ -837,11 +1314,17 @@
       "intro_tw": "★金馬獎 最佳紀錄片★台北電影獎 最佳紀錄片   本片主角們的青春夢想，是藉由反抗體制，追求一個更好的國家，卻在動盪的兩岸關係裡，變成歷史的一部份。一個反抗中國的台灣學運明星、一個喜愛台灣的中國學生、一個政治狂熱的台灣紀錄片工作者，他們之間理應充滿矛盾，卻在社會運動裡找到合作的可能性。在一場台灣24年來最大型的社會運動之後，他們從接近成功的巔峰，逐漸墜入失望的谷底，曾經堅持的理想，還有可能延續嗎？本片從台灣觀點、政治角度切入，近距離觀看大時代下的年輕人，在實踐民主時真實的處境，進而思考，自身與民主之間的關係。",
       "intro_en": "A star of the Taiwanese student movement, a celebrity Chinese student who loves Taiwan, and a Taiwanese documentary filmmaker passionate about politics. Each of them shared dreams of rebellion and building a better country. In the wake of the biggest social movement in Taiwan in recent years, they reflect on how close they came to realising their goals, how they were let down, and whether it is still possible to continue fighting for ideals.",
       "movie_pic": "film_OurYouthinTaiwan.jpg",
-      "movie_genre": ["紀錄"],
+      "movie_genre": [
+        "紀錄"
+      ],
       "movie_ver": "數位",
       "movie_rating": "普遍級",
       "trailer": "https://www.youtube.com/watch?v=_62AfanuI5Q",
-      "pirce": ["270", "250", "200"],
+      "pirce": [
+        "270",
+        "250",
+        "200"
+      ],
       "schedule": "-",
       "in_theaters": "20190412",
       "out_theaters": "-",
@@ -851,10 +1334,18 @@
       "country": "Taiwan",
       "subtitle": "是",
       "subtitle_lang": "中文",
-      "moviecinema": ["002", "003", "004"],
+      "moviecinema": [
+        "c1"
+      ],
       "stills": [
         "film_OurYouthinTaiwan.jpg_01.jpg",
         "film_OurYouthinTaiwan.jpg_02.jpg"
+      ],
+      "filmStar": [
+        {
+          "starId": "m22222",
+          "star": 3
+        }
       ]
     },
     {
@@ -864,11 +1355,18 @@
       "intro_tw": "感動法國百萬觀眾，票房熱賣三億台幣          庇護所再三個月就即將關門大吉，當中收容的數十位無家婦女們該何去何從？！為了讓她們有自給自足的能力，庇護所的社工們決定試著開發他們的「職業力」，在面試現場無論是說謊、關說，花招百出，只為了要幫助他們找到工作，開啟人生第二春。導演路易斯朱利安派特真實走訪巴黎女性庇護所一年時間，以平行視角以及喜劇元素描述看似嚴肅的社會議題，而電影中多名演員皆由過往真實街友參與演出！",
       "intro_en": "Following a municipal decision, Envol, SDF Women's Shelter, will close. There are only three months left for social workers to reintegrate at any cost the women they care for: falsification, pistons, lies... From now on, everything is allowed!",
       "movie_pic": "film_Lesinvisibles.jpg",
-      "movie_genre": ["劇情", "喜劇"],
+      "movie_genre": [
+        "劇情",
+        "喜劇"
+      ],
       "movie_ver": "數位",
       "movie_rating": "普遍級",
       "trailer": "https://www.youtube.com/watch?v=_62AfanuI5Q",
-      "pirce": ["270", "250", "200"],
+      "pirce": [
+        "270",
+        "250",
+        "200"
+      ],
       "schedule": "-",
       "in_theaters": "20190503",
       "out_theaters": "-",
@@ -878,11 +1376,21 @@
       "country": "France",
       "subtitle": "是",
       "subtitle_lang": "中文",
-      "moviecinema": ["002", "003", "004"],
+      "moviecinema": [
+        "002",
+        "003",
+        "001"
+      ],
       "stills": [
         "film_Lesinvisibles_01.jpg",
         "film_Lesinvisibles_02.jpg",
         "film_Lesinvisibles_03.jpg"
+      ],
+      "filmStar": [
+        {
+          "starId": "m22222",
+          "star": 2
+        }
       ]
     },
     {
@@ -892,11 +1400,17 @@
       "intro_tw": "★第91屆奧斯卡最佳紀錄片★ 2018 多倫多影展觀眾票選獎             故事描述攀岩好手艾力克斯霍諾德（Alex Honnold）經過兩年多準備，挑戰徒手攀爬3200英呎高的「酋長岩（El Capitan）」創舉。這項成就不僅成功締造世界紀錄，更讓紐約客雜誌（The New Yorker）擊掌盛讚「人類最偉大的體能極限挑戰！」。電影不僅記錄霍諾德為完成夢想，所經歷的種種考驗與挫折，劇組更出動直升機高空拍攝，完整呈現他徒手攀爬酋長岩的驚險過程，讓觀眾看得頭皮發麻，直呼「緊張到暫停呼吸」。",
       "intro_en": "Alex Honnold attempts to become the first person to ever free solo climb El Capitan.",
       "movie_pic": "film_FreeSolo.jpg",
-      "movie_genre": ["紀錄"],
+      "movie_genre": [
+        "紀錄"
+      ],
       "movie_ver": "數位",
       "movie_rating": "保護級",
       "trailer": "https://www.youtube.com/watch?v=_b0qn6S1D_I",
-      "pirce": ["270", "250", "200"],
+      "pirce": [
+        "270",
+        "250",
+        "200"
+      ],
       "schedule": "-",
       "in_theaters": "20190517",
       "out_theaters": "-",
@@ -906,12 +1420,22 @@
       "country": "America",
       "subtitle": "是",
       "subtitle_lang": "中文",
-      "moviecinema": ["002", "003", "004"],
+      "moviecinema": [
+        "002",
+        "003",
+        "001"
+      ],
       "stills": [
         "film_FreeSolo_01.jpg",
         "film_FreeSolo_02.jpg",
         "film_FreeSolo_03.jpg",
         "film_FreeSolo_04.jpg"
+      ],
+      "filmStar": [
+        {
+          "starId": "m22222",
+          "star": 2
+        }
       ]
     }
   ],
@@ -1012,7 +1536,7 @@
     },
     {
       "id": "cinemaTaxid",
-      "w": "",
+      "w": "60px",
       "h": "48px",
       "inputType": "text",
       "inputLabel": "統一編號",
@@ -1030,7 +1554,7 @@
       "inputLabel": "所在縣市",
       "iconL": "",
       "iconLS": "",
-      "placeholder": "",
+      "placeholder": "這裡是下拉選單...",
       "iconR": "fas fa-caret-square-down",
       "iconRS": "24px",
       "selectOptions": [
@@ -1313,11 +1837,15 @@
       "title": "我的活動",
       "options": [
         {
-          "id": "collect-activity",
+          "id": "activityMemberBoard",
+          "name": "活動總覽"
+        },
+        {
+          "id": "activityMemberCollect",
           "name": "收藏活動"
         },
         {
-          "id": "my-activity",
+          "id": "activityMemberSignUp",
           "name": "已報名活動"
         }
       ],
@@ -1470,6 +1998,560 @@
       "isclicked": false
     }
   ],
+  "memberEditInputmsg": [
+    {
+      "id": "name",
+      "w": "",
+      "h": "40px",
+      "inputType": "text",
+      "inputLabel": "姓名",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "nickname",
+      "w": "",
+      "h": "40px",
+      "inputType": "text",
+      "inputLabel": "暱稱",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "gender",
+      "w": "",
+      "h": "40px",
+      "inputType": "radioGender",
+      "inputLabel": "性別",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "",
+      "iconRS": "",
+      "selectOptions": [
+        {
+          "id": "male",
+          "name": "男性",
+          "iconL": "fas fa-mars",
+          "iconLS": "24px"
+        },
+        {
+          "id": "female",
+          "name": "女性",
+          "iconL": "fas fa-venus",
+          "iconLS": "24px"
+        }
+      ]
+    },
+    {
+      "id": "birth",
+      "w": "",
+      "h": "40px",
+      "inputType": "text",
+      "inputLabel": "生日",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "格式：yyyy-mm-dd",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "career",
+      "w": "",
+      "h": "40px",
+      "inputType": "selector",
+      "inputLabel": "職業",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "fas fa-caret-square-down",
+      "iconRS": "24px",
+      "selectOptions": [
+        {
+          "id": "career0",
+          "name": "尚未選擇職業"
+        },
+        {
+          "id": "career1",
+          "name": "學生"
+        },
+        {
+          "id": "career2",
+          "name": "軍公教"
+        },
+        {
+          "id": "career3",
+          "name": "服務業"
+        },
+        {
+          "id": "career4",
+          "name": "金融業"
+        },
+        {
+          "id": "career5",
+          "name": "資訊 / 科技"
+        },
+        {
+          "id": "career6",
+          "name": "傳播 / 廣告 / 設計"
+        },
+        {
+          "id": "career7",
+          "name": "藝文"
+        },
+        {
+          "id": "career8",
+          "name": "醫療"
+        },
+        {
+          "id": "career9",
+          "name": "製造業"
+        },
+        {
+          "id": "career10",
+          "name": "農林漁牧"
+        },
+        {
+          "id": "career11",
+          "name": "家管 / 退休"
+        },
+        {
+          "id": "career12",
+          "name": "自由業"
+        },
+        {
+          "id": "career13",
+          "name": "其他"
+        }
+      ]
+    },
+    {
+      "id": "city",
+      "w": "",
+      "h": "40px",
+      "inputType": "selector",
+      "inputLabel": "所在縣市",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "fas fa-caret-square-down",
+      "iconRS": "24px",
+      "selectOptions": [
+        {
+          "id": "NOCITY",
+          "name": "尚未選擇縣市"
+        },
+        {
+          "id": "TPE",
+          "name": "台北市"
+        },
+        {
+          "id": "NTPC",
+          "name": "新北市"
+        },
+        {
+          "id": "KEL",
+          "name": "基隆市"
+        },
+        {
+          "id": "TYN",
+          "name": "桃園市"
+        },
+        {
+          "id": "HSZ",
+          "name": "新竹市"
+        },
+        {
+          "id": "ZMI",
+          "name": "苗栗縣"
+        },
+        {
+          "id": "TXG",
+          "name": "台中市"
+        },
+        {
+          "id": "CHW",
+          "name": "彰化縣"
+        },
+        {
+          "id": "NTC",
+          "name": "南投縣"
+        },
+        {
+          "id": "YUN",
+          "name": "雲林縣"
+        },
+        {
+          "id": "CYI",
+          "name": "嘉義市"
+        },
+        {
+          "id": "CHY",
+          "name": "嘉義縣"
+        },
+        {
+          "id": "TNN",
+          "name": "台南市"
+        },
+        {
+          "id": "PIF",
+          "name": "屏東縣"
+        },
+        {
+          "id": "ILA",
+          "name": "宜蘭縣"
+        },
+        {
+          "id": "HUN",
+          "name": "花蓮縣"
+        },
+        {
+          "id": "TTT",
+          "name": "台東縣"
+        },
+        {
+          "id": "PEH",
+          "name": "澎湖縣"
+        },
+        {
+          "id": "KNH",
+          "name": "金門縣"
+        }
+      ]
+    },
+    {
+      "id": "address",
+      "w": "",
+      "h": "40px",
+      "inputType": "text",
+      "inputLabel": "聯絡地址",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "範例格式: 台北市XX區XX路X段X號X樓",
+      "iconR": "",
+      "iconRS": ""
+    }
+  ],
+  "memberFavTypeOptions": [
+    {
+      "id": "filmTypeAll",
+      "name": "全選"
+    },
+    {
+      "id": "filmType1",
+      "name": "動作片"
+    },
+    {
+      "id": "filmType2",
+      "name": "動畫片"
+    },
+    {
+      "id": "filmType3",
+      "name": "喜劇片"
+    },
+    {
+      "id": "filmType4",
+      "name": "偵探片"
+    },
+    {
+      "id": "filmType5",
+      "name": "紀錄片"
+    },
+    {
+      "id": "filmType6",
+      "name": "戲劇片"
+    },
+    {
+      "id": "filmType7",
+      "name": "英雄片"
+    },
+    {
+      "id": "filmType8",
+      "name": "恐怖片"
+    },
+    {
+      "id": "filmType9",
+      "name": "武俠片"
+    },
+    {
+      "id": "filmType10",
+      "name": "靈異片"
+    },
+    {
+      "id": "filmType11",
+      "name": "文藝片"
+    },
+    {
+      "id": "filmType12",
+      "name": "警匪片"
+    },
+    {
+      "id": "filmType13",
+      "name": "科幻片"
+    },
+    {
+      "id": "filmType14",
+      "name": "懸疑片"
+    },
+    {
+      "id": "filmType15",
+      "name": "驚悚片"
+    },
+    {
+      "id": "filmType16",
+      "name": "戰爭片"
+    },
+    {
+      "id": "filmType17",
+      "name": "愛情片"
+    }
+  ],
+  "cinemaEditInputmsg": [
+    {
+      "id": "cinemaName",
+      "w": "",
+      "h": "40px",
+      "inputType": "text",
+      "inputLabel": "戲院名稱",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "cinemaTaxid",
+      "w": "",
+      "h": "40px",
+      "inputType": "text",
+      "inputLabel": "統一編號",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "cinemaPhone",
+      "w": "",
+      "h": "40px",
+      "inputType": "text",
+      "inputLabel": "連絡電話",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "請輸入市內電話號碼(例: 02-2222-2222)",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "cinemaCity",
+      "w": "",
+      "h": "40px",
+      "inputType": "selector",
+      "inputLabel": "所在縣市",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "fas fa-caret-square-down",
+      "iconRS": "24px",
+      "selectOptions": [
+        {
+          "id": "NOCITY",
+          "name": "尚未選擇縣市"
+        },
+        {
+          "id": "TPE",
+          "name": "台北市"
+        },
+        {
+          "id": "NTPC",
+          "name": "新北市"
+        },
+        {
+          "id": "KEL",
+          "name": "基隆市"
+        },
+        {
+          "id": "TYN",
+          "name": "桃園市"
+        },
+        {
+          "id": "HSZ",
+          "name": "新竹市"
+        },
+        {
+          "id": "ZMI",
+          "name": "苗栗縣"
+        },
+        {
+          "id": "TXG",
+          "name": "台中市"
+        },
+        {
+          "id": "CHW",
+          "name": "彰化縣"
+        },
+        {
+          "id": "NTC",
+          "name": "南投縣"
+        },
+        {
+          "id": "YUN",
+          "name": "雲林縣"
+        },
+        {
+          "id": "CYI",
+          "name": "嘉義市"
+        },
+        {
+          "id": "CHY",
+          "name": "嘉義縣"
+        },
+        {
+          "id": "TNN",
+          "name": "台南市"
+        },
+        {
+          "id": "PIF",
+          "name": "屏東縣"
+        },
+        {
+          "id": "ILA",
+          "name": "宜蘭縣"
+        },
+        {
+          "id": "HUN",
+          "name": "花蓮縣"
+        },
+        {
+          "id": "TTT",
+          "name": "台東縣"
+        },
+        {
+          "id": "PEH",
+          "name": "澎湖縣"
+        },
+        {
+          "id": "KNH",
+          "name": "金門縣"
+        }
+      ]
+    },
+    {
+      "id": "cinemaArea",
+      "w": "",
+      "h": "40px",
+      "inputType": "text",
+      "inputLabel": "所在地區",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "cinemaAddress",
+      "w": "",
+      "h": "40px",
+      "inputType": "text",
+      "inputLabel": "聯絡地址",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "cinemaBackupEmail",
+      "w": "",
+      "h": "40px",
+      "inputType": "text",
+      "inputLabel": "備用信箱",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "cinemaType",
+      "w": "",
+      "h": "48px",
+      "inputType": "radio",
+      "inputLabel": "場所類別",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "5種按鈕選單",
+      "iconR": "",
+      "iconRS": "",
+      "selectOptions": [
+        {
+          "id": "gallery",
+          "name": "藝廊"
+        },
+        {
+          "id": "bar",
+          "name": "酒吧"
+        },
+        {
+          "id": "restaurant",
+          "name": "餐廳"
+        },
+        {
+          "id": "theater",
+          "name": "影院"
+        },
+        {
+          "id": "cafe",
+          "name": "咖啡廳"
+        }
+      ]
+    },
+    {
+      "id": "cinemaWeb",
+      "w": "",
+      "h": "48px",
+      "inputType": "text",
+      "inputLabel": "官方網站",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "請輸入您的官方網址",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "cinemaHeroImg",
+      "w": "",
+      "h": "48px",
+      "inputType": "file",
+      "inputLabel": "視覺圖片",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "請選擇一個檔案",
+      "iconR": "",
+      "iconRS": "",
+      "multiple": false
+    },
+    {
+      "id": "cinemaImg",
+      "w": "",
+      "h": "48px",
+      "inputType": "file",
+      "inputLabel": "官方相片",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "請選擇檔案",
+      "iconR": "",
+      "iconRS": "",
+      "multiple": true
+    }
+  ],
   "movietableData": [
     {
       "tableTtlTxt": [
@@ -1508,7 +2590,9 @@
   ],
   "movieitemData": [
     {
-      "itemTtlTxt": ["電影種類"],
+      "itemTtlTxt": [
+        "電影種類"
+      ],
       "itemTxt": [
         "文藝",
         "紀錄",

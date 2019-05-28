@@ -192,13 +192,13 @@ class MemberEditInfo extends React.Component {
     return (
       <>
         <Row className="d-flex justify-content-center">
-          <div className="col-lg-6">
+          <div className="col-lg-6 h5">
             <>
               <InputWithLabel_Su
                 id="originPwd"
                 name="originPwd"
                 inputWidth=""
-                inputHeight=""
+                inputHeight="48px"
                 inputType="password"
                 inputLabel="原始密碼"
                 placeholder="請輸入您的原始密碼"
@@ -213,13 +213,13 @@ class MemberEditInfo extends React.Component {
           </div>
         </Row>
         <Row className="d-flex justify-content-center">
-          <div className="col-lg-6">
+          <div className="col-lg-6  h5">
             <>
               <InputWithLabel_Su
                 id="newPwd"
                 name="newPwd"
                 inputWidth=""
-                inputHeight=""
+                inputHeight="48px"
                 inputType="password"
                 inputLabel="新密碼"
                 placeholder="請設定您的新密碼"
@@ -234,13 +234,13 @@ class MemberEditInfo extends React.Component {
           </div>
         </Row>
         <Row className="d-flex justify-content-center">
-          <div className="col-lg-6">
+          <div className="col-lg-6 h5">
             <>
               <InputWithLabel_Su
                 id="reNewPwd"
                 name="reNewPwd"
                 inputWidth=""
-                inputHeight=""
+                inputHeight="48px"
                 inputType="password"
                 inputLabel="確認密碼"
                 placeholder="請重新輸入您設定的新密碼"
