@@ -24,6 +24,10 @@ class Forum extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      // 目前登入者
+      nowLoginUserId: '',
+      // 目前登入者資訊
+      noLoginInfo: '',
       // 根據搜尋結果設定頁面顯示
       searchStatus: 'd-none',
       searchNoDataContentStatus: '',
@@ -53,6 +57,7 @@ class Forum extends React.Component {
       forumCreateDate: '',
       forumCreateDateInSecond: 0,
       forumCreateTimeCount: 0,
+      commentCreateTimeCount: [],
       forumName: '',
       // 要撈會員
       forumNameId: '',
@@ -84,7 +89,14 @@ class Forum extends React.Component {
       hour: 0,
       minute: 0,
       second: 0,
+      // 目前總頁數
       ForumTotalPages: 0,
+      // 用來傳給當前頁碼第一筆資料路徑參照值
+      cuerrenPageFirstData: [],
+      // 計算上下頁用的參照容器
+      currentPage: 1,
+      // 目前頁面第一筆資料ID
+      currentLastDataId: 1,
       // CSS內容
       inputH: '48px',
       inputmsg: [
@@ -124,6 +136,10 @@ class Forum extends React.Component {
   }
 
   async componentDidMount() {
+    const nowLoginID = sessionStorage.getItem('memberId')
+    console.log(nowLoginID)
+    this.setState({ nowLoginUserId: nowLoginID })
+
     try {
       await this.setState({ loading: true })
       // 從JSONSERVER中抓forum這個陣列的的JSON檔
@@ -144,12 +160,25 @@ class Forum extends React.Component {
         listdata: jsonObject,
       })
 
+      // 預設將頁面設為顯示10筆
+      const totalPagesNow = Math.ceil(this.state.listdata.length / 10)
+      await this.setState({
+        ForumTotalPages: totalPagesNow,
+        // 初次登入會沒有預設值所以先得最後一筆資料的id當作生成頁面按鈕的導向位置
+        // 這邊不要reverse因為頁面列表資訊是反過來的
+        cuerrenPageFirstData: this.state.listdata,
+      })
+
+      // 加上slice是為了控制根據目前點到的頁面去切割陣列重新帶入state渲染出新的對應頁面10筆資料
+      // 渲染左側列表用
       // 將讀出的陣列反轉，用來讓資料最後一筆顯示在最上面
       // 方便陣列控制只要選索引0就可選到最後一筆
-      const listdatareverse = this.state.listdata.reverse()
-      await this.setState({
-        listdataReverse: listdatareverse,
-      })
+      const listdatareverse = this.state.listdata.reverse().slice(0, 10)
+      console.log(listdatareverse)
+
+      // 用來裝目前要顯示左側列表的資料
+      await this.setState({ listdataReverse: listdatareverse })
+      console.log(this.state.listdataReverse)
 
       // -----------內文didmount 找到目前LINK頁面後面接的ID所對應到DATA中的資料物件Start---------------
       const nowIddata = this.state.listdata.find(
@@ -173,6 +202,7 @@ class Forum extends React.Component {
           nowIDdata: nowIddata,
         })
       }
+      // console.log(this.state.listdataReverse[0].id)
       // console.log(this.state.nowIDdata)
       // console.log(this.state.listdataReverse[0].id)
       // -----------內文didmount 找到目前LINK頁面後面接的ID所對應到DATA中的資料物件End---------------
@@ -208,40 +238,262 @@ class Forum extends React.Component {
       if (this.props.match.params.id === undefined) {
         window.location.href = '/forum/' + this.state.listdataReverse[0].id
       }
-      // TODO:帶修理
+      //
+      //
       // -------------發文時間偵測計算start-----------------------------------
-      const articleCurrent = this.state.listdata.find(
-        item =>
-          item.id ===
-          (this.props.match.params.id
-            ? +this.props.match.params.id
-            : +this.state.listdataReverse[0].id)
-      )
-      // console.log(articleCurrent.forumCreateDateInSecond)
-      const timeDifferent = parseInt(
-        (new Date() - articleCurrent.forumCreateDateInSecond) / 1000
-      )
-      // console.log(timeDifferent)
+      // this.timerID為生命週期中用來清除的
+      this.timerID = setInterval(this.articleCreateTimeCount, 1000)
+      this.timerIDComment = setInterval(this.CommentCreateTimeCount, 1000)
+      // 搭配呼叫articleCreateTimeCount然後設interval 最後用 componentWillUnmount生命週期讓他失效
 
-      await setInterval(
-        function() {
-          this.setState({ forumCreateTimeCount: timeDifferent + '分鐘前' })
-        }.bind(this),
-        60000
-      )
       // -------------發文時間偵測計算End-----------------------------------
-
-      const totalPagesNow = Math.ceil(this.state.listdata.length / 10)
-      console.log(totalPagesNow)
-      await this.setState({ ForumTotalPages: totalPagesNow })
+      //
+      //
     } catch (e) {
       console.log(e)
     }
+
+    try {
+      const res = await fetch('http://localhost:5555/member', {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+      const data = await res.json()
+      const noLoginInfo = data.find(
+        item => item.id === sessionStorage.getItem('memberId')
+      )
+
+      console.log(data)
+      console.log(noLoginInfo)
+      this.setState({ noLoginInfo: noLoginInfo })
+    } catch (err) {
+      console.log(err)
+    }
   }
 
+  // 用來實時更新時間，讓舊的時間元件失效
+  componentWillUnmount() {
+    clearInterval(this.timerID)
+    clearInterval(this.timerIDComment)
+  }
+
+  // ------------------------------發文時間自動更新套餐Start---------------------------------------
+  // 用來實時更新時間
+  articleCreateTimeCount = () => {
+    const articleCurrent = this.state.listdata.find(
+      item =>
+        item.id ===
+        (this.props.match.params.id
+          ? +this.props.match.params.id
+          : +this.state.listdataReverse[0].id)
+    )
+
+    // const a = articleCurrent.forumCommentArea.map(e => coonsole.log(e))
+
+    console.log(articleCurrent)
+    const nowTime = +new Date()
+    const messageTime = articleCurrent.forumCreateDateInSecond
+    let time = nowTime - messageTime
+    let secondnumber = time / 1000
+    let minutenumber = time / 60000
+    // 秒
+    let second = Math.floor(secondnumber % 60)
+    // 小時
+    let hour = minutenumber / 60 >= 1 ? Math.floor(minutenumber / 60) : ''
+    // 分鐘
+    let minute = minutenumber % 60 >= 1 ? Math.floor(minutenumber % 60) : ''
+    // 天
+    let day = hour / 24 >= 1 ? Math.floor(hour / 24) : ''
+    let showTimeText =
+      day > 1
+        ? day + '天'
+        : hour >= 1
+        ? hour + '小時'
+        : minute >= 1
+        ? minute + '分鐘'
+        : second + '秒'
+    // 已發佈時間邏輯結束
+
+    this.setState({ forumCreateTimeCount: showTimeText })
+  }
+
+  // ------------------------------發文時間自動更新套餐End----------------------------------------
+
+  // ------------------------------發文時間自動更新套餐Start---------------------------------------
+  // 用來實時更新時間
+  CommentCreateTimeCount = () => {
+    const articleCurrent = this.state.listdata.find(
+      item =>
+        item.id ===
+        (this.props.match.params.id
+          ? +this.props.match.params.id
+          : +this.state.listdataReverse[0].id)
+    )
+
+    var doubles = articleCurrent.forumCommentArea.map(function(num) {
+      const nowTime = +new Date()
+      const messageTime = num.forumCommentCreateTime
+      let time = nowTime - messageTime
+      let secondnumber = time / 1000
+      let minutenumber = time / 60000
+      // 秒
+      let second = Math.floor(secondnumber % 60)
+      // 小時
+      let hour = minutenumber / 60 >= 1 ? Math.floor(minutenumber / 60) : ''
+      // 分鐘
+      let minute = minutenumber % 60 >= 1 ? Math.floor(minutenumber % 60) : ''
+      // 天
+      let day = hour / 24 >= 1 ? Math.floor(hour / 24) : ''
+      let showTimeText =
+        day > 1
+          ? day + '天'
+          : hour >= 1
+          ? hour + '小時'
+          : minute >= 1
+          ? minute + '分鐘'
+          : second + '秒'
+      console.log(showTimeText)
+
+      return showTimeText
+    })
+
+    console.log(doubles)
+
+    this.setState({ commentCreateTimeCount: doubles })
+  }
+
+  // ------------------------------發文時間自動更新套餐End----------------------------------------
+
+  // ----------------------------------pagination頁面套餐start-------------------------------
+  // 最後動作完一定要設定state讓全部重新渲染
+  handleNowPageNumber = async e => {
+    // 可從handleNowPageNumber去撈到動做
+    console.log(+e.target.innerText)
+    // 抓到目前點選button的頁碼轉為數字
+    // 偵測目前總共資料筆數/10後變成每頁10比後去改變渲染資料左邊列表每次顯示比數
+    // 再用handleNowPageNumber FUNCTION去撈到ForumPage偷渡回來的目前頁面數字最後可以帶入下方計算用
+
+    // 抓到當下頁面就存進state給選擇一頁下一頁參照用
+    this.setState({ currentPage: Number(e.target.innerText) })
+
+    // 計算陣列複製起始索引用來接下slice
+    // 陣列起始索引
+    const pagesideListDataStart = Number(e.target.innerText - 1) * 10
+    // 陣列結束索引
+    const pagesideListDataEnd = pagesideListDataStart + 10
+    // console.log(pagesideListDataStart)
+    // 計算陣列結束索引用來接下slice
+
+    // this.setState({
+
+    const maxEndlength = this.state.listdata.length
+    // 這邊不像didmount相同要reverse，因為頁碼產生的數值是從1開始
+    // 對應到的10筆資料會是從前面開始，這樣render頁面資訊就會反過來變成最舊的擺最前面
+    // 所以取消reverse讓他頁碼1對照的是最後10筆資料
+    // console.log(maxEndlength)
+    // 如果總比數的數量小於pagesideListDataEnd最後中的數字就會產生陣列撈到是空的，因此當最後一頁的時候是撈總資料的長度當最後斷點
+    const listdatareverse = this.state.listdata.slice(
+      pagesideListDataStart,
+      maxEndlength < pagesideListDataEnd ? maxEndlength : pagesideListDataEnd
+    )
+    // console.log(listdatareverse)
+    // console.log(listdatareverse[0].id)
+
+    // 用來裝目前要顯示左側列表的資料
+    await this.setState({
+      listdataReverse: listdatareverse,
+      nowIDdata: listdatareverse[0],
+    })
+    // console.log(this.state.listdataReverse)
+    await this.setState({
+      currentcommentApi: listdatareverse[0].forumCommentArea,
+    })
+  }
+
+  // 使用參數用法都跟上面page主軸一樣
+  handlePrevPage = async e => {
+    // 控制頁數小於1產生錯誤
+    if (this.state.currentPage > 1) {
+      const newCurrentPage = this.state.currentPage - 1
+      console.log(newCurrentPage)
+
+      // 因為資料室反握來到的所以第一筆資料應該是往回加，待確認邏輯
+      // const newCurrentPageLastdataId = this.state.currentPage + 1
+
+      // 點了上一頁馬上存入state
+      await this.setState({
+        // 如果頁面=0就顯示1
+        currentPage: newCurrentPage,
+      })
+      // 這次已經有參照newCurrentPagr可以丟了
+      const pagesideListDataStart = (newCurrentPage - 1) * 10
+      const pagesideListDataEnd = pagesideListDataStart + 10
+
+      const maxEndlength = this.state.listdata.length
+      const listdatareverse = this.state.listdata.slice(
+        pagesideListDataStart,
+        maxEndlength < pagesideListDataEnd ? maxEndlength : pagesideListDataEnd
+      )
+      await this.setState({
+        listdataReverse: listdatareverse,
+        nowIDdata: listdatareverse[0],
+        currentcommentApi: listdatareverse[0].forumCommentArea,
+        // currentLastDataId: +listdatareverse[0].id,
+      })
+    }
+  }
+
+  //下一頁 使用參數用法都跟上面page主軸一樣
+  handleNextvPage = async e => {
+    // 點了下一頁馬上存入state
+
+    // 計算總頁數
+    const maxPages = Math.ceil(this.state.listdata.length / 10)
+    // 總頁數有筆目前頁碼大才可執行
+    if (this.state.currentPage < maxPages) {
+      const newCurrentPage = this.state.currentPage + 1
+
+      // 因為資料室反握來到的所以第一筆資料應該是往回加，待確認邏輯
+      // const newCurrentPageLastdataId = this.state.currentPage - 1
+
+      await this.setState({
+        // 如果頁面=0就顯示1
+        currentPage: newCurrentPage,
+        // / 目前資料頁最後一筆ID拿來連接設定LINKID，待確認邏輯
+        // currentLastDataId: newCurrentPageLastdataId,
+      })
+      // 這次已經有參照newCurrentPagr可以丟了
+      const pagesideListDataStart = (newCurrentPage - 1) * 10
+      const pagesideListDataEnd = pagesideListDataStart + 10
+
+      const maxEndlength = this.state.listdata.length
+      const listdatareverse = this.state.listdata.slice(
+        pagesideListDataStart,
+        maxEndlength < pagesideListDataEnd ? maxEndlength : pagesideListDataEnd
+      )
+      this.setState({
+        listdataReverse: listdatareverse,
+        nowIDdata: listdatareverse[0],
+        currentcommentApi: listdatareverse[0].forumCommentArea,
+      })
+
+      // 待確認邏輯
+      // this.setState({
+      //   currentLastDataId: Number(this.state.listdataReverse[0].id),
+      // })
+
+      // console.log(Number(this.state.listdataReverse[0].id))
+    }
+  }
+  // ----------------------------------pagination頁面套餐end-------------------------------
   //
   //
   //
+
+  // 先撈到ID的資訊
   // --------------------------------列表點選控制state供後續渲染文章start-------------
   // 點列表顯示頁面功能
   // element:點擊到列表的對應物件，index當個文章的索引值
@@ -309,6 +561,7 @@ class Forum extends React.Component {
   //
   //
   // --------------------------------留言功能start-----------------------------------
+
   //確認發文後沒重新導向頁面馬上按留言會有問題
   // 留言區塊onchange撈值回傳到state後再提供給handleCommentInput要送出的參數
   handleCommentInputArea = e => {
@@ -332,6 +585,17 @@ class Forum extends React.Component {
   }
   // 留言功能，由上方控制是否啟動
   handleCommentInput = async () => {
+    // 測試如果沒sessioN給一個暫時的話會跟後面抓sesion iD實衝突
+    // if (!sessionStorage.getItem('memberId')) {
+    //   sessionStorage.setItem('memberId', +new Data())
+    // }
+
+    // TODO:確認登入導向頁面
+    // if (!sessionStorage.getItem('memberId')) {
+    //   // alert('回到登入頁')
+    //   window.location.href = '/LoginSign'
+    // }
+
     // 搜尋到所點擊的文章回傳的內容物件倒入onClickArticle
     const onClickArticle = this.state.listdata.find(
       item => item.id === +this.props.match.params.id
@@ -354,9 +618,20 @@ class Forum extends React.Component {
       forumComment: this.state.commentTempStorage,
       forumCommentLike: 0,
       forumCommentDislike: 0,
-      forumCommentName: 'bbc',
-      forumCommentAvatar: '9743_2.jpg',
-      forumCommentUserId: 1,
+      // 判斷是否有session帶入不同值
+      forumCommentName: sessionStorage.getItem('memberId')
+        ? this.state.noLoginInfo.name
+        : '藏鏡人',
+      // TODO:有資料可以撈時要改回
+      forumCommentAvatar: sessionStorage.getItem('memberId')
+        ? this.state.noLoginInfo.avatar
+        : 'defaultAvatar.jpg',
+      // forumCommentAvatar: '9743_2.jpg',
+      forumCommentUserId: sessionStorage.getItem('memberId')
+        ? sessionStorage.getItem('memberId')
+        : 'defaultForumCommentID',
+      // 發留言時間
+      forumCommentCreateTime: +new Date(),
     }
 
     // 將整包要更新的內容重新打包，不能漏掉任何屬性即使沒變
@@ -377,7 +652,7 @@ class Forum extends React.Component {
       // 將原本的留言陣列onClickArticleComment內容展開後再把新的留言newComment加入
       forumCommentArea: [...onClickArticleComment, newComment],
     }
-    // console.log(UpdateArticle.forumCommentArea)
+    console.log(UpdateArticle.forumCommentArea)
     // console.log(this.state.listdata)
 
     try {
@@ -534,6 +809,7 @@ class Forum extends React.Component {
   //
   //TODO:檢查初次導向頁面發文後留言問題
   // --------------------------------發文功能start-----------------------------------
+
   // 對應跳出視窗的表單的欄位變動，這是一種常見的使用方式
   // ，讓下層元件保持為函式型元件，仍然是有表單可控元件
   // 不過onChange與state會寫在上層元件中
@@ -554,7 +830,12 @@ class Forum extends React.Component {
   }
   // 新增文章modal  toggle用
   handleShow = () => {
-    this.setState({ show: true })
+    if (!sessionStorage.getItem('memberId')) {
+      // alert('回到登入頁')
+      window.location.href = '/LoginSign'
+    } else {
+      this.setState({ show: true })
+    }
   }
 
   // 發送文章
@@ -564,7 +845,7 @@ class Forum extends React.Component {
       alert('請輸入評論!')
       return
     }
-    if (this.state.forumReview.trim().length > 30) {
+    if (this.state.forumReview.trim().length > 3000) {
       alert('內文請勿超過3000字!')
       return
     }
@@ -612,9 +893,12 @@ class Forum extends React.Component {
       }),
       // 發文當下距離1970總秒數，用一元正字或可用new Date().getTime()
       forumCreateDateInSecond: +new Date(),
-      forumName: this.state.forumName ? this.state.forumName : 'Jack',
-      forumNameId: this.state.forumNameId,
-      forumAvatar: this.state.forumAvatar,
+      forumName: this.state.noLoginInfo.name,
+      //  發文時存入session ID
+      forumNameId: sessionStorage.getItem('memberId'),
+      // TODO:有圖片後要改成帶入撈到的圖片
+      forumAvatar: this.state.noLoginInfo.avatar,
+      // forumAvatar: this.state.forumAvatar,
       // TODO://要改成實際樣子
       forumArticlePic: this.state.forumArticlePic,
       // 將textarea輸入的\n轉化成<br>，再到ForumArticleContentRoy用dangerouslySetInnerHTML轉化tag
@@ -1151,7 +1435,7 @@ class Forum extends React.Component {
           <div className="row justify-content-center ">
             <div className="col-3 mr-4 px-1 " style={{ height: '1000px' }}>
               <div className="">
-                <div className="px-1">
+                <div className="">
                   <InputCardContent_MemberSignUp
                     inputmsg={this.state.inputmsg}
                     inputH={this.state.inputH}
@@ -1174,22 +1458,41 @@ class Forum extends React.Component {
                   />
                 </div>
 
-                <div className="my-4 px-1">
+                <div className="my-4">
                   <ForumSearchbarRoy handleSearch={this.handleSearch} />
                 </div>
-                <div className="d-flex mb-3 px-1">
-                  <ActionButtonCategoryRoy />
-                  <div className=" ml-3">
+                <div className="d-flex m-0 ">
+                  <div className="mr-3">
+                    <ActionButtonCategoryRoy />
+                  </div>
+                  <div className="">
                     <ActionButtonFilterRoy />
                   </div>
                 </div>
                 <div
-                  className="px-1 d-flex justify-content-center align-content-center w-100 mb-2"
+                  className="d-flex justify-content-center align-content-center w-100 my-3"
                   style={{ height: '40px' }}
                 >
-                  <ForumPage ForumTotalPages={this.state.ForumTotalPages} />
+                  <ForumPage
+                    // 將總頁數算完傳下去
+                    ForumTotalPages={this.state.ForumTotalPages}
+                    // 將目前頁數的資料傳下去給button偵測回傳的路徑為哪個id
+                    nowPage={this.state.listdataReverse}
+                    // 控制按鈕按下後傳入目前第幾頁的參數去重新渲染listdataReverse裡資料的陣列
+                    handleNowPageNumber={this.handleNowPageNumber}
+                    // 把當前頁碼應該對應到的ID位置數值傳下去
+                    cuerrenPageFirstData={this.state.cuerrenPageFirstData}
+                    // 上一頁功能
+                    handlePrevPage={this.handlePrevPage}
+                    // 下一頁功能
+                    handleNextvPage={this.handleNextvPage}
+                    // 目前頁面，寫判斷式用
+                    currentPage={this.state.currentPage}
+                    // 目前頁面第一筆資料計算用
+                    currentLastDataId={this.state.currentLastDataId}
+                  />
                 </div>
-                <div className="px-1 my-1">
+                <div className=" my-1">
                   <ActionBtnScrollTopRoy
                     handleScrollTop={this.handleScrollTop}
                   />
@@ -1248,7 +1551,7 @@ class Forum extends React.Component {
                     </Link>
                   ))}
                 </div>
-                <div className="px-1 mt-2">
+                <div className=" my-3">
                   <ActionBtnScrollBottomRoy
                     handleScrollBottom={this.handleScrollBottom}
                   />
@@ -1261,104 +1564,119 @@ class Forum extends React.Component {
               </div>
               <div className={' ' + this.state.searchNoDataContentStatus}>
                 <div
-                  className="row m-0 p-0"
                   style={{
                     border: 'none',
                     background: 'none',
                     boxShadow: '0 2px 6px #191C20',
                   }}
                 >
-                  <div className="col-12  p-5">
-                    <>
-                      {/* <ActionBtnUpdateArticleRoy
+                  <div className="row m-0 p-0">
+                    <div className="col-12  p-5">
+                      <>
+                        {/* <ActionBtnUpdateArticleRoy
                       onClick={this.handleArticleEdit}
                     /> */}
-                      {/* {
+                        {/* {
                       (console.log(this.state.currentdata),
                       console.log(this.state.listClickChek))
                     } */}
-                      <ForumArticleContentRoy
-                        // 將點擊文章列表後所產生的物件中的值傳下去，同時更新文章內容
-                        // 檢查是否有點擊上方ForumArticleListRoy列表
-                        // 並在handleClick裡將listClickChek轉成true，用link方式重新render則會再回到false
-                        // 有就用FETCH到的資料RENDER，如果是用LINK方式判斷FALSE就用params判斷id後所倒入的另一個state撈資料
-                        // nowIDdata為params比對倒入的state
-                        // currentdata為click倒入的state
-                        contentheadline={
-                          this.state.listClickChek
-                            ? this.state.currentdata.headline
-                            : this.state.nowIDdata.headline
-                        }
-                        contentUserAvatar={
-                          this.state.listClickChek
-                            ? this.state.currentdata.forumAvatar
-                            : this.state.nowIDdata.forumAvatar
-                        }
-                        contentUserName={
-                          this.state.listClickChek
-                            ? this.state.currentdata.forumName
-                            : this.state.nowIDdata.forumName
-                        }
-                        contentIssueDate={
-                          this.state.listClickChek
-                            ? this.state.currentdata.forumCreateDate
-                            : this.state.nowIDdata.forumCreateDate
-                        }
-                        contentReview={
-                          this.state.listClickChek
-                            ? this.state.currentdata.forumReview
-                            : this.state.nowIDdata.forumReview
-                        }
-                        contentArticlePic={
-                          this.state.listClickChek
-                            ? this.state.currentdata.forumArticlePic
-                            : this.state.nowIDdata.forumArticlePic
-                        }
-                        // 用來傳遞當筆資料id值下去然後在元件街上字串產生唯一id
-                        // 用來編輯時getelement控制用
-                        contentheadlineId={
-                          this.state.listClickChek
-                            ? this.state.currentdata.id
-                            : this.state.nowIDdata.id
-                        }
-                        // 圖片路徑前墜
-                        avatarPath={this.state.imagePath}
-                        // 刪除文章button
-                        handleArticleDelete={this.handleArticleDelete}
-                        // 文章標題編輯後state變更用
-                        handleHeadlineEditSave={this.handleHeadlineEditSave}
-                        handleHeadlineEditCancel={this.handleHeadlineEditCancel}
-                        handleHeadlineEditKeyboardControl={
-                          this.handleHeadlineEditKeyboardControl
-                        }
-                        // 確認是否有按標題邊輯按鈕
-                        handleHeadlineEditTrigger={
-                          this.handleHeadlineEditTrigger
-                        }
-                        // 傳送是否可編輯部林值確認是否啟動編輯
-                        handleHeadlineEditStatus={
-                          this.state.handleHeadlineEditStatus
-                        }
-                        HeadlineEditBtnStatus={this.state.HeadlineEditBtnStatus}
-                        HeadlineSaveBtnStatus={this.state.HeadlineSaveBtnStatus}
-                        HeadlineCancelBtnStatus={
-                          this.state.HeadlineCancelBtnStatus
-                        }
-                        handleArticleEditSave={this.handleArticleEditSave}
-                        handleArticleEditTrigger={this.handleArticleEditTrigger}
-                        handleArticleEditCancel={this.handleArticleEditCancel}
-                        handleArticleEditStatus={
-                          this.state.handleArticleEditStatus
-                        }
-                        ArticleEditBtnStatus={this.state.ArticleEditBtnStatus}
-                        ArticleSaveBtnStatus={this.state.ArticleSaveBtnStatus}
-                        ArticleCancelBtnStatus={
-                          this.state.ArticleCancelBtnStatus
-                        }
-                        articleCreateTimeCount={this.articleCreateTimeCount}
-                        forumCreateTimeCount={this.state.forumCreateTimeCount}
-                      />
-                    </>
+                        <ForumArticleContentRoy
+                          nowLoginID={this.state.nowLoginUserId}
+                          // 將點擊文章列表後所產生的物件中的值傳下去，同時更新文章內容
+                          // 檢查是否有點擊上方ForumArticleListRoy列表
+                          // 並在handleClick裡將listClickChek轉成true，用link方式重新render則會再回到false
+                          // 有就用FETCH到的資料RENDER，如果是用LINK方式判斷FALSE就用params判斷id後所倒入的另一個state撈資料
+                          // nowIDdata為params比對倒入的state
+                          // currentdata為click倒入的state
+                          forumNameId={
+                            this.state.listClickChek
+                              ? this.state.currentdata.forumNameId
+                              : this.state.nowIDdata.forumNameId
+                          }
+                          contentheadline={
+                            this.state.listClickChek
+                              ? this.state.currentdata.headline
+                              : this.state.nowIDdata.headline
+                          }
+                          contentUserAvatar={
+                            this.state.listClickChek
+                              ? this.state.currentdata.forumAvatar
+                              : this.state.nowIDdata.forumAvatar
+                          }
+                          contentUserName={
+                            this.state.listClickChek
+                              ? this.state.currentdata.forumName
+                              : this.state.nowIDdata.forumName
+                          }
+                          contentIssueDate={
+                            this.state.listClickChek
+                              ? this.state.currentdata.forumCreateDate
+                              : this.state.nowIDdata.forumCreateDate
+                          }
+                          contentReview={
+                            this.state.listClickChek
+                              ? this.state.currentdata.forumReview
+                              : this.state.nowIDdata.forumReview
+                          }
+                          contentArticlePic={
+                            this.state.listClickChek
+                              ? this.state.currentdata.forumArticlePic
+                              : this.state.nowIDdata.forumArticlePic
+                          }
+                          // 用來傳遞當筆資料id值下去然後在元件街上字串產生唯一id
+                          // 用來編輯時getelement控制用
+                          contentheadlineId={
+                            this.state.listClickChek
+                              ? this.state.currentdata.id
+                              : this.state.nowIDdata.id
+                          }
+                          // 圖片路徑前墜
+                          avatarPath={this.state.imagePath}
+                          // 刪除文章button
+                          handleArticleDelete={this.handleArticleDelete}
+                          // 文章標題編輯後state變更用
+                          handleHeadlineEditSave={this.handleHeadlineEditSave}
+                          handleHeadlineEditCancel={
+                            this.handleHeadlineEditCancel
+                          }
+                          handleHeadlineEditKeyboardControl={
+                            this.handleHeadlineEditKeyboardControl
+                          }
+                          // 確認是否有按標題邊輯按鈕
+                          handleHeadlineEditTrigger={
+                            this.handleHeadlineEditTrigger
+                          }
+                          // 傳送是否可編輯部林值確認是否啟動編輯
+                          handleHeadlineEditStatus={
+                            this.state.handleHeadlineEditStatus
+                          }
+                          HeadlineEditBtnStatus={
+                            this.state.HeadlineEditBtnStatus
+                          }
+                          HeadlineSaveBtnStatus={
+                            this.state.HeadlineSaveBtnStatus
+                          }
+                          HeadlineCancelBtnStatus={
+                            this.state.HeadlineCancelBtnStatus
+                          }
+                          handleArticleEditSave={this.handleArticleEditSave}
+                          handleArticleEditTrigger={
+                            this.handleArticleEditTrigger
+                          }
+                          handleArticleEditCancel={this.handleArticleEditCancel}
+                          handleArticleEditStatus={
+                            this.state.handleArticleEditStatus
+                          }
+                          ArticleEditBtnStatus={this.state.ArticleEditBtnStatus}
+                          ArticleSaveBtnStatus={this.state.ArticleSaveBtnStatus}
+                          ArticleCancelBtnStatus={
+                            this.state.ArticleCancelBtnStatus
+                          }
+                          articleCreateTimeCount={this.articleCreateTimeCount}
+                          forumCreateTimeCount={this.state.forumCreateTimeCount}
+                        />
+                      </>
+                    </div>
                   </div>
                 </div>
                 <div
@@ -1392,8 +1710,8 @@ class Forum extends React.Component {
                       : this.state.currentcommentApi
                     ).map((e, index) => (
                       <>
-                        {/* {console.log(this.state.currentcommentdata)}
-                      {console.log(this.state.currentcommentApi)} */}
+                        {/* {console.log(this.state.currentcommentdata)} */}
+                        {/* {console.log(e)} */}
                         <ForumArticleCommentRoy
                           // map要用陣列，先建立一個陣列裝對應當篇文章下面的留言
                           key={e.forumCommentId}
@@ -1403,9 +1721,14 @@ class Forum extends React.Component {
                           commentDislike={e.forumCommentDislike}
                           commentUserName={e.forumCommentName}
                           commentAvatar={e.forumCommentAvatar}
+                          // 傳遞判斷刪留言比對session依據
+                          forumCommentUserId={e.forumCommentUserId}
                           // 圖片路徑前墜
                           avatarPath={this.state.imagePath}
                           handleCommentDelete={this.handleCommentDelete}
+                          commentCreateTimeCount={
+                            this.state.commentCreateTimeCount[index]
+                          }
                         />
                       </>
                     ))}
@@ -1415,7 +1738,7 @@ class Forum extends React.Component {
                       />
                     </div>
                     <div className="my-4 d-flex justify-content-end">
-                      <div className="mx-4">
+                      <div className="mx-2">
                         <ForumCommentCancelRoy
                           // 留言清除輸入內容
                           handleCommentInputCancel={
