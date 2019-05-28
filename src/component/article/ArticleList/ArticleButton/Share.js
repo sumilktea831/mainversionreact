@@ -12,7 +12,7 @@ const ArticleShare = props => {
   return (
     <button className="btn btn-sm  ml-3 btn-warning">
       <FaShareSquare className="mr-1" />
-      按讚
+      分享
     </button>
   );
 };

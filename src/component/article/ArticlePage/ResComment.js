@@ -1,26 +1,30 @@
 import React from 'react'
+import { Row, Col } from 'react-bootstrap'
+import ArticleLike from '../ArticleList/ArticleButton/Like'
 
 const ResComment = props => {
   return (
     <>
       <div className="row justify-content-end">
-        <div className="col-md-10">
-          <div class="media ">
+        <Col md={10} xs={12} className="">
+          <div class="media">
             <div class="media-body d-flex py-4">
-              <div className="col-md-3 d-flex">
-                <div className="avatar mx-4">
+              <Col xs={4} md={2} className="row">
+                <div className="avatar mr-3">
                   <img src="/images/article/test4.jpg" class="mr-3" alt="..." />
                 </div>
                 <div>
                   <div>{props.author}</div>
                   <div>{props.date}</div>
                 </div>
-              </div>
-              <div className="col-md-9">{props.content}</div>
-              <div className="commentGroup">讚</div>
+              </Col>
+              <Col md={'auto'} xs={8} className="">
+                {props.content}
+              </Col>
             </div>
+            {/* <div className="commentGroup">讚</div> */}
           </div>
-        </div>
+        </Col>
       </div>
     </>
   )
