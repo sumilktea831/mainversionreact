@@ -45,7 +45,7 @@ const ActivityCard = props => (
       )}
       <LinkContainer to={'/activity/' + props.routerId}>
         <div
-          className="card"
+          className="card activityCard"
           style={{
             height: '400px',
             border: 'none',

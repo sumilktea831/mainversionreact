@@ -37,13 +37,27 @@ class App extends React.Component {
       prevHeight: 0,
     }
   }
-  componentDidMount() {
+  async componentDidMount() {
     window.addEventListener('scroll', this.handleScroll)
     const isBackmainpage = window.location.href
       .toString()
       .indexOf('BackMainpage')
     if (isBackmainpage > 0) {
       this.setState({ navbar: 'active' })
+    }
+    const memberId = sessionStorage.getItem('memberId')
+    try {
+      const res = await fetch('http://localhost:5555/member/' + memberId, {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+      const data = await res.json()
+      this.setState({ memberData: data })
+    } catch (err) {
+      console.log(err)
     }
   }
   componentWillUnmount() {
@@ -103,15 +117,20 @@ class App extends React.Component {
                 <LinkContainer to="/forum">
                   <Nav.Link className="mr-5">論壇</Nav.Link>
                 </LinkContainer>
-                <LinkContainer to="/LoginSign">
-                  <Nav.Link className="mr-5">登入</Nav.Link>
-                </LinkContainer>
-                <LinkContainer to="/LoginSign">
-                  <Nav.Link>註冊</Nav.Link>
-                </LinkContainer>
-                <LinkContainer to="/BackMainpage">
-                  <Nav.Link className="ml-5">後台（開發用）</Nav.Link>
-                </LinkContainer>
+                {this.state.memberData !== '' ? (
+                  <>
+                    <LinkContainer to="/BackMainpage">
+                      <Nav.Link className="mr-5">會員後台</Nav.Link>
+                    </LinkContainer>
+                    <LinkContainer to="/LoginSign">
+                      <Nav.Link className="mr-5">會員登出</Nav.Link>
+                    </LinkContainer>
+                  </>
+                ) : (
+                  <LinkContainer to="/LoginSign">
+                    <Nav.Link className="mr-5">登入</Nav.Link>
+                  </LinkContainer>
+                )}
               </Nav>
             </Navbar.Collapse>
           </Navbar>
