@@ -107,6 +107,7 @@ class Activity extends React.Component {
         this.setState({ searchbarPlaceState: ['active', '', '', '', ''] })
         // this.searchbarOnClick(0,searchName,"全部")
       }
+      this.setState({ searchText: '' })
       console.log(data)
       console.log(typeof data)
       this.setState({ activityCardData: data })
@@ -115,31 +116,37 @@ class Activity extends React.Component {
     }
   }
   SearchBarOnChange = async event => {
-    this.setState({ activityCardDataResult: 1 })
     const searchText = event.target.value
     this.setState({ searchText: searchText })
-    try {
-      const res = await fetch('http://localhost:5555/activityCardData', {
-        method: 'GET',
-        headers: new Headers({
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        }),
-      })
-      let data = await res.json()
-      data = data.filter(
-        item =>
-          item.theater.indexOf(searchText) > -1 ||
-          item.title.indexOf(searchText) > -1
-      )
-      if (data.length === 0) {
-        this.setState({ activityCardDataResult: 0 })
-        this.setState({ searchbarRegionState: ['active', '', '', '', ''] })
-        this.setState({ searchbarPlaceState: ['active', '', '', '', ''] })
+  }
+  SearchBarOnKeyDown = async event => {
+    const searchText = event.target.value
+    this.setState({ searchText: searchText })
+    if (event.which === 13) {
+      this.setState({ activityCardDataResult: 1 })
+      try {
+        const res = await fetch('http://localhost:5555/activityCardData', {
+          method: 'GET',
+          headers: new Headers({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          }),
+        })
+        let data = await res.json()
+        data = data.filter(
+          item =>
+            item.theater.indexOf(searchText) > -1 ||
+            item.title.indexOf(searchText) > -1
+        )
+        if (data.length === 0) {
+          this.setState({ activityCardDataResult: 0 })
+          this.setState({ searchbarRegionState: ['active', '', '', '', ''] })
+          this.setState({ searchbarPlaceState: ['active', '', '', '', ''] })
+        }
+        this.setState({ activityCardData: data })
+      } catch (err) {
+        console.log(err)
       }
-      this.setState({ activityCardData: data })
-    } catch (err) {
-      console.log(err)
     }
   }
   render() {
@@ -215,6 +222,7 @@ class Activity extends React.Component {
                     value={this.state.searchText}
                     placeholder="請輸入關鍵字"
                     handleOnChange={this.SearchBarOnChange}
+                    handleOnKeyDown={this.SearchBarOnKeyDown}
                   />
                 </div>
               </div>
@@ -223,7 +231,7 @@ class Activity extends React.Component {
               <div className="col-md-12 p-0">
                 <div className="text-center">
                   <button
-                    onClick={() => this.searchbarOnClick(0)}
+                    onClick={() => this.searchbarOnClick('清空')}
                     className="btn btn-warning"
                   >
                     沒有符合此條件的活動，請重新搜尋

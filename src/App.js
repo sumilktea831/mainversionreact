@@ -131,6 +131,12 @@ class App extends React.Component {
             <Route path="/LoginSign" component={LoginSign} />
             <Route path="/BackMainpage" component={BackMainpage} />
           </Switch>
+          <div
+            className="container-fluid"
+            style={{ textAlign: 'center', height: '300px' }}
+          >
+            ＦＯＯＴＥＲ區
+          </div>
         </ScroolToTop>
       </Router>
     )

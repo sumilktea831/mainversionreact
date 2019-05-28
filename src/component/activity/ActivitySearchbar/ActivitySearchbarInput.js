@@ -7,6 +7,7 @@ const ActivitySearchbarInput = props => (
       type="text"
       value={props.value}
       onChange={props.handleOnChange}
+      onKeyDown={props.handleOnKeyDown}
       placeholder={props.placeholder}
       style={{
         background: 'inherit',
