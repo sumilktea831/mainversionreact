@@ -23,6 +23,7 @@ class Activity extends React.Component {
       searchbarRegionState: ['active', '', '', '', ''],
       searchbarPlaceState: ['active', '', '', '', ''],
       searchText: '',
+      collectActivity: '',
     }
   }
 
@@ -38,6 +39,21 @@ class Activity extends React.Component {
       })
       const data = await res.json()
       this.setState({ activityCardData: data })
+    } catch (err) {
+      console.log(err)
+    }
+
+    const memberId = sessionStorage.getItem('memberId')
+    try {
+      const res = await fetch('http://localhost:5555/member/' + memberId, {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+      const data = await res.json()
+      this.setState({ collectActivity: data.collectActivity })
     } catch (err) {
       console.log(err)
     }
@@ -168,7 +184,7 @@ class Activity extends React.Component {
       } else {
         data.collectActivity += id
       }
-
+      this.setState({ collectActivity: data.collectActivity })
       try {
         const res = await fetch('http://localhost:5555/member/' + memberId, {
           method: 'PUT',
@@ -185,19 +201,6 @@ class Activity extends React.Component {
     } catch (err) {
       console.log(err)
     }
-    // try {
-    //   const res = await fetch('http://localhost:5555/member/' + memberId, {
-    //     method: 'PUT',
-    //     body: JSON.stringify(),
-    //     headers: new Headers({
-    //       Accept: 'application/json',
-    //       'Content-Type': 'application/json',
-    //     }),
-    //   })
-    //   let data = await res.json()
-    // } catch (err) {
-    //   console.log(err)
-    // }
   }
   render() {
     return (
@@ -301,7 +304,11 @@ class Activity extends React.Component {
                   subtitle={data.title}
                   imgSrc={data.imgSrc}
                   collectOpen
-                  isCollect={this.state.isCollect}
+                  isCollect={
+                    this.state.collectActivity.indexOf(data.id) > -1
+                      ? true
+                      : false
+                  }
                 />
               </div>
             ))}
