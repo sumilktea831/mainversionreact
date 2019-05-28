@@ -22,19 +22,30 @@ const AvatarOne = props => {
               style={{ objectFit: 'cover' }}
             />
           </div>
+        </div>
+        <label>
+          <input
+            type="file"
+            name={props.id}
+            id={props.id}
+            style={{ display: 'none' }}
+            onChange={props.onChange}
+          />
           <div
-            className="bg-warning d-flex align-items-center justify-content-center text-dark"
+            className="bg-warning d-flex align-items-center justify-content-center text-dark position-absolute"
             style={{
               borderRadius: '50%',
               width: '50px',
               height: '50px',
               fontSize: '25px',
-              marginLeft: '-70px',
+              margin: '70px 0 0 -70px',
+              cursor: 'pointer',
             }}
           >
             <i className="fas fa-edit" />
           </div>
-        </div>
+        </label>
+
         {/* 下面文字 */}
         <div className="col-lg w-100 h-50 flex-column d-flex justify-content-around mt-3">
           <div className="col d-flex align-items-center justify-content-center my-1">

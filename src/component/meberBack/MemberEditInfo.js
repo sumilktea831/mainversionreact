@@ -3,6 +3,7 @@ import InputWithLabelForEdit_Su from '../inputs/InputWithLabelForEdit_Su'
 import CheckboxMultiSu from '../inputs/CheckboxMultiSu'
 import ActivityTitle from '../activity/ActivityTitle/ActivityTitle'
 import { Row } from 'react-bootstrap'
+import AvatarTwo from '../cinema/AvatarTypeTwo/AvatarTwo'
 
 class MemberEditInfo extends React.Component {
   constructor(props) {
@@ -273,6 +274,38 @@ class MemberEditInfo extends React.Component {
         this.setState({ thisfavType: newFavType })
         copyData[eventName] = newFavType
       }
+    } else if (eventName == 'avatar') {
+      console.log(event.target.files[0])
+      console.log(event.target.files[0].name)
+
+      var file = event.target.files[0]
+      var uploadFileName = event.target.files[0].name
+      let formdata = new FormData()
+      formdata.append('myfile', file)
+      fetch('http://localhost:3001/api/member-upload-single', {
+        method: 'POST',
+        body: formdata,
+      })
+        .then(res => res.json())
+        .then(obj => {
+          console.log(obj)
+          if (obj.success == true) {
+            copyData[eventName] = obj.filename
+            this.setState({ thisData: copyData }, () =>
+              console.log(this.state.thisData)
+            )
+            // document.querySelector(
+            //   '#' + eventName + 'filename'
+            // ).innerHTML = uploadFileName
+          } else {
+            copyData[eventName] = ''
+            this.setState({ thisData: copyData }, () =>
+              console.log(this.state.thisData)
+            )
+            document.querySelector('#' + eventName + 'filename').innerHTML =
+              obj.info
+          }
+        })
     } else {
       //else一般text的處理
       copyData[eventName] = value
@@ -298,7 +331,7 @@ class MemberEditInfo extends React.Component {
                   key={item.id}
                   id={item.id}
                   inputWidth={item.w}
-                  inputHeight='48px'
+                  inputHeight="48px"
                   inputType={item.inputType}
                   inputLabel={item.inputLabel}
                   iconLeft={item.iconL}
@@ -320,6 +353,14 @@ class MemberEditInfo extends React.Component {
           </div>
           <div className="col-lg-5 mt-3 bg-primary">
             這裡放頭像(含編輯按鈕)、email、權限
+            <AvatarTwo
+              img={this.props.avatarOne.img}
+              name={this.props.avatarOne.name}
+              purview={this.props.avatarOne.purview}
+              SignUpDate={this.props.avatarOne.SignUpDate}
+              onChange={this.handleInputTextChange}
+              id={'avatar'}
+            />
           </div>
         </Row>
         <div className="row mt-5 mb-3">

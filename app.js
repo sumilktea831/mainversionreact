@@ -2,11 +2,14 @@ var express = require('express')
 var app = express()
 var apiRouter = require('./src/routes/api')
 
-app.all("*", function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-control-Allow-Headers", "xCors");
-  res.header("Access-Control-Allow-Methods", "GET,POST,DELETE,PUT,OPTIONS,HEAD,FETCH");
-  next();
+app.all('*', function(req, res, next) {
+  res.header('Access-Control-Allow-Origin', '*')
+  res.header('Access-control-Allow-Headers', 'xCors')
+  res.header(
+    'Access-Control-Allow-Methods',
+    'GET,POST,DELETE,PUT,OPTIONS,HEAD,FETCH'
+  )
+  next()
 })
 app.use('/api', apiRouter) //須放在('/',)設定的前面!否則POST方法會出錯
 

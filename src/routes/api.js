@@ -24,11 +24,12 @@ router.use(bodyParser.urlencoded({ extended: false }))
 //查看HTTP HEADER的Content-Type:如果是application/json，就以此方法解析
 router.use(bodyParser.json())
 
-//http://localhost:3000/api
+//http://localhost:3000/api 測試node連結成功地址
 router.get('/', function(req, res, next) {
   res.send('api')
 })
 
+//檔案上傳簡單範例
 //http://localhost:3000/api/upload
 // router.post('/upload', upload.single('myfile'), function(req, res, next) {
 //   // req.file is the `avatar` file
@@ -36,6 +37,46 @@ router.get('/', function(req, res, next) {
 //   res.send(req.file)
 // })
 
+//會員檔案上傳(single)
+router.post('/member-upload-single', upload.single('myfile'), (req, res) => {
+  console.log(req.file)
+  let ext = ''
+  let finalname = uuidv4()
+  const result = {
+    success: false,
+    info: '',
+    filename: '',
+  }
+  if (req.file && req.file.originalname) {
+    //判斷檔案屬性及檔案名稱是否為空
+    switch (req.file.mimetype) {
+      case 'image/png':
+        ext = '.png'
+      case 'image/jpeg':
+        if (!ext) {
+          ext = '.jpg'
+        }
+        fs.createReadStream(req.file.path).pipe(
+          fs.createWriteStream(
+            __dirname + '/../../public/images/member/' + finalname + ext
+          )
+        )
+
+        res.json({
+          success: true,
+          filename: finalname + ext,
+        })
+        return
+      default:
+        result.info = '檔案格式不符，請重新選擇 !'
+    }
+  } else {
+    result.info = '沒有選擇檔案'
+  }
+  res.json(result)
+})
+
+//戲院檔案上傳(single)
 router.post('/cinema-upload-single', upload.single('myfile'), (req, res) => {
   console.log(req.file)
   let ext = ''

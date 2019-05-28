@@ -182,7 +182,7 @@ class BackSidenav extends React.Component {
       const memberAvatar =
         memberPageData.avatar !== '' ? memberPageData.avatar : 'movieStar.jpg'
       const avatarOneData = {
-        img: 'http://localhost:3000/images/' + memberAvatar,
+        img: '/images/member/' + memberAvatar,
         name: memberPageData.name,
         purview: memberPageData.permission,
         SignUpDate: memberPageData.join_date,
@@ -582,6 +582,7 @@ class BackSidenav extends React.Component {
                         thisData={this.state.thisMemberData}
                         allMemberData={this.state.allMemberData}
                         handleMemberEditSave={this.handleMemberEditSave}
+                        avatarOne={this.state.avatarOne}
                       />
                     </div>
                   </div>
