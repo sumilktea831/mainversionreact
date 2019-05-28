@@ -4,6 +4,8 @@ import ForumArticleContentTiltleRoy from './ForumArticleContentTiltleRoy'
 import ForumArticleContentDateRoy from './ForumArticleContentDateRoy'
 
 const ForumArticleContentRoy = props => {
+  // console.log(props.forumNameId)
+  // console.log(sessionStorage.getItem('memberId'))
   return (
     <>
       <div className="d-flex">
@@ -22,6 +24,8 @@ const ForumArticleContentRoy = props => {
           HeadlineEditBtnStatus={props.HeadlineEditBtnStatus}
           HeadlineSaveBtnStatus={props.HeadlineSaveBtnStatus}
           HeadlineCancelBtnStatus={props.HeadlineCancelBtnStatus}
+          // 將登入id狀態傳下去
+          forumNameId={props.forumNameId}
         />
       </div>
       <div className="d-flex justify-content-between align-items-end">
@@ -34,43 +38,90 @@ const ForumArticleContentRoy = props => {
           forumCreateTimeCount={props.forumCreateTimeCount}
         />
         <div className="">
-          <div className="d-flex justify-content-end">
-            <div className="justify-content-end d-flex align-items-center ml-2 mt-1 ">
+          <div className={'d-flex justify-content-end my-3 '}>
+            <div
+              className={
+                'justify-content-end d-flex align-items-center    ' +
+                props.ArticleCancelBtnStatus
+              }
+            >
               <button
                 className={
-                  'btn btn-outline-warning mb-3 ' + props.ArticleCancelBtnStatus
+                  'btn my-0 mr-0  btn-outline-warning  ' +
+                  props.ArticleCancelBtnStatus
                 }
-                onClick={props.handleArticleEditCancel}
+                onClick={
+                  props.forumNameId === sessionStorage.getItem('memberId')
+                    ? props.handleArticleEditCancel
+                    : ''
+                }
               >
                 取消
               </button>
             </div>
-            <div className="justify-content-end d-flex align-items-center ml-2 mt-1 ">
+            <div
+              className={
+                'justify-content-end d-flex align-items-center  ' +
+                props.ArticleEditBtnStatus
+              }
+            >
               <button
                 className={
-                  'btn btn-outline-warning mb-3 ' + props.ArticleEditBtnStatus
+                  'btn my-0 mr-0 btn-outline-warning ' +
+                  props.ArticleEditBtnStatus +
+                  '' +
+                  // 判斷seesion
+                  (props.forumNameId === sessionStorage.getItem('memberId')
+                    ? ''
+                    : 'd-none')
                 }
-                onClick={props.handleArticleEditTrigger}
+                onClick={
+                  props.forumNameId === sessionStorage.getItem('memberId')
+                    ? props.handleArticleEditTrigger
+                    : ''
+                }
               >
-                編輯內文
+                編輯
               </button>
             </div>
-            <div className="justify-content-end d-flex  align-items-center  ml-2 mt-1 ">
+            <div
+              className={
+                'justify-content-end d-flex  align-items-center  ' +
+                props.ArticleSaveBtnStatus
+              }
+            >
               <button
                 className={
-                  'btn btn-outline-warning mb-3 ' + props.ArticleSaveBtnStatus
+                  'btn my-0 mr-0 btn-outline-warning ' +
+                  props.ArticleSaveBtnStatus
                 }
-                onClick={props.handleArticleEditSave}
+                onClick={
+                  props.forumNameId === sessionStorage.getItem('memberId')
+                    ? props.handleArticleEditSave
+                    : ''
+                }
               >
                 儲存
               </button>
             </div>
-            <div className="justify-content-end d-flex align-items-center  ml-2 mt-1">
+            <div className="justify-content-end d-flex align-items-center ">
               <button
-                className="btn btn-outline-warning mb-3 "
-                onClick={props.handleArticleDelete}
+                className={
+                  'btn my-0 mr-0  btn-outline-warning   ' +
+                  '' +
+                  // 判斷seesion
+                  (props.forumNameId === sessionStorage.getItem('memberId')
+                    ? ''
+                    : 'd-none')
+                }
+                onClick={
+                  // 判斷seesion
+                  props.forumNameId === sessionStorage.getItem('memberId')
+                    ? props.handleArticleDelete
+                    : ''
+                }
               >
-                刪文
+                刪除
               </button>
             </div>
           </div>
@@ -95,6 +146,8 @@ const ForumArticleContentRoy = props => {
         contentEditable={props.handleArticleEditStatus}
         // 關閉警告在REACT控制範圍內變更實體DOM產生的警告
         suppressContentEditableWarning={true}
+        // 沒有ONFOCUS就取消編輯狀態
+        // onBlur={props.handleArticleEditCancel}
       />
     </>
   )

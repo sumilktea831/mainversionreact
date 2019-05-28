@@ -15,7 +15,7 @@ const InputCardContent_MemberSignUp = props => (
   <>
     <button
       variant="primary"
-      className="btn btn-warning  w-100"
+      className="btn m-0 btn-warning  w-100"
       onClick={props.onClick}
     >
       發表評論
