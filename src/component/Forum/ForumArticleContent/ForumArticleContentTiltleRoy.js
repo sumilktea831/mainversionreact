@@ -17,37 +17,61 @@ const ForumArticleContentTiltleRoy = props => {
           // style={{ whiteSpace: 'nowrap' }}
           // dangerouslySetInnerHTML={{ __html: props.contentheadline }}
           required
+          // 離開FOCUS就取消可編輯狀態
+          // onBlur={props.handleHeadlineEditCancel}
         >
           {unescape(props.contentheadline)}
         </h4>
       </div>
-      <div className="d-flex align-items-center">
-        <div className="justify-content-end d-flex align-items-center ml-2 mt-1 ">
+      <div className="d-flex align-items-center pb-2">
+        <div className="justify-content-end d-flex align-items-center ">
           <button
             className={
-              'btn btn-outline-warning mb-3 ' + props.HeadlineCancelBtnStatus
+              'btn my-0 mr-0 btn-outline-warning  ' +
+              props.HeadlineCancelBtnStatus
             }
-            onClick={props.handleHeadlineEditCancel}
+            // 如果不是登入者不可觸發功能
+            onClick={
+              props.forumNameId === sessionStorage.getItem('memberId')
+                ? props.handleHeadlineEditCancel
+                : ''
+            }
           >
             取消
           </button>
         </div>
-        <div className="justify-content-end d-flex align-items-center ml-2 mt-1 ">
+        <div className="justify-content-end d-flex align-items-center  ">
           <button
             className={
-              'btn btn-outline-warning mb-3 ' + props.HeadlineEditBtnStatus
+              'btn my-0 mr-0  btn-outline-warning  ' +
+              props.HeadlineEditBtnStatus +
+              '' +
+              // 驗證session
+              (props.forumNameId === sessionStorage.getItem('memberId')
+                ? ''
+                : 'd-none')
             }
-            onClick={props.handleHeadlineEditTrigger}
+            onClick={
+              // 如果不是登入者不可觸發功能
+              props.forumNameId === sessionStorage.getItem('memberId')
+                ? props.handleHeadlineEditTrigger
+                : ''
+            }
           >
-            編輯標題
+            編輯
           </button>
         </div>
-        <div className="justify-content-end d-flex  align-items-center  ml-2 mt-1 ">
+        <div className="justify-content-end d-flex  align-items-center  ">
           <button
             className={
-              'btn btn-outline-warning mb-3 ' + props.HeadlineSaveBtnStatus
+              'btn btn-outline-warning my-0 mr-0 ' + props.HeadlineSaveBtnStatus
             }
-            onClick={props.handleHeadlineEditSave}
+            onClick={
+              // 如果不是登入者不可觸發功能
+              props.forumNameId === sessionStorage.getItem('memberId')
+                ? props.handleHeadlineEditSave
+                : ''
+            }
           >
             儲存
           </button>
