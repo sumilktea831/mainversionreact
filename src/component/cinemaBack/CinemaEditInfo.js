@@ -7,8 +7,7 @@ import { Row } from 'react-bootstrap'
 class CinemaEditInfo extends React.Component {
   constructor(props) {
     super(props)
-    console.log(props)
-
+    // console.log('childconstructor')
     this.state = {
       originData: {},
       thisData: 0,
@@ -19,60 +18,34 @@ class CinemaEditInfo extends React.Component {
         cinemaAddress: true,
         cinemaPhone: true,
         cinemaBackupEmail: true,
-        // cinemaType: true,
-        // cinemaAccount: true,
-        // cinemaPassword: true,
-        // cinemaRepwd: true,
       },
     }
   }
+  // componentWillMount() {
+  //   console.log('childWillMount')
+  //   console.log(this.props.thisData)
+  // }
 
-  async componentDidMount() {
-    //若不設定，切換頁面再回來會無資料
-    const data = await this.props.thisData
-    await this.setState({ thisData: data })
-  }
-  componentWillReceiveProps() {
-    //若不設定，當頁刷新會無資料
-    // console.log(this.state.thisData == 0)
-    if (this.state.thisData == 0) {
-      //如果state中的資料為空(設定""或{}無效，必須是0)，則將props資料設定給state
-      this.setState({ thisData: this.props.thisData })
-    }
-    this.setState({ originData: this.props.thisData })
-  }
 
-  //儲存按鈕onclick
-  handleSaveInfo = () => {
-    let cinemaid = this.state.thisData.id
-    let isAllChecked = true
-    let checkArray = Object.values(this.state.checkok)
-    isAllChecked = checkArray.reduce((a, b) => a && b)
-    console.log('isAllChecked: ' + isAllChecked)
-    if (isAllChecked) {
-      try {
-        fetch('http://localhost:5555/cinema/' + cinemaid, {
-          method: 'PUT',
-          body: JSON.stringify(this.state.thisData),
-          headers: new Headers({
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          }),
-        })
-          .then(res => res.json())
-          .then(jsonObject => {
-            this.setState({ thisData: jsonObject }, () => {
-              alert('資料儲存成功')
-              window.location.reload()
-            })
-          })
-      } catch (e) {
-        console.log(e)
+
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    // console.log('childDerived')
+    // this.setState({ thisData: nextProps.thisData }) 這不能這樣setStae，要用下面的寫法
+
+    let stateToBeReturned = null
+    if (prevState.thisData == 0) {
+      stateToBeReturned = {
+        ...prevState,
+        thisData: nextProps.thisData,
       }
-    } else {
-      alert('資料填寫有誤，請再次確認您的資料！')
     }
+
+    console.log(nextProps)
+    console.log(prevState)
+    return stateToBeReturned
   }
+
 
   //輸入框change事件
   handleInputTextChange = event => {
@@ -350,7 +323,9 @@ class CinemaEditInfo extends React.Component {
       // name === 'cinemaHeroImg' ||
     ) {
       copyData[eventName] = value
-      this.setState({ thisData: copyData })
+      this.setState({ thisData: copyData }, () => {
+        console.log(this.state.thisData)
+      })
     } else if (eventName === 'cinemaType') {
       copyData[eventName] = event.target.id
       this.setState({ thisData: copyData }, () =>
@@ -363,7 +338,7 @@ class CinemaEditInfo extends React.Component {
       this.setState({ thisData: copyData }, () =>
         console.log(this.state.thisData)
       )
-    } else if (eventName === 'cinemaImg' || eventName === 'cinemaHeroImg') {
+    } else if (eventName == 'cinemaHeroImg') {
       console.log(event.target.files[0])
       console.log(event.target.files[0].name)
 
@@ -395,10 +370,48 @@ class CinemaEditInfo extends React.Component {
               obj.info
           }
         })
+    } else if (eventName == 'cinemaImg') {
+      console.log(event.target.files)
+      console.log(event.target.files[0].name)
+
+      var files = event.target.files
+      var uploadFileName = []
+      for (let i = 0; i < files.length; i++) {
+        uploadFileName.push(event.target.files[i].name)
+      }
+      console.log(uploadFileName)
+      let formdata = new FormData()
+      formdata.append('myfile', files)
+      fetch('http://localhost:3001/api/cinema-upload-multiple', {
+        method: 'POST',
+        body: formdata,
+      })
+        .then(res => res.json())
+        .then(obj => {
+          console.log(obj)
+          if (obj.success == true) {
+            copyData[eventName] = obj.filename
+            this.setState({ thisData: copyData }, () =>
+              console.log(this.state.thisData)
+            )
+            document.querySelector(
+              '#' + eventName + 'filename'
+            ).innerHTML = uploadFileName
+          } else {
+            copyData[eventName] = []
+            this.setState({ thisData: copyData }, () =>
+              console.log(this.state.thisData)
+            )
+            document.querySelector('#' + eventName + 'filename').innerHTML =
+              obj.info
+          }
+        })
     }
   }
 
   render() {
+    // console.log('childrender')
+    // console.log(this.props.thisData)
     return (
       <>
         <Row>
@@ -437,9 +450,10 @@ class CinemaEditInfo extends React.Component {
         <Row className="my-5 d-flex justify-content-center">
           <button
             className="btn btn-warning h5 my-3 px-5 py-2 border-0 rounded bg-orange text-darkblue"
-            // style=
-            onClick={this.handleSaveInfo}
-            // onClick={this.props.handleCinemaEditSave}
+            onClick={this.props.handleCinemaEditSave(
+              this.state.thisData,
+              this.state.checkok
+            )}
           >
             儲存變更
           </button>
