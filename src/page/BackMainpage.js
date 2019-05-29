@@ -14,6 +14,8 @@ import MemberEditPwd from '../component/meberBack/MemberEditPwd'
 import MemberCollectTable from '../component/meberBack/MemberCollectTable'
 import CheckboxMultiForFavTypeReadSu from '../component/inputs/CheckboxMultiForFavTypeReadSu'
 import CinemaEditInfo from '../component/cinemaBack/CinemaEditInfo'
+import ForumBackArticle from './ForumBackArticle'
+import ForumBackComment from './ForumBackComment'
 
 //memberId
 const memberId = sessionStorage.getItem('memberId')
@@ -753,6 +755,36 @@ class BackSidenav extends React.Component {
                         </div>
                       </LinkContainer>
                     ))}
+                  </div>
+                </>
+              ) : (
+                ''
+              )}
+              {pagename == 'myPost' ? (
+                <>
+                  <div className="row">
+                    <div className="col-md-12 p-0">
+                      <ActivityTitle
+                        title={'發文紀錄'}
+                        className="content-title"
+                      />
+                    </div>
+                    <ForumBackArticle />
+                  </div>
+                </>
+              ) : (
+                ''
+              )}
+              {pagename == 'myComment' ? (
+                <>
+                  <div className="row">
+                    <div className="col-md-12 p-0">
+                      <ActivityTitle
+                        title={'留言紀錄'}
+                        className="content-title"
+                      />
+                    </div>
+                    <ForumBackComment />
                   </div>
                 </>
               ) : (
