@@ -483,19 +483,14 @@ class BackSidenav extends React.Component {
     //點擊登出，清除session並導回主頁
     // sessionStorage.removeItem('memberID') //不知道為什麼這個方法無效
     sessionStorage.clear()
-    window.location.href = '/mainpage'
+    window.location.href = '/'
   }
 
   render() {
-    if (
-      !(
-        sessionStorage.getItem('memberId') || sessionStorage.getItem('cinemaId')
-      )
-    ) {
+    if (!sessionStorage.getItem('memberId')) {
       // alert('回到登入頁')
       window.location.href = '/LoginSign'
     } else {
-      //判斷登入者是會員or戲院，帶入相應的sidenav
       const pagename = this.props.location.pathname.slice(14)
 
       return (

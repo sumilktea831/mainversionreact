@@ -73,7 +73,7 @@ class CinemaBackMainpage extends React.Component {
       console.log(e)
     }
   }
-    //戲院編輯儲存按鈕
+  //戲院編輯儲存按鈕
   handleCinemaEditSave = (data, checkok) => () => {
     let cinemaId = sessionStorage.getItem('cinemaId')
     let isAllChecked = true
@@ -109,7 +109,7 @@ class CinemaBackMainpage extends React.Component {
     //點擊登出，清除session並導回主頁
     // sessionStorage.removeItem('memberID') //不知道為什麼這個方法無效
     sessionStorage.clear()
-    window.location.href = '/mainpage'
+    window.location.href = '/'
   }
   render() {
     if (!sessionStorage.getItem('cinemaId')) {
