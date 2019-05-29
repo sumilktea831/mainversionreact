@@ -16,7 +16,7 @@ import { MdFavorite } from 'react-icons/md'
 import ArticleBtnGroup from '../ArticleList/ArticleButton/ArticleBtnGroup'
 import ArticleCommentInput from './ArticleCommentInput'
 
-const memberId = 'm1'
+const memberId = sessionStorage.getItem('memberId')
 
 // 留言部分
 
@@ -76,7 +76,7 @@ class ViewPage extends React.Component {
                 </div>
                 <div className="row d-flex justify-content-between align-items-center">
                   {' '}
-                  {this.props.isLiked}
+                  {/* {this.props.isLiked} */}
                   <div className="ml-3">
                     {/* 我是愛心 LIKE <3 */}
                     {this.props.isLiked ? (

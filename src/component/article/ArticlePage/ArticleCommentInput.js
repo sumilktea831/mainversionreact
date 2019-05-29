@@ -43,6 +43,7 @@ class ArticleCommentInput extends React.Component {
       <>
         <div className="d-flex my-4">
           <input
+            id="commentInput"
             onChange={this.props.handleChange}
             value={this.props.inputText}
             type="text"

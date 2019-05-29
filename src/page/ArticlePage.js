@@ -1,3 +1,4 @@
+/* eslint-disable array-callback-return */
 import React from 'react'
 import ArricleList from '../component/article/ArticleList'
 import ActivitySection from '../component/activity/ActivitySection/ActivitySection'
@@ -11,7 +12,7 @@ import ArticleCommentInput from '../component/article/ArticlePage/ArticleComment
 import ArticleBtnGroup from '../component/article/ArticleList/ArticleButton/ArticleBtnGroup'
 import { async } from 'q'
 
-const memberId = '99'
+const memberId = sessionStorage.getItem('memberId')
 
 class ArticlePage extends React.Component {
   constructor(props) {
@@ -31,6 +32,7 @@ class ArticlePage extends React.Component {
       inputText: [],
     }
     this.handleChange = this.handleChange.bind(this)
+    this.handleMarkClick = this.handleMarkClick.bind(this)
   }
 
   async componentDidMount() {
@@ -56,13 +58,14 @@ class ArticlePage extends React.Component {
       this.setState({ articleInfo: page })
       this.setState({ viewCounter: page.viewCounter })
 
-      //該篇文章收藏按讚的會員ID
-      const markSid = page.markId //全部篇的 mark_id欄位
+      //該篇文章按讚的會員ID
       const likeSid = page.likeId
-      console.log(markSid)
+      console.log(likeSid)
+      //該篇有按讚的會員ID 是否等於目前登入的ID
+      const isLiked = page.likeId.find(item => item === memberId) ? true : false
 
-      // 按讚收藏人數
-      this.setState({ markCounter: markSid.length })
+      // 按讚人數
+      this.setState({ isLiked: isLiked })
       this.setState({ likeCounter: likeSid.length })
     } catch (err) {
       console.log(err)
@@ -97,7 +100,7 @@ class ArticlePage extends React.Component {
     try {
       // 這邊先寫死 取快樂碼農資料
       const memberRes = await fetch(
-        'http://localhost:5555/member/m1558576972555',
+        'http://localhost:5555/member/' + memberId,
         {
           method: 'GET',
           headers: new Headers({
@@ -109,17 +112,13 @@ class ArticlePage extends React.Component {
       const memberData = await memberRes.json()
       console.log(memberData)
       const memberInfo = memberData.collectArticle
-      console.log(memberInfo) //快樂碼農
       this.setState({ memberAllData: memberData }) //全部資料
       this.setState({ memberInfo: memberInfo }) //收藏文章序號
+      console.log(memberInfo) //快樂碼農
+      console.log(this.state.memberInfo) //快樂碼農
 
-      //判斷收藏該篇的名單中 有沒有該會員 (獨立狀態) 目前會員是4號
+      //判斷收藏該篇的名單中 有沒有該會員 (獨立狀態) 目前會員是快樂瑪儂
       const isMarked = memberData.collectArticle.find(
-        item => item === this.state.articleInfo.id
-      )
-        ? true
-        : false
-      const isLiked = memberData.collectArticle.find(
         item => item === this.state.articleInfo.id
       )
         ? true
@@ -127,7 +126,7 @@ class ArticlePage extends React.Component {
 
       // 資料倒入狀態 是否收藏
       this.setState({ isMarked: isMarked }) //boolean
-      this.setState({ isLiked: isLiked })
+      // this.setState({ isLiked: isLiked })
     } catch (err) {
       console.log(err)
     }
@@ -142,8 +141,10 @@ class ArticlePage extends React.Component {
     alert('回應成功!!!SID:' + this.state.thisId)
     let newRes = {
       aid: +this.state.thisId,
-      date: new Date().toString().substr(0, 10),
-      author: '測試留言區塊',
+      date: new Date().toDateString(),
+      authorID: memberId,
+      author: this.state.memberAllData.nickname,
+      avatar: this.state.memberAllData.avatar,
       content: this.state.inputText,
     }
     try {
@@ -160,7 +161,7 @@ class ArticlePage extends React.Component {
       // const newCommentData = newComment.filter(
       //   item => item.aid === +this.state.thisId
       // )
-
+      // fetch新資料後的判斷渲染套餐
       const newI = this.state.articleComment.find(
         item => +item.id === +newComment.id
       )
@@ -172,23 +173,36 @@ class ArticlePage extends React.Component {
 
       console.log(newComment)
       console.log(newI)
+      // 清空輸入框
+      document.querySelector('#commentInput').value = []
     } catch (err) {
       console.log(err)
     }
-    this.forceUpdate()
+    // this.forceUpdate()
   }
 
-  handleRender = () => {
-    alert('留言成功!!!' + this.state.articleInfo.id)
-    // 重新渲染
-    this.forceUpdate()
-  }
-
-  // 加入收藏!!!!!!!!!!!!!!!!!
+  // -----------------------收藏套餐------------------------
   handleMarkClick = async () => {
-    alert('收藏成功!!!')
-    // console.log(this.state.memberAllData.id)
-    // 加入收藏清單所用的新資料  原本陣列 memberAllData
+    console.log(this.state.memberAllData)
+    // var newMark = []
+    var newMark = [...this.state.memberInfo]
+
+    // const Marked = newMark.find(item => item === this.state.thisId)
+
+    this.setState({ isMarked: !this.state.isMarked })
+
+    if (this.state.isMarked) {
+      newMark = newMark.filter(element => {
+        return element !== this.state.thisId
+      })
+    } else {
+      newMark = [this.state.thisId, ...this.state.memberInfo]
+      console.log(typeof this.state.thisId + ':' + this.state.thisId)
+      console.log('false')
+      console.log(newMark)
+    }
+
+    // 新的會員資訊 (更新收藏文章項目)
     let newMemberData = {
       id: this.state.memberAllData.id,
       name: this.state.memberAllData.name,
@@ -207,32 +221,85 @@ class ArticlePage extends React.Component {
       permission: this.state.memberAllData.permission,
       collectFilm: this.state.memberAllData.collectFilm,
       collectCinema: this.state.memberAllData.collectCinema,
-      collectArticle: [
-        ...this.state.memberAllData.collectArticle,
-        this.state.thisId,
-      ],
+      collectArticle: newMark,
       collectActivity: this.state.memberAllData.collectActivity,
       collectActivityJoin: this.state.memberAllData.collectActivityJoin,
       collectForum: this.state.memberAllData.collectForum,
       markList: this.state.memberAllData.markList,
     }
 
-    // // const data = newMemnerDataMark
+    const data = newMemberData
 
     try {
       const res = await fetch(
         'http://localhost:5555/member/' + this.state.memberAllData.id,
         {
           method: 'PUT',
-          body: JSON.stringify(newMemberData),
+          body: JSON.stringify(data), //新的會員收藏資料
           headers: new Headers({
             Accept: 'application/json',
             'Content-Type': 'application/json',
           }),
         }
       )
-      const page = await res.json()
-      console.log(page)
+      const newMarkData = await res.json()
+      const newMarkA = newMarkData.collectArticle
+      console.log(newMarkData)
+      console.log('Aid:')
+      console.log(newMarkA)
+      // fetch新資料後的判斷渲染套餐(收藏)
+      // const MarkYN
+
+      this.shouldComponentUpdate()
+    } catch (err) {
+      console.log(err)
+    }
+  }
+
+  // ----------------------按讚套餐--------------------------
+  handleLikeClick = async () => {
+    alert('按讚成功!!!')
+    console.log(this.state.memberAllData.id)
+    // 按讚清單所用的新資料  原本陣列 memberAllData
+    let newLikeData = {
+      id: this.state.articleInfo.id,
+      title: this.state.articleInfo.title,
+      author: this.state.articleInfo.author,
+      avatar: this.state.articleInfo.avatar,
+      date: this.state.articleInfo.date,
+      content: this.state.articleInfo.content,
+      image: this.state.articleInfo.image,
+      link: this.state.articleInfo.link,
+      markId: this.state.articleInfo.markId,
+      likeId: [memberId, ...this.state.articleInfo.likeId],
+      viewCounter: this.state.articleInfo.viewCounter,
+    }
+
+    const data = newLikeData
+
+    try {
+      const res = await fetch(
+        'http://localhost:5555/articleCardData/' + this.state.thisId,
+        {
+          method: 'PUT',
+          body: JSON.stringify(newLikeData),
+          headers: new Headers({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          }),
+        }
+      )
+      const newALpage = await res.json() //新的文章資料(加入按讚ID後)
+      console.log(newALpage)
+      // fetch新資料後的判斷渲染套餐
+      const LikeYN = this.state.articleInfo.likeId.find(
+        item => item.likeId === memberId
+      )
+        ? true
+        : false
+      this.setState({ isLiked: !LikeYN })
+      this.setState({ likeCounter: newALpage.likeId.length })
+      console.log(LikeYN)
     } catch (err) {
       console.log(err)
     }
@@ -244,9 +311,13 @@ class ArticlePage extends React.Component {
         <div className="container-fuild viewPage">
           <div>
             {/* 內容頁 右邊按鈕群 */}
-            <ArticleBtnGroup handleMarkClick={this.handleMarkClick} />
+            <ArticleBtnGroup
+              handleMarkClick={this.handleMarkClick}
+              handleLikeClick={this.handleLikeClick}
+            />
           </div>
           <Row className="">
+            {/* 真正的文章資訊塊 */}
             <ViewPage
               sid={this.state.articleInfo.id}
               title={this.state.articleInfo.title}
@@ -278,10 +349,13 @@ class ArticlePage extends React.Component {
               <ArticleComment
                 className="d-flex"
                 sid={item.id}
+                authorID={item.authorID}
                 author={item.author}
+                avatar={item.avatar}
                 date={item.date}
                 content={item.content}
-                res={item.resComment}
+                memberId={memberId}
+                // res={item.resComment}
               />
             ))}
           </div>

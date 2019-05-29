@@ -11,7 +11,11 @@ const ResComment = props => {
             <div class="media-body d-flex py-4">
               <Col xs={4} md={2} className="row">
                 <div className="avatar mr-3">
-                  <img src="/images/article/test4.jpg" class="mr-3" alt="..." />
+                  <img
+                    src={'/images/member/' + props.avatar}
+                    className="mr-3"
+                    alt="..."
+                  />
                 </div>
                 <div>
                   <div>{props.author}</div>
