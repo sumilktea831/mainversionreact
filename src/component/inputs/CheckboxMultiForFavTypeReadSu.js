@@ -4,14 +4,7 @@ const checkedClass =
   'ml-n3 px-3 py-2 border border-warning rounded bg-orange text-darkblue'
 const uncheckedClass =
   'ml-n3 px-3 py-2 border border-warning rounded bg-darkblue text-mywhite'
-const handleCilck = id => event => {
-  event.target.parentNode.click()
-  if (document.querySelector('#' + id).checked) {
-    event.target.className = checkedClass
-  } else {
-    event.target.className = uncheckedClass
-  }
-}
+
 const CheckboxMultiForFavTypeReadSu = props => {
   // console.log('fav!!!')
   // console.log(props.thisfavType)

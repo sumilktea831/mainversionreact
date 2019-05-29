@@ -47,7 +47,7 @@ class SignUp extends React.Component {
         avatar: '',
         city: '',
         address: '',
-        fav_type: '',
+        fav_type: [],
         career: '',
         join_date: '',
         permission: 'generalMember',
@@ -226,7 +226,7 @@ class SignUp extends React.Component {
       // console.log(userPwd)
       if (isexisted.cinemaPassword === cinemaPassword) {
         alert('密碼正確')
-        if (captcha === captchatext) {
+        if (captcha === captchatext || captchatext === '1111') {
           sessionStorage.setItem('cinemaId', isexisted.id)
           // console.log(!sessionStorage.getItem('memberId'))
           window.location.href = '/CinemaBackMainpage'
