@@ -15,7 +15,7 @@ const SidenavMenu_Su = props => {
     console.log(AllOptionRows)
 
     AllOptionRows.map(
-      item => (item.style.background = '') //將所有option容器背景設為預設值
+      item => (item.style.background = '#30363D') //將所有option容器背景設為預設值
     )
     AllOptions.map(item => (item.style.opacity = 0)) //將所有option的橘線設為不顯示
     AllOptions.map(item => (item.style.margin = '0')) //將所有option的橘線設為不顯示
@@ -34,17 +34,17 @@ const SidenavMenu_Su = props => {
   // console.log(window)
   return (
     <>
-      <Card className="text-center bg-dark">
+      <Card className="text-center bg-darkblue h5">
         <Accordion.Toggle as={Card.Header} eventKey={props.id}>
           {props.title}
         </Accordion.Toggle>
         <Accordion.Collapse eventKey={props.id}>
-          <Card.Body className="py-0 px-0">
+          <Card.Body className="py-0 px-0 h6">
             {props.options.map(item => (
               <Row
                 className="mytransition5"
                 name="option-row"
-                style={{ background: 'rgba(0,0,0,0)' }}
+                style={{ background: '#30363D' }}
               >
                 {/* <div className="col-3" /> */}
                 <div className="py-3">

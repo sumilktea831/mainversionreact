@@ -10,10 +10,10 @@ const handleClick = id => event => {
   RadiosBtn.map(
     btn =>
       (btn.className =
-        'px-2 position-absolute rounded border border-warning bg-darkblue text-mywhite')
+        'px-2 position-absolute rounded border border-warning bg-darkblue text-mywhite mytransition5')
   )
   event.target.className =
-    'px-2 position-absolute rounded border border-warning bg-orange text-darkblue'
+    'px-2 position-absolute rounded border border-warning bg-orange text-darkblue mytransition5'
 }
 const InputRadio_Su = props => {
   return (
@@ -42,10 +42,10 @@ const InputRadio_Su = props => {
               />
 
               <label className="custom-control-label" htmlFor={item.id} />
-              {props.value === item.id ?
+              {props.value === item.id ? (
                 <button
                   name="radio-btn"
-                  className="px-2 position-absolute rounded border border-warning bg-orange text-darkblue"
+                  className="px-2 position-absolute rounded border border-warning bg-orange text-darkblue mytransition5"
                   style={{
                     width: `${props.inputWidth ? props.inputWidth : '100%'}`,
                     height: `${props.inputHeight}`,
@@ -55,10 +55,10 @@ const InputRadio_Su = props => {
                 >
                   {item.name}
                 </button>
-                :
+              ) : (
                 <button
                   name="radio-btn"
-                  className="px-2 position-absolute rounded border border-warning bg-darkblue text-mywhite"
+                  className="px-2 position-absolute rounded border border-warning bg-darkblue text-mywhite mytransition5"
                   style={{
                     width: `${props.inputWidth ? props.inputWidth : '100%'}`,
                     height: `${props.inputHeight}`,
@@ -68,7 +68,7 @@ const InputRadio_Su = props => {
                 >
                   {item.name}
                 </button>
-              }
+              )}
               {/* <button
                 name="radio-btn"
                 className="px-2 position-absolute rounded border border-warning bg-darkblue text-mywhite"

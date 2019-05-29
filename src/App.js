@@ -89,6 +89,12 @@ class App extends React.Component {
       this.setState({ navbar: 'active' })
     }
   }
+  handleLogout = () => {
+    //點擊登出，清除session並導回主頁
+    // sessionStorage.removeItem('memberID') //不知道為什麼這個方法無效
+    sessionStorage.clear()
+    window.location.href = '/'
+  }
   render() {
     return (
       <Router>
@@ -124,7 +130,9 @@ class App extends React.Component {
                       <Nav.Link className="mr-5">會員後台</Nav.Link>
                     </LinkContainer>
                     <LinkContainer to="/LoginSign">
-                      <Nav.Link className="mr-5">會員登出</Nav.Link>
+                      <Nav.Link className="mr-5" onClick={this.handleLogout}>
+                        會員登出
+                      </Nav.Link>
                     </LinkContainer>
                   </>
                 ) : (

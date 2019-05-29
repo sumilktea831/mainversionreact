@@ -37,12 +37,12 @@ const SidenavMenu_Su = props => {
   // console.log(window)
   return (
     <>
-      <Card className="text-center bg-darkblue">
+      <Card className="text-center bg-darkblue h5">
         <Accordion.Toggle as={Card.Header} eventKey={props.id}>
           {props.title}
         </Accordion.Toggle>
         <Accordion.Collapse eventKey={props.id}>
-          <Card.Body className="py-0 px-0">
+          <Card.Body className="py-0 px-0 h6">
             {props.options.map(item => (
               <Row
                 className="mytransition5"
@@ -65,7 +65,7 @@ const SidenavMenu_Su = props => {
                   />
                 </div>
                 <Link
-                  className="text-center col pt-4"
+                  className="text-center col pt-4 sidenavLink"
                   to={BackPageName + item.id}
                   onClick={handleLinkClick(item.id)}
                   // style={{width:'100%'}}
