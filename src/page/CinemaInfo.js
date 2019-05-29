@@ -140,18 +140,20 @@ class TheateInfo extends React.Component {
       )
 
       const thisCinema = dataCine[0] ? dataCine[0] : dataCine
+      const hadOrNot = thisCinema.cinemaStar.some(el => el.starId === memberId)
       //找到自己評過分的星星資料 dataStar
-      let dataStar = { starId: '', star: '' }
+      let dataStar = 0
       let starLength = thisCinema.cinemaStar.length
-      if (memberId) {
+      // 如果你有登錄會員 又評過分 一開始直接顯示你的評分
+      if (memberId && hadOrNot) {
         let propsData = thisCinema.cinemaStar
         propsData.map(item => {
           if (item.starId === memberId) {
-            dataStar.starId = item.starId
-            dataStar.star = item.star
+            dataStar = item.star
           }
           return item
         })
+        // 如果你沒登陸或是沒評過分 一開始就顯示平均分數
       } else {
         const dataStarArray = thisCinema.cinemaStar.map(el => el.star)
         const dataStarSum = dataStarArray.reduce((a, b) => a + b)

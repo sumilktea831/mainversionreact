@@ -1437,6 +1437,10 @@
         {
           "starId": "m22222",
           "star": 5
+        },
+        {
+          "starId": "m1558576972555",
+          "star": 5
         }
       ],
       "cinemaAddress": "台北市大安區復興南路一段",
@@ -1453,6 +1457,16 @@
       "cinemaSignUpDate": "1955-03-12",
       "purview": "cinemaMember",
       "cinemaMessage": [
+        {
+          "id": 1559151687850,
+          "name": "訪客",
+          "img": "asianman.jpg",
+          "message": "ㄊsdcec",
+          "time": 1559151687850,
+          "awesome": [],
+          "boo": [],
+          "imgLocation": "cinemaImg"
+        },
         {
           "id": 1559138289149,
           "name": "光點台北",
@@ -1656,6 +1670,10 @@
         {
           "starId": "m22222",
           "star": 5
+        },
+        {
+          "starId": "m1558576972555",
+          "star": 1
         }
       ],
       "cinemaMark": "testword",
@@ -1711,6 +1729,10 @@
         {
           "starId": "m22222",
           "star": 5
+        },
+        {
+          "starId": "m1558576972555",
+          "star": 2
         }
       ],
       "cinemaMark": "testword",

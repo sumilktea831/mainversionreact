@@ -244,6 +244,42 @@ class CardLargeKaga extends React.Component {
                     )}
                   </div>
                 </div>
+                {this.props.wantStar ? (
+                  <div className="col mb-4 d-flex pl-3 align-items-center">
+                    <h4 className="ml-2 mr-5">喜好程度</h4>
+                    <div className="ml-4 mb-2">
+                      <CardKagaStaAnimation
+                        view={this.state.viewStar}
+                        mouseOver1={this.mouseOver1}
+                        mouseOver2={this.mouseOver2}
+                        mouseOver3={this.mouseOver3}
+                        mouseOver4={this.mouseOver4}
+                        mouseOver5={this.mouseOver5}
+                        Click1={this.Click1}
+                        Click2={this.Click2}
+                        Click3={this.Click3}
+                        Click4={this.Click4}
+                        Click5={this.Click5}
+                        mouseOut={this.mouseOut}
+                      />
+                    </div>
+                    <h6 className="ml-3 mb-1">
+                      / 共{this.props.starLength}人給分
+                    </h6>
+                  </div>
+                ) : this.props.justStar ? (
+                  <div className="col mb-4 d-flex pl-3 align-items-center">
+                    <h4 className="ml-2 mr-5">平均給分</h4>
+                    <div className="ml-4 mb-2">
+                      <CardKagaStar star={this.props.star} />
+                    </div>
+                    <h6 className="ml-3 mb-1">
+                      / 共{this.props.starLength}人給分
+                    </h6>
+                  </div>
+                ) : (
+                  ''
+                )}
                 {/* 下方區塊 */}
                 <div className="d-flex mb-4 mt-3" style={{ fontSize: '25px' }}>
                   <div
@@ -267,42 +303,6 @@ class CardLargeKaga extends React.Component {
                     {this.state.collectionLength}
                   </div>
                 </div>
-                {this.props.wantStar ? (
-                  <div className="col mb-4 d-flex pl-3 align-items-center">
-                    <h4 className="ml-2 mr-5">喜好程度</h4>
-                    <div className="ml-4 mb-2">
-                      <CardKagaStaAnimation
-                        view={this.state.viewStar}
-                        mouseOver1={this.mouseOver1}
-                        mouseOver2={this.mouseOver2}
-                        mouseOver3={this.mouseOver3}
-                        mouseOver4={this.mouseOver4}
-                        mouseOver5={this.mouseOver5}
-                        Click1={this.Click1}
-                        Click2={this.Click2}
-                        Click3={this.Click3}
-                        Click4={this.Click4}
-                        Click5={this.Click5}
-                        mouseOut={this.mouseOut}
-                      />
-                    </div>
-                    <h6 className="ml-3 mb-1">
-                      共{this.props.starLength}人給分
-                    </h6>
-                  </div>
-                ) : this.props.justStar ? (
-                  <div className="col mb-4 d-flex pl-3 align-items-center">
-                    <h4 className="ml-2 mr-5">平均給分</h4>
-                    <div className="ml-4 mb-2">
-                      <CardKagaStar star={this.props.star} />
-                    </div>
-                    <h6 className="ml-3 mb-1">
-                      共{this.props.starLength}人給分
-                    </h6>
-                  </div>
-                ) : (
-                  ''
-                )}
               </div>
             </div>
           </div>
