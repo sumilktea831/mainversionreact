@@ -81,6 +81,47 @@ class ActivityInfo extends React.Component {
     this.setState({ activityPageOtherData: activityPageOtherData })
     this.setState({ activityHeroImage: activityPageData.imgSrc })
   }
+  handleCollect = async id => {
+    const memberId = sessionStorage.getItem('memberId')
+    if (memberId !== null) {
+      try {
+        const res = await fetch('http://localhost:5555/member/' + memberId, {
+          method: 'GET',
+          headers: new Headers({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          }),
+        })
+        let data = await res.json()
+        let isCollect = data.collectActivity.indexOf(id) > -1
+
+        if (isCollect) {
+          data.collectActivity = data.collectActivity
+            .split(id)
+            .toString()
+            .replace(/,/g, '')
+        } else {
+          data.collectActivity += id
+        }
+        this.setState({ collectActivity: data.collectActivity })
+        try {
+          const res = await fetch('http://localhost:5555/member/' + memberId, {
+            method: 'PUT',
+            body: JSON.stringify(data),
+            headers: new Headers({
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            }),
+          })
+          console.log('修改完成')
+        } catch (err) {
+          console.log(err)
+        }
+      } catch (err) {
+        console.log(err)
+      }
+    }
+  }
   render() {
     return (
       <>

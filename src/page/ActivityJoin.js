@@ -81,6 +81,7 @@ class ActivityInfo extends React.Component {
     this.setState({ activityPageOtherData: activityPageOtherData })
     this.setState({ activityHeroImage: activityPageData.imgSrc })
   }
+
   render() {
     return (
       <>
