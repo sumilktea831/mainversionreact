@@ -5,6 +5,7 @@ import ActivityCard from '../component/activity/ActivityCard/ActivityCard'
 import ActivityTitle from '../component/activity/ActivityTitle/ActivityTitle'
 import CinemaBackSidenav from '../component/backSidenav/CinemaBackSidenav'
 import CinemaEditInfo from '../component/cinemaBack/CinemaEditInfo'
+import CinemaEditPwd from '../component/cinemaBack/CinemaEditPwd'
 import TitleKaga from '../component/cinema/TitleKaga'
 import AvatarOne from '../component/cinema/AvatarTypeOne/AvatarOne'
 import DataBox from '../component/cinema/DataBoxSM/DataBox'
@@ -423,6 +424,27 @@ class CinemaBackMainpage extends React.Component {
                         thisData={this.state.thisCinemaData}
                         allCinemaData={this.state.allCinemaData}
                         handleCinemaEditSave={this.handleCinemaEditSave}
+                      />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                ''
+              )}
+              {pagename === 'cinema-edit-password' ? (
+                <>
+                  <div className="row">
+                    <div className="col-md-12 p-0">
+                      <ActivityTitle
+                        title={'編輯戲院資訊'}
+                        className="content-title"
+                      />
+                    </div>
+                    <div style={{ width: '100%' }}>
+                      <CinemaEditPwd
+                        cinemaEditInputmsg={this.state.cinemaEditInputmsg}
+                        thisData={this.state.thisCinemaData}
+                        allCinemaData={this.state.allCinemaD}
                       />
                     </div>
                   </div>
