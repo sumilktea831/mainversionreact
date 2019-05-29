@@ -96,7 +96,7 @@ class CardKagaBox extends React.Component {
         >
           {/* 外框＋底圖 */}
           <div
-            className="card text-center flex-column border-0 cardAreaBgKaga"
+            className="text-center flex-column border-0 cardAreaBgKaga"
             style={{
               backgroundImage: `url(${this.props.img})`,
             }}
@@ -109,7 +109,7 @@ class CardKagaBox extends React.Component {
             />
 
             {/* 下方深色遮罩 */}
-            <Link to={this.props.link}>
+            <Link to={this.props.link} className="mb-0">
               <div className="h-30 d-flex flex-column justify-content-center cardBottomMaskKaga">
                 <h6 className="card-title mb-1">{this.props.subtitle}</h6>
                 <h4 className="card-title m-0">{this.props.title}</h4>
@@ -117,11 +117,11 @@ class CardKagaBox extends React.Component {
             </Link>
 
             {/* 滑鼠滑入後彈出區塊 */}
-            <div className="card-body align-items-center p-0 text-center cardPopupMaskKaga">
+            <div className="align-items-center p-0 pt-3 text-center cardPopupMaskKaga h-100">
               {this.props.member ? (
                 <>
                   <div>
-                    <h4 className="mt-4 mb-2">我的評分</h4>
+                    <h4 className="mb-2">我的評分</h4>
                   </div>
                   <CardKagaStar star={this.state.star} />
                   <h4 className="card-title mt-3">註記</h4>
