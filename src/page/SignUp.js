@@ -197,7 +197,7 @@ class SignUp extends React.Component {
           //如果密碼正確，再判斷驗證碼是否正確
           sessionStorage.setItem('memberId', isexisted.id)
           // console.log(sessionStorage.getItem('memberId'))
-          window.location.href = '/BackMainpage'
+          window.location.href = '/BackMainpage/my-preview'
           // window.history.go(-1)
         } else {
           alert('驗證碼有誤')
@@ -229,7 +229,7 @@ class SignUp extends React.Component {
         if (captcha === captchatext || captchatext === '1111') {
           sessionStorage.setItem('cinemaId', isexisted.id)
           // console.log(!sessionStorage.getItem('memberId'))
-          window.location.href = '/CinemaBackMainpage'
+          window.location.href = '/CinemaBackMainpage/cinema-info-preview'
         } else {
           alert('驗證碼有誤')
         }
