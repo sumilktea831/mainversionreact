@@ -1374,6 +1374,9 @@
       "collectFilm": ["001", "002", "003"],
       "collectCinema": ["c1", "c2"],
       "collectArticle": ["1", "2", "3", "4", "5", "6", "7"],
+
+      "collectActivity": "a1558948617225a1558948598530a1558948500794",
+      "collectActivityJoin": "a1558948500794",
       "collectForum": [],
       "markList": [
         {

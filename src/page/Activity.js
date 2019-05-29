@@ -44,18 +44,20 @@ class Activity extends React.Component {
     }
 
     const memberId = sessionStorage.getItem('memberId')
-    try {
-      const res = await fetch('http://localhost:5555/member/' + memberId, {
-        method: 'GET',
-        headers: new Headers({
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        }),
-      })
-      const data = await res.json()
-      this.setState({ collectActivity: data.collectActivity })
-    } catch (err) {
-      console.log(err)
+    if (memberId !== null) {
+      try {
+        const res = await fetch('http://localhost:5555/member/' + memberId, {
+          method: 'GET',
+          headers: new Headers({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          }),
+        })
+        const data = await res.json()
+        this.setState({ collectActivity: data.collectActivity })
+      } catch (err) {
+        console.log(err)
+      }
     }
   }
 
@@ -165,41 +167,43 @@ class Activity extends React.Component {
   }
   handleCollect = async id => {
     const memberId = sessionStorage.getItem('memberId')
-    try {
-      const res = await fetch('http://localhost:5555/member/' + memberId, {
-        method: 'GET',
-        headers: new Headers({
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        }),
-      })
-      let data = await res.json()
-      let isCollect = data.collectActivity.indexOf(id) > -1
-
-      if (isCollect) {
-        data.collectActivity = data.collectActivity
-          .split(id)
-          .toString()
-          .replace(/,/g, '')
-      } else {
-        data.collectActivity += id
-      }
-      this.setState({ collectActivity: data.collectActivity })
+    if (memberId !== null) {
       try {
         const res = await fetch('http://localhost:5555/member/' + memberId, {
-          method: 'PUT',
-          body: JSON.stringify(data),
+          method: 'GET',
           headers: new Headers({
             Accept: 'application/json',
             'Content-Type': 'application/json',
           }),
         })
-        console.log('修改完成')
+        let data = await res.json()
+        let isCollect = data.collectActivity.indexOf(id) > -1
+
+        if (isCollect) {
+          data.collectActivity = data.collectActivity
+            .split(id)
+            .toString()
+            .replace(/,/g, '')
+        } else {
+          data.collectActivity += id
+        }
+        this.setState({ collectActivity: data.collectActivity })
+        try {
+          const res = await fetch('http://localhost:5555/member/' + memberId, {
+            method: 'PUT',
+            body: JSON.stringify(data),
+            headers: new Headers({
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            }),
+          })
+          console.log('修改完成')
+        } catch (err) {
+          console.log(err)
+        }
       } catch (err) {
         console.log(err)
       }
-    } catch (err) {
-      console.log(err)
     }
   }
   render() {
@@ -296,20 +300,31 @@ class Activity extends React.Component {
             )}
             {this.state.activityCardData.map(data => (
               <div className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5">
-                <ActivityCard
-                  routerId={data.id}
-                  handleCollect={() => this.handleCollect(data.id)}
-                  key={data.id}
-                  title={data.theater}
-                  subtitle={data.title}
-                  imgSrc={data.imgSrc}
-                  collectOpen
-                  isCollect={
-                    this.state.collectActivity.indexOf(data.id) > -1
-                      ? true
-                      : false
-                  }
-                />
+                {sessionStorage.getItem('memberId') !== null ? (
+                  <ActivityCard
+                    routerId={data.id}
+                    handleCollect={() => this.handleCollect(data.id)}
+                    key={data.id}
+                    title={data.theater}
+                    subtitle={data.title}
+                    imgSrc={data.imgSrc}
+                    collectOpen
+                    isCollect={
+                      this.state.collectActivity.indexOf(data.id) > -1
+                        ? true
+                        : false
+                    }
+                  />
+                ) : (
+                  <ActivityCard
+                    routerId={data.id}
+                    handleCollect={() => this.handleCollect(data.id)}
+                    key={data.id}
+                    title={data.theater}
+                    subtitle={data.title}
+                    imgSrc={data.imgSrc}
+                  />
+                )}
               </div>
             ))}
           </div>
