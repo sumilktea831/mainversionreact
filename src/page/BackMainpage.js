@@ -12,6 +12,7 @@ import ActivityTitle from '../component/activity/ActivityTitle/ActivityTitle'
 import MemberEditInfo from '../component/meberBack/MemberEditInfo'
 import MemberEditPwd from '../component/meberBack/MemberEditPwd'
 import MemberCollectTable from '../component/meberBack/MemberCollectTable'
+import MemberCollectTableForForum from '../component/meberBack/MemberCollectTableForForum'
 import CheckboxMultiForFavTypeReadSu from '../component/inputs/CheckboxMultiForFavTypeReadSu'
 import CinemaEditInfo from '../component/cinemaBack/CinemaEditInfo'
 import ForumBackArticle from './ForumBackArticle'
@@ -36,6 +37,7 @@ class BackSidenav extends React.Component {
       allFilmData: [], // 全部影片 pure json
       allArticleData: [], // 全部影片 pure json
       thisCollectArticleData: [], // 該會員收藏的文章資訊
+      myForumData: [], //該會員發表的文章資訊
       avatarOne: '', // 整理過頭像框用
       boxData: '', // 整理過基本資料用
       filmCard: [], // 整理過影片卡片用
@@ -268,6 +270,7 @@ class BackSidenav extends React.Component {
         avatarOne: avatarOneData,
         boxData: dataBoxData,
         filmCard: filmCardData,
+        myForumData: forumPublishData,
       })
     } catch (err) {
       console.log(err)
@@ -584,9 +587,11 @@ class BackSidenav extends React.Component {
                   <TitleKaga title="收藏文章" />
                   <div
                     className=" d-flex flex-wrap col-lg-12 my-5"
-                    style={{
-                      height: '300px',
-                    }}
+                    style={
+                      {
+                        // height: '300px',
+                      }
+                    }
                   >
                     <MemberCollectTable
                       thisData={this.state.thisMemberData}
@@ -596,12 +601,17 @@ class BackSidenav extends React.Component {
                   <div className="py-5" />
                   <TitleKaga title="發文紀錄" />
                   <div
-                    className=" d-flex flex-wrap col-lg-12 bg-danger my-5"
-                    style={{
-                      height: '300px',
-                    }}
+                    className=" d-flex flex-wrap col-lg-12 my-5"
+                    style={
+                      {
+                        // height: '300px',
+                      }
+                    }
                   >
-                    table(請找情哥)
+                    <MemberCollectTableForForum
+                      thisData={this.state.thisMemberData}
+                      myForumData={this.state.myForumData}
+                    />
                   </div>
                 </>
               ) : (

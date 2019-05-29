@@ -126,7 +126,7 @@ class App extends React.Component {
                 </LinkContainer>
                 {sessionStorage.getItem('memberId') !== null ? (
                   <>
-                    <LinkContainer to="/BackMainpage">
+                    <LinkContainer to="/BackMainpage/my-preview">
                       <Nav.Link className="mr-5">會員後台</Nav.Link>
                     </LinkContainer>
                     <LinkContainer to="/LoginSign">
