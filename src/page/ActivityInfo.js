@@ -161,20 +161,31 @@ class ActivityInfo extends React.Component {
             </div>
             {this.state.activityPageOtherData.map(data => (
               <div className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5">
-                <ActivityCard
-                  routerId={data.id}
-                  handleCollect={() => this.handleCollect(data.id)}
-                  key={data.id}
-                  title={data.theater}
-                  subtitle={data.title}
-                  imgSrc={data.imgSrc}
-                  collectOpen
-                  isCollect={
-                    this.state.collectActivity.indexOf(data.id) > -1
-                      ? true
-                      : false
-                  }
-                />
+                {sessionStorage.getItem('memberId') !== null ? (
+                  <ActivityCard
+                    routerId={data.id}
+                    handleCollect={() => this.handleCollect(data.id)}
+                    key={data.id}
+                    title={data.theater}
+                    subtitle={data.title}
+                    imgSrc={data.imgSrc}
+                    collectOpen
+                    isCollect={
+                      this.state.collectActivity.indexOf(data.id) > -1
+                        ? true
+                        : false
+                    }
+                  />
+                ) : (
+                  <ActivityCard
+                    routerId={data.id}
+                    handleCollect={() => this.handleCollect(data.id)}
+                    key={data.id}
+                    title={data.theater}
+                    subtitle={data.title}
+                    imgSrc={data.imgSrc}
+                  />
+                )}
               </div>
             ))}
           </div>
