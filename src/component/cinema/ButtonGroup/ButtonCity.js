@@ -29,7 +29,7 @@ class ButtonCity extends React.Component {
       //然後傳按下去的那個按鈕的值回老闆層 給他一個加或減的屬性
       this.props.CitySearchClick(event.target.value, 'alldel')
     } else if (
-      event.target.id == 'b0' &&
+      event.target.id !== 'b0' &&
       event.target.className == 'btn btn-outline-warning'
     ) {
       // 判斷是否為按下狀態
