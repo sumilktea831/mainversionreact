@@ -137,6 +137,7 @@ class App extends React.Component {
           </Navbar>
           <Switch>
             <Route exact path="/" component={Mainpage} />
+            <Route exact path="/mainpage" component={Mainpage} />
             <Route path="/cinema" component={Cinema} />
             <Route path="/cinema/:id" component={CinemaInfo} />
             <Route path="/movie" component={Movie} />
