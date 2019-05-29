@@ -377,21 +377,21 @@ class CinemaBackMainpage extends React.Component {
                             img={item.img}
                             link={item.link}
                             popup
-                            // mark={item.mark}
-                            // newStarAndMark={this.activityCardNewStarAndMark}
-                            // star={item.star}
-                            // AVGStar
+                          // mark={item.mark}
+                          // newStarAndMark={this.activityCardNewStarAndMark}
+                          // star={item.star}
+                          // AVGStar
                           />
                         ))}
                       </div>
                     ) : (
-                      <div
-                        className="d-flex align-items-center"
-                        style={{ height: '300px', width: '100%' }}
-                      >
-                        <h5 className="ml-4">目前沒有舉辦活動喔</h5>
-                      </div>
-                    )}
+                        <div
+                          className="d-flex align-items-center"
+                          style={{ height: '300px', width: '100%' }}
+                        >
+                          <h5 className="ml-4">目前沒有舉辦活動喔</h5>
+                        </div>
+                      )}
 
                     <div className="py-5" />
                     <TitleKaga title="近期評論紀錄" />
@@ -415,8 +415,8 @@ class CinemaBackMainpage extends React.Component {
                   </>
                 </>
               ) : (
-                ''
-              )}
+                  ''
+                )}
               {pagename === 'cinema-edit-info' ? (
                 <>
                   <div className="row">
@@ -428,6 +428,7 @@ class CinemaBackMainpage extends React.Component {
                     </div>
                     <div style={{ width: '100%' }}>
                       <CinemaEditInfo
+                        img={this.state.AvatarOne.img}
                         cinemaEditInputmsg={this.state.cinemaEditInputmsg}
                         thisData={this.state.thisCinemaData}
                         allCinemaData={this.state.allCinemaData}
@@ -437,8 +438,8 @@ class CinemaBackMainpage extends React.Component {
                   </div>
                 </>
               ) : (
-                ''
-              )}
+                  ''
+                )}
               {pagename === 'cinema-edit-password' ? (
                 <>
                   <div className="row">
@@ -458,8 +459,8 @@ class CinemaBackMainpage extends React.Component {
                   </div>
                 </>
               ) : (
-                ''
-              )}
+                  ''
+                )}
               {pagename === 'activityMemberCollect' ? (
                 <>
                   <div className="row">
@@ -489,8 +490,8 @@ class CinemaBackMainpage extends React.Component {
                   </div>
                 </>
               ) : (
-                ''
-              )}
+                  ''
+                )}
             </div>
           </Row>
         </>

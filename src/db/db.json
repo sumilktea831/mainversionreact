@@ -1413,6 +1413,30 @@
           "markcontent": ""
         }
       ]
+    },
+    {
+      "id": "m1559158565043",
+      "name": "",
+      "nickname": "2222",
+      "gender": "",
+      "mobile": "",
+      "birth": "",
+      "email": "gn646236@hotmail.com",
+      "pwd": "222222",
+      "avatar": "",
+      "city": "",
+      "address": "",
+      "fav_type": [],
+      "career": "",
+      "join_date": "2019-05-30",
+      "permission": "generalMember",
+      "collectFilm": [],
+      "collectCinema": [],
+      "collectArticle": [],
+      "collectActivity": "",
+      "collectActivityJoin": "",
+      "collectForum": [],
+      "markList": []
     }
   ],
   "cinema": [
