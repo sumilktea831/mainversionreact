@@ -31,15 +31,23 @@ const ArticleBtnGroup = props => {
             placement={'left'}
             overlay={<Tooltip id={`tooltip-${'left'}`}>加入收藏</Tooltip>}
           >
-            <div variant="secondary" className="my-3">
-              <FaBookmark onClick={props.handleMarkClick} />
+            <div
+              variant="secondary"
+              className="my-3"
+              onClick={props.handleMarkClick}
+            >
+              <FaBookmark />
             </div>
           </OverlayTrigger>
           <OverlayTrigger
             placement={'left'}
             overlay={<Tooltip id={`tooltip-${'left'}`}>按讚此篇文章</Tooltip>}
           >
-            <div variant="secondary" className="my-3">
+            <div
+              variant="secondary"
+              className="my-3"
+              onClick={props.handleLikeClick}
+            >
               <FaThumbsUp />
             </div>
           </OverlayTrigger>

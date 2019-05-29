@@ -4,8 +4,10 @@ import { Row, Col } from 'react-bootstrap'
 import Pagination from '../component/article/ArticleList/ArticleButton/Pagination'
 import ArticleCard from '../component/article/ArticleList'
 import ArticleSlider from '../component/article/ArticleList/ArticleSlider/ArticleSlider'
+// import ContactForm from '../component/article/ArticleMail/send'
 
-const memberId = 'm1'
+const memberId = sessionStorage.getItem('memberId')
+
 class Article extends React.Component {
   constructor() {
     super()
@@ -91,6 +93,7 @@ class Article extends React.Component {
             </Col>
           </Row>
           <div className="mycontainer">
+            {/* <ContactForm /> */}
             <Row className="mb-4">
               <div
                 className="mx-3 text-center border-bottom border-light"
