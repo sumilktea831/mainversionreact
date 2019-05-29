@@ -39,18 +39,20 @@ class CardKagaEditToAreaButton extends React.Component {
     })
 
     // 初始mark設定
-    const markProps = this.props.mark
-    let markData = { markId: '', markcontent: '' }
-    //找出如果會員mark資料裡面的id == 這部影片的id的資料 , 那就把文字提出來讓這張卡使用
-    markProps.map(item => {
-      if (item.markId === this.props.id) {
-        markData.markId = item.markId
-        markData.markcontent = item.markcontent
-      }
-      return item
-    })
-    //state的markText 就是這張卡的註記文字
-    this.setState({ markText: markData.markcontent })
+    if (this.props.mark) {
+      const markProps = this.props.mark
+      let markData = { markId: '', markcontent: '' }
+      //找出如果會員mark資料裡面的id == 這部影片的id的資料 , 那就把文字提出來讓這張卡使用
+      markProps.map(item => {
+        if (item.markId === this.props.id) {
+          markData.markId = item.markId
+          markData.markcontent = item.markcontent
+        }
+        return item
+      })
+      //state的markText 就是這張卡的註記文字
+      this.setState({ markText: markData.markcontent })
+    }
 
     // 初始state 設定
     this.setState({

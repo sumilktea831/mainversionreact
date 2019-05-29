@@ -2,6 +2,7 @@ import React from 'react'
 import CardKagaStar from './CardKagaStar'
 import CardKagaEditToAreaButton from './CardKagaEditToAreaButton'
 import { Link } from 'react-router-dom'
+import Button from 'react-bootstrap/Button'
 const memberId = sessionStorage.getItem('memberId')
 class CardKagaBox extends React.Component {
   constructor(props) {
@@ -9,32 +10,52 @@ class CardKagaBox extends React.Component {
     this.state = {
       markText: '',
       star: '',
+      AVStar: 0,
     }
   }
   componentDidMount() {
-    const markProps = this.props.mark
-    let markData = { markId: '', markcontent: '' }
-    markProps.map(item => {
-      if (item.markId === this.props.id) {
-        markData.markId = item.markId
-        markData.markcontent = item.markcontent
-      }
-      return item
-    })
     // 初始狀態設定
-    let propsData = this.props.star
-    let dataStar = { starId: '', star: '' }
-    propsData.map(item => {
-      if (item.starId === memberId) {
-        dataStar.starId = item.starId
-        dataStar.star = item.star
+    // 從多筆mark資料中找到自己的
+    if (this.props.mark) {
+      const markProps = this.props.mark
+      let markData = { markId: '', markcontent: '' }
+      markProps.map(item => {
+        if (item.markId === this.props.id) {
+          markData.markId = item.markId
+          markData.markcontent = item.markcontent
+        }
+        return item
+      })
+      this.setState({ markText: markData.markcontent })
+    }
+    if (this.props.star) {
+      //從多筆星星資料中找到自己的
+      let propsData = this.props.star
+      let dataStar = { starId: '', star: '' }
+      propsData.map(item => {
+        if (item.starId === memberId) {
+          dataStar.starId = item.starId
+          dataStar.star = item.star
+        }
+        return item
+      })
+      this.setState({
+        star: dataStar.star,
+      })
+      // 若下AVStar參數就跑這邊
+      // 算平均星星數
+      // 如果有下這個參數顯示的就會是輸入進來資料的平均星星數
+      const AVstar = () => {
+        let starProp = this.props.star
+        let starTotal = 0
+        starProp.map(item => (starTotal += +item.star))
+        let final = Math.round(starTotal / this.props.star.length)
+        return final
       }
-      return item
-    })
-    this.setState({
-      markText: markData.markcontent,
-      star: dataStar.star,
-    })
+      const star = this.props.AVStar ? AVstar() : this.props.star
+      const link = this.props.link ? this.props.link : '#'
+      this.setState({ AVStar: star })
+    }
   }
 
   mouseOver = event => () => {
@@ -141,52 +162,48 @@ class CardKagaBox extends React.Component {
                     </button>
                   </div>
                 </>
-              ) : (
+              ) : this.props.time ? (
                 <>
                   <div>
-                    <h4 className="mt-4 mb-2">目前評分</h4>
+                    <h4 className="mb-2">平均評分</h4>
                   </div>
-                  <CardKagaStar star={this.state.star} />
-                  <h4 className="card-title mt-3">註記</h4>
-                  {/* 文字標籤,給他一個寬度,超過就會變成點點點 */}
-                  <span
-                    style={{
-                      display: 'inline-block',
-                      overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                      whiteSpace: 'nowrap',
-                      width: '200px',
-                    }}
+                  <CardKagaStar star={this.state.AVStar} />
+                  <h4 className="card-title mt-2">檔期</h4>
+                  <h6>{this.props.time}</h6>
+                  <div className="row d-flex justify-content-center mt-5">
+                    <Button
+                      type="button"
+                      variant="warning"
+                      href={'/movie/' + this.props.id}
+                    >
+                      管理
+                    </Button>
+                    <Button
+                      type="button"
+                      variant="warning"
+                      href={'CinemaBackMainpage/cinema-film-info'}
+                    >
+                      簡介
+                    </Button>
+                  </div>
+                </>
+              ) : (
+                <>
+                  {/* <h4 className="card-title mt-3">檔期</h4> */}
+                  <Button
+                    type="button"
+                    variant="warning"
+                    href={'CinemaBackMainpage/cinema-manage-activity'}
                   >
-                    {this.state.markText !== ''
-                      ? this.state.markText
-                      : '尚無備註'}
-                  </span>
-                  <div className="row d-flex justify-content-center mt-4">
-                    {/* 編輯按鈕, 觸發editArea元件 */}
-                    <CardKagaEditToAreaButton
-                      id={this.props.id}
-                      title={this.props.title}
-                      subtitle={this.props.subtitle}
-                      star={this.props.star}
-                      mark={this.props.mark}
-                      newStarAndMark={this.props.newStarAndMark}
-                      member={this.props.member}
-                      starAmimation={this.props.starAmimation}
-                    />
-                    {/* 有給刪除值就有刪除按鈕 */}
-                    {this.props.del ? (
-                      <button
-                        type="button"
-                        className="btn btn-danger ml-2"
-                        onClick={this.del}
-                      >
-                        刪除
-                      </button>
-                    ) : (
-                      ''
-                    )}
-                  </div>
+                    管理
+                  </Button>
+                  <Button
+                    type="button"
+                    variant="warning"
+                    href={'/activity/' + this.props.id}
+                  >
+                    簡介
+                  </Button>
                 </>
               )}
             </div>

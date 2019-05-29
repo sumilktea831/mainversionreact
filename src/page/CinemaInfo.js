@@ -51,6 +51,8 @@ class TheateInfo extends React.Component {
       const dataLoginCine = dataAllCinema.filter(item => item.id === cinemaId)
       const dataLoginCinema = dataLoginCine[0]
 
+      console.log('dataCinema')
+      console.log(dataCinema)
       //會員
       const resMember = await fetch('http://localhost:5555/member', {
         method: 'GET',
@@ -101,13 +103,13 @@ class TheateInfo extends React.Component {
       const dataFilm = []
       dataFil.map(item => {
         item.moviecinema.map(item1 => {
-          if (item1 == dataCinema.id) {
+          if (item1 === dataCinema.id) {
             dataFilm.push(item)
           }
         })
         return item
       })
-      // 所以該劇院的影片資料就是 dataFile
+      // 所以該劇院的影片資料就是 dataFilm
 
       // HeroSection參數整理
       const HeroSection = {
@@ -163,7 +165,7 @@ class TheateInfo extends React.Component {
         key: item.id,
         id: item.id,
         title:
-          item.title.length > 6 ? item.title.slice(0, 6) + '...' : item.title, //
+          item.title.length > 6 ? item.title.slice(0, 6) + '...' : item.title,
         subtitle:
           item.content.length > 12
             ? item.content.slice(0, 12) + '...'
@@ -171,8 +173,14 @@ class TheateInfo extends React.Component {
         img: item.imgSrc,
         // 因為是原頁面跳轉 所以直接帶這樣才能實現跳轉
         link: '/activity/' + item.id,
-        collection: dataThisMember.collectActivity,
+        // 不先驗證是否有會員的會會跳錯
+        collection: memberId
+          ? String(
+              dataThisMember[0].collectActivity.some(item1 => item1 === item.id)
+            )
+          : [],
       }))
+
       // 影片小卡片需要參數
       const FilmCardData = dataFilm.map(item => ({
         key: item.id,
@@ -188,14 +196,14 @@ class TheateInfo extends React.Component {
         img: item.movie_pic,
         // 因為是原頁面跳轉 所以直接帶這樣才能實現跳轉
         link: '/movie/' + item.id,
+        // 不先驗證是否有會員的會會跳錯
         collection: memberId
-          ? dataThisMember.map(item =>
-              item.collectFilm.find(item1 => item1 === item.id)
+          ? String(
+              dataThisMember[0].collectFilm.some(item1 => item1 === item.id)
             )
-            ? 'true'
-            : 'false'
           : [],
       }))
+
       this.setState({
         cinemaData: dataCinema,
         cinemaThisData: dataLoginCinema,
@@ -366,11 +374,17 @@ class TheateInfo extends React.Component {
     } else {
       memberThisDataOutArray = this.state.memberThisData
     }
+    // 驗證現在這個會員的收藏裡是否已有收藏過
+    console.log('memberThisDataOutArray')
+    console.log(memberThisDataOutArray)
+    let haveTrueOrFalse = memberThisDataOutArray.collectFilm.some(
+      item => item === id
+    )
     let newCollectionData = []
     if (val === 'false') {
       // 如果回傳是false 等等要裝進去的資料就是拿掉此影片以外的所有收藏id
       newCollectionData = memberThisDataOutArray.collectFilm.filter(
-        items => items != id
+        items => items !== id
       )
     } else {
       // 如果回傳是true 就加上去
@@ -421,7 +435,7 @@ class TheateInfo extends React.Component {
       img: item.img,
       link: item.link,
       // 如果id是回傳的id 代表要改的就是這筆！！  讓他吃val的值  其他筆就照舊吧
-      collection: item.id == id ? val : item.collection,
+      collection: item.id === id ? val : item.collection,
     }))
     await this.setState({
       FilmCardData: FilmCardData,
@@ -445,7 +459,7 @@ class TheateInfo extends React.Component {
     if (val === 'false') {
       // 如果回傳是false 等等要裝進去的資料就是拿掉此影片以外的所有收藏id
       newCollectionData = memberThisDataOutArray.collectFilm.filter(
-        items => items != id
+        items => items !== id
       )
     } else {
       // 如果回傳是true 就加上去
@@ -496,7 +510,7 @@ class TheateInfo extends React.Component {
       img: item.img,
       link: item.link,
       // 如果id是回傳的id 代表要改的就是這筆！！  讓他吃val的值  其他筆就照舊吧
-      collection: item.id == id ? val : item.collection,
+      collection: item.id === id ? val : item.collection,
     }))
     await this.setState({
       ActivityCardData: ActivityCardData,
@@ -509,8 +523,6 @@ class TheateInfo extends React.Component {
     let thisCinema = this.state.cinemaThisData //現在登陸的戲院
     let thisLogin = {}
     if (memberId) {
-      console.log('thisMember')
-      console.log(thisMember)
       thisLogin.name = thisMember.nickname
       thisLogin.img = thisMember.avatar
     } else if (cinemaId) {
@@ -544,26 +556,28 @@ class TheateInfo extends React.Component {
     let NewData = thisLogin !== '' ? newMemberMessageData : newVisitorData
     console.log(NewData)
     this.setState({ MessageBoard: NewData })
-    // 然後更新回資料庫 留言資料放在戲院自己裡面 cinemaMessage
-    const NewCinemaMessage = this.state.cinemaData
-    NewCinemaMessage.cinemaMessage = NewData
 
-    console.log('NewCinemaMessage')
-    console.log(NewCinemaMessage)
-    const resCinema = await fetch(
-      'http://localhost:5555/cinema/' + this.props.match.params.id,
-      {
-        method: 'PUT',
-        body: JSON.stringify(NewCinemaMessage),
-        headers: new Headers({
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        }),
-      }
-    )
-    const jsonObject = await resCinema.json()
-    console.log(jsonObject)
+    // 然後更新回資料庫 留言資料放在戲院自己裡面 cinemaMessage
+    // const NewCinemaMessage = this.state.cinemaData
+    // console.log('NewCinemaMessage')
+    // console.log(this.state)
+    // NewCinemaMessage.cinemaMessage = NewData
+
+    // const resCinema = await fetch(
+    //   'http://localhost:5555/cinema/' + this.props.match.params.id,
+    //   {
+    //     method: 'PUT',
+    //     body: JSON.stringify(NewCinemaMessage),
+    //     headers: new Headers({
+    //       Accept: 'application/json',
+    //       'Content-Type': 'application/json',
+    //     }),
+    //   }
+    // )
+    // const jsonObject = await resCinema.json()
+    // console.log(jsonObject)
   }
+
   render() {
     return (
       <>
@@ -576,7 +590,10 @@ class TheateInfo extends React.Component {
           midSlogan={this.state.HeroSection.midSlogan}
           smallSlogan={this.state.HeroSection.smallSlogan}
         />
-        <div className="container-fluid" style={{ padding: '100px 120px' }}>
+        <div
+          className="container-fluid h-100"
+          style={{ padding: '100px 120px' }}
+        >
           {/* 大的卡片----製作與串接完成 */}
           <TitleKaga title="戲院資訊" />
           <div className="h-100 d-flex justify-content-center">
@@ -603,7 +620,6 @@ class TheateInfo extends React.Component {
           <div className="py-5">
             <TitleKaga title="環境照片" />
           </div>
-
           <Row className="justify-content-md-center w-100">
             <Col md={11}>
               <CinemaSlider sData={this.state.SliderData} />
@@ -624,19 +640,32 @@ class TheateInfo extends React.Component {
               }}
             >
               {this.state.FilmCardData.length !== 0 ? (
-                this.state.FilmCardData.map(item => (
-                  <CardKaga
-                    key={item.id}
-                    id={item.id}
-                    title={item.title}
-                    subtitle={item.subtitle}
-                    img={'http://localhost:3000/images/' + item.img}
-                    link={item.link}
-                    collectionIcon
-                    collectionClick={this.collectionClickFilm}
-                    collection
-                  />
-                ))
+                memberId !== null ? (
+                  this.state.FilmCardData.map(item => (
+                    <CardKaga
+                      key={item.id}
+                      id={item.id}
+                      title={item.title}
+                      subtitle={item.subtitle}
+                      img={'http://localhost:3000/images/' + item.img}
+                      link={item.link}
+                      collectionIcon
+                      collectionClick={this.collectionClickFilm}
+                      collection={item.collection}
+                    />
+                  ))
+                ) : (
+                  this.state.FilmCardData.map(item => (
+                    <CardKaga
+                      key={item.id}
+                      id={item.id}
+                      title={item.title}
+                      subtitle={item.subtitle}
+                      img={'http://localhost:3000/images/' + item.img}
+                      link={item.link}
+                    />
+                  ))
+                )
               ) : (
                 <div
                   className="d-flex justify-content-center align-items-center w-100"
@@ -662,19 +691,32 @@ class TheateInfo extends React.Component {
               }}
             >
               {this.state.ActivityCardData.length !== 0 ? (
-                this.state.ActivityCardData.map(item => (
-                  <CardKaga
-                    key={item.id}
-                    id={item.id}
-                    title={item.title}
-                    subtitle={item.subtitle}
-                    img={item.img}
-                    link={item.link}
-                    collectionIcon
-                    collectionClick={this.collectionClickActivity}
-                    collection
-                  />
-                ))
+                memberId !== null ? (
+                  this.state.ActivityCardData.map(item => (
+                    <CardKaga
+                      key={item.id}
+                      id={item.id}
+                      title={item.title}
+                      subtitle={item.subtitle}
+                      img={item.img}
+                      link={item.link}
+                      collectionIcon
+                      collectionClick={this.collectionClickActivity}
+                      collection={item.collection}
+                    />
+                  ))
+                ) : (
+                  this.state.ActivityCardData.map(item => (
+                    <CardKaga
+                      key={item.id}
+                      id={item.id}
+                      title={item.title}
+                      subtitle={item.subtitle}
+                      img={item.img}
+                      link={item.link}
+                    />
+                  ))
+                )
               ) : (
                 <div
                   className="d-flex justify-content-center align-items-center w-100"
@@ -687,26 +729,28 @@ class TheateInfo extends React.Component {
           </div>
 
           {/* 留言板區塊 */}
-          <div className="py-5">
-            <TitleKaga title="評論區" />
-          </div>
-          <div
-            // className="bg-warning "
-            style={{
-              height: '400px',
-              weight: '100%',
-              textAlign: 'center',
-              fontSize: '50px',
-            }}
-          >
-            {this.state.MessageBoard.map(item => (
-              <MessageBoard
-                listData={item}
-                awesomeClick={this.awesomeClick}
-                booeClick={this.booeClick}
-              />
-            ))}
-            <MessageBoardInput MessageBoardSave={this.MessageBoardSave} />
+          <div className="col h-100">
+            <div className="py-5">
+              <TitleKaga title="評論區" />
+            </div>
+            <div
+              // className="bg-warning "
+              style={{
+                height: '400px',
+                weight: '100%',
+                textAlign: 'center',
+                fontSize: '50px',
+              }}
+            >
+              {this.state.MessageBoard.map(item => (
+                <MessageBoard
+                  listData={item}
+                  awesomeClick={this.awesomeClick}
+                  booeClick={this.booeClick}
+                />
+              ))}
+              <MessageBoardInput MessageBoardSave={this.MessageBoardSave} />
+            </div>
           </div>
         </div>
       </>

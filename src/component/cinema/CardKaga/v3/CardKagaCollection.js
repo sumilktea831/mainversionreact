@@ -1,5 +1,6 @@
 import React from 'react'
 
+const memberId = sessionStorage.getItem('memberId')
 class CardKagaCollection extends React.Component {
   constructor(props) {
     super(props)
@@ -9,7 +10,10 @@ class CardKagaCollection extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ collection: this.props.collection })
+    let trueFalse = String(this.props.collection)
+    this.setState({ collection: trueFalse })
+    console.log('this.props')
+    console.log(trueFalse)
   }
 
   getIdToBoss = () => {

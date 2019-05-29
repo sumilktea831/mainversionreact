@@ -19,7 +19,12 @@ const CinemaSectionContent = props => (
           }}
         >
           <div className="col-8 d-flex flex-column align-items-center">
-            <span className="pr-1 my-1 text-center">{props.smallSlogan}</span>
+            <span
+              className="pr-1 mt-5 mb-1 text-center"
+              style={{ lineHeight: '35px' }}
+            >
+              {props.smallSlogan}
+            </span>
             <i className="far fa-play-circle mt-3" />
           </div>
         </Link>

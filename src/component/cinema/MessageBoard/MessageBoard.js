@@ -63,7 +63,6 @@ class MessageBoard extends React.Component {
             </div>
           </li>
         </ul>
-        {/* 輸入區 */}
       </>
     )
   }

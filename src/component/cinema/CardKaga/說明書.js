@@ -110,6 +110,7 @@ newStarAndMark = val => {
                 // collection={}
                 // popup
                 member
+                starIcon
                 star={item.cinemaStar}
                 AVGStar
                 starAmimation

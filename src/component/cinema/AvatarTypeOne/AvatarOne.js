@@ -28,17 +28,13 @@ const AvatarOne = props => {
               borderRadius: '50%',
               width: '220px',
               height: '220px',
-              boxShadow: '#191c20 2px 2px 3px',
             }}
           >
             <img
               className=" h-100"
               src={props.img}
               alt="..."
-              style={{
-                width: '100%',
-                objectFit: 'cover',
-              }}
+              style={{ objectFit: 'cover' }}
             />
           </div>
         </div>

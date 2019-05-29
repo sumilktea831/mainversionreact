@@ -1,5 +1,6 @@
 import React from 'react'
 const memberId = sessionStorage.getItem('memberId')
+const cinemaId = sessionStorage.getItem('cinemaId')
 class CardLargeKaga extends React.Component {
   constructor(props) {
     super(props)
@@ -40,16 +41,10 @@ class CardLargeKaga extends React.Component {
         // 把兩個更新後的值丟回去父層
         this.props.awesomeClick(newAwesome, awesomeLength)
         // 然後同時改變自己這層的state
-        this.setState(
-          {
-            awesome: newAwesome,
-            awesomeLength: awesomeLength,
-          },
-          () => {
-            console.log('click + state')
-            console.log(this.state.awesomeLength)
-          }
-        )
+        this.setState({
+          awesome: newAwesome,
+          awesomeLength: awesomeLength,
+        })
       } else {
         // 如果沒有的話
         // 把會員id新增到陣列裡面
@@ -59,18 +54,14 @@ class CardLargeKaga extends React.Component {
         // 把兩個更新後的值丟回去父層
         this.props.awesomeClick(newAwesome, awesomeLength)
         // 然後同時改變自己這層的state
-        this.setState(
-          {
-            awesome: newAwesome,
-            awesomeLength: awesomeLength,
-          },
-          () => {
-            console.log('click - state')
-            console.log(this.state.awesomeLength)
-          }
-        )
+        this.setState({
+          awesome: newAwesome,
+          awesomeLength: awesomeLength,
+        })
       }
       // 如果沒登錄的話
+    } else if (cinemaId) {
+      alert('戲院會員不可以按讚喔～')
     } else {
       alert('直接導向登錄會員')
     }
@@ -128,6 +119,8 @@ class CardLargeKaga extends React.Component {
         )
       }
       // 如果沒登錄的話
+    } else if (cinemaId) {
+      alert('戲院會員不可以收藏喔～')
     } else {
       alert('直接導向登錄會員')
     }
