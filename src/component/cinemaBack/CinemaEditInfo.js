@@ -3,6 +3,7 @@ import InputWithLabelForEdit_Su from '../inputs/InputWithLabelForEdit_Su'
 import CheckboxMultiSu from '../inputs/CheckboxMultiSu'
 import ActivityTitle from '../activity/ActivityTitle/ActivityTitle'
 import { Row } from 'react-bootstrap'
+import AvatarTwo from '../cinema/AvatarTypeTwo/AvatarTwo'
 
 class CinemaEditInfo extends React.Component {
   constructor(props) {
@@ -11,6 +12,8 @@ class CinemaEditInfo extends React.Component {
     this.state = {
       originData: {},
       thisData: 0,
+      hasNewAvatar: false,
+      avatarUploadFailed: false,
       checkok: {
         cinemaTaxid: true,
         cinemaName: true,
@@ -26,11 +29,8 @@ class CinemaEditInfo extends React.Component {
   //   console.log(this.props.thisData)
   // }
 
-
-
-
   static getDerivedStateFromProps(nextProps, prevState) {
-    // console.log('childDerived')
+    console.log('childDerived')
     // this.setState({ thisData: nextProps.thisData }) 這不能這樣setStae，要用下面的寫法
 
     let stateToBeReturned = null
@@ -38,14 +38,15 @@ class CinemaEditInfo extends React.Component {
       stateToBeReturned = {
         ...prevState,
         thisData: nextProps.thisData,
+        originData: nextProps.thisData,
       }
     }
 
     console.log(nextProps)
     console.log(prevState)
+    console.log(stateToBeReturned)
     return stateToBeReturned
   }
-
 
   //輸入框change事件
   handleInputTextChange = event => {
@@ -61,9 +62,7 @@ class CinemaEditInfo extends React.Component {
     let AllCinemaExpectThis = this.props.allCinemaData.filter(
       item => item !== this.state.originData
     )
-    // console.log(AllCinemaExpectThis)
     let newcheckstate = { ...this.state.checkok }
-    // console.log(copyData)
     let taxid_pattern = /^\d{8}$/
     let phone_pattern = /^0\d{1,2}\-\d{3,4}\-\d{4}$/
     let email_pattern = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i
@@ -371,44 +370,131 @@ class CinemaEditInfo extends React.Component {
           }
         })
     } else if (eventName == 'cinemaImg') {
+      //未完成....api收不到資料<0528>
       console.log(event.target.files)
       console.log(event.target.files[0].name)
 
       var files = event.target.files
-      var uploadFileName = []
+      // var uploadFileName = []
+      let successFileNum = 0
+      var failedFileNum = 0
       for (let i = 0; i < files.length; i++) {
-        uploadFileName.push(event.target.files[i].name)
-      }
-      console.log(uploadFileName)
-      let formdata = new FormData()
-      formdata.append('myfile', files)
-      fetch('http://localhost:3001/api/cinema-upload-multiple', {
-        method: 'POST',
-        body: formdata,
-      })
-        .then(res => res.json())
-        .then(obj => {
-          console.log(obj)
-          if (obj.success == true) {
-            copyData[eventName] = obj.filename
-            this.setState({ thisData: copyData }, () =>
-              console.log(this.state.thisData)
-            )
-            document.querySelector(
-              '#' + eventName + 'filename'
-            ).innerHTML = uploadFileName
-          } else {
-            copyData[eventName] = []
-            this.setState({ thisData: copyData }, () =>
-              console.log(this.state.thisData)
-            )
-            document.querySelector('#' + eventName + 'filename').innerHTML =
-              obj.info
-          }
+        let thisfile = files[i]
+        console.log(thisfile)
+        let formdata = new FormData()
+        formdata.append('myfile', thisfile)
+        fetch('http://localhost:3001/api/cinema-upload-single', {
+          method: 'POST',
+          body: formdata,
         })
+          .then(res => res.json())
+          .then(obj => {
+            console.log(obj)
+            if (obj.success == true) {
+              console.log('123')
+              console.log(successFileNum)
+              successFileNum++
+              copyData[eventName].push(obj.filename)
+            } else {
+              failedFileNum++
+              // copyData[eventName] = []
+            }
+            document.querySelector('#' + eventName + 'filename').innerHTML =
+              '附加檔案成功 ' +
+              successFileNum +
+              ' 筆，失敗 ' +
+              failedFileNum +
+              ' 筆'
+            var imgBox = document.createElement('div')
+            var eleImg = document.createElement('img')
+            var delBtn = document.createElement('button')
+            delBtn.innerHTML = `<i class="fas fa-ban" style="font-size:30px; margin:-4px 0 0 0"></i>`
+            delBtn.setAttribute(
+              'class',
+              'position-absolute btn btn-outline-danger border-0 d-flex justify-content-center align-items-center'
+            )
+            delBtn.setAttribute(
+              'style',
+              'width:40px ; height:40px; color: danger '
+            )
+            delBtn.addEventListener('click', event => {
+              // alert(obj.filename)
+              copyData['cinemaImg'] = copyData['cinemaImg'].filter(
+                item => item !== obj.filename
+              )
+              if (
+                event.target.parentNode ==
+                document.querySelector('#cinemaImgPreview').childNodes[0]
+              ) {
+                document
+                  .querySelector('#cinemaImgPreview')
+                  .removeChild(event.target.parentNode)
+              } else {
+                document
+                  .querySelector('#cinemaImgPreview')
+                  .removeChild(event.target.parentNode.parentNode)
+              }
+              this.setState({ thisData: copyData }, () =>
+                console.log(this.state.thisData)
+              )
+            })
+            eleImg.setAttribute('src', '/images/cinemaImg/' + obj.filename)
+            eleImg.setAttribute(
+              'style',
+              'height: 200px; box-shadow:#000 2px 2px 2px'
+            )
+            eleImg.classList.add('thumb')
+            imgBox.appendChild(delBtn)
+            imgBox.appendChild(eleImg)
+            document.querySelector('#cinemaImgPreview').appendChild(imgBox)
+            this.setState({ thisData: copyData }, () =>
+              console.log(this.state.thisData)
+            )
+          })
+
+        // uploadFileName.push(event.target.files[i].name)
+      }
+    } else if (eventName == 'cinemaLogoImg') {
+      if (event.target.files[0]) {
+        //如果有選擇檔案才執行
+        console.log(event.target.files[0])
+        // console.log(event.target.files[0].name)
+
+        var file = event.target.files[0]
+        var uploadFileName = event.target.files[0].name
+        let formdata = new FormData()
+        formdata.append('myfile', file)
+        fetch('http://localhost:3001/api/cinema-upload-single', {
+          method: 'POST',
+          body: formdata,
+        })
+          .then(res => res.json())
+          .then(obj => {
+            console.log(obj)
+            if (obj.success == true) {
+              copyData[eventName] = obj.filename
+              this.setState(
+                {
+                  thisData: copyData,
+                  hasNewAvatar: true,
+                  avatarUploadFailed: false,
+                },
+                () => console.log(this.state)
+              )
+            } else {
+              this.setState({ avatarUploadFailed: true }, () =>
+                console.log(this.state.hasNewAvatar)
+              )
+            }
+          })
+      }
     }
   }
-
+  handleUploadCancel = async () => {
+    let copyData = await { ...this.state.thisData }
+    copyData['cinemaLogoImg'] = await this.state.originData.cinemaLogoImg
+    await this.setState({ thisData: copyData, hasNewAvatar: false })
+  }
   render() {
     // console.log('childrender')
     // console.log(this.props.thisData)
@@ -442,9 +528,26 @@ class CinemaEditInfo extends React.Component {
                 />
               </>
             ))}
+            <div
+              id="cinemaImgPreview"
+              className="d-flex flex-wrap"
+              style={{ width: '100%' }}
+            />
+            1234
           </div>
-          <div className="col-lg-5 mt-3 bg-primary">
-            這裡放頭像(含編輯按鈕)、email、權限
+          <div className="col-lg-5 mt-3">
+            {/* 這裡放頭像(含編輯按鈕)、email、權限 */}
+            <AvatarTwo
+              img={'/images/cinemaImg/' + this.state.thisData.cinemaLogoImg}
+              name={this.state.thisData.name}
+              purview={this.state.thisData.purview}
+              SignUpDate={this.state.thisData.cinemaSignUpDate}
+              onChange={this.handleInputTextChange}
+              handleUploadCancel={this.handleUploadCancel}
+              id={'cinemaLogoImg'}
+              classShow={this.state.hasNewAvatar}
+              uploadtip={this.state.avatarUploadFailed}
+            />
           </div>
         </Row>
         <Row className="my-5 d-flex justify-content-center">

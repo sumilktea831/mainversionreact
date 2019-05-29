@@ -68,13 +68,12 @@ class CinemaBackMainpage extends React.Component {
       if (!response.ok) throw new Error(response.statusText)
       const jsonObject = await response.json()
       const data = await jsonObject.find(item => item.id === cinemaId)
-      console.log('session' + sessionStorage.getItem('cinemaId'))
       await this.setState({ thisCinemaData: data, allCinemaData: jsonObject })
     } catch (e) {
       console.log(e)
     }
   }
-    //戲院編輯儲存按鈕
+  //戲院編輯儲存按鈕
   handleCinemaEditSave = (data, checkok) => () => {
     let cinemaId = sessionStorage.getItem('cinemaId')
     let isAllChecked = true
@@ -93,7 +92,7 @@ class CinemaBackMainpage extends React.Component {
         })
           .then(res => res.json())
           .then(jsonObject => {
-            sessionStorage.setItem('thisCinemaData', JSON.stringify(jsonObject))
+            // sessionStorage.setItem('thisCinemaData', JSON.stringify(jsonObject))
             this.setState({ thisCinemaData: jsonObject }, () => {
               alert('資料儲存成功')
             })
@@ -110,7 +109,7 @@ class CinemaBackMainpage extends React.Component {
     //點擊登出，清除session並導回主頁
     // sessionStorage.removeItem('memberID') //不知道為什麼這個方法無效
     sessionStorage.clear()
-    window.location.href = '/mainpage'
+    window.location.href = '/'
   }
   render() {
     if (!sessionStorage.getItem('cinemaId')) {

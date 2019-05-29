@@ -7,12 +7,12 @@ import AvatarOne from '../../../components/cinema/AvatarTypeOne/AvatarOne'
 
 // -----------------範例-----------------
 const page = () => {
-    return (
-        <AvatarOne
-            img="頭像圖片"
-            name="姓名"
-            purview="權限"
-            SignUpDate="註冊日期"
-        />
-    )
+  return (
+    <AvatarOne
+      img="頭像圖片"
+      name="姓名"
+      purview="權限"
+      SignUpDate="註冊日期"
+    />
+  )
 }

@@ -43,7 +43,7 @@ const ActivityCard = props => (
       ) : (
         ''
       )}
-      <LinkContainer to={'/activity/' + props.routerId}>
+      <LinkContainer to={'/activity/' + props.routerId + '/return'}>
         <div
           className="card activityCard"
           style={{

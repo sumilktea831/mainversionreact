@@ -12,7 +12,7 @@ const handleCilck = id => event => {
     event.target.className = uncheckedClass
   }
 }
-const CheckboxMultiSu = props => {
+const CheckboxMultiForFavTypeReadSu = props => {
   // console.log('fav!!!')
   // console.log(props.thisfavType)
   // if (props.thisfavType === undefined) {
@@ -61,30 +61,15 @@ const CheckboxMultiSu = props => {
         )} */}
         {props.thisfavType == undefined ? (
           <label className="form-check-label h5" htmlFor={props.optionId}>
-            <button
-              className={uncheckedClass}
-              onClick={handleCilck(props.optionId)}
-            >
-              {props.optionName}
-            </button>
+            <button className={uncheckedClass}>{props.optionName}</button>
           </label>
         ) : props.thisfavType.find(item => item === props.optionName) ? (
           <label className="form-check-label h5" htmlFor={props.optionId}>
-            <button
-              className={checkedClass}
-              onClick={handleCilck(props.optionId)}
-            >
-              {props.optionName}
-            </button>
+            <button className={checkedClass}>{props.optionName}</button>
           </label>
         ) : (
           <label className="form-check-label h5" htmlFor={props.optionId}>
-            <button
-              className={uncheckedClass}
-              onClick={handleCilck(props.optionId)}
-            >
-              {props.optionName}
-            </button>
+            <button className={uncheckedClass}>{props.optionName}</button>
           </label>
         )}
       </div>
@@ -92,4 +77,4 @@ const CheckboxMultiSu = props => {
   )
 }
 
-export default CheckboxMultiSu
+export default CheckboxMultiForFavTypeReadSu
