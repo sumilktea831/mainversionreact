@@ -49,7 +49,7 @@ class MessageBoard extends React.Component {
                 width="100%"
                 height="100%"
                 src={
-                  'http://localhost:3000/images/cinemaImg/' +
+                  'http://localhost:3000/images/member/' +
                   this.props.listData.img
                 }
                 class=""

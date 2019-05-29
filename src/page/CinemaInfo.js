@@ -26,6 +26,8 @@ class TheateInfo extends React.Component {
       ActivityCardData: [],
       FilmCardData: [],
       MessageBoard: [],
+      messageLength: 4,
+      messageHeight: 1200,
     }
   }
 
@@ -558,26 +560,32 @@ class TheateInfo extends React.Component {
     this.setState({ MessageBoard: NewData })
 
     // 然後更新回資料庫 留言資料放在戲院自己裡面 cinemaMessage
-    // const NewCinemaMessage = this.state.cinemaData
-    // console.log('NewCinemaMessage')
-    // console.log(this.state)
-    // NewCinemaMessage.cinemaMessage = NewData
+    const NewCinemaMessage = this.state.cinemaData
+    console.log('NewCinemaMessage')
+    console.log(this.state)
+    NewCinemaMessage.cinemaMessage = NewData
 
-    // const resCinema = await fetch(
-    //   'http://localhost:5555/cinema/' + this.props.match.params.id,
-    //   {
-    //     method: 'PUT',
-    //     body: JSON.stringify(NewCinemaMessage),
-    //     headers: new Headers({
-    //       Accept: 'application/json',
-    //       'Content-Type': 'application/json',
-    //     }),
-    //   }
-    // )
-    // const jsonObject = await resCinema.json()
-    // console.log(jsonObject)
+    const resCinema = await fetch(
+      'http://localhost:5555/cinema/' + this.props.match.params.id,
+      {
+        method: 'PUT',
+        body: JSON.stringify(NewCinemaMessage),
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      }
+    )
+    const jsonObject = await resCinema.json()
+    console.log(jsonObject)
   }
 
+  messageLengthChange = () => {
+    this.setState({
+      messageLength: this.state.messageLength + 4,
+      messageHeight: this.state.messageHeight + 550,
+    })
+  }
   render() {
     return (
       <>
@@ -651,7 +659,7 @@ class TheateInfo extends React.Component {
                       id={item.id}
                       title={item.title}
                       subtitle={item.subtitle}
-                      img={'http://localhost:3000/images/cinemaImg/' + item.img}
+                      img={'http://localhost:3000/images/' + item.img}
                       link={item.link}
                       collectionIcon
                       collectionClick={this.collectionClickFilm}
@@ -665,7 +673,7 @@ class TheateInfo extends React.Component {
                       id={item.id}
                       title={item.title}
                       subtitle={item.subtitle}
-                      img={'http://localhost:3000/images/cinemaImg/' + item.img}
+                      img={'http://localhost:3000/images/' + item.img}
                       link={item.link}
                     />
                   ))
@@ -733,26 +741,40 @@ class TheateInfo extends React.Component {
           </div>
 
           {/* 留言板區塊 */}
-          <div className="col h-100">
+          <div
+            className="col"
+            style={{ height: this.state.messageHeight + 'px' }}
+          >
             <div className="py-5">
               <TitleKaga title="評論區" />
             </div>
             <div
               // className="bg-warning "
               style={{
-                height: '400px',
+                height: '500px',
                 weight: '100%',
                 textAlign: 'center',
                 fontSize: '50px',
               }}
             >
-              {this.state.MessageBoard.map(item => (
-                <MessageBoard
-                  listData={item}
-                  awesomeClick={this.awesomeClick}
-                  booeClick={this.booeClick}
-                />
-              ))}
+              {this.state.MessageBoard.map((item, index) =>
+                index < this.state.messageLength ? (
+                  <MessageBoard
+                    listData={item}
+                    awesomeClick={this.awesomeClick}
+                    booeClick={this.booeClick}
+                  />
+                ) : (
+                  ''
+                )
+              )}
+              <button
+                type="button"
+                class="btn btn-outline-warning mb-5"
+                onClick={this.messageLengthChange}
+              >
+                更多評論
+              </button>
               <MessageBoardInput MessageBoardSave={this.MessageBoardSave} />
             </div>
           </div>
