@@ -84,6 +84,39 @@ class SignUp extends React.Component {
       },
     }
   }
+  async componentWillMount() {
+    //判斷從props中抓出url帶有的querystring，並比對是否在會員名單內
+    //若在名單內，且是在註冊後的24小時內，將自動導向會員中心
+    console.log('willmount')
+    console.log(this.props)
+    try {
+      //取得會員資料
+      //fetch:json-server連線的位址/json中的項目/該項目中id
+      const response = await fetch('http://localhost:5555/member', {
+        method: 'GET', //使用GET方法獲取資訊，因為是取得資訊，故不須加body
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+      if (!response.ok) throw new Error(response.statusText) 
+      const jsonObject = await response.json()
+      const memberdata = await jsonObject
+      await this.setState({ memberdata: memberdata })
+      if (memberdata.find(item => item.id === this.props.location.search.slice(4))) {
+        if (+new Date - +this.props.location.search.slice(5) < 86400000) {
+          alert('歡迎加入Movieee，將為您跳轉至會員中心!')
+          sessionStorage.setItem('memberId', this.props.location.search.slice(4))
+          window.location.href = "/BackMainpage/my-preview"
+        }
+      }
+      await console.log(memberdata)
+    } catch (e) {
+      //抓到錯誤訊息，以及接下來要做的錯誤處理
+      console.log(e)
+    }
+
+  }
 
   async componentDidMount() {
     try {
@@ -287,6 +320,24 @@ class SignUp extends React.Component {
             })
               .then(res => res.json())
               .then(jsonObject => {
+                try {
+                  fetch('http://localhost:3001/api/sendmail', {
+                    method: 'POST',
+                    body: JSON.stringify(jsonObject),
+                    credentials: "include",
+                    headers: new Headers({
+                      Accept: 'application/json',
+                      'Content-Type': 'application/json',
+                    }),
+                  })
+                    .then(res => res.json())
+                    .then(jsonObject => {
+                      // alert('註冊成功通知信發送成功')
+                    })
+                }
+                catch (e) {
+                  console.log(e)
+                }
                 this.setState({ memberdata: jsonObject }, () => {
                   alert('會員註冊成功！請重新登入')
                   window.location.href = '/LoginSign'
