@@ -323,7 +323,7 @@ class CinemaBackMainpage extends React.Component {
                 padding: '240px 120px 120px 120px',
               }}
             >
-              {pagename === 'cinema-ingfo-preview' ? (
+              {pagename === 'cinema-info-preview' ? (
                 <>
                   <>
                     <TitleKaga title="公開資訊卡預覽" />

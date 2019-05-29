@@ -175,7 +175,7 @@ class CardKagaBox extends React.Component {
                       style={{ width: '80px' }}
                       type="button"
                       variant="warning"
-                      href={'/movie/' + this.props.id}
+                      href={'CinemaBackMainpage/cinema-film-info'}
                     >
                       管理
                     </Button>
@@ -183,9 +183,9 @@ class CardKagaBox extends React.Component {
                       style={{ width: '80px' }}
                       type="button"
                       variant="warning"
-                      href={'CinemaBackMainpage/cinema-film-info'}
+                      href={'/movie/' + this.props.id}
                     >
-                      簡介
+                      頁面
                     </Button>
                   </div>
                 </>
@@ -206,7 +206,7 @@ class CardKagaBox extends React.Component {
                     variant="warning"
                     href={'/activity/' + this.props.id}
                   >
-                    簡介
+                    頁面
                   </Button>
                 </>
               )}
