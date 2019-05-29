@@ -151,6 +151,7 @@ class App extends React.Component {
             <Route path="/forum/:id" component={Forum} />
             <Route path="/forum" component={Forum} />
             <Route path="/LoginSign" component={LoginSign} />
+            {/* <Redirect from="/BackMainpage/:id/return" to="/BackMainpage/:id" /> */}
             <Route path="/BackMainpage" component={BackMainpage} />
             <Route path="/CinemaBackMainpage" component={CinemaBackMainpage} />
           </Switch>
