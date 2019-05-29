@@ -533,7 +533,6 @@ class CinemaEditInfo extends React.Component {
               className="d-flex flex-wrap"
               style={{ width: '100%' }}
             />
-            1234
           </div>
           <div className="col-lg-5 mt-3">
             {/* 這裡放頭像(含編輯按鈕)、email、權限 */}

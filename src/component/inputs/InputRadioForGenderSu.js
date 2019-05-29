@@ -20,14 +20,14 @@ const InputRadio_Su = props => {
     RadiosBtn.map(
       btn =>
         (btn.className =
-          'ml-3 px-3 py-2 position-absolute border border-warning rounded-circle bg-darkblue text-mywhite')
+          'ml-3 px-3 py-2 position-absolute border border-warning rounded-circle bg-darkblue text-mywhite mytransition5')
     )
     if (event.target.name !== 'radio-btn') {
       event.target.parentNode.className =
-        'ml-3 px-3 py-2 position-absolute border border-warning rounded-circle bg-orange text-darkblue'
+        'ml-3 px-3 py-2 position-absolute border border-warning rounded-circle bg-orange text-darkblue mytransition5'
     } else {
       event.target.className =
-        'ml-3 px-3 py-2 position-absolute border border-warning rounded-circle bg-orange text-darkblue'
+        'ml-3 px-3 py-2 position-absolute border border-warning rounded-circle bg-orange text-darkblue mytransition5'
     }
   }
   return (
@@ -70,7 +70,7 @@ const InputRadio_Su = props => {
               {props.value === item.id ? (
                 <button
                   name="radio-btn"
-                  className="ml-3 px-3 py-2 position-absolute border border-warning rounded-circle bg-orange text-darkbluee"
+                  className="ml-3 px-3 py-2 position-absolute border border-warning rounded-circle bg-orange text-darkblue mytransition5"
                   style={{
                     width: '48px',
                     height: '48px',
@@ -86,7 +86,7 @@ const InputRadio_Su = props => {
               ) : (
                 <button
                   name="radio-btn"
-                  className="ml-3 px-3 py-2 position-absolute border border-warning rounded-circle bg-darkblue text-mywhite"
+                  className="ml-3 px-3 py-2 position-absolute border border-warning rounded-circle bg-darkblue text-mywhite mytransition5"
                   style={{
                     width: '48px',
                     height: '48px',
