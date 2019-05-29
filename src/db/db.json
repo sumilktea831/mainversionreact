@@ -575,7 +575,7 @@
       "title": "戲院資訊",
       "options": [
         {
-          "id": "cinema-ingfo-preview",
+          "id": "cinema-info-preview",
           "name": "戲院資訊一覽"
         },
         {

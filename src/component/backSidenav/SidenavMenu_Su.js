@@ -43,37 +43,70 @@ const SidenavMenu_Su = props => {
         </Accordion.Toggle>
         <Accordion.Collapse eventKey={props.id}>
           <Card.Body className="py-0 px-0 h6">
-            {props.options.map(item => (
-              <Row
-                className="mytransition5"
-                name="option-row"
-                style={{ background: '#30363D' }}
-              >
-                {/* <div className="col-3" /> */}
-                <div className="py-3">
-                  <div
-                    name="option-items"
-                    id={item.id}
-                    className="mytransition5"
-                    style={{
-                      width: '4px',
-                      height: '24px',
-                      opacity: 0,
-                      marginLeft: '0px',
-                      background: '#ffa510',
-                    }}
-                  />
-                </div>
-                <Link
-                  className="text-center col pt-4 sidenavLink"
-                  to={BackPageName + item.id}
-                  onClick={handleLinkClick(item.id)}
-                  // style={{width:'100%'}}
+            {props.options.map(item =>
+              item.id === 'my-preview' || item.id === 'cinema-info-preview' ? (
+                <Row
+                  className="mytransition5"
+                  name="option-row"
+                  style={{ background: 'rgba(255, 255, 255, 0.3)' }}
                 >
-                  {item.name}
-                </Link>
-              </Row>
-            ))}
+                  {/* <div className="col-3" /> */}
+                  <div className="py-3">
+                    <div
+                      name="option-items"
+                      id={item.id}
+                      className="mytransition5"
+                      style={{
+                        width: '4px',
+                        height: '24px',
+                        opacity: 1,
+                        marginLeft: '48px',
+                        marginRight: '-16px',
+                        background: '#ffa510',
+                      }}
+                    />
+                  </div>
+                  <Link
+                    className="text-center col pt-4 sidenavLink"
+                    to={BackPageName + item.id}
+                    onClick={handleLinkClick(item.id)}
+                    // style={{width:'100%'}}
+                  >
+                    {item.name}
+                  </Link>
+                </Row>
+              ) : (
+                <Row
+                  className="mytransition5"
+                  name="option-row"
+                  style={{ background: '#30363D' }}
+                >
+                  {/* <div className="col-3" /> */}
+                  <div className="py-3">
+                    <div
+                      name="option-items"
+                      id={item.id}
+                      className="mytransition5"
+                      style={{
+                        width: '4px',
+                        height: '24px',
+                        opacity: 0,
+                        marginLeft: '0px',
+                        background: '#ffa510',
+                      }}
+                    />
+                  </div>
+                  <Link
+                    className="text-center col pt-4 sidenavLink"
+                    to={BackPageName + item.id}
+                    onClick={handleLinkClick(item.id)}
+                    // style={{width:'100%'}}
+                  >
+                    {item.name}
+                  </Link>
+                </Row>
+              )
+            )}
           </Card.Body>
         </Accordion.Collapse>
       </Card>
