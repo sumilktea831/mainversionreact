@@ -170,8 +170,9 @@ class CardKagaBox extends React.Component {
                   <CardKagaStar star={this.state.AVStar} />
                   <h4 className="card-title mt-2">檔期</h4>
                   <h6>{this.props.time}</h6>
-                  <div className="row d-flex justify-content-center mt-5">
+                  <div className="row d-flex justify-content-center mt-4">
                     <Button
+                      style={{ width: '80px' }}
                       type="button"
                       variant="warning"
                       href={'/movie/' + this.props.id}
@@ -179,6 +180,7 @@ class CardKagaBox extends React.Component {
                       管理
                     </Button>
                     <Button
+                      style={{ width: '80px' }}
                       type="button"
                       variant="warning"
                       href={'CinemaBackMainpage/cinema-film-info'}
@@ -191,6 +193,7 @@ class CardKagaBox extends React.Component {
                 <>
                   {/* <h4 className="card-title mt-3">檔期</h4> */}
                   <Button
+                    style={{ width: '80px' }}
                     type="button"
                     variant="warning"
                     href={'CinemaBackMainpage/cinema-manage-activity'}
@@ -198,6 +201,7 @@ class CardKagaBox extends React.Component {
                     管理
                   </Button>
                   <Button
+                    style={{ width: '80px' }}
                     type="button"
                     variant="warning"
                     href={'/activity/' + this.props.id}

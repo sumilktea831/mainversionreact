@@ -27,7 +27,6 @@ class TheateInfo extends React.Component {
       FilmCardData: [],
       MessageBoard: [],
       messageLength: 4,
-      messageHeight: 1200,
     }
   }
 
@@ -520,6 +519,7 @@ class TheateInfo extends React.Component {
     })
   }
 
+  // 訊息按下新增後----完成
   MessageBoardSave = async newText => {
     let thisMember = this.state.memberThisData[0] //現在登陸的這名會員
     let thisCinema = this.state.cinemaThisData //現在登陸的戲院
@@ -533,6 +533,7 @@ class TheateInfo extends React.Component {
     } else {
       thisLogin = ''
     }
+    let imgLocation = memberId ? 'member' : cinemaId ? 'cinemaImg' : 'cinemaImg'
 
     let newVisitor = {
       id: +new Date(),
@@ -542,6 +543,7 @@ class TheateInfo extends React.Component {
       time: +new Date(),
       awesome: [],
       boo: [],
+      imgLocation: imgLocation,
     }
 
     let newMemberMessage = {
@@ -552,17 +554,15 @@ class TheateInfo extends React.Component {
       time: +new Date(),
       awesome: [],
       boo: [],
+      imgLocation: imgLocation,
     }
-    let newMemberMessageData = [...this.state.MessageBoard, newMemberMessage]
-    let newVisitorData = [...this.state.MessageBoard, newVisitor]
+    let newMemberMessageData = [newMemberMessage, ...this.state.MessageBoard]
+    let newVisitorData = [newVisitor, ...this.state.MessageBoard]
     let NewData = thisLogin !== '' ? newMemberMessageData : newVisitorData
-    console.log(NewData)
     this.setState({ MessageBoard: NewData })
 
     // 然後更新回資料庫 留言資料放在戲院自己裡面 cinemaMessage
     const NewCinemaMessage = this.state.cinemaData
-    console.log('NewCinemaMessage')
-    console.log(this.state)
     NewCinemaMessage.cinemaMessage = NewData
 
     const resCinema = await fetch(
@@ -580,12 +580,13 @@ class TheateInfo extends React.Component {
     console.log(jsonObject)
   }
 
+  // 訊息顯示更多----完成
   messageLengthChange = () => {
     this.setState({
       messageLength: this.state.messageLength + 4,
-      messageHeight: this.state.messageHeight + 550,
     })
   }
+
   render() {
     return (
       <>
@@ -741,43 +742,37 @@ class TheateInfo extends React.Component {
           </div>
 
           {/* 留言板區塊 */}
-          <div
-            className="col"
-            style={{ height: this.state.messageHeight + 'px' }}
-          >
+          <div className="col h-100">
             <div className="py-5">
               <TitleKaga title="評論區" />
             </div>
-            <div
-              // className="bg-warning "
-              style={{
-                height: '500px',
-                weight: '100%',
-                textAlign: 'center',
-                fontSize: '50px',
-              }}
-            >
-              {this.state.MessageBoard.map((item, index) =>
-                index < this.state.messageLength ? (
-                  <MessageBoard
-                    listData={item}
-                    awesomeClick={this.awesomeClick}
-                    booeClick={this.booeClick}
-                  />
-                ) : (
-                  ''
-                )
+            {this.state.MessageBoard.map((item, index) =>
+              index < this.state.messageLength ? (
+                <MessageBoard
+                  listData={item}
+                  awesomeClick={this.awesomeClick}
+                  booeClick={this.booeClick}
+                />
+              ) : (
+                ''
+              )
+            )}
+            <div className="d-flex justify-content-center">
+              {this.state.MessageBoard.length > this.state.messageLength ? (
+                <button
+                  type="button"
+                  class="btn btn-outline-warning mb-5 mx-auto"
+                  onClick={this.messageLengthChange}
+                >
+                  更多評論
+                </button>
+              ) : (
+                ''
               )}
-              <button
-                type="button"
-                class="btn btn-outline-warning mb-5"
-                onClick={this.messageLengthChange}
-              >
-                更多評論
-              </button>
-              <MessageBoardInput MessageBoardSave={this.MessageBoardSave} />
             </div>
+            <MessageBoardInput MessageBoardSave={this.MessageBoardSave} />
           </div>
+          <div style={{ height: '10px' }} />
         </div>
       </>
     )
