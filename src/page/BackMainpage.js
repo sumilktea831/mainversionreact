@@ -93,7 +93,6 @@ class BackSidenav extends React.Component {
       console.log(e)
     }
 
-    // 活動頁面 （因為跳錯會卡到資料傳遞, 故獨立出來Try~Catch
     try {
       const resActivity = await fetch(
         'http://localhost:5555/activityCardData',
@@ -150,19 +149,6 @@ class BackSidenav extends React.Component {
         }),
       })
       const dataForum = await resForum.json()
-
-      // 導入活動資料
-      const resActivity = await fetch(
-        'http://localhost:5555/activityCardData',
-        {
-          method: 'GET',
-          headers: new Headers({
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          }),
-        }
-      )
-      const dataActivity = await resActivity.json()
 
       // 導入影片資料
       const resFilm = await fetch('http://localhost:5555/filmData', {

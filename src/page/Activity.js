@@ -6,8 +6,6 @@ import ActivitySearchbarContent from '../component/activity/ActivitySearchbar/Ac
 import ActivitySearchbarInput from '../component/activity/ActivitySearchbar/ActivitySearchbarInput'
 import ActivityCard from '../component/activity/ActivityCard/ActivityCard'
 
-import { LinkContainer } from 'react-router-bootstrap'
-
 class Activity extends React.Component {
   constructor() {
     super()
@@ -25,6 +23,7 @@ class Activity extends React.Component {
       searchbarRegionState: ['active', '', '', '', ''],
       searchbarPlaceState: ['active', '', '', '', ''],
       searchText: '',
+      collectActivity: '',
     }
   }
 
@@ -40,6 +39,21 @@ class Activity extends React.Component {
       })
       const data = await res.json()
       this.setState({ activityCardData: data })
+    } catch (err) {
+      console.log(err)
+    }
+
+    const memberId = sessionStorage.getItem('memberId')
+    try {
+      const res = await fetch('http://localhost:5555/member/' + memberId, {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+      const data = await res.json()
+      this.setState({ collectActivity: data.collectActivity })
     } catch (err) {
       console.log(err)
     }
@@ -107,6 +121,7 @@ class Activity extends React.Component {
         this.setState({ searchbarPlaceState: ['active', '', '', '', ''] })
         // this.searchbarOnClick(0,searchName,"全部")
       }
+      this.setState({ searchText: '' })
       console.log(data)
       console.log(typeof data)
       this.setState({ activityCardData: data })
@@ -115,11 +130,43 @@ class Activity extends React.Component {
     }
   }
   SearchBarOnChange = async event => {
-    this.setState({ activityCardDataResult: 1 })
     const searchText = event.target.value
     this.setState({ searchText: searchText })
+  }
+  SearchBarOnKeyDown = async event => {
+    const searchText = event.target.value
+    this.setState({ searchText: searchText })
+    if (event.which === 13) {
+      this.setState({ activityCardDataResult: 1 })
+      try {
+        const res = await fetch('http://localhost:5555/activityCardData', {
+          method: 'GET',
+          headers: new Headers({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          }),
+        })
+        let data = await res.json()
+        data = data.filter(
+          item =>
+            item.theater.indexOf(searchText) > -1 ||
+            item.title.indexOf(searchText) > -1
+        )
+        if (data.length === 0) {
+          this.setState({ activityCardDataResult: 0 })
+          this.setState({ searchbarRegionState: ['active', '', '', '', ''] })
+          this.setState({ searchbarPlaceState: ['active', '', '', '', ''] })
+        }
+        this.setState({ activityCardData: data })
+      } catch (err) {
+        console.log(err)
+      }
+    }
+  }
+  handleCollect = async id => {
+    const memberId = sessionStorage.getItem('memberId')
     try {
-      const res = await fetch('http://localhost:5555/activityCardData', {
+      const res = await fetch('http://localhost:5555/member/' + memberId, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -127,17 +174,30 @@ class Activity extends React.Component {
         }),
       })
       let data = await res.json()
-      data = data.filter(
-        item =>
-          item.theater.indexOf(searchText) > -1 ||
-          item.title.indexOf(searchText) > -1
-      )
-      if (data.length === 0) {
-        this.setState({ activityCardDataResult: 0 })
-        this.setState({ searchbarRegionState: ['active', '', '', '', ''] })
-        this.setState({ searchbarPlaceState: ['active', '', '', '', ''] })
+      let isCollect = data.collectActivity.indexOf(id) > -1
+
+      if (isCollect) {
+        data.collectActivity = data.collectActivity
+          .split(id)
+          .toString()
+          .replace(/,/g, '')
+      } else {
+        data.collectActivity += id
       }
-      this.setState({ activityCardData: data })
+      this.setState({ collectActivity: data.collectActivity })
+      try {
+        const res = await fetch('http://localhost:5555/member/' + memberId, {
+          method: 'PUT',
+          body: JSON.stringify(data),
+          headers: new Headers({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          }),
+        })
+        console.log('修改完成')
+      } catch (err) {
+        console.log(err)
+      }
     } catch (err) {
       console.log(err)
     }
@@ -215,15 +275,16 @@ class Activity extends React.Component {
                     value={this.state.searchText}
                     placeholder="請輸入關鍵字"
                     handleOnChange={this.SearchBarOnChange}
+                    handleOnKeyDown={this.SearchBarOnKeyDown}
                   />
                 </div>
               </div>
             </div>
-            {this.state.activityCardDataResult == 0 ? (
+            {this.state.activityCardDataResult === 0 ? (
               <div className="col-md-12 p-0">
                 <div className="text-center">
                   <button
-                    onClick={() => this.searchbarOnClick(0)}
+                    onClick={() => this.searchbarOnClick('清空')}
                     className="btn btn-warning"
                   >
                     沒有符合此條件的活動，請重新搜尋
@@ -234,18 +295,22 @@ class Activity extends React.Component {
               ''
             )}
             {this.state.activityCardData.map(data => (
-              <LinkContainer to={'/activity/' + data.id}>
-                <div className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5">
-                  <ActivityCard
-                    key={data.id}
-                    title={data.theater}
-                    subtitle={data.title}
-                    imgSrc={data.imgSrc}
-                    collectOpen
-                    isCollect={data.isCollect}
-                  />
-                </div>
-              </LinkContainer>
+              <div className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5">
+                <ActivityCard
+                  routerId={data.id}
+                  handleCollect={() => this.handleCollect(data.id)}
+                  key={data.id}
+                  title={data.theater}
+                  subtitle={data.title}
+                  imgSrc={data.imgSrc}
+                  collectOpen
+                  isCollect={
+                    this.state.collectActivity.indexOf(data.id) > -1
+                      ? true
+                      : false
+                  }
+                />
+              </div>
             ))}
           </div>
         </div>

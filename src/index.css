@@ -36,6 +36,20 @@ img.img-fluid {
   height: 100%;
   object-fit: cover;
 }
+/*card */
+.card.activityCard {
+  border:none !important;
+  transition:0.5s
+}
+.card.activityCard img {
+  transition:0.5s !important;
+  filter: grayscale(20%) !important;
+  filter:brightness(70%) !important;
+}
+.card.activityCard img:hover{
+  filter: grayscale(100%) !important;
+  filter:brightness(100%) !important;
+}
 /*button*/
 
 /* button.btn.btn-warning {
