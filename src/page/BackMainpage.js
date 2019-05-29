@@ -11,6 +11,7 @@ import ActivityCard from '../component/activity/ActivityCard/ActivityCard'
 import ActivityTitle from '../component/activity/ActivityTitle/ActivityTitle'
 import MemberEditInfo from '../component/meberBack/MemberEditInfo'
 import MemberEditPwd from '../component/meberBack/MemberEditPwd'
+import MemberCollectTable from '../component/meberBack/MemberCollectTable'
 import CheckboxMultiForFavTypeReadSu from '../component/inputs/CheckboxMultiForFavTypeReadSu'
 import CinemaEditInfo from '../component/cinemaBack/CinemaEditInfo'
 
@@ -31,6 +32,8 @@ class BackSidenav extends React.Component {
       allMemberData: [], // 全部會員pure json
       thisMemberData: [], // 已登入會員pure json
       allFilmData: [], // 全部影片 pure json
+      allArticleData: [], // 全部影片 pure json
+      thisCollectArticleData: [], // 該會員收藏的文章資訊
       avatarOne: '', // 整理過頭像框用
       boxData: '', // 整理過基本資料用
       filmCard: [], // 整理過影片卡片用
@@ -183,6 +186,27 @@ class BackSidenav extends React.Component {
 
       // 會員my-preview頁面需要的資料
       const memberPageData = dataMember.find(item => item.id === memberId)
+
+      // ==========Su========預覽頁======導入完整文章資料
+      const resArticle = await fetch('http://localhost:5555/articleCardData', {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+      const dataArcticle = await resArticle.json()
+      const myArticleData = []
+      dataArcticle.filter(item => {
+        return memberPageData.collectArticle.map(items => {
+          if (item.id === items) {
+            myArticleData.push(item)
+          }
+        })
+      })
+      console.log(myArticleData)
+      //==============================================================
+
       // 元件AvatarOne -- 完成
       // 如果沒有頭像就給他預設頭像
       const memberAvatar =
@@ -234,6 +258,8 @@ class BackSidenav extends React.Component {
         mark: memberPageData.markList,
       }))
       this.setState({
+        allArticleData: dataArcticle,
+        thisCollectArticleData: myArticleData,
         allFilmData: dataFilm,
         avatarOne: avatarOneData,
         boxData: dataBoxData,
@@ -553,12 +579,15 @@ class BackSidenav extends React.Component {
                   <div className="py-5" />
                   <TitleKaga title="收藏文章" />
                   <div
-                    className=" d-flex flex-wrap col-lg-12 bg-danger my-5"
+                    className=" d-flex flex-wrap col-lg-12 my-5"
                     style={{
                       height: '300px',
                     }}
                   >
-                    table(請找情哥)
+                    <MemberCollectTable
+                      thisData={this.state.thisMemberData}
+                      thisCollectArticleData={this.state.thisCollectArticleData}
+                    />
                   </div>
                   <div className="py-5" />
                   <TitleKaga title="發文紀錄" />

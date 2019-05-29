@@ -201,6 +201,9 @@ input.activitySearch::placeholder {
 .bg-orange {
   background: #ffa510 !important;
 }
+.bg-back-table {
+  background: #394149;
+}
 .mytransition5 {
   transition: 0.5s;
 }
