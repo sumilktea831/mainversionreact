@@ -12,8 +12,8 @@ class CinemaBackMainpage extends React.Component {
   constructor(props) {
     super(props.props)
     const path = window.location.pathname.slice(1)
-    console.log(path)
-    console.log(props)
+    // console.log(path)
+    // console.log(props)
     this.state = {
       cinemaSidenavItems: [],
       cinemaEditInputmsg: [],
@@ -21,9 +21,11 @@ class CinemaBackMainpage extends React.Component {
       cinemaId: [],
       thisCinemaData: [],
     }
+    console.log('parent-constructor')
   }
 
   async componentDidMount() {
+    console.log('parent-didmount')
     try {
       //取得戲院sidenav項目
       const response = await fetch('http://localhost:5555/cinemaBackSidenav', {
@@ -112,6 +114,7 @@ class CinemaBackMainpage extends React.Component {
     window.location.href = '/'
   }
   render() {
+    console.log('parent-render')
     if (!sessionStorage.getItem('cinemaId')) {
       // 若沒session，回到登入頁
       window.location.href = '/LoginSign'
