@@ -12,7 +12,6 @@ const MemberBackSidenav = props => (
     <div //左邊sidenave框
       className="col-lg-2 p-0"
       style={{
-        height: '100vh',
         background: '#242B34',
       }}
     >

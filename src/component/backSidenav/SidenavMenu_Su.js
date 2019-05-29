@@ -1,7 +1,6 @@
 import React from 'react'
 import { Row, Accordion, Card } from 'react-bootstrap'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
-import { async } from 'q';
 
 const SidenavMenu_Su = props => {
   const BackPageName = sessionStorage.getItem('memberId')
@@ -66,7 +65,7 @@ const SidenavMenu_Su = props => {
                   />
                 </div>
                 <Link
-                  className="text-center col py-3"
+                  className="text-center col pt-4"
                   to={BackPageName + item.id}
                   onClick={handleLinkClick(item.id)}
                   // style={{width:'100%'}}

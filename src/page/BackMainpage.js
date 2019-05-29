@@ -11,6 +11,8 @@ import ActivityCard from '../component/activity/ActivityCard/ActivityCard'
 import ActivityTitle from '../component/activity/ActivityTitle/ActivityTitle'
 import MemberEditInfo from '../component/meberBack/MemberEditInfo'
 import MemberEditPwd from '../component/meberBack/MemberEditPwd'
+import MemberCollectTable from '../component/meberBack/MemberCollectTable'
+import CheckboxMultiForFavTypeReadSu from '../component/inputs/CheckboxMultiForFavTypeReadSu'
 import CinemaEditInfo from '../component/cinemaBack/CinemaEditInfo'
 
 //memberId
@@ -26,9 +28,12 @@ class BackSidenav extends React.Component {
       memberSidenavItems: [],
       // 會員用state
       memberEditInputmsg: [],
+      favTypeOptions: [], //喜愛電影類型選項
       allMemberData: [], // 全部會員pure json
       thisMemberData: [], // 已登入會員pure json
       allFilmData: [], // 全部影片 pure json
+      allArticleData: [], // 全部影片 pure json
+      thisCollectArticleData: [], // 該會員收藏的文章資訊
       avatarOne: '', // 整理過頭像框用
       boxData: '', // 整理過基本資料用
       filmCard: [], // 整理過影片卡片用
@@ -92,7 +97,25 @@ class BackSidenav extends React.Component {
     } catch (e) {
       console.log(e)
     }
-
+    //取得喜愛電影類型項目
+    try {
+      const response = await fetch(
+        'http://localhost:5555/memberFavTypeOptions',
+        {
+          method: 'GET',
+          headers: new Headers({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          }),
+        }
+      )
+      if (!response.ok) throw new Error(response.statusText)
+      const jsonObject = await response.json()
+      const data = await jsonObject
+      await this.setState({ favTypeOptions: data })
+    } catch (e) {
+      console.log(e)
+    }
     try {
       const resActivity = await fetch(
         'http://localhost:5555/activityCardData',
@@ -163,6 +186,27 @@ class BackSidenav extends React.Component {
 
       // 會員my-preview頁面需要的資料
       const memberPageData = dataMember.find(item => item.id === memberId)
+
+      // ==========Su========預覽頁======導入完整文章資料
+      const resArticle = await fetch('http://localhost:5555/articleCardData', {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+      const dataArcticle = await resArticle.json()
+      const myArticleData = []
+      dataArcticle.filter(item => {
+        return memberPageData.collectArticle.map(items => {
+          if (item.id === items) {
+            myArticleData.push(item)
+          }
+        })
+      })
+      console.log(myArticleData)
+      //==============================================================
+
       // 元件AvatarOne -- 完成
       // 如果沒有頭像就給他預設頭像
       const memberAvatar =
@@ -214,6 +258,8 @@ class BackSidenav extends React.Component {
         mark: memberPageData.markList,
       }))
       this.setState({
+        allArticleData: dataArcticle,
+        thisCollectArticleData: myArticleData,
         allFilmData: dataFilm,
         avatarOne: avatarOneData,
         boxData: dataBoxData,
@@ -437,19 +483,14 @@ class BackSidenav extends React.Component {
     //點擊登出，清除session並導回主頁
     // sessionStorage.removeItem('memberID') //不知道為什麼這個方法無效
     sessionStorage.clear()
-    window.location.href = '/mainpage'
+    window.location.href = '/'
   }
 
   render() {
-    if (
-      !(
-        sessionStorage.getItem('memberId') || sessionStorage.getItem('cinemaId')
-      )
-    ) {
+    if (!sessionStorage.getItem('memberId')) {
       // alert('回到登入頁')
       window.location.href = '/LoginSign'
     } else {
-      //判斷登入者是會員or戲院，帶入相應的sidenav
       const pagename = this.props.location.pathname.slice(14)
 
       return (
@@ -491,11 +532,18 @@ class BackSidenav extends React.Component {
                     <TitleKaga title="喜愛電影類型" />
                   </div>
                   {/* 喜好列塞入處 */}
-                  <div
-                    className="row d-flex align-items-center bg-danger"
-                    style={{ height: '200px' }}
-                  >
-                    喜好列 多選欄(尚無原件套用)
+                  <div className="row d-flex align-items-center">
+                    <Row>
+                      {this.state.favTypeOptions.slice(1).map(item => (
+                        <CheckboxMultiForFavTypeReadSu
+                          thisData={this.state.thisMemberData}
+                          inputName="fav_type"
+                          optionId={item.id}
+                          optionName={item.name}
+                          thisfavType={this.state.thisMemberData.fav_type}
+                        />
+                      ))}
+                    </Row>
                   </div>
                   <div className="py-5" />
                   <TitleKaga title="收藏影片" />
@@ -526,12 +574,15 @@ class BackSidenav extends React.Component {
                   <div className="py-5" />
                   <TitleKaga title="收藏文章" />
                   <div
-                    className=" d-flex flex-wrap col-lg-12 bg-danger my-5"
+                    className=" d-flex flex-wrap col-lg-12 my-5"
                     style={{
                       height: '300px',
                     }}
                   >
-                    table(請找情哥)
+                    <MemberCollectTable
+                      thisData={this.state.thisMemberData}
+                      thisCollectArticleData={this.state.thisCollectArticleData}
+                    />
                   </div>
                   <div className="py-5" />
                   <TitleKaga title="發文紀錄" />

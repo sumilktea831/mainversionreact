@@ -38,7 +38,7 @@ const AvatarOne = props => {
             <div
               className={
                 (props.show ? 'd-none' : 'd-flex') +
-                ' bg-warning d-flex align-items-center justify-content-center text-dark'
+                ' bg-orange d-flex align-items-center justify-content-center text-dark'
               }
               style={{
                 borderRadius: '50%',
