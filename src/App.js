@@ -150,7 +150,7 @@ class App extends React.Component {
             <Route path="/forum/:id" component={Forum} />
             <Route path="/forum" component={Forum} />
             <Route path="/LoginSign" component={LoginSign} />
-            <Route path="/BackMainpage" component={Mainpage} />
+            <Route path="/BackMainpage" component={BackMainpage} />
             <Route path="/CinemaBackMainpage" component={CinemaBackMainpage} />
           </Switch>
           <div className="container-fluid" style={{}}>
