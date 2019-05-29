@@ -4,7 +4,7 @@ import CardKagaBoxInfo from './CardKagaBoxInfo'
 import CardKagaCollection from './CardKagaCollection'
 const CardKaga = props => {
   return (
-    <div className="col-lg-3 col-md-6">
+    <div className="col-lg-3 col-md-6 my-3">
       <div className="position-relative m-auto" style={{ width: '250px' }}>
         {props.popup ? (
           <>

@@ -32,7 +32,7 @@ class CardKagaCollection extends React.Component {
             className="position-absolute"
             //下方style轉放scss
             style={{
-              top: '35px',
+              top: '20px',
               right: '20px',
               fontSize: '25px',
               cursor: 'pointer',
@@ -47,7 +47,7 @@ class CardKagaCollection extends React.Component {
             className="position-absolute"
             //下方style轉放scss
             style={{
-              top: '35px',
+              top: '20px',
               right: '20px',
               fontSize: '25px',
               cursor: 'pointer',

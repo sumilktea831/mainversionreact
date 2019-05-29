@@ -140,7 +140,9 @@ class CinemaBackMainpage extends React.Component {
 
       // AvatarOne
       const AvatarOneData = {
-        img: 'http://localhost:3000/images/' + dataThisCinema.cinemaLogoImg,
+        img:
+          'http://localhost:3000/images/cinemaImg/' +
+          dataThisCinema.cinemaLogoImg,
         name: dataThisCinema.cinemaName,
         purvie: dataThisCinema.permission,
         SignUpDate: dataThisCinema.cinemaSignUpDate,
@@ -240,16 +242,17 @@ class CinemaBackMainpage extends React.Component {
       const messageBoxData = []
       OnlyFourMessageBoxData.map(item =>
         messageBoxData.push({
-          img: 'http://localhost:3000/images/' + item.img,
+          img: 'http://localhost:3000/images/cinemaImg/' + item.img,
           message: item.message,
           name: item.name,
           time: item.time,
         })
       )
-      // 用time做比較翻轉順序
-      messageBoxData.sort((a, b) => {
-        return b.time - a.time
-      })
+      // 用time做比較翻轉順序 不需要了
+      // 已從發文那邊改變順序了
+      // messageBoxData.sort((a, b) => {
+      //   return b.time - a.time
+      // })
 
       // 全部setState上去
       this.setState({
@@ -320,7 +323,7 @@ class CinemaBackMainpage extends React.Component {
                 padding: '240px 120px 120px 120px',
               }}
             >
-              {pagename === 'cinema-ingfo-preview' ? (
+              {pagename === 'cinema-info-preview' ? (
                 <>
                   <>
                     <TitleKaga title="公開資訊卡預覽" />
@@ -363,23 +366,32 @@ class CinemaBackMainpage extends React.Component {
 
                     <div className="py-5" />
                     <TitleKaga title="發佈活動" />
-                    <div className="d-flex flex-wrap col-lg-12 mt-4">
-                      {this.state.ActivityCard.map(item => (
-                        <CardKaga
-                          key={item.key}
-                          id={item.id}
-                          title={item.title}
-                          subtitle={item.subtitle}
-                          img={item.img}
-                          link={item.link}
-                          popup
-                          // mark={item.mark}
-                          // newStarAndMark={this.activityCardNewStarAndMark}
-                          // star={item.star}
-                          // AVGStar
-                        />
-                      ))}
-                    </div>
+                    {this.state.ActivityCard.length !== 0 ? (
+                      <div className="d-flex flex-wrap col-lg-12 mt-4">
+                        {this.state.ActivityCard.map(item => (
+                          <CardKaga
+                            key={item.key}
+                            id={item.id}
+                            title={item.title}
+                            subtitle={item.subtitle}
+                            img={item.img}
+                            link={item.link}
+                            popup
+                            // mark={item.mark}
+                            // newStarAndMark={this.activityCardNewStarAndMark}
+                            // star={item.star}
+                            // AVGStar
+                          />
+                        ))}
+                      </div>
+                    ) : (
+                      <div
+                        className="d-flex align-items-center"
+                        style={{ height: '300px', width: '100%' }}
+                      >
+                        <h5 className="ml-4">目前沒有舉辦活動喔</h5>
+                      </div>
+                    )}
 
                     <div className="py-5" />
                     <TitleKaga title="近期評論紀錄" />
@@ -397,10 +409,6 @@ class CinemaBackMainpage extends React.Component {
                           message={item.message}
                           name={item.name}
                           time={item.time}
-                          // awesome={['4', '13', '22', '34']}
-                          // boo={['2', '15', '29', '47']}
-                          // awesomeClick={this.awesomeClick}
-                          // booClick={this.booClick}
                         />
                       ))}
                     </div>

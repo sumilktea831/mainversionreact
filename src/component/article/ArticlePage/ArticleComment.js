@@ -32,6 +32,7 @@ class ArticleComment extends React.Component {
       const resCommemtData = dataR.filter(item => item.rid === +this.props.sid)
       this.setState({ resComment: resCommemtData })
       console.log(resCommemtData)
+      console.log(this.props.avatar)
     } catch (err) {
       console.log(err)
     }
@@ -39,6 +40,7 @@ class ArticleComment extends React.Component {
 
   //偵聽表單變化 且倒入state
   handleResChange = event => {
+    var spaceRes = event.target.value
     this.setState({ inputTextRes: event.target.value })
     console.log(this.state.inputTextRes)
   }
@@ -48,9 +50,11 @@ class ArticleComment extends React.Component {
     alert(this.state.inputTextRes)
 
     let newRes = {
-      rid: this.props.sid,
-      date: new Date().toString().substr(0, 10), //時間 TODO:調整格式
-      author: '測試1',
+      rid: +this.props.sid,
+      date: new Date().toDateString(), //時間 TODO:調整格式
+      authorID: this.props.memberId,
+      author: this.props.author,
+      avatar: this.props.avatar,
       content: this.state.inputTextRes,
     }
     // 倒入 json資料庫
@@ -79,6 +83,8 @@ class ArticleComment extends React.Component {
           })
       console.log(newResData)
       console.log(news)
+      // 清空輸入框
+      document.querySelector('#resInput').value = []
     } catch (err) {
       console.log(err)
     }
@@ -92,7 +98,11 @@ class ArticleComment extends React.Component {
             <Row class="media-body d-flex py-5 justify-content-center">
               <Col xs={4} md={2} className="row">
                 <div className="avatar mx-2">
-                  <img src="/images/article/test4.jpg" class="mr-3" alt="..." />
+                  <img
+                    src={'/images/member/' + this.props.avatar}
+                    class="mr-3"
+                    alt="..."
+                  />
                 </div>
                 <div>
                   <div>{this.props.author}</div>
@@ -117,7 +127,9 @@ class ArticleComment extends React.Component {
               <>
                 <ResComment
                   key={index}
+                  authorID={item.authorID}
                   author={item.author}
+                  avatar={item.avatar}
                   date={item.date}
                   content={item.content}
                 />

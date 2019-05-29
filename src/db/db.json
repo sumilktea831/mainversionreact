@@ -1381,13 +1381,10 @@
         "動畫片",
         "驚悚片",
         "偵探片",
-        "愛情片",
-        "喜劇片",
-        "恐怖片",
-        "懸疑片"
+        "愛情片"
       ],
       "career": "資訊 / 科技",
-      "join_date": "generalMember",
+      "join_date": "2019-05-23",
       "permission": "generalMember",
       "collectFilm": [
         "001",
@@ -1407,11 +1404,13 @@
         "6",
         "7"
       ],
+      "collectActivity": "a1558948617225a1558948598530a1558948500794",
+      "collectActivityJoin": "a1558948500794",
       "collectForum": [],
       "markList": [
         {
-          "markId": "002",
-          "markcontent": "Taiwan No.1!!"
+          "markId": "001",
+          "markcontent": ""
         }
       ]
     }
@@ -1443,6 +1442,10 @@
         {
           "starId": "m22222",
           "star": 5
+        },
+        {
+          "starId": "m1558576972555",
+          "star": 5
         }
       ],
       "cinemaAddress": "台北市大安區復興南路一段",
@@ -1460,13 +1463,44 @@
       "purview": "cinemaMember",
       "cinemaMessage": [
         {
+          "id": 1559151687850,
+          "name": "訪客",
+          "img": "asianman.jpg",
+          "message": "ㄊsdcec",
+          "time": 1559151687850,
+          "awesome": [],
+          "boo": [],
+          "imgLocation": "cinemaImg"
+        },
+        {
+          "id": 1559138289149,
+          "name": "光點台北",
+          "img": "spott.jpg",
+          "message": "我已改變發文放置順序...  所以下面資料順序就不要管他惹！！",
+          "time": 1559138289149,
+          "awesome": [],
+          "boo": [],
+          "imgLocation": "cinemaImg"
+        },
+        {
+          "id": 1559138199665,
+          "name": "光點台北",
+          "img": "spott.jpg",
+          "message": "wergva",
+          "time": 1559138199665,
+          "awesome": [],
+          "boo": [],
+          "imgLocation": "cinemaImg"
+        },
+        {
           "id": "002",
           "name": "東尼大木",
           "img": "asianman.jpg",
           "message": "嘎嘎嘎我要留爆這邊",
           "time": "1558494913221",
           "awesome": [],
-          "boo": []
+          "boo": [],
+          "imgLocation": "cinemaImg"
         },
         {
           "id": "001",
@@ -1475,7 +1509,8 @@
           "message": "啊啊啊  不給你留爆",
           "time": "1558494913758",
           "awesome": [],
-          "boo": []
+          "boo": [],
+          "imgLocation": "cinemaImg"
         },
         {
           "id": 1558975629869,
@@ -1486,7 +1521,8 @@
           "message": "戲院留言測試... 接資料庫惹賣鬧喔！＠！",
           "time": 1558975629869,
           "awesome": [],
-          "boo": []
+          "boo": [],
+          "imgLocation": "cinemaImg"
         },
         {
           "id": 1558975673440,
@@ -1495,7 +1531,8 @@
           "message": "會員留言測試... 三小～～不要爆在這喔",
           "time": 1558975673440,
           "awesome": [],
-          "boo": []
+          "boo": [],
+          "imgLocation": "member"
         },
         {
           "id": 1558975709879,
@@ -1504,7 +1541,68 @@
           "message": "沒登陸的訪客留言測試...   這過關就可以去抽煙惹...",
           "time": 1558975709879,
           "awesome": [],
-          "boo": []
+          "boo": [],
+          "imgLocation": "cinemaImg"
+        },
+        {
+          "id": 1559132033032,
+          "name": "小雪",
+          "img": "97d0f732-be81-4c4f-b773-72dd5395a21a.png",
+          "message": "fgchvjbk",
+          "time": 1559132033032,
+          "awesome": [],
+          "boo": [],
+          "imgLocation": "member"
+        },
+        {
+          "id": 1559132794325,
+          "name": "小雪",
+          "img": "97d0f732-be81-4c4f-b773-72dd5395a21a.png",
+          "message": "fghvjbknm bg",
+          "time": 1559132794325,
+          "awesome": [],
+          "boo": [],
+          "imgLocation": "member"
+        },
+        {
+          "id": 1559132797535,
+          "name": "小雪",
+          "img": "97d0f732-be81-4c4f-b773-72dd5395a21a.png",
+          "message": "ikjhbvgjbkb",
+          "time": 1559132797535,
+          "awesome": [],
+          "boo": [],
+          "imgLocation": "member"
+        },
+        {
+          "id": 1559132834170,
+          "name": "小雪",
+          "img": "97d0f732-be81-4c4f-b773-72dd5395a21a.png",
+          "message": "fuygvhujkhj",
+          "time": 1559132834170,
+          "awesome": [],
+          "boo": [],
+          "imgLocation": "member"
+        },
+        {
+          "id": 1559132838478,
+          "name": "小雪",
+          "img": "97d0f732-be81-4c4f-b773-72dd5395a21a.png",
+          "message": "ghcvjkbvg",
+          "time": 1559132838478,
+          "awesome": [],
+          "boo": [],
+          "imgLocation": "member"
+        },
+        {
+          "id": 1559138044578,
+          "name": "光點台北",
+          "img": "spott.jpg",
+          "message": "test",
+          "time": 1559138044578,
+          "awesome": [],
+          "boo": [],
+          "imgLocation": "cinemaImg"
         }
       ]
     },
@@ -1518,7 +1616,7 @@
         "spott.jpg"
       ],
       "cinemaHeroImg": "spott.jpg",
-      "cinemaAccount": "tpespotlight",
+      "cinemaAccount": "spottaipei",
       "cinemaPassword": "1111",
       "cinemaType": "gallery",
       "cinemaStar": [
@@ -1545,7 +1643,8 @@
           "message": "嘎嘎嘎我要留爆這邊",
           "time": "1558494913221",
           "awesome": [],
-          "boo": []
+          "boo": [],
+          "imgLocation": "cinemaImg"
         },
         {
           "id": "001",
@@ -1554,7 +1653,8 @@
           "message": "啊啊啊  不給你留爆",
           "time": "1558494913758",
           "awesome": [],
-          "boo": []
+          "boo": [],
+          "imgLocation": "cinemaImg"
         }
       ]
     },
@@ -1575,6 +1675,10 @@
         {
           "starId": "m22222",
           "star": 5
+        },
+        {
+          "starId": "m1558576972555",
+          "star": 1
         }
       ],
       "cinemaMark": "testword",
@@ -1598,7 +1702,8 @@
           "message": "嘎嘎嘎我要留爆這邊",
           "time": "1558494913221",
           "awesome": [],
-          "boo": []
+          "boo": [],
+          "imgLocation": "cinemaImg"
         },
         {
           "id": "001",
@@ -1607,7 +1712,8 @@
           "message": "啊啊啊  不給你留爆",
           "time": "1558494913758",
           "awesome": [],
-          "boo": []
+          "boo": [],
+          "imgLocation": "cinemaImg"
         }
       ]
     },
@@ -1628,6 +1734,10 @@
         {
           "starId": "m22222",
           "star": 5
+        },
+        {
+          "starId": "m1558576972555",
+          "star": 2
         }
       ],
       "cinemaMark": "testword",
@@ -1651,7 +1761,8 @@
           "message": "嘎嘎嘎我要留爆這邊",
           "time": "1558494913221",
           "awesome": [],
-          "boo": []
+          "boo": [],
+          "imgLocation": "cinemaImg"
         },
         {
           "id": "001",
@@ -1660,7 +1771,8 @@
           "message": "啊啊啊  不給你留爆",
           "time": "1558494913758",
           "awesome": [],
-          "boo": []
+          "boo": [],
+          "imgLocation": "cinemaImg"
         }
       ]
     },
@@ -1704,7 +1816,8 @@
           "message": "嘎嘎嘎我要留爆這邊",
           "time": "1558494913221",
           "awesome": [],
-          "boo": []
+          "boo": [],
+          "imgLocation": "cinemaImg"
         },
         {
           "id": "001",
@@ -1713,7 +1826,8 @@
           "message": "啊啊啊  不給你留爆",
           "time": "1558494913758",
           "awesome": [],
-          "boo": []
+          "boo": [],
+          "imgLocation": "cinemaImg"
         }
       ]
     },
@@ -1757,7 +1871,8 @@
           "message": "嘎嘎嘎我要留爆這邊",
           "time": "1558494913221",
           "awesome": [],
-          "boo": []
+          "boo": [],
+          "imgLocation": "cinemaImg"
         },
         {
           "id": "001",
@@ -1766,7 +1881,8 @@
           "message": "啊啊啊  不給你留爆",
           "time": "1558494913758",
           "awesome": [],
-          "boo": []
+          "boo": [],
+          "imgLocation": "cinemaImg"
         }
       ]
     },
@@ -1810,7 +1926,14 @@
       "image": "test4.jpg",
       "link": "",
       "markId": "1,2,3,4",
-      "likeId": "3,4",
+      "likeId": [
+        "m1558576972555",
+        "m1558576972555",
+        "m1558576972555",
+        "3",
+        ",",
+        "4"
+      ],
       "viewCounter": "10"
     },
     {
@@ -2729,7 +2852,7 @@
         },
         {
           "starId": "m1558576972555",
-          "star": 3
+          "star": 4
         }
       ]
     },

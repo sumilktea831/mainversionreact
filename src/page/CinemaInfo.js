@@ -26,6 +26,7 @@ class TheateInfo extends React.Component {
       ActivityCardData: [],
       FilmCardData: [],
       MessageBoard: [],
+      messageLength: 4,
     }
   }
 
@@ -137,6 +138,29 @@ class TheateInfo extends React.Component {
       dataThisMember.map(item =>
         item.collectCinema.map(items => BigCardCollection.push(items))
       )
+
+      const thisCinema = dataCine[0] ? dataCine[0] : dataCine
+      const hadOrNot = thisCinema.cinemaStar.some(el => el.starId === memberId)
+      //找到自己評過分的星星資料 dataStar
+      let dataStar = 0
+      let starLength = thisCinema.cinemaStar.length
+      // 如果你有登錄會員 又評過分 一開始直接顯示你的評分
+      if (memberId && hadOrNot) {
+        let propsData = thisCinema.cinemaStar
+        propsData.map(item => {
+          if (item.starId === memberId) {
+            dataStar = item.star
+          }
+          return item
+        })
+        // 如果你沒登陸或是沒評過分 一開始就顯示平均分數
+      } else {
+        const dataStarArray = thisCinema.cinemaStar.map(el => el.star)
+        const dataStarSum = dataStarArray.reduce((a, b) => a + b)
+        const dataStarAverage = dataStarSum / dataStarArray.length
+        dataStar = Math.round(dataStarAverage)
+      }
+
       const BigCarData = {
         id: dataCinema.id,
         img: dataCinema.cinemaHeroImg,
@@ -152,6 +176,8 @@ class TheateInfo extends React.Component {
         collectionLength: BigCardCollectionLength.length,
         awesomeClick: this.awesomeClick,
         collectionClick: this.collectionClick,
+        star: dataStar,
+        starLength: starLength,
       }
 
       // 照片框參數整理
@@ -284,6 +310,8 @@ class TheateInfo extends React.Component {
         collectionLength: this.state.BigCarData.collectionLength,
         awesomeClick: this.awesomeClick,
         collectionClick: this.collectionClick,
+        star: this.state.BigCarData.star,
+        starLength: this.state.BigCarData.starLength,
       }
       await this.setState({ BigCarData: BigCarData })
     } catch (e) {
@@ -355,6 +383,8 @@ class TheateInfo extends React.Component {
         collectionLength: collectionLength,
         awesomeClick: this.awesomeClick,
         collectionClick: this.collectionClick,
+        star: this.state.BigCarData.star,
+        starLength: this.state.BigCarData.starLength,
       }
       await this.setState({ BigCarData: BigCarData })
     } catch (e) {
@@ -518,7 +548,11 @@ class TheateInfo extends React.Component {
     })
   }
 
+  // 訊息按下新增後----完成
   MessageBoardSave = async newText => {
+    //抓到發文人的ip
+    // require module
+
     let thisMember = this.state.memberThisData[0] //現在登陸的這名會員
     let thisCinema = this.state.cinemaThisData //現在登陸的戲院
     let thisLogin = {}
@@ -531,6 +565,7 @@ class TheateInfo extends React.Component {
     } else {
       thisLogin = ''
     }
+    let imgLocation = memberId ? 'member' : cinemaId ? 'cinemaImg' : 'cinemaImg'
 
     let newVisitor = {
       id: +new Date(),
@@ -540,6 +575,7 @@ class TheateInfo extends React.Component {
       time: +new Date(),
       awesome: [],
       boo: [],
+      imgLocation: imgLocation,
     }
 
     let newMemberMessage = {
@@ -550,46 +586,99 @@ class TheateInfo extends React.Component {
       time: +new Date(),
       awesome: [],
       boo: [],
+      imgLocation: imgLocation,
     }
-    let newMemberMessageData = [...this.state.MessageBoard, newMemberMessage]
-    let newVisitorData = [...this.state.MessageBoard, newVisitor]
+    let newMemberMessageData = [newMemberMessage, ...this.state.MessageBoard]
+    let newVisitorData = [newVisitor, ...this.state.MessageBoard]
     let NewData = thisLogin !== '' ? newMemberMessageData : newVisitorData
-    console.log(NewData)
     this.setState({ MessageBoard: NewData })
 
     // 然後更新回資料庫 留言資料放在戲院自己裡面 cinemaMessage
-    // const NewCinemaMessage = this.state.cinemaData
-    // console.log('NewCinemaMessage')
-    // console.log(this.state)
-    // NewCinemaMessage.cinemaMessage = NewData
+    const NewCinemaMessage = this.state.cinemaData
+    NewCinemaMessage.cinemaMessage = NewData
 
-    // const resCinema = await fetch(
-    //   'http://localhost:5555/cinema/' + this.props.match.params.id,
-    //   {
-    //     method: 'PUT',
-    //     body: JSON.stringify(NewCinemaMessage),
-    //     headers: new Headers({
-    //       Accept: 'application/json',
-    //       'Content-Type': 'application/json',
-    //     }),
-    //   }
-    // )
-    // const jsonObject = await resCinema.json()
-    // console.log(jsonObject)
+    const resCinema = await fetch(
+      'http://localhost:5555/cinema/' + this.props.match.params.id,
+      {
+        method: 'PUT',
+        body: JSON.stringify(NewCinemaMessage),
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      }
+    )
+    const jsonObject = await resCinema.json()
+    console.log(jsonObject)
   }
 
+  // 訊息顯示更多----完成
+  messageLengthChange = () => {
+    this.setState({
+      messageLength: this.state.messageLength + 4,
+    })
+  }
+
+  //星星數改變接資料庫----完成
+  StarChange = async (id, star) => {
+    // 先判斷對方有沒有平過分
+    let hadOrNot = this.state.cinemaData.cinemaStar.some(
+      el => el.starId === memberId
+    )
+    console.log(hadOrNot)
+
+    //先複製一份此頁面的資料等等用 也做一份等等要新增或蓋回去的資料
+    const CinemaData = this.state.cinemaData
+    const newStar = {
+      starId: memberId,
+      star: star,
+    }
+    // 如果hadOrNot false代表沒有給過星星就是新增
+    if (hadOrNot === false) {
+      const newStarData = [...this.state.cinemaData.cinemaStar, newStar]
+      CinemaData.cinemaStar = newStarData
+      const newBigCarData = this.state.BigCarData
+      newBigCarData.starLength++
+      console.log(newBigCarData)
+      this.setState({ BigCarData: newBigCarData })
+    } else {
+      // 如果hadOrNot true就是有那就要修改
+      const newStarData = CinemaData.cinemaStar.map(el => {
+        if (el.starId === memberId) {
+          el = newStar
+        }
+        return el
+      })
+      CinemaData.cinemaStar = newStarData
+    }
+    const resCinema = await fetch(
+      'http://localhost:5555/cinema/' + this.props.match.params.id,
+      {
+        method: 'PUT',
+        body: JSON.stringify(CinemaData),
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      }
+    )
+    const jsonObject = await resCinema.json()
+    console.log(jsonObject)
+  }
   render() {
     return (
       <>
         {/* 英雄頁面----串接完成 */}
         <CinemaSection
           pictureSrc={
-            'http://localhost:3000/images/' + this.state.HeroSection.pictureSrc
+            'http://localhost:3000/images/cinemaImg/' +
+            this.state.HeroSection.pictureSrc
           }
           bigSlogan={this.state.HeroSection.bigSlogan}
           midSlogan={this.state.HeroSection.midSlogan}
           smallSlogan={this.state.HeroSection.smallSlogan}
         />
+
         <div
           className="container-fluid h-100"
           style={{ padding: '100px 120px' }}
@@ -597,23 +686,56 @@ class TheateInfo extends React.Component {
           {/* 大的卡片----製作與串接完成 */}
           <TitleKaga title="戲院資訊" />
           <div className="h-100 d-flex justify-content-center">
-            <CardLargeKaga
-              key={this.state.BigCarData.id}
-              id={this.state.BigCarData.id}
-              img={'http://localhost:3000/images/' + this.state.BigCarData.img}
-              address={this.state.BigCarData.address}
-              phone={this.state.BigCarData.phone}
-              taxid={this.state.BigCarData.taxid}
-              web={this.state.BigCarData.web}
-              email={this.state.BigCarData.email}
-              awesome={this.state.BigCarData.awesome}
-              awesomeLength={this.state.BigCarData.awesomeLength}
-              pageviews={this.state.BigCarData.pageviews}
-              collection={this.state.BigCarData.collection}
-              collectionLength={this.state.BigCarData.collectionLength}
-              awesomeClick={this.awesomeClick}
-              collectionClick={this.collectionClick}
-            />
+            {memberId ? (
+              <CardLargeKaga
+                key={this.state.BigCarData.id}
+                id={this.state.BigCarData.id}
+                img={
+                  'http://localhost:3000/images/cinemaImg/' +
+                  this.state.BigCarData.img
+                }
+                address={this.state.BigCarData.address}
+                phone={this.state.BigCarData.phone}
+                taxid={this.state.BigCarData.taxid}
+                web={this.state.BigCarData.web}
+                email={this.state.BigCarData.email}
+                awesome={this.state.BigCarData.awesome}
+                awesomeLength={this.state.BigCarData.awesomeLength}
+                pageviews={this.state.BigCarData.pageviews}
+                collection={this.state.BigCarData.collection}
+                collectionLength={this.state.BigCarData.collectionLength}
+                awesomeClick={this.awesomeClick}
+                collectionClick={this.collectionClick}
+                wantStar
+                star={this.state.BigCarData.star}
+                StarChange={this.StarChange}
+                starLength={this.state.BigCarData.starLength}
+              />
+            ) : (
+              <CardLargeKaga
+                key={this.state.BigCarData.id}
+                id={this.state.BigCarData.id}
+                img={
+                  'http://localhost:3000/images/cinemaImg/' +
+                  this.state.BigCarData.img
+                }
+                address={this.state.BigCarData.address}
+                phone={this.state.BigCarData.phone}
+                taxid={this.state.BigCarData.taxid}
+                web={this.state.BigCarData.web}
+                email={this.state.BigCarData.email}
+                awesome={this.state.BigCarData.awesome}
+                awesomeLength={this.state.BigCarData.awesomeLength}
+                pageviews={this.state.BigCarData.pageviews}
+                collection={this.state.BigCarData.collection}
+                collectionLength={this.state.BigCarData.collectionLength}
+                awesomeClick={this.awesomeClick}
+                collectionClick={this.collectionClick}
+                justStar
+                star={this.state.BigCarData.star}
+                starLength={this.state.BigCarData.starLength}
+              />
+            )}
           </div>
 
           {/* 圖片列 */}
@@ -733,25 +855,33 @@ class TheateInfo extends React.Component {
             <div className="py-5">
               <TitleKaga title="評論區" />
             </div>
-            <div
-              // className="bg-warning "
-              style={{
-                height: '400px',
-                weight: '100%',
-                textAlign: 'center',
-                fontSize: '50px',
-              }}
-            >
-              {this.state.MessageBoard.map(item => (
+            {this.state.MessageBoard.map((item, index) =>
+              index < this.state.messageLength ? (
                 <MessageBoard
                   listData={item}
                   awesomeClick={this.awesomeClick}
                   booeClick={this.booeClick}
                 />
-              ))}
-              <MessageBoardInput MessageBoardSave={this.MessageBoardSave} />
+              ) : (
+                ''
+              )
+            )}
+            <div className="d-flex justify-content-center">
+              {this.state.MessageBoard.length > this.state.messageLength ? (
+                <button
+                  type="button"
+                  class="btn btn-outline-warning mb-5 mx-auto"
+                  onClick={this.messageLengthChange}
+                >
+                  更多評論
+                </button>
+              ) : (
+                ''
+              )}
             </div>
+            <MessageBoardInput MessageBoardSave={this.MessageBoardSave} />
           </div>
+          <div style={{ height: '10px' }} />
         </div>
       </>
     )

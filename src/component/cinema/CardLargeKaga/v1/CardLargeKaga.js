@@ -1,6 +1,9 @@
 import React from 'react'
+import CardKagaStaAnimation from '../../CardKaga/v3/CardKagaStaAnimation'
+import CardKagaStar from '../../CardKaga/v3/CardKagaStar'
 const memberId = sessionStorage.getItem('memberId')
 const cinemaId = sessionStorage.getItem('cinemaId')
+
 class CardLargeKaga extends React.Component {
   constructor(props) {
     super(props)
@@ -10,6 +13,13 @@ class CardLargeKaga extends React.Component {
       pageviews: props.pageviews, //number
       collection: [], //array
       collectionLength: '', //number
+      id: props.id,
+      show: false,
+      firstStar: '',
+      nowStar: props.star,
+      viewStar: props.star,
+      updateStar: '',
+      markText: '',
     }
   }
   componentDidMount() {
@@ -126,6 +136,49 @@ class CardLargeKaga extends React.Component {
     }
   }
 
+  //mouseOver
+  mouseOver1 = () => {
+    this.setState({ viewStar: 1 })
+  }
+  mouseOver2 = () => {
+    this.setState({ viewStar: 2 })
+  }
+  mouseOver3 = () => {
+    this.setState({ viewStar: 3 })
+  }
+  mouseOver4 = () => {
+    this.setState({ viewStar: 4 })
+  }
+  mouseOver5 = () => {
+    this.setState({ viewStar: 5 })
+  }
+  // Click
+  // 按下星星就設定nowStar固定星星 以及上傳星星讓到時候按下儲存可以吃到最新的星星數
+  Click1 = () => {
+    this.setState({ nowStar: 1, viewStar: 1, updateStar: 1 })
+    this.props.StarChange(memberId, 1)
+  }
+  Click2 = () => {
+    this.setState({ nowStar: 2, viewStar: 2, updateStar: 2 })
+    this.props.StarChange(memberId, 2)
+  }
+  Click3 = () => {
+    this.setState({ nowStar: 3, viewStar: 3, updateStar: 3 })
+    this.props.StarChange(memberId, 3)
+  }
+  Click4 = () => {
+    this.setState({ nowStar: 4, viewStar: 4, updateStar: 4 })
+    this.props.StarChange(memberId, 4)
+  }
+  Click5 = () => {
+    this.setState({ nowStar: 5, viewStar: 5, updateStar: 5 })
+    this.props.StarChange(memberId, 5)
+  }
+  //mouseOut
+  mouseOut = () => {
+    let now = this.state.nowStar
+    this.setState({ viewStar: now })
+  }
   render() {
     return (
       <>
@@ -191,6 +244,42 @@ class CardLargeKaga extends React.Component {
                     )}
                   </div>
                 </div>
+                {this.props.wantStar ? (
+                  <div className="col mb-4 d-flex pl-3 align-items-center">
+                    <h4 className="ml-2 mr-5">喜好程度</h4>
+                    <div className="ml-4 mb-2">
+                      <CardKagaStaAnimation
+                        view={this.state.viewStar}
+                        mouseOver1={this.mouseOver1}
+                        mouseOver2={this.mouseOver2}
+                        mouseOver3={this.mouseOver3}
+                        mouseOver4={this.mouseOver4}
+                        mouseOver5={this.mouseOver5}
+                        Click1={this.Click1}
+                        Click2={this.Click2}
+                        Click3={this.Click3}
+                        Click4={this.Click4}
+                        Click5={this.Click5}
+                        mouseOut={this.mouseOut}
+                      />
+                    </div>
+                    <h6 className="ml-3 mb-1">
+                      / 共{this.props.starLength}人給分
+                    </h6>
+                  </div>
+                ) : this.props.justStar ? (
+                  <div className="col mb-4 d-flex pl-3 align-items-center">
+                    <h4 className="ml-2 mr-5">平均給分</h4>
+                    <div className="ml-4 mb-2">
+                      <CardKagaStar star={this.props.star} />
+                    </div>
+                    <h6 className="ml-3 mb-1">
+                      / 共{this.props.starLength}人給分
+                    </h6>
+                  </div>
+                ) : (
+                  ''
+                )}
                 {/* 下方區塊 */}
                 <div className="d-flex mb-4 mt-3" style={{ fontSize: '25px' }}>
                   <div
