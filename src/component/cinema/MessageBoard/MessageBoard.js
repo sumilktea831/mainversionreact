@@ -48,7 +48,10 @@ class MessageBoard extends React.Component {
               <img
                 width="100%"
                 height="100%"
-                src={'http://localhost:3000/images/' + this.props.listData.img}
+                src={
+                  'http://localhost:3000/images/cinemaImg/' +
+                  this.props.listData.img
+                }
                 class=""
                 alt="..."
                 style={{ objectFit: 'cover' }}

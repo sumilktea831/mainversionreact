@@ -584,7 +584,8 @@ class TheateInfo extends React.Component {
         {/* 英雄頁面----串接完成 */}
         <CinemaSection
           pictureSrc={
-            'http://localhost:3000/images/' + this.state.HeroSection.pictureSrc
+            'http://localhost:3000/images/cinemaImg/' +
+            this.state.HeroSection.pictureSrc
           }
           bigSlogan={this.state.HeroSection.bigSlogan}
           midSlogan={this.state.HeroSection.midSlogan}
@@ -600,7 +601,10 @@ class TheateInfo extends React.Component {
             <CardLargeKaga
               key={this.state.BigCarData.id}
               id={this.state.BigCarData.id}
-              img={'http://localhost:3000/images/' + this.state.BigCarData.img}
+              img={
+                'http://localhost:3000/images/cinemaImg/' +
+                this.state.BigCarData.img
+              }
               address={this.state.BigCarData.address}
               phone={this.state.BigCarData.phone}
               taxid={this.state.BigCarData.taxid}
@@ -647,7 +651,7 @@ class TheateInfo extends React.Component {
                       id={item.id}
                       title={item.title}
                       subtitle={item.subtitle}
-                      img={'http://localhost:3000/images/' + item.img}
+                      img={'http://localhost:3000/images/cinemaImg/' + item.img}
                       link={item.link}
                       collectionIcon
                       collectionClick={this.collectionClickFilm}
@@ -661,7 +665,7 @@ class TheateInfo extends React.Component {
                       id={item.id}
                       title={item.title}
                       subtitle={item.subtitle}
-                      img={'http://localhost:3000/images/' + item.img}
+                      img={'http://localhost:3000/images/cinemaImg/' + item.img}
                       link={item.link}
                     />
                   ))

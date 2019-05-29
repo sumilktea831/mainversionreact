@@ -140,7 +140,9 @@ class CinemaBackMainpage extends React.Component {
 
       // AvatarOne
       const AvatarOneData = {
-        img: 'http://localhost:3000/images/' + dataThisCinema.cinemaLogoImg,
+        img:
+          'http://localhost:3000/images/cinemaImg/' +
+          dataThisCinema.cinemaLogoImg,
         name: dataThisCinema.cinemaName,
         purvie: dataThisCinema.permission,
         SignUpDate: dataThisCinema.cinemaSignUpDate,
@@ -191,7 +193,7 @@ class CinemaBackMainpage extends React.Component {
           id: item.id,
           title: item.name_tw,
           subtitle: item.name_en,
-          img: 'http://localhost:3000/images/' + item.movie_pic,
+          img: 'http://localhost:3000/images/cinemaImg/' + item.movie_pic,
           link: '/movie/' + item.id,
           star: item.filmStar,
           time: item.in_theaters + ' / ' + item.out_theaters,
@@ -240,7 +242,7 @@ class CinemaBackMainpage extends React.Component {
       const messageBoxData = []
       OnlyFourMessageBoxData.map(item =>
         messageBoxData.push({
-          img: 'http://localhost:3000/images/' + item.img,
+          img: 'http://localhost:3000/images/cinemaImg/' + item.img,
           message: item.message,
           name: item.name,
           time: item.time,

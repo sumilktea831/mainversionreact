@@ -383,7 +383,7 @@ class Cinema extends React.Component {
     return (
       <>
         <ActivitySection
-          pictureSrc="http://localhost:3000/images/cinemaSearch.jpg"
+          pictureSrc="http://localhost:3000/images/cinemaImg/cinemaSearch.jpg"
           bigSlogan="slogan大標"
           midSlogan="slogan中標"
           smallSlogan="slogan敘述"
@@ -419,7 +419,7 @@ class Cinema extends React.Component {
                     id={item.id}
                     title={item.title}
                     subtitle={item.subtitle}
-                    img={'http://localhost:3000/images/' + item.img}
+                    img={'http://localhost:3000/images/cinemaImg/' + item.img}
                     link={item.link}
                     collectionIcon
                     collectionClick={this.collectionClickMovie}
@@ -435,7 +435,7 @@ class Cinema extends React.Component {
                     id={item.id}
                     title={item.title}
                     subtitle={item.subtitle}
-                    img={'http://localhost:3000/images/' + item.img}
+                    img={'http://localhost:3000/images/cinemaImg/' + item.img}
                     link={item.link}
                     starIcon
                     star={item.star}

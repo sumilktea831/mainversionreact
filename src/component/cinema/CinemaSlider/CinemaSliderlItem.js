@@ -6,7 +6,8 @@ const SliderItem = props => {
   // 單張輪播的格式設定
   var sectionStyle = {
     height: '400px',
-    backgroundImage: 'url(http://localhost:3000/images/' + props.img + ')',
+    backgroundImage:
+      'url(http://localhost:3000/images/cinemaImg/' + props.img + ')',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     position: 'relative',
