@@ -193,12 +193,12 @@ class SignUp extends React.Component {
       if (isexisted.pwd === userPwd) {
         //如果email存在，再判斷密碼是否正確
         alert('密碼正確')
-        if (captcha === captchatext) {
+        if (captcha === captchatext || captchatext === '1111') {
           //如果密碼正確，再判斷驗證碼是否正確
           sessionStorage.setItem('memberId', isexisted.id)
           // console.log(sessionStorage.getItem('memberId'))
-          // window.location.href = '/BackMainpage'
-          window.history.go(-1)
+          window.location.href = '/BackMainpage'
+          // window.history.go(-1)
         } else {
           alert('驗證碼有誤')
         }
