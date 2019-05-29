@@ -1410,14 +1410,16 @@
       "cinemaName": "碼農Cafe",
       "cinemaCity": "台北市",
       "cinemaArea": "大安區",
-      "cinemaLogoImg": "spott.jpg",
+      "cinemaLogoImg": "0465d345-669d-450d-ae97-1d26ad39ea68.png",
       "cinemaImg": [
         "spott.jpg",
         "spoth.jpg",
         "nocho.jpg",
-        "eslite.jpg"
+        "eslite.jpg",
+        "65f25c0a-1eea-45c4-984d-f3afff1f9845.jpg",
+        "e528875d-afd8-4b31-9c28-a641bb3ccf53.jpg"
       ],
-      "cinemaHeroImg": "6663c1f1-d94b-4fe8-af97-6912efdb3391.png",
+      "cinemaHeroImg": "a2fa5157-b1b3-4aff-bded-60687f695387.png",
       "cinemaAccount": "1111",
       "cinemaPassword": "1111",
       "cinemaType": "cafe",
@@ -1434,7 +1436,7 @@
       "cinemaAddress": "台北市大安區復興南路一段",
       "cinemaPhone": "02-2511-1111",
       "cinemaTaxid": "11111111",
-      "cinemaWeb": "http://manon.com.tw",
+      "cinemaWeb": "http://manonCafe.com.tw",
       "cinemaEmail": "manon@gg.com",
       "cinemaBackupEmail": "manonCafe@gmail.com",
       "cinemaAwesome": [
