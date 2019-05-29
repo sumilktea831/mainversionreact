@@ -38,17 +38,17 @@ img.img-fluid {
 }
 /*card */
 .card.activityCard {
-  border:none !important;
-  transition:0.5s
+  border: none !important;
+  transition: 0.5s;
 }
 .card.activityCard img {
-  transition:0.5s !important;
+  transition: 0.5s !important;
   filter: grayscale(20%) !important;
-  filter:brightness(70%) !important;
+  filter: brightness(70%) !important;
 }
-.card.activityCard img:hover{
+.card.activityCard img:hover {
   filter: grayscale(100%) !important;
-  filter:brightness(100%) !important;
+  filter: brightness(100%) !important;
 }
 /*button*/
 
@@ -181,8 +181,8 @@ input {
   background: rgba(0, 0, 0, 0.7);
 } */
 
-input.activitySearch::placeholder{
-  color:#ffa510
+input.activitySearch::placeholder {
+  color: #ffa510;
 }
 
 /* -------------------SU------------------------ */
@@ -201,10 +201,9 @@ input.activitySearch::placeholder{
 .bg-orange {
   background: #ffa510 !important;
 }
-.mytransition5{
-  transition: .5s;
+.mytransition5 {
+  transition: 0.5s;
 }
-
 /* -----------------------------------------------------Kaga */
 .cardAreaBgKaga {
   background-position: center;

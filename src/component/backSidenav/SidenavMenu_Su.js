@@ -65,7 +65,7 @@ const SidenavMenu_Su = props => {
                   />
                 </div>
                 <Link
-                  className="text-center col py-3"
+                  className="text-center col pt-4"
                   to={BackPageName + item.id}
                   onClick={handleLinkClick(item.id)}
                   // style={{width:'100%'}}

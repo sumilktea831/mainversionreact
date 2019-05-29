@@ -11,6 +11,7 @@ import ActivityCard from '../component/activity/ActivityCard/ActivityCard'
 import ActivityTitle from '../component/activity/ActivityTitle/ActivityTitle'
 import MemberEditInfo from '../component/meberBack/MemberEditInfo'
 import MemberEditPwd from '../component/meberBack/MemberEditPwd'
+import CheckboxMultiForFavTypeReadSu from '../component/inputs/CheckboxMultiForFavTypeReadSu'
 import CinemaEditInfo from '../component/cinemaBack/CinemaEditInfo'
 
 //memberId
@@ -26,6 +27,7 @@ class BackSidenav extends React.Component {
       memberSidenavItems: [],
       // 會員用state
       memberEditInputmsg: [],
+      favTypeOptions: [], //喜愛電影類型選項
       allMemberData: [], // 全部會員pure json
       thisMemberData: [], // 已登入會員pure json
       allFilmData: [], // 全部影片 pure json
@@ -92,7 +94,25 @@ class BackSidenav extends React.Component {
     } catch (e) {
       console.log(e)
     }
-
+    //取得喜愛電影類型項目
+    try {
+      const response = await fetch(
+        'http://localhost:5555/memberFavTypeOptions',
+        {
+          method: 'GET',
+          headers: new Headers({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          }),
+        }
+      )
+      if (!response.ok) throw new Error(response.statusText)
+      const jsonObject = await response.json()
+      const data = await jsonObject
+      await this.setState({ favTypeOptions: data })
+    } catch (e) {
+      console.log(e)
+    }
     try {
       const resActivity = await fetch(
         'http://localhost:5555/activityCardData',
@@ -491,11 +511,18 @@ class BackSidenav extends React.Component {
                     <TitleKaga title="喜愛電影類型" />
                   </div>
                   {/* 喜好列塞入處 */}
-                  <div
-                    className="row d-flex align-items-center bg-danger"
-                    style={{ height: '200px' }}
-                  >
-                    喜好列 多選欄(尚無原件套用)
+                  <div className="row d-flex align-items-center">
+                    <Row>
+                      {this.state.favTypeOptions.slice(1).map(item => (
+                        <CheckboxMultiForFavTypeReadSu
+                          thisData={this.state.thisMemberData}
+                          inputName="fav_type"
+                          optionId={item.id}
+                          optionName={item.name}
+                          thisfavType={this.state.thisMemberData.fav_type}
+                        />
+                      ))}
+                    </Row>
                   </div>
                   <div className="py-5" />
                   <TitleKaga title="收藏影片" />

@@ -1382,24 +1382,27 @@
         "武俠片",
         "動畫片",
         "驚悚片",
-        "偵探片"
+        "偵探片",
+        "愛情片"
       ],
       "career": "資訊 / 科技",
-      "join_date": "2019-05-23",
+      "join_date": "generalMember",
       "permission": "generalMember",
-      "collectFilm": [],
+      "collectFilm": [
+        "001",
+        "002",
+        "003"
+      ],
       "collectCinema": [
         "c1",
         "c2"
       ],
       "collectArticle": [],
-      "collectActivity": "a1558948617225a1558948576759a1558948598530a1558948500794",
-      "collectActivityJoin": "a1558948500794",
       "collectForum": [],
       "markList": [
         {
-          "markId": "c1",
-          "markcontent": "yaaaaa"
+          "markId": "001",
+          "markcontent": ""
         }
       ]
     }
@@ -3956,6 +3959,10 @@
         {
           "starId": "m33333",
           "star": 4
+        },
+        {
+          "starId": "m1558576972555",
+          "star": 4
         }
       ]
     },
@@ -4004,6 +4011,10 @@
         },
         {
           "starId": "m33333",
+          "star": 4
+        },
+        {
+          "starId": "m1558576972555",
           "star": 4
         }
       ]
