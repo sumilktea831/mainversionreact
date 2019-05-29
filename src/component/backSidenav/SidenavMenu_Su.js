@@ -1,7 +1,6 @@
 import React from 'react'
 import { Row, Accordion, Card } from 'react-bootstrap'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
-import { async } from 'q';
 
 const SidenavMenu_Su = props => {
   const BackPageName = sessionStorage.getItem('memberId')
