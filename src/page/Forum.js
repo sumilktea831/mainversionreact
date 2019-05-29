@@ -48,7 +48,7 @@ class Forum extends React.Component {
       currentcommentApi: [],
       // 發表文章光香彈出判斷
       show: false,
-      imagePath: '/images/',
+      imagePath: '/images/member/',
       forumData: [],
       id: 0,
       headline: '',
@@ -58,6 +58,7 @@ class Forum extends React.Component {
       forumCreateDateInSecond: 0,
       forumCreateTimeCount: 0,
       commentCreateTimeCount: [],
+      forumCommentCreateTimeDate: '',
       forumName: '',
       // 要撈會員
       forumNameId: '',
@@ -65,6 +66,7 @@ class Forum extends React.Component {
       forumAvatar: '9743_2.jpg',
       forumArticlePic: '',
       forumReview: '',
+      forumReviewLike: 0,
       forumCommentCount: 0,
       forumCommentArea: [],
       // 判斷列表是否有被點擊
@@ -174,11 +176,11 @@ class Forum extends React.Component {
       // 將讀出的陣列反轉，用來讓資料最後一筆顯示在最上面
       // 方便陣列控制只要選索引0就可選到最後一筆
       const listdatareverse = this.state.listdata.reverse().slice(0, 10)
-      console.log(listdatareverse)
+      // console.log(listdatareverse)
 
       // 用來裝目前要顯示左側列表的資料
       await this.setState({ listdataReverse: listdatareverse })
-      console.log(this.state.listdataReverse)
+      // console.log(this.state.listdataReverse)
 
       // -----------內文didmount 找到目前LINK頁面後面接的ID所對應到DATA中的資料物件Start---------------
       const nowIddata = this.state.listdata.find(
@@ -293,7 +295,7 @@ class Forum extends React.Component {
 
     // const a = articleCurrent.forumCommentArea.map(e => coonsole.log(e))
 
-    console.log(articleCurrent)
+    // console.log(articleCurrent)
     const nowTime = +new Date()
     const messageTime = articleCurrent.forumCreateDateInSecond
     let time = nowTime - messageTime
@@ -355,12 +357,12 @@ class Forum extends React.Component {
           : minute >= 1
           ? minute + '分鐘'
           : second + '秒'
-      console.log(showTimeText)
+      // console.log(showTimeText)
 
       return showTimeText
     })
 
-    console.log(doubles)
+    // console.log(doubles)
 
     this.setState({ commentCreateTimeCount: doubles })
   }
@@ -625,13 +627,22 @@ class Forum extends React.Component {
       // TODO:有資料可以撈時要改回
       forumCommentAvatar: sessionStorage.getItem('memberId')
         ? this.state.noLoginInfo.avatar
-        : 'defaultAvatar.jpg',
+        : 'ca11cf8a-7724-4b33-8e93-6e6635eff034.jpg',
       // forumCommentAvatar: '9743_2.jpg',
       forumCommentUserId: sessionStorage.getItem('memberId')
         ? sessionStorage.getItem('memberId')
         : 'defaultForumCommentID',
       // 發留言時間
       forumCommentCreateTime: +new Date(),
+      // 另存留言格式
+      forumCommentCreateTimeDate: new Date().toLocaleString('chinese', {
+        hour12: false,
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+      }),
     }
 
     // 將整包要更新的內容重新打包，不能漏掉任何屬性即使沒變
@@ -647,6 +658,7 @@ class Forum extends React.Component {
       forumAvatar: onClickArticle.forumAvatar,
       forumArticlePic: onClickArticle.forumArticlePic,
       forumReview: onClickArticle.forumReview,
+      forumReviewLike: onClickArticle.forumReviewLike,
       // 因為留言還沒新增所以要在length+1送進資料庫
       forumCommentCount: onClickArticle.forumCommentArea.length + 1,
       // 將原本的留言陣列onClickArticleComment內容展開後再把新的留言newComment加入
@@ -746,6 +758,7 @@ class Forum extends React.Component {
       forumAvatar: onClickArticle.forumAvatar,
       forumArticlePic: onClickArticle.forumArticlePic,
       forumReview: onClickArticle.forumReview,
+      forumReviewLike: onClickArticle.forumReviewLike,
       // 因為留言還沒新增所以要在length+1送進資料庫
       forumCommentCount: onClickArticle.forumCommentArea.length + 1,
       //  將過濾過剩下的留言用三個點拆開成物件放回陣列
@@ -911,6 +924,7 @@ class Forum extends React.Component {
         .replace(/<\/script>/gm, '&lt;/script&gt;')
         // TAG包內容
         .replace(/<script\b[^>]*>([\s\S]*?)<\/script>/gm, '<script></script>'),
+      forumReviewLike: this.state.forumReviewLike,
       forumCommentCount: this.state.forumCommentCount,
       forumCommentArea: this.state.forumCommentArea,
     }
@@ -1143,6 +1157,7 @@ class Forum extends React.Component {
         forumAvatar: onEditHeadline.forumAvatar,
         forumArticlePic: onEditHeadline.forumArticlePic,
         forumReview: onEditHeadline.forumReview,
+        forumReviewLike: onEditHeadline.forumReviewLike,
         forumCommentCount: onEditHeadline.forumCommentArea.length,
         // 將原本的留言陣列onClickArticleComment內容展開後再把新的留言newComment加入
         forumCommentArea: onEditHeadline.forumCommentArea,
@@ -1268,7 +1283,7 @@ class Forum extends React.Component {
       'style',
       'width:100% '
     )
-    console.log(onEditArticle.forumReview)
+    // console.log(onEditArticle.forumReview)
     // 取消不做變更因此將原來的值倒回html裡顯示
     currentNodeSelect.innerHTML = onEditArticle.forumReview
   }
@@ -1346,6 +1361,7 @@ class Forum extends React.Component {
         forumAvatar: onEditArticle.forumAvatar,
         forumArticlePic: onEditArticle.forumArticlePic,
         forumReview: getThisIdInnerHTML,
+        forumReviewLike: onEditArticle.forumReviewLike,
         forumCommentCount: onEditArticle.forumCommentArea.length,
         // 將原本的留言陣列onClickArticleComment內容展開後再把新的留言newComment加入
         forumCommentArea: onEditArticle.forumCommentArea,
@@ -1461,14 +1477,14 @@ class Forum extends React.Component {
                 <div className="my-4">
                   <ForumSearchbarRoy handleSearch={this.handleSearch} />
                 </div>
-                <div className="d-flex m-0 ">
+                {/* <div className="d-flex m-0 ">
                   <div className="mr-3">
                     <ActionButtonCategoryRoy />
                   </div>
                   <div className="">
                     <ActionButtonFilterRoy />
                   </div>
-                </div>
+                </div> */}
                 <div
                   className="d-flex justify-content-center align-content-center w-100 my-3"
                   style={{ height: '40px' }}
@@ -1559,9 +1575,7 @@ class Forum extends React.Component {
               </div>
             </div>
             <div className={'col-7 ml-4 '}>
-              <div className={' ' + this.state.searchNoDataContentHiddenArea}>
-                賣鬧拉
-              </div>
+              <div className={' ' + this.state.searchNoDataContentHiddenArea} />
               <div className={' ' + this.state.searchNoDataContentStatus}>
                 <div
                   style={{
@@ -1617,6 +1631,11 @@ class Forum extends React.Component {
                             this.state.listClickChek
                               ? this.state.currentdata.forumReview
                               : this.state.nowIDdata.forumReview
+                          }
+                          forumReviewLike={
+                            this.state.listClickChek
+                              ? this.state.currentdata.forumReviewLike
+                              : this.state.nowIDdata.forumReviewLike
                           }
                           contentArticlePic={
                             this.state.listClickChek

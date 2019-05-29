@@ -33,7 +33,7 @@ const ForumArticleListRoy = props => {
           style={{ height: '40px' }}
         >
           {/* 個人頭像，包含名稱與照片 */}
-          <div className="col-4 p-0">
+          <div className="col-6 p-0">
             <ListAvatarRoy
               listforumName={props.listforumName}
               listforumAvatar={props.listforumAvatar}
@@ -42,13 +42,13 @@ const ForumArticleListRoy = props => {
             />
           </div>
           {/* 發文時間 */}
-          <div className="col-5 p-0">
+          <div className="col-6 p-0">
             <ListIssueDateRoy listforumCreateDate={props.listforumCreateDate} />{' '}
           </div>
           {/* 觀看次數 */}
-          <div className="col-3 p-0 d-flex justify-content-end">
+          {/* <div className="col-3 p-0 d-flex justify-content-end">
             <ListViewsRoy listforumViews={props.listforumViews} />
-          </div>
+          </div> */}
         </div>
       </div>
     </>
