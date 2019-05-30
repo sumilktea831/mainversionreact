@@ -219,8 +219,8 @@
       "h": "48px",
       "inputType": "text",
       "inputLabel": "戲院名稱",
-      "iconL": "fas fa-air-freshener",
-      "iconLS": "24px",
+      "iconL": "",
+      "iconLS": "",
       "placeholder": "請輸入完整名稱",
       "iconR": "",
       "iconRS": ""
@@ -234,8 +234,8 @@
       "iconL": "",
       "iconLS": "",
       "placeholder": "請輸入您的統編",
-      "iconR": "fas fa-birthday-cake",
-      "iconRS": "24px"
+      "iconR": "",
+      "iconRS": ""
     },
     {
       "id": "cinemaCity",
@@ -245,7 +245,7 @@
       "inputLabel": "所在縣市",
       "iconL": "",
       "iconLS": "",
-      "placeholder": "這裡是下拉選單...",
+      "placeholder": "",
       "iconR": "fas fa-caret-square-down",
       "iconRS": "24px",
       "selectOptions": [
@@ -1345,9 +1345,7 @@
         "偵探片",
         "愛情片",
         "喜劇片",
-        "恐怖片",
-        "戰爭片",
-        "靈異片"
+        "恐怖片"
       ],
       "career": "資訊 / 科技",
       "join_date": "generalMember",
@@ -1360,6 +1358,15 @@
       "collectCinema": [
         "c1",
         "c2"
+      ],
+      "collectArticle": [
+        "1",
+        "2",
+        "3",
+        "4",
+        "5",
+        "6",
+        "7"
       ],
       "collectArticle": [],
       "collectActivity": "",

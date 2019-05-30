@@ -128,6 +128,8 @@ class App extends React.Component {
     window.location.href = '/mainpage'
   }
   render() {
+    console.log('123')
+    console.log(window.location)
     return (
       <Router>
         <ScroolToTop>
@@ -205,9 +207,13 @@ class App extends React.Component {
             <Route path="/BackMainpage" component={BackMainpage} />
             <Route path="/CinemaBackMainpage" component={CinemaBackMainpage} />
           </Switch>
-          <div className="container-fluid" style={{}}>
-            <Footer />
-          </div>
+          {window.location.pathname == '/LoginSign' ? (
+            ''
+          ) : (
+            <div className="container-fluid" style={{}}>
+              <Footer />
+            </div>
+          )}
         </ScroolToTop>
       </Router>
     )

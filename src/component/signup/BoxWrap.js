@@ -37,7 +37,7 @@ const BoxWrap = props => {
         className="position-absolute"
         style={{
           width: '600px',
-          height: '650px',
+          height: '600px',
           zIndex: `${props.zIndex}`,
           top: '25%',
           left: `${props.left}`,
