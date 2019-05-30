@@ -138,10 +138,10 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={Mainpage} />
             <Route exact path="/mainpage" component={Mainpage} />
-            <Route path="/cinema" component={Cinema} />
             <Route path="/cinema/:id" component={CinemaInfo} />
-            <Route path="/movie" component={Movie} />
+            <Route path="/cinema" component={Cinema} />
             <Route path="/movie/:id" component={MovieInfo} />
+            <Route path="/movie" component={Movie} />
             <Route path="/article/:id" component={ArticlePage} />
             <Route path="/article" component={Article} />
             <Route exact path="/activity/join/:id" component={ActivityJoin} />
