@@ -347,22 +347,31 @@ class CinemaBackMainpage extends React.Component {
 
                     <div className="py-5" />
                     <TitleKaga title="上映影片" />
-                    <div className="d-flex flex-wrap col-lg-12 mt-4">
-                      {this.state.FilmCard.map(item => (
-                        <CardKaga
-                          key={item.key}
-                          id={item.id}
-                          title={item.title}
-                          subtitle={item.subtitle}
-                          img={item.img}
-                          link={item.link}
-                          popup
-                          star={item.star}
-                          AVGStar
-                          time={item.time}
-                        />
-                      ))}
-                    </div>
+                    {this.state.FilmCard.length !== 0 ? (
+                      this.state.FilmCard.map(item => (
+                        <div className="d-flex flex-wrap col-lg-12 mt-4">
+                          <CardKaga
+                            key={item.key}
+                            id={item.id}
+                            title={item.title}
+                            subtitle={item.subtitle}
+                            img={item.img}
+                            link={item.link}
+                            popup
+                            star={item.star}
+                            AVGStar
+                            time={item.time}
+                          />
+                        </div>
+                      ))
+                    ) : (
+                      <div
+                        className="d-flex align-items-center"
+                        style={{ height: '300px', width: '100%' }}
+                      >
+                        <h5 className="ml-4">目前沒有上映影片喔</h5>
+                      </div>
+                    )}
 
                     <div className="py-5" />
                     <TitleKaga title="發佈活動" />
