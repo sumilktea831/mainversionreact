@@ -19,9 +19,46 @@ class Movie extends React.Component {
       movieCardData: [],
       movieCardDataResult: 0,
       searchbarRegion: ['全部', '北部', '中部', '南部', '東部'],
-      searchbarType: ['全部', '影院', '學校', '文創園區', '咖啡廳'],
+      searchbarType: [
+        '全部',
+        '動作片',
+        '動畫片',
+        '喜劇片',
+        '偵探片',
+        '紀錄片',
+        '戲劇片',
+        '英雄片',
+        '恐怖片',
+        '武俠片',
+        '靈異片',
+        '文藝片',
+        '警匪片',
+        '科幻片',
+        '懸疑片',
+        '驚悚片',
+        '戰爭片',
+        '愛情片',
+      ],
       searchbarRegionState: ['active', '', '', '', ''],
-      searchbarTypeState: ['active', '', '', '', ''],
+      searchbarTypeState: [
+        'active',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+        '',
+      ],
       searchText: '',
       collectMovie: '',
     }
@@ -71,7 +108,26 @@ class Movie extends React.Component {
         this.setState({ searchbarRegionState: data })
         break
       case 'searchbarType':
-        data = ['', '', '', '', '', '']
+        data = [
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+          '',
+        ]
         data[id] === '' ? (data[id] = 'active') : (data[id] = '')
         this.setState({ searchbarTypeState: data })
         break
@@ -90,29 +146,59 @@ class Movie extends React.Component {
 
       // console.log(searchKeyWord)
       switch (searchKeyWord) {
-        case '北部':
-          data = data.filter((el, id) => el['type'].indexOf('北部') >= 0)
+        case '動作片':
+          data = data.filter((el, id) => el['type'].indexOf('動作片') >= 0)
           break
-        case '中部':
-          data = data.filter((el, id) => el['type'].indexOf('中部') >= 0)
+        case '動畫片':
+          data = data.filter((el, id) => el['type'].indexOf('動畫片') >= 0)
           break
-        case '南部':
-          data = data.filter((el, id) => el['type'].indexOf('南部') >= 0)
+        case '喜劇片':
+          data = data.filter((el, id) => el['type'].indexOf('喜劇片') >= 0)
           break
-        case '東部':
-          data = data.filter((el, id) => el['type'].indexOf('東部') >= 0)
+        case '偵探片':
+          data = data.filter((el, id) => el['type'].indexOf('偵探片') >= 0)
           break
-        case '咖啡廳':
-          data = data.filter((el, id) => el['type'].indexOf('咖啡廳') >= 0)
+        case '紀錄片':
+          data = data.filter((el, id) => el['type'].indexOf('紀錄片') >= 0)
           break
-        case '影院':
-          data = data.filter((el, id) => el['type'].indexOf('影院') >= 0)
+        case '戲劇片':
+          data = data.filter((el, id) => el['type'].indexOf('戲劇片') >= 0)
           break
         case '學校':
           data = data.filter((el, id) => el['type'].indexOf('學校') >= 0)
           break
-        case '文創園區':
-          data = data.filter((el, id) => el['type'].indexOf('文創園區') >= 0)
+        case '英雄片':
+          data = data.filter((el, id) => el['type'].indexOf('英雄片') >= 0)
+          break
+        case '恐怖片':
+          data = data.filter((el, id) => el['type'].indexOf('恐怖片') >= 0)
+          break
+        case '武俠片':
+          data = data.filter((el, id) => el['type'].indexOf('武俠片') >= 0)
+          break
+        case '靈異片':
+          data = data.filter((el, id) => el['type'].indexOf('靈異片') >= 0)
+          break
+        case '文藝片':
+          data = data.filter((el, id) => el['type'].indexOf('文藝片') >= 0)
+          break
+        case '警匪片':
+          data = data.filter((el, id) => el['type'].indexOf('警匪片') >= 0)
+          break
+        case '科幻片':
+          data = data.filter((el, id) => el['type'].indexOf('科幻片') >= 0)
+          break
+        case '懸疑片':
+          data = data.filter((el, id) => el['type'].indexOf('懸疑片') >= 0)
+          break
+        case '驚悚片':
+          data = data.filter((el, id) => el['type'].indexOf('驚悚片') >= 0)
+          break
+        case '戰爭片':
+          data = data.filter((el, id) => el['type'].indexOf('戰爭片') >= 0)
+          break
+        case '愛情片':
+          data = data.filter((el, id) => el['type'].indexOf('愛情片') >= 0)
           break
         default:
           break
@@ -120,7 +206,27 @@ class Movie extends React.Component {
       if (data.length === 0) {
         this.setState({ movieCardDataResult: 0 })
         this.setState({ searchbarRegionState: ['active', '', '', '', ''] })
-        this.setState({ searchbarTypeState: ['active', '', '', '', ''] })
+        this.setState({
+          searchbarTypeState: [
+            'active',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+          ],
+        })
         // this.searchbarOnClick(0,searchName,"全部")
       }
       this.setState({ searchText: '' })
@@ -157,7 +263,27 @@ class Movie extends React.Component {
         if (data.length === 0) {
           this.setState({ movieCardDataResult: 0 })
           this.setState({ searchbarRegionState: ['active', '', '', '', ''] })
-          this.setState({ searchbarTypeState: ['active', '', '', '', ''] })
+          this.setState({
+            searchbarTypeState: [
+              'active',
+              '',
+              '',
+              '',
+              '',
+              '',
+              '',
+              '',
+              '',
+              '',
+              '',
+              '',
+              '',
+              '',
+              '',
+              '',
+              '',
+            ],
+          })
         }
         this.setState({ movieCardData: data })
       } catch (err) {
