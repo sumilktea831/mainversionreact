@@ -16,7 +16,7 @@ class Article extends React.Component {
       midSlogan: '汲取新知與品味。',
       smallSlogan: '開始瀏覽',
       heroSectionPic: 'https://cdn.hipwallpaper.com/i/3/95/r4wFeW.jpg',
-      articleData: [], //content  ismarked isliked
+      articleData: [], //content  sid author
       pagination: 0, //int
       viewCounter: 0,
       SliderData: [],
@@ -38,7 +38,7 @@ class Article extends React.Component {
       const data = await res.json()
       console.log(data)
       // 該頁的文章為  第1~5
-      const articleData = data.slice(0, 5)
+      const articleData = data.slice(0, 7)
       const SliderData = data.slice(0, 6)
 
       // 全部資料的長度除以 per page 並且無條件進位
@@ -117,13 +117,15 @@ class Article extends React.Component {
               {this.state.articleData.map(element => (
                 <>
                   {/* {console.log(element.memberInfo.collectArticle)} */}
-                  {console.log('info')}
                   {/* {console.log(this.state.memberInfo[1])} */}
+                  {console.log('info')}
+                  {console.log(this.state.articleData.author)}
                   {/* {console.log(element.markId.find(item => item === memberId))} */}
                   <ArticleCard
                     key={element.id}
                     // 需再設定一個值給Link
                     sid={element.id}
+                    author={element.author}
                     cardImg={'/images/article/' + element.image}
                     cardTitle={element.title}
                     cardText={element.content}

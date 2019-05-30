@@ -28,18 +28,18 @@
 /* 圖片背景遮罩 */
 .bigDarkBG {
   position: absolute;
-  background: rgba(0, 0, 0, 0.301);
+  background: rgba(0, 0, 0, 0.300);
   width: 100%;
   height: 100%;
   transition: 0.5s;
 }
 .slider:hover .bigDarkBG {
   position: absolute;
-  background: rgba(0, 0, 0, 0.137);
+  background: rgba(0, 0, 0, 0.109);
 }
 .articleCard:hover .bigDarkBG {
   position: absolute;
-  background: rgba(0, 0, 0, 0.137);
+  background: rgba(0, 0, 0, 0.109);
 }
 
 /* 通用頭像 */

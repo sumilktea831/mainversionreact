@@ -10,6 +10,7 @@ import {
   FaEye,
   FaHeart,
   FaBookmark,
+  FaRegBookmark,
 } from 'react-icons/fa'
 
 import { MdFavorite } from 'react-icons/md'
@@ -62,8 +63,8 @@ class ViewPage extends React.Component {
                 ) : (
                   <div type="" className="">
                     {/* 加入點閱的func */}
-                    <FaBookmark
-                      className="mb-3 h5"
+                    <FaRegBookmark
+                      className="mb-3 h5 text-warning"
                       onClick={this.props.handleMarkClick}
                     />
                   </div>
@@ -104,11 +105,12 @@ class ViewPage extends React.Component {
                   </div>
                 </div>
               </div>
-              {/* 危險的引入 innerHTML 方法 */}
+              {/* --------------我是內文---------------危險的引入 innerHTML 方法 */}
               <div className="mt-3">
                 <p
                   class="card-text"
                   dangerouslySetInnerHTML={{ __html: this.props.content }}
+                  style={{ lineHeight: 2.5 }}
                 />
               </div>
             </div>
