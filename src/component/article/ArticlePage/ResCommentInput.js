@@ -28,6 +28,7 @@ class ResCommentInput extends React.Component {
         {this.state.isShowed ? (
           <div class="input-group row d-flex my-3" id="myResValue">
             <input
+              id="resInput"
               onChange={this.props.handleResChange}
               value={this.props.inputTextRes}
               type="text"

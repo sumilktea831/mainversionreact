@@ -73,7 +73,7 @@ class MessageCinema extends React.Component {
     // 天
     let day = hour / 24 >= 1 ? Math.floor(hour / 24) : ''
     let showTimeText =
-      day > 1
+      day >= 1
         ? day + '天'
         : hour >= 1
         ? hour + '小時'
@@ -118,7 +118,7 @@ class MessageCinema extends React.Component {
             </div>
             {/* 下面資訊 */}
             <div className="d-flex text-white col p-0">
-              <div onClick={this.aClick} className="d-flex col-4 ">
+              {/* <div onClick={this.aClick} className="d-flex col-4 ">
                 <i className="fas fa-thumbs-up  mr-2" />
                 <h6>
                   {+this.state.awesome.length < 999
@@ -133,7 +133,7 @@ class MessageCinema extends React.Component {
                     ? this.state.boo.length
                     : '999+'}
                 </h6>
-              </div>
+              </div> */}
               <h6 className="col-4">{showTimeText + '前'}</h6>
             </div>
           </div>

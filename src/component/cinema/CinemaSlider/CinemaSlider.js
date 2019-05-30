@@ -12,14 +12,15 @@ class CinemaSlider extends React.Component {
   }
 
   render() {
+    const slickImg = this.props.sData.img ? this.props.sData.img : []
+    let slickImgLength = slickImg.length >= 2 ? 2 : 1
     const settings = {
       dots: true,
       infinite: true,
       speed: 500,
-      slidesToShow: 3,
-      slidesToScroll: 2,
+      slidesToShow: slickImgLength,
+      slidesToScroll: slickImgLength,
     }
-    const slickImg = this.props.sData.img ? this.props.sData.img : []
     return (
       <div>
         <Slider {...settings}>

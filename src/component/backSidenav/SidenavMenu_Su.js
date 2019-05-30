@@ -18,7 +18,7 @@ const SidenavMenu_Su = props => {
     console.log(AllOptionRows)
 
     AllOptionRows.map(
-      item => (item.style.background = '') //將所有option容器背景設為預設值
+      item => (item.style.background = '#30363D') //將所有option容器背景設為預設值
     )
     AllOptions.map(item => (item.style.opacity = 0)) //將所有option的橘線設為不顯示
     AllOptions.map(item => (item.style.margin = '0')) //將所有option的橘線設為不顯示
@@ -37,43 +37,76 @@ const SidenavMenu_Su = props => {
   // console.log(window)
   return (
     <>
-      <Card className="text-center bg-dark">
+      <Card className="text-center bg-darkblue h5">
         <Accordion.Toggle as={Card.Header} eventKey={props.id}>
           {props.title}
         </Accordion.Toggle>
         <Accordion.Collapse eventKey={props.id}>
-          <Card.Body className="py-0 px-0">
-            {props.options.map(item => (
-              <Row
-                className="mytransition5"
-                name="option-row"
-                style={{ background: 'rgba(0,0,0,0)' }}
-              >
-                {/* <div className="col-3" /> */}
-                <div className="py-3">
-                  <div
-                    name="option-items"
-                    id={item.id}
-                    className="mytransition5"
-                    style={{
-                      width: '4px',
-                      height: '24px',
-                      opacity: 0,
-                      marginLeft: '0px',
-                      background: '#ffa510',
-                    }}
-                  />
-                </div>
-                <Link
-                  className="text-center col pt-4"
-                  to={BackPageName + item.id}
-                  onClick={handleLinkClick(item.id)}
-                  // style={{width:'100%'}}
+          <Card.Body className="py-0 px-0 h6">
+            {props.options.map(item =>
+              item.id === 'my-preview' || item.id === 'cinema-info-preview' ? (
+                <Row
+                  className="mytransition5"
+                  name="option-row"
+                  style={{ background: 'rgba(255, 255, 255, 0.3)' }}
                 >
-                  {item.name}
-                </Link>
-              </Row>
-            ))}
+                  {/* <div className="col-3" /> */}
+                  <div className="py-3">
+                    <div
+                      name="option-items"
+                      id={item.id}
+                      className="mytransition5"
+                      style={{
+                        width: '4px',
+                        height: '24px',
+                        opacity: 1,
+                        marginLeft: '48px',
+                        marginRight: '-16px',
+                        background: '#ffa510',
+                      }}
+                    />
+                  </div>
+                  <Link
+                    className="text-center col pt-4 sidenavLink"
+                    to={BackPageName + item.id}
+                    onClick={handleLinkClick(item.id)}
+                    // style={{width:'100%'}}
+                  >
+                    {item.name}
+                  </Link>
+                </Row>
+              ) : (
+                <Row
+                  className="mytransition5"
+                  name="option-row"
+                  style={{ background: '#30363D' }}
+                >
+                  {/* <div className="col-3" /> */}
+                  <div className="py-3">
+                    <div
+                      name="option-items"
+                      id={item.id}
+                      className="mytransition5"
+                      style={{
+                        width: '4px',
+                        height: '24px',
+                        opacity: 0,
+                        marginLeft: '0px',
+                        background: '#ffa510',
+                      }}
+                    />
+                  </div>
+                  <Link
+                    className="text-center col pt-4 sidenavLink"
+                    to={BackPageName + item.id}
+                    onClick={handleLinkClick(item.id)}
+                    // style={{width:'100%'}}
+                  >
+                    {item.name}
+                  </Link>
+                </Row>
+              )
+            )}
           </Card.Body>
         </Accordion.Collapse>
       </Card>

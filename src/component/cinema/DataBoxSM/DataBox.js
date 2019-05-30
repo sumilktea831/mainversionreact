@@ -15,15 +15,15 @@ const DataBoxSM = props => {
           }}
         >
           <div className="flex-column col text-center">
-            <h5>{props.collection}</h5>
+            <h3>{props.collection}</h3>
             <h5>{props.member ? '收藏影片' : '訂閱人數'}</h5>
           </div>
           <div className="flex-column col text-center">
-            <h5>{props.Awesome}</h5>
+            <h3>{props.Awesome}</h3>
             <h5>{props.member ? '收藏文章' : '按讚人數'}</h5>
           </div>
           <div className="flex-column col text-center">
-            <h5>{props.PageViews}</h5>
+            <h3>{props.PageViews}</h3>
             <h5>{props.member ? '發文篇數' : '瀏覽數'}</h5>
           </div>
         </div>

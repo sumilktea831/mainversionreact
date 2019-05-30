@@ -21,7 +21,7 @@ const MemberBackSidenav = props => (
         }}
       />
       <h3 className="text-center mb-4">會員中心</h3>
-      <Accordion defaultActiveKey="0">
+      <Accordion defaultActiveKey="member-info">
         {props.sidenavItems.map(item => (
           <SidenavMenu_Su
             id={item.id}

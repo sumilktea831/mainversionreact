@@ -4,7 +4,7 @@ import CardKagaBoxInfo from './CardKagaBoxInfo'
 import CardKagaCollection from './CardKagaCollection'
 const CardKaga = props => {
   return (
-    <div className="col-lg-3 col-md-6">
+    <div className="col-lg-3 col-md-6 my-3">
       <div className="position-relative m-auto" style={{ width: '250px' }}>
         {props.popup ? (
           <>
@@ -21,7 +21,8 @@ const CardKaga = props => {
               mark={props.mark}
               newStarAndMark={props.newStarAndMark}
               del={props.del}
-              AVGStar={props.AVGStar}
+              AVStar={props.AVGStar}
+              time={props.time}
             />
             {props.collectionIcon ? (
               <CardKagaCollection
@@ -43,7 +44,7 @@ const CardKaga = props => {
               img={props.img}
               link={props.link}
               star={props.star}
-              AVGStar={props.AVGStar}
+              AVStar={props.AVGStar}
             />
             {props.collectionIcon ? (
               <CardKagaCollection

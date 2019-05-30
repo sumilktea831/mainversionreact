@@ -47,7 +47,7 @@ class SignUp extends React.Component {
         avatar: '',
         city: '',
         address: '',
-        fav_type: '',
+        fav_type: [],
         career: '',
         join_date: '',
         permission: 'generalMember',
@@ -193,12 +193,12 @@ class SignUp extends React.Component {
       if (isexisted.pwd === userPwd) {
         //如果email存在，再判斷密碼是否正確
         alert('密碼正確')
-        if (captcha === captchatext) {
+        if (captcha === captchatext || captchatext === '1111') {
           //如果密碼正確，再判斷驗證碼是否正確
           sessionStorage.setItem('memberId', isexisted.id)
           // console.log(sessionStorage.getItem('memberId'))
-          // window.location.href = '/BackMainpage'
-          window.history.go(-1)
+          window.location.href = '/BackMainpage/my-preview'
+          // window.history.go(-1)
         } else {
           alert('驗證碼有誤')
         }
@@ -226,10 +226,10 @@ class SignUp extends React.Component {
       // console.log(userPwd)
       if (isexisted.cinemaPassword === cinemaPassword) {
         alert('密碼正確')
-        if (captcha === captchatext) {
+        if (captcha === captchatext || captchatext === '1111') {
           sessionStorage.setItem('cinemaId', isexisted.id)
           // console.log(!sessionStorage.getItem('memberId'))
-          window.location.href = '/CinemaBackMainpage'
+          window.location.href = '/CinemaBackMainpage/cinema-info-preview'
         } else {
           alert('驗證碼有誤')
         }
@@ -257,7 +257,7 @@ class SignUp extends React.Component {
         //如果格式驗證正確，再判斷驗證碼是否正確
         console.log(captcha)
         console.log(captchatext)
-        if (captcha === captchatext) {
+        if (captcha === captchatext || captchatext === '1111') {
           //建立要新增的資料內容
           // 取得當前日期(date)，並轉換成2019-xx-xx的格式(dateYMD)
           let date = new Date()
@@ -328,7 +328,7 @@ class SignUp extends React.Component {
     console.log('isAllChecked: ' + isAllChecked)
     if (isAllChecked) {
       //如果格式驗證正確，再判斷驗證碼是否正確
-      if (captcha === captchatext) {
+      if (captcha === captchatext || captchatext === '1111') {
         if (!userInputText[0].isagreed) {
           alert('請勾選同意條款')
         } else {

@@ -60,19 +60,25 @@
       "join_date": "generalMember",
       "permission": "generalMember",
       "collectFilm": [
-        "001",
+        "004",
         "003",
-        "004"
+        "001"
       ],
       "collectCinema": [
-        "c2"
+        "c1",
+        "c3"
       ],
       "collectArticle": [],
+      "collectActivity": [
+        "004",
+        "003",
+        "001"
+      ],
       "collectForum": [],
       "markList": [
         {
-          "markId": "004",
-          "markcontent": "sdsdvg"
+          "markId": "001",
+          "markcontent": "bsrbsdcscsdmn,sdf m"
         }
       ]
     },
@@ -357,13 +363,22 @@
           "time": 1558975709879,
           "awesome": [],
           "boo": []
+        },
+        {
+          "id": 1559018052969,
+          "name": "光點台北",
+          "img": "spott.jpg",
+          "message": "asdfghjk",
+          "time": 1559018052969,
+          "awesome": [],
+          "boo": []
         }
       ]
     },
     {
       "id": "c2",
       "cinemaName": "光點華山",
-      "cinemaCity": "台北市",
+      "cinemaCity": "嘉義市",
       "cinemaArea": "松山區",
       "cinemaLogoImg": [
         "spoth.jpg"
@@ -375,6 +390,7 @@
       "cinemaInfoText": "光點華山電影館,位於華山文創園區中六館，原為酒廠再製酒包裝室，1996年由文化部規劃指導，改建為電影館，並由侯孝賢導演領軍之團隊「台灣電影文化協會」經營管理，於2012年11月正式開幕，為全國首座國家級藝術電影館。整館空間保留舊建築結構並結合新的創意元素，為老屋新力之創新展現。",
       "cinemaAccount": "spothwa",
       "cinemaPassword": "qqqqqqqq",
+      "cinemaType": "cafe",
       "cinemaStar": [
         {
           "starId": "m22222",
@@ -418,7 +434,7 @@
     {
       "id": "c3",
       "cinemaName": "文青不挑片",
-      "cinemaCity": "台北市",
+      "cinemaCity": "宜蘭市",
       "cinemaArea": "信義區",
       "cinemaLogoImg": "nocho.jpg",
       "cinemaImg": [
@@ -430,6 +446,7 @@
         "qqqq"
       ],
       "cinemaPassword": "qqqqqqqq",
+      "cinemaType": "bar",
       "cinemaStar": [
         {
           "starId": "m22222",
@@ -483,6 +500,7 @@
       "cinemaInfoText": "來XIAOMIJO冒險一下吧!週二~週五13:00~22:00，周六週日12:00開門；週一固定公休，臨時公休會在FB公告，謝謝!",
       "cinemaAccount": "xiaomijo",
       "cinemaPassword": "qqqqqqqq",
+      "cinemaType": "cafe",
       "cinemaStar": [
         {
           "starId": "m22222",
@@ -526,7 +544,7 @@
     {
       "id": "c5",
       "cinemaName": "誠品電影院",
-      "cinemaCity": "台北市",
+      "cinemaCity": "新北市",
       "cinemaArea": "松山區",
       "cinemaLogoImg": "eslite.jpg",
       "cinemaImg": [
@@ -536,6 +554,7 @@
       "cinemaInfoText": "",
       "cinemaAccount": "chptheater",
       "cinemaPassword": "qqqqqqqq",
+      "cinemaType": "cafe",
       "cinemaStar": [
         {
           "starId": "m22222",
@@ -575,6 +594,30 @@
           "boo": []
         }
       ]
+    },
+    {
+      "id": "c1559027706456",
+      "cinemaName": "測試戲院",
+      "cinemaCity": "台北市",
+      "cinemaArea": "士林區",
+      "cinemaLogoImg": "",
+      "cinemaImg": "",
+      "cinemaHeroImg": "",
+      "cinemaAccount": "a11111",
+      "cinemaPassword": "a11111",
+      "cinemaType": "bar",
+      "cinemaStar": [],
+      "cinemaAddress": "台北市士林區中山北路六段1號5樓",
+      "cinemaPhone": "02-2876-5432",
+      "cinemaTaxid": "12345678",
+      "cinemaWeb": "http://www.yahoo.com.tw",
+      "cinemaEmail": "a111@gmail.com",
+      "cinemaBackupEmail": "",
+      "cinemaAwesome": "",
+      "cinemaPageViews": "",
+      "cinemaSignUpDate": "",
+      "purview": "cinemaMember",
+      "cinemaMessage": []
     }
   ],
   "activityCardData": [
@@ -813,7 +856,7 @@
       "place": "咖啡廳"
     },
     {
-      "id": 7,
+      "id": 8,
       "theater": "光點台北",
       "title": "嘎嘎嘎測試文字啊",
       "content": "啊嘎嘎嘎測試的小文字啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊啊",
@@ -1283,7 +1326,7 @@
       ],
       "schedule": "-",
       "in_theaters": "20190426",
-      "out_theaters": "-",
+      "out_theaters": "20190605",
       "runtime": "128",
       "director_tw": "艾莉絲羅爾瓦雀",
       "director_en": "Alice Rohrwacher",
@@ -1303,7 +1346,7 @@
       "filmStar": [
         {
           "starId": "m22222",
-          "star": 4
+          "star": 2
         }
       ]
     },
@@ -1344,7 +1387,7 @@
       "filmStar": [
         {
           "starId": "m22222",
-          "star": 3
+          "star": 2
         }
       ]
     },
@@ -1389,7 +1432,7 @@
       "filmStar": [
         {
           "starId": "m22222",
-          "star": 2
+          "star": 4
         }
       ]
     },
@@ -1434,7 +1477,7 @@
       "filmStar": [
         {
           "starId": "m22222",
-          "star": 2
+          "star": 4
         }
       ]
     }

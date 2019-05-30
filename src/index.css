@@ -207,6 +207,9 @@ input.activitySearch::placeholder {
 .mytransition5 {
   transition: 0.5s;
 }
+.sidenavLink:hover {
+  color: #ffa510;
+}
 /* -----------------------------------------------------Kaga */
 .cardAreaBgKaga {
   background-position: center;

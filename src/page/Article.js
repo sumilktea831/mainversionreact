@@ -4,8 +4,10 @@ import { Row, Col } from 'react-bootstrap'
 import Pagination from '../component/article/ArticleList/ArticleButton/Pagination'
 import ArticleCard from '../component/article/ArticleList'
 import ArticleSlider from '../component/article/ArticleList/ArticleSlider/ArticleSlider'
+// import ContactForm from '../component/article/ArticleMail/send'
 
-const memberId = 'm1'
+const memberId = sessionStorage.getItem('memberId')
+
 class Article extends React.Component {
   constructor() {
     super()
@@ -14,7 +16,7 @@ class Article extends React.Component {
       midSlogan: '汲取新知與品味。',
       smallSlogan: '開始瀏覽',
       heroSectionPic: 'https://cdn.hipwallpaper.com/i/3/95/r4wFeW.jpg',
-      articleData: [], //content  ismarked isliked
+      articleData: [], //content  sid author
       pagination: 0, //int
       viewCounter: 0,
       SliderData: [],
@@ -36,7 +38,7 @@ class Article extends React.Component {
       const data = await res.json()
       console.log(data)
       // 該頁的文章為  第1~5
-      const articleData = data.slice(0, 5)
+      const articleData = data.slice(0, 7)
       const SliderData = data.slice(0, 6)
 
       // 全部資料的長度除以 per page 並且無條件進位
@@ -80,7 +82,7 @@ class Article extends React.Component {
               {/* <ArricleList image={this.state.imgSrc}/> */}
             </div>
           </div>
-          <Row className="pt-3 my-4">
+          <Row className="pt-3 my-4 ml-5 pl-5">
             <div className="mx-3 text-center border-bottom border-light">
               <h4 className="text-light">.Movieee精選</h4>
             </div>
@@ -91,7 +93,8 @@ class Article extends React.Component {
             </Col>
           </Row>
           <div className="mycontainer">
-            <Row className="mb-4">
+            {/* <ContactForm /> */}
+            <Row className="mb-4 ml-5 pl-5">
               <div
                 className="mx-3 text-center border-bottom border-light"
                 onClick={this.byNew}
@@ -114,13 +117,15 @@ class Article extends React.Component {
               {this.state.articleData.map(element => (
                 <>
                   {/* {console.log(element.memberInfo.collectArticle)} */}
-                  {console.log('info')}
                   {/* {console.log(this.state.memberInfo[1])} */}
+                  {console.log('info')}
+                  {console.log(this.state.articleData.author)}
                   {/* {console.log(element.markId.find(item => item === memberId))} */}
                   <ArticleCard
                     key={element.id}
                     // 需再設定一個值給Link
                     sid={element.id}
+                    author={element.author}
                     cardImg={'/images/article/' + element.image}
                     cardTitle={element.title}
                     cardText={element.content}
@@ -130,9 +135,9 @@ class Article extends React.Component {
               ))}
             </Row>
 
-            <Row className="justify-content-center">
+            {/* <Row className="justify-content-center">
               <Pagination totalPages={this.state.pagination} />
-            </Row>
+            </Row> */}
           </div>
         </div>
       </>

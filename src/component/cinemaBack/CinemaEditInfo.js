@@ -8,7 +8,7 @@ import AvatarTwo from '../cinema/AvatarTypeTwo/AvatarTwo'
 class CinemaEditInfo extends React.Component {
   constructor(props) {
     super(props)
-    // console.log('childconstructor')
+    console.log('childconstructor')
     this.state = {
       originData: {},
       thisData: 0,
@@ -24,10 +24,10 @@ class CinemaEditInfo extends React.Component {
       },
     }
   }
-  // componentWillMount() {
-  //   console.log('childWillMount')
-  //   console.log(this.props.thisData)
-  // }
+  componentWillMount() {
+    console.log('childWillMount')
+    //   console.log(this.props.thisData)
+  }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     console.log('childDerived')
@@ -496,7 +496,7 @@ class CinemaEditInfo extends React.Component {
     await this.setState({ thisData: copyData, hasNewAvatar: false })
   }
   render() {
-    // console.log('childrender')
+    console.log('childrender')
     // console.log(this.props.thisData)
     return (
       <>
@@ -533,7 +533,6 @@ class CinemaEditInfo extends React.Component {
               className="d-flex flex-wrap"
               style={{ width: '100%' }}
             />
-            1234
           </div>
           <div className="col-lg-5 mt-3">
             {/* 這裡放頭像(含編輯按鈕)、email、權限 */}
