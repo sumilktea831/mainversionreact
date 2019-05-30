@@ -203,11 +203,7 @@ class App extends React.Component {
             <Route path="/forum" component={Forum} />
             <Route path="/LoginSign" component={LoginSign} />
             <Route path="/BackMainpage" component={BackMainpage} />
-            <Route
-              exact
-              path="/CinemaBackMainpage"
-              component={CinemaBackMainpage}
-            />
+            <Route path="/CinemaBackMainpage" component={CinemaBackMainpage} />
           </Switch>
           <div className="container-fluid" style={{}}>
             <Footer />
