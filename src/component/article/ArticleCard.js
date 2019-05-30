@@ -6,6 +6,7 @@ import {
   FaShareSquare,
   FaCommentAlt,
   FaThumbsUp,
+  FaRegBookmark,
 } from 'react-icons/fa'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import ReadMore from './ArticleList/ArticleButton/ReadMore'
@@ -14,7 +15,7 @@ import ArticleMark from './ArticleList/ArticleButton/Mark'
 import ArticleShare from './ArticleList/ArticleButton/Share'
 import ArticleComment from './ArticleList/ArticleButton/Comment'
 import { isTerminatorless } from '@babel/types'
-// const memberId = '4';
+const memberId = sessionStorage.getItem('memberId')
 
 class ArticleCard extends React.Component {
   constructor(props) {
@@ -27,7 +28,7 @@ class ArticleCard extends React.Component {
     try {
       // 這邊先寫死 取快樂碼農資料
       const memberRes = await fetch(
-        'http://localhost:5555/member/m1558576972555',
+        'http://localhost:5555/member/' + memberId,
         {
           method: 'GET',
           headers: new Headers({
@@ -60,7 +61,7 @@ class ArticleCard extends React.Component {
                   </div>
                 ) : (
                   <div type="" className="">
-                    <FaBookmark className="mr-1 righ-mark" />
+                    <FaRegBookmark className="mr-1 righ-mark text-warning" />
                   </div>
                 )}
 
@@ -79,8 +80,12 @@ class ArticleCard extends React.Component {
                         {/* 設定標題字串只取前28個字 */}
                         {this.props.sid}
                         {this.props.cardTitle.substr(0, 28) + ''}
+                        {this.props.author}
                       </h5>
                       <span className="contentText mb-5">
+                        <p>
+                          <small>{this.props.author}</small>
+                        </p>
                         {/*.replace(/(<([^>]+)>)/ig,"")
                    設定內容字串，replace HTML 標籤，且只取前100個字，並加上'.......' */}
                         {this.props.cardText
