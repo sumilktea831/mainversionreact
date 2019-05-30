@@ -283,26 +283,34 @@ class BackSidenav extends React.Component {
         star: item.filmStar,
         mark: memberPageData.markList,
       }))
-      this.setState({
-        allArticleData: dataArcticle,
-        thisCollectArticleData: myArticleData,
-        allFilmData: dataFilm,
-        avatarOne: avatarOneData,
-        boxData: dataBoxData,
-        filmCard: filmCardData,
-        myForumData: forumPublishData,
-      })
+      this.setState(
+        {
+          allArticleData: dataArcticle,
+          thisCollectArticleData: myArticleData,
+          allFilmData: dataFilm,
+          avatarOne: avatarOneData,
+          boxData: dataBoxData,
+          filmCard: filmCardData,
+          myForumData: forumPublishData,
+        },
+        () => {
+          console.log('this.state.filmCard')
+          console.log(this.state.filmCard)
+        }
+      )
     } catch (err) {
       console.log(err)
     }
   }
 
-  // 影片卡片的註記與星星調整 這邊改資料庫
+  // 影片卡片的註記與星星調整 1.改資料庫 2.改state
   filmCardNewStarAndMark = async newVal => {
     // 先抓到要改的影片資料並去除陣列
+    // 找到屬於要改註記id的該筆影片資料
     let thisFilm = this.state.allFilmData.filter(
       item => item.id === newVal.mark.markId
     )
+    //把這筆資料去除陣列
     let thisFilmData = thisFilm[0] //thisFilmData 就是要更改的影片完整資料
     // 製作要蓋回去mark的資料
     // 先看看mark裡面是不是有這個id的備註
@@ -353,7 +361,7 @@ class BackSidenav extends React.Component {
       collectForum: this.state.thisMemberData.collectForum,
       markList: newMarkUpdateData,
     }
-    // 然後確實蓋回去
+    // 把有新mark的會員整張蓋回資料庫
     const resMember = await fetch('http://localhost:5555/member/' + memberId, {
       method: 'PUT',
       body: JSON.stringify(NewMemberData),
@@ -363,7 +371,6 @@ class BackSidenav extends React.Component {
       }),
     })
     const jsonMember = await resMember.json()
-
     // console.log(jsonMember)
 
     // 再來做要蓋回去影片的資料
@@ -374,8 +381,11 @@ class BackSidenav extends React.Component {
     let starTrueFalse = thisFilmData.filmStar.some(
       item => item.starId == newVal.star.starId
     )
+
+    // 如果沒有給過星星  就新增一筆
     if (starTrueFalse === false) {
       thisNewFilmData.filmStar.push(newStarData)
+      // 如果本來已經有資料了  就找到那筆並修改他
     } else {
       thisNewFilmData.filmStar = thisFilmData.filmStar.map(item => {
         if (item.starId == newVal.star.starId) {
@@ -384,7 +394,7 @@ class BackSidenav extends React.Component {
         return item
       })
     }
-    // 然後確實蓋回去
+    // 把有新star的戲院整張蓋回資料庫
     const resMark = await fetch(
       'http://localhost:5555/filmData/' + thisNewFilmData.id,
       {
@@ -397,30 +407,53 @@ class BackSidenav extends React.Component {
       }
     )
     const jsonMark = await resMark.json()
-    // console.log(jsonMark)
+
+    // 搞卡片資料來改state渲染了.................
+    // thisNewFilmData==新的那筆影片原始資料
+    // 轉成卡片格式
+
+    let newOneCardData = {
+      key: thisNewFilmData.id,
+      id: thisNewFilmData.id,
+      title: thisNewFilmData.name_tw,
+      subtitle: thisNewFilmData.name_en,
+      img: thisNewFilmData.movie_pic,
+      link: thisNewFilmData.id,
+      star: thisNewFilmData.filmStar,
+      mark: NewMemberData.markList,
+    }
+    // 加到卡片資料裡面
+    const finalStateFilmCardData = this.state.filmCard.map(el => {
+      if (el.id === newOneCardData.id) {
+        el = newOneCardData
+      }
+      return el
+    })
 
     // 然後回去改card的state
     // 一樣限制只能有4筆
     const OnlyFourfilmCardata = []
-    this.state.filmCard.map((item, index) => {
+    finalStateFilmCardData.map((item, index) => {
       if (index < 4) {
         return OnlyFourfilmCardata.push(item)
       }
       return item
     })
 
-    const filmCardData = OnlyFourfilmCardata.map(item => ({
-      key: item.key,
-      id: item.id,
-      title: item.title,
-      subtitle: item.subtitle,
-      img: item.img,
-      link: item.link,
-      star: newVal.star,
-      mark: newVal.mark,
-    }))
-
+    const filmCardData = OnlyFourfilmCardata.map(item => {
+      return {
+        key: item.key,
+        id: item.id,
+        title: item.title,
+        subtitle: item.subtitle,
+        img: item.img,
+        link: item.link,
+        star: item.star, // 錯的
+        mark: item.mark,
+      }
+    })
     this.setState({ filmCard: filmCardData }, () => {
+      console.log('this.state.filmCard')
       console.log(this.state.filmCard)
     })
   }
