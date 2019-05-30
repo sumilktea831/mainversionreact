@@ -87,8 +87,8 @@ class SignUp extends React.Component {
   async componentWillMount() {
     //判斷從props中抓出url帶有的querystring，並比對是否在會員名單內
     //若在名單內，且是在註冊後的24小時內，將自動導向會員中心
-    console.log('willmount')
-    console.log(this.props)
+    // console.log('willmount')
+    // console.log(this.props)
     try {
       //取得會員資料
       //fetch:json-server連線的位址/json中的項目/該項目中id
@@ -115,7 +115,7 @@ class SignUp extends React.Component {
           window.location.href = '/BackMainpage/my-preview'
         }
       }
-      await console.log(memberdata)
+      // await console.log(memberdata)
     } catch (e) {
       //抓到錯誤訊息，以及接下來要做的錯誤處理
       console.log(e)
@@ -137,7 +137,7 @@ class SignUp extends React.Component {
       const jsonObject = await response.json()
       const memberdata = await jsonObject
       await this.setState({ memberdata: memberdata })
-      await console.log(memberdata)
+      // await console.log(memberdata)
     } catch (e) {
       //抓到錯誤訊息，以及接下來要做的錯誤處理
       console.log(e)
@@ -156,7 +156,7 @@ class SignUp extends React.Component {
       const jsonObject = await response.json()
       const cinemadata = await jsonObject
       await this.setState({ cinemadata: cinemadata })
-      await console.log(cinemadata)
+      // await console.log(cinemadata)
     } catch (e) {
       //抓到錯誤訊息，以及接下來要做的錯誤處理
       console.log(e)
@@ -255,9 +255,9 @@ class SignUp extends React.Component {
     const isexisted = this.state.cinemadata.find(
       item => item.cinemaAccount === cinemaAccount
     )
-    console.log(captcha)
-    console.log(captchatext)
-    console.log(isexisted)
+    // console.log(captcha)
+    // console.log(captchatext)
+    // console.log(isexisted)
     if (isexisted) {
       // console.log(isexisted.pwd)
       // console.log(userPwd)
@@ -284,16 +284,16 @@ class SignUp extends React.Component {
     const userPwd = userInputText[0].pwd //取得輸入的密碼
     const captcha = userInputText[0].captcha.toLowerCase()
     const captchatext = userInputText[0].captchatext.toLowerCase()
-    console.log(userInputText)
-    console.log(checkok)
+    // console.log(userInputText)
+    // console.log(checkok)
     if (!userInputText[0].isagreed) {
       alert('請勾選同意條款')
     } else {
       let isAllChecked = checkok.email && checkok.nickname && checkok.repwd
       if (isAllChecked) {
         //如果格式驗證正確，再判斷驗證碼是否正確
-        console.log(captcha)
-        console.log(captchatext)
+        // console.log(captcha)
+        // console.log(captchatext)
         if (captcha === captchatext || captchatext === '1111') {
           //建立要新增的資料內容
           // 取得當前日期(date)，並轉換成2019-xx-xx的格式(dateYMD)
@@ -374,12 +374,12 @@ class SignUp extends React.Component {
     const cinemaHeroImg = userInputText[0].cinemaHeroImg //取得輸入的HeroImg檔名
     const captcha = userInputText[0].captcha.toLowerCase()
     const captchatext = userInputText[0].captchatext.toLowerCase()
-    console.log(userInputText)
-    console.log(checkok)
+    // console.log(userInputText)
+    // console.log(checkok)
     let isAllChecked = true
     let checkArray = Object.values(checkok)
     isAllChecked = checkArray.reduce((a, b) => a && b)
-    console.log('isAllChecked: ' + isAllChecked)
+    // console.log('isAllChecked: ' + isAllChecked)
     if (isAllChecked) {
       //如果格式驗證正確，再判斷驗證碼是否正確
       if (captcha === captchatext || captchatext === '1111') {

@@ -25,7 +25,7 @@ class BackSidenav extends React.Component {
   constructor(props) {
     super(props.props)
     const path = window.location.pathname.slice(1)
-    console.log(path)
+    // console.log(path)
     this.state = {
       // sidenave
       memberSidenavItems: [],
@@ -48,8 +48,8 @@ class BackSidenav extends React.Component {
       activityMemberJoin: [],
       collectActivity: '',
     }
-    console.log('parent-didmount')
-    console.log(this.props)
+    // console.log('parent-didmount')
+    // console.log(this.props)
   }
 
   async componentDidMount() {
@@ -83,7 +83,7 @@ class BackSidenav extends React.Component {
       const data = await jsonObject.find(
         item => item.id === sessionStorage.getItem('memberId')
       )
-      console.log('session' + sessionStorage.getItem('memberId'))
+      // console.log('session' + sessionStorage.getItem('memberId'))
       await this.setState({ thisMemberData: data, allMemberData: jsonObject })
     } catch (e) {
       console.log(e)
@@ -229,8 +229,8 @@ class BackSidenav extends React.Component {
           }
         })
       })
-      console.log('parnet--myArticleData')
-      console.log(myArticleData)
+      // console.log('parnet--myArticleData')
+      // console.log(myArticleData)
       //==============================================================
 
       // 元件AvatarOne -- 完成
@@ -364,7 +364,7 @@ class BackSidenav extends React.Component {
     })
     const jsonMember = await resMember.json()
 
-    console.log(jsonMember)
+    // console.log(jsonMember)
 
     // 再來做要蓋回去影片的資料
     let newStarData = { starId: newVal.star.starId, star: newVal.star.star }
@@ -397,7 +397,7 @@ class BackSidenav extends React.Component {
       }
     )
     const jsonMark = await resMark.json()
-    console.log(jsonMark)
+    // console.log(jsonMark)
 
     // 然後回去改card的state
     // 一樣限制只能有4筆
@@ -447,8 +447,8 @@ class BackSidenav extends React.Component {
         }),
       })
       const jsonObject = await response.json()
-      console.log('fa jsonBack')
-      console.log(jsonObject)
+      // console.log('fa jsonBack')
+      // console.log(jsonObject)
 
       // state要改3個地方
       // filmCard: [], // 整理過影片卡片用
@@ -484,7 +484,7 @@ class BackSidenav extends React.Component {
     let isAllChecked = true
     let checkArray = Object.values(checkok)
     isAllChecked = checkArray.reduce((a, b) => a && b)
-    console.log('isAllChecked: ' + isAllChecked)
+    // console.log('isAllChecked: ' + isAllChecked)
     if (isAllChecked) {
       try {
         fetch('http://localhost:5555/member/' + memberid, {
@@ -514,7 +514,7 @@ class BackSidenav extends React.Component {
     window.location.href = '/'
   }
   static getDerivedStateFromProps(nextProps, prevState) {
-    console.log('childDerived')
+    // console.log('childDerived')
 
     let stateToBeReturned = null
     if (prevState.thisData == 0) {
@@ -525,12 +525,10 @@ class BackSidenav extends React.Component {
       }
     }
 
-    console.log(nextProps)
-    console.log(prevState)
-    console.log(stateToBeReturned)
+    // console.log(nextProps)
+    // console.log(prevState)
+    // console.log(stateToBeReturned)
     return stateToBeReturned
-    console.log(nextProps)
-    console.log(prevState)
   }
 
   handleCollect = async id => {

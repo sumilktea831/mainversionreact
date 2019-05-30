@@ -35,8 +35,8 @@ const MemberBackSidenav = props => {
   }
   return (
     <>
-      {console.log('Backsidenav====props')}
-      {console.log(props)}
+      {/* {console.log('Backsidenav====props')} */}
+      {/* {console.log(props)} */}
       <div //左邊sidenave框
         className="col-lg-2 p-0"
         style={{

@@ -33,9 +33,8 @@ const CinemaBackSidenav = props => {
       defaultPage = 'cinema-advertisement'
       break
   }
-  console.log('defaultPage')
-  console.log(defaultPage)
-  console.log(props.pagename.slice(0, 1))
+  // console.log('defaultPage')
+  // console.log(defaultPage)
   return (
     <>
       <div //左邊sidenave框
