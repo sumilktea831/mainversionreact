@@ -59,8 +59,8 @@ img.img-fluid {
 }
 
 /* button  */
-button{
-  transition:.5s !important;
+button {
+  transition: 0.5s !important;
 }
 .border.border-warning,
 .btn-outline-warning {
@@ -75,7 +75,7 @@ button{
   border: 2px solid #ffa510 !important;
   background: #ffa510;
 }
-.btn-outline-warning:hover{
+.btn-outline-warning:hover {
   color: #2b333d !important;
 }
 
@@ -101,7 +101,7 @@ nav.navbar {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 9;
+  z-index: 999;
   height: 120px;
   background-color: #00000020 !important;
   padding: 0 120px;
