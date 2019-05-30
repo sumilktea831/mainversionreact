@@ -4,7 +4,7 @@ import { Row, Col } from 'react-bootstrap'
 import Pagination from '../component/article/ArticleList/ArticleButton/Pagination'
 import ArticleCard from '../component/article/ArticleList'
 import ArticleSlider from '../component/article/ArticleList/ArticleSlider/ArticleSlider'
-import ContactForm from '../component/article/ArticleMail/send'
+// import ContactForm from '../component/article/ArticleMail/send'
 
 const memberId = sessionStorage.getItem('memberId')
 
