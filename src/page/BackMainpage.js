@@ -779,21 +779,25 @@ class BackSidenav extends React.Component {
                       />
                     </div>
                     {this.state.activityMemberFavorite.map(data => (
-                      <LinkContainer to={'/activity/' + data.id + '/return'}>
-                        <div
-                          className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5"
-                          style={{ width: '250px', height: '360px' }}
-                        >
-                          <ActivityCard
-                            onClick={this.handleOnClick}
-                            key={data.id}
-                            title={data.theater}
-                            subtitle={data.title}
-                            imgSrc={data.imgSrc}
-                            isCollect={data.isCollect}
-                          />
-                        </div>
-                      </LinkContainer>
+                      <div
+                        className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5"
+                        style={{ width: '250px', height: '360px' }}
+                      >
+                        <ActivityCard
+                          routerId={data.id}
+                          handleCollect={() => this.handleCollect(data.id)}
+                          key={data.id}
+                          title={data.theater}
+                          subtitle={data.title}
+                          imgSrc={data.imgSrc}
+                          collectOpen
+                          isCollect={
+                            this.state.collectActivity.indexOf(data.id) > -1
+                              ? true
+                              : false
+                          }
+                        />
+                      </div>
                     ))}
                   </div>
                 </>
@@ -810,21 +814,19 @@ class BackSidenav extends React.Component {
                       />
                     </div>
                     {this.state.activityMemberJoin.map(data => (
-                      <LinkContainer to={'/activity/' + data.id + '/return'}>
-                        <div
-                          className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5"
-                          style={{ width: '250px', height: '360px' }}
-                        >
-                          <ActivityCard
-                            onClick={this.handleOnClick}
-                            key={data.id}
-                            title={data.theater}
-                            subtitle={data.title}
-                            imgSrc={data.imgSrc}
-                            isCollect={data.isCollect}
-                          />
-                        </div>
-                      </LinkContainer>
+                      <div
+                        className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5"
+                        style={{ width: '250px', height: '360px' }}
+                      >
+                        <ActivityCard
+                          routerId={data.id}
+                          handleCollect={() => this.handleCollect(data.id)}
+                          key={data.id}
+                          title={data.theater}
+                          subtitle={data.title}
+                          imgSrc={data.imgSrc}
+                        />
+                      </div>
                     ))}
                   </div>
                 </>

@@ -460,37 +460,9 @@ class CinemaBackMainpage extends React.Component {
               ) : (
                 ''
               )}
-              {pagename === 'activityMemberCollect' ? (
-                <>
-                  <div className="row">
-                    <div className="col-md-12 p-0">
-                      <ActivityTitle
-                        title={'收藏活動'}
-                        className="content-title"
-                      />
-                    </div>
-                    {this.state.activityPageOtherData.map(data => (
-                      <LinkContainer to={'/activity/' + data.id + '/return'}>
-                        <div
-                          className="col-12 col-sm-12 col-md-6 col-lg-3 mt-5"
-                          style={{ width: '250px', height: '360px' }}
-                        >
-                          <ActivityCard
-                            onClick={this.handleOnClick}
-                            key={data.id}
-                            title={data.theater}
-                            subtitle={data.title}
-                            imgSrc={data.imgSrc}
-                            isCollect={data.isCollect}
-                          />
-                        </div>
-                      </LinkContainer>
-                    ))}
-                  </div>
-                </>
-              ) : (
-                ''
-              )}
+              {pagename === 'cinema-manage-activity' ? <></> : ''}
+              {pagename === 'cinema-activity-in-progress' ? <></> : ''}
+              {pagename === 'activity-costum-analysis' ? <></> : ''}
             </div>
           </Row>
         </>
