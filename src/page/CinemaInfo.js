@@ -185,7 +185,8 @@ class TheateInfo extends React.Component {
         id: dataCinema.id,
         img: dataCinema.cinemaImg,
       }
-
+      console.log('dataThisMember')
+      console.log(dataThisMember)
       // 活動小卡片參數整理
       const ActivityCardData = dataActivity.map(item => ({
         key: item.id,
@@ -200,11 +201,7 @@ class TheateInfo extends React.Component {
         // 因為是原頁面跳轉 所以直接帶這樣才能實現跳轉
         link: '/activity/' + item.id,
         // 不先驗證是否有會員的會會跳錯
-        collection: memberId
-          ? String(
-              dataThisMember[0].collectActivity.some(item1 => item1 === item.id)
-            )
-          : [],
+        collection: [],
       }))
 
       // 影片小卡片需要參數
@@ -519,16 +516,16 @@ class TheateInfo extends React.Component {
       markList: memberThisDataOutArray.markList,
     }
     // //蓋回去資料庫
-    const response = await fetch('http://localhost:5555/member/' + memberId, {
-      method: 'PUT',
-      body: JSON.stringify(NewMemberData),
-      headers: new Headers({
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      }),
-    })
-    const jsonObject = await response.json()
-    console.log(jsonObject)
+    // const response = await fetch('http://localhost:5555/member/' + memberId, {
+    //   method: 'PUT',
+    //   body: JSON.stringify(NewMemberData),
+    //   headers: new Headers({
+    //     Accept: 'application/json',
+    //     'Content-Type': 'application/json',
+    //   }),
+    // })
+    // const jsonObject = await response.json()
+    // console.log(jsonObject)
 
     // // 資料庫改變完再回來拿原本的data改變state進而渲染整個頁面
     // CardData可能有多筆資料  所以要乖乖map
