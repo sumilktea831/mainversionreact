@@ -1264,7 +1264,7 @@
       "address": "",
       "fav_type": [],
       "career": "",
-      "join_date": "generalMember",
+      "join_date": "2019-03-05",
       "permission": "generalMember",
       "collectFilm": [
         "001",
@@ -1346,11 +1346,12 @@
         "愛情片",
         "喜劇片",
         "恐怖片",
+        "懸疑片"
         "戰爭片",
         "靈異片"
       ],
       "career": "資訊 / 科技",
-      "join_date": "generalMember",
+      "join_date": "2019-01-04",
       "permission": "generalMember",
       "collectFilm": [
         "001",
@@ -1363,6 +1364,7 @@
       ],
       "collectArticle": [],
       "collectActivity": "a1558948576759a1558948500794",
+      "collectActivityJoin": "a1558948576759",
       "collectForum": [],
       "markList": [
         {
@@ -1391,6 +1393,30 @@
       "collectCinema": [],
       "collectArticle": [],
       "collectActivity": "",
+      "collectActivityJoin": "",
+      "collectForum": [],
+      "markList": []
+    },
+    {
+      "id": "m1559201459507",
+      "name": "",
+      "nickname": "testdb",
+      "gender": "",
+      "mobile": "",
+      "birth": "",
+      "email": "testdb@gg.com",
+      "pwd": "111111",
+      "avatar": "movieStar.jpg",
+      "city": "",
+      "address": "",
+      "fav_type": [],
+      "career": "",
+      "join_date": "2019-05-30",
+      "permission": "generalMember",
+      "collectFilm": [],
+      "collectCinema": [],
+      "collectArticle": [],
+      "collectActivity": "a1558948576759a1558948598530",
       "collectActivityJoin": "",
       "collectForum": [],
       "markList": []
