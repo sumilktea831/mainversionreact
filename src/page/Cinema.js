@@ -384,9 +384,9 @@ class Cinema extends React.Component {
       <>
         <ActivitySection
           pictureSrc="http://localhost:3000/images/cinemaImg/cinemaSearch.jpg"
-          bigSlogan="slogan大標"
-          midSlogan="slogan中標"
-          smallSlogan="slogan敘述"
+          bigSlogan="為每位影人找尋落腳角落"
+          midSlogan="探詢簡潔優雅的閱聽地點"
+          smallSlogan="開始瀏覽"
         />
         <div className="row justify-content-center">
           <div
