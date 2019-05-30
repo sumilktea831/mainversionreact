@@ -15,7 +15,7 @@ const SidenavMenu_Su = props => {
     const thisOptionLine = document.querySelector('#' + id) //取得目前點擊的option的橘線
     // console.log(AllOptions)
     // console.log(thisOptionLine)
-    console.log(AllOptionRows)
+    // console.log(AllOptionRows)
 
     AllOptionRows.map(
       item => (item.style.background = '#30363D') //將所有option容器背景設為預設值
@@ -33,6 +33,7 @@ const SidenavMenu_Su = props => {
     //  show = (path===id ? '4px': '0px')
     // console.log(path)
   }
+  // console.log('sidenavmenu--props')
   // console.log(props)
   // console.log(window)
   return (
@@ -44,7 +45,7 @@ const SidenavMenu_Su = props => {
         <Accordion.Collapse eventKey={props.id}>
           <Card.Body className="py-0 px-0 h6">
             {props.options.map(item =>
-              item.id === 'my-preview' || item.id === 'cinema-info-preview' ? (
+              item.id === props.pagename ? (
                 <Row
                   className="mytransition5"
                   name="option-row"

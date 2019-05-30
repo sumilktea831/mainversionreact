@@ -617,29 +617,6 @@
       "isclicked": false
     },
     {
-      "id": "custom-analysis",
-      "title": "來客分析",
-      "options": [
-        {
-          "id": "custom-statistic-photo",
-          "name": "來客走勢圖"
-        },
-        {
-          "id": "custom-report",
-          "name": "來客結構洞察報告"
-        },
-        {
-          "id": "movieee-custom-analysis",
-          "name": "全站分析"
-        },
-        {
-          "id": "cinema-manage-comment",
-          "name": "留言管理"
-        }
-      ],
-      "isclicked": false
-    },
-    {
       "id": "cinema-activity",
       "title": "活動管理",
       "options": [
@@ -654,21 +631,6 @@
         {
           "id": "activity-costum-analysis",
           "name": "活動來客分析"
-        }
-      ],
-      "isclicked": false
-    },
-    {
-      "id": "cinema-fomur",
-      "title": "論壇紀錄",
-      "options": [
-        {
-          "id": "cinema-cinema-post",
-          "name": "發文管理"
-        },
-        {
-          "id": "cinema-comment",
-          "name": "評論一覽"
         }
       ],
       "isclicked": false
@@ -1306,9 +1268,9 @@
       "permission": "generalMember",
       "collectFilm": [
         "001",
+        "002",
         "003",
-        "004",
-        "002"
+        "004"
       ],
       "collectCinema": [
         "c2"
@@ -1381,10 +1343,14 @@
         "動畫片",
         "驚悚片",
         "偵探片",
-        "愛情片"
+        "愛情片",
+        "喜劇片",
+        "恐怖片",
+        "戰爭片",
+        "靈異片"
       ],
       "career": "資訊 / 科技",
-      "join_date": "2019-05-23",
+      "join_date": "generalMember",
       "permission": "generalMember",
       "collectFilm": [
         "001",
@@ -1395,12 +1361,8 @@
         "c1",
         "c2"
       ],
-      "collectArticle": [
-        "6",
-        "7"
-      ],
-      "collectActivity": "a1558948617225a1558948598530a1558948500794",
-      "collectActivityJoin": "a1558948500794",
+      "collectArticle": [],
+      "collectActivity": "",
       "collectForum": [],
       "markList": [
         {
@@ -1408,6 +1370,30 @@
           "markcontent": ""
         }
       ]
+    },
+    {
+      "id": "m1559183167635",
+      "name": "",
+      "nickname": "哈囉你好嗎",
+      "gender": "",
+      "mobile": "",
+      "birth": "",
+      "email": "gn646236@hotmail.com",
+      "pwd": "111111",
+      "avatar": "movieStar.jpg",
+      "city": "",
+      "address": "",
+      "fav_type": [],
+      "career": "",
+      "join_date": "2019-05-30",
+      "permission": "generalMember",
+      "collectFilm": [],
+      "collectCinema": [],
+      "collectArticle": [],
+      "collectActivity": "",
+      "collectActivityJoin": "",
+      "collectForum": [],
+      "markList": []
     }
   ],
   "cinema": [
@@ -1908,6 +1894,30 @@
       "purview": "cinemaMember",
       "cinemaMessage": [],
       "cinemaType": "gallery"
+    },
+    {
+      "id": "c1559181094731",
+      "cinemaName": "註冊戲院",
+      "cinemaCity": "台北市",
+      "cinemaArea": "大安區",
+      "cinemaLogoImg": "0b7372da-b7b1-4304-89c2-ef6d81c58fd9.jpg",
+      "cinemaImg": [],
+      "cinemaHeroImg": "",
+      "cinemaAccount": "qqqqqq",
+      "cinemaPassword": "qqqqqq",
+      "cinemaStar": [],
+      "cinemaAddress": "台北市大安區12324235",
+      "cinemaPhone": "02-0000-0000",
+      "cinemaTaxid": "11111112",
+      "cinemaWeb": "",
+      "cinemaEmail": "gfjsj@cdq.eq",
+      "cinemaBackupEmail": "",
+      "cinemaAwesome": "",
+      "cinemaPageViews": "",
+      "cinemaSignUpDate": "1900-01-01",
+      "purview": "cinemaMember",
+      "cinemaMessage": [],
+      "cinemaType": "restaurant"
     }
   ],
   "articleCardData": [
@@ -2021,6 +2031,14 @@
       "date": "Wed May 29 2019",
       "author": "薩爾達",
       "content": "很少人關注的佳作，大推"
+    },
+    {
+      "rid": 1,
+      "date": "Thu May 30 2019",
+      "authorID": null,
+      "author": "皮卡丘",
+      "content": "我想要回復",
+      "id": 2
     }
   ],
   "forum": [
@@ -2728,7 +2746,7 @@
         },
         {
           "starId": "m1558576972555",
-          "star": 4
+          "star": 3
         }
       ]
     },
