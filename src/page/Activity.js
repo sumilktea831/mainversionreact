@@ -51,7 +51,7 @@ class Activity extends React.Component {
           headers: new Headers({
             Accept: 'application/json',
             'Content-Type': 'application/json',
-        }),
+          }),
         })
         const data = await res.json()
         this.setState({ collectActivity: data.collectActivity })
