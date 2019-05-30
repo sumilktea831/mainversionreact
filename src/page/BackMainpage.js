@@ -283,21 +283,15 @@ class BackSidenav extends React.Component {
         star: item.filmStar,
         mark: memberPageData.markList,
       }))
-      this.setState(
-        {
-          allArticleData: dataArcticle,
-          thisCollectArticleData: myArticleData,
-          allFilmData: dataFilm,
-          avatarOne: avatarOneData,
-          boxData: dataBoxData,
-          filmCard: filmCardData,
-          myForumData: forumPublishData,
-        },
-        () => {
-          console.log('this.state.filmCard')
-          console.log(this.state.filmCard)
-        }
-      )
+      this.setState({
+        allArticleData: dataArcticle,
+        thisCollectArticleData: myArticleData,
+        allFilmData: dataFilm,
+        avatarOne: avatarOneData,
+        boxData: dataBoxData,
+        filmCard: filmCardData,
+        myForumData: forumPublishData,
+      })
     } catch (err) {
       console.log(err)
     }
@@ -452,10 +446,7 @@ class BackSidenav extends React.Component {
         mark: item.mark,
       }
     })
-    this.setState({ filmCard: filmCardData }, () => {
-      console.log('this.state.filmCard')
-      console.log(this.state.filmCard)
-    })
+    this.setState({ filmCard: filmCardData })
   }
 
   //影片卡片按下刪除鈕後刪除此收藏
@@ -480,8 +471,7 @@ class BackSidenav extends React.Component {
         }),
       })
       const jsonObject = await response.json()
-      // console.log('fa jsonBack')
-      // console.log(jsonObject)
+      console.log(jsonObject)
 
       // state要改3個地方
       // filmCard: [], // 整理過影片卡片用
