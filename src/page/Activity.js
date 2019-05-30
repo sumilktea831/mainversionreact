@@ -209,7 +209,7 @@ class Activity extends React.Component {
   render() {
     return (
       <>
-        <div className="container-fuild position-relative">
+        <div className="container-fluid position-relative">
           <div className="row">
             <div className="col-md-12 p-0">
               <ActivitySection
@@ -229,7 +229,7 @@ class Activity extends React.Component {
             style={{ bottom: '72px' }}
           />
         </div>
-        <div className="container-fuild fix-content">
+        <div className="container-fluid fix-content">
           <div className="row">
             <div className="col-md-12 p-0">
               <ActivityTitle
@@ -239,8 +239,10 @@ class Activity extends React.Component {
             </div>
             <div className="col-md-12 p-0 fix-inline-content">
               <div className="searchbar-wrapper d-flex mb-5">
-                <div>
-                  <ActivitySearchbarTitle spanClass="mr-5" title={'地區'} />
+                <div Class="col-2 col-md-2">
+                  <div>
+                    <ActivitySearchbarTitle spanClass="mr-5" title={'地區'} />
+                  </div>
                 </div>
                 <div>
                   {this.state.searchbarRegion.map((data, id) => (
