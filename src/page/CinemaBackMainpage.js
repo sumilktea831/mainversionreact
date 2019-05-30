@@ -12,6 +12,7 @@ import DataBox from '../component/cinema/DataBoxSM/DataBox'
 import CardKaga from '../component/cinema/CardKaga/v3/CardKaga'
 import MessageCinema from '../component/cinema/MessageSM/MessageCinema'
 //cinemaId
+import ActivityBtnAddActivity from '../component/activity/ActivityBtnAddActivity/ActivityBtnAddActivity'
 const cinemaId = sessionStorage.getItem('cinemaId')
 class CinemaBackMainpage extends React.Component {
   constructor(props) {
@@ -460,7 +461,13 @@ class CinemaBackMainpage extends React.Component {
               ) : (
                 ''
               )}
-              {pagename === 'cinema-manage-activity' ? <></> : ''}
+              {pagename === 'cinema-manage-activity' ? (
+                <>
+                  <ActivityBtnAddActivity />
+                </>
+              ) : (
+                ''
+              )}
               {pagename === 'cinema-activity-in-progress' ? <></> : ''}
               {pagename === 'activity-costum-analysis' ? <></> : ''}
             </div>
