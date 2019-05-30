@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 
 const SidenavMenu_Su = props => {
   const BackPageName = sessionStorage.getItem('memberId')
-    ? '/Backmainpage/'
+    ? '/BackMainpage/'
     : '/CinemaBackMainpage/'
   // console.log(props)
   //   var path = window.location.pathname.slice(1)
