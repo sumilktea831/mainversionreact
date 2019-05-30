@@ -38,12 +38,12 @@ const SidenavMenu_Su = props => {
   // console.log(window)
   return (
     <>
-      <Card className="text-center bg-darkblue h5">
+      <Card className="sidenavOptionTitle text-center bg-darkblue h5">
         <Accordion.Toggle as={Card.Header} eventKey={props.id}>
           {props.title}
         </Accordion.Toggle>
         <Accordion.Collapse eventKey={props.id}>
-          <Card.Body className="py-0 px-0 h6">
+          <Card.Body className="sidenavOption py-0 px-0 mt-0 h6">
             {props.options.map(item =>
               item.id === props.pagename ? (
                 <Row

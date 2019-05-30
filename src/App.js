@@ -205,9 +205,13 @@ class App extends React.Component {
             <Route path="/BackMainpage" component={BackMainpage} />
             <Route path="/CinemaBackMainpage" component={CinemaBackMainpage} />
           </Switch>
-          <div className="container-fluid" style={{}}>
-            <Footer />
-          </div>
+          {window.location.pathname == '/LoginSign' ? (
+            ''
+          ) : (
+            <div className="container-fluid" style={{}}>
+              <Footer />
+            </div>
+          )}
         </ScroolToTop>
       </Router>
     )
