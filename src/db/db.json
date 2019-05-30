@@ -1359,17 +1359,8 @@
         "c1",
         "c2"
       ],
-      "collectArticle": [
-        "1",
-        "2",
-        "3",
-        "4",
-        "5",
-        "6",
-        "7"
-      ],
       "collectArticle": [],
-      "collectActivity": "",
+      "collectActivity": "a1558948576759",
       "collectForum": [],
       "markList": [
         {
