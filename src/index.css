@@ -252,6 +252,9 @@ button.bg-orange {
   color: #ffa510;
   text-decoration: none;
 }
+.sidenavOption,.sidenavOptionTitle{
+  margin: 0 !important;
+}
 /* -----------------------------------------------------Kaga */
 .cardAreaBgKaga {
   background-position: center;
