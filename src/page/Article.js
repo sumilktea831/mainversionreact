@@ -82,7 +82,7 @@ class Article extends React.Component {
               {/* <ArricleList image={this.state.imgSrc}/> */}
             </div>
           </div>
-          <Row className="pt-3 my-4">
+          <Row className="pt-3 my-4 ml-5 pl-5">
             <div className="mx-3 text-center border-bottom border-light">
               <h4 className="text-light">.Movieee精選</h4>
             </div>
@@ -94,7 +94,7 @@ class Article extends React.Component {
           </Row>
           <div className="mycontainer">
             {/* <ContactForm /> */}
-            <Row className="mb-4">
+            <Row className="mb-4 ml-5 pl-5">
               <div
                 className="mx-3 text-center border-bottom border-light"
                 onClick={this.byNew}
@@ -135,9 +135,9 @@ class Article extends React.Component {
               ))}
             </Row>
 
-            <Row className="justify-content-center">
+            {/* <Row className="justify-content-center">
               <Pagination totalPages={this.state.pagination} />
-            </Row>
+            </Row> */}
           </div>
         </div>
       </>

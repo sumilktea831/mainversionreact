@@ -55,8 +55,8 @@ class ArticleCard extends React.Component {
   render() {
     return (
       <>
-        <Row className="my-3 articleCard">
-          <Col className="justify-content-center" xs={12} md={9}>
+        <Row className="my-3 articleCard justify-content-center">
+          <Col className="justify-content-center" xs={12} md={10}>
             <Link to={'/article/' + this.props.sid} className="link-a">
               <div className="mb-3 article-card">
                 {this.state.memberInfo.find(item => item === this.props.sid) ? (
@@ -79,10 +79,10 @@ class ArticleCard extends React.Component {
                     <div className="bigDarkBG" />
                   </div>
                   <div className="col-md-8">
-                    <div className="card-body d-flex row my-4 mx-4">
+                    <div className="card-body d-flex row my-4 mx-4 px-4">
                       <h5 className="card-title">
                         {/* 設定標題字串只取前28個字 */}
-                        {this.props.sid}
+                        {/* {this.props.sid} */}
                         {this.props.cardTitle.substr(0, 28) + ''}
                         {this.props.author}
                       </h5>
@@ -98,8 +98,8 @@ class ArticleCard extends React.Component {
                         <ReadMore className="" sid={this.props.sid} />
                       </span>
                       <div className="btn-mygroup d-flex align-items-end justify-content-end bottomBtn">
-                        <ArticleMark onClick={this.props.handleMark} />
-                        <ArticleShare />
+                        {/* <ArticleMark onClick={this.props.handleMark} />
+                        <ArticleShare /> */}
                       </div>
                     </div>
                   </div>
