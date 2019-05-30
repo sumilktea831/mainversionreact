@@ -297,7 +297,7 @@ class MemberEditInfo extends React.Component {
               copyData[eventName] = obj.filename
               this.setState(
                 {
-                  // thisData: copyData,
+                  thisData: copyData,
                   hasNewAvatar: true,
                   avatarUploadFailed: false,
                 },
@@ -362,7 +362,7 @@ class MemberEditInfo extends React.Component {
           <div className="col-lg-5 mt-3">
             {/* 這裡放頭像(含編輯按鈕)、email、權限 */}
             <AvatarTwo
-              img={this.props.avatarOne.img}
+              img={'/images/member/' + this.state.thisData.avatar}
               name={this.props.avatarOne.name}
               purview={this.props.avatarOne.purview}
               SignUpDate={this.props.avatarOne.SignUpDate}

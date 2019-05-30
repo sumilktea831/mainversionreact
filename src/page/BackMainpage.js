@@ -48,6 +48,7 @@ class BackSidenav extends React.Component {
       activityMemberJoin: [],
     }
     console.log('parent-didmount')
+    console.log(this.props)
   }
 
   async componentDidMount() {
@@ -219,7 +220,7 @@ class BackSidenav extends React.Component {
         memberPageData.avatar !== '' ? memberPageData.avatar : 'movieStar.jpg'
       const avatarOneData = {
         img: '/images/member/' + memberAvatar,
-        name: memberPageData.name,
+        name: memberPageData.nickname,
         purview: memberPageData.permission,
         SignUpDate: memberPageData.join_date,
       }
@@ -495,6 +496,19 @@ class BackSidenav extends React.Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     console.log('childDerived')
 
+    let stateToBeReturned = null
+    if (prevState.thisData == 0) {
+      stateToBeReturned = {
+        ...prevState,
+        thisData: nextProps.thisData,
+        originData: nextProps.thisData,
+      }
+    }
+
+    console.log(nextProps)
+    console.log(prevState)
+    console.log(stateToBeReturned)
+    return stateToBeReturned
     console.log(nextProps)
     console.log(prevState)
   }
@@ -509,7 +523,10 @@ class BackSidenav extends React.Component {
         <>
           {/* 暫時上方navbar區塊 */}
           <Row>
-            <MemberBackSidenav sidenavItems={this.state.memberSidenavItems} />
+            <MemberBackSidenav
+              sidenavItems={this.state.memberSidenavItems}
+              pagename={pagename}
+            />
             <div //右邊內容框，之後要引入內容component
               className="col container-fluid"
               style={{

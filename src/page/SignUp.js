@@ -44,7 +44,7 @@ class SignUp extends React.Component {
         birth: '',
         email: '',
         pwd: '',
-        avatar: '',
+        avatar: 'movieStar.jpg',
         city: '',
         address: '',
         fav_type: [],
@@ -64,7 +64,7 @@ class SignUp extends React.Component {
         cinemaName: '',
         cinemaCity: '',
         cinemaArea: '',
-        cinemaLogoImg: '',
+        cinemaLogoImg: 'cinemaPhoto.jpg',
         cinemaImg: [],
         cinemaHeroImg: '',
         cinemaAccount: '',
@@ -99,15 +99,20 @@ class SignUp extends React.Component {
           'Content-Type': 'application/json',
         }),
       })
-      if (!response.ok) throw new Error(response.statusText) 
+      if (!response.ok) throw new Error(response.statusText)
       const jsonObject = await response.json()
       const memberdata = await jsonObject
       await this.setState({ memberdata: memberdata })
-      if (memberdata.find(item => item.id === this.props.location.search.slice(4))) {
-        if (+new Date - +this.props.location.search.slice(5) < 86400000) {
+      if (
+        memberdata.find(item => item.id === this.props.location.search.slice(4))
+      ) {
+        if (+new Date() - +this.props.location.search.slice(5) < 86400000) {
           alert('歡迎加入Movieee，將為您跳轉至會員中心!')
-          sessionStorage.setItem('memberId', this.props.location.search.slice(4))
-          window.location.href = "/BackMainpage/my-preview"
+          sessionStorage.setItem(
+            'memberId',
+            this.props.location.search.slice(4)
+          )
+          window.location.href = '/BackMainpage/my-preview'
         }
       }
       await console.log(memberdata)
@@ -115,7 +120,6 @@ class SignUp extends React.Component {
       //抓到錯誤訊息，以及接下來要做的錯誤處理
       console.log(e)
     }
-
   }
 
   async componentDidMount() {
@@ -324,7 +328,7 @@ class SignUp extends React.Component {
                   fetch('http://localhost:3001/api/sendmail', {
                     method: 'POST',
                     body: JSON.stringify(jsonObject),
-                    credentials: "include",
+                    credentials: 'include',
                     headers: new Headers({
                       Accept: 'application/json',
                       'Content-Type': 'application/json',
@@ -334,8 +338,7 @@ class SignUp extends React.Component {
                     .then(jsonObject => {
                       // alert('註冊成功通知信發送成功')
                     })
-                }
-                catch (e) {
+                } catch (e) {
                   console.log(e)
                 }
                 this.setState({ memberdata: jsonObject }, () => {
@@ -409,6 +412,7 @@ class SignUp extends React.Component {
           newSignUpData.cinemaWeb = cinemaWeb
           newSignUpData.cinemaLogoImg = cinemaLogoImg
           newSignUpData.cinemaHeroImg = cinemaHeroImg
+          newSignUpData.cinemaSignUpDate = dateYMD
           // this.setState({ memberSignUpdata: newSignUpData })
           try {
             fetch('http://localhost:5555/cinema', {

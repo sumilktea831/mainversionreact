@@ -312,10 +312,14 @@ class CinemaBackMainpage extends React.Component {
       window.location.href = '/LoginSign'
     } else {
       const pagename = this.props.location.pathname.slice(20)
+      console.log(pagename)
       return (
         <>
           <Row>
-            <CinemaBackSidenav sidenavItems={this.state.cinemaSidenavItems} />
+            <CinemaBackSidenav
+              sidenavItems={this.state.cinemaSidenavItems}
+              pagename={pagename}
+            />
             <div //右邊內容框，之後要引入內容component
               className="col container-fluid"
               style={{
@@ -377,21 +381,21 @@ class CinemaBackMainpage extends React.Component {
                             img={item.img}
                             link={item.link}
                             popup
-                          // mark={item.mark}
-                          // newStarAndMark={this.activityCardNewStarAndMark}
-                          // star={item.star}
-                          // AVGStar
+                            // mark={item.mark}
+                            // newStarAndMark={this.activityCardNewStarAndMark}
+                            // star={item.star}
+                            // AVGStar
                           />
                         ))}
                       </div>
                     ) : (
-                        <div
-                          className="d-flex align-items-center"
-                          style={{ height: '300px', width: '100%' }}
-                        >
-                          <h5 className="ml-4">目前沒有舉辦活動喔</h5>
-                        </div>
-                      )}
+                      <div
+                        className="d-flex align-items-center"
+                        style={{ height: '300px', width: '100%' }}
+                      >
+                        <h5 className="ml-4">目前沒有舉辦活動喔</h5>
+                      </div>
+                    )}
 
                     <div className="py-5" />
                     <TitleKaga title="近期評論紀錄" />
@@ -415,8 +419,8 @@ class CinemaBackMainpage extends React.Component {
                   </>
                 </>
               ) : (
-                  ''
-                )}
+                ''
+              )}
               {pagename === 'cinema-edit-info' ? (
                 <>
                   <div className="row">
@@ -438,8 +442,8 @@ class CinemaBackMainpage extends React.Component {
                   </div>
                 </>
               ) : (
-                  ''
-                )}
+                ''
+              )}
               {pagename === 'cinema-edit-password' ? (
                 <>
                   <div className="row">
@@ -459,8 +463,8 @@ class CinemaBackMainpage extends React.Component {
                   </div>
                 </>
               ) : (
-                  ''
-                )}
+                ''
+              )}
               {pagename === 'activityMemberCollect' ? (
                 <>
                   <div className="row">
@@ -490,8 +494,8 @@ class CinemaBackMainpage extends React.Component {
                   </div>
                 </>
               ) : (
-                  ''
-                )}
+                ''
+              )}
             </div>
           </Row>
         </>
