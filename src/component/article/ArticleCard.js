@@ -24,30 +24,34 @@ class ArticleCard extends React.Component {
       memberInfo: [],
     }
   }
-  async componentDidMount() {
-    try {
-      // 這邊先寫死 取快樂碼農資料
-      const memberRes = await fetch(
-        'http://localhost:5555/member/' + memberId,
-        {
-          method: 'GET',
-          headers: new Headers({
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          }),
-        }
-      )
-      const memberData = await memberRes.json()
-      console.log(memberData)
 
-      // 全部資料的長度除以 per page 並且無條件進位
-      const memberInfo = memberData.collectArticle
-      console.log(memberInfo) //快樂碼農
-      this.setState({ memberInfo: memberInfo })
-    } catch (err) {
-      console.log(err)
+  async componentDidMount() {
+    if (memberId) {
+      try {
+        // 這邊先寫死 取快樂碼農資料
+        const memberRes = await fetch(
+          'http://localhost:5555/member/' + memberId,
+          {
+            method: 'GET',
+            headers: new Headers({
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            }),
+          }
+        )
+        const memberData = await memberRes.json()
+        console.log(memberData)
+
+        // 全部資料的長度除以 per page 並且無條件進位
+        const memberInfo = memberData.collectArticle
+        console.log(memberInfo) //快樂碼農
+        this.setState({ memberInfo: memberInfo })
+      } catch (err) {
+        console.log(err)
+      }
     }
   }
+
   render() {
     return (
       <>
