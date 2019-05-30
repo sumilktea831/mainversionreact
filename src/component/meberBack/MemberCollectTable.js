@@ -21,6 +21,7 @@ class MemberCollectTable extends React.Component {
         thisCollectArticleData: nextProps.thisCollectArticleData,
       }
     }
+
     console.log(nextProps)
     console.log(prevState)
     console.log(stateToBeReturned)
@@ -48,16 +49,36 @@ class MemberCollectTable extends React.Component {
           <tbody className="bg-back-table text-mywhite">
             {this.state.thisCollectArticleData.map((item, index) => (
               <tr
+                key={item.id}
                 style={{
                   borderBottom: '2px solid #2B333D',
                 }}
               >
                 <th scope="row">{index + 1}</th>
-                <td>
+                <td
+                  style={{
+                    borderLeft: '2px solid #2B333D',
+                    borderRight: '2px solid #2B333D',
+                  }}
+                >
                   <a href={'/article/' + item.id}>{item.title}</a>
                 </td>
-                <td>{item.author}</td>
-                <td>{item.date}</td>
+                <td
+                  style={{
+                    borderLeft: '2px solid #2B333D',
+                    borderRight: '2px solid #2B333D',
+                  }}
+                >
+                  {item.author}
+                </td>
+                <td
+                  style={{
+                    borderLeft: '2px solid #2B333D',
+                    borderRight: '2px solid #2B333D',
+                  }}
+                >
+                  {item.date}
+                </td>
               </tr>
             ))}
           </tbody>

@@ -21,9 +21,14 @@ class MessageBoardInput extends React.Component {
     return (
       <>
         <div class="form-group">
-          <label for="exampleFormControlTextarea1" style={{ fontSize: '25px' }}>
-            發表評論
-          </label>
+          <div className="d-flex justify-content-center mt-3">
+            <label
+              for="exampleFormControlTextarea1"
+              style={{ fontSize: '25px' }}
+            >
+              發表評論
+            </label>
+          </div>
           <textarea
             onChange={this.handleChange}
             value={this.state.textAreaValue}
@@ -32,13 +37,15 @@ class MessageBoardInput extends React.Component {
             id="exampleFormControlTextarea1"
             rows="3"
           />
-          <button
-            type="button"
-            class="btn btn-primary"
-            onClick={this.handleSave}
-          >
-            送出
-          </button>
+          <div className="d-flex justify-content-center mt-4">
+            <button
+              type="button"
+              class="btn btn-primary"
+              onClick={this.handleSave}
+            >
+              送出
+            </button>
+          </div>
         </div>
       </>
     )

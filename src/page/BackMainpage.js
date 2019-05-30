@@ -45,6 +45,7 @@ class BackSidenav extends React.Component {
       activityMemberFavorite: [],
       activityMemberJoin: [],
     }
+    console.log('parent-didmount')
   }
 
   async componentDidMount() {
@@ -187,7 +188,7 @@ class BackSidenav extends React.Component {
       const dataFilm = await resFilm.json()
 
       // 會員my-preview頁面需要的資料
-      const memberPageData = dataMember.find(item => item.id === memberId)
+      const memberPageData = await dataMember.find(item => item.id === memberId)
 
       // ==========Su========預覽頁======導入完整文章資料
       const resArticle = await fetch('http://localhost:5555/articleCardData', {
@@ -199,13 +200,14 @@ class BackSidenav extends React.Component {
       })
       const dataArcticle = await resArticle.json()
       const myArticleData = []
-      dataArcticle.filter(item => {
+      await dataArcticle.filter(item => {
         return memberPageData.collectArticle.map(items => {
           if (item.id === items) {
             myArticleData.push(item)
           }
         })
       })
+      console.log('parnet--myArticleData')
       console.log(myArticleData)
       //==============================================================
 
@@ -487,7 +489,12 @@ class BackSidenav extends React.Component {
     sessionStorage.clear()
     window.location.href = '/'
   }
+  static getDerivedStateFromProps(nextProps, prevState) {
+    console.log('childDerived')
 
+    console.log(nextProps)
+    console.log(prevState)
+  }
   render() {
     if (!sessionStorage.getItem('memberId')) {
       // alert('回到登入頁')

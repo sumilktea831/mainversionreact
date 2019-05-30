@@ -62,7 +62,7 @@ const CheckboxMultiSu = props => {
         {props.thisfavType == undefined ? (
           <label className="form-check-label h5" htmlFor={props.optionId}>
             <button
-              className={uncheckedClass}
+              className={'mytransition5 ' + uncheckedClass}
               onClick={handleCilck(props.optionId)}
             >
               {props.optionName}
@@ -71,7 +71,7 @@ const CheckboxMultiSu = props => {
         ) : props.thisfavType.find(item => item === props.optionName) ? (
           <label className="form-check-label h5" htmlFor={props.optionId}>
             <button
-              className={checkedClass}
+              className={'mytransition5 ' + checkedClass}
               onClick={handleCilck(props.optionId)}
             >
               {props.optionName}
@@ -80,7 +80,7 @@ const CheckboxMultiSu = props => {
         ) : (
           <label className="form-check-label h5" htmlFor={props.optionId}>
             <button
-              className={uncheckedClass}
+              className={'mytransition5 ' + uncheckedClass}
               onClick={handleCilck(props.optionId)}
             >
               {props.optionName}
