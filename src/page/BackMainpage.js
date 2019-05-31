@@ -12,7 +12,6 @@ import ActivityTitle from '../component/activity/ActivityTitle/ActivityTitle'
 import MemberEditInfo from '../component/meberBack/MemberEditInfo'
 import MemberEditPwd from '../component/meberBack/MemberEditPwd'
 import MemberCollectTable from '../component/meberBack/MemberCollectTable'
-import MemberCollectTableForForum from '../component/meberBack/MemberCollectTableForForum'
 import CheckboxMultiForFavTypeReadSu from '../component/inputs/CheckboxMultiForFavTypeReadSu'
 import CinemaEditInfo from '../component/cinemaBack/CinemaEditInfo'
 import ForumBackArticle from './ForumBackArticle'
@@ -25,7 +24,7 @@ class BackSidenav extends React.Component {
   constructor(props) {
     super(props.props)
     const path = window.location.pathname.slice(1)
-    // console.log(path)
+    console.log(path)
     this.state = {
       // sidenave
       memberSidenavItems: [],
@@ -37,7 +36,6 @@ class BackSidenav extends React.Component {
       allFilmData: [], // 全部影片 pure json
       allArticleData: [], // 全部影片 pure json
       thisCollectArticleData: [], // 該會員收藏的文章資訊
-      myForumData: [], //該會員發表的文章資訊
       avatarOne: '', // 整理過頭像框用
       boxData: '', // 整理過基本資料用
       filmCard: [], // 整理過影片卡片用
@@ -48,8 +46,7 @@ class BackSidenav extends React.Component {
       activityMemberJoin: [],
       collectActivity: '',
     }
-    // console.log('parent-didmount')
-    // console.log(this.props)
+    console.log('parent-didmount')
   }
 
   async componentDidMount() {
@@ -83,7 +80,7 @@ class BackSidenav extends React.Component {
       const data = await jsonObject.find(
         item => item.id === sessionStorage.getItem('memberId')
       )
-      // console.log('session' + sessionStorage.getItem('memberId'))
+      console.log('session' + sessionStorage.getItem('memberId'))
       await this.setState({ thisMemberData: data, allMemberData: jsonObject })
     } catch (e) {
       console.log(e)
@@ -229,8 +226,8 @@ class BackSidenav extends React.Component {
           }
         })
       })
-      // console.log('parnet--myArticleData')
-      // console.log(myArticleData)
+      console.log('parnet--myArticleData')
+      console.log(myArticleData)
       //==============================================================
 
       // 元件AvatarOne -- 完成
@@ -239,7 +236,7 @@ class BackSidenav extends React.Component {
         memberPageData.avatar !== '' ? memberPageData.avatar : 'movieStar.jpg'
       const avatarOneData = {
         img: '/images/member/' + memberAvatar,
-        name: memberPageData.nickname,
+        name: memberPageData.name,
         purview: memberPageData.permission,
         SignUpDate: memberPageData.join_date,
       }
@@ -290,21 +287,18 @@ class BackSidenav extends React.Component {
         avatarOne: avatarOneData,
         boxData: dataBoxData,
         filmCard: filmCardData,
-        myForumData: forumPublishData,
       })
     } catch (err) {
       console.log(err)
     }
   }
 
-  // 影片卡片的註記與星星調整 1.改資料庫 2.改state
+  // 影片卡片的註記與星星調整 這邊改資料庫
   filmCardNewStarAndMark = async newVal => {
     // 先抓到要改的影片資料並去除陣列
-    // 找到屬於要改註記id的該筆影片資料
     let thisFilm = this.state.allFilmData.filter(
       item => item.id === newVal.mark.markId
     )
-    //把這筆資料去除陣列
     let thisFilmData = thisFilm[0] //thisFilmData 就是要更改的影片完整資料
     // 製作要蓋回去mark的資料
     // 先看看mark裡面是不是有這個id的備註
@@ -355,7 +349,7 @@ class BackSidenav extends React.Component {
       collectForum: this.state.thisMemberData.collectForum,
       markList: newMarkUpdateData,
     }
-    // 把有新mark的會員整張蓋回資料庫
+    // 然後確實蓋回去
     const resMember = await fetch('http://localhost:5555/member/' + memberId, {
       method: 'PUT',
       body: JSON.stringify(NewMemberData),
@@ -365,7 +359,8 @@ class BackSidenav extends React.Component {
       }),
     })
     const jsonMember = await resMember.json()
-    // console.log(jsonMember)
+
+    console.log(jsonMember)
 
     // 再來做要蓋回去影片的資料
     let newStarData = { starId: newVal.star.starId, star: newVal.star.star }
@@ -375,11 +370,8 @@ class BackSidenav extends React.Component {
     let starTrueFalse = thisFilmData.filmStar.some(
       item => item.starId == newVal.star.starId
     )
-
-    // 如果沒有給過星星  就新增一筆
     if (starTrueFalse === false) {
       thisNewFilmData.filmStar.push(newStarData)
-      // 如果本來已經有資料了  就找到那筆並修改他
     } else {
       thisNewFilmData.filmStar = thisFilmData.filmStar.map(item => {
         if (item.starId == newVal.star.starId) {
@@ -388,7 +380,7 @@ class BackSidenav extends React.Component {
         return item
       })
     }
-    // 把有新star的戲院整張蓋回資料庫
+    // 然後確實蓋回去
     const resMark = await fetch(
       'http://localhost:5555/filmData/' + thisNewFilmData.id,
       {
@@ -401,52 +393,32 @@ class BackSidenav extends React.Component {
       }
     )
     const jsonMark = await resMark.json()
-
-    // 搞卡片資料來改state渲染了.................
-    // thisNewFilmData==新的那筆影片原始資料
-    // 轉成卡片格式
-
-    let newOneCardData = {
-      key: thisNewFilmData.id,
-      id: thisNewFilmData.id,
-      title: thisNewFilmData.name_tw,
-      subtitle: thisNewFilmData.name_en,
-      img: thisNewFilmData.movie_pic,
-      link: thisNewFilmData.id,
-      star: thisNewFilmData.filmStar,
-      mark: NewMemberData.markList,
-    }
-    // 加到卡片資料裡面
-    const finalStateFilmCardData = this.state.filmCard.map(el => {
-      if (el.id === newOneCardData.id) {
-        el = newOneCardData
-      }
-      return el
-    })
+    console.log(jsonMark)
 
     // 然後回去改card的state
     // 一樣限制只能有4筆
     const OnlyFourfilmCardata = []
-    finalStateFilmCardData.map((item, index) => {
+    this.state.filmCard.map((item, index) => {
       if (index < 4) {
         return OnlyFourfilmCardata.push(item)
       }
       return item
     })
 
-    const filmCardData = OnlyFourfilmCardata.map(item => {
-      return {
-        key: item.key,
-        id: item.id,
-        title: item.title,
-        subtitle: item.subtitle,
-        img: item.img,
-        link: item.link,
-        star: item.star, // 錯的
-        mark: item.mark,
-      }
+    const filmCardData = OnlyFourfilmCardata.map(item => ({
+      key: item.key,
+      id: item.id,
+      title: item.title,
+      subtitle: item.subtitle,
+      img: item.img,
+      link: item.link,
+      star: newVal.star,
+      mark: newVal.mark,
+    }))
+
+    this.setState({ filmCard: filmCardData }, () => {
+      console.log(this.state.filmCard)
     })
-    this.setState({ filmCard: filmCardData })
   }
 
   //影片卡片按下刪除鈕後刪除此收藏
@@ -471,6 +443,7 @@ class BackSidenav extends React.Component {
         }),
       })
       const jsonObject = await response.json()
+      console.log('fa jsonBack')
       console.log(jsonObject)
 
       // state要改3個地方
@@ -507,7 +480,7 @@ class BackSidenav extends React.Component {
     let isAllChecked = true
     let checkArray = Object.values(checkok)
     isAllChecked = checkArray.reduce((a, b) => a && b)
-    // console.log('isAllChecked: ' + isAllChecked)
+    console.log('isAllChecked: ' + isAllChecked)
     if (isAllChecked) {
       try {
         fetch('http://localhost:5555/member/' + memberid, {
@@ -537,21 +510,10 @@ class BackSidenav extends React.Component {
     window.location.href = '/'
   }
   static getDerivedStateFromProps(nextProps, prevState) {
-    // console.log('childDerived')
+    console.log('childDerived')
 
-    let stateToBeReturned = null
-    if (prevState.thisData == 0) {
-      stateToBeReturned = {
-        ...prevState,
-        thisData: nextProps.thisData,
-        originData: nextProps.thisData,
-      }
-    }
-
-    // console.log(nextProps)
-    // console.log(prevState)
-    // console.log(stateToBeReturned)
-    return stateToBeReturned
+    console.log(nextProps)
+    console.log(prevState)
   }
 
   handleCollect = async id => {
@@ -606,10 +568,7 @@ class BackSidenav extends React.Component {
         <>
           {/* 暫時上方navbar區塊 */}
           <Row>
-            <MemberBackSidenav
-              sidenavItems={this.state.memberSidenavItems}
-              pagename={pagename}
-            />
+            <MemberBackSidenav sidenavItems={this.state.memberSidenavItems} />
             <div //右邊內容框，之後要引入內容component
               className="col container-fluid"
               style={{
@@ -687,11 +646,9 @@ class BackSidenav extends React.Component {
                   <TitleKaga title="收藏文章" />
                   <div
                     className=" d-flex flex-wrap col-lg-12 my-5"
-                    style={
-                      {
-                        // height: '300px',
-                      }
-                    }
+                    style={{
+                      height: '300px',
+                    }}
                   >
                     <MemberCollectTable
                       thisData={this.state.thisMemberData}
@@ -701,17 +658,12 @@ class BackSidenav extends React.Component {
                   <div className="py-5" />
                   <TitleKaga title="發文紀錄" />
                   <div
-                    className=" d-flex flex-wrap col-lg-12 my-5"
-                    style={
-                      {
-                        // height: '300px',
-                      }
-                    }
+                    className=" d-flex flex-wrap col-lg-12 bg-danger my-5"
+                    style={{
+                      height: '300px',
+                    }}
                   >
-                    <MemberCollectTableForForum
-                      thisData={this.state.thisMemberData}
-                      myForumData={this.state.myForumData}
-                    />
+                    table(請找情哥)
                   </div>
                 </>
               ) : (
