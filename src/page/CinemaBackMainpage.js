@@ -11,6 +11,7 @@ import AvatarOne from '../component/cinema/AvatarTypeOne/AvatarOne'
 import DataBox from '../component/cinema/DataBoxSM/DataBox'
 import CardKaga from '../component/cinema/CardKaga/v3/CardKaga'
 import MessageCinema from '../component/cinema/MessageSM/MessageCinema'
+import CinemaFilmUpdate from '../component/cinemaBack/CinemaFilmUpdate'
 //cinemaId
 import ActivityBtnAddActivity from '../component/activity/ActivityBtnAddActivity/ActivityBtnAddActivity'
 const cinemaId = sessionStorage.getItem('cinemaId')
@@ -459,13 +460,33 @@ class CinemaBackMainpage extends React.Component {
                   <div className="row">
                     <div className="col-md-12 p-0">
                       <ActivityTitle
-                        title={'編輯戲院資訊'}
+                        title={'更改密碼'}
                         className="content-title"
                       />
                     </div>
                     <div style={{ width: '100%' }}>
                       <CinemaEditPwd
                         cinemaEditInputmsg={this.state.cinemaEditInputmsg}
+                        thisData={this.state.thisCinemaData}
+                        allCinemaData={this.state.allCinemaD}
+                      />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                ''
+              )}
+              {pagename === 'cinema-film-post' ? (
+                <>
+                  <div className="row">
+                    <div className="col-md-12 p-0">
+                      <ActivityTitle
+                        title={'影片上架管理'}
+                        className="content-title"
+                      />
+                    </div>
+                    <div style={{ width: '100%' }}>
+                      <CinemaFilmUpdate
                         thisData={this.state.thisCinemaData}
                         allCinemaData={this.state.allCinemaD}
                       />

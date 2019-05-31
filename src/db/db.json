@@ -852,8 +852,8 @@
           "name": "更改影片設定"
         },
         {
-          "id": "cinema-film-post-delete",
-          "name": "影片上/下架管理"
+          "id": "cinema-film-post",
+          "name": "影片上架管理"
         },
         {
           "id": "cinema-film-analysis",
@@ -3349,7 +3349,7 @@
       "id": "language",
       "w": "",
       "h": "40px",
-      "inputType": "text",
+      "inputType": "selector",
       "inputLabel": "語言",
       "iconL": "",
       "iconLS": "",

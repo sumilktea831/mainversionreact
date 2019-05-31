@@ -3,7 +3,7 @@ import { Card, Button, Row, Col } from 'react-bootstrap'
 import InputWithLabel_Su from '../inputs/InputWithLabel_Su'
 import Checkbox_Su from '../inputs/Checkbox_Su'
 import Captcha from 'captcha-mini' //驗證碼套件
-class InputCardContent_CinemaSignUp extends React.Component {
+class CinemaFilmUpdate extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -12,13 +12,11 @@ class InputCardContent_CinemaSignUp extends React.Component {
       chooseInputmsg: [],
       usertext: [
         {
-          id: 'cf1000000',
-          theater: '碼農Cafe',
-          title: '赤手登峰',
-          titleEn: 'english filmname',
-          movie_rating: '普遍級',
-          imgSrc:
-            'https://g.udn.com.tw/upfiles/B_SH/shiow/PSN_PHOTO/591/f_24131591_1.jpg',
+          id: '',
+          title: '',
+          titleEn: '',
+          movie_rating: '',
+          imgSrc: '',
           type: '',
           director: '',
           langauge: '',
@@ -53,7 +51,7 @@ class InputCardContent_CinemaSignUp extends React.Component {
       //取得欄位資訊
       //fetch:json-server連線的位址/json中的項目/該項目中id
       const response = await fetch(
-        'http://localhost:5555/cinema-sign-inputmsg',
+        'http://localhost:5555/cinemaFilmEditInputMsg',
         {
           method: 'GET', //使用GET方法獲取資訊，因為是取得資訊，故不須加body
           headers: new Headers({
@@ -72,49 +70,28 @@ class InputCardContent_CinemaSignUp extends React.Component {
       //抓到錯誤訊息，以及接下來要做的錯誤處理
       console.log(e)
     }
-    try {
-      //取得選填欄位資訊
-      //fetch:json-server連線的位址/json中的項目/該項目中id
-      const response = await fetch(
-        'http://localhost:5555/cinema-sign-choose-inputmsg',
-        {
-          method: 'GET', //使用GET方法獲取資訊，因為是取得資訊，故不須加body
-          headers: new Headers({
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          }),
-        }
-      )
-      if (!response.ok) throw new Error(response.statusText) //如果發生錯誤，丟出錯誤訊息
-      const jsonObject = await response.json()
-      const choosedata = await jsonObject
-      await this.setState({ chooseInputmsg: choosedata })
-      // await console.log(choosedata)
-    } catch (e) {
-      //抓到錯誤訊息，以及接下來要做的錯誤處理
-      console.log(e)
-    }
-
-    //產生驗證碼
-    let captcha4 = new Captcha({
-      //設定驗證碼樣式，如果不設定則帶入預設值)
-      lineWidth: 1, //線條寬度
-      lineNum: 3, //線條數量
-      dotR: 2, //點的半徑
-      dotNum: 20, //點的數量
-      preGroundColor: [255, 255], //前景色區間
-      backGroundColor: [0, 120], //背景色區間
-      fontSize: 24, //字體大小
-      fontFamily: ['Noto Sans TC', 'Arial'], //字體類型
-      fontStyle: 'stroke', //字體繪製方法，有fill和stroke
-      length: 4, //驗證碼長度
-    })
-    //把生成的驗證碼丟到canvas容器中，然後callback把它(參數自訂為r)設定給state
-    captcha4.draw(document.querySelector('#captcha4'), r => {
-      let newstate = [...this.state.usertext]
-      newstate[0].captcha = r
-      console.log(r, '驗證碼')
-    })
+    // try {
+    //   //取得選填欄位資訊
+    //   //fetch:json-server連線的位址/json中的項目/該項目中id
+    //   const response = await fetch(
+    //     'http://localhost:5555/cinema-sign-choose-inputmsg',
+    //     {
+    //       method: 'GET', //使用GET方法獲取資訊，因為是取得資訊，故不須加body
+    //       headers: new Headers({
+    //         Accept: 'application/json',
+    //         'Content-Type': 'application/json',
+    //       }),
+    //     }
+    //   )
+    //   if (!response.ok) throw new Error(response.statusText) //如果發生錯誤，丟出錯誤訊息
+    //   const jsonObject = await response.json()
+    //   const choosedata = await jsonObject
+    //   await this.setState({ chooseInputmsg: choosedata })
+    //   // await console.log(choosedata)
+    // } catch (e) {
+    //   //抓到錯誤訊息，以及接下來要做的錯誤處理
+    //   console.log(e)
+    // }
   }
   //輸入框onchange事件
   handleInputTextChange = event => {
@@ -568,11 +545,8 @@ class InputCardContent_CinemaSignUp extends React.Component {
   render() {
     return (
       <>
-        <Card
-          className="card-box text-center signcard"
-          style={{ width: '600px' }}
-        >
-          <Card.Body className="p-5 signcard">
+        <Row>
+          <div className="col-lg-5 mt-3 h5">
             {this.state.inputmsg.map(item => (
               <>
                 <InputWithLabel_Su
@@ -594,16 +568,31 @@ class InputCardContent_CinemaSignUp extends React.Component {
                 <small id={item.id + 'help'} class="form-text text-danger " />
               </>
             ))}
-            <Row className="my-4">
-              <Col>
-                <hr style={{ backgroundColor: '#D4D1CC' }} />
-              </Col>
-              <Col>以下為選填項目</Col>
-              <Col>
-                <hr style={{ backgroundColor: '#D4D1CC' }} />
-              </Col>
-            </Row>
-            {this.state.chooseInputmsg.map(item => (
+          </div>
+          <div className="col-lg-7 my-4 h5">
+            <p className="h5 my-4">影片摘要</p>
+            <textarea
+              className="border border-warning bg-back-input rounded text-orange"
+              placeholder="請輸入影片簡介..."
+              style={{
+                width: '100%',
+                height: '200px',
+              }}
+            />
+            <p className="h5 my-4">影片介紹</p>
+            <textarea
+              className="border border-warning bg-back-input rounded text-orange"
+              placeholder="請輸入影片完整內容介紹..."
+              style={{
+                width: '100%',
+                height: '200px',
+              }}
+              // cols="50"
+              // rows="5"
+            />
+          </div>
+
+          {/* {this.state.chooseInputmsg.map(item => (
               <>
                 <InputWithLabel_Su
                   key={item.id}
@@ -623,43 +612,20 @@ class InputCardContent_CinemaSignUp extends React.Component {
                 />
                 <small id={item.id + 'help'} class="form-text  text-danger" />
               </>
-            ))}
-            {/* 這裡是驗證碼的Row -- input + canvas */}
-            <Row className="mx-4 my-4 d-flex justify-content-between">
-              <input
-                className="border border-warning rounded"
-                style={{
-                  background: '#1f242a',
-                  color: '#FFA510',
-                  textAlign: 'center',
-                }}
-                name="captchatext"
-                type="text"
-                placeholder="請輸入右方的驗證碼"
-                onChange={this.handleInputTextChange}
-              />
-              <canvas width="200" height="48" id="captcha4" />
-            </Row>
-            <Checkbox_Su
-              id="agree-cinema-rules"
-              text="我已了解並同意.Movieee戲院服務條款"
-              checkRemind="請確認同意服務條款"
-              onChange={this.handleInputTextChange}
-            />
-            <Button
-              className="bg-warning border-0 px-5"
-              onClick={this.props.handleCinemaSignup(
-                this.state.usertext,
-                this.state.checkok
-              )}
-            >
-              確認送出
-            </Button>
-          </Card.Body>
-        </Card>
+            ))} */}
+        </Row>
+        <Button
+          className="bg-warning border-0 px-5"
+          // onClick={this.props.handleCinemaSignup(
+          //   this.state.usertext,
+          //   this.state.checkok
+          // )}
+        >
+          確認送出
+        </Button>
       </>
     )
   }
 }
 
-export default InputCardContent_CinemaSignUp
+export default CinemaFilmUpdate
