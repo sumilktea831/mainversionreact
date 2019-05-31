@@ -104,6 +104,9 @@ const InputWithLabel_Su = props => {
               onChange={props.onChange}
               thisData={props.thisData}
               multiple={props.multiple}
+              iconRight={props.iconRight ? props.iconRight : "fas fa-upload"}
+              iconRightSize={props.iconRightSize}
+
             />
           ) : props.inputType === 'radio' ? (
             <InputRadio_Su

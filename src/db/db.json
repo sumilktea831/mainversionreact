@@ -991,7 +991,7 @@
       "iconLS": "",
       "placeholder": "請選擇一個檔案",
       "iconR": "",
-      "iconRS": ""
+      "iconRS": "24px"
     },
     {
       "id": "cinemaHeroImg",
@@ -1003,7 +1003,7 @@
       "iconLS": "",
       "placeholder": "請選擇一個檔案",
       "iconR": "",
-      "iconRS": ""
+      "iconRS": "24px"
     }
   ],
   "memberBackSidenav": [
@@ -1748,7 +1748,7 @@
       "iconLS": "",
       "placeholder": "請選擇一個檔案",
       "iconR": "",
-      "iconRS": "",
+      "iconRS": "24px",
       "multiple": false
     },
     {
@@ -1761,7 +1761,7 @@
       "iconLS": "",
       "placeholder": "請選擇檔案",
       "iconR": "",
-      "iconRS": "",
+      "iconRS": "24px",
       "multiple": true
     }
   ],
@@ -2028,7 +2028,7 @@
         "m111111",
         "m22222"
       ],
-      "cinemaPageViews": "572",
+      "cinemaPageViews": 573,
       "cinemaSignUpDate": "1955-03-12",
       "purview": "cinemaMember",
       "cinemaMessage": [
@@ -3608,12 +3608,12 @@
       "inputLabel": "影片海報",
       "iconL": "",
       "iconLS": "",
-      "placeholder": "請選擇一個檔案",
+      "placeholder": "",
       "iconR": "",
-      "iconRS": ""
+      "iconRS": "24px"
     },
     {
-      "id": "director_tw",
+      "id": "director",
       "w": "",
       "h": "40px",
       "inputType": "text",

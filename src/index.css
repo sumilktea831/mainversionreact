@@ -342,9 +342,25 @@ button.bg-orange {
   color: #ffa510;
   text-decoration: none;
 }
+.sidenavOption{
+  font-size: 18px;
+}
 .sidenavOption,
 .sidenavOptionTitle {
   margin: 0 !important;
+}
+.inputFontSizeSu{
+  font-size: 18px;
+}
+.inputFileChooseBtn{
+  border-top: 2px solid #ffa510;
+  border-bottom: 2px solid #ffa510;
+  border-right: 2px solid #ffa510;
+}
+.inputFileNameDiv{
+  border-top: 2px solid #ffa510;
+  border-bottom: 2px solid #ffa510;
+  border-left: 2px solid #ffa510;
 }
 /* -----------------------------------------------------Kaga */
 .cardAreaBgKaga {
