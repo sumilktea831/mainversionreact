@@ -5,7 +5,7 @@
 html,
 body {
   width: 100%;
-  background: #242b34;
+  background: #242b34 !important;
   margin: 0 !important;
   padding: 0 !important;
   font-family: 'Noto Sans TC', sans-serif;
@@ -384,4 +384,48 @@ button.bg-orange {
 
 #forumListScollTop::-webkit-scrollbar {
   width: 0 !important;
+}
+
+
+/*activity private*/
+
+.activityForm .form-group label{
+  font-size:24px;
+}
+
+.activityForm .form-group input{
+  font-size:24px;
+  color:#ffa510
+}
+
+.activityForm .form-group input.form-control{
+  color:#ffa510;
+  background:#1f242a;
+  border:1px solid #ffa510;
+  max-width:400px;
+}
+.activityForm .form-group input.form-control::placeholder{
+  color:#ffa310b0
+}
+.activityForm .form-group textarea.form-control{
+  font-size:24px;
+  color:#ffa510;
+  background:#1f242a;
+  border:1px solid #ffa510;
+}
+.activityForm .form-group textarea.form-control::placeholder{
+  color:#ffa310b0
+}
+
+.activityForm .form-group button.btn.btn-warning.btn-toggle{
+  color:#ffa310;
+  font-size:24px;
+  background:#1f242a;
+  width:15% !important;
+}
+.activityForm .form-group button.btn.btn-warning.btn-toggle.active{
+  color:#1f242a;
+  font-size:24px;
+  background:#ffa310;
+  width:15% !important;
 }
