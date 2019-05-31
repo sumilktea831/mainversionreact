@@ -3,6 +3,7 @@ import { Row } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import ActivityCard from '../component/activity/ActivityCard/ActivityCard'
 import ActivityTitle from '../component/activity/ActivityTitle/ActivityTitle'
+import AcitivityForm from '../component/activity/AcitivityForm/AcitivityForm'
 import CinemaBackSidenav from '../component/backSidenav/CinemaBackSidenav'
 import CinemaEditInfo from '../component/cinemaBack/CinemaEditInfo'
 import CinemaEditPwd from '../component/cinemaBack/CinemaEditPwd'
@@ -475,7 +476,13 @@ class CinemaBackMainpage extends React.Component {
               ) : (
                 ''
               )}
-              {pagename === 'cinema-activity-add' ? <></> : ''}
+              {pagename === 'cinema-activity-add' ? (
+                <>
+                  <AcitivityForm />
+                </>
+              ) : (
+                ''
+              )}
               {pagename === 'cinema-activity-inprogress' ? <></> : ''}
               {pagename === 'cinema-activity-analysis' ? <></> : ''}
             </div>

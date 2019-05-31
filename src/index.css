@@ -382,3 +382,24 @@ button.bg-orange {
 #forumListScollTop::-webkit-scrollbar {
   width: 0 !important;
 }
+
+
+/*activity private*/
+.activityForm .form-group label{
+  font-size:24px;
+}
+
+.activityForm .form-group input{
+  font-size:24px;
+  color:#ffa510
+}
+
+.activityForm .form-group input.form-control{
+  color:#ffa510;
+  background:#1f242a;
+  border:1px solid #ffa510;
+  max-width:400px;
+}
+.activityForm .form-group input.form-control::placeholder{
+  color:#ffa510
+}
