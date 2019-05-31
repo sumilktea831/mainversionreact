@@ -147,6 +147,20 @@ const InputWithLabel_Su = props => {
               value={props.thisData[props.id]}
               thisData={props.thisData}
             />
+          ) : props.inputType === 'date' ? (
+            <InputText_Su
+              inputWidth={props.inputWidth}
+              inputHeight={props.inputHeight}
+              id={props.id}
+              iconLeft={props.iconLeft}
+              iconLeftSize={props.iconLeftSize}
+              name={props.id}
+              selectOptions={props.selectOptions}
+              onChange={props.onChange}
+              col={props.col}
+              value={props.thisData[props.id]}
+              thisData={props.thisData}
+            />
           ) : (
             '找不到符合的input類型'
           )}
