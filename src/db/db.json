@@ -214,11 +214,32 @@
   ],
   "movieCardData": [
     {
-      "id": "m1558948500794",
-      "theater": "總督數位影城",
-      "title": "地球最後的夜晚",
-      "imgSrc": "https://g.udn.com.tw/upfiles/B_SH/shiow/PSN_PHOTO/591/f_24131591_1.jpg",
-      "type": "動作片戲劇片文藝片"
+        "id":"cf1000000",
+        "theater":"碼農Cafe",
+        "title":"電影名稱",
+        "titleEn":"english filmname",
+        "movie_rating": "普遍級",
+        "imgSrc": "https://g.udn.com.tw/upfiles/B_SH/shiow/PSN_PHOTO/591/f_24131591_1.jpg",
+        "type": "戲劇片文藝片",
+        "director_tw": "導演名字",
+        "director_en": "Jimmy Chin",
+        "subtitle_lang": "中文",
+        "intro":"電影簡介",
+        "fullIntro":"電影介紹",
+        "enIntro":"english intro",
+        "filmTime":"200",
+        "updateDate":"2019-04-11",
+        "inTheaterDate":"2019-05-01",
+        "outTheaterDate":"2019-08-01",
+        "schedule": [
+          "2019-05-31 18:00",
+          "2019-06-01 10:00",
+          "2019-06-01 13:00",
+          "2019-06-01 18:00",
+          "2019-06-02 10:00",
+          "2019-06-02 13:00",
+          "2019-06-02 18:00"
+        ]
     },
     {
       "id": "m1558948500794",
@@ -432,8 +453,8 @@
       "h": "48px",
       "inputType": "text",
       "inputLabel": "戲院名稱",
-      "iconL": "fas fa-air-freshener",
-      "iconLS": "24px",
+      "iconL": "",
+      "iconLS": "",
       "placeholder": "請輸入完整名稱",
       "iconR": "",
       "iconRS": ""
@@ -447,8 +468,8 @@
       "iconL": "",
       "iconLS": "",
       "placeholder": "請輸入您的統編",
-      "iconR": "fas fa-birthday-cake",
-      "iconRS": "24px"
+      "iconR": "",
+      "iconRS": ""
     },
     {
       "id": "cinemaCity",
@@ -1654,6 +1675,62 @@
       "cinemaAccount": "1111",
       "cinemaPassword": "1111",
       "cinemaType": "cafe",
+      "cinemaFilm":[{
+        "id":"cf1000000",
+        "title":"電影名稱",
+        "titleEn":"english filmname",
+        "movie_rating": "普遍級",
+        "imgSrc": "https://g.udn.com.tw/upfiles/B_SH/shiow/PSN_PHOTO/591/f_24131591_1.jpg",
+        "type": "戲劇片文藝片",
+        "director_tw": "導演名字",
+        "director_en": "Jimmy Chin",
+        "subtitle_lang": "中文",
+        "intro":"電影簡介",
+        "fullIntro":"電影介紹",
+        "enIntro":"english intro",
+        "filmTime":"200",
+        "updateDate":"2019-04-11",
+        "inTheaterDate":"2019-05-01",
+        "outTheaterDate":"2019-08-01",
+        "schedule": [
+          "2019-05-31 18:00",
+          "2019-06-01 10:00",
+          "2019-06-01 13:00",
+          "2019-06-01 18:00",
+          "2019-06-02 10:00",
+          "2019-06-02 13:00",
+          "2019-06-02 18:00"
+        ]
+      },
+      {
+        "id":"cf1000000",
+        "title":"赤手登峰",
+        "titleEn":"english filmname",
+        "movie_rating": "普遍級",
+        "imgSrc": "https://g.udn.com.tw/upfiles/B_SH/shiow/PSN_PHOTO/591/f_24131591_1.jpg",
+        "type": "戲劇片文藝片",
+        "director_tw": "導演名字",
+        "director_en": "Jimmy Chin",
+        "subtitle_lang": "中文",
+        "intro":"電影簡介",
+        "fullIntro":"電影介紹",
+        "enIntro":"english intro",
+        "filmTime":"200",
+        "updateDate":"2019-04-11",
+        "inTheaterDate":"2019-05-01",
+        "outTheaterDate":"2019-08-01",
+        "schedule": [
+          "2019-05-31 18:00",
+          "2019-06-01 10:00",
+          "2019-06-01 13:00",
+          "2019-06-01 18:00",
+          "2019-06-02 10:00",
+          "2019-06-02 13:00",
+          "2019-06-02 18:00"
+        ]
+      }
+    
+    ],
       "cinemaStar": [
         {
           "starId": "m111111",
