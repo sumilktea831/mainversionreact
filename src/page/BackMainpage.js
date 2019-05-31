@@ -53,6 +53,7 @@ class BackSidenav extends React.Component {
   }
 
   async componentDidMount() {
+    console.log('parent-didmount')
     //取得會員sidenav項目
     try {
       const response = await fetch('http://localhost:5555/memberBackSidenav', {
@@ -229,8 +230,8 @@ class BackSidenav extends React.Component {
           }
         })
       })
-      // console.log('parnet--myArticleData')
-      // console.log(myArticleData)
+      console.log('parnet--myArticleData')
+      console.log(myArticleData)
       //==============================================================
 
       // 元件AvatarOne -- 完成
@@ -257,6 +258,10 @@ class BackSidenav extends React.Component {
       // 元件filmCard
       // 先找出影片id跟會員收藏id一致的資料 (會員收藏是array) --到時候串接用
       const filmCard = []
+      console.log('memberPageData')
+      console.log(memberPageData)
+      console.log('memberPageData.collectFilm')
+      console.log(memberPageData.collectFilm)
       dataFilm.filter(item => {
         return memberPageData.collectFilm.map(items => {
           if (item.id === items) {
@@ -283,15 +288,21 @@ class BackSidenav extends React.Component {
         star: item.filmStar,
         mark: memberPageData.markList,
       }))
-      this.setState({
-        allArticleData: dataArcticle,
-        thisCollectArticleData: myArticleData,
-        allFilmData: dataFilm,
-        avatarOne: avatarOneData,
-        boxData: dataBoxData,
-        filmCard: filmCardData,
-        myForumData: forumPublishData,
-      })
+      this.setState(
+        {
+          allArticleData: dataArcticle,
+          thisCollectArticleData: myArticleData,
+          allFilmData: dataFilm,
+          avatarOne: avatarOneData,
+          boxData: dataBoxData,
+          filmCard: filmCardData,
+          myForumData: forumPublishData,
+        },
+        () => {
+          console.log('===================================')
+          console.log(this.state)
+        }
+      )
     } catch (err) {
       console.log(err)
     }
@@ -537,21 +548,13 @@ class BackSidenav extends React.Component {
     window.location.href = '/'
   }
   static getDerivedStateFromProps(nextProps, prevState) {
-    // console.log('childDerived')
+    // console.log('parent-Derived')
 
-    let stateToBeReturned = null
-    if (prevState.thisData == 0) {
-      stateToBeReturned = {
-        ...prevState,
-        thisData: nextProps.thisData,
-        originData: nextProps.thisData,
-      }
-    }
-
+    // let stateToBeReturned = null
     // console.log(nextProps)
     // console.log(prevState)
     // console.log(stateToBeReturned)
-    return stateToBeReturned
+    // return stateToBeReturned
   }
 
   handleCollect = async id => {
