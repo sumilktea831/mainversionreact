@@ -78,7 +78,7 @@ container-fluid {
     top: 0;
     left: 0;
     right: 0;
-    z-index: 9;
+    z-index: 999;
     height: 60px !important;
     background-color: #00000020 !important;
     padding: 0 0px !important;
@@ -181,7 +181,7 @@ nav.navbar {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 9;
+  z-index: 999;
   height: 120px;
   background-color: #00000020 !important;
   padding: 0 120px;

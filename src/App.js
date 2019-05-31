@@ -45,6 +45,20 @@ class App extends React.Component {
       window.location.pathname.indexOf('BackMainpage') == -1 &&
       window.location.pathname.indexOf('CinemaBackMainpage') == -1
     ) {
+      console.log('enter')
+      console.log('enter')
+      console.log('enter')
+      console.log('enter')
+      console.log('enter')
+      console.log('enter')
+      console.log('enter')
+      console.log('enter')
+      console.log('enter')
+      console.log('enter')
+      console.log('enter')
+      console.log('enter')
+      console.log('enter')
+      console.log('enter')
       let currentHeight = document.documentElement.scrollTop
       this.setState({ currentHeight: currentHeight })
       let prevHeight = this.state.prevHeight
