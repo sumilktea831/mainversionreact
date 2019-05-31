@@ -37,7 +37,7 @@ class BackSidenav extends React.Component {
       allFilmData: [], // 全部影片 pure json
       allArticleData: [], // 全部影片 pure json
       thisCollectArticleData: [], // 該會員收藏的文章資訊
-      myForumData:[],
+      myForumData: [],
       avatarOne: '', // 整理過頭像框用
       boxData: '', // 整理過基本資料用
       filmCard: [], // 整理過影片卡片用
@@ -408,7 +408,6 @@ class BackSidenav extends React.Component {
     )
     const jsonMark = await resMark.json()
 
-    
     console.log(jsonMark)
 
     // 然後回去改card的state
