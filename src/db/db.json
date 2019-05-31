@@ -216,17 +216,15 @@
     {
         "id":"cf1000000",
         "theater":"碼農Cafe",
-        "title":"電影名稱",
+        "title":"赤手登峰",
         "titleEn":"english filmname",
         "movie_rating": "普遍級",
         "imgSrc": "https://g.udn.com.tw/upfiles/B_SH/shiow/PSN_PHOTO/591/f_24131591_1.jpg",
         "type": "戲劇片文藝片",
         "director_tw": "導演名字",
-        "director_en": "Jimmy Chin",
-        "subtitle_lang": "中文",
+        "langauge": "華語",
         "intro":"電影簡介",
         "fullIntro":"電影介紹",
-        "enIntro":"english intro",
         "filmTime":"200",
         "updateDate":"2019-04-11",
         "inTheaterDate":"2019-05-01",
@@ -240,7 +238,7 @@
           "2019-06-02 13:00",
           "2019-06-02 18:00"
         ],
-        "cinemaStar": [
+        "filmStar": [
           {
             "starId": "m111111",
             "star": 5
@@ -1689,47 +1687,7 @@
       "cinemaAccount": "1111",
       "cinemaPassword": "1111",
       "cinemaType": "cafe",
-      "cinemaFilm":[{
-        "id":"cf1000000",
-        "title":"電影名稱",
-        "titleEn":"english filmname",
-        "movie_rating": "普遍級",
-        "imgSrc": "https://g.udn.com.tw/upfiles/B_SH/shiow/PSN_PHOTO/591/f_24131591_1.jpg",
-        "type": "戲劇片文藝片",
-        "director_tw": "導演名字",
-        "director_en": "Jimmy Chin",
-        "subtitle_lang": "中文",
-        "intro":"電影簡介",
-        "fullIntro":"電影介紹",
-        "enIntro":"english intro",
-        "filmTime":"200",
-        "updateDate":"2019-04-11",
-        "inTheaterDate":"2019-05-01",
-        "outTheaterDate":"2019-08-01",
-        "schedule": [
-          "2019-05-31 18:00",
-          "2019-06-01 10:00",
-          "2019-06-01 13:00",
-          "2019-06-01 18:00",
-          "2019-06-02 10:00",
-          "2019-06-02 13:00",
-          "2019-06-02 18:00"
-        ],
-        "cinemaStar": [
-          {
-            "starId": "m111111",
-            "star": 5
-          },
-          {
-            "starId": "m22222",
-            "star": 5
-          },
-          {
-            "starId": "m1558576972555",
-            "star": 5
-          }
-        ]
-      },
+      "cinemaFilm":[
       {
         "id":"cf1000000",
         "title":"赤手登峰",
@@ -1738,11 +1696,9 @@
         "imgSrc": "https://g.udn.com.tw/upfiles/B_SH/shiow/PSN_PHOTO/591/f_24131591_1.jpg",
         "type": "戲劇片文藝片",
         "director_tw": "導演名字",
-        "director_en": "Jimmy Chin",
-        "subtitle_lang": "中文",
+        "langauge": "華語",
         "intro":"電影簡介",
         "fullIntro":"電影介紹",
-        "enIntro":"english intro",
         "filmTime":"200",
         "updateDate":"2019-04-11",
         "inTheaterDate":"2019-05-01",
@@ -1756,7 +1712,7 @@
           "2019-06-02 13:00",
           "2019-06-02 18:00"
         ],
-        "cinemaStar": [
+        "filmStar": [
           {
             "starId": "m111111",
             "star": 5
@@ -1771,7 +1727,7 @@
           }
         ]
       }
-    
+  
     ],
       "cinemaStar": [
         {
@@ -3304,6 +3260,188 @@
         "愛情",
         "動畫"
       ]
+    }
+  ],
+  "cinemaFilmEditInputMsg":[
+    {
+      "id": "title",
+      "w": "",
+      "h": "40px",
+      "inputType": "text",
+      "inputLabel": "中文片名",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "titleEn",
+      "w": "",
+      "h": "40px",
+      "inputType": "text",
+      "inputLabel": "英文片名",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "movie_rating",
+      "w": "",
+      "h": "40px",
+      "inputType": "selector",
+      "inputLabel": "影片分級",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "fas fa-caret-square-down",
+      "iconRS": "24px",
+      "selectOptions": [
+        {
+          "id": "G",
+          "name": "普遍級 0+"
+        },
+        {
+          "id": "PG6",
+          "name": "保護級 6+"
+        },
+        {
+          "id": "PG12",
+          "name": "輔導級 12+"
+        },
+        {
+          "id": "PG15",
+          "name": "輔導級 15+"
+        },
+        {
+          "id": "R",
+          "name": "限制級 18+"
+        }
+      ]
+    },
+    {
+      "id": "imgSrc",
+      "w": "",
+      "h": "40px",
+      "inputType": "file",
+      "inputLabel": "影片海報",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "請選擇一個檔案",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "director_tw",
+      "w": "",
+      "h": "40px",
+      "inputType": "text",
+      "inputLabel": "導演",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "subtitle_lang",
+      "w": "",
+      "h": "40px",
+      "inputType": "text",
+      "inputLabel": "字幕語言",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "",
+      "iconRS": "",
+      "selectOptions": [
+        {
+          "id": "lang1",
+          "name": "華語"
+        },
+        {
+          "id": "lang2",
+          "name": "客語"
+        },
+        {
+          "id": "lang3",
+          "name": "粵語"
+        },
+        {
+          "id": "lang4",
+          "name": "英語"
+        },
+        {
+          "id": "lang5",
+          "name": "日語"
+        },
+        {
+          "id": "lang6",
+          "name": "韓語"
+        },
+        {
+          "id": "lang7",
+          "name": "法語"
+        },
+        {
+          "id": "lang8",
+          "name": "西班牙語"
+        },
+        {
+          "id": "lang9",
+          "name": "義大利語"
+        },
+        {
+          "id": "lang10",
+          "name": "俄語"
+        },
+        {
+          "id": "lang11",
+          "name": "俄語"
+        },
+        {
+          "id": "lang12",
+          "name": "其他"
+        }
+      ]
+    },
+    {
+      "id": "filmTime",
+      "w": "",
+      "h": "40px",
+      "inputType": "text",
+      "inputLabel": "片長",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "inTheaterDate",
+      "w": "",
+      "h": "40px",
+      "inputType": "date",
+      "inputLabel": "上檔日期",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "",
+      "iconRS": ""
+    },
+    {
+      "id": "outTheaterDate",
+      "w": "",
+      "h": "40px",
+      "inputType": "date",
+      "inputLabel": "下檔日期",
+      "iconL": "",
+      "iconLS": "",
+      "placeholder": "",
+      "iconR": "",
+      "iconRS": ""
     }
   ]
 }
