@@ -13,6 +13,9 @@ body {
   color: #d4d1cc !important;
   scroll-behavior: smooth;
 }
+.container-fluid{
+ padding:0; 
+}
 a {
   text-decoration: none;
 }
@@ -25,6 +28,10 @@ container-fluid {
   margin: 0;
   /* max-width: 100%; */
 }
+.fit-image{
+  object-fit: cover !important;
+  height: 400px !important;
+  }
 @media screen and (max-width:540px){
   h2{
     font-size:18px !important;
