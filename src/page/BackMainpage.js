@@ -12,6 +12,7 @@ import ActivityTitle from '../component/activity/ActivityTitle/ActivityTitle'
 import MemberEditInfo from '../component/meberBack/MemberEditInfo'
 import MemberEditPwd from '../component/meberBack/MemberEditPwd'
 import MemberCollectTable from '../component/meberBack/MemberCollectTable'
+import MemberCollectTableForForum from '../component/meberBack/MemberCollectTableForForum'
 import CheckboxMultiForFavTypeReadSu from '../component/inputs/CheckboxMultiForFavTypeReadSu'
 import CinemaEditInfo from '../component/cinemaBack/CinemaEditInfo'
 import ForumBackArticle from './ForumBackArticle'
@@ -36,6 +37,7 @@ class BackSidenav extends React.Component {
       allFilmData: [], // 全部影片 pure json
       allArticleData: [], // 全部影片 pure json
       thisCollectArticleData: [], // 該會員收藏的文章資訊
+      myForumData:[],
       avatarOne: '', // 整理過頭像框用
       boxData: '', // 整理過基本資料用
       filmCard: [], // 整理過影片卡片用
@@ -237,7 +239,7 @@ class BackSidenav extends React.Component {
         memberPageData.avatar !== '' ? memberPageData.avatar : 'movieStar.jpg'
       const avatarOneData = {
         img: '/images/member/' + memberAvatar,
-        name: memberPageData.name,
+        name: memberPageData.nickname,
         purview: memberPageData.permission,
         SignUpDate: memberPageData.join_date,
       }
@@ -405,6 +407,8 @@ class BackSidenav extends React.Component {
       }
     )
     const jsonMark = await resMark.json()
+
+    
     console.log(jsonMark)
 
     // 然後回去改card的state
@@ -580,7 +584,11 @@ class BackSidenav extends React.Component {
         <>
           {/* 暫時上方navbar區塊 */}
           <Row>
-            <MemberBackSidenav sidenavItems={this.state.memberSidenavItems} />
+            <MemberBackSidenav
+              sidenavItems={this.state.memberSidenavItems}
+              pagename={pagename}
+            />
+
             <div //右邊內容框，之後要引入內容component
               className="col container-fluid"
               style={{
@@ -656,12 +664,7 @@ class BackSidenav extends React.Component {
                   </div>
                   <div className="py-5" />
                   <TitleKaga title="收藏文章" />
-                  <div
-                    className=" d-flex flex-wrap col-lg-12 my-5"
-                    style={{
-                      height: '300px',
-                    }}
-                  >
+                  <div className=" d-flex flex-wrap col-lg-12 my-5">
                     <MemberCollectTable
                       thisData={this.state.thisMemberData}
                       thisCollectArticleData={this.state.thisCollectArticleData}
@@ -669,13 +672,11 @@ class BackSidenav extends React.Component {
                   </div>
                   <div className="py-5" />
                   <TitleKaga title="發文紀錄" />
-                  <div
-                    className=" d-flex flex-wrap col-lg-12 bg-danger my-5"
-                    style={{
-                      height: '300px',
-                    }}
-                  >
-                    table(請找情哥)
+                  <div className=" d-flex flex-wrap col-lg-12 my-5">
+                    <MemberCollectTableForForum
+                      thisData={this.state.thisMemberData}
+                      myForumData={this.state.myForumData}
+                    />
                   </div>
                 </>
               ) : (

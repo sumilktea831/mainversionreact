@@ -1604,7 +1604,7 @@
       ],
       "collectActivity": "a1558948617225a1558948598530a1558948500794",
       "collectActivityJoin": "a1558948500794",
-      "collectForum": [],
+      "collectForum": ["1"],
       "markList": [
         {
           "markId": "001",
@@ -1643,7 +1643,7 @@
         },
         {
           "starId": "m1558576972555",
-          "star": 5
+          "star": 3
         }
       ],
       "cinemaAddress": "台北市大安區復興南路一段",
