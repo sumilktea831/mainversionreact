@@ -387,8 +387,11 @@ class Cinema extends React.Component {
           bigSlogan="為每位影人找尋落腳角落"
           midSlogan="探詢簡潔優雅的閱聽地點"
           smallSlogan="開始瀏覽"
+          // section={'#test'}
+          pagename={'/cinema/'}
+          pageid={'#search'}
         />
-        <div className="row justify-content-center">
+        <div className="row justify-content-center" id="search">
           <div
             className=" d-flex flex-wrap col-lg-10"
             style={{

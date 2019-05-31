@@ -12,7 +12,7 @@ import AvatarOne from '../component/cinema/AvatarTypeOne/AvatarOne'
 import DataBox from '../component/cinema/DataBoxSM/DataBox'
 import CardKaga from '../component/cinema/CardKaga/v3/CardKaga'
 import MessageCinema from '../component/cinema/MessageSM/MessageCinema'
-import CinemaFilmUpdate from '../component/cinemaBack/CinemaFilmUpdate'
+// import CinemaFilmUpdate from '../component/cinemaBack/CinemaFilmUpdate'
 //cinemaId
 import ActivityBtnAddActivity from '../component/activity/ActivityBtnAddActivity/ActivityBtnAddActivity'
 const cinemaId = sessionStorage.getItem('cinemaId')
@@ -487,10 +487,10 @@ class CinemaBackMainpage extends React.Component {
                       />
                     </div>
                     <div style={{ width: '100%' }}>
-                      <CinemaFilmUpdate
+                      {/* <CinemaFilmUpdate
                         thisData={this.state.thisCinemaData}
                         allCinemaData={this.state.allCinemaD}
-                      />
+                      /> */}
                     </div>
                   </div>
                 </>

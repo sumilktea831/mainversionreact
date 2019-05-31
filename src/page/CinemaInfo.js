@@ -52,8 +52,21 @@ class TheateInfo extends React.Component {
       const dataLoginCine = dataAllCinema.filter(item => item.id === cinemaId)
       const dataLoginCinema = dataLoginCine[0]
 
-      console.log('dataCinema')
-      console.log(dataCinema)
+      // 更新瀏覽數
+      dataCinema.cinemaPageViews = +dataCinema.cinemaPageViews + 1
+      const response = await fetch(
+        'http://localhost:5555/cinema/' + this.props.match.params.id,
+        {
+          method: 'PUT',
+          body: JSON.stringify(dataCinema),
+          headers: new Headers({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          }),
+        }
+      )
+      const jsonObject = await response.json()
+
       //會員
       const resMember = await fetch('http://localhost:5555/member', {
         method: 'GET',
@@ -91,26 +104,20 @@ class TheateInfo extends React.Component {
       // 所以該劇院的活動資料就是 dataActivity
 
       // 影片
-      const resFilm = await fetch('http://localhost:5555/filmData', {
+      const resFilm = await fetch('http://localhost:5555/movieCardData', {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
           'Content-Type': 'application/json',
         }),
       })
-      //完整得影片資料
+      // 完整得影片資料
       const dataFil = await resFilm.json()
+
       // 篩選出影片json中上映影院根本影院一樣的
-      const dataFilm = []
-      dataFil.map(item => {
-        item.moviecinema.map(item1 => {
-          if (item1 === dataCinema.id) {
-            dataFilm.push(item)
-          }
-        })
-        return item
-      })
-      // 所以該劇院的影片資料就是 dataFilm
+      const dataFilm = dataFil.filter(
+        el => el.theater === dataCine[0].cinemaName
+      )
 
       // HeroSection參數整理
       const HeroSection = {
@@ -160,7 +167,6 @@ class TheateInfo extends React.Component {
         const dataStarAverage = dataStarSum / dataStarArray.length
         dataStar = Math.round(dataStarAverage)
       }
-
       const BigCarData = {
         id: dataCinema.id,
         img: dataCinema.cinemaHeroImg,
@@ -180,13 +186,13 @@ class TheateInfo extends React.Component {
         starLength: starLength,
       }
 
+      this.setState({ BigCarData: BigCarData })
       // 照片框參數整理
       const SliderData = {
         id: dataCinema.id,
         img: dataCinema.cinemaImg,
       }
-      console.log('dataThisMember')
-      console.log(dataThisMember)
+
       // 活動小卡片參數整理
       const ActivityCardData = dataActivity.map(item => ({
         key: item.id,
@@ -204,28 +210,35 @@ class TheateInfo extends React.Component {
         collection: [],
       }))
 
+      console.log('dataFilm')
+      console.log(dataFilm)
       // 影片小卡片需要參數
-      const FilmCardData = dataFilm.map(item => ({
-        key: item.id,
-        id: item.id,
-        title:
-          item.name_tw.length > 6
-            ? item.name_tw.slice(0, 6) + '...'
-            : item.name_tw, //
-        subtitle:
-          item.name_en.length > 12
-            ? item.name_en.slice(0, 12) + '...'
-            : item.name_en,
-        img: item.movie_pic,
-        // 因為是原頁面跳轉 所以直接帶這樣才能實現跳轉
-        link: '/movie/' + item.id,
-        // 不先驗證是否有會員的會會跳錯
-        collection: memberId
-          ? String(
-              dataThisMember[0].collectFilm.some(item1 => item1 === item.id)
-            )
-          : [],
-      }))
+      const FilmCardData = dataFilm.map(item => {
+        console.log('item')
+        console.log(item)
+        return {
+          key: item.id,
+          id: item.id,
+          title:
+            item.title.length > 6 ? item.title.slice(0, 6) + '...' : item.title, //
+          subtitle:
+            item.titleEn.length > 12
+              ? item.titleEn.slice(0, 12) + '...'
+              : item.titleEn,
+          img: item.imgSrc,
+          // 因為是原頁面跳轉 所以直接帶這樣才能實現跳轉
+          link: '/movie/' + item.id,
+          // 不先驗證是否有會員的會會跳錯
+          collection: memberId
+            ? String(
+                dataThisMember[0].collectFilm.some(item1 => item1 === item.id)
+              )
+            : [],
+        }
+      })
+
+      console.log('FilmCardData')
+      console.log(FilmCardData)
 
       this.setState({
         cinemaData: dataCinema,
@@ -235,7 +248,6 @@ class TheateInfo extends React.Component {
         activityData: dataAct,
         filmData: dataFil,
         HeroSection: HeroSection,
-        BigCarData: BigCarData,
         SliderData: SliderData,
         ActivityCardData: ActivityCardData,
         FilmCardData: FilmCardData,
@@ -402,11 +414,7 @@ class TheateInfo extends React.Component {
       memberThisDataOutArray = this.state.memberThisData
     }
     // 驗證現在這個會員的收藏裡是否已有收藏過
-    console.log('memberThisDataOutArray')
-    console.log(memberThisDataOutArray)
-    let haveTrueOrFalse = memberThisDataOutArray.collectFilm.some(
-      item => item === id
-    )
+    // 這邊拿到最新的NewMemberData.collectFilm陣列
     let newCollectionData = []
     if (val === 'false') {
       // 如果回傳是false 等等要裝進去的資料就是拿掉此影片以外的所有收藏id
@@ -417,29 +425,11 @@ class TheateInfo extends React.Component {
       // 如果回傳是true 就加上去
       newCollectionData = [...memberThisDataOutArray.collectFilm, id]
     }
-    const NewMemberData = {
-      id: memberThisDataOutArray.id,
-      name: memberThisDataOutArray.name,
-      nickname: memberThisDataOutArray.nickname,
-      gender: memberThisDataOutArray.gender,
-      mobile: memberThisDataOutArray.mobile,
-      birth: memberThisDataOutArray.birth,
-      email: memberThisDataOutArray.email,
-      pwd: memberThisDataOutArray.pwd,
-      avatar: memberThisDataOutArray.avatar,
-      city: memberThisDataOutArray.city,
-      address: memberThisDataOutArray.address,
-      fav_type: memberThisDataOutArray.fav_type,
-      career: memberThisDataOutArray.career,
-      join_date: memberThisDataOutArray.permission,
-      permission: memberThisDataOutArray.permission,
-      collectFilm: newCollectionData,
-      collectCinema: memberThisDataOutArray.collectCinema,
-      collectArticle: memberThisDataOutArray.collectArticle,
-      collectActivity: memberThisDataOutArray.collectActivity,
-      collectForum: memberThisDataOutArray.collectForum,
-      markList: memberThisDataOutArray.markList,
-    }
+
+    // 把剛拿到最新的陣列丟回去這個會員的會員資料中
+    const NewMemberData = memberThisDataOutArray
+    NewMemberData.collectFilm = newCollectionData
+
     // //蓋回去資料庫
     const response = await fetch('http://localhost:5555/member/' + memberId, {
       method: 'PUT',
@@ -464,6 +454,8 @@ class TheateInfo extends React.Component {
       // 如果id是回傳的id 代表要改的就是這筆！！  讓他吃val的值  其他筆就照舊吧
       collection: item.id === id ? val : item.collection,
     }))
+    console.log('FilmCardData')
+    console.log(FilmCardData)
     await this.setState({
       FilmCardData: FilmCardData,
       memberThisData: NewMemberData,
@@ -662,7 +654,10 @@ class TheateInfo extends React.Component {
     const jsonObject = await resCinema.json()
     console.log(jsonObject)
   }
+
   render() {
+    // console.log('this.state.BigCarData.awesome')
+    // console.log(this.state.BigCarData.awesome)
     return (
       <>
         {/* 英雄頁面----串接完成 */}
@@ -682,7 +677,7 @@ class TheateInfo extends React.Component {
         >
           {/* 大的卡片----製作與串接完成 */}
           <TitleKaga title="戲院資訊" />
-          <div className="h-100 d-flex justify-content-center">
+          <div className="h-100 d-flex justify-content-center" id="bigCard">
             {memberId ? (
               <CardLargeKaga
                 key={this.state.BigCarData.id}
@@ -707,6 +702,18 @@ class TheateInfo extends React.Component {
                 star={this.state.BigCarData.star}
                 StarChange={this.StarChange}
                 starLength={this.state.BigCarData.starLength}
+                collectionColor={
+                  this.state.BigCarData.collection !== undefined
+                    ? this.state.BigCarData.collection.some(
+                        el => el === this.state.BigCarData.id
+                      )
+                    : []
+                }
+                awesomeColor={
+                  this.state.BigCarData.awesome !== undefined
+                    ? this.state.BigCarData.awesome.some(el => el === memberId)
+                    : []
+                }
               />
             ) : (
               <CardLargeKaga
@@ -731,6 +738,8 @@ class TheateInfo extends React.Component {
                 justStar
                 star={this.state.BigCarData.star}
                 starLength={this.state.BigCarData.starLength}
+                collectionColor={false}
+                awesomeColor={false}
               />
             )}
           </div>
@@ -766,7 +775,7 @@ class TheateInfo extends React.Component {
                       id={item.id}
                       title={item.title}
                       subtitle={item.subtitle}
-                      img={'http://localhost:3000/images/' + item.img}
+                      img={item.img}
                       link={item.link}
                       collectionIcon
                       collectionClick={this.collectionClickFilm}
@@ -780,7 +789,7 @@ class TheateInfo extends React.Component {
                       id={item.id}
                       title={item.title}
                       subtitle={item.subtitle}
-                      img={'http://localhost:3000/images/' + item.img}
+                      img={item.img}
                       link={item.link}
                     />
                   ))
@@ -884,4 +893,5 @@ class TheateInfo extends React.Component {
     )
   }
 }
+
 export default TheateInfo

@@ -20,6 +20,8 @@ class CardLargeKaga extends React.Component {
       viewStar: props.star,
       updateStar: '',
       markText: '',
+      awesomeColor: false,
+      collectionColor: false,
     }
   }
   componentDidMount() {
@@ -28,6 +30,8 @@ class CardLargeKaga extends React.Component {
       awesomeLength: this.props.awesomeLength,
       collection: this.props.collection,
       collectionLength: this.props.collectionLength,
+      collectionColor: this.props.collectionColor,
+      awesomeColor: this.props.awesomeColor,
     })
   }
 
@@ -52,6 +56,7 @@ class CardLargeKaga extends React.Component {
         this.props.awesomeClick(newAwesome, awesomeLength)
         // 然後同時改變自己這層的state
         this.setState({
+          awesomeColor: false,
           awesome: newAwesome,
           awesomeLength: awesomeLength,
         })
@@ -65,6 +70,7 @@ class CardLargeKaga extends React.Component {
         this.props.awesomeClick(newAwesome, awesomeLength)
         // 然後同時改變自己這層的state
         this.setState({
+          awesomeColor: true,
           awesome: newAwesome,
           awesomeLength: awesomeLength,
         })
@@ -100,6 +106,7 @@ class CardLargeKaga extends React.Component {
         // 然後同時改變自己這層的state
         this.setState(
           {
+            collectionColor: false,
             collection: newCollection,
             collectionLength: collectionLength,
           },
@@ -119,6 +126,7 @@ class CardLargeKaga extends React.Component {
         // 然後同時改變自己這層的state
         this.setState(
           {
+            collectionColor: true,
             collection: newCollection,
             collectionLength: collectionLength,
           },
@@ -282,26 +290,53 @@ class CardLargeKaga extends React.Component {
                 )}
                 {/* 下方區塊 */}
                 <div className="d-flex mb-4 mt-3" style={{ fontSize: '25px' }}>
-                  <div
-                    className="mx-4"
-                    onClick={this.awesomeCardClick}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    <i className="fas fa-thumbs-up mr-2" />
-                    {this.state.awesomeLength}
-                  </div>
+                  {/* 按讚數 */}
+                  {this.state.awesomeColor === false ? (
+                    <div
+                      className="mx-4"
+                      onClick={this.awesomeCardClick}
+                      style={{ cursor: 'pointer', color: '#ccc' }}
+                    >
+                      <i className="fas fa-thumbs-up mr-2" />
+                      {this.state.awesomeLength}
+                    </div>
+                  ) : (
+                    <div
+                      className="mx-4 text-warning"
+                      onClick={this.awesomeCardClick}
+                      style={{ cursor: 'pointer', color: '#ccc' }}
+                    >
+                      <i className="fas fa-thumbs-up mr-2" />
+                      {this.state.awesomeLength}
+                    </div>
+                  )}
+
+                  {/* 瀏覽數 */}
                   <div className="mx-5">
                     <i className="fas fa-eye mr-2" />
                     {this.props.pageviews}
                   </div>
-                  <div
-                    className="ml-4"
-                    onClick={this.collectionCardClick}
-                    style={{ cursor: 'pointer' }}
-                  >
-                    <i className="fas fa-bookmark mr-2" />
-                    {this.state.collectionLength}
-                  </div>
+
+                  {/* 訂閱數 */}
+                  {this.state.collectionColor === false ? (
+                    <div
+                      className="ml-4"
+                      onClick={this.collectionCardClick}
+                      style={{ cursor: 'pointer', color: '#ccc' }}
+                    >
+                      <i className="fas fa-bookmark mr-2" />
+                      {this.state.collectionLength}
+                    </div>
+                  ) : (
+                    <div
+                      className="ml-4 text-warning"
+                      onClick={this.collectionCardClick}
+                      style={{ cursor: 'pointer' }}
+                    >
+                      <i className="fas fa-bookmark mr-2" />
+                      {this.state.collectionLength}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
