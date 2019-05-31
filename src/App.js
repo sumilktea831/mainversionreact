@@ -115,13 +115,12 @@ class App extends React.Component {
       window.location.pathname.indexOf('BackMainpage') == -1 &&
       window.location.pathname.indexOf('CinemaBackMainpage') == -1
     ) {
-      console.log('here')
       let currentHeight = document.documentElement.scrollTop
       this.setState({ currentHeight: currentHeight })
       let prevHeight = this.state.prevHeight
       if (document.documentElement.scrollTop > 630) {
         this.setState({ navbar: 'active' })
-        if (document.documentElement.scrollTop > 750) {
+        if (document.documentElement.scrollTop > 800) {
           if (currentHeight > prevHeight) {
             this.setState({ navbar: 'active hiddenNav' })
           } else {
@@ -172,7 +171,7 @@ class App extends React.Component {
                 </LinkContainer>
                 {sessionStorage.getItem('cinemaId') !== null ? (
                   <>
-                    <LinkContainer to="/CinemaBackMainpage">
+                    <LinkContainer to="/CinemaBackMainpage/cinema-info-preview">
                       <Nav.Link className="mr-5">戲院後台</Nav.Link>
                     </LinkContainer>
                     <LinkContainer to="/mainpage">

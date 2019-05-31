@@ -45,7 +45,7 @@ const CinemaBackSidenav = props => {
       >
         <div
           style={{
-            height: '194px',
+            height: '240px',
           }}
         />
         <h3 className="text-center mb-4">戲院中心</h3>
