@@ -221,7 +221,7 @@
         "movie_rating": "普遍級",
         "imgSrc": "https://g.udn.com.tw/upfiles/B_SH/shiow/PSN_PHOTO/591/f_24131591_1.jpg",
         "type": "戲劇片文藝片",
-        "director_tw": "導演名字",
+        "director": "導演名字",
         "langauge": "華語",
         "intro":"電影簡介",
         "fullIntro":"電影介紹",
@@ -1695,7 +1695,7 @@
         "movie_rating": "普遍級",
         "imgSrc": "https://g.udn.com.tw/upfiles/B_SH/shiow/PSN_PHOTO/591/f_24131591_1.jpg",
         "type": "戲劇片文藝片",
-        "director_tw": "導演名字",
+        "director": "導演名字",
         "langauge": "華語",
         "intro":"電影簡介",
         "fullIntro":"電影介紹",
@@ -3346,16 +3346,16 @@
       "iconRS": ""
     },
     {
-      "id": "subtitle_lang",
+      "id": "language",
       "w": "",
       "h": "40px",
       "inputType": "text",
-      "inputLabel": "字幕語言",
+      "inputLabel": "語言",
       "iconL": "",
       "iconLS": "",
       "placeholder": "",
-      "iconR": "",
-      "iconRS": "",
+      "iconR": "fas fa-caret-square-down",
+      "iconRS": "24px",
       "selectOptions": [
         {
           "id": "lang1",
@@ -3415,7 +3415,7 @@
       "inputLabel": "片長",
       "iconL": "",
       "iconLS": "",
-      "placeholder": "",
+      "placeholder": "請輸入分鐘數，如 '200'",
       "iconR": "",
       "iconRS": ""
     },

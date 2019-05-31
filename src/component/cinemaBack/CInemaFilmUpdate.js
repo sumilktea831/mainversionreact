@@ -12,23 +12,24 @@ class InputCardContent_CinemaSignUp extends React.Component {
       chooseInputmsg: [],
       usertext: [
         {
-          cinemaName: '',
-          cinemaTaxid: '',
-          cinemaCity: '台北市',
-          cinemaArea: '',
-          cinemaAddress: '',
-          cinemaPhone: '',
-          cinemaEmail: '',
-          cinemaType: '',
-          cinemaAccount: '',
-          cinemaPassword: '',
-          cinemaWeb: '',
-          cinemaLogoImg: '',
-          cinemaHeroImg: '',
-          cinemaImg: [],
-          cinemaRepwd: '',
-          captcha: '',
-          captchatext: '',
+          id: 'cf1000000',
+          theater: '碼農Cafe',
+          title: '赤手登峰',
+          titleEn: 'english filmname',
+          movie_rating: '普遍級',
+          imgSrc:
+            'https://g.udn.com.tw/upfiles/B_SH/shiow/PSN_PHOTO/591/f_24131591_1.jpg',
+          type: '',
+          director: '',
+          langauge: '',
+          intro: '',
+          fullIntro: '',
+          filmTime: '',
+          updateDate: '',
+          inTheaterDate: '',
+          outTheaterDate: '',
+          schedule: [],
+          filmStar: [],
           isagreed: false,
         },
       ],
@@ -569,7 +570,7 @@ class InputCardContent_CinemaSignUp extends React.Component {
       <>
         <Card
           className="card-box text-center signcard"
-          style={{ width: '600px'}}
+          style={{ width: '600px' }}
         >
           <Card.Body className="p-5 signcard">
             {this.state.inputmsg.map(item => (
