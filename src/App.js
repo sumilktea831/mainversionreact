@@ -191,6 +191,7 @@ class App extends React.Component {
             <Route path="/mainpage" component={Mainpage} />
             <Route path="/cinema/:id" component={CinemaInfo} />
             <Route path="/cinema" component={Cinema} />
+            <Redirect from="/movie/:id/return" to="/movie/:id" />
             <Route path="/movie/:id" component={MovieInfo} />
             <Route path="/movie" component={Movie} />
             <Route path="/article/:id" component={ArticlePage} />
