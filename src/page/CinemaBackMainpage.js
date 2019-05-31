@@ -475,15 +475,9 @@ class CinemaBackMainpage extends React.Component {
               ) : (
                 ''
               )}
-              {pagename === 'cinema-manage-activity' ? (
-                <>
-                  <ActivityBtnAddActivity />
-                </>
-              ) : (
-                ''
-              )}
-              {pagename === 'cinema-activity-in-progress' ? <></> : ''}
-              {pagename === 'activity-costum-analysis' ? <></> : ''}
+              {pagename === 'cinema-activity-add' ? <></> : ''}
+              {pagename === 'cinema-activity-inprogress' ? <></> : ''}
+              {pagename === 'cinema-activity-analysis' ? <></> : ''}
             </div>
           </Row>
         </>

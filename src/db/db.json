@@ -857,16 +857,16 @@
       "title": "活動管理",
       "options": [
         {
-          "id": "cinema-manage-activity",
+          "id": "cinema-activity-add",
+          "name": "新增活動"
+        },
+        {
+          "id": "cinema-activity-inprogress",
           "name": "活動管理"
         },
         {
-          "id": "cinema-activity-in-progress",
-          "name": "進行中活動"
-        },
-        {
-          "id": "activity-costum-analysis",
-          "name": "活動來客分析"
+          "id": "cinema-activity-analysis",
+          "name": "活動分析"
         }
       ],
       "isclicked": false
@@ -1622,10 +1622,25 @@
   ],
   "cinema": [
     {
+      "find9527": "開發用記得要拔掉",
       "id": "c001",
       "cinemaName": "碼農Cafe",
       "cinemaCity": "台北市",
       "cinemaArea": "大安區",
+      "cinemaActivity": [
+        {
+          "id": "activityID",
+          "title": "活動標題",
+          "content": "活動內容",
+          "imgSrc": "https://images.unsplash.com/photo-1521967906867-14ec9d64bee8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+          "lat": "25.048434",
+          "lng": "121.544851",
+          "joinContent": "線上報名即可參加。",
+          "joinContentCurrentPeople": "無限制名額。",
+          "place": "北部影院",
+          "joinMember": "memberID"
+        }
+      ],
       "cinemaLogoImg": "0465d345-669d-450d-ae97-1d26ad39ea68.png",
       "cinemaImg": [
         "spott.jpg",
@@ -1653,9 +1668,9 @@
           "star": 5
         }
       ],
-      "cinemaAddress": "台北市大安區復興南路一段",
+      "cinemaAddress": "106台北市大安區通化街24巷1號",
       "cinemaPhone": "02-2511-1111",
-      "cinemaTaxid": "11111111",
+      "cinemaTaxid": "16086448",
       "cinemaWeb": "http://manonCafe.com.tw",
       "cinemaEmail": "manon@gg.com",
       "cinemaBackupEmail": "manonCafe@gmail.com",
