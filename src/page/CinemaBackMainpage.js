@@ -425,8 +425,8 @@ class CinemaBackMainpage extends React.Component {
                     <div className="py-5" />
                     <TitleKaga title="上映影片" />
                     {this.state.FilmCard.length !== 0 ? (
-                      this.state.FilmCard.map(item => (
-                        <div className="d-flex flex-wrap col-lg-12 mt-4">
+                      <div className="d-flex flex-wrap col-lg-12 mt-4">
+                        {this.state.FilmCard.map(item => (
                           <CardKaga
                             key={item.key}
                             id={item.id}
@@ -439,8 +439,8 @@ class CinemaBackMainpage extends React.Component {
                             AVGStar
                             time={item.time}
                           />
-                        </div>
-                      ))
+                        ))}
+                      </div>
                     ) : (
                       <div
                         className="d-flex align-items-center"

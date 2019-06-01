@@ -520,6 +520,12 @@ class BackSidenav extends React.Component {
       thisNewMemberData.collectFilm = thisNewMemberData.collectFilm.filter(
         item => item !== id
       )
+      thisNewMemberData.collectMovie = thisNewMemberData.collectMovie
+        .split(id)
+        .toString()
+        .replace(/,/g, '')
+      console.log('thisNewMemberData')
+      console.log(thisNewMemberData)
       //蓋回去資料庫
       const response = await fetch('http://localhost:5555/member/' + memberId, {
         method: 'PUT',
@@ -541,6 +547,10 @@ class BackSidenav extends React.Component {
       let newFileCard = this.state.filmCard
       newFileCard = newFileCard.filter(item => item.id !== id)
 
+      // 處理要蓋回去的filmCollecCard  整裡過 影片收藏頁卡片用
+      let newFilmCollecCard = this.state.filmCollecCard
+      newFilmCollecCard = newFilmCollecCard.filter(item => item.id !== id)
+
       // 整理要蓋回去allMemberData的資料 蓋回去 變成newAllMemberData
       let newAllMemberData = this.state.allMemberData
       newAllMemberData = newAllMemberData.map(item => {
@@ -552,6 +562,7 @@ class BackSidenav extends React.Component {
 
       // 統一蓋回去
       this.setState({
+        filmCollecCard: newFilmCollecCard,
         thisMemberData: thisNewMemberData,
         filmCard: newFileCard,
         allMemberData: newAllMemberData,

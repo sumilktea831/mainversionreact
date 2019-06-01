@@ -1967,7 +1967,7 @@
       "join_date": "2019-05-23",
       "permission": "generalMember",
       "collectFilm": [],
-      "collectMovie": "m1558948576759",
+      "collectMovie": "",
       "collectCinema": [
         "c1",
         "c2"
@@ -2204,7 +2204,7 @@
         "m111111",
         "m22222"
       ],
-      "cinemaPageViews": 590,
+      "cinemaPageViews": 594,
       "cinemaSignUpDate": "1955-03-12",
       "purview": "cinemaMember",
       "cinemaMessage": [
