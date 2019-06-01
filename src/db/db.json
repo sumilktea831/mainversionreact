@@ -210,6 +210,23 @@
       "joinContent": "線上報名即可參加。",
       "joinContentCurrentPeople": "無限制名額。",
       "place": "中部文創園區"
+    },
+    {
+      "id": "m1559406546061",
+      "theater": "碼農Cafe",
+      "title": "活動標題",
+      "content": "test",
+      "imgSrc": "a4cf6483-a9a9-4b75-aebb-89f36e3acd78.png",
+      "theaterMap": "106台北市大安區通化街24巷1號",
+      "GUINumber": "16086448",
+      "website": "http://manonCafe.com.tw",
+      "email": "manon@gg.com",
+      "phone": "02-2511-1111",
+      "lat": "25.0316633",
+      "lng": "121.5540038",
+      "joinContent": "線上報名即可。",
+      "joinContentCurrentPeople": "10",
+      "place": "北部,影院"
     }
   ],
   "movieCardData": [
@@ -1986,6 +2003,19 @@
           "joinContentCurrentPeople": "無限制名額。",
           "place": "北部影院",
           "joinMember": "memberID"
+        },
+        {
+          "place": "北部,影院",
+          "cinemaId": "c001",
+          "id": "m1559406546061",
+          "title": "活動標題",
+          "imgSrc": "a4cf6483-a9a9-4b75-aebb-89f36e3acd78.png",
+          "content": "test",
+          "theaterMap": "106台北市大安區通化街24巷1號",
+          "joinContent": "線上報名即可。",
+          "joinContentCurrentPeople": "10",
+          "lat": "25.0316633",
+          "lng": "121.5540038"
         }
       ],
       "cinemaLogoImg": "0465d345-669d-450d-ae97-1d26ad39ea68.png",
