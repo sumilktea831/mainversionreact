@@ -427,7 +427,7 @@ class BackSidenav extends React.Component {
         subtitle: item.subtitle,
         img: item.img,
         link: item.link,
-        star: item.star, // 錯的
+        star: item.star,
         mark: item.mark,
       }
     })
