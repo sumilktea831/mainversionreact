@@ -7,15 +7,17 @@ class AcitivityForm extends React.Component {
       regionState: ['active'],
       typeState: ['active'],
       formData: {},
-      type: [],
+      place: [],
       file: '',
     }
   }
 
-  componentDidMount = () => {
+  componentDidMount = async () => {
     const data = JSON.parse(JSON.stringify(this.state.formData))
     this.setState({ type: ['北部', '影院'] })
-    data.type = '北部,影院'
+    data.place = '北部,影院'
+    data.cinemaId = sessionStorage.getItem('cinemaId')
+    data.id = 'm' + +new Date()
     this.setState({ formData: data }, () => console.log(this.state.formData))
   }
   handleRegionButtonOnClick = (index, keyword) => {
@@ -31,14 +33,14 @@ class AcitivityForm extends React.Component {
     //
     let typeData = JSON.parse(JSON.stringify(this.state.type))
     typeData[0] = keyword
-    this.setState({ type: typeData }, () => {
+    this.setState({ place: typeData }, () => {
       //
       let typeDataToString = JSON.parse(
-        JSON.stringify(this.state.type)
+        JSON.stringify(this.state.place)
       ).toString()
 
       let data = JSON.parse(JSON.stringify(this.state.formData))
-      data.type = typeDataToString
+      data.place = typeDataToString
       this.setState({ formData: data }, () => console.log(this.state.formData))
     })
   }
@@ -55,14 +57,14 @@ class AcitivityForm extends React.Component {
     //
     let typeData = JSON.parse(JSON.stringify(this.state.type))
     typeData[1] = keyword
-    this.setState({ type: typeData }, () => {
+    this.setState({ place: typeData }, () => {
       //
       let typeDataToString = JSON.parse(
-        JSON.stringify(this.state.type)
+        JSON.stringify(this.state.place)
       ).toString()
 
       let data = JSON.parse(JSON.stringify(this.state.formData))
-      data.type = typeDataToString
+      data.place = typeDataToString
       this.setState({ formData: data }, () => console.log(this.state.formData))
     })
   }
@@ -82,6 +84,12 @@ class AcitivityForm extends React.Component {
     data.content = event.target.value
     this.setState({ formData: data }, () => console.log(this.state.formData))
   }
+  inputtheaterMapOnChange = event => {
+    const data = JSON.parse(JSON.stringify(this.state.formData))
+    data.theaterMap = event.target.value
+    this.setState({ formData: data }, () => console.log(this.state.formData))
+  }
+
   inputjoinContentOnChange = event => {
     const data = JSON.parse(JSON.stringify(this.state.formData))
     data.joinContent = event.target.value
@@ -92,7 +100,31 @@ class AcitivityForm extends React.Component {
     data.joinContentCurrentPeople = event.target.value
     this.setState({ formData: data }, () => console.log(this.state.formData))
   }
-
+  sendFile = () => {
+    if (this.state.formData.theaterMap) {
+      fetch(
+        'https://maps.googleapis.com/maps/api/geocode/json?address=' +
+          this.state.formData.theaterMap +
+          '&key=AIzaSyABvTY8JdjI-UKYsJ-if4LJTkmjJr-mPSU',
+        {
+          method: 'GET',
+        }
+      )
+        .then(res => {
+          return res.json()
+        })
+        .then(res => {
+          const data = JSON.parse(JSON.stringify(this.state.formData))
+          data.lat = res.results[0].geometry.location.lat
+          data.lng = res.results[0].geometry.location.lng
+          this.setState({ formData: data }, () =>
+            console.log(this.state.formData)
+          )
+        })
+    } else {
+      alert('請填寫活動地址')
+    }
+  }
   render() {
     return (
       <>
@@ -157,6 +189,23 @@ class AcitivityForm extends React.Component {
                 cols="50"
                 value={this.props.textValue}
                 onChange={event => this.inputContentOnChange(event)}
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group row mt-5">
+            <label for="theaterMap" class="col-sm-2 col-form-label">
+              活動地址
+            </label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="theaterMap"
+                name="theaterMap"
+                placeholder="地址必填"
+                value={this.state.formData.theaterMap}
+                onChange={event => this.inputtheaterMapOnChange(event)}
                 required
               />
             </div>
