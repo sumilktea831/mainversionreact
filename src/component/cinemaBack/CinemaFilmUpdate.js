@@ -1,21 +1,25 @@
 import React from 'react'
 import { Card, Button, Row, Col } from 'react-bootstrap'
 import InputWithLabel_Su from '../inputs/InputWithLabel_Su'
-import CheckboxMultiSu from '../inputs/CheckboxMultiSu'
+import CheckboxMultiForCinemaTypeSu from '../inputs/CheckboxMultiForCinemaTypeSu'
 import ActivityTitle from '../activity/ActivityTitle/ActivityTitle'
 
 class CinemaFilmUpdate extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       inputH: '48px', //設定所有input高
       inputmsg: [],
-      favTypeOptions: [],
+      typeOptions: [],
+      thisType:[],
+      thisData:0,
       usertext:
       {
         id: '',
         title: '',
         titleEn: '',
+        theaterId:0,
+        theater:0,
         movie_rating: '',
         imgSrc: '',
         type: '',
@@ -46,6 +50,20 @@ class CinemaFilmUpdate extends React.Component {
         cinemaRepwd: false,
       },
     }
+  }
+  static getDerivedStateFromProps(nextProps,prevState){
+    console.log(nextProps)
+    console.log(prevState)
+    let stateToBeReturned = null
+    if(prevState.thisData == 0){
+        stateToBeReturned = {
+          ...prevState,
+          thisData: nextProps.thisData,
+        }
+      console.log(stateToBeReturned)
+      return stateToBeReturned
+    }
+    
   }
   async componentDidMount() {
     try {
@@ -86,7 +104,7 @@ class CinemaFilmUpdate extends React.Component {
       if (!response.ok) throw new Error(response.statusText)
       const jsonObject = await response.json()
       const data = await jsonObject
-      await this.setState({ favTypeOptions: data })
+      await this.setState({ typeOptions: data })
     } catch (e) {
       console.log(e)
     }
@@ -186,14 +204,7 @@ class CinemaFilmUpdate extends React.Component {
       this.setState({ usertext: newtext }, () => {
         console.log(this.state.usertext)
       })
-    } else if (name === 'cinemaCity') {
-      // console.log(event.target.selectedIndex) //被選取的option的index
-      let selectedIndex = event.target.selectedIndex
-      newtext[name] = event.target.options[selectedIndex].text //被選取的option的文字內容
-      this.setState({ usertext: newtext }, () =>
-        console.log(this.state.usertext)
-      )
-    } else if (name === 'imgSrc') {
+    }  else if (name === 'imgSrc') {
       // console.log(event.target.files[0])
       // console.log(event.target.files[0].name)
 
@@ -226,11 +237,11 @@ class CinemaFilmUpdate extends React.Component {
         })
     } else if (name === 'type') {
       //if是喜愛類型
-      let favTypeOptionAll = [...this.state.favTypeOptions] //複製所有喜愛類型
-      let AlloptionName = Object.values(favTypeOptionAll.map(item => item.name)) //篩出所有類型的中文name
-      let newFavType = [...this.state.thisfavType] //複製原本的喜愛類型
+      let typeOptionAll = [...this.state.typeOptions] //複製所有喜愛類型
+      let AlloptionName = Object.values(typeOptionAll.map(item => item.name)) //篩出所有類型的中文name
+      let newType = [...this.state.thisType] //複製原本的喜愛類型
       //取出該選項喜愛類型的name(中文字)
-      let optionName = this.state.favTypeOptions.filter(
+      let optionName = this.state.typeOptions.filter(
         item => item.id === value
       )[0].name
       console.log('optionname: ' + optionName)
@@ -240,17 +251,17 @@ class CinemaFilmUpdate extends React.Component {
         //點選之後checked狀態會先變，故原本已勾選的選項，會判斷是false
         //將該選項從喜愛類型中過濾掉，同時設定給copyData
         if (optionName === '全選') {
-          newFavType = []
-          this.setState({ thisfavType: newFavType })
+          newType = []
+          this.setState({ thisType: newType })
         } else {
-          if (newFavType.find(item => item == '全選')) {
-            newFavType = newFavType.filter(item => item !== '全選')
+          if (newType.find(item => item == '全選')) {
+            newType = newType.filter(item => item !== '全選')
           }
-          newFavType = newFavType.filter(item => item !== optionName)
-          console.log('newFavType: ' + newFavType)
-          this.setState({ thisfavType: newFavType })
+          newType = newType.filter(item => item !== optionName)
+          console.log('newType: ' + newType)
+          this.setState({ thisType: newType })
         }
-        newtext[name] = newFavType
+        newtext[name] = newType
       } else {
         //將該選項加入喜愛類型中，同時設定給copyData
         if (optionName === '全選') {
@@ -262,17 +273,18 @@ class CinemaFilmUpdate extends React.Component {
           //再從取得的陣列中，取出每一個物件item中的name的value===>拉到一開始宣告
           // let AlloptionName = Object.values(favTypeOptionAll.map(item => item.name))
           console.log(AlloptionName)
-          newFavType = AlloptionName
+          newType = AlloptionName
         } else {
-          newFavType.push(optionName)
-          console.log('newFavType22: ' + newFavType)
-          console.log(AlloptionName.filter(item => item !== '全選'))
-          if (newFavType.length == AlloptionName.length - 1) {
-            newFavType.push('全選')
+          newType.push(optionName)
+          console.log('newType22: ' + newType)
+          // console.log(AlloptionName.filter(item => item !== '全選'))
+          if (newType.length == AlloptionName.length - 1) {
+            newType.push('全選')
           }
         }
-        this.setState({ thisfavType: newFavType })
-        newtext[name] = newFavType
+        this.setState({ thisType: newType })
+        newtext[name] = newType
+        this.setState({ usertext: newtext })
       }
     }
   }
@@ -311,7 +323,7 @@ class CinemaFilmUpdate extends React.Component {
               placeholder="請輸入影片簡介..."
               style={{
                 width: '100%',
-                height: '200px',
+                height: '135px',
               }}
               onChange={this.handleInputTextChange}
             />
@@ -322,7 +334,7 @@ class CinemaFilmUpdate extends React.Component {
               placeholder="請輸入影片完整內容介紹..."
               style={{
                 width: '100%',
-                height: '200px',
+                height: '355px',
               }}
               onChange={this.handleInputTextChange}
             // cols="50"
@@ -336,13 +348,13 @@ class CinemaFilmUpdate extends React.Component {
           </div>
         </div>
         <Row>
-          {this.state.favTypeOptions.map(item => (
-            <CheckboxMultiSu
-              thisData={this.state.thisData}
-              inputName="fav_type"
+          {this.state.typeOptions.map(item => (
+            <CheckboxMultiForCinemaTypeSu
+              // thisData={this.state.thisData}
+              inputName="type"
               optionId={item.id}
               optionName={item.name}
-              thisfavType={this.state.thisfavType}
+              thisType={this.state.thisType}
               onChange={this.handleInputTextChange}
             />
           ))}
