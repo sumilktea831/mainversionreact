@@ -274,8 +274,8 @@ class BackSidenav extends React.Component {
         )
       }
 
-      const fileCard1 = []
-      const fileCard2 = []
+      let fileCard1 = []
+      let fileCard2 = []
       dataFilm.filter(item => {
         return memberPageData.collectFilm.map(items => {
           if (item.id === items) {
@@ -291,16 +291,21 @@ class BackSidenav extends React.Component {
         })
       })
 
-      console.log(boosMovieCollec)
-      fileCard1.map(el1 => {
-        fileCard2.map(el2 => {
-          if (el2.id !== el1.id) {
-            fileCard1.push(el2)
-          }
-          return el2
+      console.log('fileCard1')
+      console.log(fileCard1)
+      if (fileCard1.length === 0) {
+        fileCard1 = fileCard2
+      } else {
+        fileCard1.map(el1 => {
+          fileCard2.map(el2 => {
+            if (el2.id !== el1.id) {
+              fileCard1.push(el2)
+            }
+            return el2
+          })
+          return el1
         })
-        return el1
-      })
+      }
 
       console.log('fileCard1')
       console.log(fileCard1)
