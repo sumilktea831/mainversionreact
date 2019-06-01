@@ -163,6 +163,7 @@ const InputWithLabelForEdit_Su = props => {
               col={props.col}
               value={props.thisData[props.id]}
               thisData={props.thisData}
+              type="date"
             />
           ) : (
             '找不到符合的input類型'

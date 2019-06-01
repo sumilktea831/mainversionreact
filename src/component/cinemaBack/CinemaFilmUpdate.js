@@ -14,8 +14,7 @@ class CinemaFilmUpdate extends React.Component {
       thisType: [],
       thisData: 0,
       scheduleCount: [],
-      usertext:
-      {
+      usertext: {
         id: '',
         title: '',
         titleEn: '',
@@ -52,7 +51,6 @@ class CinemaFilmUpdate extends React.Component {
       console.log(stateToBeReturned)
     }
     return stateToBeReturned
-
   }
   async componentDidMount() {
     try {
@@ -97,7 +95,6 @@ class CinemaFilmUpdate extends React.Component {
     } catch (e) {
       console.log(e)
     }
-
   }
   //輸入框onchange事件
   handleInputTextChange = event => {
@@ -105,7 +102,6 @@ class CinemaFilmUpdate extends React.Component {
     let name = event.target.name //拿到input的name
     let newtext = { ...this.state.usertext } //先複製出要改變的state
     let newcheckstate = { ...this.state.checkok } //先複製出要改變的state
-
 
     //title驗證:格式、是否存在
     if (name === 'title') {
@@ -140,38 +136,6 @@ class CinemaFilmUpdate extends React.Component {
       }
       console.log(newcheckstate)
     }
-
-    //戲院名稱驗證:格式、是否已被使用
-    if (name === 'cinemaName') {
-      newcheckstate.cinemaName = false //先將check狀態回復到false
-      this.setState({ checkok: newcheckstate })
-      if (value) {
-        //先判斷是否有值，有值再進行進一步判斷
-
-        if (value.length < 2) {
-          //判斷字元數 > 2
-          document.querySelector('#' + name + 'help').innerHTML =
-            '請輸入最少兩個字元'
-        } else {
-          let cinemaexisted = this.props.cinemadata.find(
-            item => item.cinemaName === value
-          )
-          if (cinemaexisted) {
-            document.querySelector('#' + name + 'help').innerHTML =
-              '名稱已被使用'
-          } else {
-            // console.log(value)
-            newcheckstate.cinemaName = true
-            this.setState({ checkok: newcheckstate })
-            document.querySelector('#' + name + 'help').innerHTML = ''
-          }
-        }
-      } else {
-        document.querySelector('#' + name + 'help').innerHTML = ''
-      }
-      // console.log(newcheckstate)
-    }
-
 
     //判斷如果拿到的name屬於state裡面的屬性，就把剛才複製的state的該項目更新，然後再setState回去
     if (
@@ -277,10 +241,10 @@ class CinemaFilmUpdate extends React.Component {
       }
     }
   }
-  handleScheduleTime = (id) => (e) => {
+  handleScheduleTime = id => e => {
     // alert(id + e.target.value)
-    let date = document.querySelector('#' + id + "Date")
-    let time = document.querySelector('#' + id + "Time")
+    let date = document.querySelector('#' + id + 'Date')
+    let time = document.querySelector('#' + id + 'Time')
     const newtext = { ...this.state.usertext }
     let newSchedule = []
     let nowscheduleCount = document.getElementsByName('schedule').length
@@ -306,92 +270,22 @@ class CinemaFilmUpdate extends React.Component {
     copyScheduleCount.pop()
     this.setState({ usertext: newtext, scheduleCount: copyScheduleCount })
   }
-  // handleCinemaFilmAdd = () => {
 
-  //   let isAllChecked = true
-  //   let checkArray = Object.values(this.state.checkok)
-  //   isAllChecked = checkArray.reduce((a, b) => a && b)
-  //   // console.log('isAllChecked: ' + isAllChecked)
-
-  //   if (isAllChecked) {
-  //     const newtext = { ...this.state.usertext }
-  //     const newData = { ...this.state.thisData }
-  //     const newtextForMovieCard = { ...this.state.usertext }
-  //     const newDatatForMovieCard = { ...this.state.thisData }
-  //     let date = new Date()
-  //     let dateYMD =
-  //       date.getFullYear() +
-  //       '-' +
-  //       (date.getMonth() + 1 < 10
-  //         ? '0' + (date.getMonth() + 1)
-  //         : date.getMonth() + 1) +
-  //       '-' +
-  //       (date.getDate() < 10
-  //       ? '0' + (date.getDate())
-  //       : date.getDate())
-  //     newtext.id = "cf" + +date
-  //     newtext.updateDate = dateYMD
-  //     newData.cinemaFilm = [...newData.cinemaFilm, newtext]
-  //     console.log(newData)
-  //     const newDatatForMovieCard = { ...newData }
-  //     if (this.state.thisType.find(item => item == '全選')) {
-  //       newDatatForMovieCard.cinemaFilm.type =  newDatatForMovieCard.cinemaFilm.type.slice(1).join('')
-  //     }else{
-  //       newDatatForMovieCard.cinemaFilm.type =  newDatatForMovieCard.cinemaFilm.join('')
-  //     }
-  //     newDatatForMovieCard.cinemaFilm.theater = this.state.thisData.cinemaName
-  //     try {
-  //       fetch('http://localhost:5555/cinema/' + this.state.thisData.id, {
-  //         method: 'PUT',
-  //         body: JSON.stringify(newData),
-  //         headers: new Headers({
-  //           Accept: 'application/json',
-  //           'Content-Type': 'application/json',
-  //         }),
-  //       })
-  //         .then(res => res.json())
-  //         .then(jsonObject => {
-  //           // sessionStorage.setItem('thisCinemaData', JSON.stringify(jsonObject))
-  //           this.setState({ thisCinemaData: jsonObject }, () => {
-  //             alert('資料儲存成功')
-  //           })
-  //         })
-  //     } catch (e) {
-  //       console.log(e)
-  //     }
-  //     try {
-  //       fetch('http://localhost:5555/movieCardData/', {
-  //         method: 'PUT',
-  //         body: JSON.stringify(newDatatForMovieCard),
-  //         headers: new Headers({
-  //           Accept: 'application/json',
-  //           'Content-Type': 'application/json',
-  //         }),
-  //       })
-  //         .then(res => res.json())
-  //         .then(jsonObject => {
-  //           // sessionStorage.setItem('thisCinemaData', JSON.stringify(jsonObject))
-  //           // this.setState({ thisCinemaData: jsonObject }, () => {
-  //           //   alert('資料儲存成功')
-  //           // })
-  //         })
-  //     } catch (e) {
-  //       console.log(e)
-  //     }
-  //   } else {
-  //     alert('資料填寫有誤，請再次確認您的資料！')
-  //   }
-  // }
   render() {
     return (
       <>
-        <div className="d-flex justify-content-center"
-          style={{ overflow: 'hidden' }}>
-          {this.state.usertext.imgSrc !== '' ?
-            <img src={'/images/cinemaImg/' + this.state.usertext.imgSrc}
+        <div
+          className="d-flex justify-content-center"
+          style={{ overflow: 'hidden' }}
+        >
+          {this.state.usertext.imgSrc !== '' ? (
+            <img
+              src={'/images/cinemaImg/' + this.state.usertext.imgSrc}
               style={{ width: '250px', height: '355px', objectFit: 'cover' }}
             />
-            : ""}
+          ) : (
+            ''
+          )}
         </div>
         <Row>
           <div className="col-lg-6 mt-3 h5">
@@ -413,7 +307,10 @@ class CinemaFilmUpdate extends React.Component {
                   selectOptions={item.selectOptions}
                   onChange={this.handleInputTextChange}
                 />
-                <small id={item.id + 'help'} class="form-text text-danger text-center" />
+                <small
+                  id={item.id + 'help'}
+                  class="form-text text-danger text-center"
+                />
               </>
             ))}
           </div>
@@ -439,8 +336,8 @@ class CinemaFilmUpdate extends React.Component {
                 height: '355px',
               }}
               onChange={this.handleInputTextChange}
-            // cols="50"
-            // rows="5"
+              // cols="50"
+              // rows="5"
             />
           </div>
         </Row>
@@ -450,20 +347,29 @@ class CinemaFilmUpdate extends React.Component {
             <button
               className="btn btn-warning ml-4 rounded-circle addFilmSchedule mytransition5"
               onClick={this.handleAddSchedule}
-            ><i class="fas fa-plus text-darkblue"></i></button>
+            >
+              <i class="fas fa-plus text-darkblue" />
+            </button>
             <button
               className="btn btn-danger ml-4 rounded-circle addFilmSchedule mytransition5"
               onClick={this.handleDelSchedule}
-            ><i class="fas fa-minus text-darkblue"></i></button>
+            >
+              <i class="fas fa-minus text-darkblue" />
+            </button>
           </div>
         </div>
         <Row>
-
           {this.state.scheduleCount.map(item => (
             <>
               <div className="col-lg-6 d-flex align-items-center">
-                <p className="h5 d-flex align-items-center mx-3" style={{ height: '40px' }}>{item}.</p>
-                <input type="date"
+                <p
+                  className="h5 d-flex align-items-center mx-3"
+                  style={{ height: '40px' }}
+                >
+                  {item}.
+                </p>
+                <input
+                  type="date"
                   id={'schedule' + item + 'Date'}
                   className="h5 my-4 border border-warning bg-back-input rounded text-orange text-center"
                   style={{
@@ -472,7 +378,8 @@ class CinemaFilmUpdate extends React.Component {
                   }}
                   onChange={this.handleScheduleTime('schedule' + item)}
                 />
-                <input type="time"
+                <input
+                  type="time"
                   id={'schedule' + item + 'Time'}
                   className="h5 my-4 border border-warning bg-back-input rounded text-orange text-center"
                   style={{
@@ -481,11 +388,17 @@ class CinemaFilmUpdate extends React.Component {
                   }}
                   onChange={this.handleScheduleTime('schedule' + item)}
                 />
-                <p id={'schedule' + item} name="schedule" className="h5 d-none align-items-center" style={{ height: '40px' }}>123</p>
+                <p
+                  id={'schedule' + item}
+                  name="schedule"
+                  className="h5 d-none align-items-center"
+                  style={{ height: '40px' }}
+                >
+                  123
+                </p>
               </div>
             </>
           ))}
-
         </Row>
         <div className="row mt-5 mb-3">
           <div className="col-md-12 p-0">
@@ -510,11 +423,11 @@ class CinemaFilmUpdate extends React.Component {
             onClick={this.props.handleCinemaFilmAdd(
               this.state.usertext,
               this.state.checkok,
-              this.state.thisType,
+              this.state.thisType
             )}
           >
             確認送出
-        </Button>
+          </Button>
         </Row>
       </>
     )
