@@ -33,13 +33,16 @@ class BackSidenav extends React.Component {
       favTypeOptions: [], //喜愛電影類型選項
       allMemberData: [], // 全部會員pure json
       thisMemberData: [], // 已登入會員pure json
+      allCinemaData: [], // 全部戲院 pure json
       allFilmData: [], // 全部影片 pure json
       allArticleData: [], // 全部影片 pure json
       thisCollectArticleData: [], // 該會員收藏的文章資訊
       myForumData: [],
       avatarOne: '', // 整理過頭像框用
       boxData: '', // 整理過基本資料用
+      cinemaCollecCard: [], // 整理過 戲院收藏頁卡片用
       filmCard: [], // 整理過影片卡片用
+      filmCollecCard: [], //整裡過 影片收藏頁卡片用
       //活動用state
       activityPageData: [],
       activityPageOtherData: [],
@@ -173,7 +176,7 @@ class BackSidenav extends React.Component {
       }
     }
 
-    // 會員個人資訊頁
+    // 會員個人資訊頁 + 收藏頁--------------------------
     try {
       const resMember = await fetch('http://localhost:5555/member', {
         method: 'GET',
@@ -204,8 +207,20 @@ class BackSidenav extends React.Component {
       })
       // 完整的影片json資料
       const dataFilm = await resFilm.json()
-      // 會員my-preview頁面需要的資料
+
+      // 會員頁面需要的資料
       const memberPageData = await dataMember.find(item => item.id === memberId)
+
+      // 導入戲院資料
+      const resCinema = await fetch('http://localhost:5555/cinema', {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+      // 完整的影片json資料
+      const dataCinema = await resCinema.json()
 
       // ==========Su========預覽頁======導入完整文章資料
       const resArticle = await fetch('http://localhost:5555/articleCardData', {
@@ -249,8 +264,7 @@ class BackSidenav extends React.Component {
 
       // 元件filmCard
       // 先找出影片id跟會員收藏id一致的資料 (會員收藏是array) --到時候串接用
-      console.log('dataFilm 完整影片資料')
-      console.log(dataFilm) // 完整的影片資料
+      // 完整的影片資料 dataFilm
       const filmCard = []
       dataFilm.filter(item => {
         return memberPageData.collectFilm.map(items => {
@@ -260,17 +274,44 @@ class BackSidenav extends React.Component {
         })
       })
 
+      // 影片收藏頁卡片的資料
       const filmCollecCardData = dataFilm.map(item => ({
         key: item.id,
         id: item.id,
         title: item.title,
         subtitle: item.titleEn,
         img: item.imgSrc,
-        link: item.id,
+        link: '/film/' + item.id,
         star: item.filmStar,
         mark: memberPageData.markList,
       }))
 
+      // 戲院收藏頁卡片的資料
+      // 完整的戲院資料 dataCinema
+      // 先找到此會員收藏的戲院  撈出這些戲院的資料
+      let memberCollecCinema = []
+      dataCinema.map(el => {
+        memberPageData.collectCinema.map(item => {
+          if (el.id === item) {
+            memberCollecCinema.push(el)
+          }
+          return item
+        })
+        return el
+      })
+
+      const cinemaCollecCardData = memberCollecCinema.map(item => ({
+        key: item.id,
+        id: item.id,
+        title: item.cinemaName,
+        subtitle: item.cinemaCity + '/' + item.cinemaArea,
+        img: 'http://localhost:3000/images/cinemaImg/' + item.cinemaHeroImg,
+        link: '/cinema/' + item.id,
+        star: item.cinemaStar,
+        mark: memberPageData.markList,
+      }))
+
+      // 資訊頁卡片要限制四筆
       // 如果資料筆數超過設定筆數  就只剩下這幾筆 (這邊設定4筆)  --到時候串接用
       const OnlyFourfilmCardata = []
       filmCard.map((item, index) => {
@@ -287,16 +328,19 @@ class BackSidenav extends React.Component {
         title: item.title,
         subtitle: item.titleEn,
         img: item.imgSrc,
-        link: item.id,
+        link: '/film/' + item.id,
         star: item.filmStar,
         mark: memberPageData.markList,
       }))
+
       this.setState({
         allArticleData: dataArcticle,
         thisCollectArticleData: myArticleData,
+        allCinemaData: dataCinema,
         allFilmData: dataFilm,
         avatarOne: avatarOneData,
         boxData: dataBoxData,
+        cinemaCollecCard: cinemaCollecCardData,
         filmCard: filmCardData,
         filmCollecCard: filmCollecCardData,
         myForumData: forumPublishData,
@@ -434,7 +478,7 @@ class BackSidenav extends React.Component {
     this.setState({ filmCard: filmCardData })
   }
 
-  //影片卡片按下刪除鈕後刪除此收藏
+  // 影片卡片按下刪除鈕後刪除此收藏
   filmCardDel = async id => {
     // 去把這個會員的collectFilm裡面的這個影片id刪掉
     // 所以傳id回來
@@ -486,6 +530,182 @@ class BackSidenav extends React.Component {
       console.log(e)
     }
   }
+
+  // 戲院卡片的註記與星星調整 這邊改資料庫
+  CinemaCardNewStarAndMark = async newVal => {
+    let thisCinema = this.state.allCinemaData.filter(
+      item => item.id === newVal.mark.markId
+    )
+    let thisCinemaData = thisCinema[0] //thisFilmData 就是要更改的影片完整資料
+    // 製作要蓋回去mark的資料
+    // 先看看mark裡面是不是有這個id的備註
+    // 如果有some完就是true然後轉成修改
+    // 如果沒有some完就是false然後轉成新增
+    // some是要有一筆是true就會回傳true 完全沒有相符的就回傳false
+    let markTrueFalse = this.state.thisMemberData.markList.some(
+      item => item.markId === thisCinemaData.id
+    )
+    let newMarkUpdateData = []
+    if (markTrueFalse === false) {
+      newMarkUpdateData.push({
+        markId: thisCinemaData.id,
+        markcontent: newVal.mark.markcontent,
+      })
+    } else {
+      newMarkUpdateData = this.state.thisMemberData.markList.map(item => {
+        if (item.markId === thisCinemaData.id) {
+          item = {
+            markId: thisCinemaData.id,
+            markcontent: newVal.mark.markcontent,
+          }
+        }
+        return item
+      })
+    }
+    // 把剛做好的新mark 套進即將蓋回去會員json的資料
+    const NewMemberData = this.state.thisMemberData
+    NewMemberData.markList = newMarkUpdateData
+
+    // 然後確實蓋回去
+    const resMember = await fetch('http://localhost:5555/member/' + memberId, {
+      method: 'PUT',
+      body: JSON.stringify(NewMemberData),
+      headers: new Headers({
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      }),
+    })
+    const jsonMember = await resMember.json()
+    console.log('jsonMember')
+    console.log(jsonMember)
+
+    // 再來做要蓋回去戲院的資料
+    let newStarData = { starId: newVal.star.starId, star: newVal.star.star }
+    // 先做好要蓋的那之影片的資料 thisNewFilmData
+    // 用length判斷是否星星裡面有資料
+    let thisNewCinemaData = thisCinemaData
+    let starTrueFalse = thisCinemaData.cinemaStar.some(
+      item => item.starId == newVal.star.starId
+    )
+    if (starTrueFalse === false) {
+      thisNewCinemaData.cinemaStar.push(newStarData)
+    } else {
+      thisNewCinemaData.cinemaStar = thisCinemaData.cinemaStar.map(item => {
+        if (item.starId == newVal.star.starId) {
+          item = newStarData
+        }
+        return item
+      })
+    }
+    // 然後確實蓋回去
+    const resMark = await fetch(
+      'http://localhost:5555/cinema/' + thisNewCinemaData.id,
+      {
+        method: 'PUT',
+        body: JSON.stringify(thisNewCinemaData),
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      }
+    )
+    const jsonMark = await resMark.json()
+    console.log(jsonMark)
+
+    // 搞卡片資料來改state渲染了.................
+    // thisNewFilmData==新的那筆影片原始資料
+    // 轉成卡片格式
+
+    let newOneCardData = {
+      key: thisNewCinemaData.id,
+      id: thisNewCinemaData.id,
+      title: thisNewCinemaData.cinemaName,
+      subtitle:
+        thisNewCinemaData.cinemaCity + '/' + thisNewCinemaData.cinemaArea,
+      img:
+        'http://localhost:3000/images/cinemaImg/' +
+        thisNewCinemaData.cinemaHeroImg,
+      link: 'http:localhost:3000/cinema/' + thisNewCinemaData.id,
+      star: thisNewCinemaData.cinemaStar,
+      mark: NewMemberData.markList,
+    }
+
+    // 加到卡片資料裡面
+    const finalStateCinemaCardData = this.state.cinemaCollecCard.map(el => {
+      if (el.id === newOneCardData.id) {
+        el = newOneCardData
+      }
+      return el
+    })
+
+    const cinemaCardData = finalStateCinemaCardData.map(item => {
+      return {
+        key: item.key,
+        id: item.id,
+        title: item.title,
+        subtitle: item.subtitle,
+        img: item.img,
+        link: item.link,
+        star: item.star,
+        mark: item.mark,
+      }
+    })
+    this.setState({ cinemaCollecCard: cinemaCardData })
+  }
+
+  // 戲院卡片按下刪除鈕後刪除此收藏
+  CinemaCardDel = async id => {
+    // 去把這個會員的collectFilm裡面的這個影片id刪掉
+    // 所以傳id回來
+    // thisMemberData 登錄會員的完整json
+    try {
+      let thisNewMemberData = this.state.thisMemberData
+      // 懶得無腦列直接篩選改資料
+      // 把不是回傳id的資料都回傳 就是刪除了
+      thisNewMemberData.collectCinema = thisNewMemberData.collectCinema.filter(
+        item => item !== id
+      )
+      //蓋回去資料庫
+      const response = await fetch('http://localhost:5555/member/' + memberId, {
+        method: 'PUT',
+        body: JSON.stringify(thisNewMemberData),
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+      const jsonObject = await response.json()
+      console.log(jsonObject)
+
+      // state要改3個地方
+      // filmCard: [], // 整理過影片卡片用
+      // thisMemberData: [], // 已登入會員pure json
+      // allMemberData: [], // 全部會員pure json
+
+      // 整理要蓋回去filmCard的資料 蓋回去 變成newFileCard
+      let newCinemaCollecCard = this.state.cinemaCollecCard
+      newCinemaCollecCard = newCinemaCollecCard.filter(item => item.id !== id)
+
+      // 整理要蓋回去allMemberData的資料 蓋回去 變成newAllMemberData
+      let newAllMemberData = this.state.allMemberData
+      newAllMemberData = newAllMemberData.map(item => {
+        if (item.id === memberId) {
+          item = thisNewMemberData
+        }
+        return item
+      })
+
+      // 統一蓋回去
+      this.setState({
+        thisMemberData: thisNewMemberData,
+        cinemaCollecCard: newCinemaCollecCard,
+        allMemberData: newAllMemberData,
+      })
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   //會員編輯儲存按鈕
   handleMemberEditSave = (data, checkok) => () => {
     let memberid = sessionStorage.getItem('memberId')
@@ -644,7 +864,7 @@ class BackSidenav extends React.Component {
                         title={item.title}
                         subtitle={item.subtitle}
                         img={item.img}
-                        link={'/film/' + item.link}
+                        link={item.link}
                         // collectionIcon
                         // collectionClick={this.collectionClick}
                         // collection={}
@@ -735,7 +955,7 @@ class BackSidenav extends React.Component {
                         title={item.title}
                         subtitle={item.subtitle}
                         img={item.img}
-                        link={'/film/' + item.link}
+                        link={item.link}
                         popup
                         member
                         star={item.star}
@@ -753,6 +973,27 @@ class BackSidenav extends React.Component {
               {pagename === 'collect-cinema' ? (
                 <>
                   <TitleKaga title="收藏戲院" />
+                  <div className="d-flex flex-wrap col-lg-12 mt-4">
+                    {this.state.cinemaCollecCard.map((
+                      item //--串接時使用
+                    ) => (
+                      <CardKaga
+                        key={item.key}
+                        id={item.id}
+                        title={item.title}
+                        subtitle={item.subtitle}
+                        img={item.img}
+                        link={item.link}
+                        popup
+                        member
+                        star={item.star}
+                        starAmimation
+                        mark={item.mark}
+                        newStarAndMark={this.CinemaCardNewStarAndMark}
+                        del={this.CinemaCardDel}
+                      />
+                    ))}
+                  </div>
                 </>
               ) : (
                 ''
