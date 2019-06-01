@@ -131,13 +131,83 @@ class AcitivityForm extends React.Component {
         })
         .then(res => {
           const data = JSON.parse(JSON.stringify(this.state.formData))
-          data.lat = res.results[0].geometry.location.lat
-          data.lng = res.results[0].geometry.location.lng
+          data.lat = res.results[0].geometry.location.lat.toString()
+          data.lng = res.results[0].geometry.location.lng.toString()
           this.setState({ formData: data }, () =>
             console.log(this.state.formData)
           )
           let cinemaId = sessionStorage.getItem('cinemaId')
-          fetch('http://localhost:5555/cinema/' + cinemaId, {})
+          let cinemaDBdata = {}
+          let cinemaDBdataForCard = {}
+          try {
+            fetch('http://localhost:5555/cinema/' + cinemaId, {
+              method: 'GET',
+              headers: new Headers({
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              }),
+            })
+              .then(res => res.json())
+              .then(obj => {
+                cinemaDBdataForCard = JSON.parse(JSON.stringify(obj))
+                this.setState({ cinemaDBdataForCard: cinemaDBdataForCard })
+                cinemaDBdata = JSON.parse(JSON.stringify(obj))
+                cinemaDBdata.cinemaActivity.push(this.state.formData)
+                try {
+                  fetch('http://localhost:5555/cinema/' + cinemaId, {
+                    method: 'PUT',
+                    body: JSON.stringify(cinemaDBdata),
+                    headers: new Headers({
+                      Accept: 'application/json',
+                      'Content-Type': 'application/json',
+                    }),
+                  })
+                    .then(res => res.json())
+                    .then(obj => {
+                      console.log(obj)
+                      try {
+                        fetch('http://localhost:5555/activityCardData/', {
+                          method: 'PUT',
+                          body: JSON.stringify({
+                            id: this.state.formData.id,
+                            theater: this.state.cinemaDBdataForCard.cinemaName,
+                            title: this.state.formData.title,
+                            content: this.state.formData.content,
+                            imgSrc: this.state.formData.imgSrc,
+                            theaterMap: this.state.formData.theaterMap,
+                            GUINumber: this.state.cinemaDBdataForCard
+                              .cinemaTaxid,
+                            website: this.state.cinemaDBdataForCard.cinemaWeb,
+                            email: this.state.cinemaDBdataForCard.cinemaEmail,
+                            phone: this.state.cinemaDBdataForCard.cinemaPhone,
+                            lat: this.state.formData.lat,
+                            lng: this.state.formData.lng,
+                            joinContent: this.state.formData.joinContent,
+                            joinContentCurrentPeople: this.state.formData
+                              .joinContentCurrentPeople,
+                            place: this.state.formData.place,
+                          }),
+
+                          headers: new Headers({
+                            Accept: 'application/json',
+                            'Content-Type': 'application/json',
+                          }),
+                        })
+                          .then(res => res.json())
+                          .then(obj => {
+                            console.log(obj)
+                          })
+                      } catch (e) {
+                        console.log(e)
+                      }
+                    })
+                } catch (e) {
+                  console.log(e)
+                }
+              })
+          } catch (e) {
+            console.log(e)
+          }
         })
     } else {
       alert('請填寫活動地址')
@@ -368,6 +438,13 @@ class AcitivityForm extends React.Component {
                 class="btn btn-warning mb-2"
               >
                 新增活動
+              </button>
+              <button
+                type="button"
+                onClick={console.log(this.state.cinemaDBdataForCard)}
+                class="btn btn-warning mb-2"
+              >
+                show
               </button>
             </div>
           </div>
