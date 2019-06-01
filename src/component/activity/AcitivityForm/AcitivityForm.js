@@ -165,28 +165,28 @@ class AcitivityForm extends React.Component {
                     .then(res => res.json())
                     .then(obj => {
                       console.log(obj)
+                      let cardData = {
+                        id: this.state.formData.id,
+                        theater: this.state.cinemaDBdataForCard.cinemaName,
+                        title: this.state.formData.title,
+                        content: this.state.formData.content,
+                        imgSrc: this.state.formData.imgSrc,
+                        theaterMap: this.state.formData.theaterMap,
+                        GUINumber: this.state.cinemaDBdataForCard.cinemaTaxid,
+                        website: this.state.cinemaDBdataForCard.cinemaWeb,
+                        email: this.state.cinemaDBdataForCard.cinemaEmail,
+                        phone: this.state.cinemaDBdataForCard.cinemaPhone,
+                        lat: this.state.formData.lat,
+                        lng: this.state.formData.lng,
+                        joinContent: this.state.formData.joinContent,
+                        joinContentCurrentPeople: this.state.formData
+                          .joinContentCurrentPeople,
+                        place: this.state.formData.place,
+                      }
                       try {
                         fetch('http://localhost:5555/activityCardData/', {
-                          method: 'PUT',
-                          body: JSON.stringify({
-                            id: this.state.formData.id,
-                            theater: this.state.cinemaDBdataForCard.cinemaName,
-                            title: this.state.formData.title,
-                            content: this.state.formData.content,
-                            imgSrc: this.state.formData.imgSrc,
-                            theaterMap: this.state.formData.theaterMap,
-                            GUINumber: this.state.cinemaDBdataForCard
-                              .cinemaTaxid,
-                            website: this.state.cinemaDBdataForCard.cinemaWeb,
-                            email: this.state.cinemaDBdataForCard.cinemaEmail,
-                            phone: this.state.cinemaDBdataForCard.cinemaPhone,
-                            lat: this.state.formData.lat,
-                            lng: this.state.formData.lng,
-                            joinContent: this.state.formData.joinContent,
-                            joinContentCurrentPeople: this.state.formData
-                              .joinContentCurrentPeople,
-                            place: this.state.formData.place,
-                          }),
+                          method: 'POST',
+                          body: JSON.stringify(cardData),
 
                           headers: new Headers({
                             Accept: 'application/json',
