@@ -37,7 +37,11 @@ class ActivityInfo extends React.Component {
       const activityPageOtherData = data.filter(
         item => item.id !== this.props.match.params.id
       )
-      console.log(activityPageData)
+      activityPageData.imgSrc =
+        activityPageData.imgSrc.indexOf('http') == 0
+          ? activityPageData.imgSrc
+          : '/images/activityImg/' + activityPageData.imgSrc
+
       this.setState({ activityPageData: activityPageData })
       this.setState({ activityPageOtherData: activityPageOtherData })
       this.setState({ activityHeroImage: activityPageData.imgSrc })
@@ -242,7 +246,11 @@ class ActivityInfo extends React.Component {
                     key={data.id}
                     title={data.theater}
                     subtitle={data.title}
-                    imgSrc={data.imgSrc}
+                    imgSrc={
+                      data.imgSrc.indexOf('http') == 0
+                        ? data.imgSrc
+                        : '/images/activityImg/' + data.imgSrc
+                    }
                     collectOpen
                     isCollect={
                       this.state.collectActivity.indexOf(data.id) > -1
@@ -257,7 +265,11 @@ class ActivityInfo extends React.Component {
                     key={data.id}
                     title={data.theater}
                     subtitle={data.title}
-                    imgSrc={data.imgSrc}
+                    imgSrc={
+                      data.imgSrc.indexOf('http') == 0
+                        ? data.imgSrc
+                        : '/images/activityImg/' + data.imgSrc
+                    }
                   />
                 )}
               </div>

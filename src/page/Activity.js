@@ -310,7 +310,11 @@ class Activity extends React.Component {
                     key={data.id}
                     title={data.theater}
                     subtitle={data.title}
-                    imgSrc={data.imgSrc}
+                    imgSrc={
+                      data.imgSrc.indexOf('http') == 0
+                        ? data.imgSrc
+                        : '/images/activityImg/' + data.imgSrc
+                    }
                     collectOpen
                     isCollect={
                       this.state.collectActivity.indexOf(data.id) > -1
@@ -325,7 +329,11 @@ class Activity extends React.Component {
                     key={data.id}
                     title={data.theater}
                     subtitle={data.title}
-                    imgSrc={data.imgSrc}
+                    imgSrc={
+                      data.imgSrc.indexOf('http') == 0
+                        ? data.imgSrc
+                        : '/images/activityImg/' + data.imgSrc
+                    }
                   />
                 )}
               </div>
