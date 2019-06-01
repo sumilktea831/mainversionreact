@@ -75,9 +75,25 @@ class AcitivityForm extends React.Component {
     this.setState({ formData: data }, () => console.log(this.state.formData))
   }
   inputImgOnChange = event => {
-    const data = JSON.parse(JSON.stringify(this.state.formData))
-    data.imgSrc = event.target.files[0].name
-    this.setState({ formData: data }, () => console.log(this.state.formData))
+    let imgFile = event.target.files[0]
+    let imgFileName = event.target.files[0].name
+    let formData = new FormData()
+    formData.append('myfile', imgFile)
+    fetch('http://localhost:3001/api/activity-upload-single', {
+      method: 'POST',
+      body: formData,
+    })
+      .then(res => res.json())
+      .then(obj => {
+        console.log(obj)
+        if (obj.success == true) {
+          const data = JSON.parse(JSON.stringify(this.state.formData))
+          data.imgSrc = obj.filename
+          this.setState({ formData: data }, () =>
+            console.log(this.state.formData)
+          )
+        }
+      })
   }
   inputContentOnChange = event => {
     const data = JSON.parse(JSON.stringify(this.state.formData))
@@ -120,6 +136,8 @@ class AcitivityForm extends React.Component {
           this.setState({ formData: data }, () =>
             console.log(this.state.formData)
           )
+          let cinemaId = sessionStorage.getItem('cinemaId')
+          fetch('http://localhost:5555/cinema/' + cinemaId, {})
         })
     } else {
       alert('請填寫活動地址')
