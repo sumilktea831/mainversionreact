@@ -658,8 +658,6 @@ class TheateInfo extends React.Component {
   }
 
   render() {
-    console.log('this.state.SliderData')
-    console.log(this.state.SliderData.img)
     return (
       <>
         <div className="overflow-hidden">
