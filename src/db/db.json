@@ -1825,6 +1825,7 @@
         "002",
         "003"
       ],
+      "collectMovie": "m1558948576759",
       "collectCinema": [
         "c1",
         "c2"
@@ -1870,6 +1871,7 @@
         "004",
         "002"
       ],
+      "collectMovie": "m1558948576759",
       "collectCinema": [
         "c2"
       ],
@@ -1907,6 +1909,7 @@
       "join_date": "2019-05-23",
       "permission": "generalMember",
       "collectFilm": [],
+      "collectMovie": "m1558948576759",
       "collectCinema": [
         "c1",
         "c2"
@@ -2029,13 +2032,13 @@
             "愛情片"
           ],
           "director": "碼農一號",
-          "langauge": "",
+          "language": "日語",
           "intro": "摘要",
           "fullIntro": "介紹",
           "filmTime": "100",
-          "updateDate": "2019-05-31",
-          "inTheaterDate": "2019-06-06",
-          "outTheaterDate": "2019-08-23",
+          "updateDate": "2019-04-30",
+          "inTheaterDate": "2019-05-01",
+          "outTheaterDate": "2019-05-31",
           "schedule": [
             "2019-06-06 10:00",
             "2019-06-06 00:00"
@@ -2097,7 +2100,7 @@
           "fullIntro": "",
           "filmTime": "140",
           "updateDate": "2019-06-01",
-          "inTheaterDate": "2019-06-01",
+          "inTheaterDate": "2019-06-06",
           "outTheaterDate": "2019-06-29",
           "schedule": [
             "2019-06-05 01:00"
@@ -2351,7 +2354,7 @@
       "cinemaAwesome": [
         "234"
       ],
-      "cinemaPageViews": 577,
+      "cinemaPageViews": 578,
       "cinemaSignUpDate": "1955-03-12",
       "purview": "cinemaMember",
       "cinemaMessage": [

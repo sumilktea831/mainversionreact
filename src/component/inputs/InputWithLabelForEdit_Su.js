@@ -33,7 +33,7 @@ import InputRadioForCinemaTypeSu from './InputRadioForCinemaTypeSu'
 //----------------我是分隔線----------------
 //=====以下是 Label (col-lg-3) + Input (col-lg-8) 的組合元件======
 
-const InputWithLabel_Su = props => {
+const InputWithLabelForEdit_Su = props => {
   return (
     <>
       <Row className="my-4">
@@ -173,4 +173,4 @@ const InputWithLabel_Su = props => {
   )
 }
 
-export default InputWithLabel_Su
+export default InputWithLabelForEdit_Su

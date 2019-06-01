@@ -19,11 +19,11 @@ class CinemaFilmUpdate extends React.Component {
         id: '',
         title: '',
         titleEn: '',
-        movie_rating: '',
+        movie_rating: '普遍級 0+',
         imgSrc: '',
         type: '',
         director: '',
-        language: '',
+        language: '華語',
         intro: '',
         fullIntro: '',
         filmTime: '',
@@ -385,6 +385,14 @@ class CinemaFilmUpdate extends React.Component {
   render() {
     return (
       <>
+        <div className="d-flex justify-content-center"
+          style={{ overflow: 'hidden' }}>
+          {this.state.usertext.imgSrc !== '' ?
+            <img src={'/images/cinemaImg/' + this.state.usertext.imgSrc}
+              style={{ width: '250px', height: '355px', objectFit: 'cover' }}
+            />
+            : ""}
+        </div>
         <Row>
           <div className="col-lg-6 mt-3 h5">
             {this.state.inputmsg.map(item => (

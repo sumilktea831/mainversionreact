@@ -49,7 +49,7 @@ const InputFile_Su = props => {
               height: `${props.inputHeight}`,
               background: '#1F242A',
               color: '#FFA510',
-              padding: '12px 20px 12px 0',
+              padding: '10px 20px 12px 0',
             }}
           >
             <i className={props.iconRight} style={{fontSize: `${props.iconRightSize}`}}></i>
