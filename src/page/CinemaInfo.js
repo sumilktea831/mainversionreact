@@ -238,9 +238,11 @@ class TheateInfo extends React.Component {
 
       // dataAllCinema 全部戲院的原始資料
       // dataCinema 這頁顯示的戲院原始資料
-      const elseCardData = dataAllCinema.filter(
+      const elseCardDat = dataAllCinema.filter(
         el => el.cinemaType === dataCinema.cinemaType
       )
+      const elseCardData = elseCardDat.filter(el => el.id !== dataCinema.id)
+
       const elseCardFourData = []
       elseCardData.map((el, index) => {
         if (index < 4) {
@@ -573,7 +575,7 @@ class TheateInfo extends React.Component {
     })
   }
 
-  //星星數改變接資料庫----完成
+  // 大卡星星數改變接資料庫----完成
   StarChange = async (id, star) => {
     // 先判斷對方有沒有平過分
     let hadOrNot = this.state.cinemaData.cinemaStar.some(

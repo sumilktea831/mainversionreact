@@ -100,29 +100,9 @@ class Cinema extends React.Component {
       // 如果回傳是true 就加上去
       newCollectionData = [...this.state.memberThisData.collectCinema, id]
     }
-    const NewMemberData = {
-      id: this.state.memberThisData.id,
-      name: this.state.memberThisData.name,
-      nickname: this.state.memberThisData.nickname,
-      gender: this.state.memberThisData.gender,
-      mobile: this.state.memberThisData.mobile,
-      birth: this.state.memberThisData.birth,
-      email: this.state.memberThisData.email,
-      pwd: this.state.memberThisData.pwd,
-      avatar: this.state.memberThisData.avatar,
-      city: this.state.memberThisData.city,
-      address: this.state.memberThisData.address,
-      fav_type: this.state.memberThisData.fav_type,
-      career: this.state.memberThisData.career,
-      join_date: this.state.memberThisData.permission,
-      permission: this.state.memberThisData.permission,
-      collectFilm: this.state.memberThisData.collectFilm,
-      collectCinema: newCollectionData,
-      collectArticle: this.state.memberThisData.collectArticle,
-      collectActivity: this.state.memberThisData.collectActivity,
-      collectForum: this.state.memberThisData.collectForum,
-      markList: this.state.memberThisData.markList,
-    }
+    const NewMemberData = this.state.memberThisData
+    NewMemberData.collectCinema = newCollectionData
+
     // //蓋回去資料庫
     const response = await fetch('http://localhost:5555/member/' + memberId, {
       method: 'PUT',
