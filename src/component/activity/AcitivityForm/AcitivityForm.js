@@ -11,6 +11,7 @@ class AcitivityForm extends React.Component {
       file: '',
     }
   }
+
   componentDidMount = () => {
     const data = JSON.parse(JSON.stringify(this.state.formData))
     this.setState({ type: ['北部', '影院'] })
@@ -66,15 +67,14 @@ class AcitivityForm extends React.Component {
     })
   }
 
-  imgOnChange = event => {
-    this.setState({
-      file: event.target.files[0],
-    })
-    console.log(event.target.files[0])
-  }
   inputTitleOnChange = event => {
     const data = JSON.parse(JSON.stringify(this.state.formData))
     data.title = event.target.value
+    this.setState({ formData: data }, () => console.log(this.state.formData))
+  }
+  inputImgOnChange = event => {
+    const data = JSON.parse(JSON.stringify(this.state.formData))
+    data.imgSrc = event.target.files[0].name
     this.setState({ formData: data }, () => console.log(this.state.formData))
   }
   inputContentOnChange = event => {
@@ -124,6 +124,7 @@ class AcitivityForm extends React.Component {
                   id="imgSrc"
                   name="imgSrc"
                   style={{ background: '#1f242a' }}
+                  onChange={event => this.inputImgOnChange(event)}
                   required
                 />
                 <label
@@ -135,7 +136,9 @@ class AcitivityForm extends React.Component {
                     color: '#ffa310b0',
                   }}
                 >
-                  上傳圖片
+                  {this.state.formData.imgSrc
+                    ? this.state.formData.imgSrc
+                    : '上傳圖片'}
                 </label>
               </div>
             </div>
@@ -293,7 +296,7 @@ class AcitivityForm extends React.Component {
             </div>
             <div class="col-sm-10 mt-5">
               <button
-                type="submit"
+                type="button"
                 onClick={this.sendFile}
                 class="btn btn-warning mb-2"
               >
