@@ -446,7 +446,16 @@ class CinemaBackMainpage extends React.Component {
                         className="d-flex align-items-center"
                         style={{ height: '300px', width: '100%' }}
                       >
-                        <h5 className="ml-4">目前沒有上映影片喔</h5>
+                        <h5 className="ml-4">
+                          尚無紀錄，趕快
+                          <a
+                            style={{ color: '#ffa510' }}
+                            href="/CinemaBackMainpage/cinema-activity-add"
+                          >
+                            前往影片管理
+                          </a>
+                          上架影片吧！
+                        </h5>
                       </div>
                     )}
 
@@ -475,29 +484,47 @@ class CinemaBackMainpage extends React.Component {
                         className="d-flex align-items-center"
                         style={{ height: '300px', width: '100%' }}
                       >
-                        <h5 className="ml-4">目前沒有舉辦活動喔</h5>
+                        <h5 className="ml-4">
+                          尚無紀錄，趕快
+                          <a
+                            style={{ color: '#ffa510' }}
+                            href="/CinemaBackMainpage/cinema-activity-add"
+                          >
+                            前往論壇
+                          </a>
+                          發表評論吧！
+                        </h5>
                       </div>
                     )}
 
                     <div className="py-5" />
                     <TitleKaga title="近期評論紀錄" />
-                    <div
-                      className=" d-flex flex-wrap col-lg-12 my-5"
-                      style={
-                        {
-                          // height: '300px',
+                    {this.state.MessageBoxData.length !== 0 ? (
+                      <div
+                        className=" d-flex flex-wrap col-lg-12 my-5"
+                        style={
+                          {
+                            // height: '300px',
+                          }
                         }
-                      }
-                    >
-                      {this.state.MessageBoxData.map(item => (
-                        <MessageCinema
-                          img={item.img}
-                          message={item.message}
-                          name={item.name}
-                          time={item.time}
-                        />
-                      ))}
-                    </div>
+                      >
+                        {this.state.MessageBoxData.map(item => (
+                          <MessageCinema
+                            img={item.img}
+                            message={item.message}
+                            name={item.name}
+                            time={item.time}
+                          />
+                        ))}
+                      </div>
+                    ) : (
+                      <div
+                        className="d-flex align-items-center"
+                        style={{ height: '300px', width: '100%' }}
+                      >
+                        <h5 className="ml-4">尚無紀錄</h5>
+                      </div>
+                    )}
                   </>
                 </>
               ) : (

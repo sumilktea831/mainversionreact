@@ -911,21 +911,43 @@ class TheateInfo extends React.Component {
           </div>
           {/* 內容區 */}
           <div className="d-flex flex-column col-11">
-            <div className="py-2 text-white mb-2">
-              <TitleKaga title="推薦戲院" />
-            </div>
-            <div className="d-flex flex-wrap col-lg-11">
-              {this.state.elseCard.map(item => (
-                <CardKaga
-                  key={item.id}
-                  id={item.id}
-                  title={item.title}
-                  subtitle={item.subtitle}
-                  img={item.img}
-                  link={item.link}
-                />
-              ))}
-            </div>
+            {cinemaId ? (
+              <>
+                <div className="py-2 text-white mb-2">
+                  <TitleKaga title="相似對手" />
+                </div>
+                <div className="d-flex flex-wrap col-lg-11">
+                  {this.state.elseCard.map(item => (
+                    <CardKaga
+                      key={item.id}
+                      id={item.id}
+                      title={item.title}
+                      subtitle={item.subtitle}
+                      img={item.img}
+                      link={item.link}
+                    />
+                  ))}
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="py-2 text-white mb-2">
+                  <TitleKaga title="推薦戲院" />
+                </div>
+                <div className="d-flex flex-wrap col-lg-11">
+                  {this.state.elseCard.map(item => (
+                    <CardKaga
+                      key={item.id}
+                      id={item.id}
+                      title={item.title}
+                      subtitle={item.subtitle}
+                      img={item.img}
+                      link={item.link}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         </div>
       </>
