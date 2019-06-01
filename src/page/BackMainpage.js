@@ -242,28 +242,6 @@ class BackSidenav extends React.Component {
         })
       })
       //==============================================================
-
-      // 元件AvatarOne -- 完成
-      // 如果沒有頭像就給他預設頭像
-      const memberAvatar =
-        memberPageData.avatar !== '' ? memberPageData.avatar : 'movieStar.jpg'
-      const avatarOneData = {
-        img: '/images/member/' + memberAvatar,
-        name: memberPageData.nickname,
-        purview: memberPageData.permission,
-        SignUpDate: memberPageData.join_date,
-      }
-
-      // 元件DataBox -- 完成
-      const forumPublishData = dataForum.filter(
-        item => item.forumNameId === memberId
-      )
-      const dataBoxData = {
-        collection: memberPageData.collectFilm.length,
-        Awesome: memberPageData.collectArticle.length,
-        PageViews: forumPublishData.length,
-      }
-
       // 元件filmCard
       // 先找出影片id跟會員收藏id一致的資料 (會員收藏是array) --到時候串接用
       // 完整的影片資料 dataFilm
@@ -291,8 +269,6 @@ class BackSidenav extends React.Component {
         })
       })
 
-      console.log('fileCard1')
-      console.log(fileCard1)
       if (fileCard1.length === 0) {
         fileCard1 = fileCard2
       } else {
@@ -307,8 +283,6 @@ class BackSidenav extends React.Component {
         })
       }
 
-      console.log('fileCard1')
-      console.log(fileCard1)
       // 影片收藏頁卡片的資料
       const filmCollecCardData = fileCard1.map(item => ({
         key: item.id,
@@ -320,6 +294,27 @@ class BackSidenav extends React.Component {
         star: item.filmStar,
         mark: memberPageData.markList,
       }))
+
+      // 元件AvatarOne -- 完成
+      // 如果沒有頭像就給他預設頭像
+      const memberAvatar =
+        memberPageData.avatar !== '' ? memberPageData.avatar : 'movieStar.jpg'
+      const avatarOneData = {
+        img: '/images/member/' + memberAvatar,
+        name: memberPageData.nickname,
+        purview: memberPageData.permission,
+        SignUpDate: memberPageData.join_date,
+      }
+
+      // 元件DataBox -- 完成
+      const forumPublishData = dataForum.filter(
+        item => item.forumNameId === memberId
+      )
+      const dataBoxData = {
+        collection: fileCard1.length,
+        Awesome: memberPageData.collectArticle.length,
+        PageViews: forumPublishData.length,
+      }
 
       // 戲院收藏頁卡片的資料
       // 完整的戲院資料 dataCinema
