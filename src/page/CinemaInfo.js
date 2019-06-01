@@ -259,7 +259,7 @@ class TheateInfo extends React.Component {
           subtitle: el.cinemaCity + '/' + el.cinemaArea,
           img: 'http://localhost:3000/images/cinemaImg/' + el.cinemaHeroImg,
           // 因為是原頁面跳轉 所以直接帶這樣才能實現跳轉
-          link: '/cinema/' + el.id,
+          link: '/cinema/' + dataCinema.id + '/' + el.id,
           // 不先驗證是否有會員的會會跳錯
           collection: [],
         }
