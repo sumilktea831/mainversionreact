@@ -118,7 +118,7 @@ class CinemaBackMainpage extends React.Component {
       const dataThisCinema = await dataCinema.find(item => item.id === cinemaId)
 
       // 取得影片資料
-      const resFilm = await fetch('http://localhost:5555/filmData', {
+      const resFilm = await fetch('http://localhost:5555/movieCardData', {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -173,12 +173,9 @@ class CinemaBackMainpage extends React.Component {
       let FilmCardUseData = [] // 在本戲院播放的影片的完整資料
       // 把有影片中有在本戲院播放的影片全部抓出來套進去
       dataFilm.map(item => {
-        item.moviecinema.map(item1 => {
-          if (item1 === dataThisCinema.id) {
-            FilmCardUseData.push(item)
-          }
-          return item1
-        })
+        if (item.theater === dataThisCinema.cinemaName) {
+          FilmCardUseData.push(item)
+        }
         return item
       })
       // 先限制只有4筆
@@ -195,12 +192,12 @@ class CinemaBackMainpage extends React.Component {
         FilmCardData.push({
           key: item.id,
           id: item.id,
-          title: item.name_tw,
-          subtitle: item.name_en,
-          img: 'http://localhost:3000/images/' + item.movie_pic,
+          title: item.title,
+          subtitle: item.titleEn,
+          img: item.imgSrc,
           link: '/movie/' + item.id,
           star: item.filmStar,
-          time: item.in_theaters + ' / ' + item.out_theaters,
+          time: item.inTheaterDate + ' / ' + item.outTheaterDate,
         })
       )
 
@@ -304,7 +301,7 @@ class CinemaBackMainpage extends React.Component {
   }
 
   //戲院上架儲存按鈕
-  handleCinemaFilmAdd = (data, checkok ,type) => () => {
+  handleCinemaFilmAdd = (data, checkok, type) => () => {
     let isAllChecked = true
     let checkArray = Object.values(checkok)
     isAllChecked = checkArray.reduce((a, b) => a && b)
@@ -321,18 +318,16 @@ class CinemaBackMainpage extends React.Component {
           ? '0' + (date.getMonth() + 1)
           : date.getMonth() + 1) +
         '-' +
-        (date.getDate() < 10
-        ? '0' + (date.getDate())
-        : date.getDate())
-      newtext.id = "cf" + +date
+        (date.getDate() < 10 ? '0' + date.getDate() : date.getDate())
+      newtext.id = 'cf' + +date
       newtext.updateDate = dateYMD
       newData.cinemaFilm = [...newData.cinemaFilm, newtext]
       console.log(newData)
       const newDatatForMovieCard = { ...newtext }
       if (type.find(item => item == '全選')) {
-        newDatatForMovieCard.type =  newDatatForMovieCard.type.slice(1).join('')
-      }else{
-        newDatatForMovieCard.type =  newDatatForMovieCard.type.join('')
+        newDatatForMovieCard.type = newDatatForMovieCard.type.slice(1).join('')
+      } else {
+        newDatatForMovieCard.type = newDatatForMovieCard.type.join('')
       }
       newDatatForMovieCard.theater = this.state.thisCinemaData.cinemaName
       try {
@@ -373,7 +368,6 @@ class CinemaBackMainpage extends React.Component {
       } catch (e) {
         console.log(e)
       }
-
     } else {
       alert('資料填寫有誤，請再次確認您的資料！')
     }
