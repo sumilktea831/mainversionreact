@@ -294,7 +294,7 @@ class ForumBackComment extends React.Component {
                   {/* 噓數 */}
                   {/* </th> */}
                   <th scope="col" style={thStyle}>
-                    前往留言
+                    前往該留言
                   </th>
                 </tr>
               </thead>
