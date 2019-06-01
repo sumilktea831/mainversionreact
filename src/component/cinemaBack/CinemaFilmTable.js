@@ -5,7 +5,7 @@ class MemberCollectTable extends React.Component {
     super(props)
     this.state = {
       thisData: 0,
-      thisCollectArticleData: 0,
+      thisFilmData: 0,
     }
   }
 
@@ -13,24 +13,26 @@ class MemberCollectTable extends React.Component {
   static getDerivedStateFromProps(nextProps, prevState) {
     // this.setState({ thisData: nextProps.thisData }) 這不能這樣setStae，要用下面的寫法
     let stateToBeReturned = null
-    if (prevState.thisData == 0 || prevState.thisCollectArticleData == 0) {
+    if (prevState.thisData == 0 || prevState.thisFilmData == 0) {
       stateToBeReturned = {
         ...prevState,
         thisData: nextProps.thisData,
-        thisCollectArticleData: nextProps.thisCollectArticleData,
+        thisFilmData: nextProps.thisData.cinemaFilm,
       }
     }
-
+    console.log(nextProps)
+    console.log(prevState)
+    console.log(stateToBeReturned)
     return stateToBeReturned
   }
 
   render() {
-    // if (this.props.thisData == 0) {
-    //   return <></>
-    // }
+    if (this.props.thisData == 0) {
+      return <></>
+    }
     return (
       <>
-        {this.state.thisCollectArticleData.length == 0 ? (
+        {this.state.thisFilmData.length == 0 ? (
           <h5 className="text-center text-mywhite mx-auto">
             尚無紀錄，趕快
             <a href="/article" style={{ color: '#ffa510' }}>
@@ -46,13 +48,15 @@ class MemberCollectTable extends React.Component {
                   style={{ border: '2px solid #ffa510 ', color: '#ffa510' }}
                 >
                   <th style={{ width: '60px' }}>#</th>
-                  <th scope="col-lg-6">文章標題</th>
-                  <th scope="col-lg-4">作者</th>
-                  <th scope="col-lg-3">發布日期</th>
+                  <th scope="col-lg">中文片名</th>
+                  <th scope="col-lg">上架日期</th>
+                  <th scope="col-lg">上檔日期</th>
+                  <th scope="col-lg">下檔日期</th>
+                  <th scope="col-lg-1">操作</th>
                 </tr>
               </thead>
               <tbody className="bg-back-table text-mywhite">
-                {this.state.thisCollectArticleData.map((item, index) => (
+                {this.state.thisFilmData.map((item, index) => (
                   <tr
                     key={item.id}
                     style={{
@@ -66,7 +70,8 @@ class MemberCollectTable extends React.Component {
                         borderRight: '2px solid #2B333D',
                       }}
                     >
-                      <a href={'/article/' + item.id}>{item.title}</a>
+                      {/* <a href={'/article/' + item.id}>{item.title}</a> */}
+                     {item.title}
                     </td>
                     <td
                       style={{
@@ -74,7 +79,7 @@ class MemberCollectTable extends React.Component {
                         borderRight: '2px solid #2B333D',
                       }}
                     >
-                      {item.author}
+                      {item.updateDate}
                     </td>
                     <td
                       style={{
@@ -82,7 +87,25 @@ class MemberCollectTable extends React.Component {
                         borderRight: '2px solid #2B333D',
                       }}
                     >
-                      {item.date}
+                      {item.inTheaterDate}
+                    </td>
+                    <td
+                      style={{
+                        borderLeft: '2px solid #2B333D',
+                        borderRight: '2px solid #2B333D',
+                      }}
+                    >
+                      {item.outTheaterDate}
+                    </td>
+                    <td
+                      style={{
+                        borderLeft: '2px solid #2B333D',
+                        borderRight: '2px solid #2B333D',
+                      }}
+                    >
+                      <button className="btn btn-outline-warning mx-2"><i class="fas fa-eye btnTableEdit"></i></button>
+                      <button className="btn btn-outline-warning mx-2"><i class="fas fa-edit btnTableEdit"></i></button>
+                      <button className="btn btn-outline-warning mx-2"><i class="fas fa-trash btnTableEdit"></i></button>
                     </td>
                   </tr>
                 ))}

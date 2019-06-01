@@ -222,7 +222,7 @@
       "imgSrc": "https://g.udn.com.tw/upfiles/B_SH/shiow/PSN_PHOTO/591/f_24131591_1.jpg",
       "type": "戲劇片文藝片",
       "director": "導演名字",
-      "langauge": "華語",
+      "language": "華語",
       "intro": "電影簡介",
       "fullIntro": "電影介紹",
       "filmTime": "200",
@@ -280,7 +280,7 @@
         "2019-06-02 13:00",
         "2019-06-02 18:00"
       ],
-      "cinemaStar": [
+      "filmStar": [
         {
           "starId": "m111111",
           "star": 5
@@ -323,7 +323,7 @@
         "2019-06-02 13:00",
         "2019-06-02 18:00"
       ],
-      "cinemaStar": [
+      "filmStar": [
         {
           "starId": "m111111",
           "star": 5
@@ -365,7 +365,7 @@
         "2019-06-02 13:00",
         "2019-06-02 18:00"
       ],
-      "cinemaStar": [
+      "filmStar": [
         {
           "starId": "m111111",
           "star": 5
@@ -407,7 +407,7 @@
         "2019-06-02 13:00",
         "2019-06-02 18:00"
       ],
-      "cinemaStar": [
+      "filmStar": [
         {
           "starId": "m111111",
           "star": 5
@@ -449,7 +449,7 @@
         "2019-06-02 13:00",
         "2019-06-02 18:00"
       ],
-      "cinemaStar": [
+      "filmStar": [
         {
           "starId": "m111111",
           "star": 5
@@ -491,7 +491,7 @@
         "2019-06-02 13:00",
         "2019-06-02 18:00"
       ],
-      "cinemaStar": [
+      "filmStar": [
         {
           "starId": "m111111",
           "star": 5
@@ -533,7 +533,7 @@
         "2019-06-02 13:00",
         "2019-06-02 18:00"
       ],
-      "cinemaStar": [
+      "filmStar": [
         {
           "starId": "m111111",
           "star": 5
@@ -575,7 +575,7 @@
         "2019-06-02 13:00",
         "2019-06-02 18:00"
       ],
-      "cinemaStar": [
+      "filmStar": [
         {
           "starId": "m111111",
           "star": 5
@@ -617,7 +617,7 @@
         "2019-06-02 13:00",
         "2019-06-02 18:00"
       ],
-      "cinemaStar": [
+      "filmStar": [
         {
           "starId": "m111111",
           "star": 5
@@ -659,7 +659,7 @@
         "2019-06-02 13:00",
         "2019-06-02 18:00"
       ],
-      "cinemaStar": [
+      "filmStar": [
         {
           "starId": "m111111",
           "star": 5
@@ -718,7 +718,7 @@
         "2019-06-02 13:00",
         "2019-06-02 18:00"
       ],
-      "cinemaStar": [
+      "filmStar": [
         {
           "starId": "m111111",
           "star": 5
@@ -732,6 +732,44 @@
           "star": 5
         }
       ]
+    },
+    {
+      "id": "cf1559384923914",
+      "title": "測試6",
+      "titleEn": "66",
+      "movie_rating": "輔導級 15+",
+      "imgSrc": "",
+      "type": "懸疑片",
+      "director": "",
+      "language": "",
+      "intro": "",
+      "fullIntro": "",
+      "filmTime": "",
+      "updateDate": "2019-06-01",
+      "inTheaterDate": "",
+      "outTheaterDate": "",
+      "schedule": [],
+      "filmStar": [],
+      "theater": "碼農Cafe"
+    },
+    {
+      "id": "cf1559389596294",
+      "title": "測試7",
+      "titleEn": "",
+      "movie_rating": "",
+      "imgSrc": "",
+      "type": "動作片",
+      "director": "",
+      "language": "",
+      "intro": "123",
+      "fullIntro": "123",
+      "filmTime": "",
+      "updateDate": "2019-06-01",
+      "inTheaterDate": "",
+      "outTheaterDate": "",
+      "schedule": [],
+      "filmStar": [],
+      "theater": "碼農Cafe"
     }
   ],
   "cinema-sign-inputmsg": [
@@ -1129,7 +1167,7 @@
         },
         {
           "id": "cinema-film-post",
-          "name": "影片上架管理"
+          "name": "影片上架"
         },
         {
           "id": "cinema-film-analysis",
@@ -2035,13 +2073,77 @@
           "intro": "摘要",
           "fullIntro": "介紹",
           "filmTime": "120",
-          "updateDate": "2019-06-1",
+          "updateDate": "2019-06-01",
           "inTheaterDate": "2019-06-01",
           "outTheaterDate": "2019-06-05",
           "schedule": [
             "2019-06-01 01:00",
             "2019-06-01 03:00"
           ],
+          "filmStar": []
+        },
+        {
+          "id": "cf1559384160830",
+          "title": "測試555",
+          "titleEn": "5555",
+          "movie_rating": "輔導級 12+",
+          "imgSrc": "",
+          "type": [
+            "動作片"
+          ],
+          "director": "5555",
+          "language": "",
+          "intro": "",
+          "fullIntro": "",
+          "filmTime": "140",
+          "updateDate": "2019-06-01",
+          "inTheaterDate": "2019-06-01",
+          "outTheaterDate": "2019-06-29",
+          "schedule": [
+            "2019-06-05 01:00"
+          ],
+          "filmStar": []
+        },
+        {
+          "id": "cf1559384724141",
+          "title": "測試5",
+          "titleEn": "5",
+          "movie_rating": "",
+          "imgSrc": "",
+          "type": [
+            "動作片"
+          ],
+          "director": "",
+          "language": "俄語",
+          "intro": "ㄉˇ",
+          "fullIntro": "ㄉˇ",
+          "filmTime": "120",
+          "updateDate": "2019-06-01",
+          "inTheaterDate": "2019-06-01",
+          "outTheaterDate": "2019-06-20",
+          "schedule": [
+            "2019-06-20 00:59"
+          ],
+          "filmStar": []
+        },
+        {
+          "id": "cf1559389596294",
+          "title": "測試7",
+          "titleEn": "",
+          "movie_rating": "",
+          "imgSrc": "",
+          "type": [
+            "動作片"
+          ],
+          "director": "",
+          "language": "",
+          "intro": "123",
+          "fullIntro": "123",
+          "filmTime": "",
+          "updateDate": "2019-06-01",
+          "inTheaterDate": "2019-06-01",
+          "outTheaterDate": "2019-06-11",
+          "schedule": [],
           "filmStar": []
         }
       ],
@@ -2069,7 +2171,7 @@
         "m111111",
         "m22222"
       ],
-      "cinemaPageViews": 585,
+      "cinemaPageViews": 590,
       "cinemaSignUpDate": "1955-03-12",
       "purview": "cinemaMember",
       "cinemaMessage": [
@@ -2249,7 +2351,7 @@
       "cinemaAwesome": [
         "234"
       ],
-      "cinemaPageViews": 573,
+      "cinemaPageViews": 577,
       "cinemaSignUpDate": "1955-03-12",
       "purview": "cinemaMember",
       "cinemaMessage": [
@@ -2477,7 +2579,7 @@
       "cinemaAwesome": [
         "234"
       ],
-      "cinemaPageViews": "572",
+      "cinemaPageViews": 573,
       "cinemaSignUpDate": "1955-03-12",
       "purview": "cinemaMember",
       "cinemaMessage": [

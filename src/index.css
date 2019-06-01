@@ -362,6 +362,17 @@ button.bg-orange {
   border-bottom: 2px solid #ffa510;
   border-left: 2px solid #ffa510;
 }
+.addFilmSchedule:hover{
+  box-shadow: #d4d1cc 0px 0px 2px;
+  transform: scale(1.2,1.2);
+  filter:brightness(110%)
+}
+.btnTableEdit{
+  font-size: 18px;
+}
+.btnTableEdit:hover{
+  color:#242b34;
+}
 /* -----------------------------------------------------Kaga */
 .cardAreaBgKaga {
   background-position: center;

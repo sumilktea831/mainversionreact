@@ -13,6 +13,7 @@ import DataBox from '../component/cinema/DataBoxSM/DataBox'
 import CardKaga from '../component/cinema/CardKaga/v3/CardKaga'
 import MessageCinema from '../component/cinema/MessageSM/MessageCinema'
 import CinemaFilmUpdate from '../component/cinemaBack/CinemaFilmUpdate'
+import CinemaFilmTable from '../component/cinemaBack/CinemaFilmTable'
 //cinemaId
 import ActivityBtnAddActivity from '../component/activity/ActivityBtnAddActivity/ActivityBtnAddActivity'
 const cinemaId = sessionStorage.getItem('cinemaId')
@@ -302,6 +303,81 @@ class CinemaBackMainpage extends React.Component {
     }
   }
 
+  //戲院上架儲存按鈕
+  handleCinemaFilmAdd = (data, checkok ,type) => () => {
+    let isAllChecked = true
+    let checkArray = Object.values(checkok)
+    isAllChecked = checkArray.reduce((a, b) => a && b)
+    // console.log('isAllChecked: ' + isAllChecked)
+
+    if (isAllChecked) {
+      const newtext = { ...data }
+      const newData = { ...this.state.thisCinemaData }
+      let date = new Date()
+      let dateYMD =
+        date.getFullYear() +
+        '-' +
+        (date.getMonth() + 1 < 10
+          ? '0' + (date.getMonth() + 1)
+          : date.getMonth() + 1) +
+        '-' +
+        (date.getDate() < 10
+        ? '0' + (date.getDate())
+        : date.getDate())
+      newtext.id = "cf" + +date
+      newtext.updateDate = dateYMD
+      newData.cinemaFilm = [...newData.cinemaFilm, newtext]
+      console.log(newData)
+      const newDatatForMovieCard = { ...newtext }
+      if (type.find(item => item == '全選')) {
+        newDatatForMovieCard.type =  newDatatForMovieCard.type.slice(1).join('')
+      }else{
+        newDatatForMovieCard.type =  newDatatForMovieCard.type.join('')
+      }
+      newDatatForMovieCard.theater = this.state.thisCinemaData.cinemaName
+      try {
+        fetch('http://localhost:5555/cinema/' + this.state.thisCinemaData.id, {
+          method: 'PUT',
+          body: JSON.stringify(newData),
+          headers: new Headers({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          }),
+        })
+          .then(res => res.json())
+          .then(jsonObject => {
+            try {
+              fetch('http://localhost:5555/movieCardData/', {
+                method: 'POST',
+                body: JSON.stringify(newDatatForMovieCard),
+                headers: new Headers({
+                  Accept: 'application/json',
+                  'Content-Type': 'application/json',
+                }),
+              })
+                .then(res => res.json())
+                .then(jsonObject => {
+                  // sessionStorage.setItem('thisCinemaData', JSON.stringify(jsonObject))
+                  // this.setState({ thisCinemaData: jsonObject }, () => {
+                  //   alert('資料儲存成功')
+                  // })
+                })
+            } catch (e) {
+              console.log(e)
+            }
+            // sessionStorage.setItem('thisCinemaData', JSON.stringify(jsonObject))
+            this.setState({ thisCinemaData: jsonObject }, () => {
+              alert('資料儲存成功')
+            })
+          })
+      } catch (e) {
+        console.log(e)
+      }
+
+    } else {
+      alert('資料填寫有誤，請再次確認您的資料！')
+    }
+  }
   handleLogout = () => {
     //點擊登出，清除session並導回主頁
     // sessionStorage.removeItem('memberID') //不知道為什麼這個方法無效
@@ -477,12 +553,32 @@ class CinemaBackMainpage extends React.Component {
               ) : (
                 ''
               )}
+              {pagename === 'cinema-film-info' ? (
+                <>
+                  <div className="row">
+                    <div className="col-md-12 p-0">
+                      <ActivityTitle
+                        title={'影片資訊一覽'}
+                        className="content-title"
+                      />
+                    </div>
+                    <div className=" d-flex flex-wrap col-lg-12 my-5">
+                      <CinemaFilmTable
+                        thisData={this.state.thisCinemaData}
+                        allCinemaData={this.state.allCinemaD}
+                      />
+                    </div>
+                  </div>
+                </>
+              ) : (
+                ''
+              )}
               {pagename === 'cinema-film-post' ? (
                 <>
                   <div className="row">
                     <div className="col-md-12 p-0">
                       <ActivityTitle
-                        title={'影片上架管理'}
+                        title={'影片上架'}
                         className="content-title"
                       />
                     </div>
@@ -490,6 +586,7 @@ class CinemaBackMainpage extends React.Component {
                       <CinemaFilmUpdate
                         thisData={this.state.thisCinemaData}
                         allCinemaData={this.state.allCinemaD}
+                        handleCinemaFilmAdd={this.handleCinemaFilmAdd}
                       />
                     </div>
                   </div>
