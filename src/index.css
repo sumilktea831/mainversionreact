@@ -362,6 +362,9 @@ button.bg-orange {
   border-bottom: 2px solid #ffa510;
   border-left: 2px solid #ffa510;
 }
+.btn.btn-warning.addFilmSchedule{
+  border:1px solid #ffa510 !important;
+}
 .addFilmSchedule:hover{
   box-shadow: #d4d1cc 0px 0px 2px;
   transform: scale(1.2,1.2);

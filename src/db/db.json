@@ -787,6 +787,44 @@
       "schedule": [],
       "filmStar": [],
       "theater": "碼農Cafe"
+    },
+    {
+      "id": "cf1559410861837",
+      "title": "測試上架首頁顯示",
+      "titleEn": "",
+      "movie_rating": "普遍級 0+",
+      "imgSrc": "",
+      "type": "戲劇片警匪片",
+      "director": "",
+      "language": "華語",
+      "intro": "測試用",
+      "fullIntro": "測試介紹",
+      "filmTime": "",
+      "updateDate": "2019-06-02",
+      "inTheaterDate": "2019-05-10",
+      "outTheaterDate": "2019-06-28",
+      "schedule": [],
+      "filmStar": [],
+      "theater": "碼農Cafe"
+    },
+    {
+      "id": "cf1559410863063",
+      "title": "測試上架首頁顯示",
+      "titleEn": "",
+      "movie_rating": "普遍級 0+",
+      "imgSrc": "",
+      "type": "戲劇片警匪片",
+      "director": "",
+      "language": "華語",
+      "intro": "測試用",
+      "fullIntro": "測試介紹",
+      "filmTime": "",
+      "updateDate": "2019-06-02",
+      "inTheaterDate": "2019-05-10",
+      "outTheaterDate": "2019-06-28",
+      "schedule": [],
+      "filmStar": [],
+      "theater": "碼農Cafe"
     }
   ],
   "cinema-sign-inputmsg": [
@@ -1966,8 +2004,10 @@
       "career": "資訊 / 科技",
       "join_date": "2019-05-23",
       "permission": "generalMember",
-      "collectFilm": [],
-      "collectMovie": "m1558948576759",
+      "collectFilm": [
+        "cf1000000"
+      ],
+      "collectMovie": "m1558948576759m1558948651874",
       "collectCinema": [
         "c1",
         "c2"
@@ -2178,6 +2218,27 @@
           "outTheaterDate": "2019-06-11",
           "schedule": [],
           "filmStar": []
+        },
+        {
+          "id": "cf1559410861837",
+          "title": "測試上架首頁顯示",
+          "titleEn": "",
+          "movie_rating": "普遍級 0+",
+          "imgSrc": "",
+          "type": [
+            "戲劇片",
+            "警匪片"
+          ],
+          "director": "",
+          "language": "華語",
+          "intro": "測試用",
+          "fullIntro": "測試介紹",
+          "filmTime": "",
+          "updateDate": "2019-06-02",
+          "inTheaterDate": "2019-05-10",
+          "outTheaterDate": "2019-06-28",
+          "schedule": [],
+          "filmStar": []
         }
       ],
       "cinemaStar": [
@@ -2204,7 +2265,7 @@
         "m111111",
         "m22222"
       ],
-      "cinemaPageViews": 590,
+      "cinemaPageViews": 593,
       "cinemaSignUpDate": "1955-03-12",
       "purview": "cinemaMember",
       "cinemaMessage": [
