@@ -35,6 +35,10 @@ class MovieInfo extends React.Component {
       const moviePageOtherData = data.filter(
         item => item.id !== this.props.match.params.id
       )
+      moviePageData.imgSrc =
+        moviePageData.imgSrc.indexOf('http') == 0
+          ? moviePageData.imgSrc
+          : '/images/movieImg/' + moviePageData.imgSrc
       console.log(moviePageData)
       this.setState({ moviePageData: moviePageData })
       this.setState({ moviePageOtherData: moviePageOtherData })
@@ -214,7 +218,11 @@ class MovieInfo extends React.Component {
                     key={data.id}
                     title={data.theater}
                     subtitle={data.title}
-                    imgSrc={data.imgSrc}
+                    imgSrc={
+                      data.imgSrc.indexOf('http') == 0
+                        ? data.imgSrc
+                        : '/images/movieImg/' + data.imgSrc
+                    }
                   />
                 )}
               </div>
