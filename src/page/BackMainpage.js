@@ -259,6 +259,18 @@ class BackSidenav extends React.Component {
           }
         })
       })
+
+      const filmCollecCardData = dataFilm.map(item => ({
+        key: item.id,
+        id: item.id,
+        title: item.title,
+        subtitle: item.titleEn,
+        img: item.imgSrc,
+        link: item.id,
+        star: item.filmStar,
+        mark: memberPageData.markList,
+      }))
+
       // 如果資料筆數超過設定筆數  就只剩下這幾筆 (這邊設定4筆)  --到時候串接用
       const OnlyFourfilmCardata = []
       filmCard.map((item, index) => {
@@ -286,6 +298,7 @@ class BackSidenav extends React.Component {
         avatarOne: avatarOneData,
         boxData: dataBoxData,
         filmCard: filmCardData,
+        filmCollecCard: filmCollecCardData,
         myForumData: forumPublishData,
       })
     } catch (err) {
@@ -374,27 +387,50 @@ class BackSidenav extends React.Component {
     const jsonMark = await resMark.json()
     console.log(jsonMark)
 
+    // 搞卡片資料來改state渲染了.................
+    // thisNewFilmData==新的那筆影片原始資料
+    // 轉成卡片格式
+
+    let newOneCardData = {
+      key: thisNewFilmData.id,
+      id: thisNewFilmData.id,
+      title: thisNewFilmData.title,
+      subtitle: thisNewFilmData.titleEn,
+      img: thisNewFilmData.imgSrc,
+      link: thisNewFilmData.id,
+      star: thisNewFilmData.filmStar,
+      mark: NewMemberData.markList,
+    }
+    // 加到卡片資料裡面
+    const finalStateFilmCardData = this.state.filmCard.map(el => {
+      if (el.id === newOneCardData.id) {
+        el = newOneCardData
+      }
+      return el
+    })
+
     // 然後回去改card的state
     // 一樣限制只能有4筆
     const OnlyFourfilmCardata = []
-    this.state.filmCard.map((item, index) => {
+    finalStateFilmCardData.map((item, index) => {
       if (index < 4) {
         return OnlyFourfilmCardata.push(item)
       }
       return item
     })
 
-    const filmCardData = OnlyFourfilmCardata.map(item => ({
-      key: item.key,
-      id: item.id,
-      title: item.title,
-      subtitle: item.subtitle,
-      img: item.img,
-      link: item.link,
-      star: newVal.star,
-      mark: newVal.mark,
-    }))
-
+    const filmCardData = OnlyFourfilmCardata.map(item => {
+      return {
+        key: item.key,
+        id: item.id,
+        title: item.title,
+        subtitle: item.subtitle,
+        img: item.img,
+        link: item.link,
+        star: item.star, // 錯的
+        mark: item.mark,
+      }
+    })
     this.setState({ filmCard: filmCardData })
   }
 
@@ -583,7 +619,6 @@ class BackSidenav extends React.Component {
                   <div className="py-5">
                     <TitleKaga title="喜愛電影類型" />
                   </div>
-                  {/* 喜好列塞入處 */}
                   <div className="row d-flex align-items-center">
                     <Row>
                       {this.state.favTypeOptions.slice(1).map(item => (
@@ -683,6 +718,41 @@ class BackSidenav extends React.Component {
                       />
                     </div>
                   </div>
+                </>
+              ) : (
+                ''
+              )}
+              {pagename === 'collect-film' ? (
+                <>
+                  <TitleKaga title="收藏影片" />
+                  <div className="d-flex flex-wrap col-lg-12 mt-4">
+                    {this.state.filmCard.map((
+                      item //--串接時使用
+                    ) => (
+                      <CardKaga
+                        key={item.key}
+                        id={item.id}
+                        title={item.title}
+                        subtitle={item.subtitle}
+                        img={item.img}
+                        link={'/film/' + item.link}
+                        popup
+                        member
+                        star={item.star}
+                        starAmimation
+                        mark={item.mark}
+                        newStarAndMark={this.filmCardNewStarAndMark}
+                        del={this.filmCardDel}
+                      />
+                    ))}
+                  </div>
+                </>
+              ) : (
+                ''
+              )}
+              {pagename === 'collect-cinema' ? (
+                <>
+                  <TitleKaga title="收藏戲院" />
                 </>
               ) : (
                 ''
