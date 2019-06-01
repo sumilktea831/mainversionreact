@@ -13,14 +13,12 @@ class CinemaFilmUpdate extends React.Component {
       typeOptions: [],
       thisType: [],
       thisData: 0,
-      scheduleCount: ['1'],
+      scheduleCount: [],
       usertext:
       {
         id: '',
         title: '',
         titleEn: '',
-        theaterId: 0,
-        theater: 0,
         movie_rating: '',
         imgSrc: '',
         type: '',
@@ -34,21 +32,11 @@ class CinemaFilmUpdate extends React.Component {
         outTheaterDate: '',
         schedule: [],
         filmStar: [],
-        isagreed: false,
       },
 
       checkok: {
         //儲存格式驗證是否通過
         title: false,
-        cinemaTaxid: false,
-        cinemaName: false,
-        cinemaArea: false,
-        cinemaAddress: false,
-        cinemaPhone: false,
-        cinemaType: false,
-        cinemaAccount: false,
-        cinemaPassword: false,
-        cinemaRepwd: false,
       },
     }
   }
@@ -61,7 +49,7 @@ class CinemaFilmUpdate extends React.Component {
         ...prevState,
         thisData: nextProps.thisData,
       }
-      // console.log(stateToBeReturned)
+      console.log(stateToBeReturned)
     }
     return stateToBeReturned
 
@@ -293,8 +281,16 @@ class CinemaFilmUpdate extends React.Component {
     // alert(id + e.target.value)
     let date = document.querySelector('#' + id + "Date")
     let time = document.querySelector('#' + id + "Time")
+    const newtext = { ...this.state.usertext }
+    let newSchedule = []
+    let nowscheduleCount = document.getElementsByName('schedule').length
     document.querySelector('#' + id).innerHTML = date.value + ' ' + time.value
     console.log(document.getElementsByName('schedule'))
+    for (let i = 0; i < nowscheduleCount; i++) {
+      newSchedule.push(document.getElementsByName('schedule')[i].innerHTML)
+    }
+    newtext.schedule = newSchedule
+    this.setState({ usertext: newtext })
   }
   handleAddSchedule = () => {
     const originScheduleCount = this.state.scheduleCount.length
@@ -304,9 +300,62 @@ class CinemaFilmUpdate extends React.Component {
   }
   handleDelSchedule = () => {
     // const originScheduleCount = this.state.scheduleCount.length
+    const newtext = { ...this.state.usertext }
     const copyScheduleCount = [...this.state.scheduleCount]
-    copyScheduleCount.pop() 
-    this.setState({ scheduleCount: copyScheduleCount })
+    newtext.schedule.pop()
+    copyScheduleCount.pop()
+    this.setState({ usertext: newtext, scheduleCount: copyScheduleCount })
+  }
+  handleCinemaFilmAdd = () => {
+
+    let isAllChecked = true
+    let checkArray = Object.values(this.state.checkok)
+    isAllChecked = checkArray.reduce((a, b) => a && b)
+    // console.log('isAllChecked: ' + isAllChecked)
+
+    if (isAllChecked) {
+      const newtext = { ...this.state.usertext }
+      const newtextForMovieCard = { ...this.state.usertext }
+      const newData = { ...this.state.thisData }
+      const newDatatForMovieCard = { ...this.state.thisData }
+      let date = new Date()
+      let dateYMD =
+        date.getFullYear() +
+        '-' +
+        (date.getMonth() + 1 < 10
+          ? '0' + (date.getMonth() + 1)
+          : date.getMonth() + 1) +
+        '-' +
+        date.getDate()
+      newtext.id = "cf" + +date
+      newtext.updateDate = dateYMD
+      newData.cinemaFilm = [...newData.cinemaFilm, newtext]
+      console.log(newData)
+      // if (this.state.thisType.find(item => item == '全選')) {
+      //   newtextForMovieCard.type = newtextForMovieCard.type.slice(1).join('')
+      // }
+      try {
+        fetch('http://localhost:5555/cinema/' + this.state.thisData.id, {
+          method: 'PUT',
+          body: JSON.stringify(newData),
+          headers: new Headers({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          }),
+        })
+          .then(res => res.json())
+          .then(jsonObject => {
+            // sessionStorage.setItem('thisCinemaData', JSON.stringify(jsonObject))
+            this.setState({ thisCinemaData: jsonObject }, () => {
+              alert('資料儲存成功')
+            })
+          })
+      } catch (e) {
+        console.log(e)
+      }
+    } else {
+      alert('資料填寫有誤，請再次確認您的資料！')
+    }
   }
   render() {
     return (
@@ -331,7 +380,7 @@ class CinemaFilmUpdate extends React.Component {
                   selectOptions={item.selectOptions}
                   onChange={this.handleInputTextChange}
                 />
-                <small id={item.id + 'help'} class="form-text text-danger " />
+                <small id={item.id + 'help'} class="form-text text-danger text-center" />
               </>
             ))}
           </div>
@@ -399,7 +448,7 @@ class CinemaFilmUpdate extends React.Component {
                   }}
                   onChange={this.handleScheduleTime('schedule' + item)}
                 />
-                <p id={'schedule' + item} name="schedule" className="h5  d-flex align-items-center" style={{ height: '40px' }}></p>
+                <p id={'schedule' + item} name="schedule" className="h5 d-none align-items-center" style={{ height: '40px' }}>123</p>
               </div>
             </>
           ))}
@@ -425,10 +474,7 @@ class CinemaFilmUpdate extends React.Component {
         <Row className="my-5 d-flex justify-content-center">
           <Button
             className="btn btn-warning border-0 px-5"
-          // onClick={this.props.handleCinemaSignup(
-          //   this.state.usertext,
-          //   this.state.checkok
-          // )}
+            onClick={this.handleCinemaFilmAdd}
           >
             確認送出
         </Button>
