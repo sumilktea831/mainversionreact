@@ -200,7 +200,7 @@ class ForumBackMainpage extends React.Component {
                     留言數
                   </th>
                   <th scope="col" style={thStyle}>
-                    推數
+                    被蒐藏數
                   </th>
                   <th scope="col" style={thStyle}>
                     前往文章

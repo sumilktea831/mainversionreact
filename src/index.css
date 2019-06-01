@@ -433,6 +433,34 @@ button.bg-orange {
 #forumListScollTop::-webkit-scrollbar {
   width: 0 !important;
 }
+@media screen and (max-width: 991px) {
+  .listRWDHeight {
+    height: 250px !important;
+  }
+}
+@media screen and (min-width: 992px) and (max-width: 1400px) {
+  .forumLeftArea,
+  .forumRighttArea {
+    max-width: 83% !important;
+    flex: 0 0 83% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .listRWDHeight {
+    height: 300px !important;
+  }
+}
+@media screen and (min-width: 1400px) and (max-width: 1700px) {
+  .forumRighttArea {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+  .forumLeftArea {
+    max-width: 33% !important;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+  }
+}
 
 /*activity private*/
 
