@@ -901,8 +901,8 @@ class TheateInfo extends React.Component {
           </div>
           {/* 內容區 */}
           <div className="d-flex flex-column col-11">
-            <div className="py-2 text-white mb-0">
-              <TitleKaga title="類似戲院" />
+            <div className="py-2 text-white mb-2">
+              <TitleKaga title="推薦戲院" />
             </div>
             <div className="d-flex flex-wrap col-lg-11">
               {this.state.elseCard.map(item => (
