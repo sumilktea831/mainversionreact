@@ -52,6 +52,7 @@ class SignUp extends React.Component {
         join_date: '',
         permission: 'generalMember',
         collectFilm: [],
+        collectMovie:"",
         collectCinema: [],
         collectArticle: [],
         collectActivity: '',
@@ -81,6 +82,9 @@ class SignUp extends React.Component {
         cinemaSignUpDate: '',
         purview: 'cinemaMember',
         cinemaMessage: [],
+        cinemaFilm:[],
+        cinemaActivity:[]
+
       },
     }
   }
