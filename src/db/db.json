@@ -222,7 +222,7 @@
       "imgSrc": "https://g.udn.com.tw/upfiles/B_SH/shiow/PSN_PHOTO/591/f_24131591_1.jpg",
       "type": "戲劇片文藝片",
       "director": "導演名字",
-      "langauge": "華語",
+      "language": "華語",
       "intro": "電影簡介",
       "fullIntro": "電影介紹",
       "filmTime": "200",
@@ -280,7 +280,7 @@
         "2019-06-02 13:00",
         "2019-06-02 18:00"
       ],
-      "cinemaStar": [
+      "filmStar": [
         {
           "starId": "m111111",
           "star": 5
@@ -323,7 +323,7 @@
         "2019-06-02 13:00",
         "2019-06-02 18:00"
       ],
-      "cinemaStar": [
+      "filmStar": [
         {
           "starId": "m111111",
           "star": 5
@@ -365,7 +365,7 @@
         "2019-06-02 13:00",
         "2019-06-02 18:00"
       ],
-      "cinemaStar": [
+      "filmStar": [
         {
           "starId": "m111111",
           "star": 5
@@ -407,7 +407,7 @@
         "2019-06-02 13:00",
         "2019-06-02 18:00"
       ],
-      "cinemaStar": [
+      "filmStar": [
         {
           "starId": "m111111",
           "star": 5
@@ -449,7 +449,7 @@
         "2019-06-02 13:00",
         "2019-06-02 18:00"
       ],
-      "cinemaStar": [
+      "filmStar": [
         {
           "starId": "m111111",
           "star": 5
@@ -491,7 +491,7 @@
         "2019-06-02 13:00",
         "2019-06-02 18:00"
       ],
-      "cinemaStar": [
+      "filmStar": [
         {
           "starId": "m111111",
           "star": 5
@@ -533,7 +533,7 @@
         "2019-06-02 13:00",
         "2019-06-02 18:00"
       ],
-      "cinemaStar": [
+      "filmStar": [
         {
           "starId": "m111111",
           "star": 5
@@ -575,7 +575,7 @@
         "2019-06-02 13:00",
         "2019-06-02 18:00"
       ],
-      "cinemaStar": [
+      "filmStar": [
         {
           "starId": "m111111",
           "star": 5
@@ -617,7 +617,7 @@
         "2019-06-02 13:00",
         "2019-06-02 18:00"
       ],
-      "cinemaStar": [
+      "filmStar": [
         {
           "starId": "m111111",
           "star": 5
@@ -659,7 +659,7 @@
         "2019-06-02 13:00",
         "2019-06-02 18:00"
       ],
-      "cinemaStar": [
+      "filmStar": [
         {
           "starId": "m111111",
           "star": 5
@@ -718,7 +718,7 @@
         "2019-06-02 13:00",
         "2019-06-02 18:00"
       ],
-      "cinemaStar": [
+      "filmStar": [
         {
           "starId": "m111111",
           "star": 5
@@ -732,6 +732,44 @@
           "star": 5
         }
       ]
+    },
+    {
+      "id": "cf1559384923914",
+      "title": "測試6",
+      "titleEn": "66",
+      "movie_rating": "輔導級 15+",
+      "imgSrc": "",
+      "type": "懸疑片",
+      "director": "",
+      "language": "",
+      "intro": "",
+      "fullIntro": "",
+      "filmTime": "",
+      "updateDate": "2019-06-01",
+      "inTheaterDate": "",
+      "outTheaterDate": "",
+      "schedule": [],
+      "filmStar": [],
+      "theater": "碼農Cafe"
+    },
+    {
+      "id": "cf1559389596294",
+      "title": "測試7",
+      "titleEn": "",
+      "movie_rating": "",
+      "imgSrc": "",
+      "type": "動作片",
+      "director": "",
+      "language": "",
+      "intro": "123",
+      "fullIntro": "123",
+      "filmTime": "",
+      "updateDate": "2019-06-01",
+      "inTheaterDate": "",
+      "outTheaterDate": "",
+      "schedule": [],
+      "filmStar": [],
+      "theater": "碼農Cafe"
     }
   ],
   "cinema-sign-inputmsg": [
@@ -1129,7 +1167,7 @@
         },
         {
           "id": "cinema-film-post",
-          "name": "影片上架管理"
+          "name": "影片上架"
         },
         {
           "id": "cinema-film-analysis",
@@ -2035,13 +2073,77 @@
           "intro": "摘要",
           "fullIntro": "介紹",
           "filmTime": "120",
-          "updateDate": "2019-06-1",
+          "updateDate": "2019-06-01",
           "inTheaterDate": "2019-06-01",
           "outTheaterDate": "2019-06-05",
           "schedule": [
             "2019-06-01 01:00",
             "2019-06-01 03:00"
           ],
+          "filmStar": []
+        },
+        {
+          "id": "cf1559384160830",
+          "title": "測試555",
+          "titleEn": "5555",
+          "movie_rating": "輔導級 12+",
+          "imgSrc": "",
+          "type": [
+            "動作片"
+          ],
+          "director": "5555",
+          "language": "",
+          "intro": "",
+          "fullIntro": "",
+          "filmTime": "140",
+          "updateDate": "2019-06-01",
+          "inTheaterDate": "2019-06-01",
+          "outTheaterDate": "2019-06-29",
+          "schedule": [
+            "2019-06-05 01:00"
+          ],
+          "filmStar": []
+        },
+        {
+          "id": "cf1559384724141",
+          "title": "測試5",
+          "titleEn": "5",
+          "movie_rating": "",
+          "imgSrc": "",
+          "type": [
+            "動作片"
+          ],
+          "director": "",
+          "language": "俄語",
+          "intro": "ㄉˇ",
+          "fullIntro": "ㄉˇ",
+          "filmTime": "120",
+          "updateDate": "2019-06-01",
+          "inTheaterDate": "2019-06-01",
+          "outTheaterDate": "2019-06-20",
+          "schedule": [
+            "2019-06-20 00:59"
+          ],
+          "filmStar": []
+        },
+        {
+          "id": "cf1559389596294",
+          "title": "測試7",
+          "titleEn": "",
+          "movie_rating": "",
+          "imgSrc": "",
+          "type": [
+            "動作片"
+          ],
+          "director": "",
+          "language": "",
+          "intro": "123",
+          "fullIntro": "123",
+          "filmTime": "",
+          "updateDate": "2019-06-01",
+          "inTheaterDate": "2019-06-01",
+          "outTheaterDate": "2019-06-11",
+          "schedule": [],
           "filmStar": []
         }
       ],
@@ -2069,7 +2171,7 @@
         "m111111",
         "m22222"
       ],
-      "cinemaPageViews": 585,
+      "cinemaPageViews": 590,
       "cinemaSignUpDate": "1955-03-12",
       "purview": "cinemaMember",
       "cinemaMessage": [
@@ -2249,7 +2351,7 @@
       "cinemaAwesome": [
         "234"
       ],
-      "cinemaPageViews": 573,
+      "cinemaPageViews": 577,
       "cinemaSignUpDate": "1955-03-12",
       "purview": "cinemaMember",
       "cinemaMessage": [
@@ -2477,7 +2579,7 @@
       "cinemaAwesome": [
         "234"
       ],
-      "cinemaPageViews": "572",
+      "cinemaPageViews": 573,
       "cinemaSignUpDate": "1955-03-12",
       "purview": "cinemaMember",
       "cinemaMessage": [
@@ -2650,6 +2752,7 @@
       "id": 1,
       "headline": "《明天，最後一天》如果明天是最後一天",
       "forumSpoilers": false,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 15:46",
       "forumCreateDateInSecond": 1559029597692,
@@ -2677,6 +2780,7 @@
       "id": 2,
       "headline": "《你的臉》你的臉，你的故事",
       "forumSpoilers": true,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 15:54",
       "forumCreateDateInSecond": 1559030053224,
@@ -2704,6 +2808,7 @@
       "id": 3,
       "headline": "《刺青舞者》天縱英才的美麗與哀愁",
       "forumSpoilers": false,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 16:05",
       "forumCreateDateInSecond": 1559030714213,
@@ -2742,6 +2847,7 @@
       "id": 4,
       "headline": "布萊德利庫柏原無意演《一個巨星的誕生》男主角",
       "forumSpoilers": false,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 16:11",
       "forumCreateDateInSecond": 1559031061038,
@@ -2780,6 +2886,7 @@
       "id": 5,
       "headline": "《她的錯誤教育》接受本真的自我",
       "forumSpoilers": true,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 16:13",
       "forumCreateDateInSecond": 1559031228395,
@@ -2807,6 +2914,7 @@
       "id": 6,
       "headline": "《四百擊》朦朧的少年愁緒",
       "forumSpoilers": false,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 16:17",
       "forumCreateDateInSecond": 1559031429670,
@@ -2834,6 +2942,7 @@
       "id": 7,
       "headline": "《三張面孔》翻山越嶺拍出好電影",
       "forumSpoilers": false,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 16:19",
       "forumCreateDateInSecond": 1559031542447,
@@ -2849,6 +2958,7 @@
       "id": 8,
       "headline": "《最酷的旅伴》有光才有影",
       "forumSpoilers": true,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 16:20",
       "forumCreateDateInSecond": 1559031615787,
@@ -2876,6 +2986,7 @@
       "id": 9,
       "headline": "《日常對話》只想和你說說心裏話",
       "forumSpoilers": true,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 16:22",
       "forumCreateDateInSecond": 1559031726131,
@@ -2891,6 +3002,7 @@
       "id": 10,
       "headline": "《計程人生》拍出的是骨氣，亦或欲拒還迎？",
       "forumSpoilers": false,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 16:23",
       "forumCreateDateInSecond": 1559031824965,
@@ -2918,6 +3030,7 @@
       "id": 11,
       "headline": "《科洛弗檔案 Cloverfield》 - 真實的偽紀錄",
       "forumSpoilers": true,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 16:24",
       "forumCreateDateInSecond": 1559031885611,
@@ -2945,6 +3058,7 @@
       "id": 12,
       "headline": "《時尚惡魔的盛宴》：鏡花水月",
       "forumSpoilers": false,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 16:29",
       "forumCreateDateInSecond": 1559032177484,
@@ -2960,6 +3074,7 @@
       "id": 13,
       "headline": "《幸福的拉札洛》無知便是福",
       "forumSpoilers": true,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 16:31",
       "forumCreateDateInSecond": 1559032298313,
@@ -2975,6 +3090,7 @@
       "id": 14,
       "headline": "《明天，最後一天》如果明天是最後一天",
       "forumSpoilers": false,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 15:46",
       "forumCreateDateInSecond": 1559029597692,
@@ -3002,6 +3118,7 @@
       "id": 15,
       "headline": "《你的臉》你的臉，你的故事",
       "forumSpoilers": true,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 15:54",
       "forumCreateDateInSecond": 1559030053224,
@@ -3029,6 +3146,7 @@
       "id": 16,
       "headline": "《刺青舞者》天縱英才的美麗與哀愁",
       "forumSpoilers": false,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 16:05",
       "forumCreateDateInSecond": 1559030714213,
@@ -3067,6 +3185,7 @@
       "id": 17,
       "headline": "布萊德利庫柏原無意演《一個巨星的誕生》男主角",
       "forumSpoilers": false,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 16:11",
       "forumCreateDateInSecond": 1559031061038,
@@ -3105,6 +3224,7 @@
       "id": 18,
       "headline": "《她的錯誤教育》接受本真的自我",
       "forumSpoilers": true,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 16:13",
       "forumCreateDateInSecond": 1559031228395,
@@ -3132,6 +3252,7 @@
       "id": 19,
       "headline": "《四百擊》朦朧的少年愁緒",
       "forumSpoilers": false,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 16:17",
       "forumCreateDateInSecond": 1559031429670,
@@ -3159,6 +3280,7 @@
       "id": 20,
       "headline": "《三張面孔》翻山越嶺拍出好電影",
       "forumSpoilers": false,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 16:19",
       "forumCreateDateInSecond": 1559031542447,
@@ -3174,6 +3296,7 @@
       "id": 21,
       "headline": "《最酷的旅伴》有光才有影",
       "forumSpoilers": true,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 16:20",
       "forumCreateDateInSecond": 1559031615787,
@@ -3201,6 +3324,7 @@
       "id": 22,
       "headline": "《日常對話》只想和你說說心裏話",
       "forumSpoilers": true,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 16:22",
       "forumCreateDateInSecond": 1559031726131,
@@ -3216,6 +3340,7 @@
       "id": 23,
       "headline": "《計程人生》拍出的是骨氣，亦或欲拒還迎？",
       "forumSpoilers": false,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 16:23",
       "forumCreateDateInSecond": 1559031824965,
@@ -3243,6 +3368,7 @@
       "id": 24,
       "headline": "《科洛弗檔案 Cloverfield》 - 真實的偽紀錄",
       "forumSpoilers": true,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 16:24",
       "forumCreateDateInSecond": 1559031885611,
@@ -3270,6 +3396,7 @@
       "id": 25,
       "headline": "《時尚惡魔的盛宴》：鏡花水月",
       "forumSpoilers": false,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 16:29",
       "forumCreateDateInSecond": 1559032177484,
@@ -3285,6 +3412,7 @@
       "id": 26,
       "headline": "《幸福的拉札洛》無知便是福",
       "forumSpoilers": true,
+      "forumCollectMember": [],
       "forumViews": 0,
       "forumCreateDate": "2019/05/28 16:31",
       "forumCreateDateInSecond": 1559032298313,

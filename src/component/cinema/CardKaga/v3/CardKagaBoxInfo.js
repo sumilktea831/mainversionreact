@@ -175,7 +175,7 @@ class CardKagaBox extends React.Component {
                       style={{ width: '80px', margin: '0 8px 0 0' }}
                       type="button"
                       variant="primary"
-                      href={'CinemaBackMainpage/cinema-film-info'}
+                      href={'/CinemaBackMainpage/cinema-film-info'}
                     >
                       管理
                     </Button>

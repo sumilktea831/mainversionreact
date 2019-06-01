@@ -22,7 +22,7 @@ class TheateInfo extends React.Component {
       dataFile: '',
       HeroSection: '',
       BigCarData: '',
-      SliderData: '',
+      SliderData: [],
       ActivityCardData: [],
       FilmCardData: [],
       MessageBoard: [],
@@ -166,13 +166,17 @@ class TheateInfo extends React.Component {
         // 如果你沒登陸或是沒評過分 一開始就顯示平均分數
       } else {
         const dataStarArray = thisCinema.cinemaStar.map(el => el.star)
-        const dataStarSum = dataStarArray.reduce((a, b) => a + b)
-        const dataStarAverage = dataStarSum / dataStarArray.length
-        dataStar = Math.round(dataStarAverage)
+        if (dataStarArray.length === 0) {
+          dataStar = 0
+        } else {
+          const dataStarSum = dataStarArray.reduce((a, b) => a + b)
+          const dataStarAverage = dataStarSum / dataStarArray.length
+          dataStar = Math.round(dataStarAverage)
+        }
       }
       const BigCarData = {
         id: dataCinema.id,
-        img: dataCinema.cinemaHeroImg,
+        img: dataCinema.cinemaLogoImg,
         address: dataCinema.cinemaAddress,
         phone: dataCinema.cinemaPhone,
         taxid: dataCinema.cinemaTaxid,
@@ -259,7 +263,7 @@ class TheateInfo extends React.Component {
           subtitle: el.cinemaCity + '/' + el.cinemaArea,
           img: 'http://localhost:3000/images/cinemaImg/' + el.cinemaHeroImg,
           // 因為是原頁面跳轉 所以直接帶這樣才能實現跳轉
-          link: '/cinema/' + el.id,
+          link: '/cinema/' + dataCinema.id + '/' + el.id,
           // 不先驗證是否有會員的會會跳錯
           collection: [],
         }
@@ -578,6 +582,8 @@ class TheateInfo extends React.Component {
   // 大卡星星數改變接資料庫----完成
   StarChange = async (id, star) => {
     // 先判斷對方有沒有平過分
+    console.log('this.state.cinemaData')
+    console.log(this.state.cinemaData)
     let hadOrNot = this.state.cinemaData.cinemaStar.some(
       el => el.starId === memberId
     )
@@ -652,8 +658,8 @@ class TheateInfo extends React.Component {
   }
 
   render() {
-    // console.log('this.state.BigCarData.awesome')
-    // console.log(this.state.BigCarData.awesome)
+    console.log('this.state.SliderData')
+    console.log(this.state.SliderData.img)
     return (
       <>
         <div className="overflow-hidden">
@@ -747,11 +753,13 @@ class TheateInfo extends React.Component {
             <div className="py-5">
               <TitleKaga title="環境照片" />
             </div>
-            <Row className="justify-content-md-center w-100">
-              <Col md={11}>
-                <CinemaSlider sData={this.state.SliderData} />
-              </Col>
-            </Row>
+            <div style={{ height: '400px' }}>
+              <Row className="justify-content-md-center w-100">
+                <Col md={11}>
+                  <CinemaSlider sData={this.state.SliderData} />
+                </Col>
+              </Row>
+            </div>
 
             {/* 上映影片卡片 */}
             <div className="py-5">
@@ -798,7 +806,7 @@ class TheateInfo extends React.Component {
                     className="d-flex justify-content-center align-items-center w-100"
                     style={{ height: '300px', fontSize: '30px' }}
                   >
-                    目前沒有進行中的活動喔
+                    目前沒有上架的影片喔
                   </div>
                 )}
               </div>
@@ -903,21 +911,43 @@ class TheateInfo extends React.Component {
           </div>
           {/* 內容區 */}
           <div className="d-flex flex-column col-11">
-            <div className="py-2 text-white mb-2">
-              <TitleKaga title="推薦戲院" />
-            </div>
-            <div className="d-flex flex-wrap col-lg-11">
-              {this.state.elseCard.map(item => (
-                <CardKaga
-                  key={item.id}
-                  id={item.id}
-                  title={item.title}
-                  subtitle={item.subtitle}
-                  img={item.img}
-                  link={item.link}
-                />
-              ))}
-            </div>
+            {cinemaId ? (
+              <>
+                <div className="py-2 text-white mb-2">
+                  <TitleKaga title="相似對手" />
+                </div>
+                <div className="d-flex flex-wrap col-lg-11">
+                  {this.state.elseCard.map(item => (
+                    <CardKaga
+                      key={item.id}
+                      id={item.id}
+                      title={item.title}
+                      subtitle={item.subtitle}
+                      img={item.img}
+                      link={item.link}
+                    />
+                  ))}
+                </div>
+              </>
+            ) : (
+              <>
+                <div className="py-2 text-white mb-2">
+                  <TitleKaga title="推薦戲院" />
+                </div>
+                <div className="d-flex flex-wrap col-lg-11">
+                  {this.state.elseCard.map(item => (
+                    <CardKaga
+                      key={item.id}
+                      id={item.id}
+                      title={item.title}
+                      subtitle={item.subtitle}
+                      img={item.img}
+                      link={item.link}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         </div>
       </>

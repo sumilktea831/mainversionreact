@@ -5,10 +5,12 @@ const ListViewsRoy = props => {
     <>
       <div className="d-flex">
         <div>
-          <h5 className="text-light my-0 ml-2">{props.listforumViews}</h5>
+          <h5 className="text-light my-0 ml-2">
+            {props.listforumViews > 999 ? '999+' : props.listforumViews}
+          </h5>
         </div>
-        <div>
-          <i className="fas fa-eye mx-2 text-light" />
+        <div className="py-1">
+          <i className="fas fa-bookmark mx-2 text-light" />
         </div>
       </div>
     </>

@@ -364,8 +364,8 @@ class Cinema extends React.Component {
       <>
         <ActivitySection
           pictureSrc="http://localhost:3000/images/cinemaImg/cinemaSearch.jpg"
-          bigSlogan="為每位影人找尋落腳角落"
-          midSlogan="探詢簡潔優雅的閱聽地點"
+          bigSlogan="遍尋每位影人駐足的角落"
+          midSlogan="在眾多劇場堆疊成的影視花園裡沈迷"
           smallSlogan="開始瀏覽"
           // section={'#test'}
           pagename={'/cinema/'}

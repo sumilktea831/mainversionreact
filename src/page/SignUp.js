@@ -52,6 +52,7 @@ class SignUp extends React.Component {
         join_date: '',
         permission: 'generalMember',
         collectFilm: [],
+        collectMovie:"",
         collectCinema: [],
         collectArticle: [],
         collectActivity: '',
@@ -76,11 +77,14 @@ class SignUp extends React.Component {
         cinemaWeb: '',
         cinemaEmail: '',
         cinemaBackupEmail: '',
-        cinemaAwesome: '',
+        cinemaAwesome: [],
         cinemaPageViews: '',
         cinemaSignUpDate: '',
         purview: 'cinemaMember',
         cinemaMessage: [],
+        cinemaFilm:[],
+        cinemaActivity:[]
+
       },
     }
   }
@@ -305,7 +309,9 @@ class SignUp extends React.Component {
               ? '0' + (date.getMonth() + 1)
               : date.getMonth() + 1) +
             '-' +
-            date.getDate()
+            (date.getDate() < 10
+            ? '0' + (date.getDate())
+            : date.getDate())
           let newSignUpData = { ...this.state.memberSignUpdata }
           newSignUpData.id = 'm' + +date //+date:將日期轉為數字，再在前面加上"m"
           newSignUpData.join_date = dateYMD
@@ -396,7 +402,9 @@ class SignUp extends React.Component {
               ? '0' + (date.getMonth() + 1)
               : date.getMonth() + 1) +
             '-' +
-            date.getDate()
+            (date.getDate() < 10
+            ? '0' + (date.getDate())
+            : date.getDate())
           let newSignUpData = { ...this.state.cinemaSignUpdata }
           newSignUpData.id = 'c' + +date //+date:將日期轉為數字，再在前面加上"c"
           newSignUpData.cinemaName = cinemaName

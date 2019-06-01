@@ -23,7 +23,7 @@ class CinemaFilmUpdate extends React.Component {
         imgSrc: '',
         type: '',
         director: '',
-        langauge: '',
+        language: '',
         intro: '',
         fullIntro: '',
         filmTime: '',
@@ -306,57 +306,82 @@ class CinemaFilmUpdate extends React.Component {
     copyScheduleCount.pop()
     this.setState({ usertext: newtext, scheduleCount: copyScheduleCount })
   }
-  handleCinemaFilmAdd = () => {
+  // handleCinemaFilmAdd = () => {
 
-    let isAllChecked = true
-    let checkArray = Object.values(this.state.checkok)
-    isAllChecked = checkArray.reduce((a, b) => a && b)
-    // console.log('isAllChecked: ' + isAllChecked)
+  //   let isAllChecked = true
+  //   let checkArray = Object.values(this.state.checkok)
+  //   isAllChecked = checkArray.reduce((a, b) => a && b)
+  //   // console.log('isAllChecked: ' + isAllChecked)
 
-    if (isAllChecked) {
-      const newtext = { ...this.state.usertext }
-      const newtextForMovieCard = { ...this.state.usertext }
-      const newData = { ...this.state.thisData }
-      const newDatatForMovieCard = { ...this.state.thisData }
-      let date = new Date()
-      let dateYMD =
-        date.getFullYear() +
-        '-' +
-        (date.getMonth() + 1 < 10
-          ? '0' + (date.getMonth() + 1)
-          : date.getMonth() + 1) +
-        '-' +
-        date.getDate()
-      newtext.id = "cf" + +date
-      newtext.updateDate = dateYMD
-      newData.cinemaFilm = [...newData.cinemaFilm, newtext]
-      console.log(newData)
-      // if (this.state.thisType.find(item => item == '全選')) {
-      //   newtextForMovieCard.type = newtextForMovieCard.type.slice(1).join('')
-      // }
-      try {
-        fetch('http://localhost:5555/cinema/' + this.state.thisData.id, {
-          method: 'PUT',
-          body: JSON.stringify(newData),
-          headers: new Headers({
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          }),
-        })
-          .then(res => res.json())
-          .then(jsonObject => {
-            // sessionStorage.setItem('thisCinemaData', JSON.stringify(jsonObject))
-            this.setState({ thisCinemaData: jsonObject }, () => {
-              alert('資料儲存成功')
-            })
-          })
-      } catch (e) {
-        console.log(e)
-      }
-    } else {
-      alert('資料填寫有誤，請再次確認您的資料！')
-    }
-  }
+  //   if (isAllChecked) {
+  //     const newtext = { ...this.state.usertext }
+  //     const newData = { ...this.state.thisData }
+  //     const newtextForMovieCard = { ...this.state.usertext }
+  //     const newDatatForMovieCard = { ...this.state.thisData }
+  //     let date = new Date()
+  //     let dateYMD =
+  //       date.getFullYear() +
+  //       '-' +
+  //       (date.getMonth() + 1 < 10
+  //         ? '0' + (date.getMonth() + 1)
+  //         : date.getMonth() + 1) +
+  //       '-' +
+  //       (date.getDate() < 10
+  //       ? '0' + (date.getDate())
+  //       : date.getDate())
+  //     newtext.id = "cf" + +date
+  //     newtext.updateDate = dateYMD
+  //     newData.cinemaFilm = [...newData.cinemaFilm, newtext]
+  //     console.log(newData)
+  //     const newDatatForMovieCard = { ...newData }
+  //     if (this.state.thisType.find(item => item == '全選')) {
+  //       newDatatForMovieCard.cinemaFilm.type =  newDatatForMovieCard.cinemaFilm.type.slice(1).join('')
+  //     }else{
+  //       newDatatForMovieCard.cinemaFilm.type =  newDatatForMovieCard.cinemaFilm.join('')
+  //     }
+  //     newDatatForMovieCard.cinemaFilm.theater = this.state.thisData.cinemaName
+  //     try {
+  //       fetch('http://localhost:5555/cinema/' + this.state.thisData.id, {
+  //         method: 'PUT',
+  //         body: JSON.stringify(newData),
+  //         headers: new Headers({
+  //           Accept: 'application/json',
+  //           'Content-Type': 'application/json',
+  //         }),
+  //       })
+  //         .then(res => res.json())
+  //         .then(jsonObject => {
+  //           // sessionStorage.setItem('thisCinemaData', JSON.stringify(jsonObject))
+  //           this.setState({ thisCinemaData: jsonObject }, () => {
+  //             alert('資料儲存成功')
+  //           })
+  //         })
+  //     } catch (e) {
+  //       console.log(e)
+  //     }
+  //     try {
+  //       fetch('http://localhost:5555/movieCardData/', {
+  //         method: 'PUT',
+  //         body: JSON.stringify(newDatatForMovieCard),
+  //         headers: new Headers({
+  //           Accept: 'application/json',
+  //           'Content-Type': 'application/json',
+  //         }),
+  //       })
+  //         .then(res => res.json())
+  //         .then(jsonObject => {
+  //           // sessionStorage.setItem('thisCinemaData', JSON.stringify(jsonObject))
+  //           // this.setState({ thisCinemaData: jsonObject }, () => {
+  //           //   alert('資料儲存成功')
+  //           // })
+  //         })
+  //     } catch (e) {
+  //       console.log(e)
+  //     }
+  //   } else {
+  //     alert('資料填寫有誤，請再次確認您的資料！')
+  //   }
+  // }
   render() {
     return (
       <>
@@ -474,7 +499,11 @@ class CinemaFilmUpdate extends React.Component {
         <Row className="my-5 d-flex justify-content-center">
           <Button
             className="btn btn-warning border-0 px-5"
-            onClick={this.handleCinemaFilmAdd}
+            onClick={this.props.handleCinemaFilmAdd(
+              this.state.usertext,
+              this.state.checkok,
+              this.state.thisType,
+            )}
           >
             確認送出
         </Button>
