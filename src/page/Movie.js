@@ -417,7 +417,11 @@ class Movie extends React.Component {
                     key={data.id}
                     title={data.theater}
                     subtitle={data.title}
-                    imgSrc={data.imgSrc}
+                    imgSrc={
+                      data.imgSrc.indexOf('http') == 0
+                        ? data.imgSrc
+                        : '/images/movieImg/' + data.imgSrc
+                    }
                     collectOpen
                     isCollect={
                       this.state.collectMovie.indexOf(data.id) > -1
@@ -432,7 +436,11 @@ class Movie extends React.Component {
                     key={data.id}
                     title={data.theater}
                     subtitle={data.title}
-                    imgSrc={data.imgSrc}
+                    imgSrc={
+                      data.imgSrc.indexOf('http') == 0
+                        ? data.imgSrc
+                        : '/images/movieImg/' + data.imgSrc
+                    }
                   />
                 )}
               </div>
