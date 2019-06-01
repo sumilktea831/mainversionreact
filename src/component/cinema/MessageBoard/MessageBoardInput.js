@@ -16,7 +16,7 @@ class MessageBoardInput extends React.Component {
   onChange = e => {
     this.setState({ textAreaValue: e.target.value })
     const length = e.target.value.length
-    if (length >= 4) {
+    if (length >= 2) {
       this.setState(() => ({ disabled: false }))
     } else if (!this.state.disabled) {
       this.setState(() => ({ disabled: true }))
@@ -25,7 +25,7 @@ class MessageBoardInput extends React.Component {
 
   handleSave = () => {
     this.props.MessageBoardSave(this.state.textAreaValue)
-    this.setState({ textAreaValue: '' })
+    this.setState({ textAreaValue: '', disabled: true })
   }
 
   render() {
@@ -95,6 +95,7 @@ class MessageBoardInput extends React.Component {
     )
   }
 }
+
 const styles = {
   textarea: {
     width: '70%',
