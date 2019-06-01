@@ -187,6 +187,8 @@ class BackSidenav extends React.Component {
       })
       const dataMember = await resMember.json()
 
+      const dataThisMember = dataMember.filter(el => el.id === memberId)
+
       // 導入論壇資料
       const resForum = await fetch('http://localhost:5555/forum', {
         method: 'GET',
@@ -265,17 +267,45 @@ class BackSidenav extends React.Component {
       // 元件filmCard
       // 先找出影片id跟會員收藏id一致的資料 (會員收藏是array) --到時候串接用
       // 完整的影片資料 dataFilm
-      const filmCard = []
+      const boosMovieCollec = []
+      for (let i = 0; i < dataThisMember[0].collectMovie.length / 14; i++) {
+        boosMovieCollec.push(
+          dataThisMember[0].collectMovie.substring(14 * i, 14 * i + 14)
+        )
+      }
+
+      const fileCard1 = []
+      const fileCard2 = []
       dataFilm.filter(item => {
         return memberPageData.collectFilm.map(items => {
           if (item.id === items) {
-            filmCard.push(item)
+            fileCard1.push(item)
+          }
+        })
+      })
+      dataFilm.filter(item => {
+        return boosMovieCollec.map(items => {
+          if (item.id === items) {
+            fileCard2.push(item)
           }
         })
       })
 
+      console.log(boosMovieCollec)
+      fileCard1.map(el1 => {
+        fileCard2.map(el2 => {
+          if (el2.id !== el1.id) {
+            fileCard1.push(el2)
+          }
+          return el2
+        })
+        return el1
+      })
+
+      console.log('fileCard1')
+      console.log(fileCard1)
       // 影片收藏頁卡片的資料
-      const filmCollecCardData = dataFilm.map(item => ({
+      const filmCollecCardData = fileCard1.map(item => ({
         key: item.id,
         id: item.id,
         title: item.title,
@@ -314,7 +344,7 @@ class BackSidenav extends React.Component {
       // 資訊頁卡片要限制四筆
       // 如果資料筆數超過設定筆數  就只剩下這幾筆 (這邊設定4筆)  --到時候串接用
       const OnlyFourfilmCardata = []
-      filmCard.map((item, index) => {
+      fileCard1.map((item, index) => {
         if (index < 4) {
           return OnlyFourfilmCardata.push(item)
         }
@@ -946,7 +976,7 @@ class BackSidenav extends React.Component {
                 <>
                   <TitleKaga title="收藏影片" />
                   <div className="d-flex flex-wrap col-lg-12 mt-4">
-                    {this.state.filmCard.map((
+                    {this.state.filmCollecCard.map((
                       item //--串接時使用
                     ) => (
                       <CardKaga

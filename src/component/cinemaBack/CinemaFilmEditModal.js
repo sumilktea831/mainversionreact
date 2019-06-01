@@ -1,0 +1,158 @@
+import React from 'react'
+import { Button, Modal, InputGroup, FormControl, Row } from 'react-bootstrap'
+import InputWithLabelForEdit_Su from '../inputs/InputWithLabelForEdit_Su'
+import CheckboxMultiForCinemaTypeSu from '../inputs/CheckboxMultiForCinemaTypeSu'
+import ActivityTitle from '../activity/ActivityTitle/ActivityTitle'
+const CinemaFilmEditModal = props => {
+    return (
+        <>
+            <Modal show={props.show} onHide={props.handleClose}
+                size="xl"
+            // dialogClassName='m'
+            >
+                <Modal.Header closeButton className="bg-second-darkblue d-flex justify-content-center">
+                    <Modal.Title>
+                        影片資訊 {props.disableIdField ? '編輯' : '新增'}
+                    </Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="cinemaFilmEditModal bg-second-darkblue">
+                    <div className="d-flex justify-content-center"
+                        style={{ overflow: 'hidden' }}>
+                        <img src={'/images/cinemaImg/' + props.thisData.imgSrc}
+                            style={{ width: '250px', height: '355px', objectFit: 'cover' }}
+                        />
+                    </div>
+                    <Row>
+                        <div className="col-lg-6 mt-3 h5">
+                            {props.inputmsg.map(item => (
+                                <>
+                                    <InputWithLabelForEdit_Su
+                                        key={item.id}
+                                        id={item.id}
+                                        inputWidth={item.w}
+                                        inputHeight={props.inputH}
+                                        // inputHeight={item.h} //如果想要每個input不一樣高，則在state.inputmsg中分別下高
+                                        inputType={item.inputType}
+                                        inputLabel={item.inputLabel}
+                                        iconLeft={item.iconL}
+                                        iconLeftSize={item.iconLS}
+                                        placeholder={item.placeholder}
+                                        iconRight={item.iconR}
+                                        iconRightSize={item.iconRS}
+                                        selectOptions={item.selectOptions}
+                                        thisData={props.thisData}
+                                        onChange={props.handleInputTextChange}
+                                    />
+                                    <small id={item.id + 'help'} class="form-text text-danger text-center" />
+                                </>
+                            ))}
+                        </div>
+                        <div className="col-lg-6 my-4 h5">
+                            <p className="h5 my-4">影片摘要</p>
+                            <textarea
+                                name="intro"
+                                className="border border-warning bg-back-input rounded text-orange"
+                                placeholder="請輸入影片簡介..."
+                                style={{
+                                    width: '100%',
+                                    height: '135px',
+                                }}
+                                onChange={props.handleInputTextChange}
+                            >
+                                {props.thisData.intro}
+                            </textarea>
+                            <p className="h5 my-4">影片介紹</p>
+                            <textarea
+                                name="fullIntro"
+                                className="border border-warning bg-back-input rounded text-orange"
+                                placeholder="請輸入影片完整內容介紹..."
+                                style={{
+                                    width: '100%',
+                                    height: '355px',
+                                }}
+                                onChange={props.handleInputTextChange}
+                            // cols="50"
+                            // rows="5"
+                            >
+                                {props.thisData.fullIntro}
+                            </textarea>
+                        </div>
+                    </Row>
+                    <div className="row mt-5 mb-3 d-flex">
+                        <div className="col-md-12 p-0">
+                            <ActivityTitle title={'時刻表'} className="content-title" />
+                            <button
+                                className="btn btn-warning ml-4 rounded-circle addFilmSchedule mytransition5"
+                                onClick={props.handleAddSchedule}
+                            ><i class="fas fa-plus text-darkblue"></i></button>
+                            <button
+                                className="btn btn-danger ml-4 rounded-circle addFilmSchedule mytransition5"
+                                onClick={props.handleDelSchedule}
+                            ><i class="fas fa-minus text-darkblue"></i></button>
+                        </div>
+                    </div>
+                    <Row>
+
+                        {props.thisData.schedule ? props.thisData.schedule.map((item, index) => (
+                            <>
+                                <div className="col-lg-6 d-flex align-items-center">
+                                    <p className="h5 d-flex align-items-center mx-3" style={{ height: '40px' }}>{index + 1}.</p>
+                                    <input type="date"
+                                        id={'schedule' + (index + 1) + 'Date'}
+                                        className="h5 my-4 border border-warning bg-back-input rounded text-orange text-center"
+                                        style={{
+                                            width: '40%',
+                                            height: '40px',
+                                        }}
+                                        value={item.split(" ")[0]}
+                                    // onChange={props.handleScheduleTime('schedule' + item)}
+                                    />
+                                    <input type="time"
+                                        id={'schedule' + (index + 1) + 'Time'}
+                                        className="h5 my-4 border border-warning bg-back-input rounded text-orange text-center"
+                                        style={{
+                                            width: '40%',
+                                            height: '40px',
+                                        }}
+                                        value={item.split(" ")[1]}
+                                    // onChange={props.handleScheduleTime('schedule' + item)}
+                                    />
+                                    <p id={'schedule' + (index + 1)} name="schedule" className="h5 d-none align-items-center" style={{ height: '40px' }}>123</p>
+                                </div>
+                            </>
+                        )) : ''}
+
+                    </Row>
+                    <div className="row mt-5 mb-3">
+                        <div className="col-md-12 p-0">
+                            <ActivityTitle title={'影片類型'} className="content-title" />
+                        </div>
+                    </div>
+                    <Row>
+                        {props.typeOptions.map(item => (
+                            <CheckboxMultiForCinemaTypeSu
+                                // thisData={this.state.thisData}
+                                inputName="type"
+                                optionId={item.id}
+                                optionName={item.name}
+                                thisType={props.thisType}
+                                onChange={props.handleInputTextChange}
+                            />
+                        ))}
+                    </Row>
+
+                </Modal.Body>
+                <Modal.Footer className="bg-second-darkblue d-flex justify-content-center">
+                    <Button variant="secondary" onClick={props.handleClose}>
+                        關閉
+            </Button>
+                    <Button variant="primary" onClick={props.handleModalFormInputSave}>
+                        儲存
+            </Button>
+                </Modal.Footer>
+            </Modal>
+        </>
+    )
+}
+
+export default CinemaFilmEditModal
