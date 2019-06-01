@@ -1,21 +1,26 @@
 import React from 'react'
 import { Card, Button, Row, Col } from 'react-bootstrap'
 import InputWithLabel_Su from '../inputs/InputWithLabel_Su'
-import CheckboxMultiSu from '../inputs/CheckboxMultiSu'
+import CheckboxMultiForCinemaTypeSu from '../inputs/CheckboxMultiForCinemaTypeSu'
 import ActivityTitle from '../activity/ActivityTitle/ActivityTitle'
 
 class CinemaFilmUpdate extends React.Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
       inputH: '48px', //設定所有input高
       inputmsg: [],
-      favTypeOptions: [],
+      typeOptions: [],
+      thisType: [],
+      thisData: 0,
+      scheduleCount: ['1'],
       usertext:
       {
         id: '',
         title: '',
         titleEn: '',
+        theaterId: 0,
+        theater: 0,
         movie_rating: '',
         imgSrc: '',
         type: '',
@@ -34,7 +39,7 @@ class CinemaFilmUpdate extends React.Component {
 
       checkok: {
         //儲存格式驗證是否通過
-        cinemaEmail: false,
+        title: false,
         cinemaTaxid: false,
         cinemaName: false,
         cinemaArea: false,
@@ -46,6 +51,20 @@ class CinemaFilmUpdate extends React.Component {
         cinemaRepwd: false,
       },
     }
+  }
+  static getDerivedStateFromProps(nextProps, prevState) {
+    // console.log(nextProps)
+    // console.log(prevState)
+    let stateToBeReturned = null
+    if (prevState.thisData == 0) {
+      stateToBeReturned = {
+        ...prevState,
+        thisData: nextProps.thisData,
+      }
+      // console.log(stateToBeReturned)
+    }
+    return stateToBeReturned
+
   }
   async componentDidMount() {
     try {
@@ -86,7 +105,7 @@ class CinemaFilmUpdate extends React.Component {
       if (!response.ok) throw new Error(response.statusText)
       const jsonObject = await response.json()
       const data = await jsonObject
-      await this.setState({ favTypeOptions: data })
+      await this.setState({ typeOptions: data })
     } catch (e) {
       console.log(e)
     }
@@ -100,27 +119,27 @@ class CinemaFilmUpdate extends React.Component {
     let newcheckstate = { ...this.state.checkok } //先複製出要改變的state
 
 
-    //account驗證:格式、是否存在
-    if (name === 'cinemaAccount') {
-      newcheckstate.cinemaAccount = false //先將check狀態回復到false
+    //title驗證:格式、是否存在
+    if (name === 'title') {
+      newcheckstate.title = false //先將check狀態回復到false
       this.setState({ checkok: newcheckstate })
       if (value) {
         //先判斷是否有值，有值再進行進一步判斷
-        if (value.length < 2) {
+        if (value.length < 1) {
           //驗證格式是否正確
           document.querySelector('#' + name + 'help').innerHTML =
-            '請輸入開頭為英文，且總共至少6個字元的英數組合'
+            '請輸入至少一個字'
         } else {
           //格式正確，再比對是否已存在
-          let accountexisted = this.props.cinemadata.find(
-            item => item.cinemaAccount === value
+          let titleexisted = this.state.thisData.cinemaFilm.find(
+            item => item.title === value
           )
-          if (accountexisted) {
+          if (titleexisted) {
             document.querySelector('#' + name + 'help').innerHTML =
-              '此帳號已被使用'
+              '該影片已經存在'
           } else {
             //如果正確且不重複，則將check狀態改為true，並清空提示
-            newcheckstate.cinemaAccount = true
+            newcheckstate.title = true
             this.setState(
               { checkok: newcheckstate },
               () => (document.querySelector('#' + name + 'help').innerHTML = '')
@@ -186,13 +205,6 @@ class CinemaFilmUpdate extends React.Component {
       this.setState({ usertext: newtext }, () => {
         console.log(this.state.usertext)
       })
-    } else if (name === 'cinemaCity') {
-      // console.log(event.target.selectedIndex) //被選取的option的index
-      let selectedIndex = event.target.selectedIndex
-      newtext[name] = event.target.options[selectedIndex].text //被選取的option的文字內容
-      this.setState({ usertext: newtext }, () =>
-        console.log(this.state.usertext)
-      )
     } else if (name === 'imgSrc') {
       // console.log(event.target.files[0])
       // console.log(event.target.files[0].name)
@@ -226,11 +238,11 @@ class CinemaFilmUpdate extends React.Component {
         })
     } else if (name === 'type') {
       //if是喜愛類型
-      let favTypeOptionAll = [...this.state.favTypeOptions] //複製所有喜愛類型
-      let AlloptionName = Object.values(favTypeOptionAll.map(item => item.name)) //篩出所有類型的中文name
-      let newFavType = [...this.state.thisfavType] //複製原本的喜愛類型
+      let typeOptionAll = [...this.state.typeOptions] //複製所有喜愛類型
+      let AlloptionName = Object.values(typeOptionAll.map(item => item.name)) //篩出所有類型的中文name
+      let newType = [...this.state.thisType] //複製原本的喜愛類型
       //取出該選項喜愛類型的name(中文字)
-      let optionName = this.state.favTypeOptions.filter(
+      let optionName = this.state.typeOptions.filter(
         item => item.id === value
       )[0].name
       console.log('optionname: ' + optionName)
@@ -240,17 +252,17 @@ class CinemaFilmUpdate extends React.Component {
         //點選之後checked狀態會先變，故原本已勾選的選項，會判斷是false
         //將該選項從喜愛類型中過濾掉，同時設定給copyData
         if (optionName === '全選') {
-          newFavType = []
-          this.setState({ thisfavType: newFavType })
+          newType = []
+          this.setState({ thisType: newType })
         } else {
-          if (newFavType.find(item => item == '全選')) {
-            newFavType = newFavType.filter(item => item !== '全選')
+          if (newType.find(item => item == '全選')) {
+            newType = newType.filter(item => item !== '全選')
           }
-          newFavType = newFavType.filter(item => item !== optionName)
-          console.log('newFavType: ' + newFavType)
-          this.setState({ thisfavType: newFavType })
+          newType = newType.filter(item => item !== optionName)
+          console.log('newType: ' + newType)
+          this.setState({ thisType: newType })
         }
-        newtext[name] = newFavType
+        newtext[name] = newType
       } else {
         //將該選項加入喜愛類型中，同時設定給copyData
         if (optionName === '全選') {
@@ -262,25 +274,45 @@ class CinemaFilmUpdate extends React.Component {
           //再從取得的陣列中，取出每一個物件item中的name的value===>拉到一開始宣告
           // let AlloptionName = Object.values(favTypeOptionAll.map(item => item.name))
           console.log(AlloptionName)
-          newFavType = AlloptionName
+          newType = AlloptionName
         } else {
-          newFavType.push(optionName)
-          console.log('newFavType22: ' + newFavType)
-          console.log(AlloptionName.filter(item => item !== '全選'))
-          if (newFavType.length == AlloptionName.length - 1) {
-            newFavType.push('全選')
+          newType.push(optionName)
+          console.log('newType22: ' + newType)
+          // console.log(AlloptionName.filter(item => item !== '全選'))
+          if (newType.length == AlloptionName.length - 1) {
+            newType.push('全選')
           }
         }
-        this.setState({ thisfavType: newFavType })
-        newtext[name] = newFavType
+        this.setState({ thisType: newType })
+        newtext[name] = newType
+        this.setState({ usertext: newtext })
       }
     }
+  }
+  handleScheduleTime = (id) => (e) => {
+    // alert(id + e.target.value)
+    let date = document.querySelector('#' + id + "Date")
+    let time = document.querySelector('#' + id + "Time")
+    document.querySelector('#' + id).innerHTML = date.value + ' ' + time.value
+    console.log(document.getElementsByName('schedule'))
+  }
+  handleAddSchedule = () => {
+    const originScheduleCount = this.state.scheduleCount.length
+    const copyScheduleCount = [...this.state.scheduleCount]
+    copyScheduleCount.push(originScheduleCount + 1)
+    this.setState({ scheduleCount: copyScheduleCount })
+  }
+  handleDelSchedule = () => {
+    // const originScheduleCount = this.state.scheduleCount.length
+    const copyScheduleCount = [...this.state.scheduleCount]
+    copyScheduleCount.pop() 
+    this.setState({ scheduleCount: copyScheduleCount })
   }
   render() {
     return (
       <>
         <Row>
-          <div className="col-lg-5 mt-3 h5">
+          <div className="col-lg-6 mt-3 h5">
             {this.state.inputmsg.map(item => (
               <>
                 <InputWithLabel_Su
@@ -303,7 +335,7 @@ class CinemaFilmUpdate extends React.Component {
               </>
             ))}
           </div>
-          <div className="col-lg-7 my-4 h5">
+          <div className="col-lg-6 my-4 h5">
             <p className="h5 my-4">影片摘要</p>
             <textarea
               name="intro"
@@ -311,7 +343,7 @@ class CinemaFilmUpdate extends React.Component {
               placeholder="請輸入影片簡介..."
               style={{
                 width: '100%',
-                height: '200px',
+                height: '135px',
               }}
               onChange={this.handleInputTextChange}
             />
@@ -322,7 +354,7 @@ class CinemaFilmUpdate extends React.Component {
               placeholder="請輸入影片完整內容介紹..."
               style={{
                 width: '100%',
-                height: '200px',
+                height: '355px',
               }}
               onChange={this.handleInputTextChange}
             // cols="50"
@@ -330,19 +362,62 @@ class CinemaFilmUpdate extends React.Component {
             />
           </div>
         </Row>
+        <div className="row mt-5 mb-3 d-flex">
+          <div className="col-md-12 p-0">
+            <ActivityTitle title={'時刻表'} className="content-title" />
+            <button
+              className="btn btn-warning ml-4 rounded-circle addFilmSchedule mytransition5"
+              onClick={this.handleAddSchedule}
+            ><i class="fas fa-plus text-darkblue"></i></button>
+            <button
+              className="btn btn-danger ml-4 rounded-circle addFilmSchedule mytransition5"
+              onClick={this.handleDelSchedule}
+            ><i class="fas fa-minus text-darkblue"></i></button>
+          </div>
+        </div>
+        <Row>
+
+          {this.state.scheduleCount.map(item => (
+            <>
+              <div className="col-lg-6 d-flex align-items-center">
+                <p className="h5 d-flex align-items-center mx-3" style={{ height: '40px' }}>{item}.</p>
+                <input type="date"
+                  id={'schedule' + item + 'Date'}
+                  className="h5 my-4 border border-warning bg-back-input rounded text-orange text-center"
+                  style={{
+                    width: '40%',
+                    height: '40px',
+                  }}
+                  onChange={this.handleScheduleTime('schedule' + item)}
+                />
+                <input type="time"
+                  id={'schedule' + item + 'Time'}
+                  className="h5 my-4 border border-warning bg-back-input rounded text-orange text-center"
+                  style={{
+                    width: '40%',
+                    height: '40px',
+                  }}
+                  onChange={this.handleScheduleTime('schedule' + item)}
+                />
+                <p id={'schedule' + item} name="schedule" className="h5  d-flex align-items-center" style={{ height: '40px' }}></p>
+              </div>
+            </>
+          ))}
+
+        </Row>
         <div className="row mt-5 mb-3">
           <div className="col-md-12 p-0">
             <ActivityTitle title={'影片類型'} className="content-title" />
           </div>
         </div>
         <Row>
-          {this.state.favTypeOptions.map(item => (
-            <CheckboxMultiSu
-              thisData={this.state.thisData}
-              inputName="fav_type"
+          {this.state.typeOptions.map(item => (
+            <CheckboxMultiForCinemaTypeSu
+              // thisData={this.state.thisData}
+              inputName="type"
               optionId={item.id}
               optionName={item.name}
-              thisfavType={this.state.thisfavType}
+              thisType={this.state.thisType}
               onChange={this.handleInputTextChange}
             />
           ))}

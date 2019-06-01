@@ -78,8 +78,10 @@ class CardLargeKaga extends React.Component {
       // 如果沒登錄的話
     } else if (cinemaId) {
       alert('戲院會員不可以按讚喔～')
+      window.location = 'http://localhost:3000/LoginSign'
     } else {
-      alert('直接導向登錄會員')
+      window.location = 'http://localhost:3000/LoginSign'
+      alert('請先登錄會員喔～')
     }
   }
 
@@ -139,8 +141,10 @@ class CardLargeKaga extends React.Component {
       // 如果沒登錄的話
     } else if (cinemaId) {
       alert('戲院會員不可以收藏喔～')
+      window.location = 'http://localhost:3000/LoginSign'
     } else {
-      alert('直接導向登錄會員')
+      alert('請先登錄會員喔～')
+      window.location = 'http://localhost:3000/LoginSign'
     }
   }
 
@@ -302,9 +306,9 @@ class CardLargeKaga extends React.Component {
                     </div>
                   ) : (
                     <div
-                      className="mx-4 text-warning"
+                      className="mx-4"
                       onClick={this.awesomeCardClick}
-                      style={{ cursor: 'pointer', color: '#ccc' }}
+                      style={{ cursor: 'pointer', color: 'rgb(253,149,17)' }}
                     >
                       <i className="fas fa-thumbs-up mr-2" />
                       {this.state.awesomeLength}
@@ -329,9 +333,10 @@ class CardLargeKaga extends React.Component {
                     </div>
                   ) : (
                     <div
-                      className="ml-4 text-warning"
+                      id="collecIconArea"
+                      className="ml-4"
                       onClick={this.collectionCardClick}
-                      style={{ cursor: 'pointer' }}
+                      style={{ cursor: 'pointer', color: 'rgb(253,149,17)' }}
                     >
                       <i className="fas fa-bookmark mr-2" />
                       {this.state.collectionLength}
