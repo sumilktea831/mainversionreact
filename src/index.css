@@ -158,8 +158,8 @@ button {
 .btn-outline-warning:hover {
   color: #2b333d !important;
 }
-.btn.btn-warning:hover{
-  filter:brightness(85%) !important;
+.btn.btn-warning:hover {
+  filter: brightness(85%) !important;
 }
 
 .bg-warning {
@@ -365,19 +365,19 @@ button.bg-orange {
   border-bottom: 2px solid #ffa510;
   border-left: 2px solid #ffa510;
 }
-.btn.btn-warning.addFilmSchedule{
-  border:1px solid #ffa510 !important;
+.btn.btn-warning.addFilmSchedule {
+  border: 1px solid #ffa510 !important;
 }
-.addFilmSchedule:hover{
+.addFilmSchedule:hover {
   box-shadow: #d4d1cc 0px 0px 2px;
-  transform: scale(1.2,1.2);
-  filter:brightness(110%)
+  transform: scale(1.2, 1.2);
+  filter: brightness(110%);
 }
-.btnTableEdit{
+.btnTableEdit {
   font-size: 18px;
 }
-.btnTableEdit:hover{
-  color:#242b34;
+.btnTableEdit:hover {
+  color: #242b34;
 }
 
 /* -----------------------------------------------------Kaga */
@@ -441,6 +441,24 @@ button.bg-orange {
 }
 #elseCardBtn {
   transition: 0.5s;
+}
+.cinemaBigCard {
+  height: 450px;
+  overflow: hidden;
+  background: #28333d;
+  box-shadow: 0 0 2px #000000;
+}
+@media screen and (max-width: 991px) {
+  .cinemaBigCard {
+    height: 900px !important;
+  }
+  .cinemaBigCardImg {
+    height: 450px !important;
+  }
+  .cinemaBigCardText {
+    height: 450px !important;
+    justify-content: center !important;
+  }
 }
 /* -------------------------------------------------------forum */
 .articleInput,
