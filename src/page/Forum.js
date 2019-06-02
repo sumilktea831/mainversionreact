@@ -21,6 +21,8 @@ import ForumCommentCreateRoy from '../component/Forum/ForumArticleComment/ForumC
 import InputCardContent_MemberSignUp from '../component/Forum/ForumActionButton/InputCardContent_MemberSignUp'
 import ForumPage from '../component/Forum/ForumArticleList/ForumPage'
 
+import Swal from 'sweetalert2'
+
 class Forum extends React.Component {
   constructor(props) {
     super(props)
@@ -765,7 +767,21 @@ class Forum extends React.Component {
   }
   // 留言空白警告
   handleCommentInputAreaCheck = () => {
-    alert('請輸入內容')
+    // alert('請輸入內容')
+
+    Swal.fire({
+      // position: 'top-end',
+      title: '<span style="color:#d4d1cc">請輸入內容</span>',
+      type: 'error',
+      showCancelButton: false,
+      confirmButtonText: '確認',
+      cancelButtonText: '取消',
+      // cancelButtonColor: ' #d33',
+      confirmButtonClass: ' btn-warning',
+      confirmButtonColor: '#ffa510',
+      background: '#242b34',
+    })
+
     return
   }
   // 留言功能，由上方控制是否啟動
@@ -851,55 +867,99 @@ class Forum extends React.Component {
     console.log(UpdateArticle.forumCommentArea)
     // console.log(this.state.listdata)
 
-    try {
-      // const data = newData
-      // 將更新後的文章內容包進data最後用PUT方式丟回SERVER
-      const data = UpdateArticle
-      // console.log(data)
-      const response = await fetch(
-        'http://localhost:5555/forum/' + this.props.match.params.id,
-        {
-          method: 'PUT',
-          body: JSON.stringify(data),
-          headers: new Headers({
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          }),
-        }
-      )
+    Swal.fire({
+      title: '<span style="color:#d4d1cc">是否確認留言?</span>',
+      text: '請點選確認繼續或取消離開',
+      type: 'question',
+      showCancelButton: true,
+      confirmButtonText: '確認',
+      cancelButtonText: '取消',
+      // cancelButtonColor: ' #d33',
+      confirmButtonClass: ' btn-warning',
+      confirmButtonColor: '#ffa510',
+      background: '#242b34',
+      html:
+        sessionStorage.getItem('memberId') === null
+          ? '未登入會員會以匿名方式留言'
+          : '',
+    }).then(result => {
+      // 確認有按下上傳確認鍵後開始FETCH
+      if (result.value) {
+        // 文字編輯器要放在NEWFORMDATA前面，要先用下方方式抓取送出的文章內容，才不會要送兩次
+        // const edt = document.querySelector('#review')
+        // console.log(edt);
+        // edt.innerHTML += tinyMCE.activeEditor.getContent();
 
-      const jsonObject = await response.json()
-      // console.log(jsonObject)
-      //TODO:檢查留言功能
-      // 在State中設定特定陣列中的物件，這邊一邊設定回原始listdata中比對到的forumCommentArea陣列
-      this.setState(prevState => ({
-        listdata: prevState.listdata.map(obj =>
-          // 比對當下指定到的文章
-          obj.id === +this.props.match.params.id
-            ? Object.assign(obj, {
-                forumCommentArea: UpdateArticle.forumCommentArea,
-              })
-            : obj
-        ),
-      }))
-      // 同時設定新留言到用來渲染留言的currentcommentdata state
-      this.setState(
-        {
-          currentcommentdata: UpdateArticle.forumCommentArea,
-          CommentClickChek: true,
-        },
-        () => {
-          // 發文後後把留言內容清掉
-          document.querySelector('#CommentArea').value = ''
-          alert('留言成功!')
-          // this.handleClose()
-          // window.location.href = '/forum/'
+        // 跳出結果確認視窗,並倒數
+
+        try {
+          // const data = newData
+          // 將更新後的文章內容包進data最後用PUT方式丟回SERVER
+          const data = UpdateArticle
+          // console.log(data)
+          fetch('http://localhost:5555/forum/' + this.props.match.params.id, {
+            method: 'PUT',
+            body: JSON.stringify(data),
+            headers: new Headers({
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            }),
+          })
+            .then(response => response.json())
+            // console.log(jsonObject)
+            //TODO:檢查留言功能
+            // 在State中設定特定陣列中的物件，這邊一邊設定回原始listdata中比對到的forumCommentArea陣列
+            .then(
+              this.setState(prevState => ({
+                listdata: prevState.listdata.map(obj =>
+                  // 比對當下指定到的文章
+                  obj.id === +this.props.match.params.id
+                    ? Object.assign(obj, {
+                        forumCommentArea: UpdateArticle.forumCommentArea,
+                      })
+                    : obj
+                ),
+              }))
+            )
+            // 同時設定新留言到用來渲染留言的currentcommentdata state
+            .then(
+              this.setState(
+                {
+                  currentcommentdata: UpdateArticle.forumCommentArea,
+                  CommentClickChek: true,
+                },
+                () => {
+                  // 發文後後把留言內容清掉
+
+                  document.querySelector('#CommentArea').value = ''
+                  // alert('留言成功!')
+                  // this.handleClose()
+                  // window.location.href = '/forum/'
+                }
+              )
+            )
+          console.log(this.state.CommentClickChek)
+        } catch (e) {
+          console.log(e)
         }
-      )
-      console.log(this.state.CommentClickChek)
-    } catch (e) {
-      console.log(e)
-    }
+
+        Swal.fire({
+          // 大括號設定內容
+          type: 'success',
+          confirmButtonText: '確認',
+          title: '<span style="color:#d4d1cc">成功</span>',
+          text: '留言成功',
+          // 顯示圖片類型
+          // type: 'success',
+          // 倒數計時
+          html: '請確認離開',
+          // cancelButtonColor: ' #d33',
+          confirmButtonClass: ' btn-warning',
+          confirmButtonColor: '#ffa510',
+          background: '#242b34',
+        })
+      }
+    })
   }
   // --------------------------------留言功能end-----------------------------------
   //
@@ -952,54 +1012,94 @@ class Forum extends React.Component {
     // console.log(UpdateComment)
     // console.log(this.state.listdata)
 
-    try {
-      // 將更新後的文章內容包進data最後用PUT方式丟回SERVER
-      const data = UpdateComment
-      // console.log(data)
-      const response = await fetch(
-        'http://localhost:5555/forum/' + this.props.match.params.id,
-        {
-          method: 'PUT',
-          body: JSON.stringify(data),
-          headers: new Headers({
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          }),
-        }
-      )
+    Swal.fire({
+      title: '<span style="color:#d4d1cc">確認是否刪除?</span>',
+      text: '請點選確認繼續或取消離開',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: '確認',
+      cancelButtonText: '取消',
+      cancelButtonClass: ' btn-warning',
+      confirmButtonClass: ' #d33',
+      confirmButtonColor: '#d33',
+      background: '#242b34',
+    }).then(result => {
+      // 確認有按下上傳確認鍵後開始FETCH
+      if (result.value) {
+        // 文字編輯器要放在NEWFORMDATA前面，要先用下方方式抓取送出的文章內容，才不會要送兩次
+        // const edt = document.querySelector('#review')
+        // console.log(edt);
+        // edt.innerHTML += tinyMCE.activeEditor.getContent();
 
-      const jsonObject = await response.json()
-      // console.log(jsonObject)
-      //TODO:檢查留言功能
-      // 在State中設定特定陣列中的物件，這邊一邊設定回原始listdata中比對到的forumCommentArea陣列
-      this.setState(prevState => ({
-        listdata: prevState.listdata.map(obj =>
-          // 比對當下指定到的文章
-          obj.id === +this.props.match.params.id
-            ? Object.assign(obj, {
-                forumCommentArea: UpdateComment.forumCommentArea,
-              })
-            : obj
-        ),
-      }))
-      // 同時設定新留言到用來渲染留言的currentcommentdata state
-      this.setState(
-        {
-          currentcommentdata: UpdateComment.forumCommentArea,
-          // 判斷渲染方式用，參考綁定props
-          CommentClickChek: true,
-        },
-        () => {
-          // 發文後後把留言內容清掉
-          alert('刪除留言成功!')
-          // this.handleClose()
-          // window.location.href = '/forum/'
+        // 跳出結果確認視窗,並倒數
+
+        try {
+          // 將更新後的文章內容包進data最後用PUT方式丟回SERVER
+          const data = UpdateComment
+          // console.log(data)
+
+          fetch('http://localhost:5555/forum/' + this.props.match.params.id, {
+            method: 'PUT',
+            body: JSON.stringify(data),
+            headers: new Headers({
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            }),
+          })
+            .then(response => response.json())
+            // console.log(jsonObject)
+            //TODO:檢查留言功能
+            // 在State中設定特定陣列中的物件，這邊一邊設定回原始listdata中比對到的forumCommentArea陣列
+            .then(
+              this.setState(prevState => ({
+                listdata: prevState.listdata.map(obj =>
+                  // 比對當下指定到的文章
+                  obj.id === +this.props.match.params.id
+                    ? Object.assign(obj, {
+                        forumCommentArea: UpdateComment.forumCommentArea,
+                      })
+                    : obj
+                ),
+              }))
+            )
+            // 同時設定新留言到用來渲染留言的currentcommentdata state
+            .then(
+              this.setState(
+                {
+                  currentcommentdata: UpdateComment.forumCommentArea,
+                  // 判斷渲染方式用，參考綁定props
+                  CommentClickChek: true,
+                },
+                () => {
+                  // 發文後後把留言內容清掉
+                  // alert('刪除留言成功!')
+                  // this.handleClose()
+                  // window.location.href = '/forum/'
+                }
+              )
+            )
+          console.log(this.state.currentcommentdata)
+        } catch (e) {
+          console.log(e)
         }
-      )
-      console.log(this.state.currentcommentdata)
-    } catch (e) {
-      console.log(e)
-    }
+
+        Swal.fire({
+          // 大括號設定內容
+          type: 'success',
+          confirmButtonText: '確認',
+          title: '<span style="color:#d4d1cc">成功</span>',
+          text: '刪除成功',
+          // 顯示圖片類型
+          // type: 'success',
+          // 倒數計時
+          html: '請確認離開',
+          // cancelButtonColor: ' #d33',
+          confirmButtonClass: ' btn-warning',
+          confirmButtonColor: '#ffa510',
+          background: '#242b34',
+        })
+      }
+    })
   }
   // --------------------------------刪除留言功能End-----------------------------------
 
@@ -1040,8 +1140,27 @@ class Forum extends React.Component {
   // 新增文章modal  toggle用
   handleShow = () => {
     if (!sessionStorage.getItem('memberId')) {
-      alert('請登入發文')
-      window.location.href = '/LoginSign'
+      Swal.fire({
+        // position: 'top-end',
+        title: '<span style="color:#d4d1cc">請先登入會員</span>',
+        text: '請點選確認繼續或取消離開',
+        textColor: 'blue',
+        type: 'info',
+        showCancelButton: true,
+        confirmButtonText: '確認',
+        cancelButtonText: '取消',
+        // cancelButtonColor: ' #d33',
+        confirmButtonClass: ' btn-warning',
+        confirmButtonColor: '#ffa510',
+        background: '#242b34',
+      }).then(result => {
+        // 確認有按下上傳確認鍵後開始FETCH
+        if (result.value) {
+          window.location.href = '/LoginSign'
+        }
+      })
+
+      // alert('請登入發文')
     } else {
       this.setState({ show: true })
     }
@@ -1050,24 +1169,75 @@ class Forum extends React.Component {
   // 發送文章
   handleModalFormInputSave = async () => {
     // 簡單的檢查部份
-    if (this.state.forumReview.trim() === '') {
-      alert('請輸入評論!')
-      return
-    }
-    if (this.state.forumReview.trim().length > 30000) {
-      alert('內文請勿超過30000字!')
-      return
-    }
 
-    console.log('123')
     if (this.state.headline.trim() === '') {
-      alert('請輸入標題!')
+      // alert('請輸入標題!')
+      Swal.fire({
+        // position: 'top-end',
+        title: '<span style="color:#d4d1cc">請輸入標題</span>',
+        type: 'error',
+        showCancelButton: false,
+        confirmButtonText: '確認',
+        cancelButtonText: '取消',
+        // cancelButtonColor: ' #d33',
+        confirmButtonClass: ' btn-warning',
+        confirmButtonColor: '#ffa510',
+        background: '#242b34',
+      })
       return
     }
     if (this.state.headline.trim().length > 30) {
-      alert('標題請勿超過30字!')
+      // alert('標題請勿超過30字!')
+      Swal.fire({
+        // position: 'top-end',
+        title: '<span style="color:#d4d1cc">標題請勿超過30字!</span>',
+        type: 'error',
+        showCancelButton: false,
+        confirmButtonText: '確認',
+        cancelButtonText: '取消',
+        // cancelButtonColor: ' #d33',
+        confirmButtonClass: ' btn-warning',
+        confirmButtonColor: '#ffa510',
+        background: '#242b34',
+      })
       return
     }
+
+    if (this.state.forumReview.trim() === '') {
+      // alert('請輸入評論!')
+      Swal.fire({
+        // position: 'top-end',
+        title: '<span style="color:#d4d1cc">請輸入評論!</span>',
+        type: 'error',
+        showCancelButton: false,
+        confirmButtonText: '確認',
+        cancelButtonText: '取消',
+        // cancelButtonColor: ' #d33',
+        confirmButtonClass: ' btn-warning',
+        confirmButtonColor: '#ffa510',
+        background: '#242b34',
+      })
+      return
+    }
+    if (this.state.forumReview.trim().length > 30000) {
+      // alert('內文請勿超過30000字!')
+      Swal.fire({
+        // position: 'top-end',
+        title: '<span style="color:#d4d1cc">內文請勿超過30000字!</span>',
+        type: 'error',
+        showCancelButton: false,
+        confirmButtonText: '確認',
+        cancelButtonText: '取消',
+        // cancelButtonColor: ' #d33',
+        confirmButtonClass: ' btn-warning',
+        confirmButtonColor: '#ffa510',
+        background: '#242b34',
+      })
+      return
+    }
+
+    // console.log('123')
+
     // 處理新增資料的儲存
     // 先檢查學號是否重覆
     // const index = this.state.listdata.findIndex(
@@ -1128,33 +1298,72 @@ class Forum extends React.Component {
     // console.log(this.state.listdata[0].id)
     const newData = [...this.state.listdata, item]
     console.log(this.state.forumCommentArea.length)
-    try {
-      const data = item
 
-      const response = await fetch('http://localhost:5555/forum', {
-        method: 'POST',
-        body: JSON.stringify(data),
-        headers: new Headers({
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        }),
-      })
+    Swal.fire({
+      title: '<span style="color:#d4d1cc">請確認是否送出?</span>',
+      text: '請點選確認繼續或取消離開',
+      type: 'question',
+      showCancelButton: true,
+      confirmButtonText: '確認',
+      cancelButtonText: '取消',
+      // cancelButtonColor: ' #d33',
+      confirmButtonClass: ' btn-warning',
+      confirmButtonColor: '#ffa510',
+      background: '#242b34',
+    }).then(result => {
+      // 確認有按下上傳確認鍵後開始FETCH
+      if (result.value) {
+        // 文字編輯器要放在NEWFORMDATA前面，要先用下方方式抓取送出的文章內容，才不會要送兩次
+        // const edt = document.querySelector('#review')
+        // console.log(edt);
+        // edt.innerHTML += tinyMCE.activeEditor.getContent();
 
-      const jsonObject = await response.json()
+        // 跳出結果確認視窗,並倒數
+        try {
+          const data = item
 
-      // console.log(jsonObject)
+          fetch('http://localhost:5555/forum', {
+            method: 'POST',
+            body: JSON.stringify(data),
+            headers: new Headers({
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            }),
+          })
+            .then(response => response.json())
 
-      // 確認資料有進資料庫後再setState
-      await this.setState({ listdata: newData }, () => {
-        alert('資料已成功新增!')
-        this.handleClose()
-        // console.log(this.state.listdata)
-        // 送出表單後重新導向最新一筆頁面
-        window.location.href = '/forum/' + this.state.listdata[0].id + 1
-      })
-    } catch (e) {
-      console.log(e)
-    }
+            // console.log(jsonObject)
+
+            // 確認資料有進資料庫後再setState
+            .then(
+              this.setState({ listdata: newData }, () => {
+                // alert('資料已成功新增!')
+                this.handleClose()
+                // console.log(this.state.listdata)
+                // 送出表單後重新導向最新一筆頁面
+                window.location.href = '/forum/' + this.state.listdata[0].id + 1
+              })
+            )
+        } catch (e) {
+          console.log(e)
+        }
+
+        Swal.fire({
+          // 大括號設定內容
+          type: 'success',
+          confirmButtonText: '確認',
+          title: '<span style="color:#d4d1cc">成功</span>',
+          text: '發文成功',
+          // 顯示圖片類型
+          // type: 'success',
+          // 倒數計時
+          // cancelButtonColor: ' #d33',
+          confirmButtonClass: ' btn-warning',
+          confirmButtonColor: '#ffa510',
+          background: '#242b34',
+        })
+      }
+    })
   }
   // --------------------------------發文功能end-----------------------------------
 
@@ -1166,32 +1375,69 @@ class Forum extends React.Component {
     )
     // const data = onClickArticle.reverse()
     // console.log(data)
-    try {
-      // 用DELETE去刪除特定ID的文章
-      // console.log(data)
-      const response = await fetch(
-        'http://localhost:5555/forum/' + this.props.match.params.id,
-        {
-          method: 'DELETE',
-          // DELETE不用給BODY
-          // body: JSON.stringify(data),
-          headers: new Headers({
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          }),
-        }
-      )
-      // 摻刪出來接出來的是空的
-      const jsonObject = await response.json()
 
-      // 將filter後的剩下的陣列倒回listdata後重新導向最新一筆頁面
-      await this.setState({ listdata: filteredRestArticle }, () => {
-        alert('刪除成功!')
-        window.location.href = '/forum/' + this.state.listdataReverse[0].id
-      })
-    } catch (e) {
-      console.log(e)
-    }
+    Swal.fire({
+      title: '<span style="color:#d4d1cc">請確認是否刪除?</span>',
+      text: '請點選確認繼續或取消離開',
+      type: 'warning',
+      showCancelButton: true,
+      confirmButtonText: '確認',
+      cancelButtonText: '取消',
+      cancelButtonClass: ' btn-warning',
+      confirmButtonClass: ' #d33',
+      confirmButtonColor: '#d33',
+      background: '#242b34',
+    }).then(result => {
+      // 確認有按下上傳確認鍵後開始FETCH
+      if (result.value) {
+        // 文字編輯器要放在NEWFORMDATA前面，要先用下方方式抓取送出的文章內容，才不會要送兩次
+        // const edt = document.querySelector('#review')
+        // console.log(edt);
+        // edt.innerHTML += tinyMCE.activeEditor.getContent();
+        try {
+          // 用DELETE去刪除特定ID的文章
+          // console.log(data)
+          fetch('http://localhost:5555/forum/' + this.props.match.params.id, {
+            method: 'DELETE',
+            // DELETE不用給BODY
+            // body: JSON.stringify(data),
+            headers: new Headers({
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            }),
+          })
+            // 摻刪出來接出來的是空的
+            .then(response => response.json())
+
+            // 將filter後的剩下的陣列倒回listdata後重新導向最新一筆頁面
+            .then(
+              this.setState({ listdata: filteredRestArticle }, () => {
+                // alert('刪除成功!')
+                window.location.href =
+                  '/forum/' + this.state.listdataReverse[0].id
+              })
+            )
+        } catch (e) {
+          console.log(e)
+        }
+        // 跳出結果確認視窗,並倒數
+
+        Swal.fire({
+          // 大括號設定內容
+          type: 'success',
+          confirmButtonText: '確認',
+          title: '<span style="color:#d4d1cc">成功</span>',
+          text: '刪除成功',
+          // cancelButtonColor: ' #d33',
+          confirmButtonClass: ' btn-warning',
+          confirmButtonColor: '#ffa510',
+          background: '#242b34',
+          // 顯示圖片類型
+          // type: 'success',
+          // 倒數計時
+        })
+      }
+    })
   }
   // --------------------------------刪文功能End-----------------------------------
 
@@ -1309,10 +1555,34 @@ class Forum extends React.Component {
     // console.log(getThisIdInnerText.length)
 
     if (getThisIdInnerText.length === 0) {
-      alert('請輸入內容')
+      // alert('請輸入內容')
+      Swal.fire({
+        // position: 'top-end',
+        title: '<span style="color:#d4d1cc">請輸入內容</span>',
+        type: 'error',
+        showCancelButton: false,
+        confirmButtonText: '確認',
+        cancelButtonText: '取消',
+        // cancelButtonColor: ' #d33',
+        confirmButtonClass: ' btn-warning',
+        confirmButtonColor: '#ffa510',
+        background: '#242b34',
+      })
     } else if (getThisIdInnerText.length > 30) {
       // console.log(getThisIdInnerText.length)
-      alert('請勿超過30字')
+      // alert('請勿超過30字')
+      Swal.fire({
+        // position: 'top-end',
+        title: '<span style="color:#d4d1cc">請勿超過30字</span>',
+        type: 'error',
+        showCancelButton: false,
+        confirmButtonText: '確認',
+        cancelButtonText: '取消',
+        // cancelButtonColor: ' #d33',
+        confirmButtonClass: ' btn-warning',
+        confirmButtonColor: '#ffa510',
+        background: '#242b34',
+      })
     } else {
       // 儲存後先將狀態關閉成不能編輯
       this.setState({ handleHeadlineEditStatus: 'false' })
@@ -1522,9 +1792,33 @@ class Forum extends React.Component {
     // console.log(getThisIdInnerHTML.length)
 
     if (getThisIdInnerHTML.length === 0) {
-      alert('請輸入內容')
+      Swal.fire({
+        // position: 'top-end',
+        title: '<span style="color:#d4d1cc">請輸入內容</span>',
+        type: 'error',
+        showCancelButton: false,
+        confirmButtonText: '確認',
+        cancelButtonText: '取消',
+        // cancelButtonColor: ' #d33',
+        confirmButtonClass: ' btn-warning',
+        confirmButtonColor: '#ffa510',
+        background: '#242b34',
+      })
+      // alert('請輸入內容')
     } else if (getThisIdInnerHTML.length > 30000) {
-      alert('請勿超過30000字')
+      Swal.fire({
+        // position: 'top-end',
+        title: '<span style="color:#d4d1cc">請勿超過30000字</span>',
+        type: 'error',
+        showCancelButton: false,
+        confirmButtonText: '確認',
+        cancelButtonText: '取消',
+        // cancelButtonColor: ' #d33',
+        confirmButtonClass: ' btn-warning',
+        confirmButtonColor: '#ffa510',
+        background: '#242b34',
+      })
+      // alert('請勿超過30000字')
     } else {
       // 儲存後先將狀態關閉成不能編輯
       this.setState({ handleArticleEditStatus: 'false' })
@@ -1647,8 +1941,25 @@ class Forum extends React.Component {
     // 如果抓不到收藏陣列在Render前下判斷式render <></>
 
     if (sessionStorage.getItem('memberId') === null) {
-      alert('請登入會員進行蒐藏')
-      window.location.href = '/LoginSign'
+      // alert('請登入會員進行蒐藏')
+      Swal.fire({
+        // position: 'top-end',
+        title: '<span style="color:#d4d1cc">請先登入會員</span>',
+        text: '請點選確認繼續或取消離開',
+        type: 'info',
+        showCancelButton: true,
+        confirmButtonText: '確認',
+        cancelButtonText: '取消',
+        // cancelButtonColor: ' #d33',
+        confirmButtonClass: ' btn-warning',
+        confirmButtonColor: '#ffa510',
+        background: '#242b34',
+      }).then(result => {
+        // 確認有按下上傳確認鍵後開始FETCH
+        if (result.value) {
+          window.location.href = '/LoginSign'
+        }
+      })
     } else {
       // 比對抓到點擊到的標題物件
       const onCollect = this.state.listdata.find(
