@@ -172,6 +172,9 @@ class AcitivityEditForm extends React.Component {
                 cinemaDBdataForCard = JSON.parse(JSON.stringify(obj))
                 this.setState({ cinemaDBdataForCard: cinemaDBdataForCard })
                 cinemaDBdata = JSON.parse(JSON.stringify(obj))
+                cinemaDBdata.cinemaActivity = cinemaDBdata.cinemaActivity.filter(
+                  item => item.id != activityId
+                )
                 cinemaDBdata.cinemaActivity.push(this.state.formData)
                 try {
                   fetch('http://localhost:5555/cinema/' + cinemaId, {
