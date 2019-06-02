@@ -1,4 +1,5 @@
 import React from 'react'
+// 如果指引入LINK箭頭會沒有顯示手指
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 
 const ForumPage = props => {
@@ -57,7 +58,7 @@ const ForumPage = props => {
           <div
             className={
               // props.currentPage === 1 ? ' m-0 p-0 col-1 d-none' :
-              'mx-1 my-0 p-0 '
+              'mx-2 my-0 p-0 '
             }
             onClick={props.handlePrevPage}
           >
@@ -66,7 +67,7 @@ const ForumPage = props => {
               className="text-warning  m-0 p-0"
             >
               <div
-                style={{ maxWidth: '40px', height: '40px' }}
+                style={{ Width: '40px', height: '40px' }}
                 className="btn btn-outline-warning rounded  text-center d-flex justify-content-center align-content-center  "
               >
                 <i className="fas fa-chevron-left py-1 " />
@@ -93,13 +94,13 @@ const ForumPage = props => {
             className={
               // props.currentPage === props.ForumTotalPages
               //   ? ' m-0 p-0 col-1 d-none':
-              'mx-1 my-0  p-0 '
+              'mx-2 my-0  p-0 '
             }
             onClick={props.handleNextvPage}
           >
             <Link to={'/forum/1'} className="text-warning  m-0 p-0">
               <div
-                style={{ maxWidth: '40px', height: '40px' }}
+                style={{ Width: '40px', height: '40px' }}
                 className={
                   'btn  m-0 btn-outline-warning  rounded  text-center d-flex justify-content-center align-content-center '
                 }
