@@ -13,8 +13,8 @@ const handleCilck = id => event => {
   }
 }
 const CheckboxMultiForCinemaFilmTypeEditSu = props => {
-  console.log('fav!!!')
-  console.log(props)
+//   console.log('fav!!!')
+//   console.log(props)
   // if (props.thisfavType === undefined) {
   //   return <></>
   // }
@@ -35,7 +35,7 @@ const CheckboxMultiForCinemaFilmTypeEditSu = props => {
             props.thisType == undefined
               ? false
               : props.thisType.find(item => item === props.optionName)
-              ? 'true'
+              ? true
               : false
           }
           onChange={props.onChange}

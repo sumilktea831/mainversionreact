@@ -13,7 +13,6 @@ class MemberCollectTable extends React.Component {
       thisSchedule: [], //正在編輯的影片的時刻表資料
       thisData: 0, //正在編輯的影片資料
       thisFilmData: 0, //該戲院所有的影片資料
-      //   disableIdField: false,
       showModal: false,
       originData: [], //正在編輯的影片的原始資料
     }
@@ -123,7 +122,7 @@ class MemberCollectTable extends React.Component {
         } else {
           //格式正確，再比對是否已存在
           let titleexisted = this.state.thisFilmData
-            .filter(item => item.title !== this.state.thisData.title)
+            .filter(item => item.title !== this.state.originData.title)
             .find(item => item.title === value)
           if (titleexisted) {
             document.querySelector('#' + name + 'help').innerHTML =
@@ -276,6 +275,9 @@ class MemberCollectTable extends React.Component {
     copyScheduleCount.pop()
     this.setState({ thisData: newtext, scheduleCount: copyScheduleCount })
   }
+  handleModalSave = id => () => {
+    this.props.handleEditSave(id, this.state.thisData)()
+  }
   render() {
     if (this.props.thisData == 0) {
       return <></>
@@ -295,11 +297,8 @@ class MemberCollectTable extends React.Component {
           handleAddSchedule={this.handleAddSchedule}
           handleDelSchedule={this.handleDelSchedule}
           handleScheduleTime={this.handleScheduleTime}
-          // handleModalFormInputChange={this.handleModalFormInputChange}
+          handleModalSave={this.handleModalSave(this.state.thisData.id)}
           // handleModalFormInputSave={this.handleModalFormInputSave}
-          // id={this.state.id}
-          // name={this.state.name}
-          // birth={this.state.birth}
           disableIdField={this.state.disableIdField}
         />
         {this.state.thisFilmData.length == 0 ? (
@@ -311,7 +310,7 @@ class MemberCollectTable extends React.Component {
             新增影片吧！
           </h5>
         ) : (
-          <table class="table table-borderless text-center h5">
+          <table className="table table-borderless text-center h5">
             <thead>
               <tr
                 className="text-center"
@@ -398,16 +397,16 @@ class MemberCollectTable extends React.Component {
                     }}
                   >
                     {/* <button className="btn btn-outline-warning mx-2">
-                      <i class="fas fa-eye btnTableEdit" />
+                      <i className="fas fa-eye btnTableEdit" />
                     </button> */}
                     <button
                       className="btn btn-outline-warning mx-2"
                       onClick={this.handleEditModalShow(item.id)}
                     >
-                      <i class="fas fa-edit btnTableEdit" />
+                      <i className="fas fa-edit btnTableEdit" />
                     </button>
                     <button className="btn btn-outline-warning mx-2">
-                      <i class="fas fa-trash btnTableEdit" />
+                      <i className="fas fa-trash btnTableEdit" />
                     </button>
                   </td>
                 </tr>

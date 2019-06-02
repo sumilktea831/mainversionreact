@@ -57,7 +57,7 @@ const CinemaFilmEditModal = props => {
                   />
                   <small
                     id={item.id + 'help'}
-                    class="form-text text-danger text-center"
+                    className="form-text text-danger text-center"
                   />
                 </>
               ))}
@@ -100,13 +100,13 @@ const CinemaFilmEditModal = props => {
                 className="btn btn-warning ml-4 rounded-circle addFilmSchedule mytransition5"
                 onClick={props.handleAddSchedule}
               >
-                <i class="fas fa-plus text-darkblue" />
+                <i className="fas fa-plus text-darkblue" />
               </button>
               <button
                 className="btn btn-danger ml-4 rounded-circle addFilmSchedule mytransition5"
                 onClick={props.handleDelSchedule}
               >
-                <i class="fas fa-minus text-darkblue" />
+                <i className="fas fa-minus text-darkblue" />
               </button>
             </div>
           </div>
@@ -192,7 +192,7 @@ const CinemaFilmEditModal = props => {
           <Button variant="secondary" onClick={props.handleClose}>
             關閉
           </Button>
-          <Button variant="primary" onClick={props.handleModalFormInputSave}>
+          <Button variant="primary" onClick={props.handleModalSave}>
             儲存
           </Button>
         </Modal.Footer>

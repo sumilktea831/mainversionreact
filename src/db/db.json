@@ -231,6 +231,29 @@
   ],
   "movieCardData": [
     {
+      "id": "cf1559377711803",
+      "title": "測試影片編輯",
+      "titleEn": "English Title",
+      "movie_rating": "普遍級 0+",
+      "imgSrc": "b7559eb2-e59f-4d80-8fab-a023317f4792.jpg",
+      "type": "戲劇片英雄片恐怖片",
+      "director": "碼農一號",
+      "language": "西班牙語",
+      "intro": "摘要編輯",
+      "fullIntro": "介紹編輯",
+      "filmTime": "120",
+      "updateDate": "2019-04-30",
+      "inTheaterDate": "2019-05-01",
+      "outTheaterDate": "2019-05-31",
+      "schedule": [
+        "2019-06-06 10:00",
+        "2019-06-06 00:00",
+        "2019-06-12 14:00"
+      ],
+      "filmStar": [],
+      "theater": "碼農Cafe"
+    },
+    {
       "id": "cf1000000",
       "theater": "碼農Cafe",
       "title": "赤手登峰",
@@ -2037,41 +2060,27 @@
       "cinemaFilm": [
         {
           "id": "cf1559377711803",
-          "title": "測試影片",
-          "titleEn": "",
-          "movie_rating": "輔導級 12+",
+          "title": "測試影片編輯",
+          "titleEn": "English Title",
+          "movie_rating": "普遍級 0+",
           "imgSrc": "b7559eb2-e59f-4d80-8fab-a023317f4792.jpg",
           "type": [
-            "全選",
-            "動作片",
-            "動畫片",
-            "喜劇片",
-            "偵探片",
-            "紀錄片",
             "戲劇片",
             "英雄片",
-            "恐怖片",
-            "武俠片",
-            "靈異片",
-            "文藝片",
-            "警匪片",
-            "科幻片",
-            "懸疑片",
-            "驚悚片",
-            "戰爭片",
-            "愛情片"
+            "恐怖片"
           ],
           "director": "碼農一號",
-          "language": "日語",
-          "intro": "摘要",
-          "fullIntro": "介紹",
-          "filmTime": "100",
+          "language": "西班牙語",
+          "intro": "摘要編輯",
+          "fullIntro": "介紹編輯",
+          "filmTime": "120",
           "updateDate": "2019-04-30",
           "inTheaterDate": "2019-05-01",
           "outTheaterDate": "2019-05-31",
           "schedule": [
             "2019-06-06 10:00",
-            "2019-06-06 00:00"
+            "2019-06-06 00:00",
+            "2019-06-12 14:00"
           ],
           "filmStar": []
         },

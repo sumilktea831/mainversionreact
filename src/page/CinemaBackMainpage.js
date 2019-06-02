@@ -323,13 +323,13 @@ class CinemaBackMainpage extends React.Component {
       newtext.updateDate = dateYMD
       newData.cinemaFilm = [...newData.cinemaFilm, newtext]
       console.log(newData)
-      const newDatatForMovieCard = { ...newtext }
+      const newDataForMovieCard = { ...newtext }
       if (type.find(item => item == '全選')) {
-        newDatatForMovieCard.type = newDatatForMovieCard.type.slice(1).join('')
+        newDataForMovieCard.type = newDataForMovieCard.type.slice(1).join('')
       } else {
-        newDatatForMovieCard.type = newDatatForMovieCard.type.join('')
+        newDataForMovieCard.type = newDataForMovieCard.type.join('')
       }
-      newDatatForMovieCard.theater = this.state.thisCinemaData.cinemaName
+      newDataForMovieCard.theater = this.state.thisCinemaData.cinemaName
       try {
         fetch('http://localhost:5555/cinema/' + this.state.thisCinemaData.id, {
           method: 'PUT',
@@ -344,7 +344,7 @@ class CinemaBackMainpage extends React.Component {
             try {
               fetch('http://localhost:5555/movieCardData/', {
                 method: 'POST',
-                body: JSON.stringify(newDatatForMovieCard),
+                body: JSON.stringify(newDataForMovieCard),
                 headers: new Headers({
                   Accept: 'application/json',
                   'Content-Type': 'application/json',
@@ -352,7 +352,6 @@ class CinemaBackMainpage extends React.Component {
               })
                 .then(res => res.json())
                 .then(jsonObject => {
-                  // sessionStorage.setItem('thisCinemaData', JSON.stringify(jsonObject))
                   // this.setState({ thisCinemaData: jsonObject }, () => {
                   //   alert('資料儲存成功')
                   // })
@@ -360,7 +359,6 @@ class CinemaBackMainpage extends React.Component {
             } catch (e) {
               console.log(e)
             }
-            // sessionStorage.setItem('thisCinemaData', JSON.stringify(jsonObject))
             this.setState({ thisCinemaData: jsonObject }, () => {
               alert('資料儲存成功')
             })
@@ -372,6 +370,67 @@ class CinemaBackMainpage extends React.Component {
       alert('資料填寫有誤，請再次確認您的資料！')
     }
   }
+
+  //影片編輯儲存
+  handleEditSave = (id, thisData) => () => {
+    alert(id)
+    const newcinemaData = { ...this.state.thisCinemaData } //這個戲院的Data
+    //找出這支影片在這個戲院影片列表中的Index
+    const thisFilmIndex = newcinemaData.cinemaFilm.findIndex(
+      item => item.id === id
+    )
+    //將這支影片原本的data替換成新的data
+    newcinemaData.cinemaFilm[thisFilmIndex] = thisData
+    this.setState({ thisCinemaData: newcinemaData })
+    const newDataForMovieCard = { ...thisData }
+    if (newDataForMovieCard.type.find(item => item == '全選')) {
+      newDataForMovieCard.type = newDataForMovieCard.type.slice(1).join('')
+    } else {
+      newDataForMovieCard.type = newDataForMovieCard.type.join('')
+    }
+    newDataForMovieCard.theater = this.state.thisCinemaData.cinemaName
+
+    try {
+      fetch('http://localhost:5555/cinema/' + this.state.thisCinemaData.id, {
+        method: 'PUT',
+        body: JSON.stringify(newcinemaData),
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+        .then(res => res.json())
+        .then(jsonObject => {
+          try {
+            fetch(
+              'http://localhost:5555/movieCardData/' + newDataForMovieCard.id,
+              {
+                method: 'PUT',
+                body: JSON.stringify(newDataForMovieCard),
+                headers: new Headers({
+                  Accept: 'application/json',
+                  'Content-Type': 'application/json',
+                }),
+              }
+            )
+              .then(res => res.json())
+              .then(jsonObject => {
+                // this.setState({ thisCinemaData: jsonObject }, () => {
+                //   alert('資料儲存成功')
+                // })
+              })
+          } catch (e) {
+            console.log(e)
+          }
+          this.setState({ thisCinemaData: jsonObject }, () => {
+            alert('資料儲存成功')
+          })
+        })
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
   handleLogout = () => {
     //點擊登出，清除session並導回主頁
     // sessionStorage.removeItem('memberID') //不知道為什麼這個方法無效
@@ -587,6 +646,7 @@ class CinemaBackMainpage extends React.Component {
                       <CinemaFilmTable
                         thisData={this.state.thisCinemaData}
                         allCinemaData={this.state.allCinemaD}
+                        handleEditSave={this.handleEditSave}
                       />
                     </div>
                   </div>

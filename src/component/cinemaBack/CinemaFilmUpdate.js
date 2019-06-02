@@ -309,7 +309,7 @@ class CinemaFilmUpdate extends React.Component {
                 />
                 <small
                   id={item.id + 'help'}
-                  class="form-text text-danger text-center"
+                  className="form-text text-danger text-center"
                 />
               </>
             ))}
@@ -348,13 +348,13 @@ class CinemaFilmUpdate extends React.Component {
               className="btn btn-warning ml-4 rounded-circle addFilmSchedule mytransition5"
               onClick={this.handleAddSchedule}
             >
-              <i class="fas fa-plus text-darkblue" />
+              <i className="fas fa-plus text-darkblue" />
             </button>
             <button
               className="btn btn-danger ml-4 rounded-circle addFilmSchedule mytransition5"
               onClick={this.handleDelSchedule}
             >
-              <i class="fas fa-minus text-darkblue" />
+              <i className="fas fa-minus text-darkblue" />
             </button>
           </div>
         </div>
