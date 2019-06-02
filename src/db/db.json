@@ -215,7 +215,7 @@
       "id": "a1559406546061",
       "theater": "碼農Cafe",
       "title": "活動標題",
-      "content": "test",
+      "content": "活動內容",
       "imgSrc": "a4cf6483-a9a9-4b75-aebb-89f36e3acd78.png",
       "theaterMap": "106台北市大安區通化街24巷1號",
       "GUINumber": "16086448",
@@ -2008,17 +2008,17 @@
           "joinMember": "memberID"
         },
         {
-          "place": "北部,影院",
-          "cinemaId": "c001",
-          "id": "m1559406546061",
+          "id": "a1559406546061",
           "title": "活動標題",
+          "content": "活動內容",
           "imgSrc": "a4cf6483-a9a9-4b75-aebb-89f36e3acd78.png",
-          "content": "test",
-          "theaterMap": "106台北市大安區通化街24巷1號",
+          "lat": "25.0316633",
+          "lng": "121.5540038",
           "joinContent": "線上報名即可。",
           "joinContentCurrentPeople": "10",
-          "lat": "25.0316633",
-          "lng": "121.5540038"
+          "place": "北部,影院",
+          "joinMember": "",
+          "theaterMap": "106台北市大安區通化街24巷1號"
         }
       ],
       "cinemaLogoImg": "0465d345-669d-450d-ae97-1d26ad39ea68.png",

@@ -14,9 +14,9 @@ class AcitivityEditForm extends React.Component {
 
   componentDidMount = async () => {
     const cinemaId = sessionStorage.getItem('cinemaId')
-    const activityId = window.location.pathname.slice(20)
+    const activityId = window.location.pathname.slice(47)
     console.log(activityId)
-    fetch('http://localhost:5555/activityCardData/a1559406546061')
+    fetch('http://localhost:5555/activityCardData/' + activityId)
       .then(res => res.json())
       .then(data => {
         console.log('Data: ' + data)
@@ -156,7 +156,7 @@ class AcitivityEditForm extends React.Component {
             console.log(this.state.formData)
           )
           let cinemaId = sessionStorage.getItem('cinemaId')
-          const activityId = window.location.pathname.slice(20)
+          const activityId = window.location.pathname.slice(47)
           let cinemaDBdata = {}
           let cinemaDBdataForCard = {}
           try {
