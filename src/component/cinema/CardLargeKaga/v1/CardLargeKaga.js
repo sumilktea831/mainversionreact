@@ -78,7 +78,6 @@ class CardLargeKaga extends React.Component {
       // 如果沒登錄的話
     } else if (cinemaId) {
       alert('戲院會員不可以按讚喔～')
-      window.location = 'http://localhost:3000/LoginSign'
     } else {
       window.location = 'http://localhost:3000/LoginSign'
       alert('請先登錄會員喔～')
@@ -126,22 +125,15 @@ class CardLargeKaga extends React.Component {
         // 把兩個更新後的值丟回去父層
         this.props.collectionClick(newCollection, collectionLength)
         // 然後同時改變自己這層的state
-        this.setState(
-          {
-            collectionColor: true,
-            collection: newCollection,
-            collectionLength: collectionLength,
-          },
-          () => {
-            console.log('click - state')
-            console.log(this.state.collectionLength)
-          }
-        )
+        this.setState({
+          collectionColor: true,
+          collection: newCollection,
+          collectionLength: collectionLength,
+        })
       }
       // 如果沒登錄的話
     } else if (cinemaId) {
       alert('戲院會員不可以收藏喔～')
-      window.location = 'http://localhost:3000/LoginSign'
     } else {
       alert('請先登錄會員喔～')
       window.location = 'http://localhost:3000/LoginSign'

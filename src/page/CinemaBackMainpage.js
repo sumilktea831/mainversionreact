@@ -555,12 +555,12 @@ class CinemaBackMainpage extends React.Component {
                         style={{ height: '300px', width: '100%' }}
                       >
                         <h5 className="ml-4">
-                          尚無紀錄，趕快
+                          尚無紀錄，趕快前往
                           <a
                             style={{ color: '#ffa510' }}
                             href="/CinemaBackMainpage/cinema-activity-add"
                           >
-                            前往影片管理
+                            影片管理
                           </a>
                           上架影片吧！
                         </h5>
