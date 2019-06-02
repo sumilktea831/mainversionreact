@@ -290,7 +290,7 @@ class BackSidenav extends React.Component {
         title: item.title,
         subtitle: item.titleEn,
         img: item.imgSrc,
-        link: '/film/' + item.id,
+        link: '/movie/' + item.id,
         star: item.filmStar,
         mark: memberPageData.markList,
       }))
@@ -358,7 +358,7 @@ class BackSidenav extends React.Component {
         title: item.title,
         subtitle: item.titleEn,
         img: item.imgSrc,
-        link: '/film/' + item.id,
+        link: '/movie/' + item.id,
         star: item.filmStar,
         mark: memberPageData.markList,
       }))
