@@ -1,8 +1,17 @@
 import React from 'react'
 import CardKagaStaAnimation from '../../CardKaga/v3/CardKagaStaAnimation'
 import CardKagaStar from '../../CardKaga/v3/CardKagaStar'
+//Import SweetAlert2
+import Swal from 'sweetalert2'
 const memberId = sessionStorage.getItem('memberId')
 const cinemaId = sessionStorage.getItem('cinemaId')
+
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'center-end',
+  showConfirmButton: false,
+  timer: 3000,
+})
 
 class CardLargeKaga extends React.Component {
   constructor(props) {
@@ -77,10 +86,22 @@ class CardLargeKaga extends React.Component {
       }
       // 如果沒登錄的話
     } else if (cinemaId) {
-      alert('戲院會員不可以按讚喔～')
+      // alert('戲院會員不可以按讚喔～')
+      Toast.fire({
+        type: 'error',
+        title: '戲院會員不可以按讚喔～',
+      })
     } else {
-      window.location = 'http://localhost:3000/LoginSign'
-      alert('請先登錄會員喔～')
+      // alert('請先登錄會員喔～')
+      Swal.fire({
+        type: 'info',
+        title: '請先登錄會員喔～',
+        showConfirmButton: false,
+      })
+      setTimeout(
+        () => (window.location = 'http://localhost:3000/LoginSign'),
+        1500
+      )
     }
   }
 
@@ -133,10 +154,22 @@ class CardLargeKaga extends React.Component {
       }
       // 如果沒登錄的話
     } else if (cinemaId) {
-      alert('戲院會員不可以收藏喔～')
+      // alert('戲院會員不可以收藏喔～')
+      Toast.fire({
+        type: 'error',
+        title: '戲院會員不可以收藏喔～',
+      })
     } else {
-      alert('請先登錄會員喔～')
-      window.location = 'http://localhost:3000/LoginSign'
+      // alert('請先登錄會員喔～')
+      Swal.fire({
+        type: 'info',
+        title: '請先登錄會員喔～',
+        showConfirmButton: false,
+      })
+      setTimeout(
+        () => (window.location = 'http://localhost:3000/LoginSign'),
+        1500
+      )
     }
   }
 
