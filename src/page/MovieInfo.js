@@ -195,7 +195,7 @@ class MovieInfo extends React.Component {
               <MovieTitle title={'戲院資訊'} className="content-title" />
             </div>
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
-              <ActivityPageCard
+              {/* <ActivityPageCard
                 theater={this.state.activityPageData.theater}
                 theaterMap={this.state.activityPageData.theaterMap}
                 phone={this.state.activityPageData.phone}
@@ -209,7 +209,7 @@ class MovieInfo extends React.Component {
                 handleOnClickMaplocal={() =>
                   this.setState({ streetView: false })
                 }
-              />
+              /> */}
             </div>
           </div>
         </div>
