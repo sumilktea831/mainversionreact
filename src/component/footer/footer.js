@@ -18,8 +18,9 @@ class Footer extends React.Component {
 
   render() {
     return (
-      <Col md={11} className="justify-content-center pr-4">
-        <Row className="my-4">
+      // 如果下面爆了出現卷軸  就是這裡的問題!!          ↓
+      <Col md={11} className="justify-content-center">
+        <Row className="mb-4">
           <Col className="" md={'8'}>
             <div className="">
               <h3 className="">聯絡我們</h3>
@@ -43,7 +44,7 @@ class Footer extends React.Component {
             <div className="">
               <h3 className="mb-3">訂閱我們</h3>
 
-              <div className="input-group" style={{ width: 320 }}>
+              <div className="input-group" style={{ maxWidth: 320 }}>
                 <input
                   type="text"
                   className="form-control inp_email"
@@ -224,7 +225,7 @@ class Footer extends React.Component {
             </div>
           </Col>
         </Row>
-        <Row className="footer_brand my-3">
+        <Row className="footer_brand mt-3 mb-5">
           {/* 這邊可選擇純文字、logo1、logo2的樣式 */}
           <div className="col-auto">
             <h2 style={{ display: 'inline' }} className="mr-3">
@@ -242,7 +243,7 @@ class Footer extends React.Component {
               style={{ verticalAlign: 'text-bottom' }}
               className="mr-3"
             /> */}
-            enjoy life, &nbsp; every day, &nbsp; every one, &nbsp; every thing
+            enjoy life, &nbsp; every one, &nbsp; every thing
           </div>
           <div className="col-auto mr-auto aling-items-end" />
           <div className="col-auto col-md-4">
