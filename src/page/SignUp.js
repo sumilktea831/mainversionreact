@@ -96,6 +96,7 @@ class SignUp extends React.Component {
         cinemaPageViews: 0,
         cinemaSignUpDate: '',
         purview: 'cinemaMember',
+        cinemaIntro:'',
         cinemaMessage: [],
         cinemaFilm: [],
         cinemaActivity: [],
@@ -451,7 +452,7 @@ class SignUp extends React.Component {
                   Swal.fire({
                     type: 'success',
                     title: '<span style="color:#d4d1cc">會員註冊成功</span>',
-                    text: '<span style="color:#d4d1cc">請重新登入</span>',
+                    html: '<span style="color:#d4d1cc">請重新登入</span>',
                     showConfirmButton: true,
                     confirmButtonClass: 'btn btn-warning',
                     confirmButtonColor: '#ffa510',

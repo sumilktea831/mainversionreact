@@ -6,6 +6,7 @@ import {
   FaShareSquare,
   FaCommentAlt,
   FaThumbsUp,
+  FaEye,
   FaRegBookmark,
 } from 'react-icons/fa'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
@@ -127,7 +128,7 @@ class ArticleCard extends React.Component {
         console.log(err)
       }
     } else {
-      alert('please login')
+      alert('請先登入會員')
     }
   }
   render() {
@@ -141,6 +142,7 @@ class ArticleCard extends React.Component {
                   <FaBookmark
                     className="mr-1 righ-mark text-warning"
                     onClick={this.handleClick}
+                    style={{ cursor: 'pointer' }}
                   />
                 </div>
               ) : (
@@ -148,6 +150,7 @@ class ArticleCard extends React.Component {
                   <FaRegBookmark
                     className="mr-1 righ-mark shadowBtn"
                     onClick={this.handleClick}
+                    style={{ cursor: 'pointer' }}
                   />
                 </div>
               )}
@@ -167,13 +170,16 @@ class ArticleCard extends React.Component {
                     <div className="card-body d-flex row mt-4 mx-4 px-2">
                       <h5 className="card-title">
                         {/* 設定標題字串只取前28個字 */}
-                        {this.props.cardAuthor}
                         {this.props.cardTitle.substr(0, 24) + ''}
                       </h5>
                       <span className="contentText mb-5">
                         <p className="">
                           <small className="mr-4">{this.props.author}/文</small>
                           <small>{this.props.date}</small>
+                          <small className="mx-4">
+                            <FaEye className="mx-1" />
+                            {this.props.viewCounter}
+                          </small>
                         </p>
                         {/*.replace(/(<([^>]+)>)/ig,"")
                    設定內容字串，replace HTML 標籤，且只取前100個字，並加上'.......' */}

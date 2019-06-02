@@ -16,6 +16,7 @@ import {
 import { MdFavorite } from 'react-icons/md'
 import ArticleBtnGroup from '../ArticleList/ArticleButton/ArticleBtnGroup'
 import ArticleCommentInput from './ArticleCommentInput'
+import { async } from 'q'
 
 const memberId = sessionStorage.getItem('memberId')
 

@@ -1,9 +1,10 @@
 import React from 'react'
-import ActivitySection from '../component/activity/ActivitySection/ActivitySection'
+import ArticleSection from '../component/article/ArticleSection/ActivitySection'
 import { Row, Col } from 'react-bootstrap'
 import Pagination from '../component/article/ArticleList/ArticleButton/Pagination'
 import ArticleCard from '../component/article/ArticleCard'
 import ArticleSlider from '../component/article/ArticleList/ArticleSlider/ArticleSlider'
+import { async } from 'q'
 // import ContactForm from '../component/article/ArticleMail/send'
 
 const memberId = sessionStorage.getItem('memberId')
@@ -30,6 +31,8 @@ class Article extends React.Component {
     this.updateWindowDimensions = this.updateWindowDimensions.bind(this)
     // this.handleClick = this.handleClick.bind(this)
     this.handleSearch = this.handleSearch.bind(this)
+    this.handleScrollToElement = this.handleScrollToElement.bind(this)
+    this.myRef = React.createRef()
   }
 
   async componentDidMount() {
@@ -83,85 +86,6 @@ class Article extends React.Component {
     this.setState({ articleData: byHotArray })
   }
 
-  // handleClick = () => {
-  //   alert('1324')
-  // if (memberId) {
-  //   console.log(this.state.memberAllData)
-  //   // var newMark = []
-  //   var newMark = [...this.state.memberInfo]
-
-  //   // const Marked = newMark.find(item => item === this.state.thisId)
-
-  //   this.setState({ isMarked: !this.state.isMarked })
-
-  //   if (this.state.isMarked) {
-  //     newMark = newMark.filter(element => {
-  //       return element !== this.state.thisId
-  //     })
-  //   } else {
-  //     newMark = [this.state.thisId, ...this.state.memberInfo]
-  //     console.log(typeof this.state.thisId + ':' + this.state.thisId)
-  //     console.log('false')
-  //     console.log(newMark)
-  //   }
-
-  //   // 新的會員資訊 (更新收藏文章項目)
-  //   let newMemberData = {
-  //     id: this.state.memberAllData.id,
-  //     name: this.state.memberAllData.name,
-  //     nickname: this.state.memberAllData.nickname,
-  //     gender: this.state.memberAllData.gender,
-  //     mobile: this.state.memberAllData.mobile,
-  //     birth: this.state.memberAllData.birth,
-  //     email: this.state.memberAllData.email,
-  //     pwd: this.state.memberAllData.pwd,
-  //     avatar: this.state.memberAllData.avatar,
-  //     city: this.state.memberAllData.city,
-  //     address: this.state.memberAllData.address,
-  //     fav_type: this.state.memberAllData.fav_type,
-  //     career: this.state.memberAllData.career,
-  //     join_date: this.state.memberAllData.join_date,
-  //     permission: this.state.memberAllData.permission,
-  //     collectFilm: this.state.memberAllData.collectFilm,
-  //     collectCinema: this.state.memberAllData.collectCinema,
-  //     collectArticle: newMark,
-  //     collectActivity: this.state.memberAllData.collectActivity,
-  //     collectActivityJoin: this.state.memberAllData.collectActivityJoin,
-  //     collectForum: this.state.memberAllData.collectForum,
-  //     markList: this.state.memberAllData.markList,
-  //   }
-
-  //   const data = newMemberData
-
-  //   try {
-  //     const res = await fetch(
-  //       'http://localhost:5555/member/' + this.state.memberAllData.id,
-  //       {
-  //         method: 'PUT',
-  //         body: JSON.stringify(data), //新的會員收藏資料
-  //         headers: new Headers({
-  //           Accept: 'application/json',
-  //           'Content-Type': 'application/json',
-  //         }),
-  //       }
-  //     )
-  //     const newMarkData = await res.json()
-  //     const newMarkA = newMarkData.collectArticle
-  //     console.log(newMarkData)
-  //     console.log('Aid:')
-  //     console.log(newMarkA)
-  //     // fetch新資料後的判斷渲染套餐(收藏)
-  //     // const MarkYN
-
-  //     this.shouldComponentUpdate()
-  //   } catch (err) {
-  //     console.log(err)
-  //   }
-  // } else {
-  //   alert('please login')
-  // }
-  // }
-
   // --------------------------------搜尋套餐--------------------------------
   handleSearch = event => {
     const search = document.querySelector('#articleSerch').value
@@ -191,6 +115,12 @@ class Article extends React.Component {
     }
   }
 
+  // 捲動套餐
+
+  handleScrollToElement() {
+    window.scrollTo(0, this.myRef.current.offsetTop)
+  }
+
   render() {
     // if (this.state.articleData.markId === undefined) {
     //   return <></>
@@ -200,11 +130,13 @@ class Article extends React.Component {
         <div className="container-fuild">
           <div className="row">
             <div className="col-md-12 p-0">
-              <ActivitySection
+              <ArticleSection
                 bigSlogan={this.state.bigSlogan}
                 midSlogan={this.state.midSlogan}
                 smallSlogan={this.state.smallSlogan}
                 pictureSrc={this.state.heroSectionPic}
+                // pagename={'/article'}
+                handleScrollToElement={this.handleScrollToElement}
               />
               {/* <ArricleList image={this.state.imgSrc}/> */}
             </div>
@@ -214,7 +146,10 @@ class Article extends React.Component {
           ) : (
             <>
               <Row className="px-5">
-                <div className="col-md-11 d-flex my-4">
+                <div
+                  className="col-md-11 d-flex mt-5 pt-5 mb-3"
+                  ref={this.myRef}
+                >
                   <h4 className="text-lighttext-center border-bottom border-light">
                     .Movieee精選
                   </h4>
@@ -223,7 +158,10 @@ class Article extends React.Component {
 
               <Row className="justify-content-md-center">
                 <Col md={11}>
-                  <ArticleSlider SliderData={this.state.SliderData} />
+                  <ArticleSlider
+                    SliderData={this.state.SliderData}
+                    id="slider"
+                  />
                 </Col>
               </Row>
             </>
@@ -238,13 +176,17 @@ class Article extends React.Component {
                   className="text-center border-bottom border-light"
                   onClick={this.byNew}
                 >
-                  <h4 className="text-light">最新消息</h4>
+                  <h4 className="text-light" style={{ cursor: 'pointer' }}>
+                    最新消息
+                  </h4>{' '}
                 </div>
                 <div
                   className="mx-3 text-center border-bottom border-light"
                   onClick={this.byHot}
                 >
-                  <h4 className="text-light">熱門文章</h4>
+                  <h4 className="text-light" style={{ cursor: 'pointer' }}>
+                    熱門文章
+                  </h4>
                 </div>
                 {/* <div className="mx-3 text-center border-bottom border-light">
                 <h4 className="text-light">影評專欄</h4>

@@ -8,9 +8,9 @@ const cinemaId = sessionStorage.getItem('cinemaId')
 
 const Toast = Swal.mixin({
   toast: true,
-  position: 'center-end',
+  position: 'center',
   showConfirmButton: false,
-  timer: 3000,
+  timer: 1500,
 })
 
 class CardLargeKaga extends React.Component {
@@ -94,16 +94,19 @@ class CardLargeKaga extends React.Component {
     } else {
       // alert('請先登錄會員喔～')
       Swal.fire({
+        title: '<span style="color:#d4d1cc">請先登入會員</span>',
         type: 'info',
-        title: '<span style="color:#d4d1cc">請先登入會員喔～</span>',
-        showConfirmButton: false,
-        buttonsStyling: false,
+        showCancelButton: true,
+        confirmButtonText: '確認',
+        cancelButtonText: '取消',
+        confirmButtonClass: ' btn-warning',
+        confirmButtonColor: '#ffa510',
         background: '#242b34',
+      }).then(result => {
+        if (result.value) {
+          window.location.href = '/LoginSign'
+        }
       })
-      setTimeout(
-        () => (window.location = 'http://localhost:3000/LoginSign'),
-        1500
-      )
     }
   }
 
@@ -164,16 +167,19 @@ class CardLargeKaga extends React.Component {
     } else {
       // alert('請先登錄會員喔～')
       Swal.fire({
+        title: '<span style="color:#d4d1cc">請先登入會員</span>',
         type: 'info',
-        title: '<span style="color:#d4d1cc">請先登入會員喔～</span>',
-        showConfirmButton: false,
-        buttonsStyling: false,
+        showCancelButton: true,
+        confirmButtonText: '確認',
+        cancelButtonText: '取消',
+        confirmButtonClass: ' btn-warning',
+        confirmButtonColor: '#ffa510',
         background: '#242b34',
+      }).then(result => {
+        if (result.value) {
+          window.location.href = '/LoginSign'
+        }
       })
-      setTimeout(
-        () => (window.location = 'http://localhost:3000/LoginSign'),
-        1500
-      )
     }
   }
 
@@ -226,7 +232,7 @@ class CardLargeKaga extends React.Component {
         <div className="col-12 my-3">
           <div className="card cinemaBigCard">
             <div className="row no-gutters h-100">
-              <div className="col-lg-6 col-md-12 md-50 cinemaBigCardImg">
+              <div className="col-lg-6 col-md-12 h-100 cinemaBigCardImg">
                 <img
                   src={this.props.img}
                   className="card-img h-100"
