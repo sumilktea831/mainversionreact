@@ -6,6 +6,9 @@ import MoviePageCard from '../component/movie/MoviePageCard/MoviePageCard'
 import MovieContent from '../component/movie/MovieContent/MovieContent'
 import MovieQRcode from '../component/movie/MovieQRcode/MovieQRcode'
 import MovieCard from '../component/movie/MovieCard/MovieCard'
+import ActivityPageCard from '../component/activity/ActivityPageCard/ActivityPageCard'
+
+import Swal from 'sweetalert2'
 
 class MovieInfo extends React.Component {
   constructor(props) {
@@ -103,10 +106,26 @@ class MovieInfo extends React.Component {
             .split(id)
             .toString()
             .replace(/,/g, '')
-          alert('已取消收藏')
+          // alert('已取消收藏')
+          Swal.fire({
+            // position: 'top-end',
+            type: 'success',
+            title: '<span style="color:#d4d1cc">已取消收藏</span>',
+            showConfirmButton: false,
+            buttonsStyling: false,
+            background: '#242b34',
+          })
         } else {
           data.collectMovie += id
-          alert('已加入收藏')
+          // alert('已加入收藏')
+          Swal.fire({
+            // position: 'top-end',
+            type: 'success',
+            title: '<span style="color:#d4d1cc">已加入收藏</span>',
+            showConfirmButton: false,
+            buttonsStyling: false,
+            background: '#242b34',
+          })
         }
         this.setState({ collectMovie: data.collectMovie })
         try {
@@ -166,6 +185,30 @@ class MovieInfo extends React.Component {
                 cardContent6={this.state.moviePageData.filmTime + '分鐘'}
                 cardContent7={this.state.moviePageData.inTheaterDate}
                 cardContent8={this.state.moviePageData.outTheaterDate}
+              />
+            </div>
+          </div>
+        </div>
+        <div className="container-fluid fix-content" id="text">
+          <div className="row">
+            <div className="col-md-12 p-0">
+              <MovieTitle title={'戲院資訊'} className="content-title" />
+            </div>
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
+              <ActivityPageCard
+                theater={this.state.activityPageData.theater}
+                theaterMap={this.state.activityPageData.theaterMap}
+                phone={this.state.activityPageData.phone}
+                GUINumber={this.state.activityPageData.GUINumber}
+                website={this.state.activityPageData.website}
+                email={this.state.activityPageData.email}
+                lat={this.state.activityPageData.lat}
+                lng={this.state.activityPageData.lng}
+                streetView={this.state.streetView}
+                handleOnClickMap={() => this.setState({ streetView: true })}
+                handleOnClickMaplocal={() =>
+                  this.setState({ streetView: false })
+                }
               />
             </div>
           </div>

@@ -9,12 +9,7 @@ import ActivityJoinBtn from '../component/activity/ActivityJoinBtn/ActivityJoinB
 import ActivityCard from '../component/activity/ActivityCard/ActivityCard'
 import ActivityJoinForm from '../component/activity/ActivityJoinForm/ActivityJoinForm'
 import Swal from 'sweetalert2'
-const Toast = Swal.mixin({
-  toast: true,
-  position: 'center',
-  showConfirmButton: false,
-  timer: 2000,
-})
+
 class ActivityInfo extends React.Component {
   constructor(props) {
     super(props)

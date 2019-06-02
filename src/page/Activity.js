@@ -5,14 +5,7 @@ import ActivitySearchbarTitle from '../component/activity/ActivitySearchbar/Acti
 import ActivitySearchbarContent from '../component/activity/ActivitySearchbar/ActivitySearchbarContent'
 import ActivitySearchbarInput from '../component/activity/ActivitySearchbar/ActivitySearchbarInput'
 import ActivityCard from '../component/activity/ActivityCard/ActivityCard'
-//Import SweetAlert2
 import Swal from 'sweetalert2'
-const Toast = Swal.mixin({
-  toast: true,
-  position: 'center',
-  showConfirmButton: false,
-  timer: 2000,
-})
 class Activity extends React.Component {
   constructor() {
     super()
@@ -192,16 +185,24 @@ class Activity extends React.Component {
             .toString()
             .replace(/,/g, '')
           // alert('已取消收藏')
-          Toast.fire({
+          Swal.fire({
+            // position: 'top-end',
             type: 'success',
-            title: '已取消收藏',
+            title: '<span style="color:#d4d1cc">已取消收藏</span>',
+            showConfirmButton: false,
+            buttonsStyling: false,
+            background: '#242b34',
           })
         } else {
           data.collectActivity += id
           // alert('已加入收藏')
-          Toast.fire({
+          Swal.fire({
+            // position: 'top-end',
             type: 'success',
-            title: '已加入收藏',
+            title: '<span style="color:#d4d1cc">已加入收藏</span>',
+            showConfirmButton: false,
+            buttonsStyling: false,
+            background: '#242b34',
           })
         }
         this.setState({ collectActivity: data.collectActivity })
