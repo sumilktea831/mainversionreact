@@ -837,7 +837,7 @@
     },
     {
       "id": "cf1559461949823",
-      "title": "輕鬆愉快",
+      "title": "輕鬆+愉快",
       "titleEn": "Free and Easy",
       "movie_rating": "保護級 6+",
       "imgSrc": "71cf6163-45da-49e1-8384-ecd8a95aa97e.jpg",
@@ -2026,7 +2026,7 @@
       "join_date": "2019-05-23",
       "permission": "generalMember",
       "collectFilm": [],
-      "collectMovie": "",
+      "collectMovie": "cf1559456527550",
       "collectCinema": [
         "c1",
         "c2"
@@ -2044,6 +2044,31 @@
           "markcontent": ""
         }
       ]
+    },
+    {
+      "id": "m1559463901509",
+      "name": "",
+      "nickname": "111",
+      "gender": "",
+      "mobile": "",
+      "birth": "",
+      "email": "test11@gmail.com",
+      "pwd": "111111",
+      "avatar": "movieStar.jpg",
+      "city": "",
+      "address": "",
+      "fav_type": [],
+      "career": "",
+      "join_date": "2019-06-02",
+      "permission": "generalMember",
+      "collectFilm": [],
+      "collectMovie": "",
+      "collectCinema": [],
+      "collectArticle": [],
+      "collectActivity": "",
+      "collectActivityJoin": "",
+      "collectForum": [],
+      "markList": []
     }
   ],
   "cinema": [
@@ -2228,7 +2253,7 @@
         },
         {
           "id": "cf1559461949823",
-          "title": "輕鬆愉快",
+          "title": "輕鬆+愉快",
           "titleEn": "Free and Easy",
           "movie_rating": "保護級 6+",
           "imgSrc": "71cf6163-45da-49e1-8384-ecd8a95aa97e.jpg",
@@ -2276,7 +2301,7 @@
         "m111111",
         "m22222"
       ],
-      "cinemaPageViews": 600,
+      "cinemaPageViews": 602,
       "cinemaSignUpDate": "1955-03-12",
       "purview": "cinemaMember",
       "cinemaMessage": [
@@ -2749,6 +2774,32 @@
       "purview": "cinemaMember",
       "cinemaMessage": [],
       "cinemaType": "gallery"
+    },
+    {
+      "id": "c1559464653973",
+      "cinemaName": "111",
+      "cinemaCity": "台北市",
+      "cinemaArea": "111",
+      "cinemaLogoImg": "",
+      "cinemaImg": [],
+      "cinemaHeroImg": "",
+      "cinemaAccount": "dddddd",
+      "cinemaPassword": "dddddd",
+      "cinemaStar": [],
+      "cinemaAddress": "台北市1231232435",
+      "cinemaPhone": "02-0000-0000",
+      "cinemaTaxid": "11111111",
+      "cinemaWeb": "",
+      "cinemaEmail": "12@gg.com",
+      "cinemaBackupEmail": "",
+      "cinemaAwesome": [],
+      "cinemaPageViews": "",
+      "cinemaSignUpDate": "2019-06-02",
+      "purview": "cinemaMember",
+      "cinemaMessage": [],
+      "cinemaFilm": [],
+      "cinemaActivity": [],
+      "cinemaType": "bar"
     }
   ],
   "articleCardData": [

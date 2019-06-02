@@ -373,7 +373,6 @@ class CinemaBackMainpage extends React.Component {
 
   //影片編輯儲存
   handleEditSave = (id, thisData) => () => {
-    alert(id)
     const newcinemaData = { ...this.state.thisCinemaData } //這個戲院的Data
     //找出這支影片在這個戲院影片列表中的Index
     const thisFilmIndex = newcinemaData.cinemaFilm.findIndex(
@@ -431,7 +430,6 @@ class CinemaBackMainpage extends React.Component {
     }
   }
   handleFilmDelete = id => () => {
-    alert(id)
     const newcinemaData = { ...this.state.thisCinemaData } //這個戲院的Data
     //找出這支影片在這個戲院影片列表中的Index
     const thisFilmIndex = newcinemaData.cinemaFilm.findIndex(

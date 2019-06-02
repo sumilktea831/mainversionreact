@@ -2,6 +2,15 @@ import React from 'react'
 import BoxWrap from '../component/signup/BoxWrap'
 import { Row } from 'react-bootstrap'
 // import { Session } from 'inspector'
+
+//Import SweetAlert2
+import Swal from 'sweetalert2'
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'bottom',
+  showConfirmButton: false,
+  timer: 3000,
+})
 class SignUp extends React.Component {
   constructor() {
     super()
@@ -52,7 +61,7 @@ class SignUp extends React.Component {
         join_date: '',
         permission: 'generalMember',
         collectFilm: [],
-        collectMovie:"",
+        collectMovie: '',
         collectCinema: [],
         collectArticle: [],
         collectActivity: '',
@@ -82,9 +91,8 @@ class SignUp extends React.Component {
         cinemaSignUpDate: '',
         purview: 'cinemaMember',
         cinemaMessage: [],
-        cinemaFilm:[],
-        cinemaActivity:[]
-
+        cinemaFilm: [],
+        cinemaActivity: [],
       },
     }
   }
@@ -233,21 +241,47 @@ class SignUp extends React.Component {
       // console.log(userPwd)
       if (isexisted.pwd === userPwd) {
         //如果email存在，再判斷密碼是否正確
-        alert('密碼正確')
+        // alert('密碼正確')
         if (captcha === captchatext || captchatext === '1111') {
           //如果密碼正確，再判斷驗證碼是否正確
           sessionStorage.setItem('memberId', isexisted.id)
-          // console.log(sessionStorage.getItem('memberId'))
-          window.location.href = '/BackMainpage/my-preview'
-          // window.history.go(-1)
+          Swal.fire({
+            // position: 'top-end',
+            type: 'success',
+            title: '登入成功',
+            showConfirmButton: false,
+            timer: 1500,
+          })
+          setTimeout(
+            () => (window.location.href = '/BackMainpage/my-preview'),
+            1500
+          )
         } else {
-          alert('驗證碼有誤')
+          // alert('驗證碼有誤')
+          Swal.fire({
+            type: 'error',
+            title: '請輸入正確的驗證碼',
+            showConfirmButton: true,
+            timer: 1500,
+          })
         }
       } else {
-        alert('帳號或密碼錯誤(p)')
+        // alert('帳號或密碼錯誤(p)')
+        Swal.fire({
+          type: 'error',
+          title: '帳號或密碼錯誤',
+          showConfirmButton: true,
+          timer: 1500,
+        })
       }
     } else {
-      alert('帳號或密碼錯誤(e)')
+      // alert('帳號或密碼錯誤(e)')
+      Swal.fire({
+        type: 'error',
+        title: '帳號或密碼錯誤',
+        showConfirmButton: true,
+        timer: 1500,
+      })
     }
   }
   //戲院登入按鈕事件
@@ -266,19 +300,48 @@ class SignUp extends React.Component {
       // console.log(isexisted.pwd)
       // console.log(userPwd)
       if (isexisted.cinemaPassword === cinemaPassword) {
-        alert('密碼正確')
+        // alert('密碼正確')
         if (captcha === captchatext || captchatext === '1111') {
           sessionStorage.setItem('cinemaId', isexisted.id)
-          // console.log(!sessionStorage.getItem('memberId'))
-          window.location.href = '/CinemaBackMainpage/cinema-info-preview'
+          Swal.fire({
+            // position: 'top-end',
+            type: 'success',
+            title: '登入成功',
+            showConfirmButton: false,
+            timer: 1500,
+          })
+          setTimeout(
+            () =>
+              (window.location.href =
+                '/CinemaBackMainpage/cinema-info-preview'),
+            1500
+          )
         } else {
-          alert('驗證碼有誤')
+          // alert('驗證碼有誤')
+          Swal.fire({
+            type: 'error',
+            title: '請輸入正確的驗證碼',
+            showConfirmButton: true,
+            timer: 1500,
+          })
         }
       } else {
-        alert('帳號或密碼錯誤(p)')
+        // alert('帳號或密碼錯誤(p)')
+        Swal.fire({
+          type: 'error',
+          title: '帳號或密碼錯誤',
+          showConfirmButton: true,
+          timer: 1500,
+        })
       }
     } else {
-      alert('帳號或密碼錯誤(e)')
+      // alert('帳號或密碼錯誤(e)')
+      Swal.fire({
+        type: 'error',
+        title: '帳號或密碼錯誤',
+        showConfirmButton: true,
+        timer: 1500,
+      })
     }
   }
   //會員註冊按鈕事件
@@ -291,7 +354,11 @@ class SignUp extends React.Component {
     // console.log(userInputText)
     // console.log(checkok)
     if (!userInputText[0].isagreed) {
-      alert('請勾選同意條款')
+      // alert('請勾選同意條款')
+      Toast.fire({
+        type: 'info',
+        title: '請勾選同意條款',
+      })
     } else {
       let isAllChecked = checkok.email && checkok.nickname && checkok.repwd
       if (isAllChecked) {
@@ -309,9 +376,7 @@ class SignUp extends React.Component {
               ? '0' + (date.getMonth() + 1)
               : date.getMonth() + 1) +
             '-' +
-            (date.getDate() < 10
-            ? '0' + (date.getDate())
-            : date.getDate())
+            (date.getDate() < 10 ? '0' + date.getDate() : date.getDate())
           let newSignUpData = { ...this.state.memberSignUpdata }
           newSignUpData.id = 'm' + +date //+date:將日期轉為數字，再在前面加上"m"
           newSignUpData.join_date = dateYMD
@@ -348,18 +413,38 @@ class SignUp extends React.Component {
                   console.log(e)
                 }
                 this.setState({ memberdata: jsonObject }, () => {
-                  alert('會員註冊成功！請重新登入')
-                  window.location.href = '/LoginSign'
+                  // alert('會員註冊成功！請重新登入')
+                  Swal.fire({
+                    type: 'success',
+                    title: '會員註冊成功',
+                    text: '請重新登入',
+                    showConfirmButton: true,
+                    timer: 1500,
+                  })
+                  setTimeout(() => (window.location.href = '/LoginSign'), 1500)
                 })
               })
           } catch (e) {
             console.log(e)
           }
         } else {
-          alert('驗證碼有誤')
+          // alert('驗證碼有誤')
+          Swal.fire({
+            type: 'error',
+            title: '請輸入正確的驗證碼',
+            showConfirmButton: true,
+            timer: 1500,
+          })
         }
       } else {
-        alert('資料填寫有誤，請再次確認您的資料！')
+        // alert('資料填寫有誤，請再次確認您的資料！')
+        Swal.fire({
+          type: 'error',
+          title: '資料填寫有誤',
+          text: '請再次確認您的資料',
+          showConfirmButton: true,
+          timer: 1500,
+        })
       }
     }
   }
@@ -390,7 +475,11 @@ class SignUp extends React.Component {
       //如果格式驗證正確，再判斷驗證碼是否正確
       if (captcha === captchatext || captchatext === '1111') {
         if (!userInputText[0].isagreed) {
-          alert('請勾選同意條款')
+          // alert('請勾選同意條款')
+          Toast.fire({
+            type: 'info',
+            title: '請勾選同意條款',
+          })
         } else {
           //建立要新增的資料內容
           // 取得當前日期(date)，並轉換成2019-xx-xx的格式(dateYMD)
@@ -402,9 +491,7 @@ class SignUp extends React.Component {
               ? '0' + (date.getMonth() + 1)
               : date.getMonth() + 1) +
             '-' +
-            (date.getDate() < 10
-            ? '0' + (date.getDate())
-            : date.getDate())
+            (date.getDate() < 10 ? '0' + date.getDate() : date.getDate())
           let newSignUpData = { ...this.state.cinemaSignUpdata }
           newSignUpData.id = 'c' + +date //+date:將日期轉為數字，再在前面加上"c"
           newSignUpData.cinemaName = cinemaName
@@ -434,8 +521,15 @@ class SignUp extends React.Component {
               .then(res => res.json())
               .then(jsonObject => {
                 this.setState({ cinemadata: jsonObject }, () => {
-                  alert('戲院註冊成功！請重新登入')
-                  window.location.href = '/LoginSign'
+                  // alert('戲院註冊成功！請重新登入')
+                  Swal.fire({
+                    type: 'success',
+                    title: '戲院註冊成功',
+                    text: '請重新登入',
+                    showConfirmButton: true,
+                    timer: 1500,
+                  })
+                  setTimeout(() => (window.location.href = '/LoginSign'), 1500)
                 })
               })
           } catch (e) {
@@ -443,10 +537,23 @@ class SignUp extends React.Component {
           }
         }
       } else {
-        alert('驗證碼有誤')
+        // alert('驗證碼有誤')
+        Swal.fire({
+          type: 'error',
+          title: '驗證碼有誤',
+          showConfirmButton: true,
+          timer: 1500,
+        })
       }
     } else {
-      alert('資料填寫有誤，請再次確認您的資料！')
+      // alert('資料填寫有誤，請再次確認您的資料！')
+      Swal.fire({
+        type: 'error',
+        title: '資料填寫有誤',
+        text: '請再次確認您的資料',
+        showConfirmButton: true,
+        timer: 1500,
+      })
     }
   }
 
