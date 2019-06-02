@@ -310,8 +310,10 @@ class Movie extends React.Component {
             .split(id)
             .toString()
             .replace(/,/g, '')
+          alert('已取消收藏')
         } else {
           data.collectMovie += id
+          alert('已加入收藏')
         }
         this.setState({ collectMovie: data.collectMovie })
         try {

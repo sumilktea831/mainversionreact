@@ -2,6 +2,7 @@ import React from 'react'
 import { Row } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap'
 import ActivityCard from '../component/activity/ActivityCard/ActivityCard'
+import ActivityCinemaCard from '../component/activity/ActivityCard/ActivityCinemaCard'
 import ActivityTitle from '../component/activity/ActivityTitle/ActivityTitle'
 import AcitivityForm from '../component/activity/AcitivityForm/AcitivityForm'
 import AcitivityEditForm from '../component/activity/AcitivityForm/AcitivityEditForm'
@@ -47,6 +48,7 @@ class CinemaBackMainpage extends React.Component {
       allCinemaData: [],
       cinemaId: [],
       thisCinemaData: [],
+      thisCinemaCardData: [],
       // 戲院資訊頁
       allFilmData: [], //全部戲院資料
       AvatarOne: '', //頭像用
@@ -104,7 +106,27 @@ class CinemaBackMainpage extends React.Component {
       if (!response.ok) throw new Error(response.statusText)
       const jsonObject = await response.json()
       const data = await jsonObject.find(item => item.id === cinemaId)
-      await this.setState({ thisCinemaData: data, allCinemaData: jsonObject })
+      await this.setState({
+        thisCinemaData: data,
+        allCinemaData: jsonObject,
+      })
+    } catch (e) {
+      console.log(e)
+    }
+    try {
+      //取得戲院活動
+      const response = await fetch('http://localhost:5555/cinema/' + cinemaId, {
+        method: 'GET',
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+      let data = await response.json()
+      data = JSON.parse(JSON.stringify(data.cinemaActivity))
+      await this.setState({
+        thisCinemaCardData: data,
+      })
     } catch (e) {
       console.log(e)
     }
@@ -818,13 +840,31 @@ class CinemaBackMainpage extends React.Component {
                   </>
                 ) : (
                   <>
-                    <p
-                      onClick={() =>
-                        (window.location.pathname += '/a1558948812063')
-                      }
-                    >
-                      to a1558948812063
-                    </p>
+                    <div className="row">
+                      <div className="col-md-12 p-0">
+                        <ActivityTitle
+                          title={'活動列表'}
+                          className="content-title"
+                        />
+                      </div>
+                      {this.state.thisCinemaCardData.map(data => (
+                        <div
+                          className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5"
+                          style={{ width: '250px', height: '360px' }}
+                        >
+                          <ActivityCinemaCard
+                            routerId={data.id}
+                            key={data.id}
+                            title={data.title}
+                            imgSrc={
+                              data.imgSrc.indexOf('http') == 0
+                                ? data.imgSrc
+                                : '/images/activityImg/' + data.imgSrc
+                            }
+                          />
+                        </div>
+                      ))}
+                    </div>
                   </>
                 )
               ) : (

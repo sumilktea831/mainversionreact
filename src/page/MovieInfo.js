@@ -103,8 +103,10 @@ class MovieInfo extends React.Component {
             .split(id)
             .toString()
             .replace(/,/g, '')
+          alert('已取消收藏')
         } else {
           data.collectMovie += id
+          alert('已加入收藏')
         }
         this.setState({ collectMovie: data.collectMovie })
         try {
@@ -189,10 +191,7 @@ class MovieInfo extends React.Component {
         <div className="container-fluid fix-content" id="text">
           <div className="row">
             <div className="col-md-12 p-0">
-              <MovieTitle
-                title={this.state.title[2]}
-                className="content-title"
-              />
+              <MovieTitle title={'相關活動'} className="content-title" />
             </div>
             {this.state.moviePageOtherData.map(data => (
               <div className="col-12 col-sm-12 col-md-6 col-lg-2 mt-5">

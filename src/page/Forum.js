@@ -6,6 +6,7 @@ import ForumArticleContentRoy from '../component/Forum/ForumArticleContent/Forum
 import ForumArticleCommentRoy from '../component/Forum/ForumArticleComment/ForumArticleCommentRoy'
 import ActionButtonCategoryRoy from '../component/Forum/ForumActionButton/ActionButtonCategoryRoy'
 import ActionButtonFilterRoy from '../component/Forum/ForumActionButton/ActionButtonFilterRoy'
+import ActionButtonCommentRoy from '../component/Forum/ForumActionButton/ActionButtonCommentRoy'
 import ActionBtnScrollTopRoy from '../component/Forum/ForumActionButton/ActionBtnScrollTopRoy'
 import ActionBtnScrollBottomRoy from '../component/Forum/ForumActionButton/ActionBtnScrollBottomRoy'
 // import ActionBtnCreateRoy from '../component/Forum/ForumActionButton/ActionBtnCreateRoy'
@@ -87,6 +88,18 @@ class Forum extends React.Component {
       commentDislikeStatus: false,
       // 判斷蒐藏狀態
       collectStatus: false,
+      // 判斷篩選狀態的收藏生蜜或降冪
+      ViewfilterStatus: false,
+      // 日期新舊排序分類用
+      handleDateFilterStatus: false,
+      // 日期篩選後第一筆資料ID
+      filterDataFirstDataId: 1,
+      // 留言排序切換生蜜降冪
+      handlCommentFilterStatus: false,
+      // 左邊列表顯示排序時應該顯示收藏還是留言數開關
+      listFilterAccordding: false,
+      // 篩選欄顯示狀態
+      filterBarShow: false,
       // 確認是否有點選邊輯標題按鈕
       // 一定要把true false設為字串傳，contenteditable如果只給boolean不會顯示
       handleHeadlineEditStatus: 'false',
@@ -383,6 +396,9 @@ class Forum extends React.Component {
   // ----------------------------------pagination頁面套餐start-------------------------------
   // 最後動作完一定要設定state讓全部重新渲染
   handleNowPageNumber = async e => {
+    // 在點了頁面列表後因為會變成TRUE，RENDER的STATE就改變了會造成在回來點PAGE會無法讓右邊頁面重新渲染
+    // 所以要把列表點擊趕痕FALSE
+    this.setState({ listClickChek: false })
     // 可從handleNowPageNumber去撈到動做
     console.log(+e.target.innerText)
     // 抓到目前點選button的頁碼轉為數字
@@ -428,6 +444,9 @@ class Forum extends React.Component {
 
   // 使用參數用法都跟上面page主軸一樣
   handlePrevPage = async e => {
+    // 在點了頁面列表後因為會變成TRUE，RENDER的STATE就改變了會造成在回來點PAGE會無法讓右邊頁面重新渲染
+    // 所以要把列表點擊趕痕FALSE
+    this.setState({ listClickChek: false })
     // 控制頁數小於1產生錯誤
     if (this.state.currentPage > 1) {
       const newCurrentPage = this.state.currentPage - 1
@@ -498,6 +517,10 @@ class Forum extends React.Component {
 
   //下一頁 使用參數用法都跟上面page主軸一樣
   handleNextvPage = async e => {
+    // 在點了頁面列表後因為會變成TRUE，RENDER的STATE就改變了會造成在回來點PAGE會無法讓右邊頁面重新渲染
+    // 所以要把列表點擊趕痕FALSE
+    this.setState({ listClickChek: false })
+
     const ScollLeft = document.querySelector('#forumListScollRightLeft')
     e.preventDefault()
     // 往下捲動
@@ -1700,7 +1723,7 @@ class Forum extends React.Component {
       // console.log(this.state.listdata)
       // console.log(UpdateCollect)
       const data = UpdateCollect
-      console.log(data)
+      // console.log(data)
       // 將資料寫進資料庫
       const response = await fetch(
         'http://localhost:5555/forum/' + this.props.match.params.id,
@@ -1716,12 +1739,148 @@ class Forum extends React.Component {
     }
     // console.log(this.state.nowIDdata)
   }
+
   // ---------------------蒐藏功能END--------------------------
   //
+  //
+  //
+  // --------------------------排序套餐START---------------------------
+  // 隱藏排序欄開關
+  filterBarShowClick = () => {
+    this.setState({ filterBarShow: !this.state.filterBarShow })
+  }
+
+  // 排序收藏
+  handleViewFilter = () => {
+    // 因為這裡牽扯到右邊內文跟留言是不同容器分開渲染的，當左邊列表被點擊過後會把下面兩個都變成TRUE
+    // 造成渲染的方式被固定了因此在點別的按鈕改變左邊列表內容後右邊不會跟著變動
+    // 所以要再把這兩都設定回FALSE，詳情可參照後續頁面RENDER的判斷式
+    this.setState({ listClickChek: false })
+    this.setState({ CommentClickChek: false })
+
+    var items = this.state.listdata
+    // console.log(items)
+    // 切換標籤內圖片用的判斷
+    this.setState({
+      ViewfilterStatus: !this.state.ViewfilterStatus,
+      // 切換列表顯示的排序為依照收藏數
+      listFilterAccordding: false,
+    })
+
+    if (this.state.ViewfilterStatus === true) {
+      // // sort by value
+      // 大到小排序
+      items.sort(function(a, b) {
+        return b.forumViews - a.forumViews
+      })
+    } else {
+      // 小到大排序
+      items.sort(function(a, b) {
+        return a.forumViews - b.forumViews
+      })
+    }
+    // console.log(items)
+    // 排序完切割成10筆側邊列表每頁顯示
+    // 同時將該10筆第一筆資料放進渲染右邊內文與留言的容器
+    this.setState({
+      listdataReverse: items.slice(0, 10),
+      nowIDdata: items.slice(0, 10)[0],
+      currentcommentApi: items.slice(0, 10)[0].forumCommentArea,
+    })
+  }
+  // 排序日期
+  handleDateFilter = async () => {
+    // 因為這裡牽扯到右邊內文跟留言是不同容器分開渲染的，當左邊列表被點擊過後會把下面兩個都變成TRUE
+    // 造成渲染的方式被固定了因此在點別的按鈕改變左邊列表內容後右邊不會跟著變動
+    // 所以要再把這兩都設定回FALSE，詳情可參照後續頁面RENDER的判斷式
+    this.setState({ listClickChek: false })
+    this.setState({ CommentClickChek: false })
+
+    var items = this.state.listdata
+    // console.log(items)
+    // 切換標籤內圖片用的判斷
+    this.setState({
+      handleDateFilterStatus: !this.state.handleDateFilterStatus,
+      // 這裡不可以把列表後面顯示的機制改回true，否則只會固定顯示留言數(目前機制false是留言數)
+      // listFilterAccordding: true,
+    })
+
+    if (this.state.handleDateFilterStatus === true) {
+      // // sort by value
+      // 大到小排序
+      items.sort(function(a, b) {
+        return b.forumCreateDateInSecond - a.forumCreateDateInSecond
+      })
+    } else {
+      // 小到大排序
+      items.sort(function(a, b) {
+        return a.forumCreateDateInSecond - b.forumCreateDateInSecond
+      })
+    }
+    await this.setState({ filterDataFirstDataId: items.slice(0, 10)[0].id })
+    // console.log(items)
+    // 排序完切割成10筆側邊列表每頁顯示
+    // 同時將該10筆第一筆資料放進渲染右邊內文與留言的容器
+    await this.setState({
+      listdataReverse: items.slice(0, 10),
+      nowIDdata: items.slice(0, 10)[0],
+      currentcommentApi: items.slice(0, 10)[0].forumCommentArea,
+    })
+  }
+
+  handleCommentFilter = async () => {
+    // 因為這裡牽扯到右邊內文跟留言是不同容器分開渲染的，當左邊列表被點擊過後會把下面兩個都變成TRUE
+    // 造成渲染的方式被固定了因此在點別的按鈕改變左邊列表內容後右邊不會跟著變動
+    // 所以要再把這兩都設定回FALSE，詳情可參照後續頁面RENDER的判斷式
+    this.setState({ listClickChek: false })
+    this.setState({ CommentClickChek: false })
+    var items = this.state.listdata
+    // console.log(items)
+    // 切換標籤內圖片用的判斷
+    this.setState({
+      handlCommentFilterStatus: !this.state.handlCommentFilterStatus,
+      // 切換列表顯示的排序為依照留言數
+      listFilterAccordding: true,
+    })
+
+    if (this.state.handlCommentFilterStatus === true) {
+      // // sort by value
+      // 大到小排序
+      items.sort(function(a, b) {
+        return b.forumCommentCount - a.forumCommentCount
+      })
+    } else {
+      // 小到大排序
+      items.sort(function(a, b) {
+        return a.forumCommentCount - b.forumCommentCount
+      })
+    }
+    console.log(items)
+    // 排序完切割成10筆側邊列表每頁顯示
+    // 同時將該10筆第一筆資料放進渲染右邊內文與留言的容器
+    this.setState({
+      listdataReverse: items.slice(0, 10),
+      nowIDdata: items.slice(0, 10)[0],
+      currentcommentApi: items.slice(0, 10)[0].forumCommentArea,
+    })
+  }
+  // --------------------------排序套餐End---------------------------
+
   render() {
     // 初始化因為要二次渲染，第一次沒有近來值的時候先回傳空內容，等進didmount後在正式render
     if (this.state.nowIDdata.forumCollectMember === undefined) {
-      return <></>
+      return (
+        <>
+          <div
+            className="fa-2x w-100  d-flex justify-content-center align-items-center"
+            style={{ width: '100%', height: '100vh', background: '#242b34' }}
+          >
+            <div>
+              <i className="fas fa-spinner fa-spin" />
+            </div>
+          </div>
+        </>
+      )
     }
 
     return (
@@ -1763,18 +1922,53 @@ class Forum extends React.Component {
                 </div>
 
                 <div className="my-4">
-                  <ForumSearchbarRoy handleSearch={this.handleSearch} />
+                  <ForumSearchbarRoy
+                    handleSearch={this.handleSearch}
+                    filterBarShowClick={this.filterBarShowClick}
+                  />
                 </div>
-                {/* <div className="d-flex m-0 ">
-                  <div className="mr-3">
-                    <ActionButtonCategoryRoy />
-                  </div>
-                  <div className="">
-                    <ActionButtonFilterRoy />
-                  </div>
-                </div> */}
                 <div
-                  className="d-flex justify-content-center align-content-center w-100 mt-3 mb-4"
+                  className="d-flex justify-content-end  "
+                  style={{
+                    height: this.state.filterBarShow ? '40px' : '0px',
+                    transition: '0.5s',
+                    marginBottom: this.state.filterBarShow ? '1.5rem' : '0',
+                  }}
+                >
+                  <div className="ml-3">
+                    <ActionButtonCategoryRoy
+                      // 日期篩選用
+                      handleDateFilter={this.handleDateFilter}
+                      handleDateFilterStatus={this.state.handleDateFilterStatus}
+                      filterBarShow={this.state.filterBarShow}
+                      // 傳遞整筆資料下去先讓BUTTON運算值不用改變後的陣列運算因為會step會拿上階段的顯示
+                      // 先送整筆資料下去，同時在BUTTON裡面同步作運算，得到相同的回傳結果
+                      nowAllData={this.state.listdata}
+                    />
+                  </div>
+                  <div className="ml-3">
+                    <ActionButtonFilterRoy
+                      // 收藏數篩選用
+                      handleViewFilter={this.handleViewFilter}
+                      handleViewFilterStatus={this.state.ViewfilterStatus}
+                      filterBarShow={this.state.filterBarShow}
+                      nowAllData={this.state.listdata}
+                    />
+                  </div>
+                  <div className="ml-3">
+                    <ActionButtonCommentRoy
+                      // 留言數篩選用
+                      handleCommentFilter={this.handleCommentFilter}
+                      handlCommentFilterStatus={
+                        this.state.handlCommentFilterStatus
+                      }
+                      filterBarShow={this.state.filterBarShow}
+                      nowAllData={this.state.listdata}
+                    />
+                  </div>
+                </div>
+                <div
+                  className="d-flex justify-content-center align-content-center w-100  mb-4"
                   style={{ height: '40px' }}
                 >
                   <ForumPage
@@ -1797,6 +1991,8 @@ class Forum extends React.Component {
                     handleOnlyScrollLeftHover={this.handleOnlyScrollLeftHover}
                     // 目前頁面，寫判斷式用
                     currentPage={this.state.currentPage}
+                    // 先傳下去同時作運算，讓BUTTON 點下去PATH馬上有ID值帶入
+                    listData={this.state.listdata}
                     // 目前頁面第一筆資料計算用
                     currentLastDataId={this.state.currentLastDataId}
                   />
@@ -1863,7 +2059,12 @@ class Forum extends React.Component {
                         currentId={element.id}
                         listheadline={element.headline}
                         listforumSpoilers={element.forumSpoilers}
-                        listforumViews={element.forumViews}
+                        // 根據目前排序切換根據變更顯示哪種數字
+                        listforumViews={
+                          this.state.listFilterAccordding
+                            ? element.forumCommentCount
+                            : element.forumViews
+                        }
                         listforumCreateDate={element.forumCreateDate}
                         listforumName={element.forumName}
                         listforumAvatar={element.forumAvatar}
@@ -1874,6 +2075,9 @@ class Forum extends React.Component {
                         onClick={this.handleClick.bind(this, index, element)}
                         // 圖像路徑開頭
                         avatarPath={this.state.imagePath}
+                        listFilterAccorddingPic={
+                          this.state.listFilterAccordding
+                        }
                       />
                     </Link>
                   ))}

@@ -48,7 +48,12 @@ const ForumArticleListRoy = props => {
           </div>
           {/* 觀看次數 */}
           <div className="col-2 p-0 d-flex justify-content-end">
-            <ListViewsRoy listforumViews={props.listforumViews} />
+            <ListViewsRoy
+              // 共用排序傳遞的數據，根據不同STATE引入帶入不同值
+              listforumViews={props.listforumViews}
+              // 切換列表顯示的圖片是根據哪種排序
+              listFilterAccorddingPic={props.listFilterAccorddingPic}
+            />
           </div>
         </div>
       </div>
