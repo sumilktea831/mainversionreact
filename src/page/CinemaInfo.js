@@ -130,7 +130,7 @@ class TheateInfo extends React.Component {
           (dataCinema.cinemaCity ? dataCinema.cinemaCity : '') +
           '/' +
           (dataCinema.cinemaArea ? dataCinema.cinemaArea : ''),
-        smallSlogan: dataCinema.cinemaInfoText,
+        smallSlogan: dataCinema.cinemaIntro,
       }
 
       // 大卡片參數整理 戲院+會員
@@ -252,7 +252,8 @@ class TheateInfo extends React.Component {
         el => el.cinemaType === dataCinema.cinemaType
       )
       const elseCardData = elseCardDat.filter(el => el.id !== dataCinema.id)
-
+      console.log('elseCardData')
+      console.log(elseCardData)
       const elseCardFourData = []
       elseCardData.map((el, index) => {
         if (index < 4) {
@@ -636,7 +637,7 @@ class TheateInfo extends React.Component {
 
   handleScroll = event => {
     console.log()
-    if (window.pageYOffset > document.body.offsetHeight - 1500) {
+    if (window.pageYOffset > document.body.offsetHeight - 1200) {
       document.querySelector('.elseCard').style =
         // 'bottom:-' + window.pageYOffset + 'px'
         'left:0;opacity:1'
@@ -901,6 +902,7 @@ class TheateInfo extends React.Component {
             {/* <div style={{ height: '10px' }} /> */}
           </div>
         </div>
+
         <div id="elseCard" class="elseCard d-flex justify-content-end">
           {/* 標題區 */}
           <div
@@ -917,7 +919,7 @@ class TheateInfo extends React.Component {
           <div className="d-flex flex-column col-11">
             {cinemaId ? (
               <>
-                <div className="py-2 text-white mb-2">
+                <div className="py-2 text-white">
                   <TitleKaga title="相似對手" />
                 </div>
                 <div className="d-flex flex-wrap col-lg-11">

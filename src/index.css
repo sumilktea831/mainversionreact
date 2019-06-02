@@ -428,7 +428,7 @@ button.bg-orange {
   display: flex;
   align-items: center;
   background: rgba(36, 43, 52, 0.95);
-  height: 485px !important;
+  height: 445px !important;
   /* height: 0; */
   overflow: hidden;
   width: 100%;

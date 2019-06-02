@@ -232,7 +232,7 @@ class CardLargeKaga extends React.Component {
         <div className="col-12 my-3">
           <div className="card cinemaBigCard">
             <div className="row no-gutters h-100">
-              <div className="col-lg-6 col-md-12 md-50 cinemaBigCardImg">
+              <div className="col-lg-6 col-md-12 h-100 cinemaBigCardImg">
                 <img
                   src={this.props.img}
                   className="card-img h-100"
