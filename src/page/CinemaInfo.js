@@ -636,7 +636,7 @@ class TheateInfo extends React.Component {
 
   handleScroll = event => {
     console.log()
-    if (window.pageYOffset > document.body.offsetHeight - 800) {
+    if (window.pageYOffset > document.body.offsetHeight - 1500) {
       document.querySelector('.elseCard').style =
         // 'bottom:-' + window.pageYOffset + 'px'
         'left:0;opacity:1'

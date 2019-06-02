@@ -1,6 +1,6 @@
 import React from 'react'
 
-class AcitivityForm extends React.Component {
+class AcitivityEditForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -13,12 +13,31 @@ class AcitivityForm extends React.Component {
   }
 
   componentDidMount = async () => {
-    const data = JSON.parse(JSON.stringify(this.state.formData))
-    this.setState({ type: ['北部', '影院'] })
-    data.place = '北部,影院'
-    data.cinemaId = sessionStorage.getItem('cinemaId')
-    data.id = 'a' + +new Date()
-    this.setState({ formData: data }, () => console.log(this.state.formData))
+    const cinemaId = sessionStorage.getItem('cinemaId')
+    const activityId = window.location.pathname.slice(47)
+    console.log(activityId)
+    fetch('http://localhost:5555/activityCardData/' + activityId)
+      .then(res => res.json())
+      .then(data => {
+        console.log('Data: ' + data)
+        console.log('data id : ' + data.id)
+        let formDataPreview = {
+          id: data.id,
+          title: data.title,
+          content: data.content,
+          imgSrc: data.imgSrc,
+          lat: data.lat,
+          lng: data.lng,
+          joinContent: data.joinContent,
+          joinContentCurrentPeople: data.joinContentCurrentPeople,
+          place: data.place,
+          joinMember: data.joinMember,
+          theaterMap: data.theaterMap,
+        }
+        this.setState({ formData: formDataPreview }, () =>
+          console.log(this.state.formData)
+        )
+      })
   }
   handleRegionButtonOnClick = (index, keyword) => {
     //
@@ -137,6 +156,7 @@ class AcitivityForm extends React.Component {
             console.log(this.state.formData)
           )
           let cinemaId = sessionStorage.getItem('cinemaId')
+          const activityId = window.location.pathname.slice(47)
           let cinemaDBdata = {}
           let cinemaDBdataForCard = {}
           try {
@@ -182,27 +202,24 @@ class AcitivityForm extends React.Component {
                         joinContentCurrentPeople: this.state.formData
                           .joinContentCurrentPeople,
                         place: this.state.formData.place,
-                        joinMember: '',
                       }
                       try {
-                        fetch('http://localhost:5555/activityCardData/', {
-                          method: 'POST',
-                          body: JSON.stringify(cardData),
+                        fetch(
+                          'http://localhost:5555/activityCardData/' +
+                            activityId,
+                          {
+                            method: 'PUT',
+                            body: JSON.stringify(cardData),
 
-                          headers: new Headers({
-                            Accept: 'application/json',
-                            'Content-Type': 'application/json',
-                          }),
-                        })
+                            headers: new Headers({
+                              Accept: 'application/json',
+                              'Content-Type': 'application/json',
+                            }),
+                          }
+                        )
                           .then(res => res.json())
                           .then(obj => {
-                            alert('已上架完成')
-                            setTimeout(
-                              () =>
-                                (window.location.pathname =
-                                  '/CinemaBackMainpage/cinema-activity-inprogress'),
-                              1000
-                            )
+                            alert('已修改完成')
                           })
                       } catch (e) {
                         console.log(e)
@@ -282,7 +299,7 @@ class AcitivityForm extends React.Component {
                 placeholder="內容必填，最多一百個字"
                 rows="4"
                 cols="50"
-                value={this.props.textValue}
+                value={this.state.formData.content}
                 onChange={event => this.inputContentOnChange(event)}
                 required
               />
@@ -411,7 +428,7 @@ class AcitivityForm extends React.Component {
                 id="joinContent"
                 name="joinContent"
                 placeholder="報名方式"
-                value={this.props.textValue}
+                value={this.state.formData.joinContent}
                 onChange={event => this.inputjoinContentOnChange(event)}
                 required
               />
@@ -431,7 +448,7 @@ class AcitivityForm extends React.Component {
                 id="joinContentCurrentPeople"
                 name="joinContentCurrentPeople"
                 placeholder="報名人數"
-                value={this.props.textValue}
+                value={this.state.formData.joinContentCurrentPeople}
                 onChange={event =>
                   this.inputjoinContentCurrentPeopleOnChange(event)
                 }
@@ -444,7 +461,7 @@ class AcitivityForm extends React.Component {
                 onClick={this.sendFile}
                 class="btn btn-warning mb-2"
               >
-                新增活動
+                修改活動
               </button>
             </div>
           </div>
@@ -454,4 +471,4 @@ class AcitivityForm extends React.Component {
   }
 }
 
-export default AcitivityForm
+export default AcitivityEditForm

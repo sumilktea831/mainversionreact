@@ -204,6 +204,10 @@ class App extends React.Component {
             <Route path="/forum" component={Forum} />
             <Route path="/LoginSign" component={LoginSign} />
             <Route path="/BackMainpage" component={BackMainpage} />
+            {/* <Route
+              path="/CinemaBackMainpage/cinema-activity-inprogress/:id"
+              component={CinemaBackMainpage}
+            /> */}
             <Route path="/CinemaBackMainpage" component={CinemaBackMainpage} />
           </Switch>
           {window.location.pathname == '/LoginSign' ? (
