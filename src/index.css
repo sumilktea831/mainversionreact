@@ -158,6 +158,9 @@ button {
 .btn-outline-warning:hover {
   color: #2b333d !important;
 }
+.btn.btn-warning:hover{
+  filter:brightness(85%) !important;
+}
 
 .bg-warning {
   background: #ffa510 !important;

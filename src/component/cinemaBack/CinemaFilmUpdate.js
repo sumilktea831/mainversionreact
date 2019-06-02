@@ -278,9 +278,14 @@ class CinemaFilmUpdate extends React.Component {
           className="d-flex justify-content-center"
           style={{ overflow: 'hidden' }}
         >
-          {this.state.usertext.imgSrc !== '' ? (
+          {this.state.usertext.imgSrc !== '' &&
+          this.state.usertext.imgSrc !== undefined ? (
             <img
-              src={'/images/movieImg/' + this.state.usertext.imgSrc}
+              src={
+                this.state.usertext.imgSrc.indexOf('http') == 0
+                  ? this.state.usertext.imgSrc
+                  : '/images/movieImg/' + this.state.usertext.imgSrc
+              }
               style={{ width: '250px', height: '355px', objectFit: 'cover' }}
             />
           ) : (

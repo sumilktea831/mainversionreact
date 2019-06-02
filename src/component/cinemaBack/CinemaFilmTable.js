@@ -276,6 +276,7 @@ class MemberCollectTable extends React.Component {
     this.setState({ thisData: newtext, scheduleCount: copyScheduleCount })
   }
   handleModalSave = id => () => {
+    this.setState({ thisFilmData: 0 })
     this.props.handleEditSave(id, this.state.thisData)()
   }
   render() {
@@ -405,7 +406,10 @@ class MemberCollectTable extends React.Component {
                     >
                       <i className="fas fa-edit btnTableEdit" />
                     </button>
-                    <button className="btn btn-outline-warning mx-2">
+                    <button
+                      className="btn btn-outline-warning mx-2"
+                      onClick={this.props.handleFilmDelete(item.id)}
+                    >
                       <i className="fas fa-trash btnTableEdit" />
                     </button>
                   </td>

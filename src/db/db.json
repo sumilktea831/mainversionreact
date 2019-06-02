@@ -231,29 +231,6 @@
   ],
   "movieCardData": [
     {
-      "id": "cf1559377711803",
-      "title": "測試影片編輯",
-      "titleEn": "English Title",
-      "movie_rating": "普遍級 0+",
-      "imgSrc": "b7559eb2-e59f-4d80-8fab-a023317f4792.jpg",
-      "type": "戲劇片英雄片恐怖片",
-      "director": "碼農一號",
-      "language": "西班牙語",
-      "intro": "摘要編輯",
-      "fullIntro": "介紹編輯",
-      "filmTime": "120",
-      "updateDate": "2019-04-30",
-      "inTheaterDate": "2019-05-01",
-      "outTheaterDate": "2019-05-31",
-      "schedule": [
-        "2019-06-06 10:00",
-        "2019-06-06 00:00",
-        "2019-06-12 14:00"
-      ],
-      "filmStar": [],
-      "theater": "碼農Cafe"
-    },
-    {
       "id": "cf1000000",
       "theater": "碼農Cafe",
       "title": "赤手登峰",
@@ -292,6 +269,29 @@
           "star": 5
         }
       ]
+    },
+    {
+      "id": "cf1559377711803",
+      "title": "測試影片編輯",
+      "titleEn": "English Title",
+      "movie_rating": "普遍級 0+",
+      "imgSrc": "0e05e3cb-6bdc-4a72-b93d-f03a0dffa894.jpg",
+      "type": "戲劇片英雄片恐怖片",
+      "director": "碼農一號",
+      "language": "西班牙語",
+      "intro": "摘要編輯",
+      "fullIntro": "介紹編輯",
+      "filmTime": "120",
+      "updateDate": "2019-04-30",
+      "inTheaterDate": "2019-05-01",
+      "outTheaterDate": "2019-05-31",
+      "schedule": [
+        "2019-06-06 10:00",
+        "2019-06-06 00:00",
+        "2019-06-12 14:00"
+      ],
+      "filmStar": [],
+      "theater": "碼農Cafe"
     },
     {
       "id": "m1558948500794",
@@ -805,7 +805,7 @@
       "fullIntro": "功能寫好的第二天，究竟會不會有神奇的力量導致新的BUG出現?!\n讓我們繼續看下去...",
       "filmTime": "100",
       "updateDate": "2019-06-02",
-      "inTheaterDate": "2019-06-02",
+      "inTheaterDate": "2019-06-05",
       "outTheaterDate": "2019-07-02",
       "schedule": [
         "2019-06-02 13:30",
@@ -822,7 +822,7 @@
       "imgSrc": "cbb3d84e-725e-44c6-94d6-bdb2a7a02a22.jpg",
       "type": "動作片動畫片",
       "director": "碼農一號",
-      "language": "英語",
+      "language": "韓語",
       "intro": "影片海報顯示、編輯更新",
       "fullIntro": "因為發現圖片儲存路徑不同，所以重新測試是否有沒修改到的地方",
       "filmTime": "100",
@@ -830,7 +830,31 @@
       "inTheaterDate": "2019-05-31",
       "outTheaterDate": "2019-06-30",
       "schedule": [
-        "2019-06-03 09:00"
+        "2019-06-07 23:00"
+      ],
+      "filmStar": [],
+      "theater": "碼農Cafe"
+    },
+    {
+      "id": "cf1559461949823",
+      "title": "輕鬆愉快",
+      "titleEn": "Free and Easy",
+      "movie_rating": "保護級 6+",
+      "imgSrc": "71cf6163-45da-49e1-8384-ecd8a95aa97e.jpg",
+      "type": "喜劇片",
+      "director": "耿軍",
+      "language": "華語",
+      "intro": "耿軍黑色喜劇《輕鬆+愉快》，以一座宛如廢墟的東北城鎮為背景，聚集了推銷肥皂的騙子、逢人結緣的假和尚、到處找媽的基督徒、疲於奔命的林務員、以及破不了案的警察。互騙互害、互相傷害，人生才能輕鬆又愉快！",
+      "fullIntro": "以《錘子鐮刀都休息》擒下2014金馬獎最佳短片的耿軍，黑色喜劇新作《輕鬆+愉快》，以一座宛如廢墟的東北城鎮為背景，聚集了推銷肥皂的騙子、逢人結緣的假和尚、到處找媽的基督徒、疲於奔命的林務員、以及破不了案的警察，他們的擁抱像在廝殺，關愛彷彿猜疑，相愛又相殘。\n\n劇情描述，在一座宛如廢墟的東北城鎮裡，出現了推銷肥皂的騙子、逢人結緣的假和尚、到處找媽的基督徒、發課程傳單的武術青年、疲於奔命的林務員、以及破不了案又濫用權力的警察……。歹徒不夠兇惡、受害者也不令人同情，擁抱像在廝殺，關愛彷彿猜疑，相愛又相殘，只好互騙互害、互相傷害，人生才能輕鬆又愉快。\n\n影片充滿耿軍對環境的批判、人性的觀察，以及吉姆賈木許、郭利斯馬基的冷調幽默，獨到的視野及手法，更獲得本屆日舞影展評審團特別獎。",
+      "filmTime": "98",
+      "updateDate": "2019-06-02",
+      "inTheaterDate": "2019-05-01",
+      "outTheaterDate": "2019-06-30",
+      "schedule": [
+        "2019-06-03 10:00",
+        "2019-06-03 00:00",
+        "2019-06-03 15:00",
+        "2019-06-05 10:00"
       ],
       "filmStar": [],
       "theater": "碼農Cafe"
@@ -1222,20 +1246,8 @@
           "name": "影片資訊一覽"
         },
         {
-          "id": "cinema-edit-film-info",
-          "name": "編輯影片資訊"
-        },
-        {
-          "id": "cinema-change-film-setting",
-          "name": "更改影片設定"
-        },
-        {
           "id": "cinema-film-post",
           "name": "影片上架"
-        },
-        {
-          "id": "cinema-film-analysis",
-          "name": "影片分析"
         }
       ],
       "isclicked": false
@@ -2083,11 +2095,50 @@
       "cinemaType": "cafe",
       "cinemaFilm": [
         {
+          "id": "cf1000000",
+          "title": "赤手登峰",
+          "titleEn": "english filmname",
+          "movie_rating": "普遍級",
+          "imgSrc": "https://g.udn.com.tw/upfiles/B_SH/shiow/PSN_PHOTO/591/f_24131591_1.jpg",
+          "type": [],
+          "director": "導演名字",
+          "language": "華語",
+          "intro": "電影簡介",
+          "fullIntro": "電影介紹",
+          "filmTime": "200",
+          "updateDate": "2019-04-11",
+          "inTheaterDate": "2019-05-01",
+          "outTheaterDate": "2019-08-01",
+          "schedule": [
+            "2019-05-31 18:00",
+            "2019-06-01 10:00",
+            "2019-06-01 13:00",
+            "2019-06-01 18:00",
+            "2019-06-02 10:00",
+            "2019-06-02 13:00",
+            "2019-06-02 18:00"
+          ],
+          "filmStar": [
+            {
+              "starId": "m111111",
+              "star": 5
+            },
+            {
+              "starId": "m22222",
+              "star": 5
+            },
+            {
+              "starId": "m1558576972555",
+              "star": 5
+            }
+          ]
+        },
+        {
           "id": "cf1559377711803",
           "title": "測試影片編輯",
           "titleEn": "English Title",
           "movie_rating": "普遍級 0+",
-          "imgSrc": "b7559eb2-e59f-4d80-8fab-a023317f4792.jpg",
+          "imgSrc": "0e05e3cb-6bdc-4a72-b93d-f03a0dffa894.jpg",
           "type": [
             "戲劇片",
             "英雄片",
@@ -2105,90 +2156,6 @@
             "2019-06-06 10:00",
             "2019-06-06 00:00",
             "2019-06-12 14:00"
-          ],
-          "filmStar": []
-        },
-        {
-          "id": "cf1559377711806",
-          "title": "測試影片2",
-          "titleEn": "test2",
-          "movie_rating": "",
-          "imgSrc": "",
-          "type": [
-            "全選",
-            "動作片",
-            "動畫片",
-            "喜劇片",
-            "偵探片",
-            "紀錄片",
-            "戲劇片",
-            "英雄片",
-            "恐怖片",
-            "武俠片",
-            "靈異片",
-            "文藝片",
-            "警匪片",
-            "科幻片",
-            "懸疑片",
-            "驚悚片",
-            "戰爭片",
-            "愛情片"
-          ],
-          "director": "碼農一號",
-          "langauge": "",
-          "intro": "摘要",
-          "fullIntro": "介紹",
-          "filmTime": "120",
-          "updateDate": "2019-06-01",
-          "inTheaterDate": "2019-06-01",
-          "outTheaterDate": "2019-06-05",
-          "schedule": [
-            "2019-06-01 01:00",
-            "2019-06-01 03:00"
-          ],
-          "filmStar": []
-        },
-        {
-          "id": "cf1559384160830",
-          "title": "測試555",
-          "titleEn": "5555",
-          "movie_rating": "輔導級 12+",
-          "imgSrc": "",
-          "type": [
-            "動作片"
-          ],
-          "director": "5555",
-          "language": "",
-          "intro": "",
-          "fullIntro": "",
-          "filmTime": "140",
-          "updateDate": "2019-06-01",
-          "inTheaterDate": "2019-06-06",
-          "outTheaterDate": "2019-06-29",
-          "schedule": [
-            "2019-06-05 01:00"
-          ],
-          "filmStar": []
-        },
-        {
-          "id": "cf1559384724141",
-          "title": "測試5",
-          "titleEn": "5",
-          "movie_rating": "",
-          "imgSrc": "",
-          "type": [
-            "動作片"
-          ],
-          "director": "",
-          "language": "俄語",
-          "intro": "ㄉˇ",
-          "fullIntro": "ㄉˇ",
-          "filmTime": "120",
-          "updateDate": "2019-06-01",
-          "inTheaterDate": "2019-06-01",
-          "outTheaterDate": "2019-06-20",
-          "schedule": [
-            "2019-06-20 00:59"
           ],
           "filmStar": []
         },
@@ -2228,7 +2195,7 @@
           "fullIntro": "功能寫好的第二天，究竟會不會有神奇的力量導致新的BUG出現?!\n讓我們繼續看下去...",
           "filmTime": "100",
           "updateDate": "2019-06-02",
-          "inTheaterDate": "2019-06-02",
+          "inTheaterDate": "2019-06-05",
           "outTheaterDate": "2019-07-02",
           "schedule": [
             "2019-06-02 13:30",
@@ -2247,7 +2214,7 @@
             "動畫片"
           ],
           "director": "碼農一號",
-          "language": "英語",
+          "language": "韓語",
           "intro": "影片海報顯示、編輯更新",
           "fullIntro": "因為發現圖片儲存路徑不同，所以重新測試是否有沒修改到的地方",
           "filmTime": "100",
@@ -2255,7 +2222,32 @@
           "inTheaterDate": "2019-05-31",
           "outTheaterDate": "2019-06-30",
           "schedule": [
-            "2019-06-03 09:00"
+            "2019-06-07 23:00"
+          ],
+          "filmStar": []
+        },
+        {
+          "id": "cf1559461949823",
+          "title": "輕鬆愉快",
+          "titleEn": "Free and Easy",
+          "movie_rating": "保護級 6+",
+          "imgSrc": "71cf6163-45da-49e1-8384-ecd8a95aa97e.jpg",
+          "type": [
+            "喜劇片"
+          ],
+          "director": "耿軍",
+          "language": "華語",
+          "intro": "耿軍黑色喜劇《輕鬆+愉快》，以一座宛如廢墟的東北城鎮為背景，聚集了推銷肥皂的騙子、逢人結緣的假和尚、到處找媽的基督徒、疲於奔命的林務員、以及破不了案的警察。互騙互害、互相傷害，人生才能輕鬆又愉快！",
+          "fullIntro": "以《錘子鐮刀都休息》擒下2014金馬獎最佳短片的耿軍，黑色喜劇新作《輕鬆+愉快》，以一座宛如廢墟的東北城鎮為背景，聚集了推銷肥皂的騙子、逢人結緣的假和尚、到處找媽的基督徒、疲於奔命的林務員、以及破不了案的警察，他們的擁抱像在廝殺，關愛彷彿猜疑，相愛又相殘。\n\n劇情描述，在一座宛如廢墟的東北城鎮裡，出現了推銷肥皂的騙子、逢人結緣的假和尚、到處找媽的基督徒、發課程傳單的武術青年、疲於奔命的林務員、以及破不了案又濫用權力的警察……。歹徒不夠兇惡、受害者也不令人同情，擁抱像在廝殺，關愛彷彿猜疑，相愛又相殘，只好互騙互害、互相傷害，人生才能輕鬆又愉快。\n\n影片充滿耿軍對環境的批判、人性的觀察，以及吉姆賈木許、郭利斯馬基的冷調幽默，獨到的視野及手法，更獲得本屆日舞影展評審團特別獎。",
+          "filmTime": "98",
+          "updateDate": "2019-06-02",
+          "inTheaterDate": "2019-05-01",
+          "outTheaterDate": "2019-06-30",
+          "schedule": [
+            "2019-06-03 10:00",
+            "2019-06-03 00:00",
+            "2019-06-03 15:00",
+            "2019-06-05 10:00"
           ],
           "filmStar": []
         }
@@ -2284,7 +2276,7 @@
         "m111111",
         "m22222"
       ],
-      "cinemaPageViews": 597,
+      "cinemaPageViews": 600,
       "cinemaSignUpDate": "1955-03-12",
       "purview": "cinemaMember",
       "cinemaMessage": [
@@ -2445,6 +2437,8 @@
       "cinemaAccount": "spottaipei",
       "cinemaPassword": "1111",
       "cinemaType": "gallery",
+      "cinemaActivity": [],
+      "cinemaFilm": [],
       "cinemaStar": [
         {
           "starId": "m22222",
@@ -2503,6 +2497,8 @@
       "cinemaAccount": "hshspotlight",
       "cinemaPassword": "2222",
       "cinemaType": "gallery",
+      "cinemaActivity": [],
+      "cinemaFilm": [],
       "cinemaStar": [
         {
           "starId": "m22222",
@@ -2562,6 +2558,8 @@
       "cinemaAccount": "hipster",
       "cinemaPassword": "3333",
       "cinemaType": "cafe",
+      "cinemaActivity": [],
+      "cinemaFilm": [],
       "cinemaStar": [
         {
           "starId": "m22222",
@@ -2621,6 +2619,8 @@
       "cinemaAccount": "xiaomijo",
       "cinemaPassword": "4444",
       "cinemaType": "cafe",
+      "cinemaActivity": [],
+      "cinemaFilm": [],
       "cinemaStar": [
         {
           "starId": "m22222",
@@ -2676,6 +2676,8 @@
       "cinemaAccount": "chptheater",
       "cinemaPassword": "5555",
       "cinemaType": "theater",
+      "cinemaActivity": [],
+      "cinemaFilm": [],
       "cinemaStar": [
         {
           "starId": "m22222",
@@ -2730,6 +2732,8 @@
       "cinemaHeroImg": "16311abb-b9cc-4730-80c4-ad00b9c8484e.jpg",
       "cinemaAccount": "aaaaaa",
       "cinemaPassword": "aaaaaa",
+      "cinemaActivity": [],
+      "cinemaFilm": [],
       "cinemaStar": [],
       "cinemaAddress": "台北市111111111",
       "cinemaPhone": "02-2222-2222",

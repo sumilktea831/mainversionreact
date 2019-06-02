@@ -430,7 +430,54 @@ class CinemaBackMainpage extends React.Component {
       console.log(e)
     }
   }
-
+  handleFilmDelete = id => () => {
+    alert(id)
+    const newcinemaData = { ...this.state.thisCinemaData } //這個戲院的Data
+    //找出這支影片在這個戲院影片列表中的Index
+    const thisFilmIndex = newcinemaData.cinemaFilm.findIndex(
+      item => item.id === id
+    )
+    //將這支影片從戲院影片列表中移除
+    newcinemaData.cinemaFilm.splice([thisFilmIndex], 1)
+    this.setState({ thisCinemaData: newcinemaData }, () =>
+      console.log(this.state.thisCinemaData)
+    )
+    try {
+      fetch('http://localhost:5555/cinema/' + this.state.thisCinemaData.id, {
+        method: 'PUT',
+        body: JSON.stringify(newcinemaData),
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+        .then(res => res.json())
+        .then(jsonObject => {
+          try {
+            fetch('http://localhost:5555/movieCardData/' + id, {
+              method: 'DELETE',
+              headers: new Headers({
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              }),
+            })
+              .then(res => res.json())
+              .then(jsonObject => {
+                // this.setState({ thisCinemaData: jsonObject }, () => {
+                //   alert('資料儲存成功')
+                // })
+              })
+          } catch (e) {
+            console.log(e)
+          }
+          this.setState({ thisCinemaData: jsonObject }, () => {
+            alert('資料刪除成功')
+          })
+        })
+    } catch (e) {
+      console.log(e)
+    }
+  }
   handleLogout = () => {
     //點擊登出，清除session並導回主頁
     // sessionStorage.removeItem('memberID') //不知道為什麼這個方法無效
@@ -651,6 +698,7 @@ class CinemaBackMainpage extends React.Component {
                         thisData={this.state.thisCinemaData}
                         allCinemaData={this.state.allCinemaD}
                         handleEditSave={this.handleEditSave}
+                        handleFilmDelete={this.handleFilmDelete}
                       />
                     </div>
                   </div>

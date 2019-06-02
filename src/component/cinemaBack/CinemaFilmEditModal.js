@@ -25,9 +25,14 @@ const CinemaFilmEditModal = props => {
             className="d-flex justify-content-center"
             style={{ overflow: 'hidden' }}
           >
-            {props.thisData.imgSrc !== '' ? (
+            {props.thisData.imgSrc !== '' &&
+            props.thisData.imgSrc !== undefined ? (
               <img
-                src={'/images/movieImg/' + props.thisData.imgSrc}
+                src={
+                  props.thisData.imgSrc.indexOf('http') == 0
+                    ? props.thisData.imgSrc
+                    : '/images/movieImg/' + props.thisData.imgSrc
+                }
                 style={{ width: '250px', height: '355px', objectFit: 'cover' }}
               />
             ) : (
@@ -119,7 +124,7 @@ const CinemaFilmEditModal = props => {
                         className="h5 d-flex align-items-center mx-3"
                         style={{ height: '40px' }}
                       >
-                        {item}
+                        {item}.
                       </p>
                       <input
                         type="date"
@@ -192,7 +197,7 @@ const CinemaFilmEditModal = props => {
           <Button variant="secondary" onClick={props.handleClose}>
             關閉
           </Button>
-          <Button variant="primary" onClick={props.handleModalSave}>
+          <Button className="btn btn-warning" onClick={props.handleModalSave}>
             儲存
           </Button>
         </Modal.Footer>

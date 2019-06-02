@@ -17,10 +17,7 @@ const CinemaBackSidenav = props => {
       defaultPage = 'cinema-info'
       break
     case 'cinema-film-info':
-    case 'cinema-edit-film-info':
-    case 'cinema-change-film-setting':
     case 'cinema-film-post':
-    case 'cinema-film-analysis':
       defaultPage = 'cinema-film'
       break
     case 'cinema-manage-activity':
