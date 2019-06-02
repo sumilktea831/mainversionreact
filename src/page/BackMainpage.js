@@ -290,7 +290,7 @@ class BackSidenav extends React.Component {
         title: item.title,
         subtitle: item.titleEn,
         img: item.imgSrc,
-        link: '/film/' + item.id,
+        link: '/movie/' + item.id,
         star: item.filmStar,
         mark: memberPageData.markList,
       }))
@@ -358,7 +358,7 @@ class BackSidenav extends React.Component {
         title: item.title,
         subtitle: item.titleEn,
         img: item.imgSrc,
-        link: '/film/' + item.id,
+        link: '/movie/' + item.id,
         star: item.filmStar,
         mark: memberPageData.markList,
       }))
@@ -395,7 +395,7 @@ class BackSidenav extends React.Component {
     let markTrueFalse = this.state.thisMemberData.markList.some(
       item => item.markId === thisFilmData.id
     )
-    let newMarkUpdateData = []
+    let newMarkUpdateData = this.state.thisMemberData.markList
     if (markTrueFalse === false) {
       newMarkUpdateData.push({
         markId: thisFilmData.id,
@@ -586,7 +586,7 @@ class BackSidenav extends React.Component {
     let markTrueFalse = this.state.thisMemberData.markList.some(
       item => item.markId === thisCinemaData.id
     )
-    let newMarkUpdateData = []
+    let newMarkUpdateData = this.state.thisMemberData.markList
     if (markTrueFalse === false) {
       newMarkUpdateData.push({
         markId: thisCinemaData.id,
@@ -893,32 +893,49 @@ class BackSidenav extends React.Component {
                       ))}
                     </Row>
                   </div>
+
                   <div className="py-5" />
                   <TitleKaga title="收藏影片" />
-                  <div className="d-flex flex-wrap col-lg-12 mt-4">
-                    {this.state.filmCard.map((
-                      item //--串接時使用
-                    ) => (
-                      <CardKaga
-                        key={item.key}
-                        id={item.id}
-                        title={item.title}
-                        subtitle={item.subtitle}
-                        img={item.img}
-                        link={item.link}
-                        // collectionIcon
-                        // collectionClick={this.collectionClick}
-                        // collection={}
-                        popup
-                        member
-                        star={item.star}
-                        starAmimation
-                        mark={item.mark}
-                        newStarAndMark={this.filmCardNewStarAndMark}
-                        del={this.filmCardDel}
-                      />
-                    ))}
-                  </div>
+                  {this.state.filmCard.length !== 0 ? (
+                    <>
+                      <div className="d-flex flex-wrap col-lg-12 mt-4">
+                        {this.state.filmCard.map(item => (
+                          <CardKaga
+                            key={item.key}
+                            id={item.id}
+                            title={item.title}
+                            subtitle={item.subtitle}
+                            img={item.img}
+                            link={item.link}
+                            // collectionIcon
+                            // collectionClick={this.collectionClick}
+                            // collection={}
+                            popup
+                            member
+                            star={item.star}
+                            starAmimation
+                            mark={item.mark}
+                            newStarAndMark={this.filmCardNewStarAndMark}
+                            del={this.filmCardDel}
+                          />
+                        ))}
+                      </div>
+                    </>
+                  ) : (
+                    <div
+                      className="d-flex align-items-center justify-content-center"
+                      style={{ height: '300px', width: '100%' }}
+                    >
+                      <h5 className="ml-4">
+                        尚無收藏紀錄，趕快
+                        <a style={{ color: '#ffa510' }} href="/movie">
+                          前往影片
+                        </a>
+                        收藏影片吧！
+                      </h5>
+                    </div>
+                  )}
+
                   <div className="py-5" />
                   <TitleKaga title="收藏文章" />
                   <div className=" d-flex flex-wrap col-lg-12 my-5">
@@ -983,62 +1000,95 @@ class BackSidenav extends React.Component {
               ) : (
                 ''
               )}
+
               {pagename === 'collect-film' ? (
-                <>
-                  <TitleKaga title="收藏影片" />
-                  <div className="d-flex flex-wrap col-lg-12 mt-4">
-                    {this.state.filmCollecCard.map((
-                      item //--串接時使用
-                    ) => (
-                      <CardKaga
-                        key={item.key}
-                        id={item.id}
-                        title={item.title}
-                        subtitle={item.subtitle}
-                        img={item.img}
-                        link={item.link}
-                        popup
-                        member
-                        star={item.star}
-                        starAmimation
-                        mark={item.mark}
-                        newStarAndMark={this.filmCardNewStarAndMark}
-                        del={this.filmCardDel}
-                      />
-                    ))}
+                this.state.filmCollecCard.length !== 0 ? (
+                  <>
+                    <TitleKaga title="收藏影片" />
+                    <div className="d-flex flex-wrap col-lg-12 mt-4">
+                      {this.state.filmCollecCard.map((
+                        item //--串接時使用
+                      ) => (
+                        <CardKaga
+                          key={item.key}
+                          id={item.id}
+                          title={item.title}
+                          subtitle={item.subtitle}
+                          img={item.img}
+                          link={item.link}
+                          popup
+                          member
+                          star={item.star}
+                          starAmimation
+                          mark={item.mark}
+                          newStarAndMark={this.filmCardNewStarAndMark}
+                          del={this.filmCardDel}
+                        />
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <div
+                    className="d-flex align-items-center justify-content-center"
+                    style={{ height: '300px', width: '100%' }}
+                  >
+                    <h5 className="ml-4">
+                      尚無收藏紀錄，趕快
+                      <a style={{ color: '#ffa510' }} href="/movie">
+                        前往影片
+                      </a>
+                      收藏影片吧！
+                    </h5>
                   </div>
-                </>
+                )
               ) : (
                 ''
               )}
+
               {pagename === 'collect-cinema' ? (
-                <>
-                  <TitleKaga title="收藏戲院" />
-                  <div className="d-flex flex-wrap col-lg-12 mt-4">
-                    {this.state.cinemaCollecCard.map((
-                      item //--串接時使用
-                    ) => (
-                      <CardKaga
-                        key={item.key}
-                        id={item.id}
-                        title={item.title}
-                        subtitle={item.subtitle}
-                        img={item.img}
-                        link={item.link}
-                        popup
-                        member
-                        star={item.star}
-                        starAmimation
-                        mark={item.mark}
-                        newStarAndMark={this.CinemaCardNewStarAndMark}
-                        del={this.CinemaCardDel}
-                      />
-                    ))}
+                this.state.filmCollecCard.length !== 0 ? (
+                  <>
+                    <TitleKaga title="收藏戲院" />
+                    <div className="d-flex flex-wrap col-lg-12 mt-4">
+                      {this.state.cinemaCollecCard.map((
+                        item //--串接時使用
+                      ) => (
+                        <CardKaga
+                          key={item.key}
+                          id={item.id}
+                          title={item.title}
+                          subtitle={item.subtitle}
+                          img={item.img}
+                          link={item.link}
+                          popup
+                          member
+                          star={item.star}
+                          starAmimation
+                          mark={item.mark}
+                          newStarAndMark={this.CinemaCardNewStarAndMark}
+                          del={this.CinemaCardDel}
+                        />
+                      ))}
+                    </div>
+                  </>
+                ) : (
+                  <div
+                    className="d-flex align-items-center justify-content-center"
+                    style={{ height: '300px', width: '100%' }}
+                  >
+                    <h5 className="ml-4">
+                      尚無收藏紀錄，趕快
+                      <a style={{ color: '#ffa510' }} href="/cinema">
+                        前往戲院
+                      </a>
+                      收藏戲院吧！
+                    </h5>
                   </div>
-                </>
+                )
               ) : (
                 ''
               )}
+
               {pagename == 'activityMemberBoard' ? (
                 <>
                   <div className="row">
