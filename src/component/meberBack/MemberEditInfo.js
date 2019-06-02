@@ -332,7 +332,7 @@ class MemberEditInfo extends React.Component {
             {/* 這裡放頭像(含編輯按鈕)、email、權限 */}
             <AvatarTwo
               img={'/images/member/' + this.state.thisData.avatar}
-              name={this.props.avatarOne.name}
+              name={this.state.thisData.nickname}
               purview={this.props.avatarOne.purview}
               SignUpDate={this.props.avatarOne.SignUpDate}
               onChange={this.handleInputTextChange}

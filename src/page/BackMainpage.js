@@ -887,8 +887,8 @@ class BackSidenav extends React.Component {
                   >
                     {/* 上面資訊列 */}
                     <AvatarOne
-                      img={this.state.avatarOne.img}
-                      name={this.state.avatarOne.name}
+                      img={'/images/member/' + this.state.thisMemberData.avatar}
+                      name={this.state.thisMemberData.nickname}
                       purview={this.state.avatarOne.purview}
                       SignUpDate={this.state.avatarOne.SignUpDate}
                     />

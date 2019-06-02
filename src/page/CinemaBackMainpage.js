@@ -435,61 +435,61 @@ class CinemaBackMainpage extends React.Component {
     //     title: '沒有選擇影片類型，請檢查您的資料再試一次',
     //   })
     // } else {
-      const newcinemaData = { ...this.state.thisCinemaData } //這個戲院的Data
-      //找出這支影片在這個戲院影片列表中的Index
-      const thisFilmIndex = newcinemaData.cinemaFilm.findIndex(
-        item => item.id === id
-      )
-      //將這支影片原本的data替換成新的data
-      newcinemaData.cinemaFilm[thisFilmIndex] = thisData
-      this.setState({ thisCinemaData: newcinemaData })
-      const newDataForMovieCard = { ...thisData }
-      if (newDataForMovieCard.type.find(item => item == '全選')) {
-        newDataForMovieCard.type = newDataForMovieCard.type.slice(1).join('')
-      } else {
-        newDataForMovieCard.type = newDataForMovieCard.type.join('')
-      }
-      newDataForMovieCard.theater = this.state.thisCinemaData.cinemaName
+    const newcinemaData = { ...this.state.thisCinemaData } //這個戲院的Data
+    //找出這支影片在這個戲院影片列表中的Index
+    const thisFilmIndex = newcinemaData.cinemaFilm.findIndex(
+      item => item.id === id
+    )
+    //將這支影片原本的data替換成新的data
+    newcinemaData.cinemaFilm[thisFilmIndex] = thisData
+    this.setState({ thisCinemaData: newcinemaData })
+    const newDataForMovieCard = { ...thisData }
+    if (newDataForMovieCard.type.find(item => item == '全選')) {
+      newDataForMovieCard.type = newDataForMovieCard.type.slice(1).join('')
+    } else {
+      newDataForMovieCard.type = newDataForMovieCard.type.join('')
+    }
+    newDataForMovieCard.theater = this.state.thisCinemaData.cinemaName
 
-      try {
-        fetch('http://localhost:5555/cinema/' + this.state.thisCinemaData.id, {
-          method: 'PUT',
-          body: JSON.stringify(newcinemaData),
-          headers: new Headers({
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-          }),
-        })
-          .then(res => res.json())
-          .then(jsonObject => {
-            try {
-              fetch(
-                'http://localhost:5555/movieCardData/' + newDataForMovieCard.id,
-                {
-                  method: 'PUT',
-                  body: JSON.stringify(newDataForMovieCard),
-                  headers: new Headers({
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                  }),
-                }
-              )
-                .then(res => res.json())
-                .then(jsonObject => {})
-            } catch (e) {
-              console.log(e)
-            }
-            this.setState({ thisCinemaData: jsonObject }, () => {
-              // alert('資料儲存成功')
-              Toast.fire({
-                type: 'success',
-                title: '資料儲存成功',
-              })
+    try {
+      fetch('http://localhost:5555/cinema/' + this.state.thisCinemaData.id, {
+        method: 'PUT',
+        body: JSON.stringify(newcinemaData),
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+        .then(res => res.json())
+        .then(jsonObject => {
+          try {
+            fetch(
+              'http://localhost:5555/movieCardData/' + newDataForMovieCard.id,
+              {
+                method: 'PUT',
+                body: JSON.stringify(newDataForMovieCard),
+                headers: new Headers({
+                  Accept: 'application/json',
+                  'Content-Type': 'application/json',
+                }),
+              }
+            )
+              .then(res => res.json())
+              .then(jsonObject => {})
+          } catch (e) {
+            console.log(e)
+          }
+          this.setState({ thisCinemaData: jsonObject }, () => {
+            // alert('資料儲存成功')
+            Toast.fire({
+              type: 'success',
+              title: '資料儲存成功',
             })
           })
-      } catch (e) {
-        console.log(e)
-      }
+        })
+    } catch (e) {
+      console.log(e)
+    }
     // }
   }
   handleFilmDelete = id => () => {
@@ -615,8 +615,11 @@ class CinemaBackMainpage extends React.Component {
                     >
                       {/* 上面資訊列 */}
                       <AvatarOne
-                        img={this.state.AvatarOne.img}
-                        name={this.state.AvatarOne.name}
+                        img={
+                          '/images/cinemaImg/' +
+                          this.state.thisCinemaData.cinemaLogoImg
+                        }
+                        name={this.state.thisCinemaData.cinemaName}
                         purview={this.state.AvatarOne.purview}
                         SignUpDate={this.state.AvatarOne.SignUpDate}
                       />

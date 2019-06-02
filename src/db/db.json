@@ -2132,6 +2132,31 @@
       "collectActivityJoin": "",
       "collectForum": [],
       "markList": []
+    },
+    {
+      "id": "m1559495680143",
+      "name": "",
+      "nickname": "傲凡",
+      "gender": "",
+      "mobile": "",
+      "birth": "",
+      "email": "p3@pp.com",
+      "pwd": "111111",
+      "avatar": "movieStar.jpg",
+      "city": "",
+      "address": "",
+      "fav_type": [],
+      "career": "",
+      "join_date": "2019-06-03",
+      "permission": "generalMember",
+      "collectFilm": [],
+      "collectMovie": "",
+      "collectCinema": [],
+      "collectArticle": [],
+      "collectActivity": "",
+      "collectActivityJoin": "",
+      "collectForum": [],
+      "markList": []
     }
   ],
   "cinema": [
