@@ -210,7 +210,10 @@ class TheateInfo extends React.Component {
           item.content.length > 12
             ? item.content.slice(0, 12) + '...'
             : item.content,
-        img: item.imgSrc,
+        img:
+          item.imgSrc.indexOf('http') == 0
+            ? item.imgSrc
+            : '/images/activityImg/' + item.imgSrc,
         // 因為是原頁面跳轉 所以直接帶這樣才能實現跳轉
         link: '/activity/' + item.id,
         // 不先驗證是否有會員的會會跳錯
@@ -228,7 +231,10 @@ class TheateInfo extends React.Component {
             item.titleEn.length > 12
               ? item.titleEn.slice(0, 12) + '...'
               : item.titleEn,
-          img: item.imgSrc,
+          img:
+            item.imgSrc.indexOf('http') == 0
+              ? item.imgSrc
+              : '/images/movieImg/' + item.imgSrc,
           // 因為是原頁面跳轉 所以直接帶這樣才能實現跳轉
           link: '/movie/' + item.id,
           // 不先驗證是否有會員的會會跳錯
@@ -630,7 +636,7 @@ class TheateInfo extends React.Component {
 
   handleScroll = event => {
     console.log()
-    if (window.pageYOffset > document.body.offsetHeight - 800) {
+    if (window.pageYOffset > document.body.offsetHeight - 1500) {
       document.querySelector('.elseCard').style =
         // 'bottom:-' + window.pageYOffset + 'px'
         'left:0;opacity:1'

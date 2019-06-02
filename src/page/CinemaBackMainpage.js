@@ -324,13 +324,13 @@ class CinemaBackMainpage extends React.Component {
       newtext.updateDate = dateYMD
       newData.cinemaFilm = [...newData.cinemaFilm, newtext]
       console.log(newData)
-      const newDatatForMovieCard = { ...newtext }
+      const newDataForMovieCard = { ...newtext }
       if (type.find(item => item == '全選')) {
-        newDatatForMovieCard.type = newDatatForMovieCard.type.slice(1).join('')
+        newDataForMovieCard.type = newDataForMovieCard.type.slice(1).join('')
       } else {
-        newDatatForMovieCard.type = newDatatForMovieCard.type.join('')
+        newDataForMovieCard.type = newDataForMovieCard.type.join('')
       }
-      newDatatForMovieCard.theater = this.state.thisCinemaData.cinemaName
+      newDataForMovieCard.theater = this.state.thisCinemaData.cinemaName
       try {
         fetch('http://localhost:5555/cinema/' + this.state.thisCinemaData.id, {
           method: 'PUT',
@@ -345,7 +345,7 @@ class CinemaBackMainpage extends React.Component {
             try {
               fetch('http://localhost:5555/movieCardData/', {
                 method: 'POST',
-                body: JSON.stringify(newDatatForMovieCard),
+                body: JSON.stringify(newDataForMovieCard),
                 headers: new Headers({
                   Accept: 'application/json',
                   'Content-Type': 'application/json',
@@ -353,7 +353,6 @@ class CinemaBackMainpage extends React.Component {
               })
                 .then(res => res.json())
                 .then(jsonObject => {
-                  // sessionStorage.setItem('thisCinemaData', JSON.stringify(jsonObject))
                   // this.setState({ thisCinemaData: jsonObject }, () => {
                   //   alert('資料儲存成功')
                   // })
@@ -361,7 +360,6 @@ class CinemaBackMainpage extends React.Component {
             } catch (e) {
               console.log(e)
             }
-            // sessionStorage.setItem('thisCinemaData', JSON.stringify(jsonObject))
             this.setState({ thisCinemaData: jsonObject }, () => {
               alert('資料儲存成功')
             })
@@ -371,6 +369,112 @@ class CinemaBackMainpage extends React.Component {
       }
     } else {
       alert('資料填寫有誤，請再次確認您的資料！')
+    }
+  }
+
+  //影片編輯儲存
+  handleEditSave = (id, thisData) => () => {
+    const newcinemaData = { ...this.state.thisCinemaData } //這個戲院的Data
+    //找出這支影片在這個戲院影片列表中的Index
+    const thisFilmIndex = newcinemaData.cinemaFilm.findIndex(
+      item => item.id === id
+    )
+    //將這支影片原本的data替換成新的data
+    newcinemaData.cinemaFilm[thisFilmIndex] = thisData
+    this.setState({ thisCinemaData: newcinemaData })
+    const newDataForMovieCard = { ...thisData }
+    if (newDataForMovieCard.type.find(item => item == '全選')) {
+      newDataForMovieCard.type = newDataForMovieCard.type.slice(1).join('')
+    } else {
+      newDataForMovieCard.type = newDataForMovieCard.type.join('')
+    }
+    newDataForMovieCard.theater = this.state.thisCinemaData.cinemaName
+
+    try {
+      fetch('http://localhost:5555/cinema/' + this.state.thisCinemaData.id, {
+        method: 'PUT',
+        body: JSON.stringify(newcinemaData),
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+        .then(res => res.json())
+        .then(jsonObject => {
+          try {
+            fetch(
+              'http://localhost:5555/movieCardData/' + newDataForMovieCard.id,
+              {
+                method: 'PUT',
+                body: JSON.stringify(newDataForMovieCard),
+                headers: new Headers({
+                  Accept: 'application/json',
+                  'Content-Type': 'application/json',
+                }),
+              }
+            )
+              .then(res => res.json())
+              .then(jsonObject => {
+                // this.setState({ thisCinemaData: jsonObject }, () => {
+                //   alert('資料儲存成功')
+                // })
+              })
+          } catch (e) {
+            console.log(e)
+          }
+          this.setState({ thisCinemaData: jsonObject }, () => {
+            alert('資料儲存成功')
+          })
+        })
+    } catch (e) {
+      console.log(e)
+    }
+  }
+  handleFilmDelete = id => () => {
+    const newcinemaData = { ...this.state.thisCinemaData } //這個戲院的Data
+    //找出這支影片在這個戲院影片列表中的Index
+    const thisFilmIndex = newcinemaData.cinemaFilm.findIndex(
+      item => item.id === id
+    )
+    //將這支影片從戲院影片列表中移除
+    newcinemaData.cinemaFilm.splice([thisFilmIndex], 1)
+    this.setState({ thisCinemaData: newcinemaData }, () =>
+      console.log(this.state.thisCinemaData)
+    )
+    try {
+      fetch('http://localhost:5555/cinema/' + this.state.thisCinemaData.id, {
+        method: 'PUT',
+        body: JSON.stringify(newcinemaData),
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+        .then(res => res.json())
+        .then(jsonObject => {
+          try {
+            fetch('http://localhost:5555/movieCardData/' + id, {
+              method: 'DELETE',
+              headers: new Headers({
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              }),
+            })
+              .then(res => res.json())
+              .then(jsonObject => {
+                // this.setState({ thisCinemaData: jsonObject }, () => {
+                //   alert('資料儲存成功')
+                // })
+              })
+          } catch (e) {
+            console.log(e)
+          }
+          this.setState({ thisCinemaData: jsonObject }, () => {
+            alert('資料刪除成功')
+          })
+        })
+    } catch (e) {
+      console.log(e)
     }
   }
   handleLogout = () => {
@@ -426,34 +530,38 @@ class CinemaBackMainpage extends React.Component {
                     <div className="py-5" />
                     <TitleKaga title="上映影片" />
                     {this.state.FilmCard.length !== 0 ? (
-                      this.state.FilmCard.map(item => (
-                        <div className="d-flex flex-wrap col-lg-12 mt-4">
+                      <div className="d-flex flex-wrap col-lg-12 mt-4">
+                        {this.state.FilmCard.map(item => (
                           <CardKaga
                             key={item.key}
                             id={item.id}
                             title={item.title}
                             subtitle={item.subtitle}
-                            img={item.img}
+                            img={
+                              item.img.indexOf('http') == 0
+                                ? item.img
+                                : '/images/movieImg/' + item.img
+                            }
                             link={item.link}
                             popup
                             star={item.star}
                             AVGStar
                             time={item.time}
                           />
-                        </div>
-                      ))
+                        ))}
+                      </div>
                     ) : (
                       <div
                         className="d-flex align-items-center"
                         style={{ height: '300px', width: '100%' }}
                       >
                         <h5 className="ml-4">
-                          尚無紀錄，趕快
+                          尚無紀錄，趕快前往
                           <a
                             style={{ color: '#ffa510' }}
-                            href="/CinemaBackMainpage/cinema-activity-add"
+                            href="/CinemaBackMainpage/cinema-film-post"
                           >
-                            前往影片管理
+                            影片管理
                           </a>
                           上架影片吧！
                         </h5>
@@ -588,6 +696,8 @@ class CinemaBackMainpage extends React.Component {
                       <CinemaFilmTable
                         thisData={this.state.thisCinemaData}
                         allCinemaData={this.state.allCinemaD}
+                        handleEditSave={this.handleEditSave}
+                        handleFilmDelete={this.handleFilmDelete}
                       />
                     </div>
                   </div>

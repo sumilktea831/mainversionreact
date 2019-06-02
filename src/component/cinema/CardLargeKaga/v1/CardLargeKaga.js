@@ -1,8 +1,17 @@
 import React from 'react'
 import CardKagaStaAnimation from '../../CardKaga/v3/CardKagaStaAnimation'
 import CardKagaStar from '../../CardKaga/v3/CardKagaStar'
+//Import SweetAlert2
+import Swal from 'sweetalert2'
 const memberId = sessionStorage.getItem('memberId')
 const cinemaId = sessionStorage.getItem('cinemaId')
+
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'center-end',
+  showConfirmButton: false,
+  timer: 3000,
+})
 
 class CardLargeKaga extends React.Component {
   constructor(props) {
@@ -77,11 +86,22 @@ class CardLargeKaga extends React.Component {
       }
       // 如果沒登錄的話
     } else if (cinemaId) {
-      alert('戲院會員不可以按讚喔～')
-      window.location = 'http://localhost:3000/LoginSign'
+      // alert('戲院會員不可以按讚喔～')
+      Toast.fire({
+        type: 'error',
+        title: '戲院會員不可以按讚喔～',
+      })
     } else {
-      window.location = 'http://localhost:3000/LoginSign'
-      alert('請先登錄會員喔～')
+      // alert('請先登錄會員喔～')
+      Swal.fire({
+        type: 'info',
+        title: '請先登錄會員喔～',
+        showConfirmButton: false,
+      })
+      setTimeout(
+        () => (window.location = 'http://localhost:3000/LoginSign'),
+        1500
+      )
     }
   }
 
@@ -126,25 +146,30 @@ class CardLargeKaga extends React.Component {
         // 把兩個更新後的值丟回去父層
         this.props.collectionClick(newCollection, collectionLength)
         // 然後同時改變自己這層的state
-        this.setState(
-          {
-            collectionColor: true,
-            collection: newCollection,
-            collectionLength: collectionLength,
-          },
-          () => {
-            console.log('click - state')
-            console.log(this.state.collectionLength)
-          }
-        )
+        this.setState({
+          collectionColor: true,
+          collection: newCollection,
+          collectionLength: collectionLength,
+        })
       }
       // 如果沒登錄的話
     } else if (cinemaId) {
-      alert('戲院會員不可以收藏喔～')
-      window.location = 'http://localhost:3000/LoginSign'
+      // alert('戲院會員不可以收藏喔～')
+      Toast.fire({
+        type: 'error',
+        title: '戲院會員不可以收藏喔～',
+      })
     } else {
-      alert('請先登錄會員喔～')
-      window.location = 'http://localhost:3000/LoginSign'
+      // alert('請先登錄會員喔～')
+      Swal.fire({
+        type: 'info',
+        title: '請先登錄會員喔～',
+        showConfirmButton: false,
+      })
+      setTimeout(
+        () => (window.location = 'http://localhost:3000/LoginSign'),
+        1500
+      )
     }
   }
 
@@ -195,17 +220,9 @@ class CardLargeKaga extends React.Component {
     return (
       <>
         <div className="col-12 my-3">
-          <div
-            className="card"
-            style={{
-              height: '450px',
-              overflow: 'hidden',
-              background: '#28333d',
-              boxShadow: '0 0 2px #000000',
-            }}
-          >
+          <div className="card cinemaBigCard">
             <div className="row no-gutters h-100">
-              <div className="col-md-6">
+              <div className="col-lg-6 col-md-12 md-50 cinemaBigCardImg">
                 <img
                   src={this.props.img}
                   className="card-img h-100"
@@ -213,10 +230,10 @@ class CardLargeKaga extends React.Component {
                   style={{ objectFit: 'cover' }}
                 />
               </div>
-              <div className="col-md-6 d-flex flex-column h-100">
+              <div className="col-lg-6 col-md-12 h-md-50 d-flex flex-column h-100 cinemaBigCardText">
                 {/* 上方區塊 */}
                 <div className="d-flex h-100 my-2">
-                  <div className="col-3 d-flex flex-column justify-content-around ml-4 px-0">
+                  <div className="col-3 d-flex flex-column justify-content-around ml-lg-4 px-0">
                     <h4 className="mr-3">地址</h4>
                     <h4 className="mr-3">電話</h4>
                     <h4 className="mr-3">統一編號</h4>
@@ -257,7 +274,7 @@ class CardLargeKaga extends React.Component {
                   </div>
                 </div>
                 {this.props.wantStar ? (
-                  <div className="col mb-4 d-flex pl-3 align-items-center">
+                  <div className="col mb-lg-4 d-flex pl-lg-3 align-items-center">
                     <h4 className="ml-2 mr-5">喜好程度</h4>
                     <div className="ml-4 mb-2">
                       <CardKagaStaAnimation

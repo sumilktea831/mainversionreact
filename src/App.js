@@ -213,7 +213,7 @@ class App extends React.Component {
           {window.location.pathname == '/LoginSign' ? (
             ''
           ) : (
-            <div className="container-fluid" style={{}}>
+            <div className="container-fluid row justify-content-center">
               <Footer />
             </div>
           )}
