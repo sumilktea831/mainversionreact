@@ -586,7 +586,7 @@ class BackSidenav extends React.Component {
     let markTrueFalse = this.state.thisMemberData.markList.some(
       item => item.markId === thisCinemaData.id
     )
-    let newMarkUpdateData = []
+    let newMarkUpdateData = this.state.thisMemberData.markList
     if (markTrueFalse === false) {
       newMarkUpdateData.push({
         markId: thisCinemaData.id,
