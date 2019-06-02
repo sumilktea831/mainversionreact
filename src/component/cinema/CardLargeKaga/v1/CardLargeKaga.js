@@ -95,8 +95,10 @@ class CardLargeKaga extends React.Component {
       // alert('請先登錄會員喔～')
       Swal.fire({
         type: 'info',
-        title: '請先登入會員喔～',
+        title: '<span style="color:#d4d1cc">請先登入會員喔～</span>',
         showConfirmButton: false,
+        buttonsStyling: false,
+        background: '#242b34',
       })
       setTimeout(
         () => (window.location = 'http://localhost:3000/LoginSign'),
@@ -163,8 +165,10 @@ class CardLargeKaga extends React.Component {
       // alert('請先登錄會員喔～')
       Swal.fire({
         type: 'info',
-        title: '請先登入會員喔～',
+        title: '<span style="color:#d4d1cc">請先登入會員喔～</span>',
         showConfirmButton: false,
+        buttonsStyling: false,
+        background: '#242b34',
       })
       setTimeout(
         () => (window.location = 'http://localhost:3000/LoginSign'),
