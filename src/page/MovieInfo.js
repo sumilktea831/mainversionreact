@@ -11,7 +11,6 @@ class MovieInfo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      title: ['影片資訊', '活動資訊', '相關活動', '相關影片'],
       moviePageData: [],
       moviePageOtherData: [],
       streetView: false,
@@ -61,6 +60,7 @@ class MovieInfo extends React.Component {
     } catch (err) {
       console.log(err)
     }
+    const pagename = window.location.pathname.slice(7)
   }
   handleOnClick = () => {
     this.setState({ moviePageData: [] })
@@ -136,7 +136,7 @@ class MovieInfo extends React.Component {
               <MoviePageSection
                 theater={this.state.moviePageData.theater}
                 title={this.state.moviePageData.title}
-                content={this.state.moviePageData.content}
+                content={this.state.moviePageData.intro}
                 HeroImage={this.state.moviePageData.imgSrc}
               />
             </div>
@@ -145,46 +145,28 @@ class MovieInfo extends React.Component {
         <div className="container-fluid fix-content" id="text">
           <div className="row">
             <div className="col-md-12 p-0">
-              <MovieTitle
-                title={this.state.title[0]}
-                className="content-title"
-              />
+              <MovieTitle title={'電影資訊'} className="content-title" />
             </div>
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
               <MoviePageCard
-                theater={this.state.moviePageData.theater}
-                theaterMap={this.state.moviePageData.theaterMap}
-                phone={this.state.moviePageData.phone}
-                GUINumber={this.state.moviePageData.GUINumber}
-                website={this.state.moviePageData.website}
-                email={this.state.moviePageData.email}
                 imgSrc={this.state.moviePageData.imgSrc}
+                cardTitle1={'電影中文名稱'}
+                cardTitle2={'電影英文名稱'}
+                cardTitle3={'電影分級'}
+                cardTitle4={'電影導演'}
+                cardTitle5={'電影語言'}
+                cardTitle6={'電影片長'}
+                cardTitle7={'電影上檔時間'}
+                cardTitle8={'電影下檔時間'}
+                cardContent1={this.state.moviePageData.title}
+                cardContent2={this.state.moviePageData.titleEn}
+                cardContent3={this.state.moviePageData.movie_rating}
+                cardContent4={this.state.moviePageData.director}
+                cardContent5={this.state.moviePageData.language}
+                cardContent6={this.state.moviePageData.filmTime + '分鐘'}
+                cardContent7={this.state.moviePageData.inTheaterDate}
+                cardContent8={this.state.moviePageData.outTheaterDate}
               />
-            </div>
-          </div>
-        </div>
-        <div className="container-fluid fix-content" id="text">
-          <div className="row">
-            <div className="col-md-12 p-0">
-              <MovieTitle
-                title={this.state.title[1]}
-                className="content-title"
-              />
-            </div>
-            <div className="col-12 col-sm-12 col-md-12 col-lg-9 mt-5">
-              <MovieContent
-                theater={this.state.moviePageData.theater}
-                title={this.state.moviePageData.title}
-                theaterMap={this.state.moviePageData.theaterMap}
-                content={this.state.moviePageData.content}
-                joinContent={this.state.moviePageData.joinContent}
-                joinContentCurrentPeople={
-                  this.state.moviePageData.joinContentCurrentPeople
-                }
-              />
-            </div>
-            <div className="col-12 col-sm-12 col-md-12 col-lg-3 mt-5">
-              <MovieQRcode imgSrc={window.location.href} />
             </div>
           </div>
         </div>
