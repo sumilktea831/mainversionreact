@@ -558,7 +558,7 @@ class CinemaBackMainpage extends React.Component {
                           尚無紀錄，趕快
                           <a
                             style={{ color: '#ffa510' }}
-                            href="/CinemaBackMainpage/cinema-activity-add"
+                            href="/CinemaBackMainpage/cinema-film-post"
                           >
                             前往影片管理
                           </a>

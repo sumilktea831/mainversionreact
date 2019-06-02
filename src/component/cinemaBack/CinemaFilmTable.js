@@ -305,7 +305,10 @@ class MemberCollectTable extends React.Component {
         {this.state.thisFilmData.length == 0 ? (
           <h5 className="text-center text-mywhite mx-auto">
             尚無影片紀錄，趕快進入
-            <a href="/article" style={{ color: '#ffa510' }}>
+            <a
+              href="/CinemaBackMainpage/cinema-film-post"
+              style={{ color: '#ffa510' }}
+            >
               影片上架
             </a>
             新增影片吧！
