@@ -4,6 +4,7 @@ import { LinkContainer } from 'react-router-bootstrap'
 import ActivityCard from '../component/activity/ActivityCard/ActivityCard'
 import ActivityTitle from '../component/activity/ActivityTitle/ActivityTitle'
 import AcitivityForm from '../component/activity/AcitivityForm/AcitivityForm'
+import AcitivityEditForm from '../component/activity/AcitivityForm/AcitivityEditForm'
 import CinemaBackSidenav from '../component/backSidenav/CinemaBackSidenav'
 import CinemaEditInfo from '../component/cinemaBack/CinemaEditInfo'
 import CinemaEditPwd from '../component/cinemaBack/CinemaEditPwd'
@@ -622,7 +623,25 @@ class CinemaBackMainpage extends React.Component {
               ) : (
                 ''
               )}
-              {pagename === 'cinema-activity-inprogress' ? <></> : ''}
+              {pagename.indexOf('cinema-activity-inprogress') > -1 ? (
+                pagename.slice(27) != '' ? (
+                  <>
+                    <AcitivityEditForm />
+                  </>
+                ) : (
+                  <>
+                    <p
+                      onClick={() =>
+                        (window.location.pathname += '/a1558948812063')
+                      }
+                    >
+                      to a1558948812063
+                    </p>
+                  </>
+                )
+              ) : (
+                ''
+              )}
               {pagename === 'cinema-activity-analysis' ? <></> : ''}
             </div>
           </Row>
