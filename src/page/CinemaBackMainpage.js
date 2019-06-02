@@ -491,7 +491,11 @@ class CinemaBackMainpage extends React.Component {
                             id={item.id}
                             title={item.title}
                             subtitle={item.subtitle}
-                            img={item.img}
+                            img={
+                              item.img.indexOf('http') == 0
+                                ? item.img
+                                : '/images/movieImg/' + item.img
+                            }
                             link={item.link}
                             popup
                             star={item.star}

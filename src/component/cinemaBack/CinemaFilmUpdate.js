@@ -165,7 +165,7 @@ class CinemaFilmUpdate extends React.Component {
       var uploadFileName = event.target.files[0].name
       let formdata = new FormData()
       formdata.append('myfile', file)
-      fetch('http://localhost:3001/api/cinema-upload-single', {
+      fetch('http://localhost:3001/api/cinemaFilm-upload-single', {
         method: 'POST',
         body: formdata,
       })
@@ -280,7 +280,7 @@ class CinemaFilmUpdate extends React.Component {
         >
           {this.state.usertext.imgSrc !== '' ? (
             <img
-              src={'/images/cinemaImg/' + this.state.usertext.imgSrc}
+              src={'/images/movieImg/' + this.state.usertext.imgSrc}
               style={{ width: '250px', height: '355px', objectFit: 'cover' }}
             />
           ) : (

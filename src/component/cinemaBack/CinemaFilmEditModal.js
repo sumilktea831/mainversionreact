@@ -27,7 +27,7 @@ const CinemaFilmEditModal = props => {
           >
             {props.thisData.imgSrc !== '' ? (
               <img
-                src={'/images/cinemaImg/' + props.thisData.imgSrc}
+                src={'/images/movieImg/' + props.thisData.imgSrc}
                 style={{ width: '250px', height: '355px', objectFit: 'cover' }}
               />
             ) : (

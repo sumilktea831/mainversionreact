@@ -774,25 +774,6 @@
       ]
     },
     {
-      "id": "cf1559384923914",
-      "title": "測試6",
-      "titleEn": "66",
-      "movie_rating": "輔導級 15+",
-      "imgSrc": "a4cf6483-a9a9-4b75-aebb-89f36e3acd78.png",
-      "type": "懸疑片",
-      "director": "",
-      "language": "",
-      "intro": "",
-      "fullIntro": "",
-      "filmTime": "",
-      "updateDate": "2019-06-01",
-      "inTheaterDate": "",
-      "outTheaterDate": "",
-      "schedule": [],
-      "filmStar": [],
-      "theater": "碼農Cafe"
-    },
-    {
       "id": "cf1559389596294",
       "title": "測試7",
       "titleEn": "",
@@ -808,6 +789,49 @@
       "inTheaterDate": "",
       "outTheaterDate": "",
       "schedule": [],
+      "filmStar": [],
+      "theater": "碼農Cafe"
+    },
+    {
+      "id": "cf1559456527550",
+      "title": "第二天測試",
+      "titleEn": "SecondDay",
+      "movie_rating": "保護級 6+",
+      "imgSrc": "d23e1de0-3167-4bea-918e-4a06b5c926f0.png",
+      "type": "紀錄片懸疑片",
+      "director": "碼農一號",
+      "language": "英語",
+      "intro": "測試功能是否健在",
+      "fullIntro": "功能寫好的第二天，究竟會不會有神奇的力量導致新的BUG出現?!\n讓我們繼續看下去...",
+      "filmTime": "100",
+      "updateDate": "2019-06-02",
+      "inTheaterDate": "2019-06-02",
+      "outTheaterDate": "2019-07-02",
+      "schedule": [
+        "2019-06-02 13:30",
+        "2019-06-02 15:30"
+      ],
+      "filmStar": [],
+      "theater": "碼農Cafe"
+    },
+    {
+      "id": "cf1559457230226",
+      "title": "測試影片海報",
+      "titleEn": "Test Poster",
+      "movie_rating": "保護級 6+",
+      "imgSrc": "cbb3d84e-725e-44c6-94d6-bdb2a7a02a22.jpg",
+      "type": "動作片動畫片",
+      "director": "碼農一號",
+      "language": "英語",
+      "intro": "影片海報顯示、編輯更新",
+      "fullIntro": "因為發現圖片儲存路徑不同，所以重新測試是否有沒修改到的地方",
+      "filmTime": "100",
+      "updateDate": "2019-06-02",
+      "inTheaterDate": "2019-05-31",
+      "outTheaterDate": "2019-06-30",
+      "schedule": [
+        "2019-06-03 09:00"
+      ],
       "filmStar": [],
       "theater": "碼農Cafe"
     }
@@ -2173,7 +2197,7 @@
           "title": "測試7",
           "titleEn": "",
           "movie_rating": "",
-          "imgSrc": "",
+          "imgSrc": "a4cf6483-a9a9-4b75-aebb-89f36e3acd78.png",
           "type": [
             "動作片"
           ],
@@ -2186,6 +2210,53 @@
           "inTheaterDate": "2019-06-01",
           "outTheaterDate": "2019-06-11",
           "schedule": [],
+          "filmStar": []
+        },
+        {
+          "id": "cf1559456527550",
+          "title": "第二天測試",
+          "titleEn": "SecondDay",
+          "movie_rating": "保護級 6+",
+          "imgSrc": "d23e1de0-3167-4bea-918e-4a06b5c926f0.png",
+          "type": [
+            "紀錄片",
+            "懸疑片"
+          ],
+          "director": "碼農一號",
+          "language": "英語",
+          "intro": "測試功能是否健在",
+          "fullIntro": "功能寫好的第二天，究竟會不會有神奇的力量導致新的BUG出現?!\n讓我們繼續看下去...",
+          "filmTime": "100",
+          "updateDate": "2019-06-02",
+          "inTheaterDate": "2019-06-02",
+          "outTheaterDate": "2019-07-02",
+          "schedule": [
+            "2019-06-02 13:30",
+            "2019-06-02 15:30"
+          ],
+          "filmStar": []
+        },
+        {
+          "id": "cf1559457230226",
+          "title": "測試影片海報",
+          "titleEn": "Test Poster",
+          "movie_rating": "保護級 6+",
+          "imgSrc": "cbb3d84e-725e-44c6-94d6-bdb2a7a02a22.jpg",
+          "type": [
+            "動作片",
+            "動畫片"
+          ],
+          "director": "碼農一號",
+          "language": "英語",
+          "intro": "影片海報顯示、編輯更新",
+          "fullIntro": "因為發現圖片儲存路徑不同，所以重新測試是否有沒修改到的地方",
+          "filmTime": "100",
+          "updateDate": "2019-06-02",
+          "inTheaterDate": "2019-05-31",
+          "outTheaterDate": "2019-06-30",
+          "schedule": [
+            "2019-06-03 09:00"
+          ],
           "filmStar": []
         }
       ],
