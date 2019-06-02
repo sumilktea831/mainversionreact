@@ -1,6 +1,8 @@
 import React from 'react'
 
 const DataBoxSM = props => {
+  console.log('props.PageViews')
+  console.log(props.PageViews)
   return (
     <>
       <div className="col d-flex justify-content-center">
@@ -23,7 +25,7 @@ const DataBoxSM = props => {
             <h5>{props.member ? '收藏文章' : '按讚人數'}</h5>
           </div>
           <div className="flex-column col text-center">
-            <h3>{props.PageViews}</h3>
+            <h3>{props.PageViews !== undefined ? props.PageViews : 0}</h3>
             <h5>{props.member ? '發文篇數' : '瀏覽數'}</h5>
           </div>
         </div>
