@@ -953,7 +953,7 @@ class BackSidenav extends React.Component {
                       className="d-flex align-items-center justify-content-center"
                       style={{ height: '300px', width: '100%' }}
                     >
-                      <h5 className="ml-4">
+                      <h5 className="">
                         尚無收藏紀錄，趕快
                         <a style={{ color: '#ffa510' }} href="/movie">
                           前往影片

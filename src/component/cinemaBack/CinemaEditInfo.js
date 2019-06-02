@@ -182,8 +182,8 @@ class CinemaEditInfo extends React.Component {
       if (value) {
         //先判斷是否有值，有值再進行進一步判斷
 
-        if (value.length < 11) {
-          //判斷是否字元數 < 11 (至少=縣市:3、行政區:3、路名:3、號碼:2)
+        if (value.length < 10) {
+          //判斷是否字元數 < 10 (至少=縣市:3、行政區:2、路名:3、號碼:2)
           document.querySelector('#' + eventName + 'help').innerHTML =
             '請輸入正確的地址'
         } else {

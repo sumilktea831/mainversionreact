@@ -94,16 +94,19 @@ class CardLargeKaga extends React.Component {
     } else {
       // alert('請先登錄會員喔～')
       Swal.fire({
+        title: '<span style="color:#d4d1cc">請先登入會員</span>',
         type: 'info',
-        title: '<span style="color:#d4d1cc">請先登入會員喔～</span>',
-        showConfirmButton: false,
-        buttonsStyling: false,
+        showCancelButton: true,
+        confirmButtonText: '確認',
+        cancelButtonText: '取消',
+        confirmButtonClass: ' btn-warning',
+        confirmButtonColor: '#ffa510',
         background: '#242b34',
+      }).then(result => {
+        if (result.value) {
+          window.location.href = '/LoginSign'
+        }
       })
-      setTimeout(
-        () => (window.location = 'http://localhost:3000/LoginSign'),
-        1500
-      )
     }
   }
 
@@ -164,16 +167,19 @@ class CardLargeKaga extends React.Component {
     } else {
       // alert('請先登錄會員喔～')
       Swal.fire({
+        title: '<span style="color:#d4d1cc">請先登入會員</span>',
         type: 'info',
-        title: '<span style="color:#d4d1cc">請先登入會員喔～</span>',
-        showConfirmButton: false,
-        buttonsStyling: false,
+        showCancelButton: true,
+        confirmButtonText: '確認',
+        cancelButtonText: '取消',
+        confirmButtonClass: ' btn-warning',
+        confirmButtonColor: '#ffa510',
         background: '#242b34',
+      }).then(result => {
+        if (result.value) {
+          window.location.href = '/LoginSign'
+        }
       })
-      setTimeout(
-        () => (window.location = 'http://localhost:3000/LoginSign'),
-        1500
-      )
     }
   }
 

@@ -93,6 +93,25 @@ swalWithBootstrapButtons.fire({
     )
   }
 })
+//是非範例2
+Swal.fire({
+  // position: 'top-end',
+  title: '請先登入會員',
+  text: '請點選確認繼續或取消離開',
+  type: 'question',
+  showCancelButton: true,
+  confirmButtonText: '確認',
+  cancelButtonText: '取消',
+  // cancelButtonColor: ' #d33',
+  confirmButtonClass: ' btn-warning',
+  confirmButtonColor: '#ffa510',
+  background: '#242b34',
+}).then(result => {
+  // 確認有按下上傳確認鍵後開始FETCH
+  if (result.value) {
+    window.location.href = '/LoginSign'
+  }
+})
 
 
 //文字顏色HTML
