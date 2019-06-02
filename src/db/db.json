@@ -232,12 +232,11 @@
   "movieCardData": [
     {
       "id": "m1000000",
-      "theater": "碼農Cafe",
       "title": "赤手登峰",
       "titleEn": "english filmname",
       "movie_rating": "普遍級",
       "imgSrc": "https://g.udn.com.tw/upfiles/B_SH/shiow/PSN_PHOTO/591/f_24131591_1.jpg",
-      "type": "戲劇片文藝片",
+      "type": "",
       "director": "導演名字",
       "language": "華語",
       "intro": "電影簡介",
@@ -268,7 +267,8 @@
           "starId": "m1558576972555",
           "star": 5
         }
-      ]
+      ],
+      "theater": "碼農Cafe"
     },
     {
       "id": "m1559377711803",
@@ -798,7 +798,7 @@
       "titleEn": "SecondDay",
       "movie_rating": "保護級 6+",
       "imgSrc": "d23e1de0-3167-4bea-918e-4a06b5c926f0.png",
-      "type": "紀錄片懸疑片",
+      "type": "紀錄片懸疑片恐怖片",
       "director": "碼農一號",
       "language": "英語",
       "intro": "測試功能是否健在",
@@ -820,7 +820,7 @@
       "titleEn": "Test Poster",
       "movie_rating": "保護級 6+",
       "imgSrc": "cbb3d84e-725e-44c6-94d6-bdb2a7a02a22.jpg",
-      "type": "動作片動畫片",
+      "type": "動作片動畫片懸疑片喜劇片",
       "director": "碼農一號",
       "language": "韓語",
       "intro": "影片海報顯示、編輯更新",
@@ -830,7 +830,8 @@
       "inTheaterDate": "2019-05-31",
       "outTheaterDate": "2019-06-30",
       "schedule": [
-        "2019-06-07 23:00"
+        "2019-06-07 23:00",
+        "2019-06-07 12:00"
       ],
       "filmStar": [],
       "theater": "碼農Cafe"
@@ -856,7 +857,12 @@
         "2019-06-03 15:00",
         "2019-06-05 10:00"
       ],
-      "filmStar": [],
+      "filmStar": [
+        {
+          "starId": "m1558576972555",
+          "star": 4
+        }
+      ],
       "theater": "碼農Cafe"
     }
   ],
@@ -2014,13 +2020,15 @@
       "city": "台北市",
       "address": "",
       "fav_type": [
-        "英雄片",
         "動作片",
         "武俠片",
         "動畫片",
         "驚悚片",
         "偵探片",
-        "愛情片"
+        "愛情片",
+        "懸疑片",
+        "喜劇片",
+        "英雄片"
       ],
       "career": "資訊 / 科技",
       "join_date": "2019-05-23",
@@ -2044,6 +2052,10 @@
       "markList": [
         {
           "markId": "001",
+          "markcontent": ""
+        },
+        {
+          "markId": "m1559461949823",
           "markcontent": ""
         }
       ]
@@ -2215,7 +2227,8 @@
           "imgSrc": "d23e1de0-3167-4bea-918e-4a06b5c926f0.png",
           "type": [
             "紀錄片",
-            "懸疑片"
+            "懸疑片",
+            "恐怖片"
           ],
           "director": "碼農一號",
           "language": "英語",
@@ -2239,7 +2252,9 @@
           "imgSrc": "cbb3d84e-725e-44c6-94d6-bdb2a7a02a22.jpg",
           "type": [
             "動作片",
-            "動畫片"
+            "動畫片",
+            "懸疑片",
+            "喜劇片"
           ],
           "director": "碼農一號",
           "language": "韓語",
@@ -2250,7 +2265,8 @@
           "inTheaterDate": "2019-05-31",
           "outTheaterDate": "2019-06-30",
           "schedule": [
-            "2019-06-07 23:00"
+            "2019-06-07 23:00",
+            "2019-06-07 12:00"
           ],
           "filmStar": []
         },

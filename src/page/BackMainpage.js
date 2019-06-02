@@ -17,7 +17,14 @@ import CheckboxMultiForFavTypeReadSu from '../component/inputs/CheckboxMultiForF
 import CinemaEditInfo from '../component/cinemaBack/CinemaEditInfo'
 import ForumBackArticle from './ForumBackArticle'
 import ForumBackComment from './ForumBackComment'
-
+//Import SweetAlert2
+import Swal from 'sweetalert2'
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'center',
+  showConfirmButton: false,
+  timer: 2000,
+})
 //memberId
 const memberId = sessionStorage.getItem('memberId')
 
@@ -766,11 +773,19 @@ class BackSidenav extends React.Component {
           .then(res => res.json())
           .then(jsonObject => {
             this.setState({ thisMemberData: jsonObject }, () => {
-              alert('資料儲存成功')
+              // alert('資料儲存成功')
+              Toast.fire({
+                type: 'success',
+                title: '資料儲存成功！',
+              })
             })
           })
       } catch (e) {
         console.log(e)
+        Toast.fire({
+          type: 'error',
+          title: '儲存失敗，請檢查您的資料再試一次',
+        })
       }
     }
   }
@@ -905,7 +920,11 @@ class BackSidenav extends React.Component {
                             id={item.id}
                             title={item.title}
                             subtitle={item.subtitle}
-                            img={item.img}
+                            img={
+                              item.img.indexOf('http') == 0
+                                ? item.img
+                                : '/images/movieImg/' + item.img
+                            }
                             link={item.link}
                             // collectionIcon
                             // collectionClick={this.collectionClick}
@@ -1014,7 +1033,11 @@ class BackSidenav extends React.Component {
                           id={item.id}
                           title={item.title}
                           subtitle={item.subtitle}
-                          img={item.img}
+                          img={
+                            item.img.indexOf('http') == 0
+                              ? item.img
+                              : '/images/movieImg/' + item.img
+                          }
                           link={item.link}
                           popup
                           member

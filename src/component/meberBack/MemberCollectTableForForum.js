@@ -9,7 +9,6 @@ class MemberCollectTable extends React.Component {
     }
   }
 
-  async componentDidMount() {}
   static getDerivedStateFromProps(nextProps, prevState) {
     // this.setState({ thisData: nextProps.thisData }) 這不能這樣setStae，要用下面的寫法
     let stateToBeReturned = null

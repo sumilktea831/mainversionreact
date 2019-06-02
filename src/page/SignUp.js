@@ -11,6 +11,12 @@ const Toast = Swal.mixin({
   showConfirmButton: false,
   timer: 3000,
 })
+const Toast2 = Swal.mixin({
+  toast: true,
+  position: 'center',
+  showConfirmButton: false,
+  timer: 3000,
+})
 class SignUp extends React.Component {
   constructor() {
     super()
@@ -119,7 +125,12 @@ class SignUp extends React.Component {
         memberdata.find(item => item.id === this.props.location.search.slice(4))
       ) {
         if (+new Date() - +this.props.location.search.slice(5) < 86400000) {
-          alert('歡迎加入Movieee，將為您跳轉至會員中心!')
+          // alert('歡迎加入Movieee，將為您跳轉至會員中心!')
+          Toast2.fire({
+            type: 'success',
+            title: '歡迎加入Movieee，將為您跳轉至會員中心!',
+            showConfirmButton: false,
+          })
           sessionStorage.setItem(
             'memberId',
             this.props.location.search.slice(4)
@@ -233,12 +244,8 @@ class SignUp extends React.Component {
       //比對輸入的email是否存在
       item => item.email === userEmail
     )
-    // console.log(captcha)
-    // console.log(captchatext)
     if (isexisted) {
       // alert('有帳號!')
-      // console.log(isexisted.pwd)
-      // console.log(userPwd)
       if (isexisted.pwd === userPwd) {
         //如果email存在，再判斷密碼是否正確
         // alert('密碼正確')

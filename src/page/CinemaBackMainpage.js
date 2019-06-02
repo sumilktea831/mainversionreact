@@ -16,6 +16,22 @@ import CinemaFilmUpdate from '../component/cinemaBack/CinemaFilmUpdate'
 import CinemaFilmTable from '../component/cinemaBack/CinemaFilmTable'
 //cinemaId
 import ActivityBtnAddActivity from '../component/activity/ActivityBtnAddActivity/ActivityBtnAddActivity'
+
+//Import SweetAlert2
+import Swal from 'sweetalert2'
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'center',
+  showConfirmButton: false,
+  timer: 2000,
+})
+const swalWithBootstrapButtons = Swal.mixin({
+  customClass: {
+    confirmButton: 'btn btn-success',
+    cancelButton: 'btn btn-danger',
+  },
+  buttonsStyling: false,
+})
 const cinemaId = sessionStorage.getItem('cinemaId')
 class CinemaBackMainpage extends React.Component {
   constructor(props) {
@@ -289,14 +305,22 @@ class CinemaBackMainpage extends React.Component {
           .then(jsonObject => {
             // sessionStorage.setItem('thisCinemaData', JSON.stringify(jsonObject))
             this.setState({ thisCinemaData: jsonObject }, () => {
-              alert('資料儲存成功')
+              // alert('資料儲存成功')
+              Toast.fire({
+                type: 'success',
+                title: '資料儲存成功！',
+              })
             })
           })
       } catch (e) {
         console.log(e)
       }
     } else {
-      alert('資料填寫有誤，請再次確認您的資料！')
+      // alert('資料填寫有誤，請再次確認您的資料！')
+      Toast.fire({
+        type: 'error',
+        title: '儲存失敗，請檢查您的資料再試一次',
+      })
     }
   }
 
@@ -360,14 +384,22 @@ class CinemaBackMainpage extends React.Component {
               console.log(e)
             }
             this.setState({ thisCinemaData: jsonObject }, () => {
-              alert('資料儲存成功')
+              // alert('資料儲存成功')
+              Toast.fire({
+                type: 'success',
+                title: '影片上架完成！',
+              })
             })
           })
       } catch (e) {
         console.log(e)
       }
     } else {
-      alert('資料填寫有誤，請再次確認您的資料！')
+      // alert('資料填寫有誤，請再次確認您的資料！')
+      Toast.fire({
+        type: 'error',
+        title: '上架失敗，請檢查您的資料再試一次',
+      })
     }
   }
 
@@ -413,16 +445,16 @@ class CinemaBackMainpage extends React.Component {
               }
             )
               .then(res => res.json())
-              .then(jsonObject => {
-                // this.setState({ thisCinemaData: jsonObject }, () => {
-                //   alert('資料儲存成功')
-                // })
-              })
+              .then(jsonObject => {})
           } catch (e) {
             console.log(e)
           }
           this.setState({ thisCinemaData: jsonObject }, () => {
-            alert('資料儲存成功')
+            // alert('資料儲存成功')
+            Toast.fire({
+              type: 'success',
+              title: '資料儲存成功',
+            })
           })
         })
     } catch (e) {
@@ -430,51 +462,78 @@ class CinemaBackMainpage extends React.Component {
     }
   }
   handleFilmDelete = id => () => {
-    const newcinemaData = { ...this.state.thisCinemaData } //這個戲院的Data
-    //找出這支影片在這個戲院影片列表中的Index
-    const thisFilmIndex = newcinemaData.cinemaFilm.findIndex(
-      item => item.id === id
-    )
-    //將這支影片從戲院影片列表中移除
-    newcinemaData.cinemaFilm.splice([thisFilmIndex], 1)
-    this.setState({ thisCinemaData: newcinemaData }, () =>
-      console.log(this.state.thisCinemaData)
-    )
-    try {
-      fetch('http://localhost:5555/cinema/' + this.state.thisCinemaData.id, {
-        method: 'PUT',
-        body: JSON.stringify(newcinemaData),
-        headers: new Headers({
-          Accept: 'application/json',
-          'Content-Type': 'application/json',
-        }),
+    swalWithBootstrapButtons
+      .fire({
+        title: '確定要刪除這支影片?',
+        text: '提醒：刪除的影片無法再復原',
+        type: 'warning',
+        showCancelButton: true,
+        confirmButtonText: '確認刪除',
+        confirmButtonClass: 'btn btn-warning addFilmSchedule mx-3',
+        reverseButtons: true,
+        cancelButtonText: '取消',
+        cancelButtonClass: 'btn btn-danger addFilmSchedule mx-3'
       })
-        .then(res => res.json())
-        .then(jsonObject => {
+      .then(result => {
+        if (result.value) {
+          const newcinemaData = { ...this.state.thisCinemaData } //這個戲院的Data
+          //找出這支影片在這個戲院影片列表中的Index
+          const thisFilmIndex = newcinemaData.cinemaFilm.findIndex(
+            item => item.id === id
+          )
+          //將這支影片從戲院影片列表中移除
+          newcinemaData.cinemaFilm.splice([thisFilmIndex], 1)
+          this.setState({ thisCinemaData: newcinemaData }, () =>
+            console.log(this.state.thisCinemaData)
+          )
           try {
-            fetch('http://localhost:5555/movieCardData/' + id, {
-              method: 'DELETE',
-              headers: new Headers({
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-              }),
-            })
+            fetch(
+              'http://localhost:5555/cinema/' + this.state.thisCinemaData.id,
+              {
+                method: 'PUT',
+                body: JSON.stringify(newcinemaData),
+                headers: new Headers({
+                  Accept: 'application/json',
+                  'Content-Type': 'application/json',
+                }),
+              }
+            )
               .then(res => res.json())
               .then(jsonObject => {
-                // this.setState({ thisCinemaData: jsonObject }, () => {
-                //   alert('資料儲存成功')
-                // })
+                try {
+                  fetch('http://localhost:5555/movieCardData/' + id, {
+                    method: 'DELETE',
+                    headers: new Headers({
+                      Accept: 'application/json',
+                      'Content-Type': 'application/json',
+                    }),
+                  })
+                    .then(res => res.json())
+                    .then(jsonObject => {})
+                } catch (e) {
+                  console.log(e)
+                }
+                this.setState({ thisCinemaData: jsonObject }, () => {
+                  // alert('資料刪除成功')
+                  swalWithBootstrapButtons.fire(
+                    '刪除成功',
+                    '已成功刪除影片',
+                    'success'
+                  )
+                })
               })
           } catch (e) {
             console.log(e)
+            Swal.fire({
+              type: 'error',
+              title: '影片刪除失敗',
+              text: '刪除發生問題，請再試一次',
+            })
           }
-          this.setState({ thisCinemaData: jsonObject }, () => {
-            alert('資料刪除成功')
-          })
-        })
-    } catch (e) {
-      console.log(e)
-    }
+        } else if (result.dismiss === Swal.DismissReason.cancel) {
+          swalWithBootstrapButtons.fire('取消刪除', '影片仍然還在喔！', 'error')
+        }
+      })
   }
   handleLogout = () => {
     //點擊登出，清除session並導回主頁

@@ -247,7 +247,6 @@ class MemberCollectTable extends React.Component {
     }
   }
   handleScheduleTime = id => e => {
-    // alert(id + e.target.value)
     let date = document.querySelector('#' + id + 'Date')
     let time = document.querySelector('#' + id + 'Time')
     const newtext = { ...this.state.thisData }
