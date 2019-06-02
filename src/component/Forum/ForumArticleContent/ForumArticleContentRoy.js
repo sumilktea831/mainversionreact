@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import ForumArticleAvatarRoy from '../ForumArticleAvatarRoy'
 import ForumArticleContentTiltleRoy from './ForumArticleContentTiltleRoy'
 import ForumArticleContentDateRoy from './ForumArticleContentDateRoy'
@@ -22,9 +22,9 @@ const ForumArticleContentRoy = props => {
     }
     return ''
   }
-  console.log(props.forumNameId)
-  console.log(sessionStorage.getItem('memberId'))
-  console.log(props.forumNameId === sessionStorage.getItem('memberId'))
+  // console.log(props.forumNameId)
+  // console.log(sessionStorage.getItem('memberId'))
+  // console.log(props.forumNameId === sessionStorage.getItem('memberId'))
   // console.log(props.articleeID.toString())
   // console.log(getCookie('username').split(','))
   // console.log(
