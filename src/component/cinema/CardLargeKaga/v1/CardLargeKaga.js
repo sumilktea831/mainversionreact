@@ -8,9 +8,9 @@ const cinemaId = sessionStorage.getItem('cinemaId')
 
 const Toast = Swal.mixin({
   toast: true,
-  position: 'center-end',
+  position: 'center',
   showConfirmButton: false,
-  timer: 3000,
+  timer: 1500,
 })
 
 class CardLargeKaga extends React.Component {
