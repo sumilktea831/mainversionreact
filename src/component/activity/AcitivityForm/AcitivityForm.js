@@ -1,4 +1,6 @@
 import React from 'react'
+//Import SweetAlert2
+import Swal from 'sweetalert2'
 
 class AcitivityForm extends React.Component {
   constructor(props) {
@@ -196,7 +198,17 @@ class AcitivityForm extends React.Component {
                         })
                           .then(res => res.json())
                           .then(obj => {
-                            alert('已上架完成')
+                            // alert('已上架完成')
+                            Swal.fire({
+                              // position: 'top-end',
+                              type: 'success',
+                              title:
+                                '<span style="color:#d4d1cc">已上架完成</span>',
+                              showConfirmButton: false,
+                              buttonsStyling: false,
+                              background: '#242b34',
+                              timer: 1000,
+                            })
                             setTimeout(
                               () =>
                                 (window.location.pathname =
@@ -217,7 +229,16 @@ class AcitivityForm extends React.Component {
           }
         })
     } else {
-      alert('請填寫活動地址')
+      // alert('請填寫活動地址')
+      Swal.fire({
+        type: 'error',
+        title: '<span style="color:#d4d1cc">請填寫活動地址</span>',
+        showConfirmButton: true,
+        confirmButtonClass: 'btn btn-warning',
+        confirmButtonColor: '#ffa510',
+        buttonsStyling: false,
+        background: '#242b34',
+      })
     }
   }
   render() {

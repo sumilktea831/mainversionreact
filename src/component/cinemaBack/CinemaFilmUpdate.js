@@ -36,6 +36,7 @@ class CinemaFilmUpdate extends React.Component {
       checkok: {
         //儲存格式驗證是否通過
         title: false,
+        type: false,
       },
     }
   }
@@ -193,6 +194,7 @@ class CinemaFilmUpdate extends React.Component {
       let typeOptionAll = [...this.state.typeOptions] //複製所有喜愛類型
       let AlloptionName = Object.values(typeOptionAll.map(item => item.name)) //篩出所有類型的中文name
       let newType = [...this.state.thisType] //複製原本的喜愛類型
+      let copyCheckok = { ...this.state.checkok }
       //取出該選項喜愛類型的name(中文字)
       let optionName = this.state.typeOptions.filter(
         item => item.id === value
@@ -205,14 +207,18 @@ class CinemaFilmUpdate extends React.Component {
         //將該選項從喜愛類型中過濾掉，同時設定給copyData
         if (optionName === '全選') {
           newType = []
-          this.setState({ thisType: newType })
+          copyCheckok.type = false
+          this.setState({ thisType: newType, checkok: copyCheckok })
         } else {
           if (newType.find(item => item == '全選')) {
             newType = newType.filter(item => item !== '全選')
           }
           newType = newType.filter(item => item !== optionName)
           console.log('newType: ' + newType)
-          this.setState({ thisType: newType })
+          if (newType.length == 0) {
+            copyCheckok.type = false
+          }
+          this.setState({ thisType: newType, checkok: copyCheckok })
         }
         newtext[name] = newType
       } else {
@@ -227,6 +233,7 @@ class CinemaFilmUpdate extends React.Component {
           // let AlloptionName = Object.values(favTypeOptionAll.map(item => item.name))
           console.log(AlloptionName)
           newType = AlloptionName
+          copyCheckok.type = true
         } else {
           newType.push(optionName)
           console.log('newType22: ' + newType)
@@ -234,10 +241,11 @@ class CinemaFilmUpdate extends React.Component {
           if (newType.length == AlloptionName.length - 1) {
             newType.push('全選')
           }
+          copyCheckok.type = true
         }
         this.setState({ thisType: newType })
         newtext[name] = newType
-        this.setState({ usertext: newtext })
+        this.setState({ usertext: newtext, checkok: copyCheckok })
       }
     }
   }

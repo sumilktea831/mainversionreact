@@ -129,7 +129,6 @@ class SignUp extends React.Component {
           Toast2.fire({
             type: 'success',
             title: '歡迎加入Movieee，將為您跳轉至會員中心!',
-            showConfirmButton: false,
           })
           sessionStorage.setItem(
             'memberId',
@@ -255,8 +254,10 @@ class SignUp extends React.Component {
           Swal.fire({
             // position: 'top-end',
             type: 'success',
-            title: '登入成功',
+            title: '<span style="color:#d4d1cc">登入成功</span>',
             showConfirmButton: false,
+            buttonsStyling: false,
+            background: '#242b34',
             timer: 1500,
           })
           setTimeout(
@@ -267,27 +268,39 @@ class SignUp extends React.Component {
           // alert('驗證碼有誤')
           Swal.fire({
             type: 'error',
-            title: '請輸入正確的驗證碼',
+            title: '<span style="color:#d4d1cc">請輸入正確的驗證碼</span>',
             showConfirmButton: true,
-            timer: 1500,
+            confirmButtonClass: 'btn btn-warning',
+            confirmButtonColor: '#ffa510',
+            buttonsStyling: false,
+            background: '#242b34',
+            timer: 3000,
           })
         }
       } else {
         // alert('帳號或密碼錯誤(p)')
         Swal.fire({
           type: 'error',
-          title: '帳號或密碼錯誤',
+          title: '<span style="color:#d4d1cc">帳號或密碼錯誤</span>',
           showConfirmButton: true,
-          timer: 1500,
+          confirmButtonClass: 'btn btn-warning',
+          confirmButtonColor: '#ffa510',
+          buttonsStyling: false,
+          background: '#242b34',
+          timer: 3000,
         })
       }
     } else {
       // alert('帳號或密碼錯誤(e)')
       Swal.fire({
         type: 'error',
-        title: '帳號或密碼錯誤',
+        title: '<span style="color:#d4d1cc">帳號或密碼錯誤</span>',
         showConfirmButton: true,
-        timer: 1500,
+        confirmButtonClass: 'btn btn-warning',
+        confirmButtonColor: '#ffa510',
+        buttonsStyling: false,
+        background: '#242b34',
+        timer: 3000,
       })
     }
   }
@@ -313,8 +326,10 @@ class SignUp extends React.Component {
           Swal.fire({
             // position: 'top-end',
             type: 'success',
-            title: '登入成功',
+            title: '<span style="color:#d4d1cc">登入成功</span>',
             showConfirmButton: false,
+            buttonsStyling: false,
+            background: '#242b34',
             timer: 1500,
           })
           setTimeout(
@@ -327,27 +342,39 @@ class SignUp extends React.Component {
           // alert('驗證碼有誤')
           Swal.fire({
             type: 'error',
-            title: '請輸入正確的驗證碼',
+            title: '<span style="color:#d4d1cc">請輸入正確的驗證碼</span>',
             showConfirmButton: true,
-            timer: 1500,
+            confirmButtonClass: 'btn btn-warning',
+            confirmButtonColor: '#ffa510',
+            buttonsStyling: false,
+            background: '#242b34',
+            timer: 3000,
           })
         }
       } else {
         // alert('帳號或密碼錯誤(p)')
         Swal.fire({
           type: 'error',
-          title: '帳號或密碼錯誤',
+          title: '<span style="color:#d4d1cc">帳號或密碼錯誤</span>',
           showConfirmButton: true,
-          timer: 1500,
+          confirmButtonClass: 'btn btn-warning',
+          confirmButtonColor: '#ffa510',
+          buttonsStyling: false,
+          background: '#242b34',
+          timer: 3000,
         })
       }
     } else {
       // alert('帳號或密碼錯誤(e)')
       Swal.fire({
         type: 'error',
-        title: '帳號或密碼錯誤',
+        title: '<span style="color:#d4d1cc">帳號或密碼錯誤</span>',
         showConfirmButton: true,
-        timer: 1500,
+        confirmButtonClass: 'btn btn-warning',
+        confirmButtonColor: '#ffa510',
+        buttonsStyling: false,
+        background: '#242b34',
+        timer: 3000,
       })
     }
   }
@@ -423,10 +450,14 @@ class SignUp extends React.Component {
                   // alert('會員註冊成功！請重新登入')
                   Swal.fire({
                     type: 'success',
-                    title: '會員註冊成功',
-                    text: '請重新登入',
+                    title: '<span style="color:#d4d1cc">會員註冊成功</span>',
+                    text: '<span style="color:#d4d1cc">請重新登入</span>',
                     showConfirmButton: true,
-                    timer: 1500,
+                    confirmButtonClass: 'btn btn-warning',
+                    confirmButtonColor: '#ffa510',
+                    buttonsStyling: false,
+                    background: '#242b34',
+                    timer: 3000,
                   })
                   setTimeout(() => (window.location.href = '/LoginSign'), 1500)
                 })
@@ -438,19 +469,27 @@ class SignUp extends React.Component {
           // alert('驗證碼有誤')
           Swal.fire({
             type: 'error',
-            title: '請輸入正確的驗證碼',
+            title: '<span style="color:#d4d1cc">請輸入正確的驗證碼</span>',
             showConfirmButton: true,
-            timer: 1500,
+            confirmButtonClass: 'btn btn-warning',
+            confirmButtonColor: '#ffa510',
+            buttonsStyling: false,
+            background: '#242b34',
+            timer: 3000,
           })
         }
       } else {
         // alert('資料填寫有誤，請再次確認您的資料！')
         Swal.fire({
           type: 'error',
-          title: '資料填寫有誤',
-          text: '請再次確認您的資料',
+          title: '<span style="color:#d4d1cc">資料填寫有誤</span>',
+          text: '<span style="color:#d4d1cc">請再次確認您的資料</span>',
           showConfirmButton: true,
-          timer: 1500,
+          confirmButtonClass: 'btn btn-warning',
+          confirmButtonColor: '#ffa510',
+          buttonsStyling: false,
+          background: '#242b34',
+          timer: 3000,
         })
       }
     }
@@ -533,10 +572,14 @@ class SignUp extends React.Component {
                   // alert('戲院註冊成功！請重新登入')
                   Swal.fire({
                     type: 'success',
-                    title: '戲院註冊成功',
-                    text: '請重新登入',
+                    title: '<span style="color:#d4d1cc">戲院註冊成功</span>',
+                    text: '<span style="color:#d4d1cc">請重新登入</span>',
                     showConfirmButton: true,
-                    timer: 1500,
+                    confirmButtonClass: 'btn btn-warning',
+                    confirmButtonColor: '#ffa510',
+                    buttonsStyling: false,
+                    background: '#242b34',
+                    timer: 3000,
                   })
                   setTimeout(() => (window.location.href = '/LoginSign'), 1500)
                 })
@@ -549,19 +592,27 @@ class SignUp extends React.Component {
         // alert('驗證碼有誤')
         Swal.fire({
           type: 'error',
-          title: '驗證碼有誤',
+          title: '<span style="color:#d4d1cc">請輸入正確的驗證碼</span>',
           showConfirmButton: true,
-          timer: 1500,
+          confirmButtonClass: 'btn btn-warning',
+          confirmButtonColor: '#ffa510',
+          buttonsStyling: false,
+          background: '#242b34',
+          timer: 3000,
         })
       }
     } else {
       // alert('資料填寫有誤，請再次確認您的資料！')
       Swal.fire({
         type: 'error',
-        title: '資料填寫有誤',
-        text: '請再次確認您的資料',
+        title: '<span style="color:#d4d1cc">資料填寫有誤</span>',
+        text: '<span style="color:#d4d1cc">請再次確認您的資料</span>',
         showConfirmButton: true,
-        timer: 1500,
+        confirmButtonClass: 'btn btn-warning',
+        confirmButtonColor: '#ffa510',
+        buttonsStyling: false,
+        background: '#242b34',
+        timer: 3000,
       })
     }
   }

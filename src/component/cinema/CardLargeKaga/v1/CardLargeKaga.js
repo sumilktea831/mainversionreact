@@ -95,7 +95,7 @@ class CardLargeKaga extends React.Component {
       // alert('請先登錄會員喔～')
       Swal.fire({
         type: 'info',
-        title: '請先登錄會員喔～',
+        title: '請先登入會員喔～',
         showConfirmButton: false,
       })
       setTimeout(
@@ -163,7 +163,7 @@ class CardLargeKaga extends React.Component {
       // alert('請先登錄會員喔～')
       Swal.fire({
         type: 'info',
-        title: '請先登錄會員喔～',
+        title: '請先登入會員喔～',
         showConfirmButton: false,
       })
       setTimeout(

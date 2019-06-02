@@ -5,7 +5,14 @@ import ActivitySearchbarTitle from '../component/activity/ActivitySearchbar/Acti
 import ActivitySearchbarContent from '../component/activity/ActivitySearchbar/ActivitySearchbarContent'
 import ActivitySearchbarInput from '../component/activity/ActivitySearchbar/ActivitySearchbarInput'
 import ActivityCard from '../component/activity/ActivityCard/ActivityCard'
-
+//Import SweetAlert2
+import Swal from 'sweetalert2'
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'center',
+  showConfirmButton: false,
+  timer: 2000,
+})
 class Activity extends React.Component {
   constructor() {
     super()
@@ -184,10 +191,18 @@ class Activity extends React.Component {
             .split(id)
             .toString()
             .replace(/,/g, '')
-          alert('已取消收藏')
+          // alert('已取消收藏')
+          Toast.fire({
+            type: 'success',
+            title: '已取消收藏',
+          })
         } else {
           data.collectActivity += id
-          alert('已加入收藏')
+          // alert('已加入收藏')
+          Toast.fire({
+            type: 'success',
+            title: '已加入收藏',
+          })
         }
         this.setState({ collectActivity: data.collectActivity })
         try {

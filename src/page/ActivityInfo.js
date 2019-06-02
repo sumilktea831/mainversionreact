@@ -8,7 +8,14 @@ import ActivityQRcode from '../component/activity/ActivityQRcode/ActivityQRcode'
 import ActivityJoinBtn from '../component/activity/ActivityJoinBtn/ActivityJoinBtn'
 import ActivityCard from '../component/activity/ActivityCard/ActivityCard'
 import { async } from 'q'
-
+//Import SweetAlert2
+import Swal from 'sweetalert2'
+const Toast = Swal.mixin({
+  toast: true,
+  position: 'center',
+  showConfirmButton: false,
+  timer: 2000,
+})
 class ActivityInfo extends React.Component {
   constructor(props) {
     super(props)
@@ -105,10 +112,20 @@ class ActivityInfo extends React.Component {
             .split(id)
             .toString()
             .replace(/,/g, '')
-          alert('已取消收藏')
+          // alert('已取消收藏')
+          Toast.fire({
+            type: 'success',
+            title: '已取消收藏',
+          })
+          
         } else {
           data.collectActivity += id
-          alert('已加入收藏')
+          // alert('已加入收藏')
+          Toast.fire({
+            type: 'success',
+            title: '已加入收藏',
+          })
+          
         }
         this.setState({ collectActivity: data.collectActivity })
         try {
@@ -145,7 +162,16 @@ class ActivityInfo extends React.Component {
         let isCollect = data.collectActivityJoin.indexOf(id) > -1
 
         if (isCollect) {
-          alert('已報名過此活動')
+          // alert('已報名過此活動')
+          Swal.fire({
+            type: 'error',
+            title: '<span style="color:#d4d1cc">已報名過此活動</span>',
+            showConfirmButton: true,
+            confirmButtonClass: 'btn btn-warning',
+            confirmButtonColor: '#ffa510',
+            buttonsStyling: false,
+            background: '#242b34',
+          })
           return false
         }
       } catch (err) {
@@ -153,7 +179,16 @@ class ActivityInfo extends React.Component {
       }
     } else {
       event.preventDefault()
-      alert('請先登入會員')
+      // alert('請先登入會員')
+      Swal.fire({
+        type: 'info',
+        title: '<span style="color:#d4d1cc">請先登入會員</span>',
+        showConfirmButton: true,
+        confirmButtonClass: 'btn btn-warning',
+        confirmButtonColor: '#ffa510',
+        buttonsStyling: false,
+        background: '#242b34',
+      })
     }
   }
   render() {
