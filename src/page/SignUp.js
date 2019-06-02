@@ -87,7 +87,7 @@ class SignUp extends React.Component {
         cinemaEmail: '',
         cinemaBackupEmail: '',
         cinemaAwesome: [],
-        cinemaPageViews: '',
+        cinemaPageViews: 0,
         cinemaSignUpDate: '',
         purview: 'cinemaMember',
         cinemaMessage: [],
@@ -506,6 +506,8 @@ class SignUp extends React.Component {
           newSignUpData.cinemaPassword = cinemaPassword
           newSignUpData.cinemaWeb = cinemaWeb
           newSignUpData.cinemaLogoImg = cinemaLogoImg
+            ? cinemaLogoImg
+            : 'cinemaPhoto.jpg'
           newSignUpData.cinemaHeroImg = cinemaHeroImg
           newSignUpData.cinemaSignUpDate = dateYMD
           // this.setState({ memberSignUpdata: newSignUpData })

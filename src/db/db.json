@@ -231,7 +231,7 @@
   ],
   "movieCardData": [
     {
-      "id": "cf1000000",
+      "id": "m1000000",
       "theater": "碼農Cafe",
       "title": "赤手登峰",
       "titleEn": "english filmname",
@@ -271,7 +271,7 @@
       ]
     },
     {
-      "id": "cf1559377711803",
+      "id": "m1559377711803",
       "title": "測試影片編輯",
       "titleEn": "English Title",
       "movie_rating": "普遍級 0+",
@@ -774,7 +774,7 @@
       ]
     },
     {
-      "id": "cf1559389596294",
+      "id": "m1559389596294",
       "title": "測試7",
       "titleEn": "",
       "movie_rating": "",
@@ -793,7 +793,7 @@
       "theater": "碼農Cafe"
     },
     {
-      "id": "cf1559456527550",
+      "id": "m1559456527550",
       "title": "第二天測試",
       "titleEn": "SecondDay",
       "movie_rating": "保護級 6+",
@@ -815,7 +815,7 @@
       "theater": "碼農Cafe"
     },
     {
-      "id": "cf1559457230226",
+      "id": "m1559457230226",
       "title": "測試影片海報",
       "titleEn": "Test Poster",
       "movie_rating": "保護級 6+",
@@ -836,7 +836,7 @@
       "theater": "碼農Cafe"
     },
     {
-      "id": "cf1559461949823",
+      "id": "m1559461949823",
       "title": "輕鬆+愉快",
       "titleEn": "Free and Easy",
       "movie_rating": "保護級 6+",
@@ -2025,11 +2025,14 @@
       "career": "資訊 / 科技",
       "join_date": "2019-05-23",
       "permission": "generalMember",
-      "collectFilm": [],
-      "collectMovie": "cf1559456527550",
+      "collectFilm": [
+        "m1559461949823"
+      ],
+      "collectMovie": "m1558948576759m1559389596294",
       "collectCinema": [
         "c1",
-        "c2"
+        "c2",
+        "c001"
       ],
       "collectArticle": [
         "6",
@@ -2120,7 +2123,7 @@
       "cinemaType": "cafe",
       "cinemaFilm": [
         {
-          "id": "cf1000000",
+          "id": "m1000000",
           "title": "赤手登峰",
           "titleEn": "english filmname",
           "movie_rating": "普遍級",
@@ -2159,7 +2162,7 @@
           ]
         },
         {
-          "id": "cf1559377711803",
+          "id": "m1559377711803",
           "title": "測試影片編輯",
           "titleEn": "English Title",
           "movie_rating": "普遍級 0+",
@@ -2185,7 +2188,7 @@
           "filmStar": []
         },
         {
-          "id": "cf1559389596294",
+          "id": "m1559389596294",
           "title": "測試7",
           "titleEn": "",
           "movie_rating": "",
@@ -2205,7 +2208,7 @@
           "filmStar": []
         },
         {
-          "id": "cf1559456527550",
+          "id": "m1559456527550",
           "title": "第二天測試",
           "titleEn": "SecondDay",
           "movie_rating": "保護級 6+",
@@ -2229,7 +2232,7 @@
           "filmStar": []
         },
         {
-          "id": "cf1559457230226",
+          "id": "m1559457230226",
           "title": "測試影片海報",
           "titleEn": "Test Poster",
           "movie_rating": "保護級 6+",
@@ -2252,7 +2255,7 @@
           "filmStar": []
         },
         {
-          "id": "cf1559461949823",
+          "id": "m1559461949823",
           "title": "輕鬆+愉快",
           "titleEn": "Free and Easy",
           "movie_rating": "保護級 6+",
@@ -2301,7 +2304,7 @@
         "m111111",
         "m22222"
       ],
-      "cinemaPageViews": 602,
+      "cinemaPageViews": 606,
       "cinemaSignUpDate": "1955-03-12",
       "purview": "cinemaMember",
       "cinemaMessage": [
@@ -2800,6 +2803,32 @@
       "cinemaFilm": [],
       "cinemaActivity": [],
       "cinemaType": "bar"
+    },
+    {
+      "id": "c1559465959469",
+      "cinemaName": "rrr",
+      "cinemaCity": "台北市",
+      "cinemaArea": "123",
+      "cinemaLogoImg": "cinemaPhoto.jpg",
+      "cinemaImg": [],
+      "cinemaHeroImg": "34ce8b39-6598-4936-b96a-68572de38d6e.jpg",
+      "cinemaAccount": "rrrrrr",
+      "cinemaPassword": "rrrrrr",
+      "cinemaStar": [],
+      "cinemaAddress": "台北市11111111",
+      "cinemaPhone": "02-0000-2222",
+      "cinemaTaxid": "12345678",
+      "cinemaWeb": "",
+      "cinemaEmail": "rrr@rr.com",
+      "cinemaBackupEmail": "",
+      "cinemaAwesome": [],
+      "cinemaPageViews": 2,
+      "cinemaSignUpDate": "2019-06-02",
+      "purview": "cinemaMember",
+      "cinemaMessage": [],
+      "cinemaFilm": [],
+      "cinemaActivity": [],
+      "cinemaType": "restaurant"
     }
   ],
   "articleCardData": [
