@@ -861,7 +861,7 @@
       "theater": "碼農Cafe"
     },
     {
-      "id": "cf1559479473377",
+      "id": "m1559479473377",
       "title": "一一",
       "titleEn": "YIYI",
       "movie_rating": "普遍級 0+",
@@ -2052,7 +2052,7 @@
       "collectFilm": [
         "m1559461949823"
       ],
-      "collectMovie": "m1558948576759m1559389596294cf1559479473377",
+      "collectMovie": "m1558948576759m1559389596294m1559479473377",
       "collectCinema": [
         "c1",
         "c2",
@@ -2300,7 +2300,7 @@
           "filmStar": []
         },
         {
-          "id": "cf1559479473377",
+          "id": "m1559479473377",
           "title": "一一",
           "titleEn": "YIYI",
           "movie_rating": "普遍級 0+",
