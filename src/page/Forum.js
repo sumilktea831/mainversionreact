@@ -869,7 +869,6 @@ class Forum extends React.Component {
 
     Swal.fire({
       title: '<span style="color:#d4d1cc">是否確認留言?</span>',
-      text: '請點選確認繼續或取消離開',
       type: 'question',
       showCancelButton: true,
       confirmButtonText: '確認',
@@ -880,7 +879,7 @@ class Forum extends React.Component {
       background: '#242b34',
       html:
         sessionStorage.getItem('memberId') === null
-          ? '未登入會員會以匿名方式留言'
+          ? '<span style="color:#d4d1cc">未登入會員會以匿名方式留言</span><br /><span style="color:#d4d1cc">請點選確認繼續或取消離開</span>'
           : '',
     }).then(result => {
       // 確認有按下上傳確認鍵後開始FETCH
@@ -948,11 +947,11 @@ class Forum extends React.Component {
           type: 'success',
           confirmButtonText: '確認',
           title: '<span style="color:#d4d1cc">成功</span>',
-          text: '留言成功',
+          html:
+            '<span style="color:#d4d1cc">留言成功</span><br /><span style="color:#d4d1cc">請確認離開</span>',
           // 顯示圖片類型
           // type: 'success',
           // 倒數計時
-          html: '請確認離開',
           // cancelButtonColor: ' #d33',
           confirmButtonClass: ' btn-warning',
           confirmButtonColor: '#ffa510',
@@ -1014,7 +1013,7 @@ class Forum extends React.Component {
 
     Swal.fire({
       title: '<span style="color:#d4d1cc">確認是否刪除?</span>',
-      text: '請點選確認繼續或取消離開',
+      html: '<span style="color:#d4d1cc">請點選確認繼續或取消離開</span>',
       type: 'warning',
       showCancelButton: true,
       confirmButtonText: '確認',
@@ -1088,11 +1087,11 @@ class Forum extends React.Component {
           type: 'success',
           confirmButtonText: '確認',
           title: '<span style="color:#d4d1cc">成功</span>',
-          text: '刪除成功',
           // 顯示圖片類型
           // type: 'success',
           // 倒數計時
-          html: '請確認離開',
+          html:
+            '<span style="color:#d4d1cc">刪除成功</span><br /><span style="color:#d4d1cc">請確認離開</span>',
           // cancelButtonColor: ' #d33',
           confirmButtonClass: ' btn-warning',
           confirmButtonColor: '#ffa510',
@@ -1143,7 +1142,7 @@ class Forum extends React.Component {
       Swal.fire({
         // position: 'top-end',
         title: '<span style="color:#d4d1cc">請先登入會員</span>',
-        text: '請點選確認繼續或取消離開',
+        html: '<span style="color:#d4d1cc">請點選確認繼續或取消離開</span>',
         textColor: 'blue',
         type: 'info',
         showCancelButton: true,
@@ -1301,7 +1300,7 @@ class Forum extends React.Component {
 
     Swal.fire({
       title: '<span style="color:#d4d1cc">請確認是否送出?</span>',
-      text: '請點選確認繼續或取消離開',
+      html: '<span style="color:#d4d1cc">請點選確認繼續或取消離開</span>',
       type: 'question',
       showCancelButton: true,
       confirmButtonText: '確認',
@@ -1353,7 +1352,7 @@ class Forum extends React.Component {
           type: 'success',
           confirmButtonText: '確認',
           title: '<span style="color:#d4d1cc">成功</span>',
-          text: '發文成功',
+          html: '<span style="color:#d4d1cc">發文成功</span>',
           // 顯示圖片類型
           // type: 'success',
           // 倒數計時
@@ -1378,7 +1377,7 @@ class Forum extends React.Component {
 
     Swal.fire({
       title: '<span style="color:#d4d1cc">請確認是否刪除?</span>',
-      text: '請點選確認繼續或取消離開',
+      html: '<span style="color:#d4d1cc">請點選確認繼續或取消離開</span>',
       type: 'warning',
       showCancelButton: true,
       confirmButtonText: '確認',
@@ -1427,7 +1426,7 @@ class Forum extends React.Component {
           type: 'success',
           confirmButtonText: '確認',
           title: '<span style="color:#d4d1cc">成功</span>',
-          text: '刪除成功',
+          html: '<span style="color:#d4d1cc">刪除成功</span>',
           // cancelButtonColor: ' #d33',
           confirmButtonClass: ' btn-warning',
           confirmButtonColor: '#ffa510',
@@ -1945,7 +1944,7 @@ class Forum extends React.Component {
       Swal.fire({
         // position: 'top-end',
         title: '<span style="color:#d4d1cc">請先登入會員</span>',
-        text: '請點選確認繼續或取消離開',
+        html: '<span style="color:#d4d1cc">請點選確認繼續或取消離開</span>',
         type: 'info',
         showCancelButton: true,
         confirmButtonText: '確認',
