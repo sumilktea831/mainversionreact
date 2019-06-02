@@ -386,11 +386,11 @@ class Cinema extends React.Component {
                 <TitleKaga title="篩選資訊" />
               </div>
               <div className="col d-flex flex-wrap align-items-center my-4">
-                <h4 className="col-lg-1 col-sm-12">地區</h4>
+                <h4 className="col-lg-1 col-sm-12  my-1">地區</h4>
                 <ButtonCity CitySearchClick={this.CitySearchClick} />
               </div>
               <div className="col d-flex flex-wrap  align-items-center mb-3">
-                <h4 className="col-lg-1 col-sm-12">類型</h4>
+                <h4 className="col-lg-1 col-sm-12  my-1">類型</h4>
                 <ButtonType TypeSearchClick={this.TypeSearchClick} />
               </div>
             </div>

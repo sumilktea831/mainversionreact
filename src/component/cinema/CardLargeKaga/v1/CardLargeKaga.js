@@ -187,17 +187,9 @@ class CardLargeKaga extends React.Component {
     return (
       <>
         <div className="col-12 my-3">
-          <div
-            className="card"
-            style={{
-              height: '450px',
-              overflow: 'hidden',
-              background: '#28333d',
-              boxShadow: '0 0 2px #000000',
-            }}
-          >
+          <div className="card cinemaBigCard">
             <div className="row no-gutters h-100">
-              <div className="col-md-6">
+              <div className="col-lg-6 col-md-12 md-50 cinemaBigCardImg">
                 <img
                   src={this.props.img}
                   className="card-img h-100"
@@ -205,10 +197,10 @@ class CardLargeKaga extends React.Component {
                   style={{ objectFit: 'cover' }}
                 />
               </div>
-              <div className="col-md-6 d-flex flex-column h-100">
+              <div className="col-lg-6 col-md-12 h-md-50 d-flex flex-column h-100 cinemaBigCardText">
                 {/* 上方區塊 */}
                 <div className="d-flex h-100 my-2">
-                  <div className="col-3 d-flex flex-column justify-content-around ml-4 px-0">
+                  <div className="col-3 d-flex flex-column justify-content-around ml-lg-4 px-0">
                     <h4 className="mr-3">地址</h4>
                     <h4 className="mr-3">電話</h4>
                     <h4 className="mr-3">統一編號</h4>
@@ -249,7 +241,7 @@ class CardLargeKaga extends React.Component {
                   </div>
                 </div>
                 {this.props.wantStar ? (
-                  <div className="col mb-4 d-flex pl-3 align-items-center">
+                  <div className="col mb-lg-4 d-flex pl-lg-3 align-items-center">
                     <h4 className="ml-2 mr-5">喜好程度</h4>
                     <div className="ml-4 mb-2">
                       <CardKagaStaAnimation
