@@ -96,6 +96,7 @@ class SignUp extends React.Component {
         cinemaPageViews: 0,
         cinemaSignUpDate: '',
         purview: 'cinemaMember',
+        cinemaIntro:'',
         cinemaMessage: [],
         cinemaFilm: [],
         cinemaActivity: [],
