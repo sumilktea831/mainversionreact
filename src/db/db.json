@@ -842,7 +842,20 @@
       "schedule": [
         "2019-03-01 01:00"
       ],
-      "filmStar": [],
+      "filmStar": [
+        {
+          "starId": "m111111",
+          "star": 5
+        },
+        {
+          "starId": "m22222",
+          "star": 4
+        },
+        {
+          "starId": "m1558576972555",
+          "star": 5
+        }
+      ],
       "theater": "碼農Cafe"
     }
   ],

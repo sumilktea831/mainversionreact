@@ -259,6 +259,7 @@ class AcitivityEditForm extends React.Component {
       })
     }
   }
+  deleteFile = () => {}
   render() {
     return (
       <>
@@ -484,6 +485,13 @@ class AcitivityEditForm extends React.Component {
                 class="btn btn-warning mb-2"
               >
                 修改活動
+              </button>
+              <button
+                type="button"
+                onClick={this.deleteFile}
+                class="btn btn-warning mb-2"
+              >
+                刪除活動
               </button>
             </div>
           </div>

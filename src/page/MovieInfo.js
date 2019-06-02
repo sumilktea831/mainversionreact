@@ -18,6 +18,7 @@ class MovieInfo extends React.Component {
       moviePageOtherData: [],
       streetView: false,
       collectMovie: '',
+      theaterData: {},
     }
   }
 
@@ -37,14 +38,50 @@ class MovieInfo extends React.Component {
       const moviePageOtherData = data.filter(
         item => item.id !== this.props.match.params.id
       )
+      const theaterNameForGetData = JSON.parse(
+        JSON.stringify(moviePageData.theater)
+      )
       moviePageData.imgSrc =
         moviePageData.imgSrc.indexOf('http') == 0
           ? moviePageData.imgSrc
           : '/images/movieImg/' + moviePageData.imgSrc
-      console.log(moviePageData)
+
       this.setState({ moviePageData: moviePageData })
       this.setState({ moviePageOtherData: moviePageOtherData })
       this.setState({ movieHeroImage: moviePageData.imgSrc })
+
+      try {
+        fetch('http://localhost:5555/cinema/c001')
+          .then(res => res.json())
+          .then(data => {
+            let totalScore = 0
+            let starData = Object.keys(this.state.moviePageData.filmStar)
+
+            let getScore = Object.values(
+              this.state.moviePageData.filmStar
+            ).forEach(item => (totalScore += Number(JSON.stringify(item.star))))
+            console.log(totalScore)
+            let totalPeople = starData.length
+            if (totalPeople != 0) {
+              console.log(totalPeople)
+              let scoreData =
+                parseFloat(
+                  Math.round((totalScore / totalPeople) * 100) / 100
+                ).toFixed(2) +
+                '/ 5 分' +
+                ' ( 總共 : ' +
+                totalPeople +
+                ' 人評分'
+              this.setState({ score: scoreData })
+            } else {
+              this.setState({ score: '目前還沒有人評分' })
+            }
+
+            this.setState({ theaterData: data })
+          })
+      } catch (err) {
+        console.log(err)
+      }
     } catch (err) {
       console.log(err)
     }
@@ -170,21 +207,30 @@ class MovieInfo extends React.Component {
               <MoviePageCard
                 imgSrc={this.state.moviePageData.imgSrc}
                 cardTitle1={'電影中文名稱'}
-                cardTitle2={'電影英文名稱'}
-                cardTitle3={'電影分級'}
-                cardTitle4={'電影導演'}
-                cardTitle5={'電影語言'}
-                cardTitle6={'電影片長'}
-                cardTitle7={'電影上檔時間'}
-                cardTitle8={'電影下檔時間'}
-                cardContent1={this.state.moviePageData.title}
-                cardContent2={this.state.moviePageData.titleEn}
-                cardContent3={this.state.moviePageData.movie_rating}
-                cardContent4={this.state.moviePageData.director}
-                cardContent5={this.state.moviePageData.language}
-                cardContent6={this.state.moviePageData.filmTime + '分鐘'}
-                cardContent7={this.state.moviePageData.inTheaterDate}
-                cardContent8={this.state.moviePageData.outTheaterDate}
+                cardTitle2={'電影分級'}
+                cardTitle3={'電影導演'}
+                cardTitle4={'電影語言'}
+                cardTitle5={'電影片長'}
+                cardTitle6={'電影上檔時間'}
+                cardTitle7={'電影下檔時間'}
+                cardTitle8={'電影評分'}
+                cardContent1={
+                  this.state.moviePageData.title +
+                  ' ( ' +
+                  this.state.moviePageData.titleEn +
+                  ' ) '
+                }
+                cardContent2={this.state.moviePageData.movie_rating}
+                cardContent3={this.state.moviePageData.director}
+                cardContent4={this.state.moviePageData.language}
+                cardContent5={this.state.moviePageData.filmTime + '分鐘'}
+                cardContent6={this.state.moviePageData.inTheaterDate}
+                cardContent7={this.state.moviePageData.outTheaterDate}
+                cardContent8={this.state.score}
+              />
+              <MovieTitle
+                title={'Todo fetch ？資料有問題 lat lng'}
+                className="content-title"
               />
             </div>
           </div>
@@ -195,21 +241,21 @@ class MovieInfo extends React.Component {
               <MovieTitle title={'戲院資訊'} className="content-title" />
             </div>
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
-              {/* <ActivityPageCard
-                theater={this.state.activityPageData.theater}
-                theaterMap={this.state.activityPageData.theaterMap}
-                phone={this.state.activityPageData.phone}
-                GUINumber={this.state.activityPageData.GUINumber}
-                website={this.state.activityPageData.website}
-                email={this.state.activityPageData.email}
-                lat={this.state.activityPageData.lat}
-                lng={this.state.activityPageData.lng}
+              <ActivityPageCard
+                theater={this.state.theaterData.cinemaName}
+                theaterMap={this.state.theaterData.cinemaAddress}
+                phone={this.state.theaterData.cinemaPhone}
+                GUINumber={this.state.theaterData.cinemaTaxid}
+                website={this.state.theaterData.cinemaWeb}
+                email={this.state.theaterData.cinemaEmail}
+                // lat={this.state.theaterData.lat}
+                // lng={this.state.theaterData.lng}
                 streetView={this.state.streetView}
                 handleOnClickMap={() => this.setState({ streetView: true })}
                 handleOnClickMaplocal={() =>
                   this.setState({ streetView: false })
                 }
-              /> */}
+              />
             </div>
           </div>
         </div>
