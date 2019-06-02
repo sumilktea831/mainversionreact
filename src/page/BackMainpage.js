@@ -821,11 +821,19 @@ class BackSidenav extends React.Component {
             .split(id)
             .toString()
             .replace(/,/g, '')
-          alert('已取消收藏')
+          // alert('已取消收藏')
+          Toast.fire({
+            type: 'success',
+            title: '已取消收藏',
+          })
           // window.location.reload()
         } else {
           data.collectActivity += id
-          alert('已加入收藏')
+          // alert('已加入收藏')
+          Toast.fire({
+            type: 'success',
+            title: '已加入收藏',
+          })
         }
         this.setState({ collectActivity: data.collectActivity })
         try {

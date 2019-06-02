@@ -1,5 +1,6 @@
 import React from 'react'
-
+//Import SweetAlert2
+import Swal from 'sweetalert2'
 class AcitivityEditForm extends React.Component {
   constructor(props) {
     super(props)
@@ -222,7 +223,16 @@ class AcitivityEditForm extends React.Component {
                         )
                           .then(res => res.json())
                           .then(obj => {
-                            alert('已修改完成')
+                            // alert('已修改完成')
+                            Swal.fire({
+                              // position: 'top-end',
+                              type: 'success',
+                              title:
+                                '<span style="color:#d4d1cc">已修改完成</span>',
+                              showConfirmButton: false,
+                              buttonsStyling: false,
+                              background: '#242b34',
+                            })
                           })
                       } catch (e) {
                         console.log(e)
@@ -237,7 +247,16 @@ class AcitivityEditForm extends React.Component {
           }
         })
     } else {
-      alert('請填寫活動地址')
+      // alert('請填寫活動地址')
+      Swal.fire({
+        type: 'error',
+        title: '<span style="color:#d4d1cc">請填寫活動地址</span>',
+        showConfirmButton: true,
+        confirmButtonClass: 'btn btn-warning',
+        confirmButtonColor: '#ffa510',
+        buttonsStyling: false,
+        background: '#242b34',
+      })
     }
   }
   render() {

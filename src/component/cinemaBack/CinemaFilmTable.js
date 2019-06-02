@@ -220,6 +220,7 @@ class MemberCollectTable extends React.Component {
           this.setState({ thisType: newType })
         }
         newtext[name] = newType
+        this.setState({ thisData: newtext })
       } else {
         //將該選項加入喜愛類型中，同時設定給copyData
         if (optionName === '全選') {

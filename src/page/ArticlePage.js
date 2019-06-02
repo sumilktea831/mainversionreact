@@ -338,7 +338,7 @@ class ArticlePage extends React.Component {
               author={this.state.articleInfo.author}
               content={this.state.articleInfo.content}
               date={this.state.articleInfo.date}
-              pageImg={'/images//article/' + this.state.articleInfo.image}
+              pageImg={'/images/article/' + this.state.articleInfo.image}
               isMarked={this.state.isMarked}
               markCounter={this.state.markCounter}
               isLiked={this.state.isLiked}

@@ -236,7 +236,7 @@
       "titleEn": "english filmname",
       "movie_rating": "普遍級",
       "imgSrc": "https://g.udn.com.tw/upfiles/B_SH/shiow/PSN_PHOTO/591/f_24131591_1.jpg",
-      "type": "",
+      "type": "懸疑片",
       "director": "導演名字",
       "language": "華語",
       "intro": "電影簡介",
@@ -775,19 +775,19 @@
     },
     {
       "id": "m1559389596294",
-      "title": "測試7",
+      "title": "測試777",
       "titleEn": "",
       "movie_rating": "",
       "imgSrc": "a4cf6483-a9a9-4b75-aebb-89f36e3acd78.png",
-      "type": "動作片",
+      "type": "英雄片動作片",
       "director": "",
       "language": "",
       "intro": "123",
       "fullIntro": "123",
       "filmTime": "",
       "updateDate": "2019-06-01",
-      "inTheaterDate": "",
-      "outTheaterDate": "",
+      "inTheaterDate": "2019-06-01",
+      "outTheaterDate": "2019-06-11",
       "schedule": [],
       "filmStar": [],
       "theater": "碼農Cafe"
@@ -798,7 +798,7 @@
       "titleEn": "SecondDay",
       "movie_rating": "保護級 6+",
       "imgSrc": "d23e1de0-3167-4bea-918e-4a06b5c926f0.png",
-      "type": "紀錄片懸疑片恐怖片",
+      "type": "",
       "director": "碼農一號",
       "language": "英語",
       "intro": "測試功能是否健在",
@@ -842,7 +842,7 @@
       "titleEn": "Free and Easy",
       "movie_rating": "保護級 6+",
       "imgSrc": "71cf6163-45da-49e1-8384-ecd8a95aa97e.jpg",
-      "type": "喜劇片",
+      "type": "喜劇片動畫片偵探片",
       "director": "耿軍",
       "language": "華語",
       "intro": "耿軍黑色喜劇《輕鬆+愉快》，以一座宛如廢墟的東北城鎮為背景，聚集了推銷肥皂的騙子、逢人結緣的假和尚、到處找媽的基督徒、疲於奔命的林務員、以及破不了案的警察。互騙互害、互相傷害，人生才能輕鬆又愉快！",
@@ -857,12 +857,7 @@
         "2019-06-03 15:00",
         "2019-06-05 10:00"
       ],
-      "filmStar": [
-        {
-          "starId": "m1558576972555",
-          "star": 4
-        }
-      ],
+      "filmStar": [],
       "theater": "碼農Cafe"
     },
     {
@@ -2148,7 +2143,9 @@
           "titleEn": "english filmname",
           "movie_rating": "普遍級",
           "imgSrc": "https://g.udn.com.tw/upfiles/B_SH/shiow/PSN_PHOTO/591/f_24131591_1.jpg",
-          "type": [],
+          "type": [
+            "懸疑片"
+          ],
           "director": "導演名字",
           "language": "華語",
           "intro": "電影簡介",
@@ -2209,11 +2206,12 @@
         },
         {
           "id": "m1559389596294",
-          "title": "測試7",
+          "title": "測試777",
           "titleEn": "",
           "movie_rating": "",
           "imgSrc": "a4cf6483-a9a9-4b75-aebb-89f36e3acd78.png",
           "type": [
+            "英雄片",
             "動作片"
           ],
           "director": "",
@@ -2233,11 +2231,7 @@
           "titleEn": "SecondDay",
           "movie_rating": "保護級 6+",
           "imgSrc": "d23e1de0-3167-4bea-918e-4a06b5c926f0.png",
-          "type": [
-            "紀錄片",
-            "懸疑片",
-            "恐怖片"
-          ],
+          "type": [],
           "director": "碼農一號",
           "language": "英語",
           "intro": "測試功能是否健在",
@@ -2285,7 +2279,9 @@
           "movie_rating": "保護級 6+",
           "imgSrc": "71cf6163-45da-49e1-8384-ecd8a95aa97e.jpg",
           "type": [
-            "喜劇片"
+            "喜劇片",
+            "動畫片",
+            "偵探片"
           ],
           "director": "耿軍",
           "language": "華語",
@@ -2348,9 +2344,10 @@
       "cinemaBackupEmail": "manonCafe@gmail.com",
       "cinemaAwesome": [
         "m111111",
-        "m22222"
+        "m22222",
+        "m1558576972555"
       ],
-      "cinemaPageViews": 606,
+      "cinemaPageViews": 610,
       "cinemaSignUpDate": "1955-03-12",
       "purview": "cinemaMember",
       "cinemaMessage": [
@@ -2823,32 +2820,6 @@
       "purview": "cinemaMember",
       "cinemaMessage": [],
       "cinemaType": "gallery"
-    },
-    {
-      "id": "c1559464653973",
-      "cinemaName": "111",
-      "cinemaCity": "台北市",
-      "cinemaArea": "111",
-      "cinemaLogoImg": "",
-      "cinemaImg": [],
-      "cinemaHeroImg": "",
-      "cinemaAccount": "dddddd",
-      "cinemaPassword": "dddddd",
-      "cinemaStar": [],
-      "cinemaAddress": "台北市1231232435",
-      "cinemaPhone": "02-0000-0000",
-      "cinemaTaxid": "11111111",
-      "cinemaWeb": "",
-      "cinemaEmail": "12@gg.com",
-      "cinemaBackupEmail": "",
-      "cinemaAwesome": [],
-      "cinemaPageViews": "",
-      "cinemaSignUpDate": "2019-06-02",
-      "purview": "cinemaMember",
-      "cinemaMessage": [],
-      "cinemaFilm": [],
-      "cinemaActivity": [],
-      "cinemaType": "bar"
     },
     {
       "id": "c1559465959469",
