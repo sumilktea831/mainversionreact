@@ -1,7 +1,6 @@
 /* eslint-disable array-callback-return */
 import React from 'react'
-import ArricleList from '../component/article/ArticleList'
-import ActivitySection from '../component/activity/ActivitySection/ActivitySection'
+
 import { Row, Col } from 'react-bootstrap'
 import Pagination from '../component/article/ArticleList/ArticleButton/Pagination'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
