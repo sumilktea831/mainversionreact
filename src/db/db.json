@@ -888,7 +888,8 @@
         "2019-06-06 10:20"
       ],
       "filmStar": [],
-      "theater": "碼農Cafe"
+      "theater": "碼農Cafe",
+      "cinemaId": "c001"
     },
     {
       "id": "m1559529445148",
@@ -909,7 +910,8 @@
         "2019-06-06 18:45"
       ],
       "filmStar": [],
-      "theater": "碼農Cafe"
+      "theater": "碼農Cafe",
+      "cinemaId": "c001"
     },
     {
       "id": "m1559530196922",
@@ -935,7 +937,8 @@
         "2019-06-03 15:00"
       ],
       "filmStar": [],
-      "theater": "光點台北"
+      "theater": "光點台北",
+      "cinemaId": "c1"
     },
     {
       "id": "m1559530974637",
@@ -984,7 +987,8 @@
       "outTheaterDate": "2019-06-30",
       "schedule": [],
       "filmStar": [],
-      "theater": "光點台北"
+      "theater": "光點台北",
+      "cinemaId": "c1"
     },
     {
       "id": "m1559533490304",
@@ -1001,9 +1005,13 @@
       "updateDate": "2019-06-03",
       "inTheaterDate": "2019-06-06",
       "outTheaterDate": "2019-06-08",
-      "schedule": [],
+      "schedule": [
+        "2019-06-06 16:20",
+        "2019-06-06 20:55"
+      ],
       "filmStar": [],
-      "theater": "光點華山"
+      "theater": "光點華山",
+      "cinemaId": "c2"
     },
     {
       "id": "m1559533716933",
@@ -1093,7 +1101,116 @@
         "2019-06-01 14:00"
       ],
       "filmStar": [],
-      "theater": "府中15紀錄片放映院"
+      "theater": "府中15紀錄片放映院",
+      "cinemaId": "c1559536645628"
+    },
+    {
+      "id": "m1559548288472",
+      "title": "家戰",
+      "titleEn": "Custody",
+      "movie_rating": "輔導級 12+",
+      "imgSrc": "9d620bc1-62cc-4600-a881-e76c72efb12b.jpg",
+      "type": "戲劇片",
+      "director": "札維耶勒葛洪(",
+      "language": "法語",
+      "intro": "2017威尼斯影展最佳新銳導演獎\n2017西班牙聖賽巴斯提安觀眾票選獎\n2018法國凱薩獎最佳電影、最佳女主角、最佳原創劇本、最佳剪輯",
+      "fullIntro": "米蘭與安東的婚姻已走到盡頭，但他們對小兒子朱利安的監護權卻難以妥協，夾在失和父母親之間的小兒子，處境尷尬艱難。他被迫面對心愛母親的傷痛、及父親不可預知的情緒轉變，而試圖阻止最壞情勢發生，但隨兩造對峙情勢逐漸升級緊張，這場爭奪戰也逐漸脫序失控。",
+      "filmTime": "93",
+      "updateDate": "2019-06-03",
+      "inTheaterDate": "2019-06-08",
+      "outTheaterDate": "2019-06-10",
+      "schedule": [
+        "2019-06-08 14:00"
+      ],
+      "filmStar": [],
+      "theater": "府中15紀錄片放映院",
+      "cinemaId": "c1559536645628"
+    },
+    {
+      "id": "m1559548836073",
+      "title": "藍色大門 [數位修復版]",
+      "titleEn": "Blue Gate Crossing",
+      "movie_rating": "普遍級 0+",
+      "imgSrc": "006f818b-ba2c-40ed-93d7-e2bbcb59c83e.jpg",
+      "type": "戲劇片愛情片",
+      "director": "易智言",
+      "language": "華語",
+      "intro": "2002坎城影展導演雙週單元\n2002多倫多影展\n2002釜山影展",
+      "fullIntro": "孟克柔與林月珍是情同姊妹的同學，兩人無話不談。一天月珍告訴克柔她喜歡同校的游泳隊健將張士豪，要求克柔代為表白。當克柔拗不過月珍哀求，上前向士豪示愛時，月珍卻害羞地跑掉了，士豪因此誤以為克柔是因為害羞，才假藉替朋友表白來認識他。士豪被克柔深深吸引而開始追求她，但克柔卻始終逃避避重就輕。最後，克柔向士豪吐露了一個秘密。",
+      "filmTime": "83",
+      "updateDate": "2019-06-03",
+      "inTheaterDate": "2019-05-18",
+      "outTheaterDate": "2019-06-01",
+      "schedule": [
+        "2019-05-18 14:00"
+      ],
+      "filmStar": [],
+      "theater": "府中15紀錄片放映院",
+      "cinemaId": "c1559536645628"
+    },
+    {
+      "id": "m1559549100356",
+      "title": "與神同愛",
+      "titleEn": "Believer",
+      "movie_rating": "保護級 6+",
+      "imgSrc": "3c9d2567-b46e-427d-a085-07ad2dac5c01.jpg",
+      "type": "紀錄片",
+      "director": "唐阿戈特 Don Argott",
+      "language": "英語",
+      "intro": "謎幻樂團主唱丹雷諾茲以音樂啟發人性，力挺LGBTQ ",
+      "fullIntro": "本片乃記錄著丹雷諾茲在創作「信徒」(Believer)一曲與《超進化》(Evolve)專輯時的心路歷程－他該如何在信仰與信念間尋求解答？該如何透過個人的號召力改變教會、教友反同婚平權的立場？該如何藉由音樂的力量影響更多民眾了解LGBTQ議題？又該如何用實際行動帶給許多LGBTQ族群及其家庭、學校、社福單位更多的幫助？ 最終，丹雷諾茲乃與同為虔誠摩門教徒的霓虹樹樂團出櫃主唱泰勒格倫合作舉辦LoveLoud Festival，並成立永久組織給予LGBTQ的摩門教徒更多協助，讓猶他州的LGBTQ青少年自殺率得以降低。",
+      "filmTime": "101",
+      "updateDate": "2019-06-03",
+      "inTheaterDate": "2019-05-29",
+      "outTheaterDate": "2019-06-06",
+      "schedule": [
+        "2019-06-03 13:00",
+        "2019-06-04 22:00",
+        "2019-06-05 14:55"
+      ],
+      "filmStar": [],
+      "theater": "光點華山",
+      "cinemaId": "c2"
+    },
+    {
+      "id": "m1559549321529",
+      "title": "祝我好好孕",
+      "titleEn": "Our Happy Birth Day",
+      "movie_rating": "保護級 6+",
+      "imgSrc": "f09a0855-418a-40fe-b214-17004ac656ee.jpg",
+      "type": "紀錄片",
+      "director": "陳育青",
+      "language": "華語",
+      "intro": "★ 2016 國藝會紀錄片專案補助\n★ 2018 釜山國際影展 Wide Angle競賽單元入選 ",
+      "fullIntro": "琬婷是崇尚自然的芳療師，參與劇場演出時她意外懷孕，當她在舞臺大喊「我不要剖腹產」，現實中，她卻有個胎位不正的寶寶，在家生產的希望，越來越渺茫。詩薇在助產師萬美麗的協助下，老公與女兒的陪伴下，溫馨迎接家中第一位男嬰，但上天卻給了她殘酷的考驗……。琬婷和詩薇選擇生產的方式與台灣99.9%女性不同，讓她們對誕生和死亡有了全新的認識。",
+      "filmTime": "81",
+      "updateDate": "2019-06-03",
+      "inTheaterDate": "2019-06-07",
+      "outTheaterDate": "2019-06-29",
+      "schedule": [],
+      "filmStar": [],
+      "theater": "光點華山",
+      "cinemaId": "c2"
+    },
+    {
+      "id": "m1559549728936",
+      "title": "最親愛的陌生兒子",
+      "titleEn": "Dear Son",
+      "movie_rating": "保護級 6+",
+      "imgSrc": "03515e28-000d-4350-a182-9452bde7b7a5.jpg",
+      "type": "戲劇片",
+      "director": "穆罕默德班阿提亞",
+      "language": "法語",
+      "intro": "★ 2018 坎城影展 導演雙週\n\n《推銷員之戀》柏林金獎導演新作；金棕櫚得主達頓兄弟摯情監製；\n真實事件改編。",
+      "fullIntro": "在碼頭擔任作業員的里亞，與妻子結婚多年，感情漸漸被時間沖淡，兩人的獨生子薩米便成為家庭生活的重心。只是升學大考將至，薩米卻一直為偏頭痛所苦，看了各科醫生仍不見好轉。里亞不惜耗盡一切資源，希望能治癒兒子的偏頭痛，也讓原本計劃退休的自己陷入壓力之中。就在家中氣氛越來越緊繃之時，薩米卻突然消失不見，而里亞也意外在兒子房間裡，發現了不可告人的天大秘密。他開始打包行李，決定動身前往遠方，誓死找回最親愛的兒子……。\n\nA Tunisian middle class couple with high hopes for the future of their only son discover he's left to join ISIS in Syria.",
+      "filmTime": "104",
+      "updateDate": "2019-06-03",
+      "inTheaterDate": "2019-06-21",
+      "outTheaterDate": "2019-06-30",
+      "schedule": [],
+      "filmStar": [],
+      "theater": "光點台北",
+      "cinemaId": "c1"
     }
   ],
   "cinema-sign-inputmsg": [
@@ -2951,6 +3068,26 @@
           "outTheaterDate": "2019-06-30",
           "schedule": [],
           "filmStar": []
+        },
+        {
+          "id": "m1559549728936",
+          "title": "最親愛的陌生兒子",
+          "titleEn": "Dear Son",
+          "movie_rating": "保護級 6+",
+          "imgSrc": "03515e28-000d-4350-a182-9452bde7b7a5.jpg",
+          "type": [
+            "戲劇片"
+          ],
+          "director": "穆罕默德班阿提亞",
+          "language": "法語",
+          "intro": "★ 2018 坎城影展 導演雙週\n\n《推銷員之戀》柏林金獎導演新作；金棕櫚得主達頓兄弟摯情監製；\n真實事件改編。",
+          "fullIntro": "在碼頭擔任作業員的里亞，與妻子結婚多年，感情漸漸被時間沖淡，兩人的獨生子薩米便成為家庭生活的重心。只是升學大考將至，薩米卻一直為偏頭痛所苦，看了各科醫生仍不見好轉。里亞不惜耗盡一切資源，希望能治癒兒子的偏頭痛，也讓原本計劃退休的自己陷入壓力之中。就在家中氣氛越來越緊繃之時，薩米卻突然消失不見，而里亞也意外在兒子房間裡，發現了不可告人的天大秘密。他開始打包行李，決定動身前往遠方，誓死找回最親愛的兒子……。\n\nA Tunisian middle class couple with high hopes for the future of their only son discover he's left to join ISIS in Syria.",
+          "filmTime": "104",
+          "updateDate": "2019-06-03",
+          "inTheaterDate": "2019-06-21",
+          "outTheaterDate": "2019-06-30",
+          "schedule": [],
+          "filmStar": []
         }
       ],
       "cinemaStar": [
@@ -3032,7 +3169,10 @@
           "updateDate": "2019-06-03",
           "inTheaterDate": "2019-06-06",
           "outTheaterDate": "2019-06-08",
-          "schedule": [],
+          "schedule": [
+            "2019-06-06 16:20",
+            "2019-06-06 20:55"
+          ],
           "filmStar": []
         },
         {
@@ -3082,6 +3222,50 @@
           "schedule": [
             "2019-06-06 18:45"
           ],
+          "filmStar": []
+        },
+        {
+          "id": "m1559549100356",
+          "title": "與神同愛",
+          "titleEn": "Believer",
+          "movie_rating": "保護級 6+",
+          "imgSrc": "3c9d2567-b46e-427d-a085-07ad2dac5c01.jpg",
+          "type": [
+            "紀錄片"
+          ],
+          "director": "唐阿戈特 Don Argott",
+          "language": "英語",
+          "intro": "謎幻樂團主唱丹雷諾茲以音樂啟發人性，力挺LGBTQ ",
+          "fullIntro": "本片乃記錄著丹雷諾茲在創作「信徒」(Believer)一曲與《超進化》(Evolve)專輯時的心路歷程－他該如何在信仰與信念間尋求解答？該如何透過個人的號召力改變教會、教友反同婚平權的立場？該如何藉由音樂的力量影響更多民眾了解LGBTQ議題？又該如何用實際行動帶給許多LGBTQ族群及其家庭、學校、社福單位更多的幫助？ 最終，丹雷諾茲乃與同為虔誠摩門教徒的霓虹樹樂團出櫃主唱泰勒格倫合作舉辦LoveLoud Festival，並成立永久組織給予LGBTQ的摩門教徒更多協助，讓猶他州的LGBTQ青少年自殺率得以降低。",
+          "filmTime": "101",
+          "updateDate": "2019-06-03",
+          "inTheaterDate": "2019-05-29",
+          "outTheaterDate": "2019-06-06",
+          "schedule": [
+            "2019-06-03 13:00",
+            "2019-06-04 22:00",
+            "2019-06-05 14:55"
+          ],
+          "filmStar": []
+        },
+        {
+          "id": "m1559549321529",
+          "title": "祝我好好孕",
+          "titleEn": "Our Happy Birth Day",
+          "movie_rating": "保護級 6+",
+          "imgSrc": "f09a0855-418a-40fe-b214-17004ac656ee.jpg",
+          "type": [
+            "紀錄片"
+          ],
+          "director": "陳育青",
+          "language": "華語",
+          "intro": "★ 2016 國藝會紀錄片專案補助\n★ 2018 釜山國際影展 Wide Angle競賽單元入選 ",
+          "fullIntro": "琬婷是崇尚自然的芳療師，參與劇場演出時她意外懷孕，當她在舞臺大喊「我不要剖腹產」，現實中，她卻有個胎位不正的寶寶，在家生產的希望，越來越渺茫。詩薇在助產師萬美麗的協助下，老公與女兒的陪伴下，溫馨迎接家中第一位男嬰，但上天卻給了她殘酷的考驗……。琬婷和詩薇選擇生產的方式與台灣99.9%女性不同，讓她們對誕生和死亡有了全新的認識。",
+          "filmTime": "81",
+          "updateDate": "2019-06-03",
+          "inTheaterDate": "2019-06-07",
+          "outTheaterDate": "2019-06-29",
+          "schedule": [],
           "filmStar": []
         }
       ],
@@ -3368,11 +3552,12 @@
       "cinemaName": "府中15紀錄片放映院",
       "cinemaCity": "新北市",
       "cinemaArea": "板橋區",
-      "cinemaLogoImg": "0e938a85-a6c7-4f13-824b-231d01a6e562.jpg",
+      "cinemaLogoImg": "2bcbef80-4582-4a35-8bcc-39c3f287482b.jpg",
       "cinemaImg": [
-        "21444259-d6da-4726-a1c7-c58764482985.jpg"
+        "21444259-d6da-4726-a1c7-c58764482985.jpg",
+        "ca94feaf-0727-47f5-aedf-419d7532ff9c.jpg"
       ],
-      "cinemaHeroImg": "f363d566-0c2f-4ebc-8c2e-fe87a4d90cab.jpg",
+      "cinemaHeroImg": "2c5e077a-becd-4b05-8c3c-22ed04590022.jpg",
       "cinemaAccount": "fuzhong15",
       "cinemaPassword": "222222",
       "cinemaStar": [],
@@ -3383,7 +3568,7 @@
       "cinemaEmail": "fuzhong15.films@gmail.com",
       "cinemaBackupEmail": "",
       "cinemaAwesome": [],
-      "cinemaPageViews": 4,
+      "cinemaPageViews": 6,
       "cinemaSignUpDate": "2019-06-03",
       "purview": "cinemaMember",
       "cinemaIntro": "　　 為了培養紀錄片觀影人口、建立紀錄片工作者發表平台，新北市政府於100年12月3日啟用全國第一個以紀錄片為主題放映的場地—「『府中15』新北市紀錄片放映院」。除了作為優質紀錄片定點放映、舉辦名人講座之地點外，並結合府中商圈，打造市民休閒及觀賞藝術電影的藝文特區。　",
@@ -3432,6 +3617,51 @@
           "outTheaterDate": "2019-06-08",
           "schedule": [
             "2019-06-01 14:00"
+          ],
+          "filmStar": []
+        },
+        {
+          "id": "m1559548288472",
+          "title": "家戰",
+          "titleEn": "Custody",
+          "movie_rating": "輔導級 12+",
+          "imgSrc": "9d620bc1-62cc-4600-a881-e76c72efb12b.jpg",
+          "type": [
+            "戲劇片"
+          ],
+          "director": "札維耶勒葛洪(",
+          "language": "法語",
+          "intro": "2017威尼斯影展最佳新銳導演獎\n2017西班牙聖賽巴斯提安觀眾票選獎\n2018法國凱薩獎最佳電影、最佳女主角、最佳原創劇本、最佳剪輯",
+          "fullIntro": "米蘭與安東的婚姻已走到盡頭，但他們對小兒子朱利安的監護權卻難以妥協，夾在失和父母親之間的小兒子，處境尷尬艱難。他被迫面對心愛母親的傷痛、及父親不可預知的情緒轉變，而試圖阻止最壞情勢發生，但隨兩造對峙情勢逐漸升級緊張，這場爭奪戰也逐漸脫序失控。",
+          "filmTime": "93",
+          "updateDate": "2019-06-03",
+          "inTheaterDate": "2019-06-08",
+          "outTheaterDate": "2019-06-10",
+          "schedule": [
+            "2019-06-08 14:00"
+          ],
+          "filmStar": []
+        },
+        {
+          "id": "m1559548836073",
+          "title": "藍色大門 [數位修復版]",
+          "titleEn": "Blue Gate Crossing",
+          "movie_rating": "普遍級 0+",
+          "imgSrc": "006f818b-ba2c-40ed-93d7-e2bbcb59c83e.jpg",
+          "type": [
+            "戲劇片",
+            "愛情片"
+          ],
+          "director": "易智言",
+          "language": "華語",
+          "intro": "2002坎城影展導演雙週單元\n2002多倫多影展\n2002釜山影展",
+          "fullIntro": "孟克柔與林月珍是情同姊妹的同學，兩人無話不談。一天月珍告訴克柔她喜歡同校的游泳隊健將張士豪，要求克柔代為表白。當克柔拗不過月珍哀求，上前向士豪示愛時，月珍卻害羞地跑掉了，士豪因此誤以為克柔是因為害羞，才假藉替朋友表白來認識他。士豪被克柔深深吸引而開始追求她，但克柔卻始終逃避避重就輕。最後，克柔向士豪吐露了一個秘密。",
+          "filmTime": "83",
+          "updateDate": "2019-06-03",
+          "inTheaterDate": "2019-05-18",
+          "outTheaterDate": "2019-06-01",
+          "schedule": [
+            "2019-05-18 14:00"
           ],
           "filmStar": []
         }
