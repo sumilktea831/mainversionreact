@@ -1126,7 +1126,7 @@ class BackSidenav extends React.Component {
                     >
                       <h5 className="">
                         尚無紀錄，趕快
-                        <a style={{ color: '#ffa510' }} href="/movie">
+                        <a style={{ color: '#ffa510' }} href="/article">
                           前往文章
                         </a>
                         添加你的收藏吧！
@@ -1264,7 +1264,7 @@ class BackSidenav extends React.Component {
                     >
                       <h5 className="ml-4">
                         尚無紀錄，趕快
-                        <a style={{ color: '#ffa510' }} href="/cinema">
+                        <a style={{ color: '#ffa510' }} href="/article">
                           前往文章
                         </a>
                         添加你的收藏吧！
