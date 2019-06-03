@@ -408,7 +408,11 @@ class CinemaEditInfo extends React.Component {
             var imgBox = document.createElement('div')
             var eleImg = document.createElement('img')
             var delBtn = document.createElement('button')
-            delBtn.innerHTML = `<i class="fas fa-ban" style="font-size:30px; margin:-4px 0 0 0"></i>`
+            var btnIcon = document.createElement('i')
+            btnIcon.setAttribute('style', 'font-size:30px; margin:-4px 0 0 0')
+            btnIcon.setAttribute('class', 'fas fa-ban')
+            // delBtn.innerHTML = `<i name="btnIcon" class="fas fa-ban" style="font-size:30px; margin:-4px 0 0 0"></i>`
+            delBtn.appendChild(btnIcon)
             delBtn.setAttribute(
               'class',
               'position-absolute btn btn-outline-danger border-0 d-flex justify-content-center align-items-center'
@@ -417,6 +421,21 @@ class CinemaEditInfo extends React.Component {
               'style',
               'width:40px ; height:40px; color: danger '
             )
+
+            //刪除圖片的BTN的ICON的click事件
+            btnIcon.addEventListener('click', event => {
+              event.stopPropagation()
+              copyData['cinemaImg'] = copyData['cinemaImg'].filter(
+                item => item !== obj.filename
+              )
+              document
+                .querySelector('#cinemaImgPreview')
+                .removeChild(event.target.parentNode.parentNode)
+              this.setState({ thisData: copyData }, () =>
+                console.log(this.state.thisData)
+              )
+            })
+            //刪除圖片的BTN的click事件
             delBtn.addEventListener('click', event => {
               // alert(obj.filename)
               // console.log(event.target)
@@ -424,20 +443,20 @@ class CinemaEditInfo extends React.Component {
               copyData['cinemaImg'] = copyData['cinemaImg'].filter(
                 item => item !== obj.filename
               )
-              if (
-                event.target.parentNode ==
-                document.querySelector('#cinemaImgPreview').childNodes[0]
-              ) {
-                console.log('Target===button')
-                document
-                  .querySelector('#cinemaImgPreview')
-                  .removeChild(event.target.parentNode)
-              } else {
-                console.log('Target===i')
-                document
-                  .querySelector('#cinemaImgPreview')
-                  .removeChild(event.target.parentNode.parentNode)
-              }
+              // if (
+              //   event.target.parentNode ==
+              //   document.querySelector('#cinemaImgPreview').childNodes[0]
+              // ) {
+              //   console.log('Target===button')
+              document
+                .querySelector('#cinemaImgPreview')
+                .removeChild(event.target.parentNode)
+              // } else {
+              //   console.log('Target===i')
+              //   document
+              //     .querySelector('#cinemaImgPreview')
+              //     .removeChild(event.target.parentNode.parentNode)
+              // }
               this.setState({ thisData: copyData }, () =>
                 console.log(this.state.thisData)
               )
