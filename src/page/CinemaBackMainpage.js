@@ -6,7 +6,7 @@ import ActivityCinemaCard from '../component/activity/ActivityCard/ActivityCinem
 import ActivityTitle from '../component/activity/ActivityTitle/ActivityTitle'
 import AcitivityForm from '../component/activity/AcitivityForm/AcitivityForm'
 import AcitivityEditForm from '../component/activity/AcitivityForm/AcitivityEditForm'
-import ActivityD3 from '../component/activity/ActivityD3/ActivityD3'
+import ActivityD3 from '../component/activity/ActivityD3/ActivityD3root'
 import CinemaBackSidenav from '../component/backSidenav/CinemaBackSidenav'
 import CinemaEditInfo from '../component/cinemaBack/CinemaEditInfo'
 import CinemaEditPwd from '../component/cinemaBack/CinemaEditPwd'
@@ -892,6 +892,7 @@ class CinemaBackMainpage extends React.Component {
               {pagename === 'cinema-activity-analysis' ? (
                 <>
                   <ActivityD3 />
+                  <div id="d3" />
                 </>
               ) : (
                 ''
