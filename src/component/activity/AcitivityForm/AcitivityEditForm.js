@@ -298,20 +298,21 @@ class AcitivityEditForm extends React.Component {
             data.id = data.id.filter(
               item => item.id != window.location.pathname.slice(47)
             )
+            fetch(
+              'http://localhost:5555/cinema/' +
+                sessionStorage.getItem('cinemaId'),
+              {
+                method: 'PUT',
+                body: JSON.stringify(data),
+                headers: new Headers({
+                  Accept: 'application/json',
+                  'Content-Type': 'application/json',
+                }),
+              }
+            )
+              .then(res => res.json())
+              .then(res => {})
           })
-        fetch(
-          'http://localhost:5555/cinema/' + sessionStorage.getItem('cinemaId'),
-          {
-            method: 'PUT',
-            body: JSON.stringify(data),
-            headers: new Headers({
-              Accept: 'application/json',
-              'Content-Type': 'application/json',
-            }),
-          }
-        )
-          .then(res => res.json())
-          .then(res => {})
       } else {
         Swal.fire({
           type: 'warning',
