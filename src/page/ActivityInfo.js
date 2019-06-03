@@ -175,6 +175,26 @@ class ActivityInfo extends React.Component {
     const memberId = sessionStorage.getItem('memberId')
     if (memberId !== null) {
       try {
+        const data = this.state.activityPageData
+        fetch('http://localhost:5555/cinema/' + data.theaterId)
+          .then(res => res.json())
+          .then(res => {
+            const data = JSON.parse(JSON.stringify(res))
+            data.cinemaD3memberJoin += 1
+
+            fetch('http://localhost:5555/cinema/' + data.theaterId, {
+              method: 'PUT',
+              body: JSON.stringify(data),
+              headers: new Headers({
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              }),
+            })
+          })
+      } catch (err) {
+        console.log(err)
+      }
+      try {
         const res = await fetch('http://localhost:5555/member/' + memberId, {
           method: 'GET',
           headers: new Headers({
