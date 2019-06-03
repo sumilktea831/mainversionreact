@@ -21,6 +21,7 @@ import ForumBackComment from './ForumBackComment'
 import ForumBackCollect from './ForumBackCollect'
 //Import SweetAlert2
 import Swal from 'sweetalert2'
+import { async } from 'q'
 const Toast = Swal.mixin({
   toast: true,
   position: 'center',
@@ -857,7 +858,7 @@ class BackSidenav extends React.Component {
     }
   }
 
-  handleMarkClick = async articleID => {
+  handleMarkClick = articleID => async () => {
     if (memberId) {
       console.log(this.state.thisMemberData)
       // var newMark = []
@@ -917,7 +918,7 @@ class BackSidenav extends React.Component {
         // fetch新資料後的判斷渲染套餐(收藏)
         // const MarkYN
 
-        // this.shouldComponentUpdate()
+        this.shouldComponentUpdate()
       } catch (err) {
         console.log(err)
       }
