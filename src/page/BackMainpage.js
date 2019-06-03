@@ -17,7 +17,7 @@ import CheckboxMultiForFavTypeReadSu from '../component/inputs/CheckboxMultiForF
 import CinemaEditInfo from '../component/cinemaBack/CinemaEditInfo'
 import ForumBackArticle from './ForumBackArticle'
 import ForumBackComment from './ForumBackComment'
-// import ForumBackCollect from './ForumBackCollect'
+import ForumBackCollect from './ForumBackCollect'
 //Import SweetAlert2
 import Swal from 'sweetalert2'
 const Toast = Swal.mixin({
@@ -1334,7 +1334,7 @@ class BackSidenav extends React.Component {
               ) : (
                 ''
               )}
-              {/* {pagename == 'myCollect' ? (
+              {pagename == 'myCollect' ? (
                 <>
                   <div className="row">
                     <div className="col-md-12 p-0">
@@ -1348,7 +1348,7 @@ class BackSidenav extends React.Component {
                 </>
               ) : (
                 ''
-              )} */}
+              )}
             </div>
           </Row>
         </>
