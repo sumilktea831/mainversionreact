@@ -925,7 +925,42 @@ class BackSidenav extends React.Component {
       alert('please login')
     }
   }
+  handleActivityJoinCancel = id => {
+    console.log('test')
+    try {
+      let memberData = []
+      fetch(
+        'http://localhost:5555/member/' + sessionStorage.getItem('memberId')
+      )
+        .then(res => res.json())
+        .then(data => {
+          console.log('ID: ' + id)
+          memberData = JSON.parse(JSON.stringify(data))
 
+          memberData.collectActivityJoin = memberData.collectActivityJoin
+            .split(id)
+            .toString()
+            .replace(/,/g, '')
+
+          console.log('this: ' + JSON.stringify(memberData))
+        })
+      // fetch(
+      //   'http://localhost:5555/member/' + sessionStorage.getItem('memberId'),
+      //   {
+      //     method: 'PUT',
+      //     body: JSON.stringify(data),
+      //     headers: new Headers({
+      //       Accept: 'application/json',
+      //       'Content-Type': 'application/json',
+      //     }),
+      //   }
+      // )
+      //   .then(res => res.json())
+      //   .then(res => {})
+    } catch (err) {
+      console.log(err)
+    }
+  }
   render() {
     if (!sessionStorage.getItem('memberId')) {
       // alert('回到登入頁')
@@ -1374,7 +1409,12 @@ class BackSidenav extends React.Component {
                           subtitle={data.title}
                           imgSrc={data.imgSrc}
                         />
-                        <button className="btn btn-warning">取消報名</button>
+                        <button
+                          className="btn btn-warning"
+                          onClick={() => this.handleActivityJoinCancel(data.id)}
+                        >
+                          取消報名
+                        </button>
                       </div>
                     ))}
                   </div>
