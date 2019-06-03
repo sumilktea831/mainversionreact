@@ -312,7 +312,14 @@ class AcitivityEditForm extends React.Component {
               }
             )
               .then(res => res.json())
-              .then(res => {})
+              .then(res => {
+                setTimeout(
+                  () =>
+                    (window.location.pathname =
+                      'CinemaBackMainpage/cinema-activity-inprogress'),
+                  5000
+                )
+              })
           })
       } else {
         Swal.fire({
