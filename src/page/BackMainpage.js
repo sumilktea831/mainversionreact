@@ -1014,12 +1014,12 @@ class BackSidenav extends React.Component {
                                 buttonsStyling: false,
                                 background: '#242b34',
                               })
-                              setTimeout(
-                                () =>
-                                  (window.location.pathname =
-                                    '/BackMainpage/activityMemberSignUp'),
-                                3000
-                              )
+                              // setTimeout(
+                              //   () =>
+                              //     (window.location.pathname =
+                              //       '/BackMainpage/activityMemberSignUp'),
+                              //   3000
+                              // )
                             })
                         })
                     })
