@@ -271,29 +271,6 @@
       "theater": "碼農Cafe"
     },
     {
-      "id": "m1559377711803",
-      "title": "測試影片編輯",
-      "titleEn": "English Title",
-      "movie_rating": "普遍級 0+",
-      "imgSrc": "0e05e3cb-6bdc-4a72-b93d-f03a0dffa894.jpg",
-      "type": "戲劇片英雄片恐怖片",
-      "director": "碼農一號",
-      "language": "西班牙語",
-      "intro": "摘要編輯",
-      "fullIntro": "介紹編輯",
-      "filmTime": "120",
-      "updateDate": "2019-04-30",
-      "inTheaterDate": "2019-05-01",
-      "outTheaterDate": "2019-05-31",
-      "schedule": [
-        "2019-06-06 10:00",
-        "2019-06-06 00:00",
-        "2019-06-12 14:00"
-      ],
-      "filmStar": [],
-      "theater": "碼農Cafe"
-    },
-    {
       "id": "m1558948500794",
       "theater": "總督數位影城",
       "title": "地球最後的夜晚",
@@ -757,50 +734,6 @@
       ]
     },
     {
-      "id": "m1559456527550",
-      "title": "第二天測試",
-      "titleEn": "SecondDay",
-      "movie_rating": "保護級 6+",
-      "imgSrc": "d23e1de0-3167-4bea-918e-4a06b5c926f0.png",
-      "type": "",
-      "director": "碼農一號",
-      "language": "英語",
-      "intro": "測試功能是否健在",
-      "fullIntro": "功能寫好的第二天，究竟會不會有神奇的力量導致新的BUG出現?!\n讓我們繼續看下去...",
-      "filmTime": "100",
-      "updateDate": "2019-06-02",
-      "inTheaterDate": "2019-06-05",
-      "outTheaterDate": "2019-07-02",
-      "schedule": [
-        "2019-06-02 13:30",
-        "2019-06-02 15:30"
-      ],
-      "filmStar": [],
-      "theater": "碼農Cafe"
-    },
-    {
-      "id": "m1559457230226",
-      "title": "測試影片海報",
-      "titleEn": "Test Poster",
-      "movie_rating": "保護級 6+",
-      "imgSrc": "cbb3d84e-725e-44c6-94d6-bdb2a7a02a22.jpg",
-      "type": "動作片動畫片懸疑片喜劇片",
-      "director": "碼農一號",
-      "language": "韓語",
-      "intro": "影片海報顯示、編輯更新",
-      "fullIntro": "因為發現圖片儲存路徑不同，所以重新測試是否有沒修改到的地方",
-      "filmTime": "100",
-      "updateDate": "2019-06-02",
-      "inTheaterDate": "2019-05-31",
-      "outTheaterDate": "2019-06-30",
-      "schedule": [
-        "2019-06-07 23:00",
-        "2019-06-07 12:00"
-      ],
-      "filmStar": [],
-      "theater": "碼農Cafe"
-    },
-    {
       "id": "m1559461949823",
       "title": "輕鬆+愉快",
       "titleEn": "Free and Easy",
@@ -1094,6 +1027,26 @@
       ],
       "filmStar": [],
       "theater": "府中15紀錄片放映院"
+    },
+    {
+      "id": "m1559553717862",
+      "title": "123",
+      "titleEn": "",
+      "movie_rating": "普遍級 0+",
+      "imgSrc": "",
+      "type": "恐怖片",
+      "director": "",
+      "language": "華語",
+      "intro": "",
+      "fullIntro": "",
+      "filmTime": "",
+      "updateDate": "2019-06-03",
+      "inTheaterDate": "",
+      "outTheaterDate": "",
+      "schedule": [],
+      "filmStar": [],
+      "theater": "碼農Cafe",
+      "cinemaId": "c001"
     }
   ],
   "cinema-sign-inputmsg": [
@@ -1493,29 +1446,6 @@
       "isclicked": false
     },
     {
-      "id": "custom-analysis",
-      "title": "來客分析",
-      "options": [
-        {
-          "id": "custom-statistic-photo",
-          "name": "來客走勢圖"
-        },
-        {
-          "id": "custom-report",
-          "name": "來客結構洞察報告"
-        },
-        {
-          "id": "movieee-custom-analysis",
-          "name": "全站分析"
-        },
-        {
-          "id": "cinema-manage-comment",
-          "name": "留言管理"
-        }
-      ],
-      "isclicked": false
-    },
-    {
       "id": "cinema-activity",
       "title": "活動管理",
       "options": [
@@ -1530,36 +1460,6 @@
         {
           "id": "cinema-activity-analysis",
           "name": "活動分析"
-        }
-      ],
-      "isclicked": false
-    },
-    {
-      "id": "cinema-fomur",
-      "title": "論壇紀錄",
-      "options": [
-        {
-          "id": "cinema-cinema-post",
-          "name": "發文管理"
-        },
-        {
-          "id": "cinema-comment",
-          "name": "評論一覽"
-        }
-      ],
-      "isclicked": false
-    },
-    {
-      "id": "cinema-advertisement",
-      "title": "廣告管理",
-      "options": [
-        {
-          "id": "cinema-all-ad",
-          "name": "廣告一覽"
-        },
-        {
-          "id": "cinema-manage-ad",
-          "name": "廣告管理"
         }
       ],
       "isclicked": false
@@ -2510,79 +2410,6 @@
               "star": 5
             }
           ]
-        },
-        {
-          "id": "m1559377711803",
-          "title": "測試影片編輯",
-          "titleEn": "English Title",
-          "movie_rating": "普遍級 0+",
-          "imgSrc": "0e05e3cb-6bdc-4a72-b93d-f03a0dffa894.jpg",
-          "type": [
-            "戲劇片",
-            "英雄片",
-            "恐怖片"
-          ],
-          "director": "碼農一號",
-          "language": "西班牙語",
-          "intro": "摘要編輯",
-          "fullIntro": "介紹編輯",
-          "filmTime": "120",
-          "updateDate": "2019-04-30",
-          "inTheaterDate": "2019-05-01",
-          "outTheaterDate": "2019-05-31",
-          "schedule": [
-            "2019-06-06 10:00",
-            "2019-06-06 00:00",
-            "2019-06-12 14:00"
-          ],
-          "filmStar": []
-        },
-        {
-          "id": "m1559456527550",
-          "title": "第二天測試",
-          "titleEn": "SecondDay",
-          "movie_rating": "保護級 6+",
-          "imgSrc": "d23e1de0-3167-4bea-918e-4a06b5c926f0.png",
-          "type": [],
-          "director": "碼農一號",
-          "language": "英語",
-          "intro": "測試功能是否健在",
-          "fullIntro": "功能寫好的第二天，究竟會不會有神奇的力量導致新的BUG出現?!\n讓我們繼續看下去...",
-          "filmTime": "100",
-          "updateDate": "2019-06-02",
-          "inTheaterDate": "2019-06-05",
-          "outTheaterDate": "2019-07-02",
-          "schedule": [
-            "2019-06-02 13:30",
-            "2019-06-02 15:30"
-          ],
-          "filmStar": []
-        },
-        {
-          "id": "m1559457230226",
-          "title": "測試影片海報",
-          "titleEn": "Test Poster",
-          "movie_rating": "保護級 6+",
-          "imgSrc": "cbb3d84e-725e-44c6-94d6-bdb2a7a02a22.jpg",
-          "type": [
-            "動作片",
-            "動畫片",
-            "懸疑片",
-            "喜劇片"
-          ],
-          "director": "碼農一號",
-          "language": "韓語",
-          "intro": "影片海報顯示、編輯更新",
-          "fullIntro": "因為發現圖片儲存路徑不同，所以重新測試是否有沒修改到的地方",
-          "filmTime": "100",
-          "updateDate": "2019-06-02",
-          "inTheaterDate": "2019-05-31",
-          "outTheaterDate": "2019-06-30",
-          "schedule": [
-            "2019-06-07 23:00",
-            "2019-06-07 12:00"
-          ],
-          "filmStar": []
         },
         {
           "id": "m1559461949823",
