@@ -12,7 +12,7 @@ const ResComment = props => {
               <Col xs={4} md={2} className="row">
                 <div className="avatar mr-3">
                   <img
-                    src={'/images/member/' + props.avatar}
+                    src={'/images/' + props.avatar}
                     className="mr-3"
                     alt="..."
                   />
