@@ -595,6 +595,7 @@ class CinemaEditInfo extends React.Component {
                 height: '350px',
               }}
               onChange={this.handleInputTextChange}
+              value={this.state.thisData.cinemaIntro}
               // cols="50"
               // rows="5"
             />
