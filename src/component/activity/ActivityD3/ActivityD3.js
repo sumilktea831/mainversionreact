@@ -14,7 +14,7 @@ class ActivityD3 extends Component {
       .innerRadius(props.innerRadius)
       .outerRadius(props.outerRadius)
     this.colors = d3.scaleOrdinal(d3.schemeBlues[9])
-    this.format = d3.format('5d')
+    this.format = d3.format('.2%')
   }
   componentDidMount() {
     const svg = d3.select(this.ref.current)
@@ -28,7 +28,7 @@ class ActivityD3 extends Component {
 
     const group = svg
       .append('g')
-      .attr('transform', `translate(${outerRadius} ${outerRadius})`)
+      .attr('transform', `translate(${width / 2} ${width / 2})`)
 
     const groupWithEnter = group
       .selectAll('g.arc')
@@ -81,11 +81,20 @@ class ActivityD3 extends Component {
       .attr('fill', (d, i) => this.colors(i))
 
     const text = groupWithUpdate.append('text').merge(group.select('text'))
+    var arc = d3
+      .arc()
+      .outerRadius(170)
+      .innerRadius(0)
 
     text
       .attr('text-anchor', 'middle')
       .attr('alignment-baseline', 'middle')
-      .attr('transform', d => `translate(${this.createArc.centroid(d)})`)
+      .attr('transform', function(d) {
+        var _d = arc.centroid(d)
+        _d[0] *= 2.2 //multiply by a constant factor
+        _d[1] *= 2.2 //multiply by a constant factor
+        return 'translate(' + _d + ')'
+      })
       .text(d => this.format(d.value))
   }
 

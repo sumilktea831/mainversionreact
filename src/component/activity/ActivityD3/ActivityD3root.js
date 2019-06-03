@@ -9,10 +9,16 @@ class ActivityD3root extends React.Component {
     super()
     this.state = {
       totalCountData: [
-        { cinemaD3guessLook: 0, value: 10 },
-        { cinemaD3memberLook: 0, value: 20 },
-        { cinemaD3memberJoin: 0, value: 30 },
-        { cinemaD3memberCancel: 0, value: 40 },
+        { cinemaD3guessLook: 0, value: 0 },
+        { cinemaD3memberLook: 0, value: 0 },
+        { cinemaD3memberJoin: 0, value: 0 },
+        { cinemaD3memberCancel: 0, value: 0 },
+      ],
+      totalPercentData: [
+        { cinemaD3guessLook: 0, value: 0 },
+        { cinemaD3memberLook: 0, value: 0 },
+        { cinemaD3memberJoin: 0, value: 0 },
+        { cinemaD3memberCancel: 0, value: 0 },
       ],
     }
   }
@@ -20,9 +26,31 @@ class ActivityD3root extends React.Component {
     fetch('http://localhost:5555/cinema/' + sessionStorage.getItem('cinemaId'))
       .then(res => res.json())
       .then(res => {
-        const data = JSON.parse(JSON.stringify(this.state.totalCountData))
-        const newData = JSON.parse(JSON.stringify(res))
-        data[0].value = newData.cinemaD3guessLook
+        let data = JSON.parse(JSON.stringify(this.state.totalCountData))
+        let newData = JSON.parse(JSON.stringify(res))
+        let totalValue =
+          newData.cinemaD3guessLook +
+          newData.cinemaD3memberLook +
+          newData.cinemaD3memberJoin +
+          newData.cinemaD3memberCancel
+        totalValue = JSON.parse(JSON.stringify(totalValue))
+        console.log(totalValue)
+        data[3].value = newData.cinemaD3guessLook / totalValue
+        data[2].value = newData.cinemaD3memberLook / totalValue
+        data[1].value = newData.cinemaD3memberJoin / totalValue
+        data[0].value = newData.cinemaD3memberCancel / totalValue
+        this.setState({ totalPercentData: data })
+      })
+    fetch('http://localhost:5555/cinema/' + sessionStorage.getItem('cinemaId'))
+      .then(res => res.json())
+      .then(res => {
+        let data = JSON.parse(JSON.stringify(this.state.totalCountData))
+        let newData = JSON.parse(JSON.stringify(res))
+        data[3].value = newData.cinemaD3guessLook
+        data[2].value = newData.cinemaD3memberLook
+        data[1].value = newData.cinemaD3memberJoin
+        data[0].value = newData.cinemaD3memberCancel
+        this.setState({ totalCountData: data })
       })
   }
 
@@ -33,16 +61,16 @@ class ActivityD3root extends React.Component {
           <div className="col-md-12 p-0">
             <ActivityTitle title="歷史總活動流量" />
           </div>
-          <div className="col-md-4 mt-5">
+          <div className="col-md-5 mt-5">
             <PieClass
-              data={this.state.totalCountData}
-              width={300}
-              height={300}
+              data={this.state.totalPercentData}
+              width={450}
+              height={450}
               innerRadius={40}
-              outerRadius={150}
+              outerRadius={160}
             />
           </div>
-          <div className="col-md-8 mt-5">
+          <div className="col-md-7 mt-5">
             <div className="wrapper mb-5">
               <div
                 style={{
@@ -53,7 +81,9 @@ class ActivityD3root extends React.Component {
                   background: '#9ecae1',
                 }}
               />
-              <span style={{ fontSize: '24px' }}>訪客觀看人次：</span>
+              <span style={{ fontSize: '24px' }}>
+                訪客觀看人次：{this.state.totalCountData[3].value}
+              </span>
             </div>
             <div className="wrapper mb-5">
               <div
@@ -65,7 +95,9 @@ class ActivityD3root extends React.Component {
                   background: '#c6dbef',
                 }}
               />
-              <span style={{ fontSize: '24px' }}>會員觀看人次：</span>
+              <span style={{ fontSize: '24px' }}>
+                會員觀看人次：{this.state.totalCountData[2].value}
+              </span>
             </div>
             <div className="wrapper mb-5">
               <div
@@ -77,7 +109,9 @@ class ActivityD3root extends React.Component {
                   background: '#deebf7',
                 }}
               />
-              <span style={{ fontSize: '24px' }}>會員報名人次：</span>
+              <span style={{ fontSize: '24px' }}>
+                會員報名人次：{this.state.totalCountData[1].value}
+              </span>
             </div>
             <div className="wrapper mb-5">
               <div
@@ -89,7 +123,9 @@ class ActivityD3root extends React.Component {
                   background: '#f7fbff',
                 }}
               />
-              <span style={{ fontSize: '24px' }}>報名取消人次：</span>
+              <span style={{ fontSize: '24px' }}>
+                報名取消人次：{this.state.totalCountData[0].value}
+              </span>
             </div>
           </div>
         </div>
