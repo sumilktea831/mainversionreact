@@ -1144,6 +1144,56 @@
       "filmStar": [],
       "theater": "光點台北",
       "cinemaId": "c1"
+    },
+    {
+      "id": "m1559572039547",
+      "title": "爺爺與喵",
+      "titleEn": "The Island of Cats",
+      "movie_rating": "普遍級 0+",
+      "imgSrc": "b0e1a01f-b371-473a-8009-f63e47c0478e.jpg",
+      "type": "戲劇片",
+      "director": "岩合光昭",
+      "language": "日語",
+      "intro": "",
+      "fullIntro": "",
+      "filmTime": "103",
+      "updateDate": "2019-06-03",
+      "inTheaterDate": "2019-06-06",
+      "outTheaterDate": "2019-06-06",
+      "schedule": [
+        "2019-06-06 21:15"
+      ],
+      "filmStar": [],
+      "theater": "光點台北",
+      "cinemaId": "c1559487285640"
+    },
+    {
+      "id": "m1559572513655",
+      "title": "出發",
+      "titleEn": "Run for dream",
+      "movie_rating": "普遍級 0+",
+      "imgSrc": "d126a6c2-15c7-476d-ab47-b8c69fbf525d.jpg",
+      "type": "戲劇片紀錄片",
+      "director": "黃茂森",
+      "language": "華語",
+      "intro": "",
+      "fullIntro": "",
+      "filmTime": "102",
+      "updateDate": "2019-06-03",
+      "inTheaterDate": "2019-06-03",
+      "outTheaterDate": "2019-06-06",
+      "schedule": [
+        "2019-06-03 11:00",
+        "2019-06-04 11:00",
+        "2019-06-04 18:15",
+        "2019-06-04 21:35",
+        "2019-06-05 11:00",
+        "2019-06-05 21:00",
+        "2019-06-06 14:45"
+      ],
+      "filmStar": [],
+      "theater": "光點華山",
+      "cinemaId": "c1559489066363"
     }
   ],
   "cinema-sign-inputmsg": [
@@ -2803,7 +2853,7 @@
       ],
       "cinemaHeroImg": "4861b85b-ca64-4046-8acc-36a0c2757535.jpg",
       "cinemaAccount": "spottaipei",
-      "cinemaPassword": "1111",
+      "cinemaPassword": "111111",
       "cinemaActivity": [],
       "cinemaFilm": [
         {
@@ -2903,6 +2953,28 @@
           "outTheaterDate": "2019-06-30",
           "schedule": [],
           "filmStar": []
+        },
+        {
+          "id": "m1559572039547",
+          "title": "爺爺與喵",
+          "titleEn": "The Island of Cats",
+          "movie_rating": "普遍級 0+",
+          "imgSrc": "b0e1a01f-b371-473a-8009-f63e47c0478e.jpg",
+          "type": [
+            "戲劇片"
+          ],
+          "director": "岩合光昭",
+          "language": "日語",
+          "intro": "",
+          "fullIntro": "",
+          "filmTime": "103",
+          "updateDate": "2019-06-03",
+          "inTheaterDate": "2019-06-06",
+          "outTheaterDate": "2019-06-06",
+          "schedule": [
+            "2019-06-06 21:15"
+          ],
+          "filmStar": []
         }
       ],
       "cinemaStar": [
@@ -2922,7 +2994,7 @@
       "cinemaEmail": "taipei.spotdesign@gmail.com",
       "cinemaBackupEmail": "",
       "cinemaAwesome": [],
-      "cinemaPageViews": 21,
+      "cinemaPageViews": 29,
       "cinemaSignUpDate": "2019-06-02",
       "purview": "cinemaMember",
       "cinemaIntro": "她，令當年的尼克遜，在擔任美國副總統來到台灣訪問時，沒住豪華大酒店，\n卻看上這棟老洋房，還在這裡睡過幾個晚上。\n她，保存了原來的古典風情，讓藝術不做過多裝扮，\n令人體會藝術原來是現代人生活的養分，很容易親近，也很容易消化。\n她，以歷史為中山北路注入了一抹亮麗粧顏，\n以古蹟建築傳唱中山北路百年風流雅緻的人文歷史。",
@@ -3070,6 +3142,35 @@
           "outTheaterDate": "2019-06-29",
           "schedule": [],
           "filmStar": []
+        },
+        {
+          "id": "m1559572513655",
+          "title": "出發",
+          "titleEn": "Run for dream",
+          "movie_rating": "普遍級 0+",
+          "imgSrc": "d126a6c2-15c7-476d-ab47-b8c69fbf525d.jpg",
+          "type": [
+            "戲劇片",
+            "紀錄片"
+          ],
+          "director": "黃茂森",
+          "language": "華語",
+          "intro": "",
+          "fullIntro": "",
+          "filmTime": "102",
+          "updateDate": "2019-06-03",
+          "inTheaterDate": "2019-06-03",
+          "outTheaterDate": "2019-06-06",
+          "schedule": [
+            "2019-06-03 11:00",
+            "2019-06-04 11:00",
+            "2019-06-04 18:15",
+            "2019-06-04 21:35",
+            "2019-06-05 11:00",
+            "2019-06-05 21:00",
+            "2019-06-06 14:45"
+          ],
+          "filmStar": []
         }
       ],
       "cinemaHeroImg": "943f516d-6836-4a0b-a17c-7e6197553c45.jpg",
@@ -3083,7 +3184,7 @@
       "cinemaEmail": "taipei.spot@gmail.com",
       "cinemaBackupEmail": "",
       "cinemaAwesome": [],
-      "cinemaPageViews": 27,
+      "cinemaPageViews": 30,
       "cinemaSignUpDate": "2019-06-02",
       "purview": "cinemaMember",
       "cinemaIntro": "光點華山電影館,位於華山文創園區中六館，原為酒廠再製酒包裝室，1996年由文化部規劃指導，改建為電影館，並由侯孝賢導演領軍之團隊「台灣電影文化協會」經營管理，於2012年11月正式開幕，為全國首座國家級藝術電影館。整館空間保留舊建築結構並結合新的創意元素，為老屋新力之創新展現",
@@ -3139,7 +3240,7 @@
       "cinemaEmail": "service@eslite.com",
       "cinemaBackupEmail": "",
       "cinemaAwesome": [],
-      "cinemaPageViews": 8,
+      "cinemaPageViews": 10,
       "cinemaSignUpDate": "2019-06-03",
       "purview": "cinemaMember",
       "cinemaIntro": "",
@@ -3168,7 +3269,7 @@
       "cinemaEmail": "taoyuanartscinema@gmail.com",
       "cinemaBackupEmail": "",
       "cinemaAwesome": [],
-      "cinemaPageViews": 3,
+      "cinemaPageViews": 5,
       "cinemaSignUpDate": "2019-06-03",
       "purview": "cinemaMember",
       "cinemaIntro": "電影是一扇窗，讓人們窺見所處環境之外的世界，而對世界的瞭解與洞見，能夠讓人們回過頭來關照自身的環境，從而找到讓社會與生命更加美好的出口。我們期待，桃園光影能夠成為將世界帶進桃園的門戶，就像一直以來，桃園作為台灣的門戶，將台灣人帶往世界各地一樣。",
@@ -3214,7 +3315,6 @@
       "cinemaArea": "板橋區",
       "cinemaLogoImg": "2bcbef80-4582-4a35-8bcc-39c3f287482b.jpg",
       "cinemaImg": [
-        "21444259-d6da-4726-a1c7-c58764482985.jpg",
         "ca94feaf-0727-47f5-aedf-419d7532ff9c.jpg"
       ],
       "cinemaHeroImg": "2c5e077a-becd-4b05-8c3c-22ed04590022.jpg",
@@ -3228,7 +3328,7 @@
       "cinemaEmail": "fuzhong15.films@gmail.com",
       "cinemaBackupEmail": "",
       "cinemaAwesome": [],
-      "cinemaPageViews": 6,
+      "cinemaPageViews": 8,
       "cinemaSignUpDate": "2019-06-03",
       "purview": "cinemaMember",
       "cinemaIntro": "　　 為了培養紀錄片觀影人口、建立紀錄片工作者發表平台，新北市政府於100年12月3日啟用全國第一個以紀錄片為主題放映的場地—「『府中15』新北市紀錄片放映院」。除了作為優質紀錄片定點放映、舉辦名人講座之地點外，並結合府中商圈，打造市民休閒及觀賞藝術電影的藝文特區。　",
@@ -3444,7 +3544,7 @@
       "cinemaEmail": "nomail1@nomail1.com",
       "cinemaBackupEmail": "",
       "cinemaAwesome": [],
-      "cinemaPageViews": 2,
+      "cinemaPageViews": 3,
       "cinemaSignUpDate": "2019-06-03",
       "purview": "cinemaMember",
       "cinemaIntro": "",
@@ -3537,7 +3637,7 @@
       "cinemaEmail": "nomail@nomail2.com",
       "cinemaBackupEmail": "",
       "cinemaAwesome": [],
-      "cinemaPageViews": 3,
+      "cinemaPageViews": 4,
       "cinemaSignUpDate": "2019-06-03",
       "purview": "cinemaMember",
       "cinemaIntro": "自然不做作的空間。健康，純粹與在地元素是我們的宗旨，當你在別所放鬆地喝上一杯咖啡，也可以在這裡找到一些熟悉的台灣老滋味。我們堅持使用台灣小農食材，從飲品餐點與醬料，都歡迎你來試試我們用天然食材秘製的季節風味飲品與老闆不私藏特色小料理！\n\n在別所的角落會有Chill度滿點的黑膠區塊，我們將不時更換店裡的試聽黑膠唱片，當然，你也可以帶著你的珍藏來和我們交流！\n",
