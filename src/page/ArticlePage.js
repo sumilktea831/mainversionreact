@@ -261,6 +261,7 @@ class ArticlePage extends React.Component {
         join_date: this.state.memberAllData.join_date,
         permission: this.state.memberAllData.permission,
         collectFilm: this.state.memberAllData.collectFilm,
+        collectMovie: this.state.memberAllData.collectMovie,
         collectCinema: this.state.memberAllData.collectCinema,
         collectArticle: newMark,
         collectActivity: this.state.memberAllData.collectActivity,

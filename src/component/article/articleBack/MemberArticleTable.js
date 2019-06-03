@@ -20,7 +20,9 @@ class MemberArticleTable extends React.Component {
         thisCollectArticleData: nextProps.thisCollectArticleData,
       }
     }
-
+    console.log(nextProps)
+    console.log(prevState)
+    console.log(stateToBeReturned)
     return stateToBeReturned
   }
 
@@ -91,7 +93,7 @@ class MemberArticleTable extends React.Component {
                     borderRight: '2px solid #2B333D',
                   }}
                 >
-                  <FaTrash />
+                  <FaTrash onClick={this.props.handleMarkClick(item.id)} />
                 </td>
               </tr>
             ))}
