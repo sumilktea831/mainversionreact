@@ -56,6 +56,8 @@ class CinemaBackMainpage extends React.Component {
       FilmCard: [], //影片卡用
       ActivityCard: [], //活動卡用
       MessageBoxData: [],
+      // 戲院影片刪除強制render用的state
+      cinemaFilmDeleteRender: false,
     }
     // console.log('parent-constructor')
   }
@@ -497,7 +499,7 @@ class CinemaBackMainpage extends React.Component {
     swalWithBootstrapButtons
       .fire({
         title: '<span style="color:#d4d1cc">確定要刪除這支影片?</span>',
-        // text: '<span style="color:#d4d1cc">提醒：刪除的影片無法再復原</span>',
+        html: '<span style="color:#d4d1cc">提醒：刪除的影片無法再復原</span>',
         type: 'warning',
         showCancelButton: true,
         confirmButtonText: '確認刪除',
@@ -545,15 +547,22 @@ class CinemaBackMainpage extends React.Component {
                 } catch (e) {
                   console.log(e)
                 }
-                this.setState({ thisCinemaData: jsonObject }, () => {
-                  // alert('資料刪除成功')
-                  swalWithBootstrapButtons.fire(
-                    '<span style="color:#d4d1cc">刪除成功</span>',
-                    '<span style="color:#d4d1cc">已成功刪除影片</span>',
-                    'success'
-                  )
-                  // setTimeout(() => window.location.reload(), 1500)
-                })
+                this.setState(
+                  {
+                    thisCinemaData: jsonObject,
+                    cinemaFilmDeleteRender: !this.state.cinemaFilmDeleteRender,
+                  },
+                  () => {
+                    // alert('資料刪除成功')
+                    swalWithBootstrapButtons.fire(
+                      '<span style="color:#d4d1cc">刪除成功</span>',
+                      '<span style="color:#d4d1cc">已成功刪除影片</span>',
+                      'success'
+                    )
+
+                    // setTimeout(() => window.location.reload(), 1500)
+                  }
+                )
               })
           } catch (e) {
             console.log(e)
