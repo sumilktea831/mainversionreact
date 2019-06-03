@@ -453,6 +453,7 @@ class CinemaBackMainpage extends React.Component {
       newDataForMovieCard.type = newDataForMovieCard.type.join('')
     }
     newDataForMovieCard.theater = this.state.thisCinemaData.cinemaName
+    newDataForMovieCard.cinemaId = this.state.thisCinemaData.id
 
     try {
       fetch('http://localhost:5555/cinema/' + this.state.thisCinemaData.id, {
