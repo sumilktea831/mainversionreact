@@ -1202,6 +1202,10 @@
         {
           "id": "myComment",
           "name": "論壇留言紀錄"
+        },
+        {
+          "id": "myCollect",
+          "name": "論壇收藏紀錄"
         }
       ],
       "isclicked": false
@@ -5791,10 +5795,8 @@
       "id": 86,
       "headline": "《直播風暴》雜亂失焦的種種",
       "forumSpoilers": false,
-      "forumCollectMember": [
-        "m1558576972555"
-      ],
-      "forumViews": 1,
+      "forumCollectMember": [],
+      "forumViews": 0,
       "forumCreateDate": "2019/06/03 02:21",
       "forumCreateDateInSecond": 1559499702944,
       "forumName": "快樂碼農",
@@ -5844,10 +5846,8 @@
       "id": 87,
       "headline": "《奇蹟男孩》繼續啟發著你我",
       "forumSpoilers": false,
-      "forumCollectMember": [
-        "m1558576972555"
-      ],
-      "forumViews": 1,
+      "forumCollectMember": [],
+      "forumViews": 0,
       "forumCreateDate": "2019/06/03 02:23",
       "forumCreateDateInSecond": 1559499799191,
       "forumName": "快樂碼農",
