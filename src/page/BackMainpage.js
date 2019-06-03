@@ -927,46 +927,77 @@ class BackSidenav extends React.Component {
   }
   handleActivityJoinCancel = id => {
     console.log('test')
-    try {
-      let memberData = []
-      fetch(
-        'http://localhost:5555/member/' + sessionStorage.getItem('memberId')
-      )
-        .then(res => res.json())
-        .then(data => {
-          console.log('ID: ' + id)
-          memberData = JSON.parse(JSON.stringify(data))
-
-          memberData.collectActivityJoin = memberData.collectActivityJoin
-            .split(id)
-            .toString()
-            .replace(/,/g, '')
+    Swal.fire({
+      type: 'question',
+      title: '<span style="color:#d4d1cc">確定要取消報名這場活動嗎？</span>',
+      showConfirmButton: true,
+      showCancelButton: true,
+      confirmButtonClass: 'btn btn-warning mr-5',
+      confirmButtonColor: '#ffa510',
+      confirmButtonText: '是的，我要取消。',
+      cancelButtonClass: 'btn btn-warning mr-5',
+      cancelButtonColor: '#ffa510',
+      cancelButtonText: '沒有，我再考慮。',
+      buttonsStyling: false,
+      background: '#242b34',
+    }).then(result => {
+      if (result.value) {
+        try {
+          let memberData = []
           fetch(
-            'http://localhost:5555/member/' +
-              sessionStorage.getItem('memberId'),
-            {
-              method: 'PUT',
-              body: JSON.stringify(memberData),
-              headers: new Headers({
-                Accept: 'application/json',
-                'Content-Type': 'application/json',
-              }),
-            }
+            'http://localhost:5555/member/' + sessionStorage.getItem('memberId')
           )
             .then(res => res.json())
-            .then(res => {
-              Swal.fire({
-                type: 'success',
-                title: '<span style="color:#d4d1cc">已取消報名</span>',
-                showConfirmButton: false,
-                buttonsStyling: false,
-                background: '#242b34',
-              })
+            .then(data => {
+              console.log('ID: ' + id)
+              memberData = JSON.parse(JSON.stringify(data))
+
+              memberData.collectActivityJoin = memberData.collectActivityJoin
+                .split(id)
+                .toString()
+                .replace(/,/g, '')
+              fetch(
+                'http://localhost:5555/member/' +
+                  sessionStorage.getItem('memberId'),
+                {
+                  method: 'PUT',
+                  body: JSON.stringify(memberData),
+                  headers: new Headers({
+                    Accept: 'application/json',
+                    'Content-Type': 'application/json',
+                  }),
+                }
+              )
+                .then(res => res.json())
+                .then(res => {
+                  Swal.fire({
+                    type: 'success',
+                    title: '<span style="color:#d4d1cc">已取消報名</span>',
+                    showConfirmButton: false,
+                    buttonsStyling: false,
+                    background: '#242b34',
+                  })
+                  setTimeout(
+                    () =>
+                      (window.location.pathname =
+                        '/BackMainpage/activityMemberSignUp'),
+                    3000
+                  )
+                })
             })
+        } catch (err) {
+          console.log(err)
+        }
+      } else {
+        Swal.fire({
+          type: 'warning',
+          title: '<span style="color:#d4d1cc">沒有取消該筆報名活動！</span>',
+          showConfirmButton: false,
+          buttonsStyling: false,
+          background: '#242b34',
         })
-    } catch (err) {
-      console.log(err)
-    }
+      }
+    })
   }
   render() {
     if (!sessionStorage.getItem('memberId')) {
