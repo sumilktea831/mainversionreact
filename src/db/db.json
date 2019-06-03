@@ -890,7 +890,7 @@
       "title": "爺爺與喵",
       "titleEn": "The Island of Cats",
       "movie_rating": "普遍級 0+",
-      "imgSrc": "5579c464-fdc0-4ff9-a686-3949c1ac739c.jpg",
+      "imgSrc": "1e669b11-197e-40d3-90d2-eb17e49e8b1b.jpg",
       "type": "戲劇片",
       "director": "岩合光昭 Mitsuaki Iwago",
       "language": "日語",
@@ -904,15 +904,14 @@
         "2019-06-06 18:45"
       ],
       "filmStar": [],
-      "theater": "碼農Cafe",
-      "cinemaId": "c001"
+      "theater": "碼農Cafe"
     },
     {
       "id": "m1559530196922",
       "title": "馬拉松武士",
       "titleEn": "Samurai Marathon",
       "movie_rating": "普遍級 0+",
-      "imgSrc": "07851430-7c8d-47ad-bb85-d4828445e9eb.jpg",
+      "imgSrc": "204289bd-1cd6-4538-8fc7-13c345a4181f.png",
       "type": "戲劇片",
       "director": "柏納德羅斯 Bernard Rose",
       "language": "日語",
@@ -932,6 +931,164 @@
       ],
       "filmStar": [],
       "theater": "光點台北"
+    },
+    {
+      "id": "m1559530974637",
+      "title": "這條路上：百年童謠的誕生",
+      "titleEn": "The Old Road—Konomichi",
+      "movie_rating": "普遍級 0+",
+      "imgSrc": "101a25be-7ba7-4270-9819-92ecb5063326.jpg",
+      "type": "戲劇片文藝片",
+      "director": "佐佐部清 Kiyoshi Sasabe",
+      "language": "日語",
+      "intro": "全日本最經典童謠，千萬人傳唱，慶祝百年誕辰!\n鬼才詩人北原白秋x天才音樂家山田耕筰 打造童謠詞曲創作組合",
+      "fullIntro": "北原白秋（大森南朋 飾）從中學時期就開始投稿詩作，隨後發表一系列童謠創作，成為家喻戶曉的音樂詩人。個性嚴謹的山田耕筰（AKIRA 飾）是日本最早的古典音樂作曲家之一，兩位個性與風格南轅北轍音樂家，原本王不見王，卻因大時代因素而聚首，組成童謠詞曲二人組，替全日本的孩童，創作出許多經典童謠，帶來快樂童年時光。本片將兩人數十年動人的友誼，首次搬上大銀幕。",
+      "filmTime": "104",
+      "updateDate": "2019-06-03",
+      "inTheaterDate": "2019-05-31",
+      "outTheaterDate": "2019-06-06",
+      "schedule": [
+        "2019-06-06 10:30",
+        "2019-06-05 11:00",
+        "2019-06-05 19:35",
+        "2019-06-04 10:30",
+        "2019-06-04 21:25",
+        "2019-06-03 13:00",
+        "2019-06-03 19:25",
+        "2019-06-02 17:15",
+        "2019-06-02 21:15"
+      ],
+      "filmStar": [],
+      "theater": "光點台北",
+      "cinemaId": "c1"
+    },
+    {
+      "id": "m1559532873696",
+      "title": "鈴木家的謊言",
+      "titleEn": "Lying To Mom",
+      "movie_rating": "普遍級 0+",
+      "imgSrc": "27c3c35a-1ce2-4787-8572-1d2b04042f41.jpg",
+      "type": "戲劇片",
+      "director": "野尻克己 Katsumi Nojiri",
+      "language": "日語",
+      "intro": "★ 東京影展「日本電影Splash 部門」最佳影片",
+      "fullIntro": "鈴木家的大哥自殺了。深愛兒子的媽媽因為大受驚嚇而失憶，忘了哥哥已經死去的事實，妹妹和爸爸決定欺騙母親「哥哥找到新工作，現在在阿根廷生活！」之後的每一天，爸爸到原宿買了切格瓦拉的衣服給全家人，當成哥哥寄來的紀念品；妹妹則寫了無數的信和明信片，佯裝成哥哥在報平安。從前擔心哥哥總足不出戶的媽媽，終於一天比一天開朗，然而這樣的謊言能夠持續多久呢？\n\nKoichi (Ryo Kase) is a son in the Suzuki family. He is a hikikomori and dies suddenly. The rest of Suzuki family, father Yukio (Ittoku Kishibe), mother Yuko (Hideko Hara) and daughter Fumi (Mai Kiryu), fall into confusion. Especially the mother Yuko, who is shocked by her son's death, and loses her memory. Fumi lies to her mother and tells her \"Koichi stopped being a hikikomori and now works in Argentina.\"",
+      "filmTime": "104",
+      "updateDate": "2019-06-03",
+      "inTheaterDate": "2019-06-21",
+      "outTheaterDate": "2019-06-30",
+      "schedule": [],
+      "filmStar": [],
+      "theater": "光點台北"
+    },
+    {
+      "id": "m1559533490304",
+      "title": "亡命之途",
+      "titleEn": "Paradise Next",
+      "movie_rating": "輔導級 15+",
+      "imgSrc": "dbf5f16e-c021-4458-8048-068d07ad2c91.jpg",
+      "type": "驚悚片懸疑片戲劇片",
+      "director": "半野喜弘",
+      "language": "日語",
+      "intro": "台、日跨國合拍鉅作，全程台灣取景拍攝！\n日本兩大男神妻夫木聰 ╳ 豐川悅司攜手打造懸疑犯罪電影！\n奧斯卡最佳配樂，世界級音樂大師量身打造電影配樂！ ",
+      "fullIntro": "因涉入一宗枉死案件被日本角頭追殺而躲避到台灣的痞子牧野（妻夫木聰 飾），找上同樣因此事件自我放逐的冷酷殺手島（豐川悅司 飾），兩名負罪的旅人一路逃亡來到了花蓮，認識了開朗的當地女孩小恩（謝欣穎 飾），三人在這趟流浪的旅程中，竟遭到一位如同鬼魅般的神秘殺手（莊凱勛 飾）追殺，他的出現即將揭露出什麼殘酷的真相？三人的命運是否就此改變？",
+      "filmTime": "100",
+      "updateDate": "2019-06-03",
+      "inTheaterDate": "2019-06-06",
+      "outTheaterDate": "2019-06-08",
+      "schedule": [],
+      "filmStar": [],
+      "theater": "光點華山"
+    },
+    {
+      "id": "m1559533716933",
+      "title": "亨利先生的秘密",
+      "titleEn": "The Mystery of Henri Pick",
+      "movie_rating": "保護級 6+",
+      "imgSrc": "6303adaa-b575-4592-9aeb-4013dd0b639a.jpg",
+      "type": "驚悚片懸疑片喜劇片",
+      "director": "雷米貝桑松 ",
+      "language": "華語",
+      "intro": "★法國暢銷文學作品改編 熱賣40萬冊 版權狂銷14國\n★出版業、行銷鬼才看了絕對有共鳴的幽默喜劇！",
+      "fullIntro": "一本神秘的暢銷書 掀起文壇筆戰……\n在法國的某個小鎮裡，有著一座專門收「退稿」的圖書館。某日，年輕的編輯達芬妮在館內發現了一本書稿，由一位叫做亨利皮克的比薩師傅所寫的小說《一段愛情故事的彌留時刻》。瘋狂著迷於書稿中文字的達芬妮，決定前往拜訪亨利的遺孀，請求她答應出版這本曠世鉅作。果不其然，小說上市後立刻掀起一股熱潮，但隨即也遭到書評人胡許的質疑，他不相信比薩師傅能寫出如此令人驚艷的作品，於是他決定與亨利的女兒喬瑟芬聯手展開調查，希望能找出關於這本書的秘密……。",
+      "filmTime": "101",
+      "updateDate": "2019-06-03",
+      "inTheaterDate": "2019-05-24",
+      "outTheaterDate": "2019-06-05",
+      "schedule": [
+        "2019-06-03 15:25",
+        "2019-06-03 21:20",
+        "2019-06-04 15:00",
+        "2019-06-05 16:55"
+      ],
+      "filmStar": [],
+      "theater": "光點華山",
+      "cinemaId": "c2"
+    },
+    {
+      "id": "m1559534438201",
+      "title": "爺爺與喵",
+      "titleEn": "The Island of Cats",
+      "movie_rating": "普遍級 0+",
+      "imgSrc": "5c37fea7-a3aa-4911-92d8-972f762bc9eb.jpg",
+      "type": "戲劇片",
+      "director": "岩合光昭",
+      "language": "日語",
+      "intro": "人氣圖文作家貓蒔療癒系漫畫作品《爺爺與小玉喵》改編。\n《岩合光昭的貓步走世界》知名動物攝影師岩合光昭執導。 ",
+      "fullIntro": "退休校長大吉爺爺在老伴先一步離開人世後，和貓咪小玉一人一貓相依為命，天氣冷的時候就一起窩在暖爐旁取暖、吃飯時間一起開心吃著生魚片，只要有小玉在，就一點也不會感到寂寞。因為思念起老伴作的豌豆炊飯，大吉爺爺在小玉喵的幫(搗)助(蛋)之下，大吉靠著老伴親筆寫的一本食譜完成了這道料理。在咖啡廳女主人的鼓勵之下，大吉爺爺開始一頁一頁地親筆填滿這本食譜。可是，身體向來硬朗的爺爺卻不敵病魔來襲，突然倒下了……。",
+      "filmTime": "103",
+      "updateDate": "2019-06-03",
+      "inTheaterDate": "2019-06-06",
+      "outTheaterDate": "2019-06-15",
+      "schedule": [
+        "2019-06-06 18:45"
+      ],
+      "filmStar": [],
+      "theater": "光點華山",
+      "cinemaId": "c2"
+    },
+    {
+      "id": "m1559537083753",
+      "title": "銀翼殺手 2049",
+      "titleEn": "Blade Runner 2049",
+      "movie_rating": "輔導級 12+",
+      "imgSrc": "f532f9e3-be42-44e8-8784-c3c22838ab0b.jpg",
+      "type": "動作片科幻片",
+      "director": "丹尼維勒納夫",
+      "language": "英語",
+      "intro": "2018芝加哥影評人協會最佳藝術指導、最佳攝影\n2018BAFTA英國電影學院獎最佳攝影、視覺效果\n2018奧斯卡金像獎最佳攝影、視覺效果",
+      "fullIntro": "2049年時，仿生人奴隸已成為文明躍進過程的關鍵，儘管掌權者試圖築起高牆以區分人種，但人造人與真實人類的界線卻越趨模糊、真假難分，引發正反兩面的一連串影響。銀翼殺手K，為阻止現況演變成不可挽救的局面，因此踏上尋找掌握重要線索的關鍵人物。",
+      "filmTime": "164",
+      "updateDate": "2019-06-03",
+      "inTheaterDate": "2019-06-30",
+      "outTheaterDate": "2019-07-01",
+      "schedule": [
+        "2019-06-30 16:40"
+      ],
+      "filmStar": [],
+      "theater": "府中15紀錄片放映院",
+      "cinemaId": "c1559536645628"
+    },
+    {
+      "id": "m1559537281279",
+      "title": "我要活下去",
+      "titleEn": "6 Below：Miracle on the Mountain",
+      "movie_rating": "輔導級 12+",
+      "imgSrc": "6412953e-9b47-497b-a284-f4e78619a857.jpg",
+      "type": "戲劇片紀錄片",
+      "director": "史考特沃爾",
+      "language": "英語",
+      "intro": "★ 繼《127小時》後，又一撼動人心的「奇蹟生還」真人真事改編！\n★ 冰天雪地，糧盡援絕，前奧運選手必須在死亡邊緣挑戰生存極限！",
+      "fullIntro": "他不放棄希望，因為家人還在等他\n前奧運選手艾瑞克（喬許哈奈特飾演），某日上山滑雪時，遭遇一場突如其來的暴風雪，讓他受困在無邊無際的冰雪之中。在寒冷的雪山裡，他找不到救援，並被低溫症、飢餓、狼群、凍傷、脫水、戒斷症狀與幻覺輪番折磨。除了生理瀕臨崩潰極限，他的內心也正經歷一場生死較量。因為毒品的戒斷症狀，使得幻覺在他腦海中不斷翻騰，也讓他在這遺世獨立的雪山之中，被迫開始審視自己的一生。他意識到自己必須戰勝心魔，否則就將迎來死亡。在這個毫無生還希望的雪山裡，他竟奇蹟似地存活八天，就在他的身體與意志瀕臨崩解邊緣時，他焦急的母親（蜜拉索維諾飾演）也不放棄地懇求搜救隊出動救援。然而被搜救隊發現的前提是，艾瑞克必須克服艱難考驗，爬上頂峰，才有獲救的可能… 。",
+      "filmTime": "98",
+      "updateDate": "2019-06-03",
+      "inTheaterDate": "2019-06-01",
+      "outTheaterDate": "2019-06-08",
+      "schedule": [
+        "2019-06-01 14:00"
+      ],
+      "filmStar": [],
+      "theater": "府中15紀錄片放映院"
     }
   ],
   "cinema-sign-inputmsg": [
@@ -2479,7 +2636,7 @@
           "title": "爺爺與喵",
           "titleEn": "The Island of Cats",
           "movie_rating": "普遍級 0+",
-          "imgSrc": "5579c464-fdc0-4ff9-a686-3949c1ac739c.jpg",
+          "imgSrc": "1e669b11-197e-40d3-90d2-eb17e49e8b1b.jpg",
           "type": [
             "戲劇片"
           ],
@@ -2691,7 +2848,7 @@
           "title": "馬拉松武士",
           "titleEn": "Samurai Marathon",
           "movie_rating": "普遍級 0+",
-          "imgSrc": "07851430-7c8d-47ad-bb85-d4828445e9eb.jpg",
+          "imgSrc": "204289bd-1cd6-4538-8fc7-13c345a4181f.png",
           "type": [
             "戲劇片"
           ],
@@ -2743,6 +2900,26 @@
             "2019-06-02 21:15"
           ],
           "filmStar": []
+        },
+        {
+          "id": "m1559532873696",
+          "title": "鈴木家的謊言",
+          "titleEn": "Lying To Mom",
+          "movie_rating": "普遍級 0+",
+          "imgSrc": "27c3c35a-1ce2-4787-8572-1d2b04042f41.jpg",
+          "type": [
+            "戲劇片"
+          ],
+          "director": "野尻克己 Katsumi Nojiri",
+          "language": "日語",
+          "intro": "★ 東京影展「日本電影Splash 部門」最佳影片",
+          "fullIntro": "鈴木家的大哥自殺了。深愛兒子的媽媽因為大受驚嚇而失憶，忘了哥哥已經死去的事實，妹妹和爸爸決定欺騙母親「哥哥找到新工作，現在在阿根廷生活！」之後的每一天，爸爸到原宿買了切格瓦拉的衣服給全家人，當成哥哥寄來的紀念品；妹妹則寫了無數的信和明信片，佯裝成哥哥在報平安。從前擔心哥哥總足不出戶的媽媽，終於一天比一天開朗，然而這樣的謊言能夠持續多久呢？\n\nKoichi (Ryo Kase) is a son in the Suzuki family. He is a hikikomori and dies suddenly. The rest of Suzuki family, father Yukio (Ittoku Kishibe), mother Yuko (Hideko Hara) and daughter Fumi (Mai Kiryu), fall into confusion. Especially the mother Yuko, who is shocked by her son's death, and loses her memory. Fumi lies to her mother and tells her \"Koichi stopped being a hikikomori and now works in Argentina.\"",
+          "filmTime": "104",
+          "updateDate": "2019-06-03",
+          "inTheaterDate": "2019-06-21",
+          "outTheaterDate": "2019-06-30",
+          "schedule": [],
+          "filmStar": []
         }
       ],
       "cinemaStar": [
@@ -2764,7 +2941,7 @@
       "cinemaAwesome": [
         "234"
       ],
-      "cinemaPageViews": 580,
+      "cinemaPageViews": 581,
       "cinemaSignUpDate": "1955-03-12",
       "purview": "cinemaMember",
       "cinemaMessage": [
@@ -2804,7 +2981,79 @@
       "cinemaPassword": "2222",
       "cinemaType": "gallery",
       "cinemaActivity": [],
-      "cinemaFilm": [],
+      "cinemaFilm": [
+        {
+          "id": "m1559533490304",
+          "title": "亡命之途",
+          "titleEn": "Paradise Next",
+          "movie_rating": "輔導級 15+",
+          "imgSrc": "dbf5f16e-c021-4458-8048-068d07ad2c91.jpg",
+          "type": [
+            "驚悚片",
+            "懸疑片",
+            "戲劇片"
+          ],
+          "director": "半野喜弘",
+          "language": "日語",
+          "intro": "台、日跨國合拍鉅作，全程台灣取景拍攝！\n日本兩大男神妻夫木聰 ╳ 豐川悅司攜手打造懸疑犯罪電影！\n奧斯卡最佳配樂，世界級音樂大師量身打造電影配樂！ ",
+          "fullIntro": "因涉入一宗枉死案件被日本角頭追殺而躲避到台灣的痞子牧野（妻夫木聰 飾），找上同樣因此事件自我放逐的冷酷殺手島（豐川悅司 飾），兩名負罪的旅人一路逃亡來到了花蓮，認識了開朗的當地女孩小恩（謝欣穎 飾），三人在這趟流浪的旅程中，竟遭到一位如同鬼魅般的神秘殺手（莊凱勛 飾）追殺，他的出現即將揭露出什麼殘酷的真相？三人的命運是否就此改變？",
+          "filmTime": "100",
+          "updateDate": "2019-06-03",
+          "inTheaterDate": "2019-06-06",
+          "outTheaterDate": "2019-06-08",
+          "schedule": [],
+          "filmStar": []
+        },
+        {
+          "id": "m1559533716933",
+          "title": "亨利先生的秘密",
+          "titleEn": "The Mystery of Henri Pick",
+          "movie_rating": "保護級 6+",
+          "imgSrc": "6303adaa-b575-4592-9aeb-4013dd0b639a.jpg",
+          "type": [
+            "驚悚片",
+            "懸疑片",
+            "喜劇片"
+          ],
+          "director": "雷米貝桑松 ",
+          "language": "華語",
+          "intro": "★法國暢銷文學作品改編 熱賣40萬冊 版權狂銷14國\n★出版業、行銷鬼才看了絕對有共鳴的幽默喜劇！",
+          "fullIntro": "一本神秘的暢銷書 掀起文壇筆戰……\n在法國的某個小鎮裡，有著一座專門收「退稿」的圖書館。某日，年輕的編輯達芬妮在館內發現了一本書稿，由一位叫做亨利皮克的比薩師傅所寫的小說《一段愛情故事的彌留時刻》。瘋狂著迷於書稿中文字的達芬妮，決定前往拜訪亨利的遺孀，請求她答應出版這本曠世鉅作。果不其然，小說上市後立刻掀起一股熱潮，但隨即也遭到書評人胡許的質疑，他不相信比薩師傅能寫出如此令人驚艷的作品，於是他決定與亨利的女兒喬瑟芬聯手展開調查，希望能找出關於這本書的秘密……。",
+          "filmTime": "101",
+          "updateDate": "2019-06-03",
+          "inTheaterDate": "2019-05-24",
+          "outTheaterDate": "2019-06-05",
+          "schedule": [
+            "2019-06-03 15:25",
+            "2019-06-03 21:20",
+            "2019-06-04 15:00",
+            "2019-06-05 16:55"
+          ],
+          "filmStar": []
+        },
+        {
+          "id": "m1559534438201",
+          "title": "爺爺與喵",
+          "titleEn": "The Island of Cats",
+          "movie_rating": "普遍級 0+",
+          "imgSrc": "5c37fea7-a3aa-4911-92d8-972f762bc9eb.jpg",
+          "type": [
+            "戲劇片"
+          ],
+          "director": "岩合光昭",
+          "language": "日語",
+          "intro": "人氣圖文作家貓蒔療癒系漫畫作品《爺爺與小玉喵》改編。\n《岩合光昭的貓步走世界》知名動物攝影師岩合光昭執導。 ",
+          "fullIntro": "退休校長大吉爺爺在老伴先一步離開人世後，和貓咪小玉一人一貓相依為命，天氣冷的時候就一起窩在暖爐旁取暖、吃飯時間一起開心吃著生魚片，只要有小玉在，就一點也不會感到寂寞。因為思念起老伴作的豌豆炊飯，大吉爺爺在小玉喵的幫(搗)助(蛋)之下，大吉靠著老伴親筆寫的一本食譜完成了這道料理。在咖啡廳女主人的鼓勵之下，大吉爺爺開始一頁一頁地親筆填滿這本食譜。可是，身體向來硬朗的爺爺卻不敵病魔來襲，突然倒下了……。",
+          "filmTime": "103",
+          "updateDate": "2019-06-03",
+          "inTheaterDate": "2019-06-06",
+          "outTheaterDate": "2019-06-15",
+          "schedule": [
+            "2019-06-06 18:45"
+          ],
+          "filmStar": []
+        }
+      ],
       "cinemaStar": [
         {
           "starId": "m22222",
@@ -2825,7 +3074,7 @@
       "cinemaAwesome": [
         "234"
       ],
-      "cinemaPageViews": "572",
+      "cinemaPageViews": 574,
       "cinemaSignUpDate": "1955-03-12",
       "purview": "cinemaMember",
       "cinemaMessage": [
@@ -3001,7 +3250,7 @@
       "cinemaAwesome": [
         "234"
       ],
-      "cinemaPageViews": 573,
+      "cinemaPageViews": 574,
       "cinemaSignUpDate": "1955-03-12",
       "purview": "cinemaMember",
       "cinemaMessage": [
@@ -3082,6 +3331,82 @@
       "cinemaFilm": [],
       "cinemaActivity": [],
       "cinemaType": "restaurant"
+    },
+    {
+      "id": "c1559536645628",
+      "cinemaName": "府中15紀錄片放映院",
+      "cinemaCity": "新北市",
+      "cinemaArea": "板橋區",
+      "cinemaLogoImg": "0e938a85-a6c7-4f13-824b-231d01a6e562.jpg",
+      "cinemaImg": [
+        "21444259-d6da-4726-a1c7-c58764482985.jpg"
+      ],
+      "cinemaHeroImg": "f363d566-0c2f-4ebc-8c2e-fe87a4d90cab.jpg",
+      "cinemaAccount": "fuzhong15",
+      "cinemaPassword": "222222",
+      "cinemaStar": [],
+      "cinemaAddress": "新北市板橋區府中路15號B1",
+      "cinemaPhone": "02-2965-7186",
+      "cinemaTaxid": "23322222",
+      "cinemaWeb": "http://web.fuzhong15.ntpc.gov.tw/films/contact.aspx",
+      "cinemaEmail": "fuzhong15.films@gmail.com",
+      "cinemaBackupEmail": "",
+      "cinemaAwesome": [],
+      "cinemaPageViews": 4,
+      "cinemaSignUpDate": "2019-06-03",
+      "purview": "cinemaMember",
+      "cinemaIntro": "　　 為了培養紀錄片觀影人口、建立紀錄片工作者發表平台，新北市政府於100年12月3日啟用全國第一個以紀錄片為主題放映的場地—「『府中15』新北市紀錄片放映院」。除了作為優質紀錄片定點放映、舉辦名人講座之地點外，並結合府中商圈，打造市民休閒及觀賞藝術電影的藝文特區。　",
+      "cinemaMessage": [],
+      "cinemaFilm": [
+        {
+          "id": "m1559537083753",
+          "title": "銀翼殺手 2049",
+          "titleEn": "Blade Runner 2049",
+          "movie_rating": "輔導級 12+",
+          "imgSrc": "f532f9e3-be42-44e8-8784-c3c22838ab0b.jpg",
+          "type": [
+            "動作片",
+            "科幻片"
+          ],
+          "director": "丹尼維勒納夫",
+          "language": "英語",
+          "intro": "2018芝加哥影評人協會最佳藝術指導、最佳攝影\n2018BAFTA英國電影學院獎最佳攝影、視覺效果\n2018奧斯卡金像獎最佳攝影、視覺效果",
+          "fullIntro": "2049年時，仿生人奴隸已成為文明躍進過程的關鍵，儘管掌權者試圖築起高牆以區分人種，但人造人與真實人類的界線卻越趨模糊、真假難分，引發正反兩面的一連串影響。銀翼殺手K，為阻止現況演變成不可挽救的局面，因此踏上尋找掌握重要線索的關鍵人物。",
+          "filmTime": "164",
+          "updateDate": "2019-06-03",
+          "inTheaterDate": "2019-06-30",
+          "outTheaterDate": "2019-07-01",
+          "schedule": [
+            "2019-06-30 16:40"
+          ],
+          "filmStar": []
+        },
+        {
+          "id": "m1559537281279",
+          "title": "我要活下去",
+          "titleEn": "6 Below：Miracle on the Mountain",
+          "movie_rating": "輔導級 12+",
+          "imgSrc": "6412953e-9b47-497b-a284-f4e78619a857.jpg",
+          "type": [
+            "戲劇片",
+            "紀錄片"
+          ],
+          "director": "史考特沃爾",
+          "language": "英語",
+          "intro": "★ 繼《127小時》後，又一撼動人心的「奇蹟生還」真人真事改編！\n★ 冰天雪地，糧盡援絕，前奧運選手必須在死亡邊緣挑戰生存極限！",
+          "fullIntro": "他不放棄希望，因為家人還在等他\n前奧運選手艾瑞克（喬許哈奈特飾演），某日上山滑雪時，遭遇一場突如其來的暴風雪，讓他受困在無邊無際的冰雪之中。在寒冷的雪山裡，他找不到救援，並被低溫症、飢餓、狼群、凍傷、脫水、戒斷症狀與幻覺輪番折磨。除了生理瀕臨崩潰極限，他的內心也正經歷一場生死較量。因為毒品的戒斷症狀，使得幻覺在他腦海中不斷翻騰，也讓他在這遺世獨立的雪山之中，被迫開始審視自己的一生。他意識到自己必須戰勝心魔，否則就將迎來死亡。在這個毫無生還希望的雪山裡，他竟奇蹟似地存活八天，就在他的身體與意志瀕臨崩解邊緣時，他焦急的母親（蜜拉索維諾飾演）也不放棄地懇求搜救隊出動救援。然而被搜救隊發現的前提是，艾瑞克必須克服艱難考驗，爬上頂峰，才有獲救的可能… 。",
+          "filmTime": "98",
+          "updateDate": "2019-06-03",
+          "inTheaterDate": "2019-06-01",
+          "outTheaterDate": "2019-06-08",
+          "schedule": [
+            "2019-06-01 14:00"
+          ],
+          "filmStar": []
+        }
+      ],
+      "cinemaActivity": [],
+      "cinemaType": "theater"
     }
   ],
   "articleCardData": [
