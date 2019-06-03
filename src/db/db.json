@@ -2339,7 +2339,7 @@
         "7"
       ],
       "collectActivity": "m1559406546061a1559406546061a1558948500794",
-      "collectActivityJoin": "a1558948500794a1558948576759a1558948598530a1558948664395",
+      "collectActivityJoin": "a1558948500794a1558948576759a1558948598530a1558948664395a1559406546061",
       "collectForum": [],
       "markList": [
         {
@@ -2851,8 +2851,8 @@
         }
       ],
       "cinemaD3guessLook": 34,
-      "cinemaD3memberLook": 13,
-      "cinemaD3memberJoin": 8,
+      "cinemaD3memberLook": 14,
+      "cinemaD3memberJoin": 9,
       "cinemaD3memberCancel": 3
     },
     {
