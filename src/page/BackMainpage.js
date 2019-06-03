@@ -12,6 +12,7 @@ import ActivityTitle from '../component/activity/ActivityTitle/ActivityTitle'
 import MemberEditInfo from '../component/meberBack/MemberEditInfo'
 import MemberEditPwd from '../component/meberBack/MemberEditPwd'
 import MemberCollectTable from '../component/meberBack/MemberCollectTable'
+import MemberArticleTable from '../component/article/articleBack/MemberArticleTable'
 import MemberCollectTableForForum from '../component/meberBack/MemberCollectTableForForum'
 import CheckboxMultiForFavTypeReadSu from '../component/inputs/CheckboxMultiForFavTypeReadSu'
 import CinemaEditInfo from '../component/cinemaBack/CinemaEditInfo'
@@ -1100,10 +1101,11 @@ class BackSidenav extends React.Component {
 
               {pagename === 'collect-article' ? (
                 <>
+                  {/* ＝＝＝＝＝＝＝＝＝＝＝＝文章表格套餐＝＝＝＝＝＝＝＝＝ */}
                   <ActivityTitle title={'收藏文章'} className="content-title" />
                   {this.state.thisCollectArticleData.length != 0 ? (
                     <div className=" d-flex flex-wrap col-lg-12 my-5">
-                      <MemberCollectTable
+                      <MemberArticleTable
                         thisData={this.state.thisMemberData}
                         thisCollectArticleData={
                           this.state.thisCollectArticleData
