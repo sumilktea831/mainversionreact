@@ -1100,12 +1100,16 @@ class BackSidenav extends React.Component {
 
               {pagename === 'collect-article' ? (
                 <>
-                  <TitleKaga title="收藏文章" />
+                  <ActivityTitle title={'收藏文章'} className="content-title" />
                   {this.state.thisCollectArticleData.length != 0 ? (
-                    <MemberCollectTable
-                      thisData={this.state.thisMemberData}
-                      thisCollectArticleData={this.state.thisCollectArticleData}
-                    />
+                    <div className=" d-flex flex-wrap col-lg-12 my-5">
+                      <MemberCollectTable
+                        thisData={this.state.thisMemberData}
+                        thisCollectArticleData={
+                          this.state.thisCollectArticleData
+                        }
+                      />
+                    </div>
                   ) : (
                     <div
                       className="d-flex align-items-center justify-content-center"
