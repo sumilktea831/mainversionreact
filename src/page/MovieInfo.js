@@ -229,7 +229,7 @@ class MovieInfo extends React.Component {
                 cardContent8={this.state.score}
               />
               <MovieTitle
-                title={'Todo fetch ？資料有問題 lat lng'}
+                title={'Todo fetch ？資料有問題 lat lng activity Delete'}
                 className="content-title"
               />
             </div>
