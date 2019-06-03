@@ -804,7 +804,7 @@ class BackSidenav extends React.Component {
     // console.log(prevState)
   }
 
-  handleCollect = async id => {
+  handleCollect = id => async () => {
     const memberId = sessionStorage.getItem('memberId')
     if (memberId !== null) {
       try {
@@ -856,6 +856,76 @@ class BackSidenav extends React.Component {
       }
     }
   }
+
+  handleMarkClick = async articleID => {
+    if (memberId) {
+      console.log(this.state.thisMemberData)
+      // var newMark = []
+      var newMark = [...this.state.thisMemberData.collectArticle]
+
+      newMark = newMark.filter(element => {
+        return element !== articleID
+      })
+
+      // 新的會員資訊 (更新收藏文章項目)
+      let newMemberData = {
+        id: this.state.thisMemberData.id,
+        name: this.state.thisMemberData.name,
+        nickname: this.state.thisMemberData.nickname,
+        gender: this.state.thisMemberData.gender,
+        mobile: this.state.thisMemberData.mobile,
+        birth: this.state.thisMemberData.birth,
+        email: this.state.thisMemberData.email,
+        pwd: this.state.thisMemberData.pwd,
+        avatar: this.state.thisMemberData.avatar,
+        city: this.state.thisMemberData.city,
+        address: this.state.thisMemberData.address,
+        fav_type: this.state.thisMemberData.fav_type,
+        career: this.state.thisMemberData.career,
+        join_date: this.state.thisMemberData.join_date,
+        permission: this.state.thisMemberData.permission,
+        collectFilm: this.state.thisMemberData.collectFilm,
+        collectMovie: this.state.thisMemberData.collectMovie,
+        collectCinema: this.state.thisMemberData.collectCinema,
+        collectArticle: newMark,
+        collectActivity: this.state.thisMemberData.collectActivity,
+        collectActivityJoin: this.state.thisMemberData.collectActivityJoin,
+        collectForum: this.state.thisMemberData.collectForum,
+        markList: this.state.thisMemberData.markList,
+      }
+
+      const data = newMemberData
+
+      try {
+        const res = await fetch(
+          'http://localhost:5555/member/' + this.state.thisMemberData.id,
+          {
+            method: 'PUT',
+            body: JSON.stringify(data), //新的會員收藏資料
+            headers: new Headers({
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+            }),
+          }
+        )
+        const newMarkData = await res.json()
+        this.setState({ thisMemberData: newMarkData })
+        const newMarkA = newMarkData.collectArticle
+        console.log(newMarkData)
+        console.log('Aid:')
+        console.log(newMarkA)
+        // fetch新資料後的判斷渲染套餐(收藏)
+        // const MarkYN
+
+        // this.shouldComponentUpdate()
+      } catch (err) {
+        console.log(err)
+      }
+    } else {
+      alert('please login')
+    }
+  }
+
   render() {
     if (!sessionStorage.getItem('memberId')) {
       // alert('回到登入頁')
@@ -1110,6 +1180,7 @@ class BackSidenav extends React.Component {
                         thisCollectArticleData={
                           this.state.thisCollectArticleData
                         }
+                        handleMarkClick={this.handleMarkClick}
                       />
                     </div>
                   ) : (
