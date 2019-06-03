@@ -82,7 +82,11 @@ class ActivityD3root extends React.Component {
                 }}
               />
               <span style={{ fontSize: '24px' }}>
-                訪客觀看人次：{this.state.totalCountData[3].value}
+                訪客觀看人次：
+                {`${this.state.totalCountData[3].value}
+                   人，約( 
+                  ${Math.round(this.state.totalPercentData[3].value * 100)} 
+                  % )`}
               </span>
             </div>
             <div className="wrapper mb-5">
@@ -96,7 +100,11 @@ class ActivityD3root extends React.Component {
                 }}
               />
               <span style={{ fontSize: '24px' }}>
-                會員觀看人次：{this.state.totalCountData[2].value}
+                會員觀看人次：
+                {`${this.state.totalCountData[2].value}
+                   人，約( 
+                  ${Math.round(this.state.totalPercentData[2].value * 100)} 
+                  % )`}
               </span>
             </div>
             <div className="wrapper mb-5">
@@ -110,7 +118,11 @@ class ActivityD3root extends React.Component {
                 }}
               />
               <span style={{ fontSize: '24px' }}>
-                會員報名人次：{this.state.totalCountData[1].value}
+                會員報名人次：
+                {`${this.state.totalCountData[1].value}
+                   人，約( 
+                  ${Math.round(this.state.totalPercentData[1].value * 100)} 
+                  % )`}
               </span>
             </div>
             <div className="wrapper mb-5">
@@ -124,7 +136,11 @@ class ActivityD3root extends React.Component {
                 }}
               />
               <span style={{ fontSize: '24px' }}>
-                報名取消人次：{this.state.totalCountData[0].value}
+                報名取消人次：
+                {`${this.state.totalCountData[0].value}
+                   人，約( 
+                  ${Math.round(this.state.totalPercentData[0].value * 100)} 
+                  % )`}
               </span>
             </div>
           </div>
