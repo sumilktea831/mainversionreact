@@ -941,22 +941,29 @@ class BackSidenav extends React.Component {
             .split(id)
             .toString()
             .replace(/,/g, '')
-
-          console.log('this: ' + JSON.stringify(memberData))
+          fetch(
+            'http://localhost:5555/member/' +
+              sessionStorage.getItem('memberId'),
+            {
+              method: 'PUT',
+              body: JSON.stringify(memberData),
+              headers: new Headers({
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+              }),
+            }
+          )
+            .then(res => res.json())
+            .then(res => {
+              Swal.fire({
+                type: 'success',
+                title: '<span style="color:#d4d1cc">已取消報名</span>',
+                showConfirmButton: false,
+                buttonsStyling: false,
+                background: '#242b34',
+              })
+            })
         })
-      // fetch(
-      //   'http://localhost:5555/member/' + sessionStorage.getItem('memberId'),
-      //   {
-      //     method: 'PUT',
-      //     body: JSON.stringify(data),
-      //     headers: new Headers({
-      //       Accept: 'application/json',
-      //       'Content-Type': 'application/json',
-      //     }),
-      //   }
-      // )
-      //   .then(res => res.json())
-      //   .then(res => {})
     } catch (err) {
       console.log(err)
     }
