@@ -959,13 +959,34 @@ class BackSidenav extends React.Component {
     }).then(result => {
       if (result.value) {
         try {
+          fetch('http://localhost:5555/activityCardData/' + id)
+            .then(res => res.json())
+            .then(res => {
+              const data = JSON.parse(JSON.stringify(res))
+              const theaterId = JSON.parse(JSON.stringify(data.theaterId))
+              fetch('http://localhost:5555/cinema/' + theaterId)
+                .then(res => res.json())
+                .then(res => {
+                  const data = JSON.parse(JSON.stringify(res))
+                  data.cinemaD3memberCancel += 1
+                  fetch('http://localhost:5555/cinema/' + theaterId, {
+                    method: 'PUT',
+                    body: JSON.stringify(data),
+                    headers: new Headers({
+                      Accept: 'application/json',
+                      'Content-Type': 'application/json',
+                    }),
+                  })
+                    .then(res => res.json)
+                    .then(res => {})
+                })
+            })
           let memberData = []
           fetch(
             'http://localhost:5555/member/' + sessionStorage.getItem('memberId')
           )
             .then(res => res.json())
             .then(data => {
-              console.log('ID: ' + id)
               memberData = JSON.parse(JSON.stringify(data))
 
               memberData.collectActivityJoin = memberData.collectActivityJoin
