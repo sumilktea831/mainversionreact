@@ -978,48 +978,51 @@ class BackSidenav extends React.Component {
                     }),
                   })
                     .then(res => res.json)
-                    .then(res => {})
-                })
-            })
-          let memberData = []
-          fetch(
-            'http://localhost:5555/member/' + sessionStorage.getItem('memberId')
-          )
-            .then(res => res.json())
-            .then(data => {
-              memberData = JSON.parse(JSON.stringify(data))
+                    .then(res => {
+                      let memberData = []
+                      fetch(
+                        'http://localhost:5555/member/' +
+                          sessionStorage.getItem('memberId')
+                      )
+                        .then(res => res.json())
+                        .then(data => {
+                          memberData = JSON.parse(JSON.stringify(data))
 
-              memberData.collectActivityJoin = memberData.collectActivityJoin
-                .split(id)
-                .toString()
-                .replace(/,/g, '')
-              fetch(
-                'http://localhost:5555/member/' +
-                  sessionStorage.getItem('memberId'),
-                {
-                  method: 'PUT',
-                  body: JSON.stringify(memberData),
-                  headers: new Headers({
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                  }),
-                }
-              )
-                .then(res => res.json())
-                .then(res => {
-                  Swal.fire({
-                    type: 'success',
-                    title: '<span style="color:#d4d1cc">已取消報名</span>',
-                    showConfirmButton: false,
-                    buttonsStyling: false,
-                    background: '#242b34',
-                  })
-                  setTimeout(
-                    () =>
-                      (window.location.pathname =
-                        '/BackMainpage/activityMemberSignUp'),
-                    3000
-                  )
+                          memberData.collectActivityJoin = memberData.collectActivityJoin
+                            .split(id)
+                            .toString()
+                            .replace(/,/g, '')
+                          fetch(
+                            'http://localhost:5555/member/' +
+                              sessionStorage.getItem('memberId'),
+                            {
+                              method: 'PUT',
+                              body: JSON.stringify(memberData),
+                              headers: new Headers({
+                                Accept: 'application/json',
+                                'Content-Type': 'application/json',
+                              }),
+                            }
+                          )
+                            .then(res => res.json())
+                            .then(res => {
+                              Swal.fire({
+                                type: 'success',
+                                title:
+                                  '<span style="color:#d4d1cc">已取消報名</span>',
+                                showConfirmButton: false,
+                                buttonsStyling: false,
+                                background: '#242b34',
+                              })
+                              setTimeout(
+                                () =>
+                                  (window.location.pathname =
+                                    '/BackMainpage/activityMemberSignUp'),
+                                3000
+                              )
+                            })
+                        })
+                    })
                 })
             })
         } catch (err) {
