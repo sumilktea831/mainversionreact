@@ -60,6 +60,7 @@ class BackSidenav extends React.Component {
       activityMemberJoin: [],
       collectActivity: '',
     }
+    this.handleMarkClick = this.handleMarkClick.bind(this)
   }
 
   async componentDidMount() {
@@ -858,6 +859,7 @@ class BackSidenav extends React.Component {
     }
   }
 
+  // ＝＝＝＝＝＝＝＝＝刪除文章收藏套餐＝＝＝＝＝＝＝＝＝＝
   handleMarkClick = articleID => async () => {
     if (memberId) {
       console.log(this.state.thisMemberData)
@@ -910,7 +912,11 @@ class BackSidenav extends React.Component {
           }
         )
         const newMarkData = await res.json()
-        this.setState({ thisMemberData: newMarkData })
+
+        const newArticle = await this.state.thisCollectArticleData.filter(
+          item => item.id !== articleID
+        )
+        await this.setState({ thisCollectArticleData: newArticle })
         const newMarkA = newMarkData.collectArticle
         console.log(newMarkData)
         console.log('Aid:')
@@ -918,7 +924,16 @@ class BackSidenav extends React.Component {
         // fetch新資料後的判斷渲染套餐(收藏)
         // const MarkYN
 
-        this.shouldComponentUpdate()
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'center',
+          showConfirmButton: false,
+          timer: 2000,
+        })
+        Toast.fire({
+          type: 'success',
+          title: '移除成功!!',
+        })
       } catch (err) {
         console.log(err)
       }
