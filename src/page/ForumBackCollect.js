@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
-import ForumBackPageButton from '../component/Forum/ForumBackMainPage/ForumBackPageButton'
-class ForumBackMainpage extends React.Component {
+import ForumBackPageButton from '../component/Forum/ForumBackMainPage/ForumBackPageColloect'
+class ForumBackCollect extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -25,11 +25,15 @@ class ForumBackMainpage extends React.Component {
         }),
       })
       const data = await res.json()
+      // 將陣列中INDEXIF濾掉所有沒有跟登入SESSION者相同的資料
       const PostRecord = data.filter(
-        item => item.forumNameId === sessionStorage.getItem('memberId')
+        item =>
+          item.forumCollectMember.indexOf(
+            sessionStorage.getItem('memberId')
+          ) !== -1
       )
 
-      // console.log(data)
+      console.log(PostRecord)
       // console.log(PostRecord)
       this.setState({
         myPostRecord: PostRecord,
@@ -213,15 +217,6 @@ class ForumBackMainpage extends React.Component {
                       標題
                     </th>
                     <th scope="col" style={thStyle}>
-                      發文日期
-                    </th>
-                    <th scope="col" style={thStyle}>
-                      留言數
-                    </th>
-                    <th scope="col" style={thStyle}>
-                      被蒐藏數
-                    </th>
-                    <th scope="col" style={thStyle}>
                       前往文章
                     </th>
                   </tr>
@@ -235,16 +230,6 @@ class ForumBackMainpage extends React.Component {
                       <td className="" style={tdStyle}>
                         {e.headline}
                       </td>
-                      <td className="" style={tdStyle}>
-                        {e.forumCreateDate}
-                      </td>
-                      <td className="" style={tdStyle}>
-                        {e.forumCommentCount}
-                      </td>
-                      <td className="" style={tdStyle}>
-                        {e.forumViews}
-                      </td>
-
                       <td className="" style={tdStyle}>
                         <div className="m-0 p-0 d-flex justify-content-center">
                           <Link
@@ -292,4 +277,4 @@ class ForumBackMainpage extends React.Component {
   }
 }
 
-export default ForumBackMainpage
+export default ForumBackCollect
