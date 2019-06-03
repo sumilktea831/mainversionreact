@@ -13,8 +13,8 @@ class ActivityD3 extends Component {
       .arc()
       .innerRadius(props.innerRadius)
       .outerRadius(props.outerRadius)
-    this.colors = d3.scaleOrdinal(d3.schemeCategory10)
-    this.format = d3.format('.2f')
+    this.colors = d3.scaleOrdinal(d3.schemeBlues[9])
+    this.format = d3.format('5d')
   }
   componentDidMount() {
     const svg = d3.select(this.ref.current)
@@ -49,7 +49,11 @@ class ActivityD3 extends Component {
       .attr('alignment-baseline', 'middle')
       .attr('transform', d => `translate(${this.createArc.centroid(d)})`)
       .style('fill', 'white')
-      .style('font-size', 10)
+      .style('font-size', 24)
+      .style(
+        'text-shadow',
+        '-2px 0 black, 0 2px black, 2px 0 black, 0 -2px black'
+      )
       .text(d => this.format(d.value))
   }
 

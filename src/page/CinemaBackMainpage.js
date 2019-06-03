@@ -892,7 +892,6 @@ class CinemaBackMainpage extends React.Component {
               {pagename === 'cinema-activity-analysis' ? (
                 <>
                   <ActivityD3 />
-                  <div id="d3" />
                 </>
               ) : (
                 ''

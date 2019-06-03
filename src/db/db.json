@@ -2836,7 +2836,11 @@
           "boo": [],
           "imgLocation": "cinemaImg"
         }
-      ]
+      ],
+      "cinemaD3guessLook": 289,
+      "cinemaD3memberLook": 121,
+      "cinemaD3memberJoin": 1,
+      "cinemaD3memberCancel": 0
     },
     {
       "id": "c1559487285640",
