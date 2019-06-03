@@ -2172,6 +2172,31 @@
       "collectActivityJoin": "",
       "collectForum": [],
       "markList": []
+    },
+    {
+      "id": "m1559534499004",
+      "name": "",
+      "nickname": "四十四隻石獅子",
+      "gender": "",
+      "mobile": "",
+      "birth": "",
+      "email": "p4@pp.com",
+      "pwd": "111111",
+      "avatar": "movieStar.jpg",
+      "city": "",
+      "address": "",
+      "fav_type": [],
+      "career": "",
+      "join_date": "2019-06-03",
+      "permission": "generalMember",
+      "collectFilm": [],
+      "collectMovie": "",
+      "collectCinema": [],
+      "collectArticle": [],
+      "collectActivity": "",
+      "collectActivityJoin": "",
+      "collectForum": [],
+      "markList": []
     }
   ],
   "cinema": [

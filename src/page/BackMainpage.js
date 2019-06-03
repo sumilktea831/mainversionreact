@@ -17,6 +17,7 @@ import CheckboxMultiForFavTypeReadSu from '../component/inputs/CheckboxMultiForF
 import CinemaEditInfo from '../component/cinemaBack/CinemaEditInfo'
 import ForumBackArticle from './ForumBackArticle'
 import ForumBackComment from './ForumBackComment'
+// import ForumBackCollect from './ForumBackCollect'
 //Import SweetAlert2
 import Swal from 'sweetalert2'
 const Toast = Swal.mixin({
@@ -954,7 +955,7 @@ class BackSidenav extends React.Component {
                       style={{ height: '300px', width: '100%' }}
                     >
                       <h5 className="">
-                        尚無收藏紀錄，趕快
+                        尚無紀錄，趕快
                         <a style={{ color: '#ffa510' }} href="/movie">
                           前往影片
                         </a>
@@ -962,15 +963,32 @@ class BackSidenav extends React.Component {
                       </h5>
                     </div>
                   )}
-
                   <div className="py-5" />
                   <TitleKaga title="收藏文章" />
-                  <div className=" d-flex flex-wrap col-lg-12 my-5">
-                    <MemberCollectTable
-                      thisData={this.state.thisMemberData}
-                      thisCollectArticleData={this.state.thisCollectArticleData}
-                    />
-                  </div>
+                  {this.state.thisCollectArticleData.length != 0 ? (
+                    <div className=" d-flex flex-wrap col-lg-12 my-5">
+                      <MemberCollectTable
+                        thisData={this.state.thisMemberData}
+                        thisCollectArticleData={
+                          this.state.thisCollectArticleData
+                        }
+                      />
+                    </div>
+                  ) : (
+                    <div
+                      className="d-flex align-items-center justify-content-center"
+                      style={{ height: '300px', width: '100%' }}
+                    >
+                      <h5 className="">
+                        尚無紀錄，趕快
+                        <a style={{ color: '#ffa510' }} href="/movie">
+                          前往文章
+                        </a>
+                        添加你的收藏吧！
+                      </h5>
+                    </div>
+                  )}
+
                   <div className="py-5" />
                   <TitleKaga title="發文紀錄" />
                   <div className=" d-flex flex-wrap col-lg-12 my-5">
@@ -1059,18 +1077,22 @@ class BackSidenav extends React.Component {
                     </div>
                   </>
                 ) : (
-                  <div
-                    className="d-flex align-items-center justify-content-center"
-                    style={{ height: '300px', width: '100%' }}
-                  >
-                    <h5 className="ml-4">
-                      尚無收藏紀錄，趕快
-                      <a style={{ color: '#ffa510' }} href="/movie">
-                        前往影片
-                      </a>
-                      收藏影片吧！
-                    </h5>
-                  </div>
+                  <>
+                    <TitleKaga title="收藏影片" />
+
+                    <div
+                      className="d-flex align-items-center justify-content-center"
+                      style={{ height: '300px', width: '100%' }}
+                    >
+                      <h5 className="ml-4">
+                        尚無收藏紀錄，趕快
+                        <a style={{ color: '#ffa510' }} href="/movie">
+                          前往電影
+                        </a>
+                        收藏影片吧！
+                      </h5>
+                    </div>
+                  </>
                 )
               ) : (
                 ''
@@ -1079,24 +1101,28 @@ class BackSidenav extends React.Component {
               {pagename === 'collect-article' ? (
                 <>
                   <TitleKaga title="收藏文章" />
-                  <MemberCollectTable
-                    thisData={this.state.thisMemberData}
-                    thisCollectArticleData={this.state.thisCollectArticleData}
-                  />
+                  {this.state.thisCollectArticleData.length != 0 ? (
+                    <MemberCollectTable
+                      thisData={this.state.thisMemberData}
+                      thisCollectArticleData={this.state.thisCollectArticleData}
+                    />
+                  ) : (
+                    <div
+                      className="d-flex align-items-center justify-content-center"
+                      style={{ height: '300px', width: '100%' }}
+                    >
+                      <h5 className="ml-4">
+                        尚無紀錄，趕快
+                        <a style={{ color: '#ffa510' }} href="/cinema">
+                          前往文章
+                        </a>
+                        添加你的收藏吧！
+                      </h5>
+                    </div>
+                  )}
                 </>
               ) : (
-                <div
-                  className="d-flex align-items-center justify-content-center"
-                  style={{ height: '300px', width: '100%' }}
-                >
-                  <h5 className="ml-4">
-                    尚無收藏紀錄，趕快
-                    <a style={{ color: '#ffa510' }} href="/cinema">
-                      前往戲院
-                    </a>
-                    收藏戲院吧！
-                  </h5>
-                </div>
+                ''
               )}
               {pagename === 'collect-cinema' ? (
                 this.state.filmCollecCard.length !== 0 ? (
@@ -1125,18 +1151,22 @@ class BackSidenav extends React.Component {
                     </div>
                   </>
                 ) : (
-                  <div
-                    className="d-flex align-items-center justify-content-center"
-                    style={{ height: '300px', width: '100%' }}
-                  >
-                    <h5 className="ml-4">
-                      尚無收藏紀錄，趕快
-                      <a style={{ color: '#ffa510' }} href="/cinema">
-                        前往戲院
-                      </a>
-                      收藏戲院吧！
-                    </h5>
-                  </div>
+                  <>
+                    <TitleKaga title="收藏戲院" />
+
+                    <div
+                      className="d-flex align-items-center justify-content-center"
+                      style={{ height: '300px', width: '100%' }}
+                    >
+                      <h5 className="ml-4">
+                        尚無收藏紀錄，趕快
+                        <a style={{ color: '#ffa510' }} href="/cinema">
+                          前往戲院
+                        </a>
+                        收藏戲院吧！
+                      </h5>
+                    </div>
+                  </>
                 )
               ) : (
                 ''
@@ -1304,6 +1334,21 @@ class BackSidenav extends React.Component {
               ) : (
                 ''
               )}
+              {/* {pagename == 'myCollect' ? (
+                <>
+                  <div className="row">
+                    <div className="col-md-12 p-0">
+                      <ActivityTitle
+                        title={'收藏紀錄'}
+                        className="content-title"
+                      />
+                    </div>
+                    <ForumBackCollect />
+                  </div>
+                </>
+              ) : (
+                ''
+              )} */}
             </div>
           </Row>
         </>
