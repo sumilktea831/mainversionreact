@@ -856,7 +856,8 @@
           "star": 5
         }
       ],
-      "theater": "碼農Cafe"
+      "theater": "碼農Cafe",
+      "cinemaId": "c001"
     }
   ],
   "cinema-sign-inputmsg": [

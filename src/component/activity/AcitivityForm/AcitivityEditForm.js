@@ -275,14 +275,20 @@ class AcitivityEditForm extends React.Component {
       background: '#242b34',
     }).then(result => {
       if (result.value) {
-        Swal.fire({
-          type: 'success',
-          title: '<span style="color:#d4d1cc">此筆資料已刪除</span>',
-          showConfirmButton: false,
-          buttonsStyling: false,
-          background: '#242b34',
+        const actiivtyId = window.location.pathname.slice(47)
+        fetch('http://localhost:5555/activityCardData/' + actiivtyId, {
+          method: 'DELETE',
         })
-        let find = 9527
+          .then(res => res.json)
+          .then(res =>
+            Swal.fire({
+              type: 'success',
+              title: '<span style="color:#d4d1cc">此筆資料已刪除</span>',
+              showConfirmButton: false,
+              buttonsStyling: false,
+              background: '#242b34',
+            })
+          )
       } else {
         Swal.fire({
           type: 'warning',
