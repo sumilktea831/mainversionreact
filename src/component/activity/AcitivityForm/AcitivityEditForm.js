@@ -294,7 +294,7 @@ class AcitivityEditForm extends React.Component {
         )
           .then(res => res.json())
           .then(res => {
-            const data = JSON.parse(JSON.stringify())
+            const data = JSON.parse(JSON.stringify(res))
             data.id = data.id.filter(
               item => item.id != window.location.pathname.slice(47)
             )
