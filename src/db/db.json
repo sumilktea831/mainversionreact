@@ -1494,17 +1494,6 @@
         }
       ],
       "isclicked": false
-    },
-    {
-      "id": "member-recommend",
-      "title": "推薦影片",
-      "options": [
-        {
-          "id": "my-recommend-film",
-          "name": "推薦片單"
-        }
-      ],
-      "isclicked": false
     }
   ],
   "cinemaBackSidenav": [
