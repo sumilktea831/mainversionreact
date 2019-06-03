@@ -98,10 +98,7 @@ class ViewPage extends React.Component {
                   </div>
                   {/* 我是眼睛 views <O> */}
                   <div className="ml-3">
-                    <FaEye
-                      className="mb-1 mr-1"
-                      onClick={() => this.props.handleClick(1)}
-                    />
+                    <FaEye className="mb-1 mr-1" />
                     {this.props.viewCounter}
                   </div>
                   {/* 我是分享 */}
