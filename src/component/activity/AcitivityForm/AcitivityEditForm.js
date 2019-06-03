@@ -259,6 +259,41 @@ class AcitivityEditForm extends React.Component {
       })
     }
   }
+  deleteFile = () => {
+    Swal.fire({
+      type: 'error',
+      title: '<span style="color:#d4d1cc">請問要刪除這筆活動嗎？</span>',
+      showConfirmButton: true,
+      showCancelButton: true,
+      confirmButtonClass: 'btn btn-warning mr-5',
+      confirmButtonColor: '#ffa510',
+      confirmButtonText: '是的，我要刪除。',
+      cancelButtonClass: 'btn btn-warning mr-5',
+      cancelButtonColor: '#ffa510',
+      cancelButtonText: '沒有，我再考慮。',
+      buttonsStyling: false,
+      background: '#242b34',
+    }).then(result => {
+      if (result.value) {
+        Swal.fire({
+          type: 'success',
+          title: '<span style="color:#d4d1cc">此筆資料已刪除</span>',
+          showConfirmButton: false,
+          buttonsStyling: false,
+          background: '#242b34',
+        })
+        let find = 9527
+      } else {
+        Swal.fire({
+          type: 'warning',
+          title: '<span style="color:#d4d1cc">沒有刪除這筆資料</span>',
+          showConfirmButton: false,
+          buttonsStyling: false,
+          background: '#242b34',
+        })
+      }
+    })
+  }
   render() {
     return (
       <>
@@ -481,9 +516,16 @@ class AcitivityEditForm extends React.Component {
               <button
                 type="button"
                 onClick={this.sendFile}
-                class="btn btn-warning mb-2"
+                class="btn btn-warning mr-5"
               >
                 修改活動
+              </button>
+              <button
+                type="button"
+                onClick={this.deleteFile}
+                class="btn btn-warning mr-5"
+              >
+                刪除活動
               </button>
             </div>
           </div>

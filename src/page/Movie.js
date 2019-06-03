@@ -5,6 +5,7 @@ import MovieSearchbarTitle from '../component/movie/MovieSearchbar/MovieSearchba
 import MovieSearchbarContent from '../component/movie/MovieSearchbar/MovieSearchbarContent'
 import MovieSearchbarInput from '../component/movie/MovieSearchbar/MovieSearchbarInput'
 import MovieCard from '../component/movie/MovieCard/MovieCard'
+import Swal from 'sweetalert2'
 
 class Movie extends React.Component {
   constructor() {
@@ -310,10 +311,26 @@ class Movie extends React.Component {
             .split(id)
             .toString()
             .replace(/,/g, '')
-          alert('已取消收藏')
+          // alert('已取消收藏')
+          Swal.fire({
+            // position: 'top-end',
+            type: 'success',
+            title: '<span style="color:#d4d1cc">已取消收藏</span>',
+            showConfirmButton: false,
+            buttonsStyling: false,
+            background: '#242b34',
+          })
         } else {
           data.collectMovie += id
-          alert('已加入收藏')
+          // alert('已加入收藏')
+          Swal.fire({
+            // position: 'top-end',
+            type: 'success',
+            title: '<span style="color:#d4d1cc">已加入收藏</span>',
+            showConfirmButton: false,
+            buttonsStyling: false,
+            background: '#242b34',
+          })
         }
         this.setState({ collectMovie: data.collectMovie })
         try {
