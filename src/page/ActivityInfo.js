@@ -200,21 +200,31 @@ class ActivityInfo extends React.Component {
           return false
         } else {
           try {
-            const data = this.state.activityPageData
-            fetch('http://localhost:5555/cinema/' + data.theaterId)
+            fetch(
+              'http://localhost:5555/cinema/' +
+                this.state.activityPageData.theaterId
+            )
               .then(res => res.json())
               .then(res => {
-                const data = JSON.parse(JSON.stringify(res))
-                data.cinemaD3memberJoin += 1
-
-                fetch('http://localhost:5555/cinema/' + data.theaterId, {
-                  method: 'PUT',
-                  body: JSON.stringify(data),
-                  headers: new Headers({
-                    Accept: 'application/json',
-                    'Content-Type': 'application/json',
-                  }),
-                })
+                const dataForD3 = JSON.parse(JSON.stringify(res))
+                dataForD3.cinemaD3memberJoin += 1
+                console.log(dataForD3)
+                fetch(
+                  'http://localhost:5555/cinema/' +
+                    this.state.activityPageData.theaterId,
+                  {
+                    method: 'PUT',
+                    body: JSON.stringify(dataForD3),
+                    headers: new Headers({
+                      Accept: 'application/json',
+                      'Content-Type': 'application/json',
+                    })
+                      .then(res => res.json())
+                      .then(res => {
+                        console.log(res)
+                      }),
+                  }
+                )
               })
           } catch (err) {
             console.log(err)
