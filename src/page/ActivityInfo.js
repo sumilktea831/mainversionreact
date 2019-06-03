@@ -208,7 +208,6 @@ class ActivityInfo extends React.Component {
               .then(res => {
                 const dataForD3 = JSON.parse(JSON.stringify(res))
                 dataForD3.cinemaD3memberJoin += 1
-                console.log(dataForD3)
                 fetch(
                   'http://localhost:5555/cinema/' +
                     this.state.activityPageData.theaterId,
@@ -218,12 +217,12 @@ class ActivityInfo extends React.Component {
                     headers: new Headers({
                       Accept: 'application/json',
                       'Content-Type': 'application/json',
-                    })
-                      .then(res => res.json())
-                      .then(res => {
-                        console.log(res)
-                      }),
+                    }),
                   }
+                    .then(res => res.json())
+                    .then(res => {
+                      console.log(res)
+                    })
                 )
               })
           } catch (err) {
