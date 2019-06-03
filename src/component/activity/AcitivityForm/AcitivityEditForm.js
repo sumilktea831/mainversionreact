@@ -290,14 +290,15 @@ class AcitivityEditForm extends React.Component {
             })
           )
         fetch(
-          'http://localhost:5555/cinema' + sessionStorage.getItem('cinemaId')
+          'http://localhost:5555/cinema/' + sessionStorage.getItem('cinemaId')
         )
           .then(res => res.json())
           .then(res => {
             const data = JSON.parse(JSON.stringify(res))
-            data.id = data.id.filter(
+            data.cinemaActivity = data.cinemaActivity.filter(
               item => item.id != window.location.pathname.slice(47)
             )
+
             fetch(
               'http://localhost:5555/cinema/' +
                 sessionStorage.getItem('cinemaId'),
