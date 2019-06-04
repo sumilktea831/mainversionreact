@@ -139,7 +139,7 @@ class App extends React.Component {
                   width={180}
                   style={{ verticalAlign: 'bottom' }}
                   className="mr-3"
-                /> */}
+                />  */}
               </Navbar.Brand>
             </LinkContainer>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
