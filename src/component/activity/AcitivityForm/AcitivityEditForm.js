@@ -317,7 +317,7 @@ class AcitivityEditForm extends React.Component {
                         () =>
                           (window.location.pathname =
                             'CinemaBackMainpage/cinema-activity-inprogress'),
-                        3000
+                        5000
                       )
                     })
                 })
