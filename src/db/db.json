@@ -2355,8 +2355,8 @@
         "6",
         "7"
       ],
-      "collectActivity": "m1559406546061a1559406546061a1558948500794",
-      "collectActivityJoin": "a1558948500794a1558948576759a1558948598530a1558948664395a1559406546061",
+      "collectActivity": "m1559406546061a1558948500794",
+      "collectActivityJoin": "a1558948500794a1558948576759a1558948598530a1558948664395",
       "collectForum": [],
       "markList": [
         {
@@ -2904,9 +2904,9 @@
         }
       ],
       "cinemaD3guessLook": 34,
-      "cinemaD3memberLook": 14,
-      "cinemaD3memberJoin": 9,
-      "cinemaD3memberCancel": 3
+      "cinemaD3memberLook": 15,
+      "cinemaD3memberJoin": 10,
+      "cinemaD3memberCancel": 5
     },
     {
       "id": "c1559487285640",
@@ -3823,7 +3823,8 @@
       "markId": [],
       "likeId": [],
       "viewCounter": 7
-    },{
+    },
+    {
       "id": "9",
       "title": "威尼斯影展完整得獎名單：吉勒摩戴托羅新片獲最佳影片",
       "author": "龍魚",
