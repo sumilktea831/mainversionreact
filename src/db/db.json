@@ -227,6 +227,23 @@
       "joinContent": "線上報名即可。",
       "joinContentCurrentPeople": "10",
       "place": "北部,影院"
+    },
+    {
+      "id": "a1559567024173",
+      "theater": "qweqwe",
+      "title": "活動標題",
+      "content": "56567123內容",
+      "imgSrc": "b6452914-a062-4a03-9952-9a599aa7df2b.jpg",
+      "theaterMap": "台北市信義區的",
+      "GUINumber": "33333333",
+      "website": "",
+      "email": "ee@ggg.com",
+      "phone": "02-2222-2222",
+      "lat": "25.0287024",
+      "lng": "121.5769572",
+      "joinContent": "213",
+      "joinContentCurrentPeople": "22",
+      "place": "北部,影院"
     }
   ],
   "movieCardData": [
@@ -1144,6 +1161,31 @@
       "filmStar": [],
       "theater": "光點台北",
       "cinemaId": "c1"
+    },
+    {
+      "id": "m1559565335542",
+      "title": "qwe",
+      "titleEn": "",
+      "movie_rating": "保護級 6+",
+      "imgSrc": "0e9b8118-560d-49de-acfb-14bdffb74dcb.jpg",
+      "type": "動畫片武俠片驚悚片",
+      "director": "",
+      "language": "華語",
+      "intro": "131231",
+      "fullIntro": "asdasdas",
+      "filmTime": "200",
+      "updateDate": "2019-06-03",
+      "inTheaterDate": "2019-06-01",
+      "outTheaterDate": "2019-06-02",
+      "schedule": [],
+      "filmStar": [
+        {
+          "starId": "m1559564640954",
+          "star": 3
+        }
+      ],
+      "theater": "qweqwe",
+      "cinemaId": "c1559565116835"
     }
   ],
   "cinema-sign-inputmsg": [
@@ -2431,6 +2473,42 @@
       "collectActivityJoin": "",
       "collectForum": [],
       "markList": []
+    },
+    {
+      "id": "m1559564640954",
+      "name": "",
+      "nickname": "test",
+      "gender": "male",
+      "mobile": "",
+      "birth": "1990-10-10",
+      "email": "test11@gg.com",
+      "pwd": "222222",
+      "avatar": "778ae60e-1b26-4622-b2af-d36e237caaf6.jpg",
+      "city": "",
+      "address": "",
+      "fav_type": [
+        "動作片",
+        "英雄片",
+        "武俠片"
+      ],
+      "career": "軍公教",
+      "join_date": "2019-06-03",
+      "permission": "generalMember",
+      "collectFilm": [
+        "m1559565335542"
+      ],
+      "collectMovie": "m1558948576759",
+      "collectCinema": [],
+      "collectArticle": [],
+      "collectActivity": "a1558948500794",
+      "collectActivityJoin": "",
+      "collectForum": [],
+      "markList": [
+        {
+          "markId": "m1559565335542",
+          "markcontent": "12412"
+        }
+      ]
     }
   ],
   "cinema": [
@@ -2635,7 +2713,7 @@
         "m22222",
         "m1558576972555"
       ],
-      "cinemaPageViews": 618,
+      "cinemaPageViews": 619,
       "cinemaSignUpDate": "1955-03-12",
       "purview": "cinemaMember",
       "cinemaIntro": "提供碼農們安心coding，享受咖啡和電影的休憩場所。",
@@ -3317,6 +3395,97 @@
       ],
       "cinemaActivity": [],
       "cinemaType": "theater"
+    },
+    {
+      "id": "c1559565116835",
+      "cinemaName": "qweqwe",
+      "cinemaCity": "台北市",
+      "cinemaArea": "22",
+      "cinemaLogoImg": "0d0a517e-368d-4dc1-91c0-8a6ccc6ecac9.jpg",
+      "cinemaImg": [
+        "e2082215-1a39-45ef-abec-34ddbf83050d.jpg",
+        "f482ca32-e998-4007-9333-3301186d67ec.jpg",
+        "555d1b17-752f-4adf-a413-650f400a23ea.jpg",
+        "c1a7b020-8d93-4317-ab19-5ce3618add7e.jpg",
+        "08fc847c-41d6-4e64-b503-aef2889cc7be.jpg"
+      ],
+      "cinemaHeroImg": "5fef7f2a-b2be-4139-8b89-29e6e574c3f2.jpg",
+      "cinemaAccount": "aaaaaa",
+      "cinemaPassword": "aaaaaa",
+      "cinemaStar": [],
+      "cinemaAddress": "台北市12344444",
+      "cinemaPhone": "02-2222-2222",
+      "cinemaTaxid": "33333333",
+      "cinemaWeb": "",
+      "cinemaEmail": "ee@ggg.com",
+      "cinemaBackupEmail": "",
+      "cinemaAwesome": [],
+      "cinemaPageViews": 12,
+      "cinemaSignUpDate": "2019-06-03",
+      "purview": "cinemaMember",
+      "cinemaIntro": "ajshdajsuqoweuqownlzsdjlj\nasdjaskdjao\n\nqeq",
+      "cinemaMessage": [
+        {
+          "id": 1559566397931,
+          "name": "test",
+          "img": "778ae60e-1b26-4622-b2af-d36e237caaf6.jpg",
+          "message": "t567576",
+          "time": 1559566397931,
+          "awesome": [],
+          "boo": [],
+          "imgLocation": "member"
+        },
+        {
+          "id": 1559566315649,
+          "name": "qweqwe",
+          "img": "0d0a517e-368d-4dc1-91c0-8a6ccc6ecac9.jpg",
+          "message": "rrrr",
+          "time": 1559566315649,
+          "awesome": [],
+          "boo": [],
+          "imgLocation": "cinemaImg"
+        }
+      ],
+      "cinemaFilm": [
+        {
+          "id": "m1559565335542",
+          "title": "qwe",
+          "titleEn": "",
+          "movie_rating": "保護級 6+",
+          "imgSrc": "0e9b8118-560d-49de-acfb-14bdffb74dcb.jpg",
+          "type": [
+            "動畫片",
+            "武俠片",
+            "驚悚片"
+          ],
+          "director": "",
+          "language": "華語",
+          "intro": "131231",
+          "fullIntro": "asdasdas",
+          "filmTime": "200",
+          "updateDate": "2019-06-03",
+          "inTheaterDate": "2019-06-01",
+          "outTheaterDate": "2019-06-02",
+          "schedule": [],
+          "filmStar": []
+        }
+      ],
+      "cinemaActivity": [
+        {
+          "id": "a1559567024173",
+          "title": "活動標題",
+          "content": "56567123內容",
+          "imgSrc": "b6452914-a062-4a03-9952-9a599aa7df2b.jpg",
+          "lat": "25.0287024",
+          "lng": "121.5769572",
+          "joinContent": "213",
+          "joinContentCurrentPeople": "22",
+          "place": "北部,影院",
+          "joinMember": "",
+          "theaterMap": "台北市信義區的"
+        }
+      ],
+      "cinemaType": "theater"
     }
   ],
   "articleCardData": [
@@ -3331,7 +3500,7 @@
       "link": "",
       "markId": [],
       "likeId": [],
-      "viewCounter": 7
+      "viewCounter": 8
     },
     {
       "id": "2",
@@ -3344,7 +3513,7 @@
       "link": "",
       "markId": [],
       "likeId": [],
-      "viewCounter": "2"
+      "viewCounter": 4
     },
     {
       "id": "3",
@@ -3405,13 +3574,51 @@
       "title": "海上鋼琴師：關於虛構中的真實、存在主義、有限與無限的抉擇",
       "author": "黑魔笛",
       "avatar": "",
-      "date": "2019-03-27",
+      "date": "2019-02-21",
       "content": "<p>「你知道的，任何一架鋼琴必然是八十八個琴鍵 ： 雖然琴鍵有限，你卻是無限的。在有限的琴鍵裡，存在無限的曲調；無限的琴鍵上，卻無法彈奏任何樂章。」</p>      <p>&nbsp;</p>      <p>《海上鋼琴師 The Legend of 1900》</p>      <p>&nbsp;</p>      <p>&nbsp;電影講述一名被丟棄在維吉尼亞號蒸汽客輪鋼琴上的孤兒，意外地被船上的燒煤工人丹尼發現，並將他取名為「丹尼布曼&middot;TD&middot;萊蒙&middot;1900」，視為親生骨肉般扶養。而後，在某個因緣際會之際，小1900展現了過人的鋼琴天分，並受到眾人肯定，從此不用再過著躲在船艙的生活，成為一名海上鋼琴師。</p>      <p>&nbsp;</p>      <p>隨著1900逐漸成長，他高超的琴藝亦是聲名遠播，並在維吉尼亞號的樂團裡認識了知心好友Max。然而，他卻從未踏上陸地過。</p>      <p>&nbsp;</p>      <p>《海》是大導演 Giuseppe Tornatore 於1998年上映的一部作品，配樂請來獲獎無數的義大利作曲家 Ennio Morricone 操刀，因此音樂本身即是電影的一大重點。</p>      <p>&nbsp;</p>      <p>此外，電影裡以交錯的時間軸來說故事，營造出一種「故事中有故事」的感受，但同時也讓人難以在第一次觀影時就完全掌握故事脈絡。</p>      <p>&nbsp;一件：一九零零與虛構中的真實面</p>      <p>「只要你有個好故事，就永遠不會被人遺忘。」</p>      <p>&nbsp;</p>      <p>《海上鋼琴師》的故事內容改編自義大利小說家 Alessandro Baricco 的劇場文本《1900：獨白》。這個劇場文本並非人物傳記，我們無法在歷史上找到一名叫「1900」的鋼琴家，反之，應該用一點點奇幻文學的角度，探討這個虛構故事背後所寄託的真情。</p>      <p>首先，西元1900年為19世紀的最後一年。在這個時代背景下，許多歐洲移民都抱持著「美國夢」，橫越大西洋來到陌生的北美大陸，而維吉尼亞號便是其中一艘運送人們前往夢想之地的客輪。</p>      <p>從小到大生長在維吉尼亞號上的1900，不會只遇過那位彈奏手風琴的男士、不會只聽過他的故事；反之，他應閱歷了無數個掏金客的美國夢，與失落者的人生。也難怪，在1900與Max相識後挖礦那一幕，他能夠幻想出新奧爾良的輪廓。因此，《海》傾訴的是一種對「夢想」的探討。</p>      <p>&nbsp;</p>      <p>另外，1900在電影裡的設定，基本上是一個不存在的狀態。</p>      <p>&nbsp;</p>      <p>「世上沒人知道他的存在。沒有一座城市、一個教會、一間醫院、監獄或一支棒球隊，知道他的名字。他沒有國籍，他沒有生日、沒有家人。他八歲了，但是官方卻沒有他出生的紀錄。」</p>      <p>每年五趟來回漂泊於大西洋，1900不曾下過船，也沒有官方的存在證明。然而從Max眼中，他卻是存在的。而電影的設定是以Max為第一視角，因此間接地，在每位觀影者心中，1900是存在的。因此，在這樣對立的矛盾中，電影另一個探討的是「存在」這件事。</p>      <p>最後，在電影最末段，Max費盡千辛萬苦，終於在即將被炸毀的維吉尼亞號上找到1900，但他卻選擇與船一同沉入海底。這一個橋段無疑是電影的一大精華片段，藉由1900終於對Max（也就是對觀眾）講出不願下船的原因，「有限與無限」之間的抉擇成為《海》故事裡最大的記憶點。</p>      <p>&nbsp;</p>",
       "image": "article07.jpg",
       "link": "",
       "markId": [],
       "likeId": [],
-      "viewCounter": "1"
+      "viewCounter": 2
+    },
+    {
+      "id": "8",
+      "title": "艾方索柯朗最私密的真誠告白，奧斯卡大熱《羅馬》背後10件你不知道的事",
+      "author": "ANGELINE HSIAO 與 BILLY KUO",
+      "avatar": "",
+      "date": "2019-03-28",
+      "content": "<p >美國當地時間<span >2019</span>年<span >1</span>月<span >22</span>日，第<span >91</span>屆奧斯卡提名名單公布，墨西哥國寶級導演阿方索&middot;卡隆的《羅馬》獲得了包括最佳影片、最佳導演、最佳女主角、最佳外語片等在內的十項提名，成為新一屆奧斯卡獎最大的熱門。而在此之前，《羅馬》已經獲得了第<span >75</span>屆威尼斯電影節的金獅獎，以及第<span >76</span>屆金球獎的最佳導演獎。</p> <p >這部電影的首次亮相是在<span>2018</span>年的威尼斯電影節，由於卡隆對外的嚴格保密，真正上映前，觀眾對《羅馬》的了解僅限於：這是一個關於上世紀<span>70</span>年代墨西哥中產家庭的故事，發生在墨西哥城中一個叫做&ldquo;羅馬&rdquo;的社區。</p><p >最終，卡隆在大銀幕上為所有人呈現了一個以女性視角講述的墨西哥故事<span >&mdash;&mdash;</span>年輕女傭克裡奧在雇主索菲亞家中工作，幫忙照顧索菲亞的四個孩子。索菲亞的丈夫常年在外工作，並準備徹底逃離家庭，而克裡奧也在意外懷孕會遭到了男友的拋棄。政治運動爆發，一百多名參與遊行的學生慘遭墨西哥軍方殺害，克裡奧也因經歷動亂而失去了自己的孩子，但她與雇主索菲亞，仍然在苦澀茫然的生活中繼續前行。</p> <p >《羅馬》中，<span>90%</span>的場景來自導演的個人記憶，這些記憶，&ldquo;有些直接，有些迂回，但都是關於那個塑造我的時代，或者說塑造墨西哥的時代，那正是墨西哥漫長時代變遷的起始點。&rdquo;</p><p>這究竟是一部怎樣的電影，知名影評人梅雪風在為每日人物寫的這期最新專欄中，講述了它的得與失<span >&mdash;&mdash;</span></p><p >《羅馬》的特異之處，在於它雖然是導演阿方索&middot;卡隆的一部自傳體式的電影，但它卻少有的沒有以一個少年的視角，也就是他小時候的視角來講述整個故事，而是以家庭女仆的視角展開。</p><p >這麽做的好處是，沒有那些不入流的回憶體電影的甜膩浮誇，規避了自我代入之後的過份感傷。當然，這麽做也讓影片的主題與很多青春童年回憶體電影迥然不同。</p>",
+      "image": "article08.jpg",
+      "link": "",
+      "markId": [],
+      "likeId": [],
+      "viewCounter": 7
+    },{
+      "id": "9",
+      "title": "威尼斯影展完整得獎名單：吉勒摩戴托羅新片獲最佳影片",
+      "author": "龍魚",
+      "avatar": "<p >威尼斯影展官方單元完整獎項名單：</p><p >&nbsp;</p> <p><span >※</span> 主競賽單元：</p><p >&nbsp;</p> <p >最佳影片金獅獎：</p><p >The Shape of Water / Guillermo del Toro / <span>美國</span></p><p >&nbsp;</p><p >評審團大獎：</p><p >Foxtrot / Samuel Maoz / <span>以色列、德國、法國</span></p><p >&nbsp;</p><p >銀獅獎最佳導演：</p><p >Xavier Legrand / Custody / <span>法國</span></p><p >&nbsp;</p><p >評審特別獎：</p><p >Sweet Country / Warwick Thornton / <span>澳洲</span></p><p >&nbsp;</p><p >最佳女主角：</p><p >Charlotte Rampling / Hannah</p><p >&nbsp;</p><p >最佳男主角：</p><p >Kamel El Basha / The Insult</p><p >&nbsp;</p><p >最佳劇本：</p><p >Martin McDonagh / <span>意外</span></p><p >&nbsp;</p><p >最佳新演員：</p><p >Charlie Plummer / Lean on Pete</p><p >&nbsp;</p><p ><span >※</span> 地平線單元：</p><p >&nbsp;</p><p >最佳影片：</p><p >Nico<span>,</span>1988 / Susanna Nicchiarelli / <span>義大利</span></p><p >&nbsp;</p><p >最佳導演：</p><p >No Date<span>,</span> No Signature / Vahid Jalilvand / <span>伊朗</span></p><p>&nbsp;</p> <p >評審團特別獎：</p><p >Caniba / LucienCastaing-Taylor<span>,</span> Verena Paravel / <span>法國</span></p><p >&nbsp;</p><p >最佳女演員：</p><p >Lyna Khoudri / Les Bineheureux</p><p >&nbsp;</p> <p >最佳男演員：</p><p >Navid Mohammadzadeh / No Date<span>,</span> No Sign</p> <p >&nbsp;</p> <p >最佳劇本：</p><p >Los Versos Del Signature / Alireza Khatami / <span>法國</span> <span>德國</span> <span>荷蘭</span> <span>智利</span></p><p >&nbsp;</p> <p >最佳短片：</p><p >Gros Chagrin / Celine Devaxu / <span>法國</span></p><p >&nbsp;</p><p ><span >※</span> 未來獅獎：</p><p >&nbsp;</p><p >Xavier Legrand / Custody / <span>法國</span></p><p >&nbsp;</p><p ><span >※</span> 威尼斯經典單元：</p> <p >&nbsp;</p>      <p >最佳修復電影：</p><p >Come and See / Elem Klimov / <span>蘇聯</span></p>      <p >&nbsp;</p><p >最佳紀錄片：</p>      <p >The Prince and the Dybbuk / Elwira Niewiera<span>、</span>Piotr Rosoloeski<span>｜波蘭、德國</span></p>      <p >&nbsp;</p>      <p ><span >※</span> VR <span>單元：</span></p>      <p >&nbsp;</p>      <p ><span>最佳</span> VR<span>：</span></p>      <p >Arden's Wake / Eugene YK Chung / <span>美國</span></p>      <p >&nbsp;</p>      <p >最佳<span >VR</span>體驗：</p>      <p >&nbsp;</p>      <p ><span>沙中的房間</span> / Laurie Anderson &amp; <span>黃心健</span> / <span>美國</span></p>      <p >&nbsp;</p>      <p >最佳<span >VR</span>故事：</p>      <p >Bloodless / Gina Kim / <span>南韓</span></p>",
+      "date": "2019-03-30",
+      "content": "",
+      "image": "article09.jpg",
+      "link": "",
+      "markId": [],
+      "likeId": [],
+      "viewCounter": 7
+    },
+    {
+      "id": "10",
+      "title": "【第72屆坎城影展】韓國影史第一人！奉俊昊以《寄生上流》拿下金棕櫚獎",
+      "author": "黃衍方",
+      "avatar": "",
+      "date": "2019-05-26",
+      "content": "第72屆坎城影展（Festival de Cannes）正式競賽得獎名單於法國時間25日晚間7點15分（台灣時間26日凌晨1點15分）公布，韓國導演奉俊昊以《寄生上流》拿下最高榮譽金棕櫚獎，這是韓國影史第一座金棕櫚獎。<p>據《好萊塢報導者》（The Hollywood Reporter）報導，評審團主席阿利安卓崗札雷伊納利圖（Alejandro González Iñárritu）表示他們對於金棕櫚獎的看法是「一致的」（unanimous）。事前被認為得獎機率很高的昆汀塔倫提諾（Quentin Tarantino），因此失去拿到生涯第二座金棕櫚的機會。<p>從影超過二十年的奉俊昊，與坎城影展的淵源很深，2006年，他的第二部長片《駭人怪物》在坎城影展舉行世界首映；2009年，他的第三部長片《非常母親》入選「一種注目」單元，不過未能獲獎；2017年，他以Netflix發行的《玉子》首度入選正式競賽，最後沒有獲獎，不過卻意外引發坎城影展和Netflix之間的衝突。<p>2012，韓國導演金基德以《聖殤》拿下第69屆威尼斯影展金獅獎，這是韓國影史第一座金獅獎，在奉俊昊拿到金棕櫚獎之後，三大影展之中就只剩下柏林影展，還沒有韓國導演獲得最高榮譽的肯定。<p>其他獎項方面，今年的評審團大獎由演而優則導法國女星瑪蒂迪歐普（Mati Diop）以《大西洋》（Atlantics，暫譯）獲得，這是她的第一部長片；最佳導演則由比利時導演搭檔達頓兄弟（Dardenne brothers）以《年輕的阿罕默德》（Young Ahmed，暫譯）拿下。<p>最佳女主角頒給了英國女星艾蜜莉比查姆（Emily Beecham），她在新片《小魔花》飾演一名身兼單親媽媽的科學家；最佳男主角則由西班牙男星安東尼奧班德拉斯（Antonio Banderas）以西班牙名導阿莫多瓦（Pedro Almodóvar）的新片《痛苦與榮耀》獲獎，他在片中飾演一名年邁的電影導演。<p>  今年評審團獎有兩部作品同時獲獎，分別是法國導演拉吉利（Ladj Ly）的首部長片《悲慘世界》（Les misérables，暫譯）和巴西導演搭檔儒利亞諾多赫內利斯（Juliano Dornelles）和小克萊柏門多（Kleber Mendonça Filho）合導的《巴克勞》（Bacurau，暫譯）。<p>最佳劇本則由法國導演瑟琳席安瑪（Céline Sciamma）以《燃燒女子的畫像》獲得；另外，以色列第72屆坎城影展（Festival de Cannes）正式競賽得獎名單於法國時間25日晚間7點15分（台灣時間26日凌晨1點15分）公布，韓國導演奉俊昊以《寄生上流》拿下最高榮譽金棕櫚獎，這是韓國影史第一座金棕櫚獎。<p>據《好萊塢報導者》（The Hollywood Reporter）報導，評審團主席阿利安卓崗札雷伊納利圖（Alejandro González Iñárritu）表示他們對於金棕櫚獎的看法是「一致的」（unanimous）。事前被認為得獎機率很高的昆汀塔倫提諾（Quentin Tarantino），因此失去拿到生涯第二座金棕櫚的機會。<p>從影超過二十年的奉俊昊，與坎城影展的淵源很深，2006年，他的第二部長片《駭人怪物》在坎城影展舉行世界首映；2009年，他的第三部長片《非常母親》入選「一種注目」單元，不過未能獲獎；2017年，他以Netflix發行的《玉子》首度入選正式競賽，最後沒有獲獎，不過卻意外引發坎城影展和Netflix之間的衝突。<p>2012，韓國導演金基德以《聖殤》拿下第69屆威尼斯影展金獅獎，這是韓國影史第一座金獅獎，在奉俊昊拿到金棕櫚獎之後，三大影展之中就只剩下柏林影展，還沒有韓國導演獲得最高榮譽的肯定。<p>其他獎項方面，今年的評審團大獎由演而優則導法國女星瑪蒂迪歐普（Mati Diop）以《大西洋》（Atlantics，暫譯）獲得，這是她的第一部長片；最佳導演則由比利時導演搭檔達頓兄弟（Dardenne brothers）以《年輕的阿罕默德》（Young Ahmed，暫譯）拿下。<p>最佳女主角頒給了英國女星艾蜜莉比查姆（Emily Beecham），她在新片《小魔花》飾演一名身兼單親媽媽的科學家；最佳男主角則由西班牙男星安東尼奧班德拉斯（Antonio Banderas）以西班牙名導阿莫多瓦（Pedro Almodóvar）的新片《痛苦與榮耀》獲獎，他在片中飾演一名年邁的電影導演。<p>      今年評審團獎有兩部作品同時獲獎，分別是法國導演拉吉利（Ladj Ly）的首部長片《悲慘世界》（Les misérables，暫譯）和巴西導演搭檔儒利亞諾多赫內利斯（Juliano Dornelles）和小克萊柏門多（Kleber Mendonça Filho）合導的《巴克勞》（Bacurau，暫譯）。<p>最佳劇本則由法國導演瑟琳席安瑪（Céline Sciamma）以《燃燒女子的畫像》獲得；另外，以色列導演伊利亞蘇萊曼（Elia Suleiman）以《必是天堂》（It Must Be Heaven，暫譯）則得到特別提及獎。導演伊利亞蘇萊曼（Elia Suleiman）以《必是天堂》（It Must Be Heaven，暫譯）則得到特別提及獎。",
+      "image": "article10.jpeg",
+      "link": "",
+      "markId": [],
+      "likeId": [],
+      "viewCounter": 7
     }
   ],
   "articleComment": [
@@ -3432,6 +3639,24 @@
       "avatar": "f86ee814-d966-41fd-a4e2-08af895fdcfb.jpg",
       "content": "飾演特芮絲的魯妮瑪拉演得實在是太好了！她細膩的演繹方式讓X編隨著她的心情起伏而走，對人世界毫無留戀的空靈，對 Carol的愛戀所引發的歡喜與悲痛，魯妮瑪拉年紀輕輕根本已成戲精！精彩的令人想一再地重複欣賞她的表演！",
       "id": 2
+    },
+    {
+      "aid": 7,
+      "date": "Mon Jun 03 2019",
+      "authorID": "m1559564640954",
+      "author": "test",
+      "avatar": "778ae60e-1b26-4622-b2af-d36e237caaf6.jpg",
+      "content": "北鼻北鼻ㄉ",
+      "id": 3
+    },
+    {
+      "aid": 2,
+      "date": "2019/06/04 10:00",
+      "authorID": "unknow",
+      "author": "匿名",
+      "avatar": "null.jpg",
+      "content": "是枝裕和的作品都非常溫馨有趣",
+      "id": 4
     }
   ],
   "articleResComment": [
@@ -3443,6 +3668,15 @@
       "author": "匿名",
       "avatar": "null.jpg",
       "content": "很少人關注的佳作，大推"
+    },
+    {
+      "rid": 3,
+      "date": "Mon Jun 03 2019",
+      "authorID": "m1559564640954",
+      "author": "test",
+      "avatar": "778ae60e-1b26-4622-b2af-d36e237caaf6.jpg",
+      "content": "ㄉˇ",
+      "id": 2
     }
   ],
   "forum": [
@@ -6249,7 +6483,7 @@
       "forumArticlePic": "",
       "forumReview": "TCS，全稱「崔契爾柯林斯症候群」（Treacher Collins Syndrome），一如我們在《奇蹟男孩》所見，或是透過網路搜尋可以粗略認識的，是由於父母特定染色體異常而導致的遺傳性顱顏疾病。患者因為顏面部分骨骼缺損或發育不全，使其面貌異於常人。根據症狀輕重不同差異，患者除了通常一出生就必須進行呼吸道重建處置之外，經常也需要進行咬合、聽力、甚至視力的改善治療。例如片中主角，由雅各．特倫布雷（Jacob Tremblay, 2006-）經過特殊化妝主演的奧吉，就經歷前後二十七次手術的整復：<br /><br /><br />傑克：你有沒有想過去整形？<br /><br />奧吉：（笑）這就是我整形完的樣子，我可是拚了命才讓自己這麼帥（撥頭髮）。<br /><br /><br /><br />　　一來一往的簡短對話就直接呈現出顱顏患者的困境：在科學昌明、醫療技術發達的當代，透過大規模並橫跨數種專業領域的外科手術，已經能夠讓特別嚴重的TCS患者滿足基礎的維生需求，不像早期年代會被視詛咒或不祥的徵兆而輕易被捨棄。小小年紀的患者為此必須承受的手術風險，對於他們還未發育健全的體力和免疫系統而言仍是一大挑戰，更何況，即便經過手術整容後依然和一般人相去甚遠的臉孔，如何維護TCS、乃至於所有顱顏患者的生命尊嚴，亦是他們及其家人立身處世不得不面對的棘手問題。<br /><br />導演史蒂芬．切波斯基（Stephen Chbosky, 1970-）並未讓電影持續處在感傷的情緒和艱困的挑戰之中。相反的，電影常以適當而不狎暱的態度及穿插幽默的橋段使得觀眾往往會心一笑，包括上述對話中奧吉的俏皮表現，或是不時出現、經常有《星際大戰》角色客串的「奧吉的異想世界」等。穿梭在想像和現實之間，是處理以兒童為主體的電影之常見手法。一方面可有效表現兒童或青少年特有的想像力，另一方面也能藉由虛實對照更加突顯現實的困難。<br /><br /><br /><br />　　然而《奇蹟男孩》畢竟不像《羊男的迷宮》（Pan's Labyrinth, 2006）或《怪物來敲門》（A Monster Calls, 2016）帶有強烈魔幻寫實的氣質，更準確的說，《奇蹟男孩》的題材並不需要魔幻寫實，那困境正活生生的鑲嵌在奧吉臉上。切波斯基特意不以魔幻風格，而藉由相對寫實的鏡頭處理奧吉的想像，和他的那頂太空頭盔，似乎更加突顯了奧吉身處在學校這個小社會中，那種格格不入、想要逃離卻又無法避開的孤獨和傷心。另一方面，本劇也不光聚焦在主體、也就是作為TCS患者的奧吉身上而已。兼及TCS患者家庭的刻劃，也是《奇蹟男孩》一大亮點。茱莉亞．羅勃茲（Julia Roberts, 1967-）與歐文．威爾森（Owen Wilson, 1968-）兩位演員一剛一柔演出的普曼夫婦，適當的表現出罕病孩童父母應當給予的照顧和精神扶持。不僅如此，奧吉還有個姐姐，普曼夫婦的女兒，已經上十年級的薇亞。",
       "forumReviewLike": 0,
-      "forumCommentCount": 2,
+      "forumCommentCount": 5,
       "forumCommentArea": [
         {
           "forumCommentId": 1,
@@ -6272,6 +6506,17 @@
           "forumCommentUserId": "m1559495680143",
           "forumCommentCreateTime": 1559501077491,
           "forumCommentCreateTimeDate": "2019/06/03 02:44"
+        },
+        {
+          "forumCommentId": 3,
+          "forumComment": "北鼻",
+          "forumCommentLike": 0,
+          "forumCommentDislike": 0,
+          "forumCommentName": "藏鏡人",
+          "forumCommentAvatar": "ca11cf8a-7724-4b33-8e93-6e6635eff034.jpg",
+          "forumCommentUserId": "defaultForumCommentID",
+          "forumCommentCreateTime": 1559567459205,
+          "forumCommentCreateTimeDate": "2019/06/03 21:10"
         }
       ]
     }
