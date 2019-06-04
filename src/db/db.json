@@ -815,7 +815,12 @@
         "2019-06-04 10:00",
         "2019-06-04 14:00"
       ],
-      "filmStar": [],
+      "filmStar": [
+        {
+          "starId": "m1558576972555",
+          "star": 3
+        }
+      ],
       "theater": "碼農Cafe",
       "cinemaId": "c001"
     },
@@ -2358,7 +2363,11 @@
         },
         {
           "markId": "c001",
-          "markcontent": "123123"
+          "markcontent": "123123sdcw"
+        },
+        {
+          "markId": "m1559479473377",
+          "markcontent": "dfvdf "
         }
       ]
     },
@@ -2733,7 +2742,7 @@
         },
         {
           "starId": "m1558576972555",
-          "star": 2
+          "star": 1
         }
       ],
       "cinemaAddress": "106台北市大安區通化街24巷1號",
@@ -2747,7 +2756,7 @@
         "m22222",
         "m1558576972555"
       ],
-      "cinemaPageViews": 621,
+      "cinemaPageViews": 622,
       "cinemaSignUpDate": "1955-03-12",
       "purview": "cinemaMember",
       "cinemaIntro": "提供碼農們安心coding，享受咖啡和電影的休憩場所。",
@@ -2895,7 +2904,7 @@
           "imgLocation": "cinemaImg"
         }
       ],
-      "cinemaD3guessLook": 34,
+      "cinemaD3guessLook": 37,
       "cinemaD3memberLook": 15,
       "cinemaD3memberJoin": 10,
       "cinemaD3memberCancel": 5
@@ -3056,7 +3065,7 @@
       "cinemaEmail": "taipei.spotdesign@gmail.com",
       "cinemaBackupEmail": "",
       "cinemaAwesome": [],
-      "cinemaPageViews": 29,
+      "cinemaPageViews": 30,
       "cinemaSignUpDate": "2019-06-02",
       "purview": "cinemaMember",
       "cinemaIntro": "她，令當年的尼克遜，在擔任美國副總統來到台灣訪問時，沒住豪華大酒店，\n卻看上這棟老洋房，還在這裡睡過幾個晚上。\n她，保存了原來的古典風情，讓藝術不做過多裝扮，\n令人體會藝術原來是現代人生活的養分，很容易親近，也很容易消化。\n她，以歷史為中山北路注入了一抹亮麗粧顏，\n以古蹟建築傳唱中山北路百年風流雅緻的人文歷史。",

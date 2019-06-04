@@ -482,7 +482,7 @@ class BackSidenav extends React.Component {
       title: thisNewFilmData.title,
       subtitle: thisNewFilmData.titleEn,
       img: thisNewFilmData.imgSrc,
-      link: thisNewFilmData.id,
+      link: '/movie/' + thisNewFilmData.id,
       star: thisNewFilmData.filmStar,
       mark: NewMemberData.markList,
     }
@@ -677,7 +677,7 @@ class BackSidenav extends React.Component {
       img:
         'http://localhost:3000/images/cinemaImg/' +
         thisNewCinemaData.cinemaHeroImg,
-      link: 'http:localhost:3000/cinema/' + thisNewCinemaData.id,
+      link: '/cinema/' + thisNewCinemaData.id,
       star: thisNewCinemaData.cinemaStar,
       mark: NewMemberData.markList,
     }

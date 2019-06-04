@@ -639,12 +639,12 @@ class TheateInfo extends React.Component {
 
   handleScroll = event => {
     console.log()
-    if (window.pageYOffset > document.body.offsetHeight - 1200) {
+    if (window.pageYOffset > document.body.offsetHeight - 1500) {
       document.querySelector('.elseCard').style =
         // 'bottom:-' + window.pageYOffset + 'px'
         'left:0;opacity:1'
     }
-    if (window.pageYOffset <= document.body.offsetHeight - 1000) {
+    if (window.pageYOffset <= document.body.offsetHeight - 2000) {
       document.querySelector('.elseCard').style =
         // 'bottom:-' + window.pageYOffset + 'px'
         'left:-100%;opacity:0'
