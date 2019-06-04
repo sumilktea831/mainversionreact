@@ -307,10 +307,31 @@ class ArticlePage extends React.Component {
       this.setState({ isMarked: !this.state.isMarked })
 
       if (this.state.isMarked) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'center',
+          showConfirmButton: false,
+          timer: 2000,
+        })
+        Toast.fire({
+          type: 'success',
+          title: '已移除收藏!!',
+        })
+
         newMark = newMark.filter(element => {
           return element !== this.state.thisId
         })
       } else {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'center',
+          showConfirmButton: false,
+          timer: 2000,
+        })
+        Toast.fire({
+          type: 'success',
+          title: '已收藏!!',
+        })
         newMark = [this.state.thisId, ...this.state.memberInfo]
         console.log(typeof this.state.thisId + ':' + this.state.thisId)
         console.log('false')
@@ -480,6 +501,8 @@ class ArticlePage extends React.Component {
             <ArticleBtnGroup
               handleMarkClick={this.handleMarkClick}
               handleLikeClick={this.handleLikeClick}
+              isMarked={this.state.isMarked}
+              isLiked={this.state.isLiked}
             />
           </div>
           <Row className="">
