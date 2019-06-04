@@ -806,7 +806,7 @@ class BackSidenav extends React.Component {
     // console.log(prevState)
   }
 
-  handleCollect = id => async () => {
+  handleCollect = async id => {
     const memberId = sessionStorage.getItem('memberId')
     if (memberId !== null) {
       try {
