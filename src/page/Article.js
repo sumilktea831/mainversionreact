@@ -88,9 +88,14 @@ class Article extends React.Component {
       })
       data = await res.json()
       console.log(data)
-      // 該頁的文章為  第1~5
+      // 該頁的文章為  第1~10
       const articleData = data.slice(0, 10)
-      const SliderData = data.slice(0, 6)
+      // 倒slider 文章 取亂數
+      // var x = Math.floor(Math.random() * 2)
+      function randomSort(a, b) {
+        return Math.random() > 0.5 ? -1 : 1
+      }
+      const SliderData = data.sort(randomSort).slice(0, 5)
 
       // 全部資料的長度除以 per page 並且無條件進位
       const paginationData = Math.ceil(data.length / 5)
