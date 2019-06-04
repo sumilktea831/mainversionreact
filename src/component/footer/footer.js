@@ -44,7 +44,7 @@ class Footer extends React.Component {
             <div className="">
               <h3 className="mb-3">訂閱我們</h3>
 
-              <div className="input-group" style={{ maxWidth: 320 }}>
+              <div className="input-group" style={{ maxWidth: 360 }}>
                 <input
                   type="text"
                   className="form-control inp_email"
