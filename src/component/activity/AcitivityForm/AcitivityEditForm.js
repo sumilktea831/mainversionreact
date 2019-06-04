@@ -275,8 +275,8 @@ class AcitivityEditForm extends React.Component {
       background: '#242b34',
     }).then(result => {
       if (result.value) {
-        const actiivtyId = window.location.pathname.slice(47)
-        fetch('http://localhost:5555/activityCardData/' + actiivtyId, {
+        const activityId = window.location.pathname.slice(47)
+        fetch('http://localhost:5555/activityCardData/' + activityId, {
           method: 'DELETE',
         })
           .then(res => res.json)
@@ -287,40 +287,42 @@ class AcitivityEditForm extends React.Component {
               showConfirmButton: false,
               buttonsStyling: false,
               background: '#242b34',
-            })
-          )
-        fetch(
-          'http://localhost:5555/cinema/' + sessionStorage.getItem('cinemaId')
-        )
-          .then(res => res.json())
-          .then(res => {
-            const data = JSON.parse(JSON.stringify(res))
-            data.cinemaActivity = data.cinemaActivity.filter(
-              item => item.id != window.location.pathname.slice(47)
-            )
+            }).then(
+              fetch(
+                'http://localhost:5555/cinema/' +
+                  sessionStorage.getItem('cinemaId')
+              )
+                .then(res => res.json())
+                .then(res => {
+                  const data = JSON.parse(JSON.stringify(res))
+                  data.cinemaActivity = data.cinemaActivity.filter(
+                    item => item.id != window.location.pathname.slice(47)
+                  )
 
-            fetch(
-              'http://localhost:5555/cinema/' +
-                sessionStorage.getItem('cinemaId'),
-              {
-                method: 'PUT',
-                body: JSON.stringify(data),
-                headers: new Headers({
-                  Accept: 'application/json',
-                  'Content-Type': 'application/json',
-                }),
-              }
+                  fetch(
+                    'http://localhost:5555/cinema/' +
+                      sessionStorage.getItem('cinemaId'),
+                    {
+                      method: 'PUT',
+                      body: JSON.stringify(data),
+                      headers: new Headers({
+                        Accept: 'application/json',
+                        'Content-Type': 'application/json',
+                      }),
+                    }
+                  )
+                    .then(res => res.json())
+                    .then(res => {
+                      setTimeout(
+                        () =>
+                          (window.location.pathname =
+                            'CinemaBackMainpage/cinema-activity-inprogress'),
+                        5000
+                      )
+                    })
+                })
             )
-              .then(res => res.json())
-              .then(res => {
-                setTimeout(
-                  () =>
-                    (window.location.pathname =
-                      'CinemaBackMainpage/cinema-activity-inprogress'),
-                  5000
-                )
-              })
-          })
+          )
       } else {
         Swal.fire({
           type: 'warning',
