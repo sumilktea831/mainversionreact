@@ -213,7 +213,7 @@ class AcitivityForm extends React.Component {
                               () =>
                                 (window.location.pathname =
                                   '/CinemaBackMainpage/cinema-activity-inprogress'),
-                              1000
+                              5000
                             )
                           })
                       } catch (e) {
