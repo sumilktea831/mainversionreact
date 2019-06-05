@@ -207,7 +207,7 @@ class AcitivityForm extends React.Component {
                               showConfirmButton: false,
                               buttonsStyling: false,
                               background: '#242b34',
-                              timer: 1000,
+                              timer: 4000,
                             })
                             setTimeout(
                               () =>
