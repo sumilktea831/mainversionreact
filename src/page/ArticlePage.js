@@ -1,7 +1,6 @@
 /* eslint-disable array-callback-return */
 import React from 'react'
-import ArricleList from '../component/article/ArticleList'
-import ActivitySection from '../component/activity/ActivitySection/ActivitySection'
+
 import { Row, Col } from 'react-bootstrap'
 import Pagination from '../component/article/ArticleList/ArticleButton/Pagination'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
@@ -10,7 +9,7 @@ import ViewPage from '../component/article/ArticlePage/ViewPage'
 import ArticleComment from '../component/article/ArticlePage/ArticleComment'
 import ArticleCommentInput from '../component/article/ArticlePage/ArticleCommentInput'
 import ArticleBtnGroup from '../component/article/ArticleList/ArticleButton/ArticleBtnGroup'
-import { async } from 'q'
+import Swal from 'sweetalert2'
 
 const memberId = sessionStorage.getItem('memberId')
 
@@ -56,7 +55,41 @@ class ArticlePage extends React.Component {
       console.log('page')
       console.log(page)
       this.setState({ articleInfo: page })
-      this.setState({ viewCounter: page.viewCounter })
+      this.setState({ viewCounter: +page.viewCounter + 1 })
+
+      let newViewData = await {
+        id: this.state.articleInfo.id,
+        title: this.state.articleInfo.title,
+        author: this.state.articleInfo.author,
+        avatar: this.state.articleInfo.avatar,
+        date: this.state.articleInfo.date,
+        content: this.state.articleInfo.content,
+        image: this.state.articleInfo.image,
+        link: this.state.articleInfo.link,
+        markId: this.state.articleInfo.markId,
+        likeId: this.state.articleInfo.likeId,
+        viewCounter: +this.state.articleInfo.viewCounter + 1,
+      }
+
+      // const data = newViewData
+
+      fetch('http://localhost:5555/articleCardData/' + this.state.thisId, {
+        method: 'PUT',
+        body: JSON.stringify(newViewData),
+        headers: new Headers({
+          Accept: 'application/json',
+          'Content-Type': 'application/json',
+        }),
+      })
+        .then(res => res.json(data))
+        .then(data => console.log(res))
+
+      // const vData = await resView.json
+      // const vPage = vData.find(item => item.id === this.state.thisId)
+      // console.log('view')
+      // this.setState({ articleInfo: vPage })
+      // this.setState({ viewCounter: vPage.viewCounter })
+      // console.log(this.state.viewCounter)
 
       //該篇文章按讚的會員ID
       const likeSid = page.likeId
@@ -141,7 +174,16 @@ class ArticlePage extends React.Component {
   // 留言送出
   goComment = async () => {
     if (memberId) {
-      alert('回應成功!!!SID:' + this.state.thisId)
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'center',
+        showConfirmButton: false,
+        timer: 2000,
+      })
+      Toast.fire({
+        type: 'success',
+        title: '回應成功!!',
+      })
       let newRes = {
         aid: +this.state.thisId,
         date: new Date().toDateString(),
@@ -178,12 +220,78 @@ class ArticlePage extends React.Component {
         console.log(newI)
         // 清空輸入框
         document.querySelector('#commentInput').value = []
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'center',
+          showConfirmButton: false,
+          timer: 1500,
+        })
+        Toast.fire({
+          type: 'success',
+          title: '留言成功!!',
+        })
       } catch (err) {
         console.log(err)
       }
       // this.forceUpdate()
     } else {
-      alert('請先登入')
+      let newRes = {
+        aid: +this.state.thisId,
+        date: new Date().toLocaleString('chinese', {
+          hour12: false,
+          year: 'numeric',
+          month: '2-digit',
+          day: '2-digit',
+          hour: '2-digit',
+          minute: '2-digit',
+        }),
+        // new Date().toDateString(),
+        authorID: 'unknow',
+        author: '匿名',
+        avatar: 'null.jpg',
+        content: this.state.inputText,
+      }
+      try {
+        const res = await fetch('http://localhost:5555/articleComment', {
+          method: 'POST',
+          body: JSON.stringify(newRes),
+          headers: new Headers({
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          }),
+        })
+        const newComment = await res.json()
+        // console.log(newComment)
+        // const newCommentData = newComment.filter(
+        //   item => item.aid === +this.state.thisId
+        // )
+        // fetch新資料後的判斷渲染套餐
+        const newI = this.state.articleComment.find(
+          item => +item.id === +newComment.id
+        )
+          ? true
+          : // ? this.setState({ articleComment: this.state.articleComment })
+            this.setState({
+              articleComment: [newComment, ...this.state.articleComment],
+            })
+
+        console.log(newComment)
+        console.log(newI)
+        // 清空輸入框
+        document.querySelector('#commentInput').value = []
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'center',
+          showConfirmButton: false,
+          timer: 1500,
+        })
+        Toast.fire({
+          type: 'success',
+          title: '留言成功!!',
+        })
+      } catch (err) {
+        console.log(err)
+      }
     }
   }
 
@@ -199,10 +307,31 @@ class ArticlePage extends React.Component {
       this.setState({ isMarked: !this.state.isMarked })
 
       if (this.state.isMarked) {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'center',
+          showConfirmButton: false,
+          timer: 2000,
+        })
+        Toast.fire({
+          type: 'success',
+          title: '已移除收藏!!',
+        })
+
         newMark = newMark.filter(element => {
           return element !== this.state.thisId
         })
       } else {
+        const Toast = Swal.mixin({
+          toast: true,
+          position: 'center',
+          showConfirmButton: false,
+          timer: 2000,
+        })
+        Toast.fire({
+          type: 'success',
+          title: '已收藏!!',
+        })
         newMark = [this.state.thisId, ...this.state.memberInfo]
         console.log(typeof this.state.thisId + ':' + this.state.thisId)
         console.log('false')
@@ -227,6 +356,7 @@ class ArticlePage extends React.Component {
         join_date: this.state.memberAllData.join_date,
         permission: this.state.memberAllData.permission,
         collectFilm: this.state.memberAllData.collectFilm,
+        collectMovie: this.state.memberAllData.collectMovie,
         collectCinema: this.state.memberAllData.collectCinema,
         collectArticle: newMark,
         collectActivity: this.state.memberAllData.collectActivity,
@@ -262,14 +392,40 @@ class ArticlePage extends React.Component {
         console.log(err)
       }
     } else {
-      alert('please login')
+      Swal.fire({
+        // position: 'top-end',
+        title: '請先登入會員',
+        text: '請點選確認繼續或取消離開',
+        type: 'question',
+        showCancelButton: true,
+        confirmButtonText: '確認',
+        cancelButtonText: '取消',
+        // cancelButtonColor: ' #d33',
+        confirmButtonClass: ' btn-warning',
+        confirmButtonColor: '#ffa510',
+        background: '#242b34',
+      }).then(result => {
+        // 確認有按下上傳確認鍵後開始FETCH
+        if (result.value) {
+          window.location.href = '/LoginSign'
+        }
+      })
     }
   }
 
   // ----------------------按讚套餐--------------------------
   handleLikeClick = async () => {
     if (memberId) {
-      alert('按讚成功!!!')
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'center',
+        showConfirmButton: false,
+        timer: 2000,
+      })
+      Toast.fire({
+        type: 'success',
+        title: '已讚!!',
+      })
       console.log(this.state.memberAllData.id)
       // 按讚清單所用的新資料  原本陣列 memberAllData
       let newLikeData = {
@@ -315,7 +471,24 @@ class ArticlePage extends React.Component {
         console.log(err)
       }
     } else {
-      alert('please login')
+      Swal.fire({
+        // position: 'top-end',
+        title: '請先登入會員',
+        text: '請點選確認繼續或取消離開',
+        type: 'question',
+        showCancelButton: true,
+        confirmButtonText: '確認',
+        cancelButtonText: '取消',
+        // cancelButtonColor: ' #d33',
+        confirmButtonClass: ' btn-warning',
+        confirmButtonColor: '#ffa510',
+        background: '#242b34',
+      }).then(result => {
+        // 確認有按下上傳確認鍵後開始FETCH
+        if (result.value) {
+          window.location.href = '/LoginSign'
+        }
+      })
     }
   }
 
@@ -328,6 +501,8 @@ class ArticlePage extends React.Component {
             <ArticleBtnGroup
               handleMarkClick={this.handleMarkClick}
               handleLikeClick={this.handleLikeClick}
+              isMarked={this.state.isMarked}
+              isLiked={this.state.isLiked}
             />
           </div>
           <Row className="">
@@ -338,7 +513,7 @@ class ArticlePage extends React.Component {
               author={this.state.articleInfo.author}
               content={this.state.articleInfo.content}
               date={this.state.articleInfo.date}
-              pageImg={'/images//article/' + this.state.articleInfo.image}
+              pageImg={'/images/article/' + this.state.articleInfo.image}
               isMarked={this.state.isMarked}
               markCounter={this.state.markCounter}
               isLiked={this.state.isLiked}

@@ -5,7 +5,7 @@ const MoviePageCard = props => (
     <div
       class="activityInfoCard card mb-3"
       style={{
-        maxWidth: '800px',
+        maxWidth: '1000px',
         height: '400px',
         maxHeight: '1200px',
         margin: 'auto',
@@ -17,18 +17,36 @@ const MoviePageCard = props => (
       <div
         class="row no-gutters"
         style={{
-          maxWidth: '800px',
+          maxWidth: '1000px',
           height: '100%',
         }}
       >
         <img class="card-img-left fit-image" src={props.imgSrc} alt="" />
         <div class="card-body">
-          <p class="card-text ">戲院名稱：　{props.theater}</p>
-          <p class="card-text ">地址：　　　{props.theaterMap}</p>
-          <p class="card-text">電話：　　　{props.phone}</p>
-          <p class="card-text">統一編號：　{props.GUINumber}</p>
-          <p class="card-text">官方網站：　{props.website}</p>
-          <p class="card-text">電子信箱：　{props.email}</p>
+          <p class="card-text ">
+            {props.cardTitle1}：　{props.cardContent1}
+          </p>
+          <p class="card-text ">
+            {props.cardTitle2}：　{props.cardContent2}
+          </p>
+          <p class="card-text ">
+            {props.cardTitle3}：　{props.cardContent3}
+          </p>
+          <p class="card-text ">
+            {props.cardTitle4}：　{props.cardContent4}
+          </p>
+          <p class="card-text ">
+            {props.cardTitle5}：　{props.cardContent5}
+          </p>
+          <p class="card-text ">
+            {props.cardTitle6}：　{props.cardContent6}
+          </p>
+          <p class="card-text ">
+            {props.cardTitle7}：　{props.cardContent7}
+          </p>
+          <p class="card-text ">
+            {props.cardTitle8}：　{props.cardContent8}
+          </p>
         </div>
       </div>
     </div>

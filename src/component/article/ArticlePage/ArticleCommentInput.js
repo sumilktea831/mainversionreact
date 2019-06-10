@@ -41,25 +41,24 @@ class ArticleCommentInput extends React.Component {
   render() {
     return (
       <>
-        <div className="d-flex my-4">
+        <div className="d-flex my-4 input-group">
           <input
             id="commentInput"
             onChange={this.props.handleChange}
             value={this.props.inputText}
             type="text"
-            className="form-control"
+            className="form-control inp_email"
             placeholder="請輸入留言"
             aria-label="請輸入留言"
             aria-describedby="button-addon2"
           />
           <div class="input-group-append">
             <button
-              class="btn btn-warning nomarginBtn col"
-              type="button"
+              class="btn btn_Subscribe nomarginBtn"
               id="button-addon2"
               onClick={this.props.goComment}
             >
-              送出留言
+              送出
             </button>
           </div>
         </div>

@@ -6,16 +6,19 @@ import MoviePageCard from '../component/movie/MoviePageCard/MoviePageCard'
 import MovieContent from '../component/movie/MovieContent/MovieContent'
 import MovieQRcode from '../component/movie/MovieQRcode/MovieQRcode'
 import MovieCard from '../component/movie/MovieCard/MovieCard'
+import ActivityPageCard from '../component/activity/ActivityPageCard/ActivityPageCard'
+
+import Swal from 'sweetalert2'
 
 class MovieInfo extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      title: ['影片資訊', '活動資訊', '相關活動', '相關影片'],
       moviePageData: [],
       moviePageOtherData: [],
       streetView: false,
       collectMovie: '',
+      theaterData: {},
     }
   }
 
@@ -35,7 +38,14 @@ class MovieInfo extends React.Component {
       const moviePageOtherData = data.filter(
         item => item.id !== this.props.match.params.id
       )
-      console.log(moviePageData)
+      const theaterNameForGetData = JSON.parse(
+        JSON.stringify(moviePageData.theater)
+      )
+      moviePageData.imgSrc =
+        moviePageData.imgSrc.indexOf('http') == 0
+          ? moviePageData.imgSrc
+          : '/images/movieImg/' + moviePageData.imgSrc
+
       this.setState({ moviePageData: moviePageData })
       this.setState({ moviePageOtherData: moviePageOtherData })
       this.setState({ movieHeroImage: moviePageData.imgSrc })
@@ -54,6 +64,59 @@ class MovieInfo extends React.Component {
       })
       const data = await res.json()
       this.setState({ collectMovie: data.collectMovie })
+    } catch (err) {
+      console.log(err)
+    }
+    const pagename = window.location.pathname.slice(7)
+
+    try {
+      fetch('http://localhost:5555/cinema/' + this.state.moviePageData.cinemaId)
+        .then(res => res.json())
+        .then(data => {
+          let totalScore = 0
+          let theaterName = data.cinemaAddress
+          if (this.state.moviePageData.filmStars != null || undefined) {
+            let starData = Object.keys(this.state.moviePageData.filmStar)
+            let getScore = Object.values(
+              this.state.moviePageData.filmStar
+            ).forEach(item => (totalScore += Number(JSON.stringify(item.star))))
+            console.log(totalScore)
+            let totalPeople = starData.length
+            if (totalPeople != 0) {
+              console.log(totalPeople)
+              let scoreData =
+                parseFloat(
+                  Math.round((totalScore / totalPeople) * 100) / 100
+                ).toFixed(2) +
+                '/ 5 分' +
+                ' ( 總共 : ' +
+                totalPeople +
+                ' 人評分'
+              this.setState({ score: scoreData })
+            } else {
+              this.setState({ score: '目前還沒有人評分' })
+            }
+          } else {
+            this.setState({ score: '目前還沒有人評分' })
+          }
+
+          fetch(
+            'https://maps.googleapis.com/maps/api/geocode/json?address=' +
+              theaterName +
+              '&key=AIzaSyABvTY8JdjI-UKYsJ-if4LJTkmjJr-mPSU'
+          )
+            .then(res => res.json())
+            .then(res => {
+              if (res.results.length != 0) {
+                data.lat = res.results[0].geometry.location.lat.toString()
+                data.lng = res.results[0].geometry.location.lng.toString()
+              } else {
+                data.lat = 0
+                data.lng = 0
+              }
+              this.setState({ theaterData: data })
+            })
+        })
     } catch (err) {
       console.log(err)
     }
@@ -99,8 +162,26 @@ class MovieInfo extends React.Component {
             .split(id)
             .toString()
             .replace(/,/g, '')
+          // alert('已取消收藏')
+          Swal.fire({
+            // position: 'top-end',
+            type: 'success',
+            title: '<span style="color:#d4d1cc">已取消收藏</span>',
+            showConfirmButton: false,
+            buttonsStyling: false,
+            background: '#242b34',
+          })
         } else {
           data.collectMovie += id
+          // alert('已加入收藏')
+          Swal.fire({
+            // position: 'top-end',
+            type: 'success',
+            title: '<span style="color:#d4d1cc">已加入收藏</span>',
+            showConfirmButton: false,
+            buttonsStyling: false,
+            background: '#242b34',
+          })
         }
         this.setState({ collectMovie: data.collectMovie })
         try {
@@ -130,7 +211,7 @@ class MovieInfo extends React.Component {
               <MoviePageSection
                 theater={this.state.moviePageData.theater}
                 title={this.state.moviePageData.title}
-                content={this.state.moviePageData.content}
+                content={this.state.moviePageData.intro}
                 HeroImage={this.state.moviePageData.imgSrc}
               />
             </div>
@@ -139,20 +220,32 @@ class MovieInfo extends React.Component {
         <div className="container-fluid fix-content" id="text">
           <div className="row">
             <div className="col-md-12 p-0">
-              <MovieTitle
-                title={this.state.title[0]}
-                className="content-title"
-              />
+              <MovieTitle title={'電影資訊'} className="content-title" />
             </div>
             <div className="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
               <MoviePageCard
-                theater={this.state.moviePageData.theater}
-                theaterMap={this.state.moviePageData.theaterMap}
-                phone={this.state.moviePageData.phone}
-                GUINumber={this.state.moviePageData.GUINumber}
-                website={this.state.moviePageData.website}
-                email={this.state.moviePageData.email}
                 imgSrc={this.state.moviePageData.imgSrc}
+                cardTitle1={'電影中文名稱'}
+                cardTitle2={'電影分級'}
+                cardTitle3={'電影導演'}
+                cardTitle4={'電影語言'}
+                cardTitle5={'電影片長'}
+                cardTitle6={'電影上檔時間'}
+                cardTitle7={'電影下檔時間'}
+                cardTitle8={'電影評分'}
+                cardContent1={
+                  this.state.moviePageData.title +
+                  ' ( ' +
+                  this.state.moviePageData.titleEn +
+                  ' ) '
+                }
+                cardContent2={this.state.moviePageData.movie_rating}
+                cardContent3={this.state.moviePageData.director}
+                cardContent4={this.state.moviePageData.language}
+                cardContent5={this.state.moviePageData.filmTime + '分鐘'}
+                cardContent6={this.state.moviePageData.inTheaterDate}
+                cardContent7={this.state.moviePageData.outTheaterDate}
+                cardContent8={this.state.score}
               />
             </div>
           </div>
@@ -160,35 +253,31 @@ class MovieInfo extends React.Component {
         <div className="container-fluid fix-content" id="text">
           <div className="row">
             <div className="col-md-12 p-0">
-              <MovieTitle
-                title={this.state.title[1]}
-                className="content-title"
-              />
+              <MovieTitle title={'戲院資訊'} className="content-title" />
             </div>
-            <div className="col-12 col-sm-12 col-md-12 col-lg-9 mt-5">
-              <MovieContent
-                theater={this.state.moviePageData.theater}
-                title={this.state.moviePageData.title}
-                theaterMap={this.state.moviePageData.theaterMap}
-                content={this.state.moviePageData.content}
-                joinContent={this.state.moviePageData.joinContent}
-                joinContentCurrentPeople={
-                  this.state.moviePageData.joinContentCurrentPeople
+            <div className="col-12 col-sm-12 col-md-12 col-lg-12 mt-5">
+              <ActivityPageCard
+                theater={this.state.theaterData.cinemaName}
+                theaterMap={this.state.theaterData.cinemaAddress}
+                phone={this.state.theaterData.cinemaPhone}
+                GUINumber={this.state.theaterData.cinemaTaxid}
+                website={this.state.theaterData.cinemaWeb}
+                email={this.state.theaterData.cinemaEmail}
+                lat={this.state.theaterData.lat}
+                lng={this.state.theaterData.lng}
+                streetView={this.state.streetView}
+                handleOnClickMap={() => this.setState({ streetView: true })}
+                handleOnClickMaplocal={() =>
+                  this.setState({ streetView: false })
                 }
               />
             </div>
-            <div className="col-12 col-sm-12 col-md-12 col-lg-3 mt-5">
-              <MovieQRcode imgSrc={window.location.href} />
-            </div>
           </div>
         </div>
         <div className="container-fluid fix-content" id="text">
           <div className="row">
             <div className="col-md-12 p-0">
-              <MovieTitle
-                title={this.state.title[2]}
-                className="content-title"
-              />
+              <MovieTitle title={'相關電影'} className="content-title" />
             </div>
             {this.state.moviePageOtherData.map(data => (
               <div className="col-12 col-sm-12 col-md-6 col-lg-2 mt-5">
@@ -199,7 +288,11 @@ class MovieInfo extends React.Component {
                     key={data.id}
                     title={data.theater}
                     subtitle={data.title}
-                    imgSrc={data.imgSrc}
+                    imgSrc={
+                      data.imgSrc.indexOf('http') == 0
+                        ? data.imgSrc
+                        : '/images/movieImg/' + data.imgSrc
+                    }
                     collectOpen
                     isCollect={
                       this.state.collectMovie.indexOf(data.id) > -1
@@ -214,7 +307,11 @@ class MovieInfo extends React.Component {
                     key={data.id}
                     title={data.theater}
                     subtitle={data.title}
-                    imgSrc={data.imgSrc}
+                    imgSrc={
+                      data.imgSrc.indexOf('http') == 0
+                        ? data.imgSrc
+                        : '/images/movieImg/' + data.imgSrc
+                    }
                   />
                 )}
               </div>

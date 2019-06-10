@@ -51,49 +51,36 @@ class MemberEditInfo extends React.Component {
       console.log(e)
     }
   }
-  componentWillReceiveProps() {
-    //若不設定，當頁刷新會無資料
-    // console.log(this.state.thisData == 0)
-    if (this.state.thisData == 0) {
-      //如果state中的資料為空(設定""或{}無效，必須是0)，則將props資料設定給state
-      this.setState({ thisData: this.props.thisData })
-      this.setState({ thisfavType: this.props.thisData['fav_type'] })
-    }
-    // 另外儲存一份原始資料...比對暱稱時要用來過濾掉自己原本的名稱
-    this.setState({ originData: this.props.thisData })
-  }
-
-  //儲存按鈕onclick
-  // handleSaveInfo = () => {
-  //   let memberid = this.state.thisData.id
-  //   let isAllChecked = true
-  //   let checkArray = Object.values(this.state.checkok)
-  //   isAllChecked = checkArray.reduce((a, b) => a && b)
-  //   console.log('isAllChecked: ' + isAllChecked)
-  //   if (isAllChecked) {
-  //     try {
-  //       fetch('http://localhost:5555/member/' + memberid, {
-  //         method: 'PUT',
-  //         body: JSON.stringify(this.state.thisData),
-  //         headers: new Headers({
-  //           Accept: 'application/json',
-  //           'Content-Type': 'application/json',
-  //         }),
-  //       })
-  //         .then(res => res.json())
-  //         .then(jsonObject => {
-  //           this.setState({ thisData: jsonObject }, () => {
-  //             alert('資料儲存成功')
-  //             window.location.reload()
-  //           })
-  //         })
-  //     } catch (e) {
-  //       console.log(e)
-  //     }
-  //   } else {
-  //     alert('資料填寫有誤，請再次確認您的資料！')
+  // componentWillReceiveProps() {
+  //   //若不設定，當頁刷新會無資料
+  //   // console.log(this.state.thisData == 0)
+  //   if (this.state.thisData == 0) {
+  //     //如果state中的資料為空(設定""或{}無效，必須是0)，則將props資料設定給state
+  //     this.setState({ thisData: this.props.thisData })
+  //     this.setState({ thisfavType: this.props.thisData['fav_type'] })
   //   }
+  //   // 另外儲存一份原始資料...比對暱稱時要用來過濾掉自己原本的名稱
+  //   this.setState({ originData: this.props.thisData })
   // }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    console.log('childDerived')
+    // this.setState({ thisData: nextProps.thisData }) 這不能這樣setStae，要用下面的寫法
+    let stateToBeReturned = null
+    if (prevState.thisData == 0) {
+      stateToBeReturned = {
+        ...prevState,
+        thisData: nextProps.thisData,
+        originData: nextProps.thisData,
+        thisfavType: nextProps.thisData['fav_type'],
+      }
+    }
+
+    console.log(nextProps)
+    console.log(prevState)
+    console.log(stateToBeReturned)
+    return stateToBeReturned
+  }
 
   //輸入框change事件
   handleInputTextChange = event => {
@@ -363,7 +350,7 @@ class MemberEditInfo extends React.Component {
             {/* 這裡放頭像(含編輯按鈕)、email、權限 */}
             <AvatarTwo
               img={'/images/member/' + this.state.thisData.avatar}
-              name={this.props.avatarOne.name}
+              name={this.state.thisData.nickname}
               purview={this.props.avatarOne.purview}
               SignUpDate={this.props.avatarOne.SignUpDate}
               onChange={this.handleInputTextChange}

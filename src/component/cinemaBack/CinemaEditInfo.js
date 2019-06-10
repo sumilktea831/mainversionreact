@@ -14,6 +14,8 @@ class CinemaEditInfo extends React.Component {
       thisData: 0,
       hasNewAvatar: false,
       avatarUploadFailed: false,
+      successFileNum: 0,
+      failedFileNum: 0,
       checkok: {
         cinemaTaxid: true,
         cinemaName: true,
@@ -182,8 +184,8 @@ class CinemaEditInfo extends React.Component {
       if (value) {
         //先判斷是否有值，有值再進行進一步判斷
 
-        if (value.length < 11) {
-          //判斷是否字元數 < 11 (至少=縣市:3、行政區:3、路名:3、號碼:2)
+        if (value.length < 10) {
+          //判斷是否字元數 < 10 (至少=縣市:3、行政區:2、路名:3、號碼:2)
           document.querySelector('#' + eventName + 'help').innerHTML =
             '請輸入正確的地址'
         } else {
@@ -317,8 +319,8 @@ class CinemaEditInfo extends React.Component {
       eventName === 'cinemaAddress' ||
       eventName === 'cinemaPhone' ||
       eventName === 'cinemaBackupEmail' ||
-      eventName === 'cinemaWeb'
-      // name === 'cinemaLogoImg' ||
+      eventName === 'cinemaWeb' ||
+      eventName === 'cinemaIntro'
       // name === 'cinemaHeroImg' ||
     ) {
       copyData[eventName] = value
@@ -370,14 +372,12 @@ class CinemaEditInfo extends React.Component {
           }
         })
     } else if (eventName == 'cinemaImg') {
-      //未完成....api收不到資料<0528>
-      console.log(event.target.files)
-      console.log(event.target.files[0].name)
+      // console.log(event.target.files)
+      // console.log(event.target.files[0].name)
 
       var files = event.target.files
-      // var uploadFileName = []
-      let successFileNum = 0
-      var failedFileNum = 0
+      let successFileNum = this.state.successFileNum
+      var failedFileNum = this.state.failedFileNum
       for (let i = 0; i < files.length; i++) {
         let thisfile = files[i]
         console.log(thisfile)
@@ -389,10 +389,7 @@ class CinemaEditInfo extends React.Component {
         })
           .then(res => res.json())
           .then(obj => {
-            console.log(obj)
             if (obj.success == true) {
-              console.log('123')
-              console.log(successFileNum)
               successFileNum++
               copyData[eventName].push(obj.filename)
             } else {
@@ -405,10 +402,18 @@ class CinemaEditInfo extends React.Component {
               ' 筆，失敗 ' +
               failedFileNum +
               ' 筆'
+            this.setState({
+              successFileNum: successFileNum,
+              failedFileNum: failedFileNum,
+            })
             var imgBox = document.createElement('div')
             var eleImg = document.createElement('img')
             var delBtn = document.createElement('button')
-            delBtn.innerHTML = `<i class="fas fa-ban" style="font-size:30px; margin:-4px 0 0 0"></i>`
+            var btnIcon = document.createElement('i')
+            btnIcon.setAttribute('style', 'font-size:30px; margin:-4px 0 0 0')
+            btnIcon.setAttribute('class', 'fas fa-ban')
+            // delBtn.innerHTML = `<i name="btnIcon" class="fas fa-ban" style="font-size:30px; margin:-4px 0 0 0"></i>`
+            delBtn.appendChild(btnIcon)
             delBtn.setAttribute(
               'class',
               'position-absolute btn btn-outline-danger border-0 d-flex justify-content-center align-items-center'
@@ -417,33 +422,64 @@ class CinemaEditInfo extends React.Component {
               'style',
               'width:40px ; height:40px; color: danger '
             )
-            delBtn.addEventListener('click', event => {
-              // alert(obj.filename)
+
+            //刪除圖片的BTN的ICON的click事件
+            btnIcon.addEventListener('click', event => {
+              event.stopPropagation()
               copyData['cinemaImg'] = copyData['cinemaImg'].filter(
                 item => item !== obj.filename
               )
-              if (
-                event.target.parentNode ==
-                document.querySelector('#cinemaImgPreview').childNodes[0]
-              ) {
-                document
-                  .querySelector('#cinemaImgPreview')
-                  .removeChild(event.target.parentNode)
-              } else {
-                document
-                  .querySelector('#cinemaImgPreview')
-                  .removeChild(event.target.parentNode.parentNode)
-              }
-              this.setState({ thisData: copyData }, () =>
-                console.log(this.state.thisData)
+              document
+                .querySelector('#cinemaImgPreview')
+                .removeChild(event.target.parentNode.parentNode)
+              let successFileNum = this.state.successFileNum
+              successFileNum--
+
+              this.setState(
+                { thisData: copyData, successFileNum: successFileNum },
+                () => console.log(this.state.thisData)
               )
+              document.querySelector('#' + eventName + 'filename').innerHTML =
+                '附加檔案成功 ' +
+                successFileNum +
+                ' 筆，失敗 ' +
+                failedFileNum +
+                ' 筆'
+            })
+            //刪除圖片的BTN的click事件
+            delBtn.addEventListener('click', event => {
+              // alert(obj.filename)
+              // console.log(event.target)
+              event.stopPropagation()
+              copyData['cinemaImg'] = copyData['cinemaImg'].filter(
+                item => item !== obj.filename
+              )
+              document
+                .querySelector('#cinemaImgPreview')
+                .removeChild(event.target.parentNode)
+              let successFileNum = this.state.successFileNum
+              successFileNum--
+              this.setState(
+                { thisData: copyData, successFileNum: successFileNum },
+                () => console.log(this.state.thisData)
+              )
+              document.querySelector('#' + eventName + 'filename').innerHTML =
+                '附加檔案成功 ' +
+                successFileNum +
+                ' 筆，失敗 ' +
+                failedFileNum +
+                ' 筆'
             })
             eleImg.setAttribute('src', '/images/cinemaImg/' + obj.filename)
             eleImg.setAttribute(
               'style',
-              'height: 200px; box-shadow:#000 2px 2px 2px'
+              'width: 100%; box-shadow:#000 2px 2px 2px; objectFit:cover'
             )
             eleImg.classList.add('thumb')
+            imgBox.setAttribute(
+              'style',
+              'width: 300px; height:200px; overflow:hidden'
+            )
             imgBox.appendChild(delBtn)
             imgBox.appendChild(eleImg)
             document.querySelector('#cinemaImgPreview').appendChild(imgBox)
@@ -528,13 +564,15 @@ class CinemaEditInfo extends React.Component {
                 />
               </>
             ))}
-            <div
-              id="cinemaImgPreview"
-              className="d-flex flex-wrap"
-              style={{ width: '100%' }}
-            />
+            <Row>
+              <div
+                id="cinemaImgPreview"
+                className="d-flex flex-wrap"
+                style={{ width: '100%' }}
+              />
+            </Row>
           </div>
-          <div className="col-lg-5 mt-3">
+          <div className="col-lg-5 mt-3 mb-5">
             {/* 這裡放頭像(含編輯按鈕)、email、權限 */}
             <AvatarTwo
               img={'/images/cinemaImg/' + this.state.thisData.cinemaLogoImg}
@@ -546,6 +584,20 @@ class CinemaEditInfo extends React.Component {
               id={'cinemaLogoImg'}
               classShow={this.state.hasNewAvatar}
               uploadtip={this.state.avatarUploadFailed}
+            />
+            <p className="h5 mt-5 mb-4">戲院簡介</p>
+            <textarea
+              name="cinemaIntro"
+              className="border border-warning bg-back-input rounded text-orange"
+              placeholder="請輸入介紹內容..."
+              style={{
+                width: '100%',
+                height: '350px',
+              }}
+              onChange={this.handleInputTextChange}
+              value={this.state.thisData.cinemaIntro}
+              // cols="50"
+              // rows="5"
             />
           </div>
         </Row>

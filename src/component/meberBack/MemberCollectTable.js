@@ -9,9 +9,7 @@ class MemberCollectTable extends React.Component {
     }
   }
 
-  async componentDidMount() {}
   static getDerivedStateFromProps(nextProps, prevState) {
-    console.log('childDerived')
     // this.setState({ thisData: nextProps.thisData }) 這不能這樣setStae，要用下面的寫法
     let stateToBeReturned = null
     if (prevState.thisData == 0 || prevState.thisCollectArticleData == 0) {
@@ -22,9 +20,6 @@ class MemberCollectTable extends React.Component {
       }
     }
 
-    console.log(nextProps)
-    console.log(prevState)
-    console.log(stateToBeReturned)
     return stateToBeReturned
   }
 
@@ -34,6 +29,15 @@ class MemberCollectTable extends React.Component {
     // }
     return (
       <>
+        {/* {this.state.thisCollectArticleData.length == 0 ? (
+          <h5 className="text-center text-mywhite mx-auto">
+            尚無紀錄，趕快
+            <a href="/article" style={{ color: '#ffa510' }}>
+              前往文章
+            </a>
+            添加你的收藏吧！
+          </h5>
+        ) : ( */}
         <table class="table table-borderless text-center h5">
           <thead>
             <tr
@@ -83,6 +87,7 @@ class MemberCollectTable extends React.Component {
             ))}
           </tbody>
         </table>
+        {/* )} */}
       </>
     )
   }
