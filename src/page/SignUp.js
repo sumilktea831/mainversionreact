@@ -27,7 +27,7 @@ class SignUp extends React.Component {
           isclicked: false,
           classname: '',
           filter: 'box-origin',
-          src: 'http://localhost:3000/images/signup/film-2205325_1920.jpg',
+          src: './images/signup/film-2205325_1920.jpg',
           title: '會員登入',
           tabTitle1: '會員登入',
           tabTitle2: '會員註冊',
@@ -39,7 +39,7 @@ class SignUp extends React.Component {
           isclicked: false,
           classname: '',
           filter: 'box-origin',
-          src: 'http://localhost:3000/images/signup/admission-2974645_1920.jpg',
+          src: './images/signup/admission-2974645_1920.jpg',
           title: '戲院登入',
           tabTitle1: '戲院登入',
           tabTitle2: '戲院註冊',
@@ -111,7 +111,8 @@ class SignUp extends React.Component {
     try {
       //取得會員資料
       //fetch:json-server連線的位址/json中的項目/該項目中id
-      const response = await fetch('http://localhost:5555/member', {
+      // const response = await fetch('http://localhost:5555/member', {
+      const response = await fetch('http://114.34.173.228:5555/member', {
         method: 'GET', //使用GET方法獲取資訊，因為是取得資訊，故不須加body
         headers: new Headers({
           Accept: 'application/json',
