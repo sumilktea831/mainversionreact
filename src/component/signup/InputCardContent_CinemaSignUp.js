@@ -590,7 +590,7 @@ class InputCardContent_CinemaSignUp extends React.Component {
                   selectOptions={item.selectOptions}
                   onChange={this.handleInputTextChange}
                 />
-                <small id={item.id + 'help'} class="form-text text-danger " />
+                <small id={item.id + 'help'} className="form-text text-danger " />
               </>
             ))}
             <Row className="my-4">
@@ -620,7 +620,7 @@ class InputCardContent_CinemaSignUp extends React.Component {
                   selectOptions={item.selectOptions}
                   onChange={this.handleInputTextChange}
                 />
-                <small id={item.id + 'help'} class="form-text  text-danger" />
+                <small id={item.id + 'help'} className="form-text  text-danger" />
               </>
             ))}
             {/* 這裡是驗證碼的Row -- input + canvas */}

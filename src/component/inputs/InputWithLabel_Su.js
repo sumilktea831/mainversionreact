@@ -40,7 +40,7 @@ const InputWithLabel_Su = props => {
           lg={3}
           className="d-flex align-items-center justify-content-center"
         >
-          <label className="m-0 inputFontSizeSu" for={props.id}>
+          <label className="m-0 inputFontSizeSu" htmlFor={props.id}>
             {props.inputLabel}
           </label>
         </Col>

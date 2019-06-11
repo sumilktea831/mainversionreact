@@ -20,7 +20,6 @@ const InputRadio_Su = props => {
     <>
       <Row className="mx-0 px-0 col-lg-12 d-flex flex-wrap justify-content-between align-items-center">
         {props.selectOptions.map(item => (
-          <>
             <div
               key={item.id}
               // className="custom-control custom-radio custom-control-inline col-2 mx-0 pr-0"
@@ -56,31 +55,9 @@ const InputRadio_Su = props => {
                 {item.name}
               </button>
             </div>
-          </>
         ))}
       </Row>
 
-      {/* <div className="custom-control custom-radio custom-control-inline col-3">
-        <input
-          type="radio"
-          id="customRadioInline2"
-          name="customRadioInline1"
-          className="custom-control-input"
-        />
-
-        <label className="custom-control-label" htmlFor="customRadioInline2" />
-        <button
-          name="radio-btn"
-          className="px-3 position-absolute rounded border border-warning bg-darkblue font-c-primary"
-          style={{
-            height: `${props.inputHeight}`,
-            left: '-14px',
-          }}
-          onClick={handleClick('customRadioInline2')}
-        >
-          我是按紐222
-        </button>
-      </div> */}
     </>
   )
 }

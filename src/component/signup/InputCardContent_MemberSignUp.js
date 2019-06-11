@@ -309,7 +309,7 @@ class InputCardContent_MemberSignUp extends React.Component {
                     />
                   </Col>
                 </Row>
-                <small id={item.id + 'help'} class="form-text  text-danger" />
+                <small id={item.id + 'help'} className="form-text  text-danger" />
               </>
             ))}
             {/* 這裡是驗證碼的Row -- input + canvas */}

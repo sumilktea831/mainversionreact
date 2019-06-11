@@ -193,13 +193,13 @@ class SignUp extends React.Component {
     const newboxes = [...this.state.boxes]
     newboxes[this_index].isclicked = !newboxes[this_index].isclicked
     if (newboxes[this_index].isclicked) {
-      newboxes[this_index].classname = 'col-lg-11'
+      newboxes[this_index].classname = 'col-sm-11'
       newboxes[this_index].filter = 'box-clicked'
       newboxes[another_index].classname = ''
       newboxes[another_index].filter = 'box-origin'
       newboxes[another_index].isclicked = false
     } else {
-      newboxes[this_index].classname = 'col-lg-8'
+      newboxes[this_index].classname = 'col-sm-8'
       newboxes[this_index].filter = 'box-mousein'
       newboxes[another_index].classname = ''
       newboxes[another_index].filter = 'box-origin'
@@ -213,7 +213,7 @@ class SignUp extends React.Component {
     )
     const newboxes = [...this.state.boxes]
     if (!newboxes[this_index].isclicked && !newboxes[another_index].isclicked) {
-      newboxes[this_index].classname = 'col-lg-8'
+      newboxes[this_index].classname = 'col-sm-8'
       newboxes[this_index].filter = 'box-mousein'
       newboxes[another_index].classname = ''
       newboxes[another_index].filter = 'box-origin'
