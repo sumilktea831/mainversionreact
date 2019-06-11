@@ -7,6 +7,7 @@ import TitleKaga from '../component/cinema/TitleKaga'
 import CinemaSlider from '../component/cinema/CinemaSlider/CinemaSlider'
 import MessageBoard from '../component/cinema/MessageBoard/MessageBoard'
 import MessageBoardInput from '../component/cinema/MessageBoard/MessageBoardInput'
+import {FetchDomainName} from '../FetchDomainName'
 //撈目前已登陸的會員資料
 const memberId = sessionStorage.getItem('memberId')
 const cinemaId = sessionStorage.getItem('cinemaId')
@@ -37,7 +38,7 @@ class TheateInfo extends React.Component {
     window.addEventListener('scroll', this.handleScroll)
     try {
       //劇院
-      const resCinema = await fetch('http://localhost:5555/cinema', {
+      const resCinema = await fetch(`http://${FetchDomainName}:5555/cinema`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -58,7 +59,7 @@ class TheateInfo extends React.Component {
       // 更新瀏覽數
       dataCinema.cinemaPageViews = +dataCinema.cinemaPageViews + 1
       const response = await fetch(
-        'http://localhost:5555/cinema/' + this.props.match.params.id,
+        `http://${FetchDomainName}:5555/cinema/` + this.props.match.params.id,
         {
           method: 'PUT',
           body: JSON.stringify(dataCinema),
@@ -71,7 +72,7 @@ class TheateInfo extends React.Component {
       const jsonObject = await response.json()
 
       //會員
-      const resMember = await fetch('http://localhost:5555/member', {
+      const resMember = await fetch(`http://${FetchDomainName}:5555/member`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -85,7 +86,7 @@ class TheateInfo extends React.Component {
 
       //活動
       const resActivity = await fetch(
-        'http://localhost:5555/activityCardData',
+        `http://${FetchDomainName}:5555/activityCardData`,
         {
           method: 'GET',
           headers: new Headers({
@@ -107,7 +108,7 @@ class TheateInfo extends React.Component {
       // 所以該劇院的活動資料就是 dataActivity
 
       // 影片
-      const resFilm = await fetch('http://localhost:5555/movieCardData', {
+      const resFilm = await fetch(`http://${FetchDomainName}:5555/movieCardData`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -268,7 +269,7 @@ class TheateInfo extends React.Component {
           id: el.id,
           title: el.cinemaName,
           subtitle: el.cinemaCity + '/' + el.cinemaArea,
-          img: 'http://localhost:3000/images/cinemaImg/' + el.cinemaHeroImg,
+          img: `http://${FetchDomainName}:3000/images/cinemaImg/` + el.cinemaHeroImg,
           // 因為是原頁面跳轉 所以直接帶這樣才能實現跳轉
           link: '/cinema/' + dataCinema.id + '/' + el.id,
           // 不先驗證是否有會員的會會跳錯
@@ -310,7 +311,7 @@ class TheateInfo extends React.Component {
 
       //蓋回去資料庫
       const response = await fetch(
-        'http://localhost:5555/cinema/' + this.props.match.params.id,
+        `http://${FetchDomainName}:5555/cinema/` + this.props.match.params.id,
         {
           method: 'PUT',
           body: JSON.stringify(newCinemaData),
@@ -363,7 +364,7 @@ class TheateInfo extends React.Component {
       NewMemberData.collectCinema = newCollectionm
 
       //蓋回去資料庫
-      const response = await fetch('http://localhost:5555/member/' + memberId, {
+      const response = await fetch(`http://${FetchDomainName}:5555/member/` + memberId, {
         method: 'PUT',
         body: JSON.stringify(NewMemberData),
         headers: new Headers({
@@ -431,7 +432,7 @@ class TheateInfo extends React.Component {
     NewMemberData.collectFilm = newCollectionData
 
     // //蓋回去資料庫
-    const response = await fetch('http://localhost:5555/member/' + memberId, {
+    const response = await fetch(`http://${FetchDomainName}:5555/member/` + memberId, {
       method: 'PUT',
       body: JSON.stringify(NewMemberData),
       headers: new Headers({
@@ -567,7 +568,7 @@ class TheateInfo extends React.Component {
     NewCinemaMessage.cinemaMessage = NewData
 
     const resCinema = await fetch(
-      'http://localhost:5555/cinema/' + this.props.match.params.id,
+      `http://${FetchDomainName}:5555/cinema/` + this.props.match.params.id,
       {
         method: 'PUT',
         body: JSON.stringify(NewCinemaMessage),
@@ -623,7 +624,7 @@ class TheateInfo extends React.Component {
       CinemaData.cinemaStar = newStarData
     }
     const resCinema = await fetch(
-      'http://localhost:5555/cinema/' + this.props.match.params.id,
+      `http://${FetchDomainName}:5555/cinema/` + this.props.match.params.id,
       {
         method: 'PUT',
         body: JSON.stringify(CinemaData),
@@ -673,7 +674,7 @@ class TheateInfo extends React.Component {
           {/* 英雄頁面----串接完成 */}
           <CinemaSection
             pictureSrc={
-              'http://localhost:3000/images/cinemaImg/' +
+              `http://${FetchDomainName}:3000/images/cinemaImg/` +
               this.state.HeroSection.pictureSrc
             }
             bigSlogan={this.state.HeroSection.bigSlogan}
@@ -693,7 +694,7 @@ class TheateInfo extends React.Component {
                   key={this.state.BigCarData.id}
                   id={this.state.BigCarData.id}
                   img={
-                    'http://localhost:3000/images/cinemaImg/' +
+                    `http://${FetchDomainName}:3000/images/cinemaImg/` +
                     this.state.BigCarData.img
                   }
                   address={this.state.BigCarData.address}
@@ -732,7 +733,7 @@ class TheateInfo extends React.Component {
                   key={this.state.BigCarData.id}
                   id={this.state.BigCarData.id}
                   img={
-                    'http://localhost:3000/images/cinemaImg/' +
+                    `http://${FetchDomainName}:3000/images/cinemaImg/` +
                     this.state.BigCarData.img
                   }
                   address={this.state.BigCarData.address}

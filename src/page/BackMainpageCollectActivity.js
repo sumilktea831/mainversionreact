@@ -1,6 +1,7 @@
 import React from 'react'
 import { Row } from 'react-bootstrap'
 import MemberBackSidenav from '../component/backSidenav/MemberBackSidenav'
+import {FetchDomainName} from '../FetchDomainName'
 
 class BackSidenav extends React.Component {
   constructor() {
@@ -15,7 +16,7 @@ class BackSidenav extends React.Component {
   async componentDidMount() {
     try {
       //fetch:json-server連線的位址/json中的項目/該項目中id
-      const response = await fetch('http://localhost:5555/memberBackSidenav', {
+      const response = await fetch(`http://${FetchDomainName}:5555/memberBackSidenav`, {
         method: 'GET', //使用GET方法獲取資訊，因為是取得資訊，故不須加body
         headers: new Headers({
           Accept: 'application/json',

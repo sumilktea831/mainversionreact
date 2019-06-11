@@ -20,6 +20,7 @@ import ForumCommentCreateRoy from '../component/Forum/ForumArticleComment/ForumC
 // InputCardContent_MemberSignUp發文用
 import InputCardContent_MemberSignUp from '../component/Forum/ForumActionButton/InputCardContent_MemberSignUp'
 import ForumPage from '../component/Forum/ForumArticleList/ForumPage'
+import {FetchDomainName} from '../FetchDomainName'
 
 import Swal from 'sweetalert2'
 
@@ -170,7 +171,7 @@ class Forum extends React.Component {
     try {
       await this.setState({ loading: true })
       // 從JSONSERVER中抓forum這個陣列的的JSON檔
-      const response = await fetch('http://localhost:5555/forum', {
+      const response = await fetch(`http://${FetchDomainName}:5555/forum`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -281,7 +282,7 @@ class Forum extends React.Component {
     }
 
     try {
-      const res = await fetch('http://localhost:5555/member', {
+      const res = await fetch(`http://${FetchDomainName}:5555/member`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -896,7 +897,7 @@ class Forum extends React.Component {
           // 將更新後的文章內容包進data最後用PUT方式丟回SERVER
           const data = UpdateArticle
           // console.log(data)
-          fetch('http://localhost:5555/forum/' + this.props.match.params.id, {
+          fetch(`http://${FetchDomainName}:5555/forum/` + this.props.match.params.id, {
             method: 'PUT',
             body: JSON.stringify(data),
             headers: new Headers({
@@ -1037,7 +1038,7 @@ class Forum extends React.Component {
           const data = UpdateComment
           // console.log(data)
 
-          fetch('http://localhost:5555/forum/' + this.props.match.params.id, {
+          fetch(`http://${FetchDomainName}:5555/forum/` + this.props.match.params.id, {
             method: 'PUT',
             body: JSON.stringify(data),
             headers: new Headers({
@@ -1321,7 +1322,7 @@ class Forum extends React.Component {
         try {
           const data = item
 
-          fetch('http://localhost:5555/forum', {
+          fetch(`http://${FetchDomainName}:5555/forum`, {
             method: 'POST',
             body: JSON.stringify(data),
             headers: new Headers({
@@ -1396,7 +1397,7 @@ class Forum extends React.Component {
         try {
           // 用DELETE去刪除特定ID的文章
           // console.log(data)
-          fetch('http://localhost:5555/forum/' + this.props.match.params.id, {
+          fetch(`http://${FetchDomainName}:5555/forum/` + this.props.match.params.id, {
             method: 'DELETE',
             // DELETE不用給BODY
             // body: JSON.stringify(data),
@@ -1638,7 +1639,7 @@ class Forum extends React.Component {
       // console.log(data)
       // 將資料寫進資料庫
       const response = await fetch(
-        'http://localhost:5555/forum/' + this.props.match.params.id,
+        `http://${FetchDomainName}:5555/forum/` + this.props.match.params.id,
         {
           method: 'PUT',
           body: JSON.stringify(data),
@@ -1866,7 +1867,7 @@ class Forum extends React.Component {
       console.log(data)
       // 將資料寫進資料庫
       const response = await fetch(
-        'http://localhost:5555/forum/' + this.props.match.params.id,
+        `http://${FetchDomainName}:5555/forum/` + this.props.match.params.id,
         {
           method: 'PUT',
           body: JSON.stringify(data),
@@ -2036,7 +2037,7 @@ class Forum extends React.Component {
       // console.log(data)
       // 將資料寫進資料庫
       const response = await fetch(
-        'http://localhost:5555/forum/' + this.props.match.params.id,
+        `http://${FetchDomainName}:5555/forum/` + this.props.match.params.id,
         {
           method: 'PUT',
           body: JSON.stringify(data),

@@ -1,6 +1,7 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
 import ForumBackPageButtonComment from '../component/Forum/ForumBackMainPage/ForumBackPageButtonComment'
+import {FetchDomainName} from '../FetchDomainName'
 class ForumBackComment extends React.Component {
   constructor() {
     super()
@@ -26,7 +27,7 @@ class ForumBackComment extends React.Component {
 
   async componentDidMount() {
     try {
-      const res = await fetch('http://localhost:5555/forum', {
+      const res = await fetch(`http://${FetchDomainName}:5555/forum`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',

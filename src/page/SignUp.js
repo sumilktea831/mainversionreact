@@ -1,6 +1,7 @@
 import React from 'react'
 import BoxWrap from '../component/signup/BoxWrap'
 import { Row } from 'react-bootstrap'
+import {FetchDomainName} from '../FetchDomainName'
 // import { Session } from 'inspector'
 
 //Import SweetAlert2
@@ -112,7 +113,7 @@ class SignUp extends React.Component {
       //取得會員資料
       //fetch:json-server連線的位址/json中的項目/該項目中id
       // const response = await fetch('http://localhost:5555/member', {
-      const response = await fetch('http://114.34.173.228:5555/member', {
+      const response = await fetch(`http://${FetchDomainName}:5555/member`, {
         method: 'GET', //使用GET方法獲取資訊，因為是取得資訊，故不須加body
         headers: new Headers({
           Accept: 'application/json',
@@ -150,7 +151,7 @@ class SignUp extends React.Component {
     try {
       //取得會員資料
       //fetch:json-server連線的位址/json中的項目/該項目中id
-      const response = await fetch('http://localhost:5555/member', {
+      const response = await fetch(`http://${FetchDomainName}:5555/member`, {
         method: 'GET', //使用GET方法獲取資訊，因為是取得資訊，故不須加body
         headers: new Headers({
           Accept: 'application/json',
@@ -169,7 +170,7 @@ class SignUp extends React.Component {
     try {
       //取得戲院資料
       //fetch:json-server連線的位址/json中的項目/該項目中id
-      const response = await fetch('http://localhost:5555/cinema', {
+      const response = await fetch(`http://${FetchDomainName}:5555/cinema`, {
         method: 'GET', //使用GET方法獲取資訊，因為是取得資訊，故不須加body
         headers: new Headers({
           Accept: 'application/json',
@@ -421,7 +422,7 @@ class SignUp extends React.Component {
           newSignUpData.pwd = userPwd
           // this.setState({ memberSignUpdata: newSignUpData })
           try {
-            fetch('http://localhost:5555/member', {
+            fetch(`http://${FetchDomainName}:5555/member`, {
               method: 'POST',
               body: JSON.stringify(newSignUpData),
               headers: new Headers({
@@ -432,7 +433,7 @@ class SignUp extends React.Component {
               .then(res => res.json())
               .then(jsonObject => {
                 try {
-                  fetch('http://localhost:3001/api/sendmail', {
+                  fetch(`http://${FetchDomainName}:3001/api/sendmail`, {
                     method: 'POST',
                     body: JSON.stringify(jsonObject),
                     credentials: 'include',
@@ -560,7 +561,7 @@ class SignUp extends React.Component {
           newSignUpData.cinemaSignUpDate = dateYMD
           // this.setState({ memberSignUpdata: newSignUpData })
           try {
-            fetch('http://localhost:5555/cinema', {
+            fetch(`http://${FetchDomainName}:5555/cinema`, {
               method: 'POST',
               body: JSON.stringify(newSignUpData),
               headers: new Headers({

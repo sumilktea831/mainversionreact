@@ -8,6 +8,7 @@ import ActivityQRcode from '../component/activity/ActivityQRcode/ActivityQRcode'
 import ActivityJoinBtn from '../component/activity/ActivityJoinBtn/ActivityJoinBtn'
 import ActivityCard from '../component/activity/ActivityCard/ActivityCard'
 import { async } from 'q'
+import {FetchDomainName} from '../FetchDomainName'
 import Swal from 'sweetalert2'
 class ActivityInfo extends React.Component {
   constructor(props) {
@@ -23,7 +24,7 @@ class ActivityInfo extends React.Component {
 
   async componentDidMount() {
     try {
-      const res = await fetch('http://localhost:5555/activityCardData', {
+      const res = await fetch(`http://${FetchDomainName}:5555/activityCardData`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -46,7 +47,7 @@ class ActivityInfo extends React.Component {
       this.setState({ activityPageOtherData: activityPageOtherData })
       this.setState({ activityHeroImage: activityPageData.imgSrc })
       try {
-        fetch('http://localhost:5555/cinema/' + activityPageData.theaterId)
+        fetch(`http://${FetchDomainName}:5555/cinema/` + activityPageData.theaterId)
           .then(res => res.json())
           .then(res => {
             const data = JSON.parse(JSON.stringify(res))
@@ -56,7 +57,7 @@ class ActivityInfo extends React.Component {
               data.cinemaD3memberLook += 1
             }
             fetch(
-              'http://localhost:5555/cinema/' + activityPageData.theaterId,
+              `http://${FetchDomainName}:5555/cinema/` + activityPageData.theaterId,
               {
                 method: 'PUT',
                 body: JSON.stringify(data),
@@ -76,7 +77,7 @@ class ActivityInfo extends React.Component {
 
     const memberId = sessionStorage.getItem('memberId')
     try {
-      const res = await fetch('http://localhost:5555/member/' + memberId, {
+      const res = await fetch(`http://${FetchDomainName}:5555/member/` + memberId, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -91,7 +92,7 @@ class ActivityInfo extends React.Component {
   }
   handleOnClick = () => {
     this.setState({ activityPageData: [] })
-    const res = fetch('http://localhost:5555/activityCardData', {
+    const res = fetch(`http://${FetchDomainName}:5555/activityCardData`, {
       method: 'GET',
       headers: new Headers({
         Accept: 'application/json',
@@ -115,7 +116,7 @@ class ActivityInfo extends React.Component {
     const memberId = sessionStorage.getItem('memberId')
     if (memberId !== null) {
       try {
-        const res = await fetch('http://localhost:5555/member/' + memberId, {
+        const res = await fetch(`http://${FetchDomainName}:5555/member/` + memberId, {
           method: 'GET',
           headers: new Headers({
             Accept: 'application/json',
@@ -153,7 +154,7 @@ class ActivityInfo extends React.Component {
         }
         this.setState({ collectActivity: data.collectActivity })
         try {
-          const res = await fetch('http://localhost:5555/member/' + memberId, {
+          const res = await fetch(`http://${FetchDomainName}:5555/member/` + memberId, {
             method: 'PUT',
             body: JSON.stringify(data),
             headers: new Headers({
@@ -175,7 +176,7 @@ class ActivityInfo extends React.Component {
     const memberId = sessionStorage.getItem('memberId')
     if (memberId !== null) {
       try {
-        const res = await fetch('http://localhost:5555/member/' + memberId, {
+        const res = await fetch(`http://${FetchDomainName}:5555/member/` + memberId, {
           method: 'GET',
           headers: new Headers({
             Accept: 'application/json',
@@ -201,7 +202,7 @@ class ActivityInfo extends React.Component {
         } else {
           try {
             fetch(
-              'http://localhost:5555/cinema/' +
+              `http://${FetchDomainName}:5555/cinema/` +
                 this.state.activityPageData.theaterId
             )
               .then(res => res.json())
@@ -209,7 +210,7 @@ class ActivityInfo extends React.Component {
                 const dataForD3 = JSON.parse(JSON.stringify(res))
                 dataForD3.cinemaD3memberJoin += 1
                 fetch(
-                  'http://localhost:5555/cinema/' +
+                  `http://${FetchDomainName}:5555/cinema/` +
                     this.state.activityPageData.theaterId,
                   {
                     method: 'PUT',

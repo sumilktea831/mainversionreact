@@ -19,6 +19,7 @@ import CinemaEditInfo from '../component/cinemaBack/CinemaEditInfo'
 import ForumBackArticle from './ForumBackArticle'
 import ForumBackComment from './ForumBackComment'
 import ForumBackCollect from './ForumBackCollect'
+import {FetchDomainName} from '../FetchDomainName'
 //Import SweetAlert2
 import Swal from 'sweetalert2'
 import { async } from 'q'
@@ -66,7 +67,7 @@ class BackSidenav extends React.Component {
   async componentDidMount() {
     //取得會員sidenav項目
     try {
-      const response = await fetch('http://localhost:5555/memberBackSidenav', {
+      const response = await fetch(`http://${FetchDomainName}:5555/memberBackSidenav`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -82,7 +83,7 @@ class BackSidenav extends React.Component {
     }
     //取得會員資料
     try {
-      const response = await fetch('http://localhost:5555/member', {
+      const response = await fetch(`http://${FetchDomainName}:5555/member`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -100,7 +101,7 @@ class BackSidenav extends React.Component {
     }
     //取得會員editInfo項目
     try {
-      const response = await fetch('http://localhost:5555/memberEditInputmsg', {
+      const response = await fetch(`http://${FetchDomainName}:5555/memberEditInputmsg`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -117,7 +118,7 @@ class BackSidenav extends React.Component {
     //取得喜愛電影類型項目
     try {
       const response = await fetch(
-        'http://localhost:5555/memberFavTypeOptions',
+        `http://${FetchDomainName}:5555/memberFavTypeOptions`,
         {
           method: 'GET',
           headers: new Headers({
@@ -137,7 +138,7 @@ class BackSidenav extends React.Component {
     //activity get
     try {
       const resActivity = await fetch(
-        'http://localhost:5555/activityCardData',
+        `http://${FetchDomainName}:5555/activityCardData`,
         {
           method: 'GET',
           headers: new Headers({
@@ -173,7 +174,7 @@ class BackSidenav extends React.Component {
     const memberId = sessionStorage.getItem('memberId')
     if (memberId !== null) {
       try {
-        const res = await fetch('http://localhost:5555/member/' + memberId, {
+        const res = await fetch(`http://${FetchDomainName}:5555/member/` + memberId, {
           method: 'GET',
           headers: new Headers({
             Accept: 'application/json',
@@ -189,7 +190,7 @@ class BackSidenav extends React.Component {
 
     // 會員個人資訊頁 + 收藏頁--------------------------
     try {
-      const resMember = await fetch('http://localhost:5555/member', {
+      const resMember = await fetch(`http://${FetchDomainName}:5555/member`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -201,7 +202,7 @@ class BackSidenav extends React.Component {
       const dataThisMember = dataMember.filter(el => el.id === memberId)
 
       // 導入論壇資料
-      const resForum = await fetch('http://localhost:5555/forum', {
+      const resForum = await fetch(`http://${FetchDomainName}:5555/forum`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -211,7 +212,7 @@ class BackSidenav extends React.Component {
       const dataForum = await resForum.json()
 
       // 導入影片資料
-      const resFilm = await fetch('http://localhost:5555/movieCardData', {
+      const resFilm = await fetch(`http://${FetchDomainName}:5555/movieCardData`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -225,7 +226,7 @@ class BackSidenav extends React.Component {
       const memberPageData = await dataMember.find(item => item.id === memberId)
 
       // 導入戲院資料
-      const resCinema = await fetch('http://localhost:5555/cinema', {
+      const resCinema = await fetch(`http://${FetchDomainName}:5555/cinema`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -236,7 +237,7 @@ class BackSidenav extends React.Component {
       const dataCinema = await resCinema.json()
 
       // ==========Su========預覽頁======導入完整文章資料
-      const resArticle = await fetch('http://localhost:5555/articleCardData', {
+      const resArticle = await fetch(`http://${FetchDomainName}:5555/articleCardData`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -346,7 +347,7 @@ class BackSidenav extends React.Component {
         id: item.id,
         title: item.cinemaName,
         subtitle: item.cinemaCity + '/' + item.cinemaArea,
-        img: 'http://localhost:3000/images/cinemaImg/' + item.cinemaHeroImg,
+        img: 'http://' + FetchDomainName + ':3000/images/cinemaImg/' + item.cinemaHeroImg,
         link: '/cinema/' + item.id,
         star: item.cinemaStar,
         mark: memberPageData.markList,
@@ -428,7 +429,7 @@ class BackSidenav extends React.Component {
     NewMemberData.markList = newMarkUpdateData
 
     // 然後確實蓋回去
-    const resMember = await fetch('http://localhost:5555/member/' + memberId, {
+    const resMember = await fetch(`http://${FetchDomainName}:5555/member/` + memberId, {
       method: 'PUT',
       body: JSON.stringify(NewMemberData),
       headers: new Headers({
@@ -459,7 +460,7 @@ class BackSidenav extends React.Component {
     }
     // 然後確實蓋回去
     const resMark = await fetch(
-      'http://localhost:5555/movieCardData/' + thisNewFilmData.id,
+      `http://${FetchDomainName}:5555/movieCardData/` + thisNewFilmData.id,
       {
         method: 'PUT',
         body: JSON.stringify(thisNewFilmData),
@@ -538,7 +539,7 @@ class BackSidenav extends React.Component {
       console.log('thisNewMemberData')
       console.log(thisNewMemberData)
       //蓋回去資料庫
-      const response = await fetch('http://localhost:5555/member/' + memberId, {
+      const response = await fetch(`http://${FetchDomainName}:5555/member/` + memberId, {
         method: 'PUT',
         body: JSON.stringify(thisNewMemberData),
         headers: new Headers({
@@ -619,7 +620,7 @@ class BackSidenav extends React.Component {
     NewMemberData.markList = newMarkUpdateData
 
     // 然後確實蓋回去
-    const resMember = await fetch('http://localhost:5555/member/' + memberId, {
+    const resMember = await fetch(`http://${FetchDomainName}:5555/member/` + memberId, {
       method: 'PUT',
       body: JSON.stringify(NewMemberData),
       headers: new Headers({
@@ -651,7 +652,7 @@ class BackSidenav extends React.Component {
     }
     // 然後確實蓋回去
     const resMark = await fetch(
-      'http://localhost:5555/cinema/' + thisNewCinemaData.id,
+      `http://${FetchDomainName}:5555/cinema/` + thisNewCinemaData.id,
       {
         method: 'PUT',
         body: JSON.stringify(thisNewCinemaData),
@@ -675,7 +676,7 @@ class BackSidenav extends React.Component {
       subtitle:
         thisNewCinemaData.cinemaCity + '/' + thisNewCinemaData.cinemaArea,
       img:
-        'http://localhost:3000/images/cinemaImg/' +
+        'http://' + FetchDomainName + ':3000/images/cinemaImg/' +
         thisNewCinemaData.cinemaHeroImg,
       link: '/cinema/' + thisNewCinemaData.id,
       star: thisNewCinemaData.cinemaStar,
@@ -718,7 +719,7 @@ class BackSidenav extends React.Component {
         item => item !== id
       )
       //蓋回去資料庫
-      const response = await fetch('http://localhost:5555/member/' + memberId, {
+      const response = await fetch(`http://${FetchDomainName}:5555/member/` + memberId, {
         method: 'PUT',
         body: JSON.stringify(thisNewMemberData),
         headers: new Headers({
@@ -766,7 +767,7 @@ class BackSidenav extends React.Component {
     isAllChecked = checkArray.reduce((a, b) => a && b)
     if (isAllChecked) {
       try {
-        fetch('http://localhost:5555/member/' + memberid, {
+        fetch(`http://${FetchDomainName}:5555/member/` + memberid, {
           method: 'PUT',
           body: JSON.stringify(data),
           headers: new Headers({
@@ -810,7 +811,7 @@ class BackSidenav extends React.Component {
     const memberId = sessionStorage.getItem('memberId')
     if (memberId !== null) {
       try {
-        const res = await fetch('http://localhost:5555/member/' + memberId, {
+        const res = await fetch(`http://${FetchDomainName}:5555/member/` + memberId, {
           method: 'GET',
           headers: new Headers({
             Accept: 'application/json',
@@ -848,7 +849,7 @@ class BackSidenav extends React.Component {
         }
         this.setState({ collectActivity: data.collectActivity })
         try {
-          const res = await fetch('http://localhost:5555/member/' + memberId, {
+          const res = await fetch(`http://${FetchDomainName}:5555/member/` + memberId, {
             method: 'PUT',
             body: JSON.stringify(data),
             headers: new Headers({
@@ -908,7 +909,7 @@ class BackSidenav extends React.Component {
 
       try {
         const res = await fetch(
-          'http://localhost:5555/member/' + this.state.thisMemberData.id,
+          `http://${FetchDomainName}:5555/member/` + this.state.thisMemberData.id,
           {
             method: 'PUT',
             body: JSON.stringify(data), //新的會員收藏資料
@@ -966,17 +967,17 @@ class BackSidenav extends React.Component {
     }).then(result => {
       if (result.value) {
         try {
-          fetch('http://localhost:5555/activityCardData/' + id)
+          fetch(`http://${FetchDomainName}:5555/activityCardData/` + id)
             .then(res => res.json())
             .then(res => {
               const data = JSON.parse(JSON.stringify(res))
               const theaterId = JSON.parse(JSON.stringify(data.theaterId))
-              fetch('http://localhost:5555/cinema/' + theaterId)
+              fetch(`http://${FetchDomainName}:5555/cinema/` + theaterId)
                 .then(res => res.json())
                 .then(res => {
                   const data = JSON.parse(JSON.stringify(res))
                   data.cinemaD3memberCancel += 1
-                  fetch('http://localhost:5555/cinema/' + theaterId, {
+                  fetch(`http://${FetchDomainName}:5555/cinema/` + theaterId, {
                     method: 'PUT',
                     body: JSON.stringify(data),
                     headers: new Headers({
@@ -988,7 +989,7 @@ class BackSidenav extends React.Component {
                     .then(res => {
                       let memberData = []
                       fetch(
-                        'http://localhost:5555/member/' +
+                        `http://${FetchDomainName}:5555/member/` +
                           sessionStorage.getItem('memberId')
                       )
                         .then(res => res.json())
@@ -1000,7 +1001,7 @@ class BackSidenav extends React.Component {
                             .toString()
                             .replace(/,/g, '')
                           fetch(
-                            'http://localhost:5555/member/' +
+                            `http://${FetchDomainName}:5555/member/` +
                               sessionStorage.getItem('memberId'),
                             {
                               method: 'PUT',

@@ -6,6 +6,7 @@ import MovieTitle from '../component/movie/MovieTitle/MovieTitle'
 import MovieSearchbar from '../component/movie/MovieSearchbar/MovieSearchbar'
 import MovieItemThing from '../component/movie/MovieItems/MovieItemThing'
 import CardKaga from '../component/cinema/CardKaga/v3/CardKaga'
+import {FetchDomainName} from '../FetchDomainName'
 // import MovieCardCnt from '../component/movie/MovieCardCnt/MovieCardCnt';
 
 //撈目前已登陸的會員資料
@@ -22,7 +23,7 @@ class Movie extends React.Component {
       bigSlogan: '擇你所愛，愛你所擇',
       midSlogan: '找尋您的專屬活動。',
       smallSlogan: '開始找尋',
-      heroSectionPic: 'http://localhost:3000/images/filmbg.png',
+      heroSectionPic: `http://${FetchDomainName}:3000/images/filmbg.png`,
       filmData: [],
       tableData: [],
       // tableTtlTxt: [{}],
@@ -37,7 +38,7 @@ class Movie extends React.Component {
   async componentDidMount() {
     //  filmData
     try {
-      const resFilm = await fetch('http://localhost:5555/filmData', {
+      const resFilm = await fetch(`http://${FetchDomainName}:5555/filmData`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -49,7 +50,7 @@ class Movie extends React.Component {
 
       // 撈出目前登錄的會員得資料
       const resMember = await fetch(
-        'http://localhost:5555/member/' + memberId,
+        `http://${FetchDomainName}:5555/member/` + memberId,
         {
           method: 'GET',
           headers: new Headers({
@@ -86,7 +87,7 @@ class Movie extends React.Component {
 
     //  tableData
     try {
-      const res2 = await fetch('http://localhost:5555/movietableData', {
+      const res2 = await fetch(`http://${FetchDomainName}:5555/movietableData`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -101,7 +102,7 @@ class Movie extends React.Component {
 
     //  movieitemData
     try {
-      const res3 = await fetch('http://localhost:5555/movieitemData', {
+      const res3 = await fetch(`http://${FetchDomainName}:5555/movieitemData`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -152,7 +153,7 @@ class Movie extends React.Component {
       markList: this.state.memberThisData.markList,
     }
     // //蓋回去資料庫
-    const response = await fetch('http://localhost:5555/member/' + memberId, {
+    const response = await fetch(`http://${FetchDomainName}:5555/member/` + memberId, {
       method: 'PUT',
       body: JSON.stringify(NewMemberData),
       headers: new Headers({
@@ -222,7 +223,7 @@ class Movie extends React.Component {
                         id={item.id}
                         title={item.title}
                         subtitle={item.subtitle}
-                        img={'http://localhost:3000/images/' + item.img}
+                        img={'http://'+ FetchDomainName + ':3000/images/' + item.img}
                         link={item.link}
                         collectionIcon
                         collectionClick={this.collectionClickMovie}
@@ -236,7 +237,7 @@ class Movie extends React.Component {
                         id={item.id}
                         title={item.title}
                         subtitle={item.subtitle}
-                        img={'http://localhost:3000/images/' + item.img}
+                        img={'http://' + FetchDomainName + ':3000/images/' + item.img}
                         link={item.link}
                       />
                     ))}

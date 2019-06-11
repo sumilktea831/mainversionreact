@@ -4,6 +4,7 @@ import MovieTitle from '../component/movie/MovieTitle/MovieTitle'
 import ActivitySection from '../component/activity/ActivitySection/ActivitySection'
 import MovieCard from '../component/movie/MovieCard/MovieCard'
 import ArticleSlider from '../component/movie/MovieSlider/ArticleList/ArticleSlider/ArticleSlider'
+import {FetchDomainName} from '../FetchDomainName'
 
 class MovieInfo extends React.Component {
   constructor() {
@@ -16,7 +17,7 @@ class MovieInfo extends React.Component {
       bigSlogan: '擇你所愛，愛你所擇',
       midSlogan: '找尋您的專屬活動。',
       smallSlogan: '開始找尋',
-      heroSectionPic: 'http://localhost:3000/images/filmbg.png',
+      heroSectionPic: `http://${FetchDomainName}:3000/images/filmbg.png`,
       filmData: [],
       tableData: [],
       // tableTtlTxt: [{}],
@@ -29,7 +30,7 @@ class MovieInfo extends React.Component {
   async componentDidMount() {
     //  filmData
     try {
-      const res = await fetch('http://localhost:5555/filmData', {
+      const res = await fetch(`http://${FetchDomainName}:5555/filmData`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -45,7 +46,7 @@ class MovieInfo extends React.Component {
 
     //  tableData
     try {
-      const res2 = await fetch('http://localhost:5555/movietableData', {
+      const res2 = await fetch(`http://${FetchDomainName}:5555/movietableData`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -61,7 +62,7 @@ class MovieInfo extends React.Component {
 
     //  movieitemData
     try {
-      const res3 = await fetch('http://localhost:5555/movieitemData', {
+      const res3 = await fetch(`http://${FetchDomainName}:5555/movieitemData`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -117,7 +118,7 @@ class MovieInfo extends React.Component {
                     id={element.id}
                     title={element.name_tw}
                     subtitle={element.name_en}
-                    img={'http://localhost:3000/images/' + element.movie_pic}
+                    img={'http://' + FetchDomainName + ':3000/images/' + element.movie_pic}
                     link={'/movie/' + element.id}
                     collectionIcon
                     collection={true / false}
@@ -139,7 +140,7 @@ class MovieInfo extends React.Component {
                     id={element.id}
                     title={element.name_tw}
                     subtitle={element.name_en}
-                    img={'http://localhost:3000/images/' + element.movie_pic}
+                    img={'http://'+ FetchDomainName + ':3000/images/' + element.movie_pic}
                     link={'/movie/' + element.id}
                     collectionIcon
                     collection={true / false}

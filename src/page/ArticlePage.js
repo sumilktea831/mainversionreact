@@ -9,6 +9,7 @@ import ViewPage from '../component/article/ArticlePage/ViewPage'
 import ArticleComment from '../component/article/ArticlePage/ArticleComment'
 import ArticleCommentInput from '../component/article/ArticlePage/ArticleCommentInput'
 import ArticleBtnGroup from '../component/article/ArticleList/ArticleButton/ArticleBtnGroup'
+import {FetchDomainName} from '../FetchDomainName'
 import Swal from 'sweetalert2'
 
 const memberId = sessionStorage.getItem('memberId')
@@ -36,7 +37,7 @@ class ArticlePage extends React.Component {
 
   async componentDidMount() {
     try {
-      const res = await fetch('http://localhost:5555/articleCardData', {
+      const res = await fetch(`http://${FetchDomainName}:5555/articleCardData`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -73,7 +74,7 @@ class ArticlePage extends React.Component {
 
       // const data = newViewData
 
-      fetch('http://localhost:5555/articleCardData/' + this.state.thisId, {
+      fetch(`http://${FetchDomainName}:5555/articleCardData/` + this.state.thisId, {
         method: 'PUT',
         body: JSON.stringify(newViewData),
         headers: new Headers({
@@ -107,7 +108,7 @@ class ArticlePage extends React.Component {
     // 倒入留言的資料
     try {
       const res = await fetch(
-        'http://localhost:5555/articleComment?_sort=id&_order=DESC',
+        `http://${FetchDomainName}:5555/articleComment?_sort=id&_order=DESC`,
         {
           method: 'GET',
           headers: new Headers({
@@ -134,7 +135,7 @@ class ArticlePage extends React.Component {
       try {
         // 這邊先寫死 取快樂碼農資料
         const memberRes = await fetch(
-          'http://localhost:5555/member/' + memberId,
+          `http://${FetchDomainName}:5555/member/` + memberId,
           {
             method: 'GET',
             headers: new Headers({
@@ -193,7 +194,7 @@ class ArticlePage extends React.Component {
         content: this.state.inputText,
       }
       try {
-        const res = await fetch('http://localhost:5555/articleComment', {
+        const res = await fetch(`http://${FetchDomainName}:5555/articleComment`, {
           method: 'POST',
           body: JSON.stringify(newRes),
           headers: new Headers({
@@ -252,7 +253,7 @@ class ArticlePage extends React.Component {
         content: this.state.inputText,
       }
       try {
-        const res = await fetch('http://localhost:5555/articleComment', {
+        const res = await fetch(`http://${FetchDomainName}:5555/articleComment`, {
           method: 'POST',
           body: JSON.stringify(newRes),
           headers: new Headers({
@@ -369,7 +370,7 @@ class ArticlePage extends React.Component {
 
       try {
         const res = await fetch(
-          'http://localhost:5555/member/' + this.state.memberAllData.id,
+          `http://${FetchDomainName}:5555/member/` + this.state.memberAllData.id,
           {
             method: 'PUT',
             body: JSON.stringify(data), //新的會員收藏資料
@@ -446,7 +447,7 @@ class ArticlePage extends React.Component {
 
       try {
         const res = await fetch(
-          'http://localhost:5555/articleCardData/' + this.state.thisId,
+          `http://${FetchDomainName}:5555/articleCardData/` + this.state.thisId,
           {
             method: 'PUT',
             body: JSON.stringify(newLikeData),

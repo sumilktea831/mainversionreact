@@ -4,6 +4,7 @@ import ActivitySection from '../component/activity/ActivitySection/ActivitySecti
 import ButtonCity from '../component/cinema/ButtonGroup/ButtonCity'
 import ButtonType from '../component/cinema/ButtonGroup/ButtonType'
 import TitleKaga from '../component/cinema/TitleKaga'
+import {FetchDomainName} from '../FetchDomainName'
 //撈目前已登陸的會員資料
 const memberId = sessionStorage.getItem('memberId')
 class Cinema extends React.Component {
@@ -40,7 +41,7 @@ class Cinema extends React.Component {
   // cinema.json的資料為
   async componentDidMount() {
     try {
-      const resCinema = await fetch('http://localhost:5555/cinema', {
+      const resCinema = await fetch(`http://${FetchDomainName}:5555/cinema`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -51,7 +52,7 @@ class Cinema extends React.Component {
       this.setState({ AllCinemaData: dataCinema })
       // 撈出目前登錄的會員得資料
       const resMember = await fetch(
-        'http://localhost:5555/member/' + memberId,
+        `http://${FetchDomainName}:5555/member/` + memberId,
         {
           method: 'GET',
           headers: new Headers({
@@ -104,7 +105,7 @@ class Cinema extends React.Component {
     NewMemberData.collectCinema = newCollectionData
 
     // //蓋回去資料庫
-    const response = await fetch('http://localhost:5555/member/' + memberId, {
+    const response = await fetch(`http://${FetchDomainName}:5555/member/` + memberId, {
       method: 'PUT',
       body: JSON.stringify(NewMemberData),
       headers: new Headers({
@@ -363,7 +364,8 @@ class Cinema extends React.Component {
     return (
       <>
         <ActivitySection
-          pictureSrc="http://localhost:3000/images/cinemaImg/cinemaSearch.jpg"
+          // pictureSrc="http://localhost:3000/images/cinemaImg/cinemaSearch.jpg"
+          pictureSrc="./images/cinemaImg/cinemaSearch.jpg"
           bigSlogan="遍尋每位影人駐足的角落"
           midSlogan="在眾多劇場堆疊成的影視花園裡沈迷"
           smallSlogan="開始瀏覽"
@@ -402,7 +404,8 @@ class Cinema extends React.Component {
                     id={item.id}
                     title={item.title}
                     subtitle={item.subtitle}
-                    img={'http://localhost:3000/images/cinemaImg/' + item.img}
+                    // img={'http://localhost:3000/images/cinemaImg/' + item.img}
+                    img={'./images/cinemaImg/' + item.img}
                     link={item.link}
                     collectionIcon
                     collectionClick={this.collectionClickMovie}
@@ -418,7 +421,8 @@ class Cinema extends React.Component {
                     id={item.id}
                     title={item.title}
                     subtitle={item.subtitle}
-                    img={'http://localhost:3000/images/cinemaImg/' + item.img}
+                    // img={'http://localhost:3000/images/cinemaImg/' + item.img}
+                    img={'./images/cinemaImg/' + item.img}
                     link={item.link}
                     starIcon
                     star={item.star}

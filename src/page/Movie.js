@@ -5,6 +5,7 @@ import MovieSearchbarTitle from '../component/movie/MovieSearchbar/MovieSearchba
 import MovieSearchbarContent from '../component/movie/MovieSearchbar/MovieSearchbarContent'
 import MovieSearchbarInput from '../component/movie/MovieSearchbar/MovieSearchbarInput'
 import MovieCard from '../component/movie/MovieCard/MovieCard'
+import {FetchDomainName} from '../FetchDomainName'
 import Swal from 'sweetalert2'
 
 class Movie extends React.Component {
@@ -68,7 +69,7 @@ class Movie extends React.Component {
   async componentDidMount() {
     try {
       this.setState({ movieCardDataResult: 1 })
-      const res = await fetch('http://localhost:5555/movieCardData', {
+      const res = await fetch(`http://${FetchDomainName}:5555/movieCardData`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -84,7 +85,7 @@ class Movie extends React.Component {
     const memberId = sessionStorage.getItem('memberId')
     if (memberId !== null) {
       try {
-        const res = await fetch('http://localhost:5555/member/' + memberId, {
+        const res = await fetch(`http://${FetchDomainName}:5555/member/` + memberId, {
           method: 'GET',
           headers: new Headers({
             Accept: 'application/json',
@@ -136,7 +137,7 @@ class Movie extends React.Component {
         break
     }
     try {
-      const res = await fetch('http://localhost:5555/movieCardData', {
+      const res = await fetch(`http://${FetchDomainName}:5555/movieCardData`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -248,7 +249,7 @@ class Movie extends React.Component {
     if (event.which === 13) {
       this.setState({ movieCardDataResult: 1 })
       try {
-        const res = await fetch('http://localhost:5555/movieCardData', {
+        const res = await fetch(`http://${FetchDomainName}:5555/movieCardData`, {
           method: 'GET',
           headers: new Headers({
             Accept: 'application/json',
@@ -296,7 +297,7 @@ class Movie extends React.Component {
     const memberId = sessionStorage.getItem('memberId')
     if (memberId !== null) {
       try {
-        const res = await fetch('http://localhost:5555/member/' + memberId, {
+        const res = await fetch(`http://${FetchDomainName}:5555/member/` + memberId, {
           method: 'GET',
           headers: new Headers({
             Accept: 'application/json',
@@ -334,7 +335,7 @@ class Movie extends React.Component {
         }
         this.setState({ collectMovie: data.collectMovie })
         try {
-          const res = await fetch('http://localhost:5555/member/' + memberId, {
+          const res = await fetch(`http://${FetchDomainName}:5555/member/` + memberId, {
             method: 'PUT',
             body: JSON.stringify(data),
             headers: new Headers({

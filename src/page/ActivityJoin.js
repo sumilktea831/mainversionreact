@@ -8,6 +8,7 @@ import ActivityQRcode from '../component/activity/ActivityQRcode/ActivityQRcode'
 import ActivityJoinBtn from '../component/activity/ActivityJoinBtn/ActivityJoinBtn'
 import ActivityCard from '../component/activity/ActivityCard/ActivityCard'
 import ActivityJoinForm from '../component/activity/ActivityJoinForm/ActivityJoinForm'
+import {FetchDomainName} from '../FetchDomainName'
 import Swal from 'sweetalert2'
 
 class ActivityInfo extends React.Component {
@@ -24,7 +25,7 @@ class ActivityInfo extends React.Component {
 
   async componentDidMount() {
     try {
-      const res = await fetch('http://localhost:5555/activityCardData', {
+      const res = await fetch(`http://${FetchDomainName}:5555/activityCardData`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -48,7 +49,7 @@ class ActivityInfo extends React.Component {
 
     const memberId = sessionStorage.getItem('memberId')
     try {
-      const res = await fetch('http://localhost:5555/member/' + memberId, {
+      const res = await fetch(`http://${FetchDomainName}:5555/member/` + memberId, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -63,7 +64,7 @@ class ActivityInfo extends React.Component {
   }
   handleOnClick = () => {
     this.setState({ activityPageData: [] })
-    const res = fetch('http://localhost:5555/activityCardData', {
+    const res = fetch(`http://${FetchDomainName}:5555/activityCardData`, {
       method: 'GET',
       headers: new Headers({
         Accept: 'application/json',
@@ -87,7 +88,7 @@ class ActivityInfo extends React.Component {
     const memberId = sessionStorage.getItem('memberId')
     if (memberId !== null) {
       try {
-        const res = await fetch('http://localhost:5555/member/' + memberId, {
+        const res = await fetch(`http://${FetchDomainName}:5555/member/` + memberId, {
           method: 'GET',
           headers: new Headers({
             Accept: 'application/json',
@@ -113,7 +114,7 @@ class ActivityInfo extends React.Component {
           data.collectActivityJoin += id
           try {
             const res = await fetch(
-              'http://localhost:5555/member/' + memberId,
+              `http://${FetchDomainName}:5555/member/` + memberId,
               {
                 method: 'PUT',
                 body: JSON.stringify(data),

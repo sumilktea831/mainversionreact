@@ -5,6 +5,7 @@ import ActivitySearchbarTitle from '../component/activity/ActivitySearchbar/Acti
 import ActivitySearchbarContent from '../component/activity/ActivitySearchbar/ActivitySearchbarContent'
 import ActivitySearchbarInput from '../component/activity/ActivitySearchbar/ActivitySearchbarInput'
 import ActivityCard from '../component/activity/ActivityCard/ActivityCard'
+import {FetchDomainName} from '../FetchDomainName'
 import Swal from 'sweetalert2'
 class Activity extends React.Component {
   constructor() {
@@ -30,7 +31,7 @@ class Activity extends React.Component {
   async componentDidMount() {
     try {
       this.setState({ activityCardDataResult: 1 })
-      const res = await fetch('http://localhost:5555/activityCardData', {
+      const res = await fetch(`http://${FetchDomainName}:5555/activityCardData`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -46,7 +47,7 @@ class Activity extends React.Component {
     const memberId = sessionStorage.getItem('memberId')
     if (memberId !== null) {
       try {
-        const res = await fetch('http://localhost:5555/member/' + memberId, {
+        const res = await fetch(`http://${FetchDomainName}:5555/member/` + memberId, {
           method: 'GET',
           headers: new Headers({
             Accept: 'application/json',
@@ -79,7 +80,7 @@ class Activity extends React.Component {
         break
     }
     try {
-      const res = await fetch('http://localhost:5555/activityCardData', {
+      const res = await fetch(`http://${FetchDomainName}:5555/activityCardData`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -141,7 +142,7 @@ class Activity extends React.Component {
     if (event.which === 13) {
       this.setState({ activityCardDataResult: 1 })
       try {
-        const res = await fetch('http://localhost:5555/activityCardData', {
+        const res = await fetch(`http://${FetchDomainName}:5555/activityCardData`, {
           method: 'GET',
           headers: new Headers({
             Accept: 'application/json',
@@ -169,7 +170,7 @@ class Activity extends React.Component {
     const memberId = sessionStorage.getItem('memberId')
     if (memberId !== null) {
       try {
-        const res = await fetch('http://localhost:5555/member/' + memberId, {
+        const res = await fetch(`http://${FetchDomainName}:5555/member/` + memberId, {
           method: 'GET',
           headers: new Headers({
             Accept: 'application/json',
@@ -207,7 +208,7 @@ class Activity extends React.Component {
         }
         this.setState({ collectActivity: data.collectActivity })
         try {
-          const res = await fetch('http://localhost:5555/member/' + memberId, {
+          const res = await fetch(`http://${FetchDomainName}:5555/member/` + memberId, {
             method: 'PUT',
             body: JSON.stringify(data),
             headers: new Headers({

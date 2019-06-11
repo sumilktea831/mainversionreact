@@ -5,6 +5,7 @@ import Pagination from '../component/article/ArticleList/ArticleButton/Paginatio
 import ArticleCard from '../component/article/ArticleCard'
 import ArticleSlider from '../component/article/ArticleList/ArticleSlider/ArticleSlider'
 // import ContactForm from '../component/article/ArticleMail/send'
+import {FetchDomainName} from '../FetchDomainName'
 
 import Swal from 'sweetalert2'
 
@@ -50,7 +51,7 @@ class Article extends React.Component {
       try {
         // 這邊先寫死 取快樂碼農資料
         const memberRes = await fetch(
-          'http://localhost:5555/member/' + memberId,
+          `http://${FetchDomainName}:5555/member/` + memberId,
           {
             method: 'GET',
             headers: new Headers({
@@ -79,7 +80,7 @@ class Article extends React.Component {
 
     try {
       // 倒入文章資訊
-      const res = await fetch('http://localhost:5555/articleCardData', {
+      const res = await fetch(`http://${FetchDomainName}:5555/articleCardData`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -269,7 +270,7 @@ class Article extends React.Component {
 
       try {
         const res = await fetch(
-          'http://localhost:5555/member/' + this.state.memberAllData.id,
+          `http://${FetchDomainName}:5555/member/` + this.state.memberAllData.id,
           {
             method: 'PUT',
             body: JSON.stringify(data), //新的會員收藏資料

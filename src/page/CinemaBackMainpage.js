@@ -17,6 +17,7 @@ import CardKaga from '../component/cinema/CardKaga/v3/CardKaga'
 import MessageCinema from '../component/cinema/MessageSM/MessageCinema'
 import CinemaFilmUpdate from '../component/cinemaBack/CinemaFilmUpdate'
 import CinemaFilmTable from '../component/cinemaBack/CinemaFilmTable'
+import {FetchDomainName} from '../FetchDomainName'
 //cinemaId
 import ActivityBtnAddActivity from '../component/activity/ActivityBtnAddActivity/ActivityBtnAddActivity'
 
@@ -67,7 +68,7 @@ class CinemaBackMainpage extends React.Component {
     // console.log('parent-didmount')
     try {
       //取得戲院sidenav項目
-      const response = await fetch('http://localhost:5555/cinemaBackSidenav', {
+      const response = await fetch(`http://${FetchDomainName}:5555/cinemaBackSidenav`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -83,7 +84,7 @@ class CinemaBackMainpage extends React.Component {
     }
     try {
       //取得戲院editInfo項目
-      const response = await fetch('http://localhost:5555/cinemaEditInputmsg', {
+      const response = await fetch(`http://${FetchDomainName}:5555/cinemaEditInputmsg`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -99,7 +100,7 @@ class CinemaBackMainpage extends React.Component {
     }
     try {
       //取得戲院資料
-      const response = await fetch('http://localhost:5555/cinema', {
+      const response = await fetch(`http://${FetchDomainName}:5555/cinema`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -118,7 +119,7 @@ class CinemaBackMainpage extends React.Component {
     }
     try {
       //取得戲院活動
-      const response = await fetch('http://localhost:5555/cinema/' + cinemaId, {
+      const response = await fetch(`http://${FetchDomainName}:5555/cinema/` + cinemaId, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -136,7 +137,7 @@ class CinemaBackMainpage extends React.Component {
     // cinema-ingfo-preview
     try {
       //取得會員資料
-      const resMember = await fetch('http://localhost:5555/member', {
+      const resMember = await fetch(`http://${FetchDomainName}:5555/member`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -147,7 +148,7 @@ class CinemaBackMainpage extends React.Component {
       const dataMember = await resMember.json()
 
       //取得戲院資料
-      const resCinema = await fetch('http://localhost:5555/cinema', {
+      const resCinema = await fetch(`http://${FetchDomainName}:5555/cinema`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -161,7 +162,7 @@ class CinemaBackMainpage extends React.Component {
       const dataThisCinema = await dataCinema.find(item => item.id === cinemaId)
 
       // 取得影片資料
-      const resFilm = await fetch('http://localhost:5555/movieCardData', {
+      const resFilm = await fetch(`http://${FetchDomainName}:5555/movieCardData`, {
         method: 'GET',
         headers: new Headers({
           Accept: 'application/json',
@@ -173,7 +174,7 @@ class CinemaBackMainpage extends React.Component {
 
       // 取得活動資料
       const resActivity = await fetch(
-        'http://localhost:5555/activityCardData',
+        `http://${FetchDomainName}:5555/activityCardData`,
         {
           method: 'GET',
           headers: new Headers({
@@ -188,7 +189,7 @@ class CinemaBackMainpage extends React.Component {
       // AvatarOne
       const AvatarOneData = {
         img:
-          'http://localhost:3000/images/cinemaImg/' +
+          `http://${FetchDomainName}:3000/images/cinemaImg/` +
           dataThisCinema.cinemaLogoImg,
         name: dataThisCinema.cinemaName,
         purvie: dataThisCinema.permission,
@@ -286,7 +287,7 @@ class CinemaBackMainpage extends React.Component {
       const messageBoxData = []
       OnlyFourMessageBoxData.map(item =>
         messageBoxData.push({
-          img: 'http://localhost:3000/images/cinemaImg/' + item.img,
+          img: `http://${FetchDomainName}:3000/images/cinemaImg/` + item.img,
           message: item.message,
           name: item.name,
           time: item.time,
@@ -320,7 +321,7 @@ class CinemaBackMainpage extends React.Component {
     // console.log('isAllChecked: ' + isAllChecked)
     if (isAllChecked) {
       try {
-        fetch('http://localhost:5555/cinema/' + cinemaId, {
+        fetch(`http://${FetchDomainName}:5555/cinema/` + cinemaId, {
           method: 'PUT',
           body: JSON.stringify(data),
           headers: new Headers({
@@ -383,7 +384,7 @@ class CinemaBackMainpage extends React.Component {
       newDataForMovieCard.theater = this.state.thisCinemaData.cinemaName
       newDataForMovieCard.cinemaId = this.state.thisCinemaData.id
       try {
-        fetch('http://localhost:5555/cinema/' + this.state.thisCinemaData.id, {
+        fetch(`http://${FetchDomainName}:5555/cinema/` + this.state.thisCinemaData.id, {
           method: 'PUT',
           body: JSON.stringify(newData),
           headers: new Headers({
@@ -394,7 +395,7 @@ class CinemaBackMainpage extends React.Component {
           .then(res => res.json())
           .then(jsonObject => {
             try {
-              fetch('http://localhost:5555/movieCardData/', {
+              fetch(`http://${FetchDomainName}:5555/movieCardData/`, {
                 method: 'POST',
                 body: JSON.stringify(newDataForMovieCard),
                 headers: new Headers({
@@ -457,7 +458,7 @@ class CinemaBackMainpage extends React.Component {
     newDataForMovieCard.cinemaId = this.state.thisCinemaData.id
 
     try {
-      fetch('http://localhost:5555/cinema/' + this.state.thisCinemaData.id, {
+      fetch(`http://${FetchDomainName}:5555/cinema/` + this.state.thisCinemaData.id, {
         method: 'PUT',
         body: JSON.stringify(newcinemaData),
         headers: new Headers({
@@ -469,7 +470,7 @@ class CinemaBackMainpage extends React.Component {
         .then(jsonObject => {
           try {
             fetch(
-              'http://localhost:5555/movieCardData/' + newDataForMovieCard.id,
+              `http://${FetchDomainName}:5555/movieCardData/` + newDataForMovieCard.id,
               {
                 method: 'PUT',
                 body: JSON.stringify(newDataForMovieCard),
@@ -524,7 +525,7 @@ class CinemaBackMainpage extends React.Component {
           )
           try {
             fetch(
-              'http://localhost:5555/cinema/' + this.state.thisCinemaData.id,
+              `http://${FetchDomainName}:5555/cinema/` + this.state.thisCinemaData.id,
               {
                 method: 'PUT',
                 body: JSON.stringify(newcinemaData),
@@ -537,7 +538,7 @@ class CinemaBackMainpage extends React.Component {
               .then(res => res.json())
               .then(jsonObject => {
                 try {
-                  fetch('http://localhost:5555/movieCardData/' + id, {
+                  fetch(`http://${FetchDomainName}:5555/movieCardData/` + id, {
                     method: 'DELETE',
                     headers: new Headers({
                       Accept: 'application/json',
