@@ -13,6 +13,7 @@ var cors = require('cors')
 var whitelist = [
   'http://localhost:3000',
   'http://192.168.27.51:3000',
+  'http://114.34.173.228:3000',
   undefined,
 ]
 //設定白名單(除此名單以外皆不允許)
