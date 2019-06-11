@@ -60,8 +60,8 @@ router.post('/sendmail', function(req, res) {
     service: 'Gmail',
     secureConnection: true, // 使用SSL方式（安全方式，防止被竊取信息）
     auth: {
-      user: 'milkteasuu@gmail.com', // generated ethereal user
-      pass: 'earlgreysu', // generated ethereal password
+      user: '', // generated ethereal user
+      pass: '', // generated ethereal password
     },
     tls: {
       // 不得檢查服務器所發送的憑證
