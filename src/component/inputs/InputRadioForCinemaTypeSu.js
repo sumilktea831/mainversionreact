@@ -25,8 +25,8 @@ const InputRadio_Su = props => {
               key={item.id}
               // className="custom-control custom-radio custom-control-inline col-2 mx-0 pr-0"
               className={
-                'custom-control custom-radio custom-control-inline mx-0 pr-0  ' +
-                (props.col ? props.col : 'col-2')
+                'custom-control custom-radio custom-control-inline mx-0 pr-0 ' +
+                (props.col ? props.col : 'col-lg-2')
               }
               style={{
                 height: `${props.inputHeight}`,

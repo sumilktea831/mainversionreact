@@ -21,7 +21,7 @@ const AvatarOne = props => {
     <>
       <div className="d-flex col-lg-6 col-md-12 col-sm-12 p-0  justify-content-center align-items-center">
         {/* 左邊圖片 */}
-        <div className="col-lg-6 justify-content-center d-flex">
+        <div className="justify-content-center d-flex">
           <div
             className="overflow-hidden p-0 photoAvatar"
             style={{

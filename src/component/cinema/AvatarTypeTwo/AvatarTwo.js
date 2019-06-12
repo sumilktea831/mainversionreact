@@ -7,13 +7,13 @@ const AvatarOne = props => {
     <>
       <div className="row d-flex flex-cloumn col-lg-6 col-md-12 col-sm-12 p-0  justify-content-center align-items-center">
         {/* 上面圖片 */}
-        <div className="col-lg-12 justify-content-center d-flex align-items-end">
+        <div className="justify-content-center d-flex align-items-end">
           <div
             className="overflow-hidden p-0 photoAvatar"
             style={{
               borderRadius: '50%',
-              width: '250px',
-              height: '250px',
+              width: '220px',
+              height: '220px',
               boxShadow: '#191c20 2px 2px 3px',
             }}
           >

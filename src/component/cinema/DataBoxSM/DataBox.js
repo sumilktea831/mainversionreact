@@ -3,12 +3,12 @@ import React from 'react'
 const DataBoxSM = props => {
   return (
     <>
-      <div className="col d-flex justify-content-center">
+      <div className="col d-flex justify-content-center py-3">
         <div
-          className="col-9 d-flex align-items-center justify-content-center"
+          className="col-lg-9 d-flex align-items-center justify-content-center"
           style={{
             maxWidth: '600px',
-            height: '100px',
+            minHeight: '100px',
             border: '2px solid #ffa510',
             color: '#ffa510',
             borderRadius: '5px',

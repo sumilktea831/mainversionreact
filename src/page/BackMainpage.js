@@ -1077,7 +1077,7 @@ class BackSidenav extends React.Component {
                   <TitleKaga title="公開資訊卡預覽" />
                   <div
                     className="row d-flex align-items-center my-5"
-                    style={{ height: '200px' }}
+                    // style={{ height: '220px' }}
                   >
                     {/* 上面資訊列 */}
                     <AvatarOne

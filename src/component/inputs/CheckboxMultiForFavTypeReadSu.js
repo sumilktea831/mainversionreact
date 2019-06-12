@@ -13,7 +13,7 @@ const CheckboxMultiForFavTypeReadSu = props => {
   // }
   return (
     <>
-      <div className="form-check my-3 col-sm-5 col-md-2 d-flex justify-content-center">
+      <div className="form-check my-3 col-4 col-md-2 d-flex justify-content-center">
         <input
           name={props.inputName}
           className="form-check-input mr-3 ml-1 my-0"
