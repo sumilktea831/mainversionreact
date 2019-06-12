@@ -1,5 +1,5 @@
 import React from 'react'
-import {FetchDomainName} from '../../FetchDomainName'
+import {FetchDomainName} from '../../../FetchDomainName'
 const memberId = sessionStorage.getItem('memberId')
 const cinemaId = sessionStorage.getItem('cinemaId')
 

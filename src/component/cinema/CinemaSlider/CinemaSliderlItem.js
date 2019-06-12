@@ -1,6 +1,6 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
-import {FetchDomainName} from '../../FetchDomainName'
+import {FetchDomainName} from '../../../FetchDomainName'
 
 // 圖片採 背景式置入
 const SliderItem = props => {
@@ -8,7 +8,7 @@ const SliderItem = props => {
   var sectionStyle = {
     height: '400px',
     backgroundImage:
-      `url(http://${FetchDomainName}:3000/images/cinemaImg/' + props.img + ')`,
+      'url(http://' + FetchDomainName + ':3000/images/cinemaImg/' + props.img + ')',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
     position: 'relative',
