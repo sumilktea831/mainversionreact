@@ -9,6 +9,7 @@ import {
   FaRegBookmark,
 } from 'react-icons/fa'
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom'
+import {FetchDomainName} from '../../../FetchDomainName'
 
 const memberId = sessionStorage.getItem('memberId')
 
@@ -24,7 +25,7 @@ class ArticleCard extends React.Component {
     try {
       // 這邊先寫死 取快樂碼農資料
       const memberRes = await fetch(
-        'http://localhost:5555/member/' + memberId,
+        `http://${FetchDomainName}:5555/member/` + memberId,
         {
           method: 'GET',
           headers: new Headers({

@@ -4,7 +4,7 @@ import InputWithLabel_Su from '../inputs/InputWithLabel_Su'
 import CheckboxMultiSu from '../inputs/CheckboxMultiSu'
 import ActivityTitle from '../activity/ActivityTitle/ActivityTitle'
 import { Row } from 'react-bootstrap'
-//Import SweetAlert2
+import {FetchDomainName} from '../../FetchDomainName'
 import Swal from 'sweetalert2'
 const Toast = Swal.mixin({
   toast: true,
@@ -56,7 +56,7 @@ class CinemaEditInfo extends React.Component {
       let savePwd = this.state.usertext.newPwd
       copyData.cinemaPassword = savePwd
       try {
-        fetch('http://localhost:5555/cinema/' + cinemaid, {
+        fetch(`http://${FetchDomainName}:5555/cinema/` + cinemaid, {
           method: 'PUT',
           body: JSON.stringify(copyData),
           headers: new Headers({
@@ -87,10 +87,6 @@ class CinemaEditInfo extends React.Component {
 
   //輸入框change事件
   handleInputTextChange = event => {
-    console.log(event.target)
-    // console.log(this.state.thisData)
-    console.log(event.target.value)
-    console.log(event.target.name)
     let id = event.target.id
     let value = event.target.value
     let name = event.target.name

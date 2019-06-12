@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom'
 import * as d3 from 'd3'
 import PieClass from './ActivityD3'
 import ActivityTitle from '../ActivityTitle/ActivityTitle'
+import {FetchDomainName} from '../../../FetchDomainName'
 
 class ActivityD3root extends React.Component {
   constructor() {
@@ -23,7 +24,7 @@ class ActivityD3root extends React.Component {
     }
   }
   componentDidMount = () => {
-    fetch('http://localhost:5555/cinema/' + sessionStorage.getItem('cinemaId'))
+    fetch(`http://${FetchDomainName}:5555/cinema/` + sessionStorage.getItem('cinemaId'))
       .then(res => res.json())
       .then(res => {
         let data = JSON.parse(JSON.stringify(this.state.totalCountData))
@@ -41,7 +42,7 @@ class ActivityD3root extends React.Component {
         data[0].value = newData.cinemaD3memberCancel / totalValue
         this.setState({ totalPercentData: data })
       })
-    fetch('http://localhost:5555/cinema/' + sessionStorage.getItem('cinemaId'))
+    fetch(`http://${FetchDomainName}:5555/cinema/` + sessionStorage.getItem('cinemaId'))
       .then(res => res.json())
       .then(res => {
         let data = JSON.parse(JSON.stringify(this.state.totalCountData))

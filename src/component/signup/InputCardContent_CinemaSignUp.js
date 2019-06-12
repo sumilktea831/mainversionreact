@@ -3,6 +3,7 @@ import { Card, Button, Row, Col } from 'react-bootstrap'
 import InputWithLabel_Su from '../inputs/InputWithLabel_Su'
 import Checkbox_Su from '../inputs/Checkbox_Su'
 import Captcha from 'captcha-mini' //驗證碼套件
+import {FetchDomainName} from '../../FetchDomainName'
 class InputCardContent_CinemaSignUp extends React.Component {
   constructor() {
     super()
@@ -52,7 +53,7 @@ class InputCardContent_CinemaSignUp extends React.Component {
       //取得欄位資訊
       //fetch:json-server連線的位址/json中的項目/該項目中id
       const response = await fetch(
-        'http://localhost:5555/cinema-sign-inputmsg',
+        `http://${FetchDomainName}:5555/cinema-sign-inputmsg`,
         {
           method: 'GET', //使用GET方法獲取資訊，因為是取得資訊，故不須加body
           headers: new Headers({
@@ -75,7 +76,7 @@ class InputCardContent_CinemaSignUp extends React.Component {
       //取得選填欄位資訊
       //fetch:json-server連線的位址/json中的項目/該項目中id
       const response = await fetch(
-        'http://localhost:5555/cinema-sign-choose-inputmsg',
+        `http://${FetchDomainName}:5555/cinema-sign-choose-inputmsg`,
         {
           method: 'GET', //使用GET方法獲取資訊，因為是取得資訊，故不須加body
           headers: new Headers({
@@ -539,7 +540,7 @@ class InputCardContent_CinemaSignUp extends React.Component {
       var uploadFileName = event.target.files[0].name
       let formdata = new FormData()
       formdata.append('myfile', file)
-      fetch('http://localhost:3001/api/cinema-upload-single', {
+      fetch(`http://${FetchDomainName}:3001/api/cinema-upload-single`, {
         method: 'POST',
         body: formdata,
       })

@@ -7,6 +7,7 @@ import ArticleShare from '../ArticleList/ArticleButton/Share'
 import ArticleCommentbtn from '../ArticleList/ArticleButton/Comment'
 import ResCommentInput from './ResCommentInput'
 import Swal from 'sweetalert2'
+import {FetchDomainName} from '../../../FetchDomainName'
 
 const memberId = sessionStorage.getItem('memberId')
 class ArticleComment extends React.Component {
@@ -21,7 +22,7 @@ class ArticleComment extends React.Component {
   async componentDidMount() {
     try {
       const res = await fetch(
-        'http://localhost:5555/articleResComment?_sort=id&_order=DESC',
+        `http://${FetchDomainName}:5555/articleResComment?_sort=id&_order=DESC`,
         {
           method: 'GET',
           headers: new Headers({
@@ -71,7 +72,7 @@ class ArticleComment extends React.Component {
       }
       // 倒入 json資料庫
       try {
-        const res = await fetch('http://localhost:5555/articleResComment', {
+        const res = await fetch(`http://${FetchDomainName}:5555/articleResComment`, {
           method: 'POST',
           body: JSON.stringify(newRes),
           headers: new Headers({
@@ -114,7 +115,7 @@ class ArticleComment extends React.Component {
       }
       // 倒入 json資料庫
       try {
-        const res = await fetch('http://localhost:5555/articleResComment', {
+        const res = await fetch(`http://${FetchDomainName}:5555/articleResComment`, {
           method: 'POST',
           body: JSON.stringify(newRes),
           headers: new Headers({

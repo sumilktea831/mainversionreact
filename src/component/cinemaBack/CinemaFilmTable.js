@@ -1,5 +1,6 @@
 import React from 'react'
 import CinemaFilmEditModal from './CinemaFilmEditModal'
+import {FetchDomainName} from '../../FetchDomainName'
 
 class MemberCollectTable extends React.Component {
   constructor(props) {
@@ -22,7 +23,7 @@ class MemberCollectTable extends React.Component {
       //取得欄位資訊
       //fetch:json-server連線的位址/json中的項目/該項目中id
       const response = await fetch(
-        'http://localhost:5555/cinemaFilmEditInputMsg',
+        `http://${FetchDomainName}:5555/cinemaFilmEditInputMsg`,
         {
           method: 'GET', //使用GET方法獲取資訊，因為是取得資訊，故不須加body
           headers: new Headers({
@@ -44,7 +45,7 @@ class MemberCollectTable extends React.Component {
     try {
       //取得喜愛電影類型項目
       const response = await fetch(
-        'http://localhost:5555/memberFavTypeOptions',
+        `http://${FetchDomainName}:5555/memberFavTypeOptions`,
         {
           method: 'GET',
           headers: new Headers({
@@ -62,7 +63,6 @@ class MemberCollectTable extends React.Component {
     }
   }
   static getDerivedStateFromProps(nextProps, prevState) {
-    // this.setState({ thisData: nextProps.thisData }) 這不能這樣setStae，要用下面的寫法
     let stateToBeReturned = null
     if (prevState.thisData == 0 || prevState.thisFilmData == 0) {
       stateToBeReturned = {
@@ -164,14 +164,11 @@ class MemberCollectTable extends React.Component {
         console.log(this.state.thisData)
       })
     } else if (name === 'imgSrc') {
-      // console.log(event.target.files[0])
-      // console.log(event.target.files[0].name)
-
       var file = event.target.files[0]
       var uploadFileName = event.target.files[0].name
       let formdata = new FormData()
       formdata.append('myfile', file)
-      fetch('http://localhost:3001/api/cinemaFilm-upload-single', {
+      fetch(`http://${FetchDomainName}:3001/api/cinemaFilm-upload-single`, {
         method: 'POST',
         body: formdata,
       })

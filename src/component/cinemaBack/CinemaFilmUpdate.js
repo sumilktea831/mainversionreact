@@ -3,6 +3,7 @@ import { Card, Button, Row, Col } from 'react-bootstrap'
 import InputWithLabel_Su from '../inputs/InputWithLabel_Su'
 import CheckboxMultiForCinemaTypeSu from '../inputs/CheckboxMultiForCinemaTypeSu'
 import ActivityTitle from '../activity/ActivityTitle/ActivityTitle'
+import {FetchDomainName} from '../../FetchDomainName'
 
 class CinemaFilmUpdate extends React.Component {
   constructor(props) {
@@ -58,7 +59,7 @@ class CinemaFilmUpdate extends React.Component {
       //取得欄位資訊
       //fetch:json-server連線的位址/json中的項目/該項目中id
       const response = await fetch(
-        'http://localhost:5555/cinemaFilmEditInputMsg',
+        `http://${FetchDomainName}:5555/cinemaFilmEditInputMsg`,
         {
           method: 'GET', //使用GET方法獲取資訊，因為是取得資訊，故不須加body
           headers: new Headers({
@@ -80,7 +81,7 @@ class CinemaFilmUpdate extends React.Component {
     try {
       //取得喜愛電影類型項目
       const response = await fetch(
-        'http://localhost:5555/memberFavTypeOptions',
+        `http://${FetchDomainName}:5555/memberFavTypeOptions`,
         {
           method: 'GET',
           headers: new Headers({
@@ -166,7 +167,7 @@ class CinemaFilmUpdate extends React.Component {
       var uploadFileName = event.target.files[0].name
       let formdata = new FormData()
       formdata.append('myfile', file)
-      fetch('http://localhost:3001/api/cinemaFilm-upload-single', {
+      fetch(`http://${FetchDomainName}:3001/api/cinemaFilm-upload-single`, {
         method: 'POST',
         body: formdata,
       })

@@ -1,6 +1,7 @@
 import React from 'react'
 //Import SweetAlert2
 import Swal from 'sweetalert2'
+import {FetchDomainName} from '../../../FetchDomainName'
 
 class AcitivityForm extends React.Component {
   constructor(props) {
@@ -81,7 +82,7 @@ class AcitivityForm extends React.Component {
     let imgFileName = event.target.files[0].name
     let formData = new FormData()
     formData.append('myfile', imgFile)
-    fetch('http://localhost:3001/api/activity-upload-single', {
+    fetch(`http://${FetchDomainName}:3001/api/activity-upload-single`, {
       method: 'POST',
       body: formData,
     })
@@ -142,7 +143,7 @@ class AcitivityForm extends React.Component {
           let cinemaDBdata = {}
           let cinemaDBdataForCard = {}
           try {
-            fetch('http://localhost:5555/cinema/' + cinemaId, {
+            fetch(`http://${FetchDomainName}:5555/cinema/` + cinemaId, {
               method: 'GET',
               headers: new Headers({
                 Accept: 'application/json',
@@ -156,7 +157,7 @@ class AcitivityForm extends React.Component {
                 cinemaDBdata = JSON.parse(JSON.stringify(obj))
                 cinemaDBdata.cinemaActivity.push(this.state.formData)
                 try {
-                  fetch('http://localhost:5555/cinema/' + cinemaId, {
+                  fetch(`http://${FetchDomainName}:5555/cinema/` + cinemaId, {
                     method: 'PUT',
                     body: JSON.stringify(cinemaDBdata),
                     headers: new Headers({
@@ -187,7 +188,7 @@ class AcitivityForm extends React.Component {
                         joinMember: '',
                       }
                       try {
-                        fetch('http://localhost:5555/activityCardData/', {
+                        fetch(`http://${FetchDomainName}:5555/activityCardData/`, {
                           method: 'POST',
                           body: JSON.stringify(cardData),
 

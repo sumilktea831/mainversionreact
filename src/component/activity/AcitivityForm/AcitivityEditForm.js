@@ -1,4 +1,5 @@
 import React from 'react'
+import {FetchDomainName} from '../../../FetchDomainName'
 //Import SweetAlert2
 import Swal from 'sweetalert2'
 class AcitivityEditForm extends React.Component {
@@ -17,7 +18,7 @@ class AcitivityEditForm extends React.Component {
     const cinemaId = sessionStorage.getItem('cinemaId')
     const activityId = window.location.pathname.slice(47)
     console.log(activityId)
-    fetch('http://localhost:5555/activityCardData/' + activityId)
+    fetch(`http://${FetchDomainName}:5555/activityCardData/` + activityId)
       .then(res => res.json())
       .then(data => {
         console.log('Data: ' + data)
@@ -99,7 +100,7 @@ class AcitivityEditForm extends React.Component {
     let imgFileName = event.target.files[0].name
     let formData = new FormData()
     formData.append('myfile', imgFile)
-    fetch('http://localhost:3001/api/activity-upload-single', {
+    fetch(`http://${FetchDomainName}:3001/api/activity-upload-single`, {
       method: 'POST',
       body: formData,
     })
@@ -161,7 +162,7 @@ class AcitivityEditForm extends React.Component {
           let cinemaDBdata = {}
           let cinemaDBdataForCard = {}
           try {
-            fetch('http://localhost:5555/cinema/' + cinemaId, {
+            fetch(`http://${FetchDomainName}:5555/cinema/` + cinemaId, {
               method: 'GET',
               headers: new Headers({
                 Accept: 'application/json',
@@ -178,7 +179,7 @@ class AcitivityEditForm extends React.Component {
                 )
                 cinemaDBdata.cinemaActivity.push(this.state.formData)
                 try {
-                  fetch('http://localhost:5555/cinema/' + cinemaId, {
+                  fetch(`http://${FetchDomainName}:5555/cinema/` + cinemaId, {
                     method: 'PUT',
                     body: JSON.stringify(cinemaDBdata),
                     headers: new Headers({
@@ -209,7 +210,7 @@ class AcitivityEditForm extends React.Component {
                       }
                       try {
                         fetch(
-                          'http://localhost:5555/activityCardData/' +
+                          `http://${FetchDomainName}:5555/activityCardData/` +
                             activityId,
                           {
                             method: 'PUT',
@@ -276,7 +277,7 @@ class AcitivityEditForm extends React.Component {
     }).then(result => {
       if (result.value) {
         const activityId = window.location.pathname.slice(47)
-        fetch('http://localhost:5555/activityCardData/' + activityId, {
+        fetch(`http://${FetchDomainName}:5555/activityCardData/` + activityId, {
           method: 'DELETE',
         })
           .then(res => res.json)
@@ -289,7 +290,7 @@ class AcitivityEditForm extends React.Component {
               background: '#242b34',
             }).then(
               fetch(
-                'http://localhost:5555/cinema/' +
+                `http://${FetchDomainName}:5555/cinema/` +
                   sessionStorage.getItem('cinemaId')
               )
                 .then(res => res.json())
@@ -300,7 +301,7 @@ class AcitivityEditForm extends React.Component {
                   )
 
                   fetch(
-                    'http://localhost:5555/cinema/' +
+                    `http://${FetchDomainName}:5555/cinema/` +
                       sessionStorage.getItem('cinemaId'),
                     {
                       method: 'PUT',

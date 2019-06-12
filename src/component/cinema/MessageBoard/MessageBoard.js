@@ -1,6 +1,8 @@
 import React from 'react'
+import {FetchDomainName} from '../../FetchDomainName'
 const memberId = sessionStorage.getItem('memberId')
 const cinemaId = sessionStorage.getItem('cinemaId')
+
 
 class MessageBoard extends React.Component {
   constructor(props) {
@@ -50,7 +52,7 @@ class MessageBoard extends React.Component {
                 width="100%"
                 height="100%"
                 src={
-                  'http://localhost:3000/images/' +
+                  'http://' + FetchDomainName + ':3000/images/' +
                   this.props.listData.imgLocation +
                   '/' +
                   this.props.listData.img

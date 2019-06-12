@@ -4,6 +4,7 @@ import CheckboxMultiSu from '../inputs/CheckboxMultiSu'
 import ActivityTitle from '../activity/ActivityTitle/ActivityTitle'
 import { Row } from 'react-bootstrap'
 import AvatarTwo from '../cinema/AvatarTypeTwo/AvatarTwo'
+import {FetchDomainName} from '../../FetchDomainName'
 
 class MemberEditInfo extends React.Component {
   constructor(props) {
@@ -34,7 +35,7 @@ class MemberEditInfo extends React.Component {
     try {
       //取得喜愛電影類型項目
       const response = await fetch(
-        'http://localhost:5555/memberFavTypeOptions',
+        `http://${FetchDomainName}:5555/memberFavTypeOptions`,
         {
           method: 'GET',
           headers: new Headers({
@@ -65,7 +66,6 @@ class MemberEditInfo extends React.Component {
 
   static getDerivedStateFromProps(nextProps, prevState) {
     console.log('childDerived')
-    // this.setState({ thisData: nextProps.thisData }) 這不能這樣setStae，要用下面的寫法
     let stateToBeReturned = null
     if (prevState.thisData == 0) {
       stateToBeReturned = {
@@ -85,7 +85,6 @@ class MemberEditInfo extends React.Component {
   //輸入框change事件
   handleInputTextChange = event => {
     console.log(event.target)
-    // console.log(this.state.thisData)
     console.log(event.target.value)
     console.log(event.target.name)
     let id = event.target.id
@@ -93,7 +92,6 @@ class MemberEditInfo extends React.Component {
     let eventName = event.target.name
     let copyData = { ...this.state.thisData }
     let newcheckstate = { ...this.state.checkok }
-    // console.log(copyData)
 
     //姓名驗證:格式、是否已被使用
     if (eventName === 'name') {
@@ -182,7 +180,6 @@ class MemberEditInfo extends React.Component {
             '請輸入正確的地址'
         } else {
           //判斷地址與所在縣市是否相同
-          // console.log(value)
           let city = this.state.thisData.city
           if (city !== '尚未選擇縣市' && city !== '') {
             if (value.substr(0, 3) === city) {
@@ -267,13 +264,12 @@ class MemberEditInfo extends React.Component {
       if (event.target.files[0]) {
         //如果有選擇檔案才執行
         console.log(event.target.files[0])
-        // console.log(event.target.files[0].name)
 
         var file = event.target.files[0]
         var uploadFileName = event.target.files[0].name
         let formdata = new FormData()
         formdata.append('myfile', file)
-        fetch('http://localhost:3001/api/member-upload-single', {
+        fetch(`http://${FetchDomainName}:3001/api/member-upload-single`, {
           method: 'POST',
           body: formdata,
         })
@@ -381,7 +377,6 @@ class MemberEditInfo extends React.Component {
         <Row className="my-5 d-flex justify-content-center">
           <button
             className="btn btn-warning h5 my-3 px-5 py-2 border-0 rounded bg-orange text-darkblue"
-            // onClick={this.handleSaveInfo}
             onClick={this.props.handleMemberEditSave(
               this.state.thisData,
               this.state.checkok

@@ -1,5 +1,6 @@
 import React from 'react'
 import MessageCinemna from '../MessageSM/MessageCinema'
+import {FetchDomainName} from '../../FetchDomainName'
 
 class Collapse extends React.Component {
   constructor(props, context) {
@@ -66,7 +67,7 @@ class Collapse extends React.Component {
                         進而改變運算結果變成資料有12筆讓這邊map出來
                         請參考上方的資料筆數限制邏輯 */}
             <MessageCinemna
-              img="http://localhost:3000/images/cinemaImg/asian.jpg"
+              img={'http://' + FetchDomainName + ':3000/images/cinemaImg/asian.jpg'}
               message="嘎嘎嘎我要留爆這邊"
               name="東尼大木"
               awesome="54"

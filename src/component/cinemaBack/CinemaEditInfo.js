@@ -4,6 +4,7 @@ import CheckboxMultiSu from '../inputs/CheckboxMultiSu'
 import ActivityTitle from '../activity/ActivityTitle/ActivityTitle'
 import { Row } from 'react-bootstrap'
 import AvatarTwo from '../cinema/AvatarTypeTwo/AvatarTwo'
+import {FetchDomainName} from '../../FetchDomainName'
 
 class CinemaEditInfo extends React.Component {
   constructor(props) {
@@ -28,12 +29,10 @@ class CinemaEditInfo extends React.Component {
   }
   componentWillMount() {
     console.log('childWillMount')
-    //   console.log(this.props.thisData)
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
     console.log('childDerived')
-    // this.setState({ thisData: nextProps.thisData }) 這不能這樣setStae，要用下面的寫法
 
     let stateToBeReturned = null
     if (prevState.thisData == 0) {
@@ -52,11 +51,6 @@ class CinemaEditInfo extends React.Component {
 
   //輸入框change事件
   handleInputTextChange = event => {
-    console.log(event.target)
-    // console.log(this.state.thisData)
-    console.log(event.target.value)
-    console.log(event.target.name)
-    console.log('text: ' + event.target.text)
     let id = event.target.id
     let value = event.target.value
     let eventName = event.target.name
@@ -321,7 +315,6 @@ class CinemaEditInfo extends React.Component {
       eventName === 'cinemaBackupEmail' ||
       eventName === 'cinemaWeb' ||
       eventName === 'cinemaIntro'
-      // name === 'cinemaHeroImg' ||
     ) {
       copyData[eventName] = value
       this.setState({ thisData: copyData }, () => {
@@ -347,7 +340,7 @@ class CinemaEditInfo extends React.Component {
       var uploadFileName = event.target.files[0].name
       let formdata = new FormData()
       formdata.append('myfile', file)
-      fetch('http://localhost:3001/api/cinema-upload-single', {
+      fetch(`http://${FetchDomainName}:3001/api/cinema-upload-single`, {
         method: 'POST',
         body: formdata,
       })
@@ -372,9 +365,6 @@ class CinemaEditInfo extends React.Component {
           }
         })
     } else if (eventName == 'cinemaImg') {
-      // console.log(event.target.files)
-      // console.log(event.target.files[0].name)
-
       var files = event.target.files
       let successFileNum = this.state.successFileNum
       var failedFileNum = this.state.failedFileNum
@@ -383,7 +373,7 @@ class CinemaEditInfo extends React.Component {
         console.log(thisfile)
         let formdata = new FormData()
         formdata.append('myfile', thisfile)
-        fetch('http://localhost:3001/api/cinema-upload-single', {
+        fetch(`http://${FetchDomainName}:3001/api/cinema-upload-single`, {
           method: 'POST',
           body: formdata,
         })
@@ -394,7 +384,6 @@ class CinemaEditInfo extends React.Component {
               copyData[eventName].push(obj.filename)
             } else {
               failedFileNum++
-              // copyData[eventName] = []
             }
             document.querySelector('#' + eventName + 'filename').innerHTML =
               '附加檔案成功 ' +
@@ -412,7 +401,6 @@ class CinemaEditInfo extends React.Component {
             var btnIcon = document.createElement('i')
             btnIcon.setAttribute('style', 'font-size:30px; margin:-4px 0 0 0')
             btnIcon.setAttribute('class', 'fas fa-ban')
-            // delBtn.innerHTML = `<i name="btnIcon" class="fas fa-ban" style="font-size:30px; margin:-4px 0 0 0"></i>`
             delBtn.appendChild(btnIcon)
             delBtn.setAttribute(
               'class',
@@ -448,8 +436,6 @@ class CinemaEditInfo extends React.Component {
             })
             //刪除圖片的BTN的click事件
             delBtn.addEventListener('click', event => {
-              // alert(obj.filename)
-              // console.log(event.target)
               event.stopPropagation()
               copyData['cinemaImg'] = copyData['cinemaImg'].filter(
                 item => item !== obj.filename
@@ -488,25 +474,21 @@ class CinemaEditInfo extends React.Component {
             )
           })
 
-        // uploadFileName.push(event.target.files[i].name)
       }
     } else if (eventName == 'cinemaLogoImg') {
       if (event.target.files[0]) {
         //如果有選擇檔案才執行
-        console.log(event.target.files[0])
-        // console.log(event.target.files[0].name)
 
         var file = event.target.files[0]
         var uploadFileName = event.target.files[0].name
         let formdata = new FormData()
         formdata.append('myfile', file)
-        fetch('http://localhost:3001/api/cinema-upload-single', {
+        fetch(`http://${FetchDomainName}:3001/api/cinema-upload-single`, {
           method: 'POST',
           body: formdata,
         })
           .then(res => res.json())
           .then(obj => {
-            console.log(obj)
             if (obj.success == true) {
               copyData[eventName] = obj.filename
               this.setState(
@@ -533,7 +515,6 @@ class CinemaEditInfo extends React.Component {
   }
   render() {
     console.log('childrender')
-    // console.log(this.props.thisData)
     return (
       <>
         <Row>
@@ -596,8 +577,6 @@ class CinemaEditInfo extends React.Component {
               }}
               onChange={this.handleInputTextChange}
               value={this.state.thisData.cinemaIntro}
-              // cols="50"
-              // rows="5"
             />
           </div>
         </Row>

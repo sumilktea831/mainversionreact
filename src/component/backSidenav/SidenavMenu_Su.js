@@ -6,16 +6,12 @@ const SidenavMenu_Su = props => {
   const BackPageName = sessionStorage.getItem('memberId')
     ? '/BackMainpage/'
     : '/CinemaBackMainpage/'
-  // console.log(props)
-  //   var path = window.location.pathname.slice(1)
-  //   var show = false
+
   const handleLinkClick = id => event => {
     const AllOptions = [...document.getElementsByName('option-items')] //取得所有option的橘線div
     const AllOptionRows = [...document.getElementsByName('option-row')] //取得所有option的容器row
     const thisOptionLine = document.querySelector('#' + id) //取得目前點擊的option的橘線
-    // console.log(AllOptions)
-    // console.log(thisOptionLine)
-    // console.log(AllOptionRows)
+
 
     AllOptionRows.map(
       item => (item.style.background = '#30363D') //將所有option容器背景設為預設值
@@ -25,17 +21,12 @@ const SidenavMenu_Su = props => {
     thisOptionLine.style.opacity = 1 //將目前點擊的option橘線顯示
     thisOptionLine.style.marginLeft = '48px' //將目前點擊的option橘線顯示
     thisOptionLine.style.marginRight = '-16px' //將目前點擊的option橘線顯示
-    // console.log(thisOptionLine.parentNode)
     thisOptionLine.parentNode.parentNode.style.background =
       'rgba(255,255,255,.3)' //取得目前點擊的option的父層(該option的容器Row)，設定背景為50%白
 
-    // if(path===id)
-    //  show = (path===id ? '4px': '0px')
-    // console.log(path)
+
   }
-  // console.log('sidenavmenu--props')
-  // console.log(props)
-  // console.log(window)
+
   return (
     <>
       <Card className="sidenavOptionTitle text-center bg-darkblue h5">
@@ -51,7 +42,6 @@ const SidenavMenu_Su = props => {
                   name="option-row"
                   style={{ background: 'rgba(255, 255, 255, 0.3)' }}
                 >
-                  {/* <div className="col-3" /> */}
                   <div className="py-3">
                     <div
                       name="option-items"
@@ -71,7 +61,6 @@ const SidenavMenu_Su = props => {
                     className="text-center col pt-4 sidenavLink"
                     to={BackPageName + item.id}
                     onClick={handleLinkClick(item.id)}
-                    // style={{width:'100%'}}
                   >
                     {item.name}
                   </Link>
@@ -82,7 +71,6 @@ const SidenavMenu_Su = props => {
                   name="option-row"
                   style={{ background: '#30363D' }}
                 >
-                  {/* <div className="col-3" /> */}
                   <div className="py-3">
                     <div
                       name="option-items"
@@ -101,7 +89,6 @@ const SidenavMenu_Su = props => {
                     className="text-center col pt-4 sidenavLink"
                     to={BackPageName + item.id}
                     onClick={handleLinkClick(item.id)}
-                    // style={{width:'100%'}}
                   >
                     {item.name}
                   </Link>
