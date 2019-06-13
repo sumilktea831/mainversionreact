@@ -486,7 +486,7 @@ class SignUp extends React.Component {
         Swal.fire({
           type: 'error',
           title: '<span style="color:#d4d1cc">資料填寫有誤</span>',
-          text: '<span style="color:#d4d1cc">請再次確認您的資料</span>',
+          html: '<span style="color:#d4d1cc">請再次確認您的資料</span>',
           showConfirmButton: true,
           confirmButtonClass: 'btn btn-warning',
           confirmButtonColor: '#ffa510',
@@ -609,7 +609,7 @@ class SignUp extends React.Component {
       Swal.fire({
         type: 'error',
         title: '<span style="color:#d4d1cc">資料填寫有誤</span>',
-        text: '<span style="color:#d4d1cc">請再次確認您的資料</span>',
+        html: '<span style="color:#d4d1cc">請再次確認您的資料</span>',
         showConfirmButton: true,
         confirmButtonClass: 'btn btn-warning',
         confirmButtonColor: '#ffa510',
