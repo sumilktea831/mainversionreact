@@ -286,15 +286,16 @@ class InputCardContent_MemberSignUp extends React.Component {
         >
           <Card.Body className="p-5 signcard">
             {this.state.inputmsg.map(item => (
-              <>
+              <React.Fragment
+              key={item.id}>
                 {/* {console.log(item)} */}
-                <Row className="my-4">
+                <Row className="my-4"
+                >
                   <Col // 這裡是input的col
                     className="p-0 rounded d-flex flex-nowrap align-items-center"
                     style={{ width: `${item.w}` }}
                   >
                     <InputText_Su
-                      key={item.id}
                       id={item.id}
                       inputWidth={item.w}
                       inputHeight={this.state.inputH}
@@ -310,7 +311,7 @@ class InputCardContent_MemberSignUp extends React.Component {
                   </Col>
                 </Row>
                 <small id={item.id + 'help'} className="form-text  text-danger" />
-              </>
+              </React.Fragment>
             ))}
             {/* 這裡是驗證碼的Row -- input + canvas */}
             <Row className="my-4 d-flex justify-content-between">

@@ -72,9 +72,9 @@ class MemberCollectTable extends React.Component {
       }
     }
 
-    console.log(nextProps)
-    console.log(prevState)
-    console.log(stateToBeReturned)
+    // console.log(nextProps)
+    // console.log(prevState)
+    // console.log(stateToBeReturned)
     return stateToBeReturned
   }
   // 處理跳出視窗的關閉

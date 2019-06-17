@@ -27,12 +27,12 @@ class CinemaEditInfo extends React.Component {
       },
     }
   }
-  componentWillMount() {
-    console.log('childWillMount')
-  }
+  // componentWillMount() {
+  //   console.log('childWillMount')
+  // }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    console.log('childDerived')
+    // console.log('childDerived')
 
     let stateToBeReturned = null
     if (prevState.thisData == 0) {
@@ -43,9 +43,9 @@ class CinemaEditInfo extends React.Component {
       }
     }
 
-    console.log(nextProps)
-    console.log(prevState)
-    console.log(stateToBeReturned)
+    // console.log(nextProps)
+    // console.log(prevState)
+    // console.log(stateToBeReturned)
     return stateToBeReturned
   }
 
@@ -514,15 +514,16 @@ class CinemaEditInfo extends React.Component {
     await this.setState({ thisData: copyData, hasNewAvatar: false })
   }
   render() {
-    console.log('childrender')
+    // console.log('childrender')
     return (
       <>
         <Row>
           <div className="col-lg-7 mt-3 h5">
             {this.props.cinemaEditInputmsg.map(item => (
-              <>
+              <React.Fragment
+              key={item.id}
+              >
                 <InputWithLabelForEdit_Su
-                  key={item.id}
                   id={item.id}
                   inputWidth={item.w}
                   inputHeight="48px"
@@ -543,7 +544,7 @@ class CinemaEditInfo extends React.Component {
                   id={item.id + 'help'}
                   className="form-text  text-danger text-center"
                 />
-              </>
+              </React.Fragment>
             ))}
             <Row>
               <div

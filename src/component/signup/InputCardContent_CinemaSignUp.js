@@ -504,7 +504,6 @@ class InputCardContent_CinemaSignUp extends React.Component {
     if (
       name === 'cinemaName' ||
       name === 'cinemaTaxid' ||
-      // name === 'cinemaCity' ||
       name === 'cinemaArea' ||
       name === 'cinemaAddress' ||
       name === 'cinemaPhone' ||
@@ -512,8 +511,6 @@ class InputCardContent_CinemaSignUp extends React.Component {
       name === 'cinemaAccount' ||
       name === 'cinemaPassword' ||
       name === 'cinemaWeb' ||
-      // name === 'cinemaLogoImg' ||
-      // name === 'cinemaHeroImg' ||
       name === 'cinemaRepwd' ||
       name === 'captcha' ||
       name === 'captchatext'
@@ -547,7 +544,7 @@ class InputCardContent_CinemaSignUp extends React.Component {
         .then(res => res.json())
         .then(obj => {
           // console.log(obj)
-          if (obj.success == true) {
+          if (obj.success === true) {
             newtext[0][name] = obj.filename
             this.setState({ usertext: newtext }, () =>
               console.log(this.state.usertext)
@@ -574,9 +571,10 @@ class InputCardContent_CinemaSignUp extends React.Component {
         >
           <Card.Body className="p-5 signcard">
             {this.state.inputmsg.map(item => (
-              <>
+              <React.Fragment
+                key={item.id}
+              >
                 <InputWithLabel_Su
-                  key={item.id}
                   id={item.id}
                   inputWidth={item.w}
                   inputHeight={this.state.inputH}
@@ -592,7 +590,7 @@ class InputCardContent_CinemaSignUp extends React.Component {
                   onChange={this.handleInputTextChange}
                 />
                 <small id={item.id + 'help'} className="form-text text-danger " />
-              </>
+              </React.Fragment>
             ))}
             <Row className="my-4">
               <Col>
@@ -604,7 +602,9 @@ class InputCardContent_CinemaSignUp extends React.Component {
               </Col>
             </Row>
             {this.state.chooseInputmsg.map(item => (
-              <>
+              <React.Fragment
+              key={item.id}
+            >
                 <InputWithLabel_Su
                   key={item.id}
                   id={item.id}
@@ -622,7 +622,7 @@ class InputCardContent_CinemaSignUp extends React.Component {
                   onChange={this.handleInputTextChange}
                 />
                 <small id={item.id + 'help'} className="form-text  text-danger" />
-              </>
+                </React.Fragment>
             ))}
             {/* 這裡是驗證碼的Row -- input + canvas */}
             <Row className="mx-4 my-4 d-flex justify-content-between">

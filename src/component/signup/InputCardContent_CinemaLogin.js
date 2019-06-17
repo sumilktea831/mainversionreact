@@ -10,7 +10,7 @@ class InputCardContent_CinemaLogin extends React.Component {
       inputH: '48px', //設定所有input高
       inputmsg: [
         {
-          id: 'cinemaAccount',
+          id: 'LoginCinemaAccount',
           w: '100%',
           h: '48px',
           iconL: 'fas fa-envelope',
@@ -20,7 +20,7 @@ class InputCardContent_CinemaLogin extends React.Component {
           iconRS: '',
         },
         {
-          id: 'cinemaPassword',
+          id: 'LoginCinemaPassword',
           w: '',
           h: '48px',
           iconL: 'fas fa-key',
@@ -75,8 +75,8 @@ class InputCardContent_CinemaLogin extends React.Component {
 
     //判斷如果拿到的name屬於state裡面的屬性，就把剛才複製的state的該項目更新，然後再setState回去
     if (
-      name === 'cinemaAccount' ||
-      name === 'cinemaPassword' ||
+      name === 'LoginCinemaAccount' ||
+      name === 'LoginCinemaPassword' ||
       name === 'captchatext'
     ) {
       newtext[0][name] = value
@@ -97,13 +97,14 @@ class InputCardContent_CinemaLogin extends React.Component {
         >
           <Card.Body className="p-5 signcard">
             {this.state.inputmsg.map(item => (
-              <Row className="my-4">
+              <Row className="my-4"
+              key={item.id}
+              >
                 <Col // 這裡是input的col
                   className="p-0 rounded d-flex flex-nowrap align-items-center"
                   style={{ width: `${item.w}` }}
                 >
                   <InputText_Su
-                    key={item.id}
                     id={item.id}
                     inputWidth={item.w}
                     inputHeight={this.state.inputH}

@@ -9,7 +9,7 @@ import {FetchDomainName} from '../../FetchDomainName'
 class MemberEditInfo extends React.Component {
   constructor(props) {
     super(props)
-    console.log(props)
+    // console.log(props)
 
     this.state = {
       favTypeOptions: [],
@@ -65,7 +65,7 @@ class MemberEditInfo extends React.Component {
   // }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    console.log('childDerived')
+    // console.log('childDerived')
     let stateToBeReturned = null
     if (prevState.thisData == 0) {
       stateToBeReturned = {
@@ -76,9 +76,9 @@ class MemberEditInfo extends React.Component {
       }
     }
 
-    console.log(nextProps)
-    console.log(prevState)
-    console.log(stateToBeReturned)
+    // console.log(nextProps)
+    // console.log(prevState)
+    // console.log(stateToBeReturned)
     return stateToBeReturned
   }
 
@@ -275,7 +275,7 @@ class MemberEditInfo extends React.Component {
         })
           .then(res => res.json())
           .then(obj => {
-            console.log(obj)
+            // console.log(obj)
             if (obj.success == true) {
               copyData[eventName] = obj.filename
               this.setState(
@@ -317,9 +317,10 @@ class MemberEditInfo extends React.Component {
         <Row>
           <div className="col-lg-7 mt-3 h5">
             {this.props.memberEditInputmsg.map(item => (
-              <>
+              <React.Fragment
+              key={item.id}
+              >
                 <InputWithLabelForEdit_Su
-                  key={item.id}
                   id={item.id}
                   inputWidth={item.w}
                   inputHeight="48px"
@@ -339,7 +340,7 @@ class MemberEditInfo extends React.Component {
                   id={item.id + 'help'}
                   className="form-text  text-danger text-center"
                 />
-              </>
+              </React.Fragment>
             ))}
           </div>
           <div className="col-lg-5 mt-3">
@@ -365,6 +366,7 @@ class MemberEditInfo extends React.Component {
         <Row>
           {this.state.favTypeOptions.map(item => (
             <CheckboxMultiSu
+              key={item.id}
               thisData={this.state.thisData}
               inputName="fav_type"
               optionId={item.id}

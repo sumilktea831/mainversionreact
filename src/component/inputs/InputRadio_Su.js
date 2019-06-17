@@ -22,7 +22,6 @@ const InputRadio_Su = props => {
         {props.selectOptions.map(item => (
             <div
               key={item.id}
-              // className="custom-control custom-radio custom-control-inline col-2 mx-0 pr-0"
               className={
                 'custom-control custom-radio custom-control-inline my-1 pr-0  ' +
                 (props.col ? props.col : 'col-3')

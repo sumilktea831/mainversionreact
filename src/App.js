@@ -218,7 +218,7 @@ class App extends React.Component {
             /> */}
             <Route path="/CinemaBackMainpage" component={CinemaBackMainpage} />
           </Switch>
-          {window.location.pathname == '/LoginSign' ? (
+          {window.location.pathname === '/LoginSign' ? (
             ''
           ) : (
             <div className="container-fluid row justify-content-center">

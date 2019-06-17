@@ -41,6 +41,7 @@ const SidenavMenu_Su = props => {
                   className="mytransition5"
                   name="option-row"
                   style={{ background: 'rgba(255, 255, 255, 0.3)' }}
+                  key={item.id}
                 >
                   <div className="py-3">
                     <div
@@ -70,6 +71,7 @@ const SidenavMenu_Su = props => {
                   className="mytransition5"
                   name="option-row"
                   style={{ background: '#30363D' }}
+                  key={item.id}
                 >
                   <div className="py-3">
                     <div

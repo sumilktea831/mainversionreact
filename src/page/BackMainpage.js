@@ -801,11 +801,11 @@ class BackSidenav extends React.Component {
     sessionStorage.clear()
     window.location.href = '/'
   }
-  static getDerivedStateFromProps(nextProps, prevState) {
+  // static getDerivedStateFromProps(nextProps, prevState) {
     // console.log('childDerived')
     // console.log(nextProps)
     // console.log(prevState)
-  }
+  // }
 
   handleCollect = async id => {
     const memberId = sessionStorage.getItem('memberId')
@@ -1101,6 +1101,7 @@ class BackSidenav extends React.Component {
                     <Row>
                       {this.state.favTypeOptions.slice(1).map(item => (
                         <CheckboxMultiForFavTypeReadSu
+                          key={item.id}
                           thisData={this.state.thisMemberData}
                           inputName="fav_type"
                           optionId={item.id}
@@ -1384,11 +1385,11 @@ class BackSidenav extends React.Component {
                       <div
                         className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5"
                         style={{ width: '250px', height: '360px' }}
+                        key={data.id}
                       >
                         <ActivityCard
                           routerId={data.id}
                           handleCollect={() => this.handleCollect(data.id)}
-                          key={data.id}
                           title={data.theater}
                           subtitle={data.title}
                           imgSrc={
@@ -1415,11 +1416,11 @@ class BackSidenav extends React.Component {
                       <div
                         className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5"
                         style={{ width: '250px', height: '360px' }}
+                        key={data.id}
                       >
                         <ActivityCard
                           routerId={data.id}
                           handleCollect={() => this.handleCollect(data.id)}
-                          key={data.id}
                           title={data.theater}
                           subtitle={data.title}
                           imgSrc={
@@ -1448,11 +1449,11 @@ class BackSidenav extends React.Component {
                       <div
                         className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5"
                         style={{ width: '250px', height: '360px' }}
+                        key={data.id}
                       >
                         <ActivityCard
                           routerId={data.id}
                           handleCollect={() => this.handleCollect(data.id)}
-                          key={data.id}
                           title={data.theater}
                           subtitle={data.title}
                           imgSrc={
@@ -1487,11 +1488,11 @@ class BackSidenav extends React.Component {
                       <div
                         className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5 mb-5"
                         style={{ width: '250px', height: '360px' }}
+                        key={data.id}
                       >
                         <ActivityCard
                           routerId={data.id}
                           handleCollect={() => this.handleCollect(data.id)}
-                          key={data.id}
                           title={data.theater}
                           subtitle={data.title}
                           imgSrc={

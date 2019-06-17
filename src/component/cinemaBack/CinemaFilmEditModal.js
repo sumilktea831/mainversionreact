@@ -42,9 +42,10 @@ const CinemaFilmEditModal = props => {
           <Row>
             <div className="col-lg-6 mt-3 h5">
               {props.inputmsg.map(item => (
-                <>
+                <React.Fragment
+                  key={item.id}
+                >
                   <InputWithLabelForEdit_Su
-                    key={item.id}
                     id={item.id}
                     inputWidth={item.w}
                     inputHeight={props.inputH}
@@ -64,7 +65,7 @@ const CinemaFilmEditModal = props => {
                     id={item.id + 'help'}
                     className="form-text text-danger text-center"
                   />
-                </>
+                </React.Fragment>
               ))}
             </div>
             <div className="col-lg-6 my-4 h5">
@@ -118,7 +119,9 @@ const CinemaFilmEditModal = props => {
           <Row>
             {props.scheduleCount
               ? props.scheduleCount.map((item, index) => (
-                  <>
+                  <React.Fragment
+                  key={index}
+                  >
                     <div className="col-lg-6 d-flex align-items-center">
                       <p
                         className="h5 d-flex align-items-center mx-3"
@@ -171,7 +174,7 @@ const CinemaFilmEditModal = props => {
                           : ''}
                       </p>
                     </div>
-                  </>
+                  </React.Fragment>
                 ))
               : ''}
           </Row>
@@ -184,6 +187,7 @@ const CinemaFilmEditModal = props => {
             {props.typeOptions.map(item => (
               <CheckboxMultiForCinemaFilmTypeEditSu
                 // thisData={this.state.thisData}
+                key={item.id}
                 inputName="type"
                 optionId={item.id}
                 optionName={item.name}

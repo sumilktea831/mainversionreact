@@ -13,9 +13,9 @@ const InputText_Su = props => {
             props.iconLeft
               ? '#1F242A'
               : props.iconRight
-              ? 'rgba(0,0,0,0)'
-              : '#1F242A'
-          }`,
+                ? 'rgba(0,0,0,0)'
+                : '#1F242A'
+            }`,
         }}
       >
         <i
@@ -39,9 +39,9 @@ const InputText_Su = props => {
             props.iconRight
               ? '#1F242A'
               : props.iconLeft
-              ? 'rgba(0,0,0,0)'
-              : '#1F242A'
-          }`,
+                ? 'rgba(0,0,0,0)'
+                : '#1F242A'
+            }`,
         }}
       >
         <i

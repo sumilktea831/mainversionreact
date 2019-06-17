@@ -25,13 +25,14 @@ const CheckboxMultiForFavTypeReadSu = props => {
             zIndex: -1,
           }}
           checked={
-            props.thisfavType == undefined
+            props.thisfavType === undefined
               ? false
               : props.thisfavType.find(item => item === props.optionName)
-              ? 'true'
+              ? true
               : false
           }
           onChange={props.onChange}
+          readOnly
         />
         {/* {props.thisfavType.find(item => item === props.optionName) ? (
           <label className="form-check-label h5" htmlFor={props.optionId}>
@@ -52,7 +53,7 @@ const CheckboxMultiForFavTypeReadSu = props => {
             </button>
           </label>
         )} */}
-        {props.thisfavType == undefined ? (
+        {props.thisfavType === undefined ? (
           <label className="form-check-label h5" htmlFor={props.optionId}>
             <button className={uncheckedClass} style={{ cursor: 'default' }}>
               {props.optionName}

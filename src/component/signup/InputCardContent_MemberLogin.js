@@ -13,7 +13,7 @@ class InputCardContent_MemberLogin extends React.Component {
       inputmsg: [
         //設定Input內容
         {
-          id: 'email',
+          id: 'useremail',
           w: '',
           h: '',
           iconL: 'fas fa-envelope',
@@ -24,7 +24,7 @@ class InputCardContent_MemberLogin extends React.Component {
           type: '',
         },
         {
-          id: 'pwd',
+          id: 'userpwd',
           w: '',
           h: '',
           iconL: 'fas fa-key',
@@ -77,7 +77,7 @@ class InputCardContent_MemberLogin extends React.Component {
     console.log(newtext)
 
     //判斷如果拿到的name屬於state裡面的屬性，就把剛才複製的state的該項目更新，然後再setState回去
-    if (name === 'email' || name === 'pwd' || name === 'captchatext') {
+    if (name === 'useremail' || name === 'userpwd' || name === 'captchatext') {
       newtext[0][name] = value
       this.setState({ usertext: newtext }, () =>
         console.log(this.state.usertext)
@@ -94,13 +94,14 @@ class InputCardContent_MemberLogin extends React.Component {
           <Card.Body className="p-5 signcard">
             <form name="userLogin" method="POST">
               {this.state.inputmsg.map(item => (
-                <Row className="my-4">
+                <Row className="my-4"
+                key={item.id}
+                >
                   <Col // 這裡是input的col
                     className="p-0 rounded d-flex flex-nowrap align-items-center"
                     style={{ width: `${item.w}` }}
                   >
                     <InputText_Su
-                      key={item.id}
                       id={item.id}
                       inputWidth={item.w}
                       inputHeight={this.state.inputH}

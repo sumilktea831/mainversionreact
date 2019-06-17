@@ -50,7 +50,7 @@ class CinemaFilmUpdate extends React.Component {
         ...prevState,
         thisData: nextProps.thisData,
       }
-      console.log(stateToBeReturned)
+      // console.log(stateToBeReturned)
     }
     return stateToBeReturned
   }
@@ -200,9 +200,9 @@ class CinemaFilmUpdate extends React.Component {
       let optionName = this.state.typeOptions.filter(
         item => item.id === value
       )[0].name
-      console.log('optionname: ' + optionName)
-      console.log('checked: ' + event.target.checked)
-      console.log('value: ' + event.target.value)
+      // console.log('optionname: ' + optionName)
+      // console.log('checked: ' + event.target.checked)
+      // console.log('value: ' + event.target.value)
       if (event.target.checked == false) {
         //點選之後checked狀態會先變，故原本已勾選的選項，會判斷是false
         //將該選項從喜愛類型中過濾掉，同時設定給copyData
@@ -215,7 +215,7 @@ class CinemaFilmUpdate extends React.Component {
             newType = newType.filter(item => item !== '全選')
           }
           newType = newType.filter(item => item !== optionName)
-          console.log('newType: ' + newType)
+          // console.log('newType: ' + newType)
           if (newType.length == 0) {
             copyCheckok.type = false
           }
@@ -303,9 +303,10 @@ class CinemaFilmUpdate extends React.Component {
         <Row>
           <div className="col-lg-6 mt-3 h5">
             {this.state.inputmsg.map(item => (
-              <>
+              <React.Fragment
+                key={item.id}
+              >
                 <InputWithLabel_Su
-                  key={item.id}
                   id={item.id}
                   inputWidth={item.w}
                   inputHeight={this.state.inputH}
@@ -324,7 +325,7 @@ class CinemaFilmUpdate extends React.Component {
                   id={item.id + 'help'}
                   className="form-text text-danger text-center"
                 />
-              </>
+              </React.Fragment>
             ))}
           </div>
           <div className="col-lg-6 my-4 h5">
@@ -372,8 +373,10 @@ class CinemaFilmUpdate extends React.Component {
           </div>
         </div>
         <Row>
-          {this.state.scheduleCount.map(item => (
-            <>
+          {this.state.scheduleCount.map((item,index) => (
+            <React.Fragment
+            key={index}
+            >
               <div className="col-lg-6 d-flex align-items-center">
                 <p
                   className="h5 d-flex align-items-center mx-3"
@@ -410,7 +413,7 @@ class CinemaFilmUpdate extends React.Component {
                   123
                 </p>
               </div>
-            </>
+            </React.Fragment>
           ))}
         </Row>
         <div className="row mt-5 mb-3">
@@ -422,6 +425,7 @@ class CinemaFilmUpdate extends React.Component {
           {this.state.typeOptions.map(item => (
             <CheckboxMultiForCinemaTypeSu
               // thisData={this.state.thisData}
+              key={item.id}
               inputName="type"
               optionId={item.id}
               optionName={item.name}

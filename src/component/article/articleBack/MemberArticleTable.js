@@ -41,7 +41,7 @@ class MemberArticleTable extends React.Component {
             添加你的收藏吧！
           </h5>
         ) : ( */}
-        <table class="table table-borderless text-center h5">
+        <table className="table table-borderless text-center h5">
           <thead>
             <tr
               className="text-center"

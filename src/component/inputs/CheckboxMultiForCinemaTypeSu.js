@@ -32,7 +32,7 @@ const CheckboxMultiSu = props => {
             zIndex: -1,
           }}
           checked={
-            props.thisType == undefined
+            props.thisType === undefined
               ? false
               : props.thisType.find(item => item === props.optionName)
               ? true
@@ -59,7 +59,7 @@ const CheckboxMultiSu = props => {
             </button>
           </label>
         )} */}
-        {props.thisType == undefined ? (
+        {props.thisType === undefined ? (
           <label className="form-check-label h5" htmlFor={props.optionId}>
             <button
               className={'mytransition5 ' + uncheckedClass}

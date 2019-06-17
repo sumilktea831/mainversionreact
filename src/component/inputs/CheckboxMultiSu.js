@@ -35,7 +35,7 @@ const CheckboxMultiSu = props => {
             props.thisfavType == undefined
               ? false
               : props.thisfavType.find(item => item === props.optionName)
-              ? 'true'
+              ? true
               : false
           }
           onChange={props.onChange}

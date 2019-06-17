@@ -10,9 +10,8 @@ class MemberCollectTable extends React.Component {
   }
 
   static getDerivedStateFromProps(nextProps, prevState) {
-    // this.setState({ thisData: nextProps.thisData }) 這不能這樣setStae，要用下面的寫法
     let stateToBeReturned = null
-    if (prevState.thisData == 0 || prevState.myForumData == 0) {
+    if (prevState.thisData === 0 || prevState.myForumData === 0) {
       stateToBeReturned = {
         ...prevState,
         thisData: nextProps.thisData,
@@ -24,12 +23,12 @@ class MemberCollectTable extends React.Component {
   }
 
   render() {
-    // if (this.props.thisData == 0) {
+    // if (this.props.thisData === 0) {
     //   return <></>
     // }
     return (
       <>
-        {this.state.myForumData.length == 0 ? (
+        {this.state.myForumData.length === 0 ? (
           <h5 className="text-center text-mywhite mx-auto">
             尚無紀錄，趕快
             <a href="/forum" style={{ color: '#ffa510' }}>
@@ -38,7 +37,7 @@ class MemberCollectTable extends React.Component {
             發表評論吧！
           </h5>
         ) : (
-          <table class="table table-borderless text-center h5">
+          <table className="table table-borderless text-center h5">
             <thead>
               <tr
                 className="text-center"

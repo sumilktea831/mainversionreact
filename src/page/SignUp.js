@@ -162,7 +162,6 @@ class SignUp extends React.Component {
       const jsonObject = await response.json()
       const memberdata = await jsonObject
       await this.setState({ memberdata: memberdata })
-      // await console.log(memberdata)
     } catch (e) {
       //抓到錯誤訊息，以及接下來要做的錯誤處理
       console.log(e)
@@ -181,7 +180,6 @@ class SignUp extends React.Component {
       const jsonObject = await response.json()
       const cinemadata = await jsonObject
       await this.setState({ cinemadata: cinemadata })
-      // await console.log(cinemadata)
     } catch (e) {
       //抓到錯誤訊息，以及接下來要做的錯誤處理
       console.log(e)
@@ -238,8 +236,8 @@ class SignUp extends React.Component {
   //會員登入按鈕事件
   handleMemberLoginClick = userInputText => event => {
     // console.log(userInputText[0].email)
-    const userEmail = userInputText[0].email //取得輸入的email
-    const userPwd = userInputText[0].pwd //取得輸入的密碼
+    const userEmail = userInputText[0].useremail //取得輸入的email
+    const userPwd = userInputText[0].userpwd //取得輸入的密碼
     const captcha = userInputText[0].captcha.toLowerCase() //取得驗證碼、轉換成小寫
     const captchatext = userInputText[0].captchatext.toLowerCase() //取得輸入的驗證碼、轉換小寫
     const isexisted = this.state.memberdata.find(
@@ -309,25 +307,19 @@ class SignUp extends React.Component {
   }
   //戲院登入按鈕事件
   handleCinemaLoginClick = userInputText => event => {
-    const cinemaAccount = userInputText[0].cinemaAccount //取得輸入的帳號
-    const cinemaPassword = userInputText[0].cinemaPassword //取得輸入的密碼
+    const cinemaAccount = userInputText[0].LoginCinemaAccount //取得輸入的帳號
+    const cinemaPassword = userInputText[0].LoginCinemaPassword //取得輸入的密碼
     const captcha = userInputText[0].captcha.toLowerCase() //取得驗證碼、轉換成小寫
     const captchatext = userInputText[0].captchatext.toLowerCase() //取得輸入的驗證碼、轉換小寫
     const isexisted = this.state.cinemadata.find(
       item => item.cinemaAccount === cinemaAccount
     )
-    // console.log(captcha)
-    // console.log(captchatext)
-    // console.log(isexisted)
     if (isexisted) {
-      // console.log(isexisted.pwd)
-      // console.log(userPwd)
       if (isexisted.cinemaPassword === cinemaPassword) {
         // alert('密碼正確')
         if (captcha === captchatext || captchatext === '1111') {
           sessionStorage.setItem('cinemaId', isexisted.id)
           Swal.fire({
-            // position: 'top-end',
             type: 'success',
             title: '<span style="color:#d4d1cc">登入成功</span>',
             showConfirmButton: false,

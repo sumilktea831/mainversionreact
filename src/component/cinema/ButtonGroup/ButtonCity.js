@@ -8,8 +8,8 @@ class ButtonCity extends React.Component {
   click = event => {
     if (
       // 選取全部
-      event.target.id == 'b0' &&
-      event.target.className == 'btn btn-outline-warning mr-2'
+      event.target.id === 'b0' &&
+      event.target.className === 'btn btn-outline-warning mr-2'
     ) {
       document.querySelector('#b0').className = 'btn btn-warning mr-2'
       document.querySelector('#b1').className = 'btn btn-warning mr-2'
@@ -18,8 +18,8 @@ class ButtonCity extends React.Component {
       document.querySelector('#b4').className = 'btn btn-warning mr-2'
       this.props.CitySearchClick(event.target.value, 'allplus')
     } else if (
-      event.target.id == 'b0' &&
-      event.target.className == 'btn btn-warning mr-2'
+      event.target.id === 'b0' &&
+      event.target.className === 'btn btn-warning mr-2'
     ) {
       document.querySelector('#b0').className = 'btn btn-outline-warning mr-2'
       document.querySelector('#b1').className = 'btn btn-outline-warning mr-2'
@@ -30,7 +30,7 @@ class ButtonCity extends React.Component {
       this.props.CitySearchClick(event.target.value, 'alldel')
     } else if (
       event.target.id !== 'b0' &&
-      event.target.className == 'btn btn-outline-warning mr-2'
+      event.target.className === 'btn btn-outline-warning mr-2'
     ) {
       // 判斷是否為按下狀態
       //先改變按鈕狀態

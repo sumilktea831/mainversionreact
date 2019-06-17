@@ -67,7 +67,7 @@ const AvatarOne = props => {
             }}
             onClick={props.handleUploadCancel}
           >
-            <i class="fas fa-undo-alt" />
+            <i className="fas fa-undo-alt" />
           </div>
         </div>
         {/* 下面文字 */}

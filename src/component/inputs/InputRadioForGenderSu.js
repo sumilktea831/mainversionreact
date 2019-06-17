@@ -34,10 +34,11 @@ const InputRadio_Su = props => {
     <>
       <Row className="mx-0 px-0 col-lg-12 d-flex justify-content-between align-items-center">
         {props.selectOptions.map(item => (
-          <>
+          <React.Fragment
+          key={item.id}
+          >
             <div
               // className="custom-control custom-radio custom-control-inline col-2 mx-0 pr-0"
-              key={item.id}
               className={
                 'custom-control custom-radio custom-control-inline mx-0 pr-0 align-items-center ' +
                 (props.col ? props.col : 'col-2')
@@ -120,7 +121,7 @@ const InputRadio_Su = props => {
                 {item.name}
               </span>
             </div>
-          </>
+          </React.Fragment>
         ))}
       </Row>
     </>

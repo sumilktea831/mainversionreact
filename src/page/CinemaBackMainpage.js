@@ -597,7 +597,7 @@ class CinemaBackMainpage extends React.Component {
     window.location.href = '/'
   }
   render() {
-    console.log('parent-render')
+    // console.log('parent-render')
     if (!sessionStorage.getItem('cinemaId')) {
       // 若沒session，回到登入頁
       window.location.href = '/LoginSign'
@@ -737,8 +737,9 @@ class CinemaBackMainpage extends React.Component {
                           }
                         }
                       >
-                        {this.state.MessageBoxData.map(item => (
+                        {this.state.MessageBoxData.map((item,index) => (
                           <MessageCinema
+                            key={index}
                             img={item.img}
                             message={item.message}
                             name={item.name}
@@ -871,10 +872,10 @@ class CinemaBackMainpage extends React.Component {
                         <div
                           className="col-12 col-sm-12 col-md-6 col-lg-4 mt-5"
                           style={{ width: '250px', height: '360px' }}
+                          key={data.id}
                         >
                           <ActivityCinemaCard
                             routerId={data.id}
-                            key={data.id}
                             title={data.title}
                             imgSrc={
                               data.imgSrc.indexOf('http') == 0

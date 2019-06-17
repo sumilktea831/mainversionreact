@@ -43,7 +43,7 @@ const InputSelect_Su = props => {
             value={item.id}
             className="inputFontSizeSu"
             style={{ textAlign: 'center', background: '#1F242A' }}
-            selected={props.value === item.name ? true : false}
+            defaultValue={props.value === item.name ? true : false}
           >
             {item.name}
           </option>
