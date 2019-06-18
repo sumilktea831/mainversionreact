@@ -612,10 +612,9 @@ class CinemaBackMainpage extends React.Component {
               pagename={pagename}
             />
             <div //右邊內容框，之後要引入內容component
-              className="col container-fluid"
+              className="col container-fluid back-top-area"
               style={{
                 background: '#2b333d',
-                padding: '240px 120px 120px 120px',
               }}
             >
               {pagename === 'cinema-info-preview' ? (

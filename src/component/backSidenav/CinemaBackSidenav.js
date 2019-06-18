@@ -44,6 +44,7 @@ const CinemaBackSidenav = props => {
           style={{
             height: '240px',
           }}
+          class="back-sidenav-top-area"
         />
         <h3 className="text-center mb-4">戲院中心</h3>
         <Accordion defaultActiveKey={defaultPage}>

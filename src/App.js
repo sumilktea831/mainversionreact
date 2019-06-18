@@ -130,6 +130,22 @@ class App extends React.Component {
     return (
       <Router>
         <ScroolToTop>
+          {/* <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
+            <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+            <Navbar.Collapse id="responsive-navbar-nav">
+              <Nav className="mr-auto">
+                <Nav.Link href="#features">Features</Nav.Link>
+                <Nav.Link href="#pricing">Pricing</Nav.Link>
+              </Nav>
+              <Nav>
+                <Nav.Link href="#deets">More deets</Nav.Link>
+                <Nav.Link eventKey={2} href="#memes">
+                  Dank memes
+                 </Nav.Link>
+              </Nav>
+            </Navbar.Collapse>
+          </Navbar> */}
           <Navbar bg="light" expand="lg" className={this.state.navbar}>
             <LinkContainer to="/">
               <Navbar.Brand>
@@ -142,10 +158,10 @@ class App extends React.Component {
                 /> */}
               </Navbar.Brand>
             </LinkContainer>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse
-              className="d-flex justify-content-end"
-              id="basic-navbar-nav"
+              // className="d-flex justify-content-end"
+              id="responsive-navbar-nav"
             >
               <Nav>
                 <LinkContainer to="/cinema">
@@ -186,10 +202,10 @@ class App extends React.Component {
                     </LinkContainer>
                   </>
                 ) : (
-                  <LinkContainer to="/LoginSign">
-                    <Nav.Link className="mr-5">登入</Nav.Link>
-                  </LinkContainer>
-                )}
+                      <LinkContainer to="/LoginSign">
+                        <Nav.Link className="mr-5">登入</Nav.Link>
+                      </LinkContainer>
+                    )}
               </Nav>
             </Navbar.Collapse>
           </Navbar>
@@ -221,10 +237,10 @@ class App extends React.Component {
           {window.location.pathname === '/LoginSign' ? (
             ''
           ) : (
-            <div className="container-fluid row justify-content-center">
-              <Footer />
-            </div>
-          )}
+              <div className="container-fluid row justify-content-center">
+                <Footer />
+              </div>
+            )}
         </ScroolToTop>
       </Router>
     )

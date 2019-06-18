@@ -44,9 +44,7 @@ const MemberBackSidenav = props => {
         }}
       >
         <div
-          style={{
-            height: '240px',
-          }}
+          class="back-sidenav-top-area"
         />
         <h3 className="text-center mb-4">會員中心</h3>
         <Accordion defaultActiveKey={defaultPage}>
